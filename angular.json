@@ -27,7 +27,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/style.css"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -87,6 +88,36 @@
             ],
             "styles": [
               "src/styles.scss"
+            ]
+          }
+        }
+      }
+    },
+    "daisyui": {
+      "projectType": "library",
+      "root": "projects/daisyui",
+      "sourceRoot": "projects/daisyui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/daisyui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/daisyui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/daisyui/tsconfig.spec.json",
+            "assets": [],
+            "styles": [
+              "./projects/daisyui/src/style.css"
             ]
           }
         }
