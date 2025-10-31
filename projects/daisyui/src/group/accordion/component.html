@@ -1,0 +1,37 @@
+<ng-template #mainTemp>
+  @for (field of children$$(); track field.id || $index) {
+    <div
+      class="collapse bg-base-100 border border-base-300"
+      [class.join-item]="joinChild()"
+      [class]="collapseChildClass$$()"
+    >
+      <input
+        type="radio"
+        [name]="childName | pure: multi() : $index"
+        [checked]="!!field.props()['checked']"
+      />
+      <div class="collapse-title font-semibold">
+        {{ childTitleFn() | pure: field }}
+      </div>
+      <div class="collapse-content">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+        ></ng-container>
+      </div>
+    </div>
+  }
+</ng-template>
+<ng-template #templateRef let-attr="attributes">
+  @if (joinChild()) {
+    <div
+      class="join join-vertical bg-base-100"
+      [attributes]="attr()"
+      [excludes]="['class']"
+      [class]="attr()?.class"
+    >
+      <ng-container *ngTemplateOutlet="mainTemp"></ng-container>
+    </div>
+  } @else {
+    <ng-container *ngTemplateOutlet="mainTemp"></ng-container>
+  }
+</ng-template>

@@ -4,8 +4,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "daisyui": [
-        "./dist/daisyui"
+      "@piying/angular-daisyui/*": [
+        "./projects/daisyui/src/*"
       ]
     },
     "strict": true,

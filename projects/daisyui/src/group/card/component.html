@@ -1,0 +1,41 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    class="card bg-base-100 w-96 shadow-sm"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+  >
+    @if (imageFiled$$(); as field) {
+      <figure [class]="figureClass()">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+        ></ng-container>
+      </figure>
+    }
+    <div class="card-body" [class]="bodyClass()">
+      @if (titleFiled$$(); as field) {
+        <h2 class="card-title">
+          <ng-container
+            *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          ></ng-container>
+        </h2>
+      }
+      @if (bodyChildren$$(); as bodyChildren) {
+        <p>
+          @for (field of bodyChildren; track $index) {
+            <ng-container
+              *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+            ></ng-container>
+          }
+        </p>
+      }
+      @if (actionsFiled$$(); as field) {
+        <div class="card-actions" [class]="actionsClass()">
+          <ng-container
+            *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          ></ng-container>
+        </div>
+      }
+    </div>
+  </div>
+</ng-template>

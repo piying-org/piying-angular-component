@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="checkbox"
+    class="toggle theme-controller"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [value]="value()"
+  />
+</ng-template>

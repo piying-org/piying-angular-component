@@ -1,0 +1,17 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    class="avatar"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="classStatus$$()"
+  >
+    <div [class]="wrapperClass()">
+      @if (imgUrl()) {
+        <img [src]="imgUrl()" />
+      } @else {
+        <span [class]="placeholderClass()">{{ placeholder() }}</span>
+      }
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,26 @@
+<ng-template #templateRef let-attr="attributes">
+  @let optionTmp = optionTemplate();
+  <div [attributes]="attr()" [excludes]="['class']" class="dropdown" [class]="attr()?.class">
+    <div tabindex="0" role="button" class="btn m-1" [class]="attr()?.class">{{ content() }}</div>
+    <ul
+      tabindex="-1"
+      class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+      [class]="attr()?.class"
+    >
+      @for (item of options(); track $index) {
+        <li
+          [class.tooltip]="!!item.description"
+          [attr.data-tip]="item.description!"
+          [ariaDisabled]="item.disabled"
+          (click)="valueChange(item.value)"
+        >
+          @if (optionTmp) {
+            <ng-container *ngTemplateOutlet="optionTmp; context: { $impicit: item }"></ng-container>
+          } @else {
+            {{ item.label }}
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</ng-template>

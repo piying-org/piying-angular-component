@@ -1,0 +1,53 @@
+<ng-template #iconTemp let-item>
+  @if (item.option.templateRef) {
+    <ng-container
+      *ngTemplateOutlet="item.option.templateRef; context: { $implicit: item }"
+    ></ng-container>
+  } @else if (item.option.label) {
+    <button
+      [class]="item.labelClass$$()"
+      (click)="item.onClick($event)"
+      [disabled]="item.isLoading$()"
+      [attributes]="item.option.attributes || {}"
+    >
+      {{ item.option.label }}
+    </button>
+  } @else {
+    <mat-icon
+      [class]="item.option.class"
+      (click)="item.onClick($event)"
+      [ariaDisabled]="item.isLoading$()"
+      [attributes]="item.option.attributes || {}"
+    ></mat-icon>
+  }
+</ng-template>
+
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    class="fab"
+    [class.fab-flower]="flower()"
+  >
+    <ng-container
+      *ngTemplateOutlet="iconTemp; context: { $implicit: this.defaultIcon$$() }"
+    ></ng-container>
+
+    <div tabindex="0" role="button" class="btn btn-lg btn-circle btn-primary">{{ content() }}</div>
+    <div class="fab-close">
+      <ng-container
+        *ngTemplateOutlet="iconTemp; context: { $implicit: this.closeIcon$$() }"
+      ></ng-container>
+    </div>
+    @if (mainIcon$$(); as mainIcon) {
+      <div class="fab-main-action">
+        <ng-container *ngTemplateOutlet="iconTemp; context: { $implicit: mainIcon }"></ng-container>
+      </div>
+    }
+
+    @for (item of resolvedOptions$$(); track $index) {
+      <ng-container *ngTemplateOutlet="iconTemp; context: { $implicit: item }"></ng-container>
+    }
+  </div>
+</ng-template>

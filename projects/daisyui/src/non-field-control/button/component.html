@@ -1,0 +1,19 @@
+<ng-template #templateRef let-attr="attributes">
+  <button
+    class="btn"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    (click)="onClick($event)"
+    [disabled]="isLoading$() || disabled()"
+  >
+    @if (isLoading$() && !disableLoadingIcon()) {
+      <span class="loading loading-spinner"></span>
+    }
+    @if (isString | pure: content(); as content) {
+      {{ content }}
+    } @else {
+      <ng-container *ngTemplateOutlet="content()"></ng-container>
+    }
+  </button>
+</ng-template>
