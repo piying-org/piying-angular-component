@@ -1,0 +1,41 @@
+<ng-template #displayTemp let-item>
+  @if (item.icon) {
+    <mat-icon
+      [inline]="item.icon.inline"
+      [fontIcon]="item.icon.fontIcon"
+      [fontSet]="item.icon.fontSet"
+      [svgIcon]="item.icon.svgIcon"
+    ></mat-icon>
+  }
+  @if (item.label) {
+    <span>{{ item.label }}</span>
+  }
+</ng-template>
+
+<ng-template #templateRef let-attr="attributes">
+  <div class="breadcrumbs" [class]="attr()?.class" [attributes]="attr()" [excludes]="['class']">
+    <ul>
+      @for (item of options(); track $index) {
+        <li [class]="optionClass()">
+          @if (item.url && item.extraLink) {
+            <a [href]="item.extraLink" class="link">
+              <ng-container
+                *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
+              ></ng-container>
+            </a>
+          } @else if (item.url) {
+            <a [routerLink]="item.url" routerLinkActive="breadcrumbs-item-activate" class="link">
+              <ng-container
+                *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
+              ></ng-container
+            ></a>
+          } @else {
+            <ng-container
+              *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
+            ></ng-container>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</ng-template>

@@ -1,0 +1,27 @@
+<ng-template #templateRef let-attr="attributes">
+  @let activatedField = children$$()[activatedIndex$()];
+  @if (activatedField) {
+    <ng-container
+      *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: activatedField }"
+    ></ng-container>
+  }
+
+  <div class="dock">
+    @for (field of children$$(); track $index) {
+      @let item = field.props();
+      <button [class.dock-active]="$index === activatedIndex$()" (click)="toggleActivate($index)">
+        @if (item['icon']; as icon) {
+          <mat-icon
+            [inline]="icon.inline"
+            [fontIcon]="icon.fontIcon"
+            [fontSet]="icon.fontSet"
+            [svgIcon]="icon.svgIcon"
+          ></mat-icon>
+        }
+        @if (item['title']) {
+          <span class="dock-label">{{ item['title'] }}</span>
+        }
+      </button>
+    }
+  </div>
+</ng-template>

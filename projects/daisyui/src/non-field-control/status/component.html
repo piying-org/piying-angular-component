@@ -1,0 +1,25 @@
+<ng-template #templateRef let-attr="attributes">
+  <div [attributes]="attr()">
+    @if (animatePing()) {
+      <div class="inline-grid *:[grid-area:1/1]">
+        <div
+          class="status animate-ping"
+          [class.animate-bounce]="animateBounce()"
+          [class]="statusClass$$()"
+        ></div>
+        <div
+          class="status"
+          [class.animate-bounce]="animateBounce()"
+          [class]="statusClass$$()"
+        ></div>
+      </div>
+    } @else {
+      <div class="status" [class.animate-bounce]="animateBounce()" [class]="statusClass$$()"></div>
+    }
+    @if (value(); as value) {
+      <span>
+        {{ value }}
+      </span>
+    }
+  </div>
+</ng-template>

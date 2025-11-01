@@ -1,0 +1,17 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    class="carousel"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [ngClass]="ngClass$$()"
+  >
+    @for (field of children$$(); track $index) {
+      <div class="carousel-item">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+        ></ng-container>
+      </div>
+    }
+  </div>
+</ng-template>
