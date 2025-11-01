@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="file"
+    class="file-input"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [multiple]="multiple()"
+    #el
+    (change)="fileChange(el)"
+    (click)="clicked(el)"
+    [disabled]="disabled$()"
+  />
+</ng-template>

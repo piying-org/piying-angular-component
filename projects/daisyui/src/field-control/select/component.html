@@ -1,0 +1,37 @@
+<ng-template #templateRef let-attr="attributes">
+  <ng-template #optionTemp let-config="config">
+    @if (config.type === 'group') {
+      <optgroup [label]="config.label">
+        @for (item of config.children; track $index) {
+          <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
+        }
+      </optgroup>
+    } @else {
+      <option
+        [disabled]="config.disabled"
+        [ngValue]="config.value"
+        [class.tooltip]="!!config.description"
+        [attr.data-tip]="config.description!"
+      >
+        {{ config.label }}
+      </option>
+    }
+  </ng-template>
+  <select
+    class="select"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    [disabled]="disabled$()"
+    [multiple]="multiple()"
+    [ngClass]="wrapperClass$$()"
+  >
+    <option disabled selected>{{ emptyOptionContent() }}</option>
+
+    @for (item of resolvedOptions$$(); track $index) {
+      <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
+    }
+  </select>
+</ng-template>

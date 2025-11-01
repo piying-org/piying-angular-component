@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    class="radial-progress"
+    [aria-valuenow]="value$$()"
+    role="progressbar"
+    [ngStyle]="wrapperStyle$$()"
+  >
+    {{ valueMap() }}
+  </div>
+</ng-template>

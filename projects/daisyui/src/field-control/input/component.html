@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [type]="type()"
+    class="input"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    [disabled]="disabled$()"
+  />
+</ng-template>

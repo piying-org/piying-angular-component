@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    class="divider"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="wrapperClass$$()"
+  >
+    {{ content() }}
+  </div>
+</ng-template>

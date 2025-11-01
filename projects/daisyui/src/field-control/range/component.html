@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="range"
+    [min]="min()"
+    [max]="max()"
+    class="range"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [step]="step()"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+  />
+</ng-template>

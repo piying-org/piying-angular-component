@@ -1,0 +1,43 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="radio"
+    class="rating-hidden"
+    [name]="name"
+    aria-label="{{ min() }} rating"
+    [checked]="value$() === min()"
+    (change)="valueChange(min())"
+    [class]="itemClass$$()"
+  />
+  @for (item of list(); track $index) {
+    @if (half()) {
+      <input
+        type="radio"
+        [name]="name"
+        class="mask mask-half-1"
+        aria-label="{{ item + 0.5 }} rating"
+        [checked]="value$() === item + 0.5"
+        (change)="valueChange(item + 0.5)"
+        [class]="itemClass$$()"
+      />
+      <input
+        type="radio"
+        [name]="name"
+        class="mask mask-half-2"
+        aria-label="{{ item + 1 }} rating"
+        [checked]="value$() === item + 1"
+        (change)="valueChange(item + 1)"
+        [class]="itemClass$$()"
+      />
+    } @else {
+      <input
+        type="radio"
+        class="mask"
+        [name]="name"
+        aria-label="{{ item + 1 }} rating"
+        [checked]="value$() === item + 1"
+        (change)="valueChange(item + 1)"
+        [class]="itemClass$$()"
+      />
+    }
+  }
+</ng-template>

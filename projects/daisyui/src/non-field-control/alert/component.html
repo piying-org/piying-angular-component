@@ -1,0 +1,20 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    role="alert"
+    class="alert"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    @if (icon(); as icon) {
+      <mat-icon
+        [inline]="icon.inline"
+        [fontIcon]="icon.fontIcon!"
+        [fontSet]="icon.fontSet!"
+        [svgIcon]="icon.svgIcon!"
+      ></mat-icon>
+    }
+    <span>{{ content() }}</span>
+    <ng-container *ngTemplateOutlet="action()"></ng-container>
+  </div>
+</ng-template>

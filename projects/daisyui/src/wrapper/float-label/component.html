@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <label
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class.floating-label]="props$$()['floating']"
+  >
+    @let title = props$$()['title'];
+    @if (title) {
+      <span class="label">{{ title }}</span>
+    }
+    <ng-container #fieldComponent></ng-container>
+  </label>
+</ng-template>

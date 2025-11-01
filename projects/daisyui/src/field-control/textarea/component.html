@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <textarea
+    class="textarea"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    [disabled]="disabled$()"
+    [ngClass]="wrapperClass$$()"
+  ></textarea>
+</ng-template>

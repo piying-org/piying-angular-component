@@ -1,0 +1,13 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="checkbox"
+    class="toggle"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    [disabled]="disabled$()"
+    [indeterminate]="indeterminate()"
+  />
+</ng-template>

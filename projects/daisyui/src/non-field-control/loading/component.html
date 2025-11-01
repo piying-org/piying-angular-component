@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <span
+    class="loading"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="wrapperClass$$()"
+  ></span>
+</ng-template>
