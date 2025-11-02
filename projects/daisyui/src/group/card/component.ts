@@ -1,15 +1,19 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, viewChild } from '@angular/core';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { Color, Size } from '@piying/angular-daisyui/util';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-card',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet],
+  imports: [AttributesDirective, NgTemplateOutlet,NgClass],
 })
 export class CardFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  size = input<Size>();
+
   bodyClass = input();
   figureClass = input();
   actionsClass = input('justify-end');
@@ -44,5 +48,9 @@ export class CardFGC extends PiyingViewGroupBase {
         let key = field.keyPath?.slice(-1)[0];
         return !(key === this.titleKey() || key === this.imageKey() || key === this.actionsKey());
       });
+  });
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(this.#theme.setSize('card', this.size()));
   });
 }

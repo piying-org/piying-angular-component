@@ -1,5 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
-  <div [attributes]="attr()">
+  <div
+    class="btn"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="wrapperClass$()"
+  >
     @if (animatePing()) {
       <div class="inline-grid *:[grid-area:1/1]">
         <div

@@ -1,7 +1,8 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, TemplateRef, viewChild } from '@angular/core';
+import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { IconConfig } from '@piying/angular-daisyui/util';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { Color, IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({
@@ -12,7 +13,13 @@ import { AttributesDirective } from '@piying/view-angular';
 export class ProgressNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+
   type = input<'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'>();
   value = input<number | undefined>();
   max = input(100);
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(this.#theme.setColor('progress', this.color()));
+  });
 }

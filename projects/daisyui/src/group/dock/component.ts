@@ -1,7 +1,9 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { Color, Size } from '@piying/angular-daisyui/util';
 
 import {
   AttributesDirective,
@@ -13,13 +15,22 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-dock',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, MatIcon],
+  imports: [AttributesDirective, NgTemplateOutlet, MatIcon, NgClass],
 })
 export class DockFGC extends PiyingViewGroupBase {
   static __version = 2;
+  templateRef = viewChild.required('templateRef');
+
+  size = input<Size>();
+
   activatedIndex = input(0);
   activatedIndex$ = linkedSignal(this.activatedIndex);
   toggleActivate(index: number) {
     this.activatedIndex$.set(index);
   }
+
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(this.#theme.setSize('dock', this.size()));
+  });
 }

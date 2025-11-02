@@ -1,5 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, input, viewChild } from '@angular/core';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { Color } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 import clsx from 'clsx';
 @Component({
@@ -10,17 +12,18 @@ import clsx from 'clsx';
 export class DividerNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+
   content = input('Default');
   direction = input<'horizontal' | 'vertical'>();
   contentPosition = input<'start' | 'end'>();
+  #theme = inject(ThemeService);
+
   wrapperClass$$ = computed(() => {
-    let list = [];
-    if (this.direction()) {
-      list.push(`divider-${this.direction()}`);
-    }
-    if (this.contentPosition()) {
-      list.push(`divider-${this.contentPosition()}`);
-    }
-    return clsx(list);
+    return this.#theme.setClass(
+      this.#theme.setColor('divider', this.color()),
+      this.direction() ? `divider-${this.direction()}` : undefined,
+      this.contentPosition() ? `divider-${this.contentPosition()}` : undefined,
+    );
   });
 }

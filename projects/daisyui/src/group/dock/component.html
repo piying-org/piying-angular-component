@@ -6,7 +6,7 @@
     ></ng-container>
   }
 
-  <div class="dock">
+  <div class="dock" [ngClass]="wrapperClass$()">
     @for (field of children$$(); track $index) {
       @let item = field.props();
       <button [class.dock-active]="$index === activatedIndex$()" (click)="toggleActivate($index)">

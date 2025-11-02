@@ -1,3 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
-  <progress class="progress" [value]="value()" [max]="max()"></progress>
+  <progress
+    class="progress"
+    [value]="value()"
+    [max]="max()"
+    [ngClass]="wrapperClass$()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></progress>
 </ng-template>

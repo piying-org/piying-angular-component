@@ -1,14 +1,25 @@
-import { Component, computed, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
+  Color,
   DefaultOptionConvert,
   OptionConvert,
   SelectOption,
+  Size,
   transformOptions,
 } from '@piying/angular-daisyui/util';
 import { NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 @Component({
   selector: 'app-input',
   templateUrl: './component.html',
@@ -39,12 +50,15 @@ export class InputFCC extends BaseControl {
   >('text');
   ghost = input<boolean>();
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+  size = input<Size>();
+  #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
-    let list = [];
-    if (this.ghost()) {
-      list.push(`input-ghost`);
-    }
-    return clsx(list);
+    return this.#theme.setClass(
+      this.#theme.setColor('input', this.color()),
+      this.#theme.setSize('input', this.size()),
+      this.ghost() ? this.#theme.addPrefix(`input-ghost`) : undefined,
+    );
   });
 }

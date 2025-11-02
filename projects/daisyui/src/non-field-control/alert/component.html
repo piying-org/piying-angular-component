@@ -5,6 +5,7 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
+    [ngClass]="wrapperClass$()"
   >
     @if (icon(); as icon) {
       <mat-icon

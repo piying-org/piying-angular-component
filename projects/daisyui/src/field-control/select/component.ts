@@ -1,15 +1,26 @@
-import { Component, computed, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
+  Color,
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
   SelectOption,
+  Size,
   transformOptions,
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 @Component({
   selector: 'app-select',
   templateUrl: './component.html',
@@ -25,9 +36,12 @@ import clsx from 'clsx';
 export class SelectFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+  size = input<Size>();
   multiple = input(false);
   type = input<'ghost' | 'native'>();
-
+  ghost = input<boolean>();
+  native = input<boolean>();
   /** ---输入--- */
   /** @title 列表
   @default [] */
@@ -51,11 +65,14 @@ export class SelectFCC extends BaseControl {
       return resolvedItem;
     });
   }
+  #theme = inject(ThemeService);
+
   wrapperClass$$ = computed(() => {
-    let list = [];
-    if (this.type()) {
-      list.push(this.type() === 'native' ? 'appearance-none' : `select-${this.type()}`);
-    }
-    return clsx(list);
+    return this.#theme.setClass(
+      this.#theme.setColor('select', this.color()),
+      this.#theme.setSize('select', this.size()),
+      this.ghost() ? this.#theme.addPrefix('select-ghost	') : undefined,
+      this.native() ? 'appearance-none' : undefined,
+    );
   });
 }
