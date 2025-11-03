@@ -1,5 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
-  <div class="drawer" [attributes]="attr()" [excludes]="['class']" [class]="attr()?.class">
+  <div
+    class="drawer"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [ngClass]="wrapperClass$()"
+  >
     <input
       [id]="name"
       type="checkbox"

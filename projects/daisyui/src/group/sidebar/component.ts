@@ -2,6 +2,7 @@ import { NgTemplateOutlet, NgClass } from '@angular/common';
 import {
   Component,
   computed,
+  inject,
   input,
   linkedSignal,
   model,
@@ -10,6 +11,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
@@ -24,7 +26,7 @@ export class DrawerFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
   contentClass = input();
   sideClass = input();
-  mode = input<'push' | 'side'>();
+  mode = input<'over' | 'side'>('over');
   position = input<'start' | 'end'>();
 
   contentFiled$$ = computed(() => {
@@ -45,4 +47,10 @@ export class DrawerFGC extends PiyingViewGroupBase {
   openChanged(value: boolean) {
     this.opened.set(value);
   }
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(
+      this.mode() === 'side' && this.opened() ? this.#theme.addPrefix('drawer-open') : undefined,
+    );
+  });
 }
