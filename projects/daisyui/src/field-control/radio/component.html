@@ -3,7 +3,7 @@
     <input
       type="radio"
       [name]="name"
-      class="radio"
+      class="{{ 'radio' | cssPrefix }}"
       [disabled]="item.disabled || disabled$()"
       [checked]="item.value === value$()"
       (change)="valueChange(item.value)"

@@ -20,10 +20,11 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-input',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective],
+  imports: [FormsModule, AttributesDirective, CssPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

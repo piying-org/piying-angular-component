@@ -4,7 +4,7 @@
     [attributes]="attr()"
     [excludes]="['class']"
     [type]="type()"
-    class="input"
+    class="{{ 'input' | cssPrefix }}"
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
     [disabled]="disabled$()"

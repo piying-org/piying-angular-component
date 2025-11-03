@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     type="radio"
-    class="rating-hidden"
+    class="{{ 'rating-hidden' | cssPrefix }}"
     [name]="name"
     aria-label="{{ min() }} rating"
     [checked]="value$() === min()"
@@ -14,7 +14,7 @@
       <input
         type="radio"
         [name]="name"
-        class="mask mask-half-1"
+        class="{{ 'mask mask-half-1' | cssPrefix }}"
         aria-label="{{ item + 0.5 }} rating"
         [checked]="value$() === item + 0.5"
         (change)="valueChange(item + 0.5)"
@@ -23,7 +23,7 @@
       <input
         type="radio"
         [name]="name"
-        class="mask mask-half-2"
+        class="{{ 'mask mask-half-2' | cssPrefix }}"
         aria-label="{{ item + 1 }} rating"
         [checked]="value$() === item + 1"
         (change)="valueChange(item + 1)"
@@ -32,7 +32,7 @@
     } @else {
       <input
         type="radio"
-        class="mask"
+        class="{{ 'mask' | cssPrefix }}"
         [name]="name"
         aria-label="{{ item + 1 }} rating"
         [checked]="value$() === item + 1"

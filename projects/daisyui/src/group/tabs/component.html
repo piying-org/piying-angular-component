@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <div
     role="tablist"
-    class="tabs"
+    class="{{ 'tabs' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class"
@@ -9,7 +9,11 @@
   >
     @for (field of children$$(); track $index) {
       @let item = field.props();
-      <label role="tab" class="tab" [class.tab-active]="$index === activatedIndex$()">
+      <label
+        role="tab"
+        class="{{ 'tab' | cssPrefix }}"
+        [class.tab-active]="$index === activatedIndex$()"
+      >
         <input type="radio" [name]="name" />
 
         @if (item['icon']; as icon) {
@@ -21,10 +25,10 @@
           ></mat-icon>
         }
         @if (item['title']) {
-          <span class="dock-label">{{ item['title'] }}</span>
+          <span class="{{ 'tab-label' | cssPrefix }}">{{ item['title'] }}</span>
         }
       </label>
-      <div class="tab-content bg-base-100 border-base-300 p-6">
+      <div class="{{ 'tab-content' | cssPrefix | mergeClass: tabContentClass() }}">
         <ng-container
           *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
         ></ng-container>

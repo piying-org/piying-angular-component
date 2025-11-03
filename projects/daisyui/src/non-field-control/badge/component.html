@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <span
-    class="badge"
+    class="{{ 'badge' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -1,10 +1,11 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, input, viewChild } from '@angular/core';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-avatar',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgClass],
+  imports: [AttributesDirective, NgClass, CssPrefixPipe],
 })
 export class AvatarNFCC {
   static __version = 2;

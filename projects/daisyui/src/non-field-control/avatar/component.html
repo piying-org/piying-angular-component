@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="avatar"
+    class="{{ 'avatar' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

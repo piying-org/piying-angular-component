@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { CSSClassPrefixToken } from './token';
-import { AlertColor, Color, Size } from '../util';
+import { AlertColor, Color, Size } from '@piying/angular-daisyui/util';
 import clsx from 'clsx';
 type HasColorCmp =
   | 'btn'
@@ -63,6 +63,9 @@ export class ThemeService {
   }
   addPrefix(str: string) {
     return this.#prefix ? `${this.#prefix}${str}` : str;
+  }
+  addTwPrefix(str: string) {
+    return this.#prefix ? `${this.#prefix}:${str}` : str;
   }
   setClass(...args: (string | undefined)[]) {
     return clsx(args);

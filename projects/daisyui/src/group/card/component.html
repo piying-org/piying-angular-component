@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="card bg-base-100 w-96 shadow-sm"
+    class="{{ 'card' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class"
@@ -13,9 +13,9 @@
         ></ng-container>
       </figure>
     }
-    <div class="card-body" [class]="bodyClass()">
+    <div class="{{ 'card-body' | cssPrefix }}" [class]="bodyClass()">
       @if (titleFiled$$(); as field) {
-        <h2 class="card-title">
+        <h2 class="{{ 'card-title' | cssPrefix }}">
           <ng-container
             *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
           ></ng-container>
@@ -31,7 +31,7 @@
         </p>
       }
       @if (actionsFiled$$(); as field) {
-        <div class="card-actions" [class]="actionsClass()">
+        <div class="{{ 'card-actions' | cssPrefix }}" [class]="actionsClass()">
           <ng-container
             *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
           ></ng-container>

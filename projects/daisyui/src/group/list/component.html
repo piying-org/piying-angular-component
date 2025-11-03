@@ -1,7 +1,12 @@
 <ng-template #templateRef let-attr="attributes">
-  <ul class="list" [attributes]="attr()" [excludes]="['class']" [class]="attr()?.class">
+  <ul
+    class="{{ 'list' | cssPrefix }}"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+  >
     @for (field of children$$(); track $index) {
-      <li class="list-row">
+      <li class="{{ 'list-row' | cssPrefix }}">
         <ng-container
           *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
         ></ng-container>

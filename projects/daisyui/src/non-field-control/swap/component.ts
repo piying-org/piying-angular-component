@@ -2,11 +2,12 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 @Component({
   selector: 'app-swap',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, PurePipe, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, PurePipe, NgTemplateOutlet, CssPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

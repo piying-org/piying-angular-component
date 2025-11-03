@@ -18,7 +18,7 @@
     }
   </ng-template>
   <select
-    class="select"
+    class="{{ 'select' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class"

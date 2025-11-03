@@ -1,15 +1,14 @@
 <ng-template #templateRef let-attr="attributes">
   <button
-    class="btn"
-    [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
+    [class]="attr()?.class"
     (click)="onClick($event)"
     [disabled]="isLoading$() || disabled()"
     [ngClass]="wrapperClass$()"
   >
     @if (isLoading$() && !disableLoadingIcon()) {
-      <span class="loading loading-spinner"></span>
+      <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
     }
     @if (isString | pure: content(); as content) {
       {{ content }}

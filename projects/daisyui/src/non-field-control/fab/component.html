@@ -27,21 +27,29 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    class="fab"
+    class="{{ 'fab' | cssPrefix }}"
     [class.fab-flower]="flower()"
   >
     <ng-container
-      *ngTemplateOutlet="iconTemp; context: { $implicit: this.defaultIcon$$() }"
+      *ngTemplateOutlet="iconTemp; context: { $implicit: defaultIcon$$() }"
     ></ng-container>
 
-    <div tabindex="0" role="button" class="btn btn-lg btn-circle btn-primary">{{ content() }}</div>
-    <div class="fab-close">
-      <ng-container
-        *ngTemplateOutlet="iconTemp; context: { $implicit: this.closeIcon$$() }"
-      ></ng-container>
+    <div
+      tabindex="0"
+      role="button"
+      [class]="'btn btn-circle' | cssPrefix | mergeClass: defaultClass()"
+    >
+      {{ content() }}
     </div>
+    @if (closeIcon$$(); as closeIcon) {
+      <div class="{{ 'fab-close' | cssPrefix }}">
+        <ng-container
+          *ngTemplateOutlet="iconTemp; context: { $implicit: closeIcon }"
+        ></ng-container>
+      </div>
+    }
     @if (mainIcon$$(); as mainIcon) {
-      <div class="fab-main-action">
+      <div class="{{ 'fab-main-action' | cssPrefix }}">
         <ng-container *ngTemplateOutlet="iconTemp; context: { $implicit: mainIcon }"></ng-container>
       </div>
     }

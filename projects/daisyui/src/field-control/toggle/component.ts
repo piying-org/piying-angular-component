@@ -20,10 +20,11 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-toggle',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgClass],
+  imports: [FormsModule, AttributesDirective, NgClass, CssPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

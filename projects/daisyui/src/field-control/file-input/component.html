@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     type="file"
-    class="file-input"
+    class="{{ 'file-input' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

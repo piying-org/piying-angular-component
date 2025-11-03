@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <kbd
-    class="kbd"
+    class="{{ 'kbd' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

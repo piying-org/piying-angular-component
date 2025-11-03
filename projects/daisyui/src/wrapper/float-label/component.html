@@ -7,7 +7,7 @@
   >
     @let title = props$$()['title'];
     @if (title) {
-      <span class="label">{{ title }}</span>
+      <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
     }
     <ng-container #fieldComponent></ng-container>
   </label>

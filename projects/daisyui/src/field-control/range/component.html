@@ -3,7 +3,7 @@
     type="range"
     [min]="min()"
     [max]="max()"
-    class="range"
+    class="{{ 'range' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class"

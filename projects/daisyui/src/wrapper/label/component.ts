@@ -8,10 +8,11 @@ import {
   transformOptions,
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-label-wrapper',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

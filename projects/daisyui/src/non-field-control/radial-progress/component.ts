@@ -1,13 +1,14 @@
 import { NgClass, NgTemplateOutlet, NgStyle } from '@angular/common';
 import { Component, computed, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({
   selector: 'app-radial-progress',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, NgClass, NgStyle],
+  imports: [AttributesDirective, MatIcon, NgClass, NgStyle, CssPrefixPipe],
 })
 export class RadialProgressNFCC {
   static __version = 2;

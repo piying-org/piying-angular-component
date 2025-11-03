@@ -1,6 +1,4 @@
 <ng-template #templateRef let-attr="attributes">
-
-
   <label
     [ngClass]="props$$()['type']"
     [class]="attr()?.class"
@@ -10,11 +8,11 @@
     @let title = props$$()['title'];
     @let isEnd = props$$()['labelPosition'] === 'end';
     @if (title && !isEnd) {
-      <span class="label">{{ title }}</span>
+      <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
     }
     <input type="text" placeholder="URL" />
     @if (title && isEnd) {
-      <span class="label">{{ title }}</span>
+      <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
     }
   </label>
 </ng-template>

@@ -1,6 +1,7 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 
 import {
   AttributesDirective,
@@ -12,7 +13,7 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-carousel',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, NgClass],
+  imports: [AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
 })
 export class CarouselFGC extends PiyingViewGroupBase {
   static __version = 2;

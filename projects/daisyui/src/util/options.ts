@@ -31,9 +31,9 @@ export interface OptionConvert {
 export type Option2 = string;
 
 export const DefaultOptionConvert: OptionConvert = {
-  label: (item) => (typeof item === 'string' ? item : item.label),
+  label: (item) => (typeof item !== 'object' ? item : item.label),
   description: (item) => item.description,
-  value: (item) => (typeof item === 'string' ? item : item.value),
+  value: (item) => (typeof item !== 'object' ? item : item.value),
   disabled: (item) => typeof item === 'object' && item.disabled,
   isGroup: (item) => typeof item === 'object' && item.type === 'group',
   children: (item) => item.children,

@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     type="checkbox"
-    class="toggle"
+    class="{{ 'toggle' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

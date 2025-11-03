@@ -1,11 +1,22 @@
 <ng-template #templateRef let-attr="attributes">
   @let optionTmp = optionTemplate();
-  <div [attributes]="attr()" [excludes]="['class']" class="dropdown" [class]="attr()?.class">
-    <div tabindex="0" role="button" class="btn m-1" [class]="attr()?.class">{{ content() }}</div>
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [ngClass]="wrapperClass$()"
+  >
+    <div
+      tabindex="0"
+      role="button"
+      class="{{ 'btn' | cssPrefix | mergeClass: 'm-1' | twPrefix }}"
+      [class]="attr()?.class"
+    >
+      {{ content() }}
+    </div>
     <ul
       tabindex="-1"
-      class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-      [class]="attr()?.class"
+      class="{{ 'dropdown-content menu' | cssPrefix | mergeClass: optionsClass() }}"
     >
       @for (item of options(); track $index) {
         <li

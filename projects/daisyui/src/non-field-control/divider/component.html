@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="divider"
+    class="{{ 'divider' | cssPrefix }}"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -6,7 +6,7 @@
     ></ng-container>
   }
 
-  <div class="dock" [ngClass]="wrapperClass$()">
+  <div class="{{ 'dock' | cssPrefix }}" [ngClass]="wrapperClass$()">
     @for (field of children$$(); track $index) {
       @let item = field.props();
       <button [class.dock-active]="$index === activatedIndex$()" (click)="toggleActivate($index)">
@@ -19,7 +19,7 @@
           ></mat-icon>
         }
         @if (item['title']) {
-          <span class="dock-label">{{ item['title'] }}</span>
+          <span class="{{ 'dock-label' | cssPrefix }}">{{ item['title'] }}</span>
         }
       </button>
     }

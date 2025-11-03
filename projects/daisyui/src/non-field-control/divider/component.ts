@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 import { Color } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
@@ -7,7 +8,7 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-divider',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgClass],
+  imports: [AttributesDirective, NgClass, CssPrefixPipe],
 })
 export class DividerNFCC {
   static __version = 2;

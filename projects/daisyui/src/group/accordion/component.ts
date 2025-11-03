@@ -1,6 +1,10 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { MergeClassPipe } from '@piying/angular-daisyui/pipe/merge-class.pipe';
+import { ThemeService } from '@piying/angular-daisyui/service';
+import { useDefaultClass } from '@piying/angular-daisyui/util';
 
 import {
   AttributesDirective,
@@ -15,7 +19,7 @@ class AccordionItem {
 @Component({
   selector: 'app-accordion',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, PurePipe],
+  imports: [AttributesDirective, NgTemplateOutlet, PurePipe, MergeClassPipe, CssPrefixPipe],
 })
 export class AccordionFGC extends PiyingViewGroupBase {
   static __version = 2;
@@ -28,10 +32,7 @@ export class AccordionFGC extends PiyingViewGroupBase {
     return item.props()?.['title'] ?? item.keyPath?.slice(-1)[0] ?? '';
   });
   joinChild = input(true);
-  childClass = input<string>('collapse-arrow');
-  collapseChildClass$$ = computed(() => {
-    return this.childClass();
-  });
+  childClass = input<string>(useDefaultClass('collapse-arrow bg-base-100 border border-base-300'));
 
   childName(multi: boolean, index: number) {
     if (multi) {

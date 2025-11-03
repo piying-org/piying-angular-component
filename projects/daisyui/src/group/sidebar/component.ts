@@ -11,13 +11,14 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-drawer',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, FormsModule, NgClass],
+  imports: [AttributesDirective, NgTemplateOutlet, FormsModule, NgClass, CssPrefixPipe],
 })
 export class DrawerFGC extends PiyingViewGroupBase {
   static __version = 2;

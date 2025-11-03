@@ -1,5 +1,10 @@
 <ng-template #templateRef let-attr="attributes">
-  <div class="navbar" [attributes]="attr()" [excludes]="['class']" [class]="attr()?.class">
+  <div
+    class="{{ 'navbar' | cssPrefix }}"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+  >
     @for (field of children$$(); track $index) {
       <ng-container
         *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"

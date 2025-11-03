@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="radial-progress"
+    class="{{ 'radial-progress' | cssPrefix }}"
     [aria-valuenow]="value$$()"
     role="progressbar"
     [ngStyle]="wrapperStyle$$()"

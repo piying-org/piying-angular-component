@@ -4,10 +4,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconConfig } from '@piying/angular-daisyui/util';
 import { MatIcon } from '@angular/material/icon';
 import { NgTemplateOutlet } from '@angular/common';
+import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './component.html',
-  imports: [AttributesDirective, RouterLink, RouterLinkActive, MatIcon, NgTemplateOutlet],
+  imports: [
+    AttributesDirective,
+    RouterLink,
+    RouterLinkActive,
+    MatIcon,
+    NgTemplateOutlet,
+    CssPrefixPipe,
+  ],
 })
 export class BreadcrumbsNFCC {
   static __version = 2;

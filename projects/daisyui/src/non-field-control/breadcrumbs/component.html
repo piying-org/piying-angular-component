@@ -13,18 +13,27 @@
 </ng-template>
 
 <ng-template #templateRef let-attr="attributes">
-  <div class="breadcrumbs" [class]="attr()?.class" [attributes]="attr()" [excludes]="['class']">
+  <div
+    class="{{ 'breadcrumbs' | cssPrefix }}"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
     <ul>
       @for (item of options(); track $index) {
         <li [class]="optionClass()">
           @if (item.url && item.extraLink) {
-            <a [href]="item.extraLink" class="link">
+            <a [href]="item.extraLink" class="{{ 'link' | cssPrefix }}">
               <ng-container
                 *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
               ></ng-container>
             </a>
           } @else if (item.url) {
-            <a [routerLink]="item.url" routerLinkActive="breadcrumbs-item-activate" class="link">
+            <a
+              [routerLink]="item.url"
+              routerLinkActive="{{ 'breadcrumbs-item-activate' | cssPrefix }}"
+              class="{{ 'link' | cssPrefix }}"
+            >
               <ng-container
                 *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
               ></ng-container

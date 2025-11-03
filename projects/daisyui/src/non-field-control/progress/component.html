@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <progress
-    class="progress"
+    class="{{ 'progress' | cssPrefix }}"
     [value]="value()"
     [max]="max()"
     [ngClass]="wrapperClass$()"
