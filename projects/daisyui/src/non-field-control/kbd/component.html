@@ -1,5 +1,10 @@
 <ng-template #templateRef let-attr="attributes">
-  <kbd class="kbd" [class]="attr()?.class" [attributes]="attr()" [excludes]="['class']">{{
-    value()
-  }}</kbd>
+  <kbd
+    class="kbd"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="wrapperClass$()"
+    >{{ value() }}</kbd
+  >
 </ng-template>

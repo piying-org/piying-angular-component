@@ -1,4 +1,4 @@
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined;
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | (string & {});
 export type Color =
   | 'neutral'
   | 'primary'
@@ -8,7 +8,9 @@ export type Color =
   | 'success'
   | 'warning'
   | 'error'
-  | undefined;
+  | (string & {});
+//alert
+export type AlertColor = 'info' | 'success' | 'warning' | 'error' | (string & {});
 
 export interface IconConfig {
   fontIcon?: string;

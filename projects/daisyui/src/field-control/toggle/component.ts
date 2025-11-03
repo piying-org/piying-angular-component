@@ -1,18 +1,29 @@
-import { Component, computed, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
+  Color,
   DefaultOptionConvert,
   OptionConvert,
   SelectOption,
+  Size,
   transformOptions,
 } from '@piying/angular-daisyui/util';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 @Component({
   selector: 'app-toggle',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective],
+  imports: [FormsModule, AttributesDirective, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,5 +36,14 @@ export class ToggleFCC extends BaseControl {
   static __version = 2;
 
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+  size = input<Size>();
   indeterminate = input<boolean>();
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(
+      this.#theme.setColor('toggle', this.color()),
+      this.#theme.setSize('toggle', this.size()),
+    );
+  });
 }

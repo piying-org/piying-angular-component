@@ -6,6 +6,7 @@
     [excludes]="['class']"
     (click)="onClick($event)"
     [disabled]="isLoading$() || disabled()"
+    [ngClass]="wrapperClass$()"
   >
     @if (isLoading$() && !disableLoadingIcon()) {
       <span class="loading loading-spinner"></span>

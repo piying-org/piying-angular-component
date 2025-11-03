@@ -4,6 +4,7 @@
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class"
+    [ngClass]="wrapperClass$()"
   >
     @if (imageFiled$$(); as field) {
       <figure [class]="figureClass()">

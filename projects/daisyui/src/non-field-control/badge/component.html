@@ -1,3 +1,10 @@
 <ng-template #templateRef let-attr="attributes">
-  <span class="badge" [class]="attr()?.class" [attributes]="attr()" [excludes]="['class']">{{content()}}</span>
+  <span
+    class="badge"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngClass]="wrapperClass$()"
+    >{{ content() }}</span
+  >
 </ng-template>

@@ -1,7 +1,8 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, TemplateRef, viewChild } from '@angular/core';
+import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { IconConfig } from '@piying/angular-daisyui/util';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { Color, IconConfig, Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({
@@ -12,12 +13,15 @@ import { AttributesDirective } from '@piying/view-angular';
 export class LoadingNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  size = input<Size>();
+
   type = input<'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'>();
+  #theme = inject(ThemeService);
+
   wrapperClass$$ = computed(() => {
-    let list = [];
-    if (this.type()) {
-      list.push(`loading-${this.type()}`);
-    }
-    return list;
+    return this.#theme.setClass(
+      this.#theme.setSize('loading', this.size()),
+      this.type() ? this.#theme.addPrefix(`loading-${this.type()}`) : undefined,
+    );
   });
 }

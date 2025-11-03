@@ -4,13 +4,13 @@
       type="radio"
       [name]="name"
       class="radio"
-      [class]="optionClass()"
       [disabled]="item.disabled || disabled$()"
       [checked]="item.value === value$()"
       (change)="valueChange(item.value)"
       [attributes]="attr()"
       [excludes]="['class']"
       [class]="attr()?.class"
+      [ngClass]="wrapperClass$()"
     />
   }
 </ng-template>

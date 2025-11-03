@@ -1,14 +1,25 @@
-import { Component, computed, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
+  Color,
   DefaultOptionConvert,
   OptionConvert,
   SelectOption,
+  Size,
   transformOptions,
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 @Component({
   selector: 'app-textarea',
   templateUrl: './component.html',
@@ -26,12 +37,15 @@ export class TextareaFCC extends BaseControl {
 
   ghost = input<boolean>();
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+  size = input<Size>();
+  #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
-    let list = [];
-    if (this.ghost()) {
-      list.push(`textarea-ghost`);
-    }
-    return clsx(list);
+    return this.#theme.setClass(
+      this.#theme.setColor('textarea', this.color()),
+      this.#theme.setSize('textarea', this.size()),
+      this.ghost() ? this.#theme.addPrefix('textarea-ghost') : undefined,
+    );
   });
 }

@@ -1,18 +1,29 @@
-import { Component, computed, forwardRef, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
+  Color,
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
   SelectOption,
+  Size,
   transformOptions,
 } from '@piying/angular-daisyui/util';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 @Component({
   selector: 'app-radio',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,6 +36,8 @@ export class RadioFCC extends BaseControl {
   static __version = 2;
   static index = 0;
   templateRef = viewChild.required('templateRef');
+  color = input<Color>();
+  size = input<Size>();
   name = `radio-${RadioFCC.index++}`;
   content = input('Default');
   multiple = input(false);
@@ -35,7 +48,6 @@ export class RadioFCC extends BaseControl {
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });
-  optionClass = input<string>();
 
   resolvedOptions$$ = computed(() => this.transformOptions(this.options()));
   transformOptions(options: any[]): ResolvedOption[] {
@@ -49,4 +61,11 @@ export class RadioFCC extends BaseControl {
       return resolvedItem;
     });
   }
+  #theme = inject(ThemeService);
+  wrapperClass$ = computed(() => {
+    return this.#theme.setClass(
+      this.#theme.setColor('radio', this.color()),
+      this.#theme.setSize('radio', this.size()),
+    );
+  });
 }
