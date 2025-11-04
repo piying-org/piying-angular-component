@@ -10,12 +10,14 @@
   @if (item.label) {
     <span>{{ item.label }}</span>
   }
+  @if (item.templateRef) {
+    <ng-container *ngTemplateOutlet="item.templateRef; context: { $implicit: item }"></ng-container>
+  }
 </ng-template>
 
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'breadcrumbs' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('breadcrumbs' | cssPrefix)"
     [attributes]="attr()"
     [excludes]="['class']"
   >
@@ -23,7 +25,7 @@
       @for (item of options(); track $index) {
         <li [class]="optionClass()">
           @if (item.url && item.extraLink) {
-            <a [href]="item.extraLink" class="{{ 'link' | cssPrefix }}">
+            <a [href]="item.url" class="{{ 'link' | cssPrefix }}">
               <ng-container
                 *ngTemplateOutlet="displayTemp; context: { $implicit: item }"
               ></ng-container>

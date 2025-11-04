@@ -1,10 +1,9 @@
 <ng-template #templateRef let-attr="attributes">
   <kbd
-    class="{{ 'kbd' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('kbd' | cssPrefix)"
     [attributes]="attr()"
     [excludes]="['class']"
     [ngClass]="wrapperClass$()"
-    >{{ value() }}</kbd
+    >{{ content() }}</kbd
   >
 </ng-template>

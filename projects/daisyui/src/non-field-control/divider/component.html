@@ -1,7 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'divider' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('divider' | cssPrefix)"
     [attributes]="attr()"
     [excludes]="['class']"
     [ngClass]="wrapperClass$$()"

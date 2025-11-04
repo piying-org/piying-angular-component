@@ -1,10 +1,12 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'radial-progress' | cssPrefix }}"
     [aria-valuenow]="value$$()"
     role="progressbar"
     [ngStyle]="wrapperStyle$$()"
+    [class]="attr()?.class | mergeClass: ('radial-progress' | cssPrefix)"
+    [attributes]="attr()"
+    [excludes]="['class']"
   >
-    {{ valueMap() }}
+    {{ valueMap()(value()) }}
   </div>
 </ng-template>

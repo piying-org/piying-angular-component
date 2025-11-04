@@ -1,7 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <span
-    class="{{ 'loading' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('loading' | cssPrefix)"
     [attributes]="attr()"
     [excludes]="['class']"
     [ngClass]="wrapperClass$$()"

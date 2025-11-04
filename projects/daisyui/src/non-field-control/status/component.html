@@ -1,32 +1,18 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'btn' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: 'flex items-center gap-2'"
     [attributes]="attr()"
     [excludes]="['class']"
-    [ngClass]="wrapperClass$()"
   >
     @if (animatePing()) {
       <div class="{{ 'inline-grid *:[grid-area:1/1]' | twPrefix }}">
-        <div
-          class="{{ 'status animate-ping' | cssPrefix }}"
-          [class.animate-bounce]="animateBounce()"
-          [class]="statusClass$$()"
-        ></div>
-        <div
-          class="{{ 'status' | cssPrefix }}"
-          [class.animate-bounce]="animateBounce()"
-          [class]="statusClass$$()"
-        ></div>
+        <div class="{{ 'status' | cssPrefix }}" [ngClass]="wrapperClass$()"></div>
+        <div class="{{ 'status' | cssPrefix }}" [ngClass]="wrapperClass$()"></div>
       </div>
     } @else {
-      <div
-        class="{{ 'status' | cssPrefix }}"
-        [class.animate-bounce]="animateBounce()"
-        [class]="statusClass$$()"
-      ></div>
+      <div class="{{ 'status' | cssPrefix }}" [ngClass]="wrapperClass$()"></div>
     }
-    @if (value(); as value) {
+    @if (content(); as value) {
       <span>
         {{ value }}
       </span>

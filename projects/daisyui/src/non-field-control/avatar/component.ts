@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, input, viewChild } from '@angular/core';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-avatar',
@@ -14,21 +15,14 @@ export class AvatarNFCC {
   placeholderClass = input<string>('');
   imgUrl = input<string>();
   wrapperClass = input('w-24 rounded');
-  status = input<boolean | undefined>();
-  classStatus$$ = computed(() => {
-    let status = this.status();
-    let classObj = {};
-    if (status !== undefined) {
-      classObj = {
-        'avatar-online': status,
-        'avatar-offline': !status,
-      };
-    }
-    let imgUrl = this.imgUrl();
-    if (imgUrl) {
-      return classObj;
-    } else {
-      return { ...classObj, 'avatar-placeholder': true };
-    }
+  status = input<'online' | 'offline' | undefined>();
+  #theme = inject(ThemeService);
+
+  mainClass$$ = computed(() => {
+    return this.#theme.setClass(
+      this.#theme.addPrefix('avatar'),
+      this.#theme.addPrefix2('avatar', this.status()),
+      this.imgUrl() ? this.#theme.addPrefix2('avatar', 'placeholder') : undefined,
+    );
   });
 }

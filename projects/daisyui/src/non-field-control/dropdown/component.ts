@@ -20,6 +20,8 @@ import { NgTemplateOutlet, NgClass } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper/str-template/component';
+import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 @Component({
   selector: 'app-dropdown',
   templateUrl: './component.html',
@@ -31,38 +33,26 @@ import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
     CssPrefixPipe,
     MergeClassPipe,
     TwPrefixPipe,
-  ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DropdownFCC),
-      multi: true,
-    },
+    StrOrTemplateComponent,
+    SelectorlessOutlet,
   ],
 })
-export class DropdownFCC extends BaseControl {
+export class DropdownNFCC {
   static __version = 2;
+  readonly StrOrTemplateComponent = StrOrTemplateComponent;
+
   templateRef = viewChild.required('templateRef');
-  content = input('Default');
-  multiple = input(false);
+  title = input('Default');
+  titleClass = input<string>();
   align = input<'start' | 'center' | 'end'>();
   position = input<'top' | 'bottom' | 'left' | 'right'>();
   triggerAction = input<'hover' | 'open'>();
-  /** ---输入--- */
-  /** @title 列表
-  @default [] */
-  options = input<SelectOption[], SelectOption[] | undefined>([], {
-    transform: (input) => input ?? [],
-  });
-  optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
-    transform: (input) => ({ ...DefaultOptionConvert, ...input }),
-  });
-  optionTemplate = input<TemplateRef<any>>();
-  optionsClass = input(useTwClass('bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm'));
+  content = input();
+  contentClass = input<string>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {
     return this.#theme.setClass(
-      'dropdown',
+      this.#theme.addPrefix('dropdown'),
       this.align() ? this.#theme.addPrefix(`dropdown-${this.align()}`) : undefined,
       this.position() ? this.#theme.addPrefix(`dropdown-${this.position()}`) : undefined,
       this.triggerAction() ? this.#theme.addPrefix(`dropdown-${this.triggerAction()}`) : undefined,

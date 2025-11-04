@@ -1,21 +1,8 @@
 <ng-template #templateRef let-attr="attributes">
-  <div
-    role="alert"
-    class="{{ 'alert' | cssPrefix }}"
-    [class]="attr()?.class"
-    [attributes]="attr()"
-    [excludes]="['class']"
-    [ngClass]="wrapperClass$()"
-  >
-    @if (icon(); as icon) {
-      <mat-icon
-        [inline]="icon.inline"
-        [fontIcon]="icon.fontIcon!"
-        [fontSet]="icon.fontSet!"
-        [svgIcon]="icon.svgIcon!"
-      ></mat-icon>
-    }
-    <span>{{ content() }}</span>
-    <ng-container *ngTemplateOutlet="action()"></ng-container>
+  <div role="alert" [attributes]="attr()" [ngClass]="wrapperClass$()">
+    <ng-template
+      [selectlessOutlet]="StrOrTemplateComponent"
+      [selectlessOutletInputs]="{ content: content }"
+    ></ng-template>
   </div>
 </ng-template>

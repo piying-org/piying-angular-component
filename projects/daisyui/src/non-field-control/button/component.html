@@ -10,10 +10,9 @@
     @if (isLoading$() && !disableLoadingIcon()) {
       <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
     }
-    @if (isString | pure: content(); as content) {
-      {{ content }}
-    } @else {
-      <ng-container *ngTemplateOutlet="content()"></ng-container>
-    }
+    <ng-template
+      [selectlessOutlet]="StrOrTemplateComponent"
+      [selectlessOutletInputs]="{ content: content }"
+    ></ng-template>
   </button>
 </ng-template>

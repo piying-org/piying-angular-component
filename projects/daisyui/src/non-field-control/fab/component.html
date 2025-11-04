@@ -1,23 +1,32 @@
-<ng-template #iconTemp let-item>
+<ng-template #iconTemp let-item let-disableButton="disableButton">
   @if (item.option.templateRef) {
     <ng-container
       *ngTemplateOutlet="item.option.templateRef; context: { $implicit: item }"
     ></ng-container>
   } @else if (item.option.label) {
-    <button
-      [class]="item.labelClass$$()"
-      (click)="item.onClick($event)"
-      [disabled]="item.isLoading$()"
-      [attributes]="item.option.attributes || {}"
-    >
-      {{ item.option.label }}
-    </button>
+    @if (disableButton) {
+      <span [class]="item.option.class | mergeClass: commonClass()" (click)="item.onClick($event)">
+        {{ item.option.label }}
+      </span>
+    } @else {
+      <button
+        [class]="item.option.class"
+        (click)="item.onClick($event)"
+        [disabled]="item.isLoading$()"
+      >
+        {{ item.option.label }}
+      </button>
+    }
   } @else {
+    @let icon = item.option.icon;
     <mat-icon
       [class]="item.option.class"
       (click)="item.onClick($event)"
       [ariaDisabled]="item.isLoading$()"
-      [attributes]="item.option.attributes || {}"
+      [inline]="icon.inline"
+      [fontIcon]="icon.fontIcon"
+      [fontSet]="icon.fontSet"
+      [svgIcon]="icon.svgIcon"
     ></mat-icon>
   }
 </ng-template>
@@ -28,23 +37,18 @@
     [attributes]="attr()"
     [excludes]="['class']"
     class="{{ 'fab' | cssPrefix }}"
-    [class.fab-flower]="flower()"
+    [ngClass]="wrapperClass()"
   >
-    <ng-container
-      *ngTemplateOutlet="iconTemp; context: { $implicit: defaultIcon$$() }"
-    ></ng-container>
-
-    <div
-      tabindex="0"
-      role="button"
-      [class]="'btn btn-circle' | cssPrefix | mergeClass: defaultClass()"
-    >
-      {{ content() }}
+    @let defaultIcon = defaultIcon$$();
+    <div tabindex="0" role="button">
+      <ng-container
+        *ngTemplateOutlet="iconTemp; context: { $implicit: defaultIcon, disableButton: true }"
+      ></ng-container>
     </div>
     @if (closeIcon$$(); as closeIcon) {
-      <div class="{{ 'fab-close' | cssPrefix }}">
+      <div class="{{ 'fab-close' | cssPrefix }}" role="button" tabindex="0">
         <ng-container
-          *ngTemplateOutlet="iconTemp; context: { $implicit: closeIcon }"
+          *ngTemplateOutlet="iconTemp; context: { $implicit: closeIcon, disableButton: true }"
         ></ng-container>
       </div>
     }

@@ -1,0 +1,25 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class"
+    [ngClass]="wrapperClass$()"
+  >
+    <div
+      tabindex="0"
+      role="button"
+      class="{{ 'btn' | cssPrefix | mergeClass: ('m-1' | twPrefix) : titleClass() }}"
+    >
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: title }"
+      ></ng-template>
+    </div>
+    <div tabindex="-1" class="{{ 'dropdown-content' | cssPrefix | mergeClass: contentClass() }}">
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: content }"
+      ></ng-template>
+    </div>
+  </div>
+</ng-template>

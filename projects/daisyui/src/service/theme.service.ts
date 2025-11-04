@@ -28,7 +28,7 @@ export class ThemeService {
     cmpPrefix: T,
     input: (T extends 'alert' ? AlertColor : Color) | undefined,
   ) {
-    if (typeof input === undefined) {
+    if (input === undefined) {
       return;
     }
     return `${this.#prefix}${cmpPrefix}-${input}`;
@@ -56,7 +56,7 @@ export class ThemeService {
       | 'toggle',
     input: Size | undefined,
   ) {
-    if (typeof input === undefined) {
+    if (input === undefined) {
       return;
     }
     return `${this.#prefix}${cmpPrefix}-${input}`;
@@ -64,10 +64,19 @@ export class ThemeService {
   addPrefix(str: string) {
     return this.#prefix ? `${this.#prefix}${str}` : str;
   }
+  addPrefix2(cmpPrefix: string, str?: string) {
+    if (str === undefined) {
+      return;
+    }
+    return this.#prefix ? `${this.#prefix}${cmpPrefix}-${str}` : `${cmpPrefix}-${str}`;
+  }
   addTwPrefix(str: string) {
     return this.#prefix ? `${this.#prefix}:${str}` : str;
   }
   setClass(...args: (string | undefined)[]) {
     return clsx(args);
+  }
+  addVarPrefix(name: string) {
+    return this.#prefix ? `--${this.#prefix}${name}` : name;
   }
 }

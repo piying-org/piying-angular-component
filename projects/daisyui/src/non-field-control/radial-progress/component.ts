@@ -1,14 +1,15 @@
 import { NgClass, NgTemplateOutlet, NgStyle } from '@angular/common';
-import { Component, computed, input, TemplateRef, viewChild } from '@angular/core';
+import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({
   selector: 'app-radial-progress',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, NgClass, NgStyle, CssPrefixPipe],
+  imports: [AttributesDirective, MatIcon, NgClass, NgStyle, CssPrefixPipe, MergeClassPipe],
 })
 export class RadialProgressNFCC {
   static __version = 2;
@@ -21,13 +22,14 @@ export class RadialProgressNFCC {
   value$$ = computed(() => {
     return this.value() * 100;
   });
+  #theme = inject(ThemeService);
   wrapperStyle$$ = computed(() => {
     let obj: Record<string, string> = {};
     if (typeof this.strokeWidth() === 'string') {
-      obj['--thickness'] = this.strokeWidth()!;
+      obj[this.#theme.addVarPrefix('thickness')] = this.strokeWidth()!;
     }
     if (typeof this.value$$() === 'number') {
-      obj['--value'] = `${this.value$$()}`;
+      obj[this.#theme.addVarPrefix('value')] = `${this.value$$()}`;
     }
     return obj;
   });

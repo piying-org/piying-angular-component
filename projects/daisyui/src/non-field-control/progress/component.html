@@ -1,11 +1,20 @@
 <ng-template #templateRef let-attr="attributes">
-  <progress
-    class="{{ 'progress' | cssPrefix }}"
-    [value]="value()"
-    [max]="max()"
-    [ngClass]="wrapperClass$()"
-    [class]="attr()?.class"
-    [attributes]="attr()"
-    [excludes]="['class']"
-  ></progress>
+  @if (isNumber | pure: value()) {
+    <progress
+      [value]="value()"
+      [max]="max()"
+      [class]="attr()?.class | mergeClass: ('progress' | cssPrefix)"
+      [ngClass]="wrapperClass$()"
+      [attributes]="attr()"
+      [excludes]="['class']"
+    ></progress>
+  } @else {
+    <progress
+      [max]="max()"
+      [class]="attr()?.class | mergeClass: ('progress' | cssPrefix)"
+      [ngClass]="wrapperClass$()"
+      [attributes]="attr()"
+      [excludes]="['class']"
+    ></progress>
+  }
 </ng-template>

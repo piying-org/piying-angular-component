@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 import { Color, Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
@@ -8,29 +8,22 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-status',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgClass, CssPrefixPipe, TwPrefixPipe],
+  imports: [AttributesDirective, NgClass, CssPrefixPipe, TwPrefixPipe, MergeClassPipe],
 })
 export class StatusNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  value = input('Default');
+  content = input('Default');
   color = input<Color>();
   size = input<Size>();
   animatePing = input<boolean>();
   animateBounce = input<boolean>();
-  statusClass$$ = computed(() => {
-    let list = [];
-    if (this.color()) {
-      list.push(`status-${this.color()}`);
-    }
-    if (this.size()) {
-      list.push(`status-${this.size()}`);
-    }
-    return clsx(list);
-  });
+
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {
     return this.#theme.setClass(
+      this.animatePing() ? this.#theme.addPrefix('animate-ping') : undefined,
+      this.animateBounce() ? this.#theme.addPrefix('animate-bounce') : undefined,
       this.#theme.setColor('status', this.color()),
       this.#theme.setSize('status', this.size()),
     );

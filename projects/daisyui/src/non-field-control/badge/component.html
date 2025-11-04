@@ -1,10 +1,8 @@
 <ng-template #templateRef let-attr="attributes">
-  <span
-    class="{{ 'badge' | cssPrefix }}"
-    [class]="attr()?.class"
-    [attributes]="attr()"
-    [excludes]="['class']"
-    [ngClass]="wrapperClass$()"
-    >{{ content() }}</span
-  >
+  <span [attributes]="attr()" [ngClass]="wrapperClass$()">
+    <ng-template
+      [selectlessOutlet]="StrOrTemplateComponent"
+      [selectlessOutletInputs]="{ content: content }"
+    ></ng-template
+  ></span>
 </ng-template>
