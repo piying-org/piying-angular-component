@@ -1,10 +1,9 @@
 <ng-template #templateRef let-attr="attributes">
   <input
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('input' | cssPrefix) : wrapperClass$$()"
     [attributes]="attr()"
     [excludes]="['class']"
     [type]="type()"
-    class="{{ 'input' | cssPrefix }}"
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
     [disabled]="disabled$()"

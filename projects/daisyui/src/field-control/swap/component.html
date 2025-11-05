@@ -1,0 +1,33 @@
+<ng-template #templateRef let-attr="attributes">
+  <label
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class | mergeClass: ('swap' | cssPrefix) : wrapperClass$()"
+  >
+    <input
+      type="checkbox"
+      [ngModel]="value$()"
+      (ngModelChange)="valueChange($event)"
+      [disabled]="disabled$()"
+      [indeterminate]="indeterminate()"
+    />
+    <div [class]="'swap-on' | cssPrefix">
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: onContent }"
+      ></ng-template>
+    </div>
+    <div [class]="'swap-off' | cssPrefix">
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: offContent }"
+      ></ng-template>
+    </div>
+    <div [class]="'swap-indeterminate' | cssPrefix">
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: indeterminateContent }"
+      ></ng-template>
+    </div>
+  </label>
+</ng-template>

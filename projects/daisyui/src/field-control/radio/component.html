@@ -1,16 +1,30 @@
 <ng-template #templateRef let-attr="attributes">
   @for (item of resolvedOptions$$(); track $index) {
-    <input
-      type="radio"
-      [name]="name"
-      class="{{ 'radio' | cssPrefix }}"
-      [disabled]="item.disabled || disabled$()"
-      [checked]="item.value === value$()"
-      (change)="valueChange(item.value)"
-      [attributes]="attr()"
-      [excludes]="['class']"
-      [class]="attr()?.class"
-      [ngClass]="wrapperClass$()"
-    />
+    <span>
+      @let id = name + '-' + $index;
+      <input
+        type="radio"
+        [name]="name"
+        [disabled]="item.disabled || disabled$()"
+        [checked]="item.value === value$()"
+        (change)="valueChange(item.value)"
+        [attributes]="attr()"
+        [excludes]="['class']"
+        [class]="attr()?.class | mergeClass: ('radio' | cssPrefix) : wrapperClass$()"
+        [id]="id"
+      />
+      @if (optionTemplate()) {
+        <ng-container
+          *ngTemplateOutlet="optionTemplate(); context: { $implicit: item, id: id }"
+        ></ng-container>
+      } @else if (item.label) {
+        <label
+          [for]="id"
+          [class]="!!item.description ? ('tooltip' | cssPrefix) : undefined"
+          [attr.data-tip]="item.description!"
+          >{{ item.label }}
+        </label>
+      }
+    </span>
   }
 </ng-template>

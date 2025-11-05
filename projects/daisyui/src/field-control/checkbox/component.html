@@ -1,12 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     type="checkbox"
-    class="{{ 'checkbox' | cssPrefix }}"
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('checkbox' | cssPrefix) : wrapperClass$()"
     [attributes]="attr()"
     [excludes]="['class']"
-    [ngClass]="wrapperClass$()"
+    [indeterminate]="indeterminate()"
   />
 </ng-template>

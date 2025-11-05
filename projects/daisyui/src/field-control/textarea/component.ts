@@ -20,11 +20,11 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-textarea',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgClass, CssPrefixPipe],
+  imports: [FormsModule, AttributesDirective, NgClass, CssPrefixPipe, MergeClassPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

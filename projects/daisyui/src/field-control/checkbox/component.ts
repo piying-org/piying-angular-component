@@ -19,11 +19,11 @@ import {
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-checkbox',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe,MergeClassPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,6 +35,7 @@ import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 export class CheckboxFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  indeterminate = input<boolean>();
   color = input<Color>();
   size = input<Size>();
   #theme = inject(ThemeService);

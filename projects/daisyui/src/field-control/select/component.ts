@@ -21,11 +21,18 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-select',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [
+    FormsModule,
+    AttributesDirective,
+    NgTemplateOutlet,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -40,7 +47,6 @@ export class SelectFCC extends BaseControl {
   color = input<Color>();
   size = input<Size>();
   multiple = input(false);
-  type = input<'ghost' | 'native'>();
   ghost = input<boolean>();
   native = input<boolean>();
   /** ---输入--- */
@@ -73,7 +79,7 @@ export class SelectFCC extends BaseControl {
       this.#theme.setColor('select', this.color()),
       this.#theme.setSize('select', this.size()),
       this.ghost() ? this.#theme.addPrefix('select-ghost	') : undefined,
-      this.native() ? 'appearance-none' : undefined,
+      this.native() ? this.#theme.addTwPrefix('appearance-none') : undefined,
     );
   });
 }

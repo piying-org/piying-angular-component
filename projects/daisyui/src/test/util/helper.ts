@@ -24,13 +24,23 @@ export function testClassInput(key: string, value: string, prefix: string, Schem
     assertElementSelector(element, `.${prefix}.${prefix}-${value}`);
   });
 }
+export function testClassInputBoolean(key: string, value: string, prefix: string, Schema: Schema2) {
+  it(`input-${key}`, async () => {
+    let schema = v.pipe(Schema, patchInputs({ [key]: true }));
+    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    assertElementSelector(element, `.${prefix}.${prefix}-${value}`);
+  });
+}
 export function testContentInput(value: string, prefix: string, Schema: Schema2) {
   it('input-content', async () => {
     let schema = v.pipe(Schema, patchInputs({ content: value }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
-    assertElementExist(element);    
+    assertElementExist(element);
     assertElementContent(element, `.${prefix}`, value);
   });
 }

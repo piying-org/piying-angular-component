@@ -4,6 +4,7 @@ import {
   forwardRef,
   inject,
   input,
+  output,
   TemplateRef,
   viewChild,
 } from '@angular/core';
@@ -19,11 +20,18 @@ import {
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-file-input',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [
+    FormsModule,
+    AttributesDirective,
+    NgTemplateOutlet,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,14 +46,18 @@ export class FileInputFCC extends BaseControl {
   color = input<Color>();
   size = input<Size>();
   multiple = input<boolean>();
-  fileChange(input: HTMLInputElement) {
+  ghost = input<boolean>();
+  fileChange = output<File | File[]>();
+  fileChanged(input: HTMLInputElement) {
     if (!input.files) {
       return;
     }
     if (this.multiple()) {
       this.valueChange([...input.files]);
+      this.fileChange.emit([...input.files]);
     } else {
       this.valueChange(input.files[0]);
+      this.fileChange.emit(input.files[0]);
     }
   }
   clicked(input: HTMLInputElement) {
@@ -56,6 +68,7 @@ export class FileInputFCC extends BaseControl {
     return this.#theme.setClass(
       this.#theme.setColor('file-input', this.color()),
       this.#theme.setSize('file-input', this.size()),
+      this.ghost() ? this.#theme.addPrefix(`file-input-ghost`) : undefined,
     );
   });
 }

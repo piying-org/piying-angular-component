@@ -19,11 +19,18 @@ import {
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-range',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [
+    FormsModule,
+    AttributesDirective,
+    NgTemplateOutlet,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

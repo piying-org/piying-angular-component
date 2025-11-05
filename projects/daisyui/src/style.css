@@ -2,3 +2,5 @@
 @plugin "daisyui" {
   prefix: 'pc-';
 }
+@source inline("pc-mask-star-2");
+@source inline("pc-{mask-star,mask-half-1,mask-half-2,rating-half,rating}");

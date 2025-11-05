@@ -1,15 +1,13 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     type="file"
-    class="{{ 'file-input' | cssPrefix }}"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('file-input' | cssPrefix) : wrapperClass$()"
     [attributes]="attr()"
     [excludes]="['class']"
     [multiple]="multiple()"
     #el
-    (change)="fileChange(el)"
+    (change)="fileChanged(el)"
     (click)="clicked(el)"
     [disabled]="disabled$()"
-    [ngClass]="wrapperClass$()"
   />
 </ng-template>

@@ -7,3 +7,4 @@ export * from './rating';
 export * from './select';
 export * from './textarea';
 export * from './toggle';
+export * from './swap';

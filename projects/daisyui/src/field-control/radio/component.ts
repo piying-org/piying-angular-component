@@ -20,11 +20,18 @@ import {
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-radio',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass,CssPrefixPipe],
+  imports: [
+    FormsModule,
+    AttributesDirective,
+    NgTemplateOutlet,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -40,12 +47,10 @@ export class RadioFCC extends BaseControl {
   color = input<Color>();
   size = input<Size>();
   name = `radio-${RadioFCC.index++}`;
-  content = input('Default');
-  multiple = input(false);
-
   options = input<SelectOption[], SelectOption[] | undefined>([], {
     transform: (input) => input ?? [],
   });
+  optionTemplate = input<TemplateRef<any>>();
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });
@@ -57,6 +62,7 @@ export class RadioFCC extends BaseControl {
         label: this.optionConvert().label(option),
         value: this.optionConvert().value(option),
         disabled: this.optionConvert().disabled?.(option) ?? false,
+        description: this.optionConvert().description?.(option),
         type: 'option',
       };
       return resolvedItem;

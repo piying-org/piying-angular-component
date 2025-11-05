@@ -1,0 +1,33 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { provideZonelessChangeDetection, signal } from '@angular/core';
+
+import * as v from 'valibot';
+import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { createSchemaComponent } from '../util/create-component';
+import { assertElementContent } from '../util/element';
+import { htmlInput, htmlInput2 } from '../util/action';
+
+describe('toggle', () => {
+  const BaseDefine = v.pipe(v.boolean(), setComponent('toggle'));
+  const prefix = 'pc-toggle';
+
+  testHello(prefix, BaseDefine);
+  testClassInput('color', 'neutral', prefix, BaseDefine);
+  testClassInput('size', 'xs', prefix, BaseDefine);
+
+  it(`input-indeterminate`, async () => {
+    let schema = v.pipe(BaseDefine, patchInputs({ indeterminate: true }));
+    let { element, fixture } = await createSchemaComponent(
+      signal(schema),
+      signal(undefined),
+      undefined,
+      {
+        teardown: { destroyAfterEach: false },
+      },
+    );
+    expect(element.querySelector('input')!.indeterminate).toBeTrue();
+  });
+
+});

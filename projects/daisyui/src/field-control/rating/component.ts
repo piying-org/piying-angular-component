@@ -20,11 +20,18 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { range } from 'es-toolkit';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 @Component({
   selector: 'app-rating',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [
+    FormsModule,
+    AttributesDirective,
+    NgTemplateOutlet,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -48,7 +55,7 @@ export class RatingFCC extends BaseControl {
     return range(this.min(), this.max());
   });
   itemClass$$ = computed(() => {
-    return `mask-${this.type()}`;
+    return this.#theme.addPrefix2('mask', this.type());
   });
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

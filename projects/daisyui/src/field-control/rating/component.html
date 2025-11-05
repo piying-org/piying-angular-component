@@ -1,44 +1,51 @@
 <ng-template #templateRef let-attr="attributes">
-  <input
-    type="radio"
-    class="{{ 'rating-hidden' | cssPrefix }}"
-    [name]="name"
-    aria-label="{{ min() }} rating"
-    [checked]="value$() === min()"
-    (change)="valueChange(min())"
-    [class]="itemClass$$()"
-    [ngClass]="wrapperClass$()"
-  />
-  @for (item of list(); track $index) {
-    @if (half()) {
-      <input
-        type="radio"
-        [name]="name"
-        class="{{ 'mask mask-half-1' | cssPrefix }}"
-        aria-label="{{ item + 0.5 }} rating"
-        [checked]="value$() === item + 0.5"
-        (change)="valueChange(item + 0.5)"
-        [class]="itemClass$$()"
-      />
-      <input
-        type="radio"
-        [name]="name"
-        class="{{ 'mask mask-half-2' | cssPrefix }}"
-        aria-label="{{ item + 1 }} rating"
-        [checked]="value$() === item + 1"
-        (change)="valueChange(item + 1)"
-        [class]="itemClass$$()"
-      />
-    } @else {
-      <input
-        type="radio"
-        class="{{ 'mask' | cssPrefix }}"
-        [name]="name"
-        aria-label="{{ item + 1 }} rating"
-        [checked]="value$() === item + 1"
-        (change)="valueChange(item + 1)"
-        [class]="itemClass$$()"
-      />
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="
+      attr()?.class
+        | mergeClass
+          : ('rating' | cssPrefix)
+          : wrapperClass$()
+          : (half() ? ('rating-half' | cssPrefix) : undefined)
+    "
+  >
+    <input
+      type="radio"
+      [name]="name"
+      aria-label="{{ min() }} rating"
+      [checked]="value$() === min()"
+      (change)="valueChange(min())"
+      [class]="itemClass$$() | mergeClass: ('rating-hidden' | cssPrefix)"
+    />
+    @for (item of list(); track $index) {
+      @if (half()) {
+        <input
+          type="radio"
+          [name]="name"
+          aria-label="{{ item + 0.5 }} rating"
+          [checked]="value$() === item + 0.5"
+          (change)="valueChange(item + 0.5)"
+          [class]="itemClass$$() | mergeClass: ('mask mask-half-1' | cssPrefix)"
+        />
+        <input
+          type="radio"
+          [name]="name"
+          aria-label="{{ item + 1 }} rating"
+          [checked]="value$() === item + 1"
+          (change)="valueChange(item + 1)"
+          [class]="itemClass$$() | mergeClass: ('mask mask-half-2' | cssPrefix)"
+        />
+      } @else {
+        <input
+          type="radio"
+          [name]="name"
+          aria-label="{{ item + 1 }} rating"
+          [checked]="value$() === item + 1"
+          (change)="valueChange(item + 1)"
+          [class]="itemClass$$() | mergeClass: ('mask' | cssPrefix)"
+        />
+      }
     }
-  }
+  </div>
 </ng-template>

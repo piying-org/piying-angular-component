@@ -18,15 +18,13 @@
     }
   </ng-template>
   <select
-    class="{{ 'select' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
     [disabled]="disabled$()"
     [multiple]="multiple()"
-    [ngClass]="wrapperClass$$()"
   >
     <option disabled selected>{{ emptyOptionContent() }}</option>
 

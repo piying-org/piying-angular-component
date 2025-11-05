@@ -10,6 +10,5 @@ export * from './loading';
 export * from './progress';
 export * from './radial-progress';
 export * from './status';
-export * from './swap';
 export * from './theme-controller';
 export * from './dropdown';

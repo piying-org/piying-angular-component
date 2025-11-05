@@ -3,13 +3,11 @@
     type="range"
     [min]="min()"
     [max]="max()"
-    class="{{ 'range' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('range' | cssPrefix) : wrapperClass$()"
     [step]="step()"
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
-    [ngClass]="wrapperClass$()"
   />
 </ng-template>
