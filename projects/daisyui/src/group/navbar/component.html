@@ -1,14 +1,38 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'navbar' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('navbar' | cssPrefix)"
   >
-    @for (field of children$$(); track $index) {
+    @for (field of rest$$(); track $index) {
       <ng-container
         *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
       ></ng-container>
+    }
+    @let start = start$$();
+    @if (start) {
+      <div [class]="'navbar-start' | cssPrefix">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: start }"
+        ></ng-container>
+      </div>
+    }
+    @let center = center$$();
+    @if (center) {
+      <div [class]="'navbar-center' | cssPrefix">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: center }"
+        ></ng-container>
+      </div>
+    }
+
+    @let end = end$$();
+    @if (end) {
+      <div [class]="'navbar-end' | cssPrefix">
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: end }"
+        ></ng-container>
+      </div>
     }
   </div>
 </ng-template>

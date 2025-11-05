@@ -4,5 +4,5 @@ export * from './carousel';
 export * from './dock';
 export * from './list';
 export * from './navbar';
-export * from './sidebar';
+export * from './drawer';
 export * from './tabs';

@@ -6,10 +6,17 @@
     ></ng-container>
   }
 
-  <div class="{{ 'dock' | cssPrefix }}" [ngClass]="wrapperClass$()">
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class | mergeClass: ('dock' | cssPrefix) : wrapperClass$()"
+  >
     @for (field of children$$(); track $index) {
       @let item = field.props();
-      <button [class.dock-active]="$index === activatedIndex$()" (click)="toggleActivate($index)">
+      <button
+        (click)="toggleActivate($index)"
+        [class]="$index === activatedIndex$() ? ('dock-active' | cssPrefix) : ''"
+      >
         @if (item['icon']; as icon) {
           <mat-icon
             [inline]="icon.inline"
@@ -19,7 +26,7 @@
           ></mat-icon>
         }
         @if (item['title']) {
-          <span class="{{ 'dock-label' | cssPrefix }}">{{ item['title'] }}</span>
+          <span [class]="'dock-label' | cssPrefix">{{ item['title'] }}</span>
         }
       </button>
     }

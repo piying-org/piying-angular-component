@@ -1,10 +1,6 @@
 <ng-template #mainTemp>
   @for (field of children$$(); track field.id || $index) {
-    <div
-      class="{{ 'collapse' | cssPrefix }}"
-      [class.join-item]="joinChild()"
-      [class]="childClass()"
-    >
+    <div [class]="childClass$$() | mergeClass: ('collapse' | cssPrefix)">
       <input
         type="radio"
         [name]="childName | pure: multi() : $index"
@@ -24,10 +20,9 @@
 <ng-template #templateRef let-attr="attributes">
   @if (joinChild()) {
     <div
-      class="{{ 'join join-vertical' | cssPrefix }}"
       [attributes]="attr()"
       [excludes]="['class']"
-      [class]="attr()?.class"
+      [class]="attr()?.class | mergeClass: ('join join-vertical' | cssPrefix)"
     >
       <ng-container *ngTemplateOutlet="mainTemp"></ng-container>
     </div>

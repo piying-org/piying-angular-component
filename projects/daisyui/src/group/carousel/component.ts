@@ -1,7 +1,8 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { ThemeService } from '@piying/angular-daisyui/service';
 
 import {
   AttributesDirective,
@@ -13,7 +14,7 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-carousel',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe, MergeClassPipe],
 })
 export class CarouselFGC extends PiyingViewGroupBase {
   static __version = 2;
@@ -25,14 +26,11 @@ export class CarouselFGC extends PiyingViewGroupBase {
   childIdMap = input((compIndex: number, childIndex: number) => {
     return `carousel-${compIndex}-${childIndex}`;
   });
+  #theme = inject(ThemeService);
   ngClass$$ = computed(() => {
-    let list = [];
-    if (this.direction()) {
-      list.push(`carousel-${this.direction()}`);
-    }
-    if (this.scrollAlign()) {
-      list.push(`carousel-${this.scrollAlign()}`);
-    }
-    return list;
+    return clsx([
+      this.#theme.addPrefix2('carousel', this.direction()),
+      this.#theme.addPrefix2('carousel', this.scrollAlign()),
+    ]);
   });
 }

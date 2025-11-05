@@ -1,10 +1,8 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'carousel' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
-    [ngClass]="ngClass$$()"
+    [class]="attr()?.class | mergeClass: ('carousel' | cssPrefix) : ngClass$$()"
   >
     @for (field of children$$(); track $index) {
       <div class="{{ 'carousel-item' | cssPrefix }}">

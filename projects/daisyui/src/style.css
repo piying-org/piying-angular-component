@@ -4,3 +4,4 @@
 }
 @source inline("pc-mask-star-2");
 @source inline("pc-{mask-star,mask-half-1,mask-half-2,rating-half,rating}");
+@source inline("pc-{join-item,join,collapse,collapse-title,collapse-content,collapse-arrow,collapse-plus}");

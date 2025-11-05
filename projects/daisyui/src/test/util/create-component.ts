@@ -16,7 +16,7 @@ import { SchemaOrPipe } from '@piying/valibot-visit';
 import { PiyingViewGroup } from '@piying/view-angular';
 import * as NFCCGroup from '@piying/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying/angular-daisyui/field-control';
-import * as FGCGroup from '@piying/angular-daisyui/field-control';
+import * as FGCGroup from '@piying/angular-daisyui/group';
 import * as v from 'valibot';
 import { CSSClassPrefixToken, ThemeService } from '@piying/angular-daisyui/service';
 import { provideRouter } from '@angular/router';
@@ -97,6 +97,9 @@ export async function createSchemaComponent(
             type: PiyingViewGroup,
           },
           ...defaultComp,
+          string: {
+            type: FCCGroup.InputFCC,
+          },
           ...options?.fieldGlobalConfig?.types,
         },
       },

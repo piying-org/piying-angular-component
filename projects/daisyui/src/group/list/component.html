@@ -1,12 +1,16 @@
 <ng-template #templateRef let-attr="attributes">
   <ul
-    class="{{ 'list' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
+    [class]="attr()?.class | mergeClass: ('list' | cssPrefix)"
   >
+    @let title = props$$()['title'];
+    @if (title) {
+      <li [class]="titleClass()">{{ title }}</li>
+    }
+
     @for (field of children$$(); track $index) {
-      <li class="{{ 'list-row' | cssPrefix }}">
+      <li [class]="'list-row' | cssPrefix">
         <ng-container
           *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
         ></ng-container>

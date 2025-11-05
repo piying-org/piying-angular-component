@@ -1,19 +1,17 @@
 <ng-template #templateRef let-attr="attributes">
   <div
-    class="{{ 'card' | cssPrefix }}"
     [attributes]="attr()"
     [excludes]="['class']"
-    [class]="attr()?.class"
-    [ngClass]="wrapperClass$()"
+    [class]="attr()?.class | mergeClass: ('card' | cssPrefix) : wrapperClass$()"
   >
-    @if (imageFiled$$(); as field) {
+    @if (figureFiled$$(); as field) {
       <figure [class]="figureClass()">
         <ng-container
           *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
         ></ng-container>
       </figure>
     }
-    <div class="{{ 'card-body' | cssPrefix }}" [class]="bodyClass()">
+    <div [class]="bodyClass() | mergeClass: ('card-body' | cssPrefix)">
       @if (titleFiled$$(); as field) {
         <h2 class="{{ 'card-title' | cssPrefix }}">
           <ng-container
@@ -31,7 +29,7 @@
         </p>
       }
       @if (actionsFiled$$(); as field) {
-        <div class="{{ 'card-actions' | cssPrefix }}" [class]="actionsClass()">
+        <div [class]="actionsClass() | mergeClass: ('card-actions' | cssPrefix)">
           <ng-container
             *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
           ></ng-container>

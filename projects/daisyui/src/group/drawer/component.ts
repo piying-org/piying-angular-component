@@ -11,25 +11,32 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-drawer',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, FormsModule, NgClass, CssPrefixPipe],
+  imports: [
+    AttributesDirective,
+    NgTemplateOutlet,
+    FormsModule,
+    NgClass,
+    CssPrefixPipe,
+    MergeClassPipe,
+  ],
 })
 export class DrawerFGC extends PiyingViewGroupBase {
   static __version = 2;
   static index = 0;
   name = `drawer-${DrawerFGC.index++}`;
   templateRef = viewChild.required('templateRef');
-  contentClass = input();
-  sideClass = input();
+  contentClass = input<string>();
+  sideClass = input<string>();
+  overlayClass = input<string>();
   mode = input<'over' | 'side'>('over');
   position = input<'start' | 'end'>();
-
   contentFiled$$ = computed(() => {
     return this.field$$()
       .children?.()
@@ -52,6 +59,7 @@ export class DrawerFGC extends PiyingViewGroupBase {
   wrapperClass$ = computed(() => {
     return this.#theme.setClass(
       this.mode() === 'side' && this.opened() ? this.#theme.addPrefix('drawer-open') : undefined,
+      this.position() === 'end' ? this.#theme.addPrefix2('drawer', this.position()) : undefined,
     );
   });
 }

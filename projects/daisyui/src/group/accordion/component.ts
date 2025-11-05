@@ -4,7 +4,7 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { MergeClassPipe } from '@piying/angular-daisyui/pipe/merge-class.pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { useDefaultClass } from '@piying/angular-daisyui/util';
+import { useDefaultClass, useTwClass } from '@piying/angular-daisyui/util';
 
 import {
   AttributesDirective,
@@ -32,12 +32,20 @@ export class AccordionFGC extends PiyingViewGroupBase {
     return item.props()?.['title'] ?? item.keyPath?.slice(-1)[0] ?? '';
   });
   joinChild = input(true);
-  childClass = input<string>(useDefaultClass('collapse-arrow bg-base-100 border border-base-300'));
-
-  childName(multi: boolean, index: number) {
+  collapseIcon = input<'arrow' | 'plus'>();
+  childClass = input<string>(useTwClass('bg-base-100 border border-base-300'));
+  #theme = inject(ThemeService);
+  childClass$$ = computed(() => {
+    return clsx(
+      this.#theme.addPrefix2('collapse', this.collapseIcon()),
+      this.childClass(),
+      this.joinChild() ? this.#theme.addPrefix('join-item') : undefined,
+    );
+  });
+  childName = (multi: boolean, index: number) => {
     if (multi) {
       return `${this.name}-${index}`;
     }
     return this.name;
-  }
+  };
 }

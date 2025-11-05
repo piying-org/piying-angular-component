@@ -1,7 +1,7 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 
 import {
   AttributesDirective,
@@ -13,8 +13,10 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-list',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, CssPrefixPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, CssPrefixPipe, MergeClassPipe],
 })
 export class ListFGC extends PiyingViewGroupBase {
   static __version = 2;
+  templateRef = viewChild.required('templateRef');
+  titleClass = input();
 }
