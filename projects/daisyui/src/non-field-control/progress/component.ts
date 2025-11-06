@@ -3,7 +3,7 @@ import { Component, computed, effect, inject, input, TemplateRef, viewChild } fr
 import { MatIcon } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color, IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 

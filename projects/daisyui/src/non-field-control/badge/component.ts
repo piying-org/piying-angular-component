@@ -1,9 +1,9 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper/str-template/component';
+import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color, Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 // todo 设计上存在问题,可能不需要这个组件

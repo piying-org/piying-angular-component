@@ -2,7 +2,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color, IconConfig, Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 

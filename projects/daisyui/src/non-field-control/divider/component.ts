@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 import clsx from 'clsx';

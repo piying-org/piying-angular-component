@@ -3,10 +3,10 @@ import { AttributesDirective } from '@piying/view-angular';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Color, Size } from '@piying/angular-daisyui/util';
-import { ThemeService } from '@piying/angular-daisyui/service/theme.service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper/str-template/component';
+import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',

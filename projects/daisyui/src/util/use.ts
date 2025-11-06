@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { ThemeService } from '../service';
+import { ThemeService } from '@piying/angular-daisyui/service';
 import { isString } from 'es-toolkit';
 
 export function useDefaultClass(str?: string | string[]) {

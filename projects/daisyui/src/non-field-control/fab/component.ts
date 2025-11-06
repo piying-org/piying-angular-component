@@ -14,7 +14,7 @@ import { MatIcon } from '@angular/material/icon';
 import clsx from 'clsx';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { IconConfig, Size, useDefaultClass } from '@piying/angular-daisyui/util';
-import { MergeClassPipe } from '@piying/angular-daisyui/pipe/merge-class.pipe';
+import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
 
 export interface FabOption {
