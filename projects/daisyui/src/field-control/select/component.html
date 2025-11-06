@@ -10,8 +10,8 @@
       <option
         [disabled]="config.disabled"
         [ngValue]="config.value"
-        [class.tooltip]="!!config.description"
         [attr.data-tip]="config.description!"
+        [class]="!!config.description ? ('tooltip' | cssPrefix) : undefined"
       >
         {{ config.label }}
       </option>

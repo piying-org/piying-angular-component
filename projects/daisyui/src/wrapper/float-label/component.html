@@ -1,9 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
   <label
-    [class]="attr()?.class"
+    [class]="
+      attr()?.class
+        | mergeClass: (props$$()['floating'] ? ('floating-label' | cssPrefix) : undefined)
+    "
     [attributes]="attr()"
     [excludes]="['class']"
-    [class.floating-label]="props$$()['floating']"
   >
     @let title = props$$()['title'];
     @if (title) {
