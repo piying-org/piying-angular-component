@@ -96,7 +96,7 @@
     "daisyui": {
       "projectType": "library",
       "root": "projects/daisyui",
-      "sourceRoot": "projects/daisyui/src",
+      "sourceRoot": "projects/daisyui",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -117,7 +117,7 @@
             "tsConfig": "projects/daisyui/tsconfig.spec.json",
             "assets": [],
             "styles": [
-              "./projects/daisyui/src/style.css"
+              "./projects/daisyui/style.css"
             ]
           }
         }

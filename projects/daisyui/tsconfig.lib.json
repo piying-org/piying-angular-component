@@ -9,10 +9,11 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    "**/*.ts",
+    "index.ts"
   ],
   "exclude": [
     "**/*.spec.ts",
-    "src/test/**/*"
+    "test/**/*"
   ]
 }
