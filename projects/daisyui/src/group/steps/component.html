@@ -1,0 +1,56 @@
+<ng-template #templateRef let-attr="attributes">
+  <ul
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class | mergeClass: wrapperClass$$()"
+  >
+    @for (field of children$$(); track field.id || $index) {
+      @let label = field.props()['title'] || '📄' + ($index + 1);
+      <li
+        [class]="
+          'step'
+            | cssPrefix
+            | mergeClass
+              : ((isActivated | pure: activatedIndex() : $index)
+                  ? ('step-' + stepColor() | cssPrefix)
+                  : undefined)
+        "
+      >
+        {{ label }}
+      </li>
+    }
+  </ul>
+  <div class="{{ 'flex flex-col gap-4' | twPrefix }}">
+    <ng-container
+      *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: activatedItem$$() }"
+    ></ng-container>
+    @if (customAction()) {
+      <ng-container
+        *ngComponentOutlet="
+          StrOrTemplateComponent;
+          context: { inputs: { content: customAction(), context: this } }
+        "
+      ></ng-container>
+    } @else {
+      <div [class]="'flex gap-2 items-center' | twPrefix">
+        <button
+          [class]="'btn btn-secondary' | cssPrefix"
+          [disabled]="activatedIndex() === 0 || prevItem$$().form.control?.invalid"
+          (click)="toPrev()"
+        >
+          {{ prev() }}
+        </button>
+
+        <button
+          [class]="'btn btn-primary' | cssPrefix"
+          [disabled]="
+            activatedItem$$().form.control?.invalid || activatedIndex() + 1 !== children$$().length
+          "
+          (click)="toNext()"
+        >
+          {{ next() }}
+        </button>
+      </div>
+    }
+  </div>
+</ng-template>

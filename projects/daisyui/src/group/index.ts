@@ -6,3 +6,4 @@ export * from './list';
 export * from './navbar';
 export * from './drawer';
 export * from './tabs';
+export * from './steps';
