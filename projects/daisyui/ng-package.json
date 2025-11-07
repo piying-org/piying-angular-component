@@ -4,5 +4,8 @@
   "lib": {
     "entryFile": "index.ts"
   },
-  "deleteDestPath": true
+  "deleteDestPath": true,
+  "assets": [
+    "./preset-css"
+  ]
 }
