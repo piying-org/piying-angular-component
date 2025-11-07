@@ -5,7 +5,7 @@ on:
       version:
         description: "daisyui version"
         type: string
-        default: 'v5.4.7'
+        default: "v5.4.7"
 
 permissions:
   contents: write
@@ -39,6 +39,5 @@ jobs:
           ls -lh ./projects/daisyui/preset-css
           git add .
           git commit -m "update daisyui preset build"
+          git push origin
         working-directory: "piying-lib"
-      - run: npm run test:ci
-      - run: npm run build
