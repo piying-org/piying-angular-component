@@ -1,0 +1,11 @@
+export const TIMELINE_PREFIX_LIST=[
+    "timeline",
+    "timeline-start",
+    "timeline-middle",
+    "timeline-end",
+    "timeline-snap-icon",
+    "timeline-box",
+    "timeline-compact",
+    "timeline-horizontal",
+    "timeline-vertical"
+]

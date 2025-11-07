@@ -1,0 +1,17 @@
+export const TEXT_INPUT_PREFIX_LIST=[
+    "input",
+    "input-ghost",
+    "input-neutral",
+    "input-primary",
+    "input-secondary",
+    "input-accent",
+    "input-info",
+    "input-success",
+    "input-warning",
+    "input-error",
+    "input-xs",
+    "input-sm",
+    "input-md",
+    "input-lg",
+    "input-xl"
+]

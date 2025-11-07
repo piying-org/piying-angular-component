@@ -1,0 +1,17 @@
+export const TEXTAREA_PREFIX_LIST=[
+    "textarea",
+    "textarea-ghost",
+    "textarea-neutral",
+    "textarea-primary",
+    "textarea-secondary",
+    "textarea-accent",
+    "textarea-info",
+    "textarea-success",
+    "textarea-warning",
+    "textarea-error",
+    "textarea-xs",
+    "textarea-sm",
+    "textarea-md",
+    "textarea-lg",
+    "textarea-xl"
+]

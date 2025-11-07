@@ -1,0 +1,17 @@
+export const FILE_INPUT_PREFIX_LIST=[
+    "file-input",
+    "file-input-ghost",
+    "file-input-neutral",
+    "file-input-primary",
+    "file-input-secondary",
+    "file-input-accent",
+    "file-input-info",
+    "file-input-success",
+    "file-input-warning",
+    "file-input-error",
+    "file-input-xs",
+    "file-input-sm",
+    "file-input-md",
+    "file-input-lg",
+    "file-input-xl"
+]

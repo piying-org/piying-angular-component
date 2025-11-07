@@ -1,0 +1,12 @@
+export const ALERT_PREFIX_LIST=[
+    "alert",
+    "alert-outline",
+    "alert-dash",
+    "alert-soft",
+    "alert-info",
+    "alert-success",
+    "alert-warning",
+    "alert-error",
+    "alert-vertical",
+    "alert-horizontal"
+]
