@@ -1,4 +1,4 @@
-name: publish
+name: update-preset-css
 on:
   workflow_dispatch:
     inputs:
@@ -19,8 +19,6 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@gmail.com"
       - uses: actions/checkout@v4
-        with:
-          path: "piying-lib"
       - uses: actions/checkout@v4
         with:
           repository: "saadeghi/daisyui"
@@ -37,6 +35,5 @@ jobs:
           ls -lh ./projects/daisyui/preset-css
           git add .
           git commit -m "update daisyui preset build"
-        working-directory: "piying-lib"
       - run: npm run test:ci
       - run: npm run build
