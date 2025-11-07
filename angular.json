@@ -119,6 +119,13 @@
             "styles": [
               "./projects/daisyui/style.css"
             ]
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadless"
+            }
           }
         }
       }
