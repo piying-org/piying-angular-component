@@ -1,18 +1,44 @@
 <ng-template #templateRef let-attr="attributes">
-  <button
-    [attributes]="attr()"
-    [excludes]="['class']"
-    [class]="attr()?.class"
-    (click)="onClick($event)"
-    [disabled]="isLoading$() || disabled()"
-    [ngClass]="wrapperClass$()"
-  >
-    @if (isLoading$() && !disableLoadingIcon()) {
-      <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
-    }
-    <ng-template
-      [selectlessOutlet]="StrOrTemplateComponent"
-      [selectlessOutletInputs]="{ content: content }"
-    ></ng-template>
-  </button>
+  @let forAttr = attr()?.for;
+  @let isDisabled = isLoading$() || disabled();
+  @if (forAttr) {
+    <label
+      [attributes]="attr()"
+      [excludes]="['class']"
+      [class]="
+        attr()?.class
+          | mergeClass: wrapperClass$() : (isDisabled ? ('btn-disabled' | cssPrefix) : undefined)
+      "
+      (click)="onClick($event)"
+      [ngClass]="wrapperClass$()"
+      tabindex="-1"
+      role="button"
+      aria-disabled="true"
+    >
+      @if (isLoading$() && !disableLoadingIcon()) {
+        <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
+      }
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: content }"
+      ></ng-template
+    ></label>
+  } @else {
+    <button
+      [attributes]="attr()"
+      [excludes]="['class']"
+      [class]="attr()?.class"
+      (click)="onClick($event)"
+      [disabled]="isLoading$() || disabled()"
+      [ngClass]="wrapperClass$()"
+    >
+      @if (isLoading$() && !disableLoadingIcon()) {
+        <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
+      }
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: content }"
+      ></ng-template>
+    </button>
+  }
 </ng-template>

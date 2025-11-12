@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4444",
     "build": "ng build daisyui",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:piying-angular-component": "node dist/piying-angular-component/server/server.mjs",
-    "test:ci":"ng test daisyui -c ci"
+    "test:ci": "ng test daisyui -c ci"
   },
   "prettier": {
     "printWidth": 100,
@@ -61,6 +61,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "material-icons": "^1.13.14",
     "ng-packagr": "^20.3.0",
     "prettier": "^3.6.2",
     "tsx": "^4.20.6",

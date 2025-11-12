@@ -28,6 +28,9 @@
       "@piying/angular-daisyui/wrapper": [
         "./projects/daisyui/wrapper"
       ],
+      "@piying/angular-daisyui/extension": [
+        "./projects/daisyui/extension"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,

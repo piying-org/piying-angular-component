@@ -1,7 +1,22 @@
 <ng-template #templateRef>
-  @if (isString | pure: content()) {
-    {{ content() }}
-  } @else {
-    <ng-container *ngTemplateOutlet="$any(content())"></ng-container>
+  @let data = $any(content());
+  @if (isString | pure: data) {
+    {{ data }}
+  } @else if (isTemplateRef | pure: data) {
+    <ng-container *ngTemplateOutlet="$any(data)"></ng-container>
+  } @else if (isObject | pure: data) {
+    @if (data['icon']; as icon) {
+      <mat-icon
+        [inline]="icon.inline"
+        [fontIcon]="icon.fontIcon"
+        [fontSet]="icon.fontSet"
+        [svgIcon]="icon.svgIcon"
+      ></mat-icon>
+    }
+    @if (data['title']) {
+      <span>
+        {{ data['title'] }}
+      </span>
+    }
   }
 </ng-template>

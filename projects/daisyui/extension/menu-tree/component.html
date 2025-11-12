@@ -1,0 +1,89 @@
+<ng-template #liBaseContent let-item>
+  @if (item.icon; as icon) {
+    <mat-icon
+      [inline]="icon.inline"
+      [fontIcon]="icon.fontIcon"
+      [fontSet]="icon.fontSet"
+      [svgIcon]="icon.svgIcon"
+    ></mat-icon>
+  }
+  <span>
+    {{ item.title }}
+  </span>
+  @if (item.badge; as badge) {
+    <span [class]="badge.class | mergeClass: 'badge' | cssPrefix">{{ badge.title }}</span>
+  }
+</ng-template>
+
+<ng-template #liBase let-item>
+  @if (item.router) {
+    @let router = item.router;
+    <a
+      [queryParams]="router.queryParams"
+      [fragment]="router.fragment"
+      [queryParamsHandling]="router.queryParamsHandling"
+      [state]="router.state"
+      [info]="router.info"
+      [relativeTo]="router.relativeTo"
+      [target]="router.target"
+      [preserveFragment]="router.preserveFragment"
+      [skipLocationChange]="router.skipLocationChange"
+      [replaceUrl]="router.replaceUrl"
+      [routerLink]="router.routerLink"
+      [preserveFragment]="router.preserveFragment"
+      [routerLinkActive]="'menu-active'"
+      [routerLinkActiveOptions]="router.activate?.routerLinkActiveOptions ?? routerLinkActiveOptions"
+      [ariaCurrentWhenActive]="router.activate?.ariaCurrentWhenActive"
+      class="tooltip"
+      [attr.data-tip]="item.tooltip || ''"
+    >
+      <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
+    </a>
+  } @else if (item.href) {
+    <a [href]="item.href" [target]="item.target">
+      <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
+    </a>
+  } @else {
+    <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
+  }
+</ng-template>
+<ng-template #liGroup let-item>
+  <!-- todo open测试 -->
+  <details open>
+    <summary>{{ item.title }}</summary>
+    <ul>
+      @for (child of item.children; track $index) {
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"
+        ></ng-container>
+      }
+    </ul>
+  </details>
+</ng-template>
+
+<ng-template #itemTemplate let-item>
+  @if ((item.hidden && !item.hidden(item)) || !item.hidden) {
+    @switch (item.type) {
+      @case ('group') {
+        <li class="tooltip" [attr.data-tip]="item.tooltip || ''">
+          <ng-container *ngTemplateOutlet="liGroup; context: { $implicit: item }"></ng-container>
+        </li>
+      }
+      @case ('divider') {
+        <li></li>
+      }
+      @default {
+        <li class="tooltip" [attr.data-tip]="item.tooltip || ''">
+          <ng-container *ngTemplateOutlet="liBase; context: { $implicit: item }"></ng-container>
+        </li>
+      }
+    }
+  }
+</ng-template>
+<ng-template #templateRef let-attr="attributes">
+  <ul [class]="wrapperClass$()">
+    @for (child of list(); track $index) {
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"></ng-container>
+    }
+  </ul>
+</ng-template>

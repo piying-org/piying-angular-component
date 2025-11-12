@@ -28,7 +28,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/style.css"
+              "src/styles.css",
+              "material-icons/iconfont/filled.css"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

@@ -4,7 +4,7 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Color, Size } from '@piying/angular-daisyui/util';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 @Component({
@@ -17,6 +17,7 @@ import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
     NgClass,
     CssPrefixPipe,
     SelectorlessOutlet,
+    MergeClassPipe,
   ],
 })
 export class ButtonNFCC {
