@@ -4,6 +4,11 @@
     {{ data }}
   } @else if (isTemplateRef | pure: data) {
     <ng-container *ngTemplateOutlet="$any(data)"></ng-container>
+  } @else if (isSchema | pure: data) {
+    <ng-container
+      [selectlessOutlet]="data"
+      [selectlessOutletInputs]="{ options: schemaOptions$$ }"
+    ></ng-container>
   } @else if (isObject | pure: data) {
     @if (data['icon']; as icon) {
       <mat-icon

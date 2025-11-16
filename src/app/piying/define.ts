@@ -6,7 +6,7 @@ import { PiViewConfig, PiyingViewGroup } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 import { DivWC } from './component/div-wrapper/component';
 import { DivNFCC } from './component/div/component';
-import { MenuTreeNFCC } from '@piying/angular-daisyui/extension';
+import { MenuTreeNFCC, TableNFCC } from '@piying/angular-daisyui/extension';
 const selectorPrefix = 'app-';
 
 const list = [
@@ -36,6 +36,9 @@ export const FieldGlobalConfig: PiViewConfig = {
     },
     'menu-tree': {
       type: MenuTreeNFCC,
+    },
+    table: {
+      type: TableNFCC,
     },
   },
   wrappers: {

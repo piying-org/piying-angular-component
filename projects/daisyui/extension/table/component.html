@@ -1,0 +1,78 @@
+<ng-template #templateRef let-attr="attributes">
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          @for (item of defineList(); track $index) {
+            <th>
+              <ng-container
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="selectorlessInput | pure: item.head"
+              ></ng-container>
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of list$$(); track $index) {
+          @let itemData = getItemData | pure: $index : item;
+          <tr>
+            @for (define of defineList(); track $index) {
+              <th>
+                <ng-container
+                  [selectlessOutlet]="StrOrTemplateComponent"
+                  [selectlessOutletInputs]="
+                    selectorlessInput
+                      | pure
+                        : ((isFunction | pure: define.body)
+                            ? ($any(define).body | pure: item)
+                            : define.body)
+                        : { item$: itemData }
+                  "
+                ></ng-container>
+              </th>
+            }
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        @for (item of defineList(); track $index) {
+          <th>
+            @if (item.foot) {
+              <ng-container
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="selectorlessInput | pure: item.foot"
+              ></ng-container>
+            }
+          </th>
+        }
+      </tfoot>
+    </table>
+  </div>
+  <div class="join">
+    <button class="join-item btn" [disabled]="page().index === 0" (click)="gotoPage(0)">«</button>
+    @for (item of pageRange$$(); track $index) {
+      @if (item.type === 'go') {
+        <input
+          class="join-item btn btn-square"
+          type="radio"
+          name="options"
+          [aria-label]="item.value + 1"
+          [checked]="item.value === page().index"
+          (click)="gotoPage(item.value)"
+        />
+      } @else if (item.type === 'prev') {
+        <button class="join-item btn" (click)="gotoPage(page().index - 5)"><</button>
+      } @else if (item.type === 'next') {
+        <button class="join-item btn" (click)="gotoPage(page().index + 5)">></button>
+      }
+    }
+    <button
+      class="join-item btn"
+      [disabled]="page().index === maxPageCount$$() - 1"
+      (click)="gotoPage(maxPageCount$$() - 1)"
+    >
+      »
+    </button>
+  </div>
+</ng-template>
