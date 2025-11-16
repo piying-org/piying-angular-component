@@ -4,12 +4,19 @@
       <thead>
         <tr>
           @for (item of defineList(); track $index) {
-            <th>
+            <ng-template #thTemp>
               <ng-container
                 [selectlessOutlet]="StrOrTemplateComponent"
                 [selectlessOutletInputs]="selectorlessInput | pure: item.head"
               ></ng-container>
-            </th>
+            </ng-template>
+            @if (isSchema | pure: item.head) {
+              <ng-container *ngTemplateOutlet="thTemp"></ng-container>
+            } @else {
+              <th>
+                <ng-container *ngTemplateOutlet="thTemp"></ng-container>
+              </th>
+            }
           }
         </tr>
       </thead>
@@ -37,9 +44,9 @@
               @if (isSchema | pure: itemDefine) {
                 <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
               } @else {
-                <th>
+                <td>
                   <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
-                </th>
+                </td>
               }
             }
           </tr>
@@ -47,14 +54,19 @@
       </tbody>
       <tfoot>
         @for (item of defineList(); track $index) {
-          <th>
-            @if (item.foot) {
-              <ng-container
-                [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="selectorlessInput | pure: item.foot"
-              ></ng-container>
-            }
-          </th>
+          <ng-template #tdTemp>
+            <ng-container
+              [selectlessOutlet]="StrOrTemplateComponent"
+              [selectlessOutletInputs]="selectorlessInput | pure: item.foot"
+            ></ng-container>
+          </ng-template>
+          @if (isSchema | pure: item.foot) {
+            <ng-container *ngTemplateOutlet="tdTemp"></ng-container>
+          } @else {
+            <td>
+              <ng-container *ngTemplateOutlet="tdTemp"></ng-container>
+            </td>
+          }
         }
       </tfoot>
     </table>
