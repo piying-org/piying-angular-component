@@ -12,14 +12,15 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { PI_INPUT_OPTIONS_TOKEN } from '@piying/view-angular';
+import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 
 @Component({
   selector: 'app-str-or-template',
   templateUrl: './component.html',
-  imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet],
+  imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet, PiyingView],
 })
 export class StrOrTemplateComponent {
+  readonly PiyingView = PiyingView;
   templateRef = viewChild.required('templateRef');
   content = input();
   context = input();
@@ -30,6 +31,7 @@ export class StrOrTemplateComponent {
       context: this.context(),
     };
   });
+
   isString(input: any) {
     return typeof input === 'string';
   }
@@ -44,4 +46,11 @@ export class StrOrTemplateComponent {
       input && typeof input === 'object' && '~run' in input && 'kind' in input && 'type' in input
     );
   }
+  piyingInput = (schema: any, options: any) => {
+    return {
+      schema,
+      options,
+      selectorless: computed(() => true),
+    };
+  };
 }

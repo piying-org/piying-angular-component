@@ -6,8 +6,8 @@
     <ng-container *ngTemplateOutlet="$any(data)"></ng-container>
   } @else if (isSchema | pure: data) {
     <ng-container
-      [selectlessOutlet]="data"
-      [selectlessOutletInputs]="{ options: schemaOptions$$ }"
+      [selectlessOutlet]="PiyingView"
+      [selectlessOutletInputs]="piyingInput | pure: content : schemaOptions$$"
     ></ng-container>
   } @else if (isObject | pure: data) {
     @if (data['icon']; as icon) {

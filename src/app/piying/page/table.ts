@@ -1,5 +1,6 @@
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, patchAsyncInputs, patchInputs, setComponent } from '@piying/view-angular-core';
+import { computed } from '@angular/core';
 export const TableDefine = v.pipe(
   NFCSchema,
   setComponent('table'),
@@ -8,22 +9,30 @@ export const TableDefine = v.pipe(
       {
         head: '测试',
         body: (data: any) => {
-          console.log('输入', data);
-
           return data.title1;
         },
       },
-      // {
-      //   head: 'badge',
-      //   body: v.pipe(NFCSchema, setComponent('badge')),
-      // },
+      {
+        head: 'badge',
+        body: v.pipe(
+          NFCSchema,
+          setComponent('badge'),
+          patchAsyncInputs({
+            content: ({ context }) => {
+              return computed(() => context.item$().badge1);
+            },
+          }),
+        ),
+      },
     ],
     data: [
       {
         title1: '测试内容',
+        badge1: 'data1',
       },
       {
         title1: '测试内容2',
+        badge1: 'data2',
       },
     ],
     page: {

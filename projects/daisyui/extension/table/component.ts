@@ -158,7 +158,7 @@ export class TableNFCC {
     return untracked(() => {
       let data = this.#itemDataMap.get(index) ?? signal(undefined);
       data.set(item);
-      this.#itemDataMap.set(index, item);
+      this.#itemDataMap.set(index, data);
       return data;
     });
   };
