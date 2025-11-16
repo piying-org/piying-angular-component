@@ -15,7 +15,7 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { computedWithPrev } from '@piying/angular-daisyui/util';
+import { computedWithPrev, isSchema } from '@piying/angular-daisyui/util';
 import { range } from 'es-toolkit';
 
 import {
@@ -162,4 +162,5 @@ export class TableNFCC {
       return data;
     });
   };
+  isSchema = isSchema;
 }

@@ -18,7 +18,7 @@
           @let itemData = getItemData | pure: $index : item;
           <tr>
             @for (define of defineList(); track $index) {
-              <th>
+              <ng-template #itemTemp>
                 <ng-container
                   [selectlessOutlet]="StrOrTemplateComponent"
                   [selectlessOutletInputs]="
@@ -30,7 +30,17 @@
                         : { item$: itemData }
                   "
                 ></ng-container>
-              </th>
+              </ng-template>
+
+              @let itemDefine =
+                (isFunction | pure: define.body) ? ($any(define).body | pure: item) : define.body;
+              @if (isSchema | pure: itemDefine) {
+                <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
+              } @else {
+                <th>
+                  <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
+                </th>
+              }
             }
           </tr>
         }
