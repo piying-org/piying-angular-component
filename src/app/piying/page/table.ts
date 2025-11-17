@@ -11,6 +11,7 @@ export const TableDefine = v.pipe(
   NFCSchema,
   setComponent('table'),
   patchInputs({
+    pagination: { enable: true, sizeOptions: [1, 10, 20, 30] },
     defineList: [
       {
         head: '测试',

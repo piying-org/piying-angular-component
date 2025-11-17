@@ -71,30 +71,53 @@
       </tfoot>
     </table>
   </div>
-  <div class="join">
-    <button class="join-item btn" [disabled]="page().index === 0" (click)="gotoPage(0)">«</button>
-    @for (item of pageRange$$(); track $index) {
-      @if (item.type === 'go') {
-        <input
-          class="join-item btn btn-square"
-          type="radio"
-          name="options"
-          [aria-label]="item.value + 1"
-          [checked]="item.value === page().index"
-          (click)="gotoPage(item.value)"
-        />
-      } @else if (item.type === 'prev') {
-        <button class="join-item btn" (click)="gotoPage(page().index - 5)"><</button>
-      } @else if (item.type === 'next') {
-        <button class="join-item btn" (click)="gotoPage(page().index + 5)">></button>
+  @if (pagination()?.enable) {
+    <div class="flex items-center gap-2">
+      @if (pagination()?.sizeOptions; as sizeOptions) {
+        <select
+          class="select w-20"
+          [ngModel]="page().size"
+          (ngModelChange)="pageSizeChange($event)"
+        >
+          @for (item of sizeOptions; track $index) {
+            <option [ngValue]="item">
+              {{
+                pagination()?.optionsLabel
+                  ? (pagination()!.optionsLabel! | pure: item : page().index : count$$())
+                  : item
+              }}
+            </option>
+          }
+        </select>
       }
-    }
-    <button
-      class="join-item btn"
-      [disabled]="page().index === maxPageCount$$() - 1"
-      (click)="gotoPage(maxPageCount$$() - 1)"
-    >
-      »
-    </button>
-  </div>
+      <div class="join">
+        <button class="join-item btn" [disabled]="page().index === 0" (click)="gotoPage(0)">
+          «
+        </button>
+        @for (item of pageRange$$(); track $index) {
+          @if (item.type === 'go') {
+            <input
+              class="join-item btn btn-square"
+              type="radio"
+              name="options"
+              [aria-label]="item.value + 1"
+              [checked]="item.value === page().index"
+              (click)="gotoPage(item.value)"
+            />
+          } @else if (item.type === 'prev') {
+            <button class="join-item btn" (click)="gotoPage(page().index - 5)"><</button>
+          } @else if (item.type === 'next') {
+            <button class="join-item btn" (click)="gotoPage(page().index + 5)">></button>
+          }
+        }
+        <button
+          class="join-item btn"
+          [disabled]="page().index === maxPageCount$$() - 1"
+          (click)="gotoPage(maxPageCount$$() - 1)"
+        >
+          »
+        </button>
+      </div>
+    </div>
+  }
 </ng-template>

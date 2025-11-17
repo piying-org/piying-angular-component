@@ -25,6 +25,7 @@ import {
 } from '@piying/view-angular';
 import clsx from 'clsx';
 import * as v from 'valibot';
+import { FormsModule } from '@angular/forms';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((node: any) => ItemCellBase);
 export type DataResolved = [number, any[]];
@@ -46,6 +47,7 @@ function goPage(value: number) {
     SelectorlessOutlet,
     StrOrTemplateComponent,
     JsonPipe,
+    FormsModule,
   ],
 })
 export class TableNFCC {
@@ -57,7 +59,12 @@ export class TableNFCC {
   data = input<any[] | ((config: any) => Promise<any[]>)>([]);
   zebra = input<boolean>();
   params = input<any>();
-  page = model<{ size: number; sizeOptions?: number[]; index: number }>({ size: 10, index: 0 });
+  page = model<{ size: number; index: number }>({ size: 10, index: 0 });
+  pagination = input<{
+    sizeOptions?: number[];
+    enable: boolean;
+    optionsLabel?: (size: number, index: number, count: number) => string;
+  }>();
   data$ = resource({
     params: () => {
       let data = this.data();
@@ -163,4 +170,9 @@ export class TableNFCC {
     });
   };
   isSchema = isSchema;
+  pageSizeChange(value: number) {
+    this.page.update((item) => {
+      return { ...item, size: value };
+    });
+  }
 }
