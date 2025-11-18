@@ -5,6 +5,8 @@ export type SortDirection = 0 | 1 | -1;
 export class SortService {
   direction$ = signal<Record<string, SortDirection>>({});
   multiple?: boolean;
+  inited$ = signal(false);
+  pendingCount = 0;
 
   update(key: string, direction: SortDirection) {
     if (this.multiple) {

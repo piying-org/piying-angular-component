@@ -16,11 +16,11 @@ import { SortDirection, SortService } from '@piying/angular-daisyui/service';
 import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
 
 @Component({
-  selector: 'app-sort',
+  selector: 'app-sort-header',
   templateUrl: './component.html',
   imports: [MatIcon, FormsModule, CssPrefixPipe, MergeClassPipe, AttributesDirective],
 })
-export class SortWC extends PiyingViewWrapperBase {
+export class SortHeaderWC extends PiyingViewWrapperBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   elRef = viewChild.required<ElementRef<HTMLInputElement>>('el');
@@ -44,6 +44,8 @@ export class SortWC extends PiyingViewWrapperBase {
   });
   constructor() {
     super();
+    this.#sort.pendingCount++;
+    let inited = false;
     effect(() => {
       let nativeElement = this.#ref$$();
       let result = this.#value$$();
@@ -62,6 +64,13 @@ export class SortWC extends PiyingViewWrapperBase {
       }
 
       this.#sort.update(this.#key$$(), result);
+      if (!inited) {
+        inited = true;
+        this.#sort.pendingCount--;
+        if (this.#sort.pendingCount === 0) {
+          this.#sort.inited$.set(true);
+        }
+      }
     });
   }
 

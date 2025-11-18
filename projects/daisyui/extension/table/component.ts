@@ -28,7 +28,7 @@ import {
 import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
-import { SortService } from '../../service/sort/sort.service';
+import { SortDirection, SortService } from '../../service/sort/sort.service';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((node: any) => ItemCellBase);
 export type DataResolved = [number, any[]];
@@ -40,6 +40,15 @@ export interface TableItemDefine {
 function goPage(value: number) {
   return { type: 'go' as const, value };
 }
+export type TableQueryParams = {
+  params: any;
+  data: any[] | ((config: any) => Promise<any[]>);
+  page: {
+    size: number;
+    index: number;
+  };
+  direction: Record<string, SortDirection>;
+};
 @Component({
   selector: 'app-table',
   templateUrl: './component.html',
@@ -81,11 +90,16 @@ export class TableNFCC {
         data: data,
         page: this.page(),
         direction,
+        sortInited: this.#sortService.inited$(),
       };
     },
-    loader: async ({ params }) => {
+    loader: async (res) => {
+      let { params } = res;
       if (typeof params.data === 'function') {
-        return params.data(params.params).then((data) => {
+        if (!res.params.sortInited) {
+          return [];
+        }
+        return params.data(res).then((data) => {
           return this.dataConvert(data);
         });
       }

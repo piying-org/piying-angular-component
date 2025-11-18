@@ -17,6 +17,8 @@ import { PiyingViewGroup } from '@piying/view-angular';
 import * as NFCCGroup from '@piying/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying/angular-daisyui/field-control';
 import * as FGCGroup from '@piying/angular-daisyui/field-group';
+import * as ExtensionGroup from '@piying/angular-daisyui/extension';
+import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
 import * as v from 'valibot';
 import { CSSClassPrefixToken, ThemeService } from '@piying/angular-daisyui/service';
 import { provideRouter } from '@angular/router';
@@ -42,11 +44,34 @@ export async function createSchemaComponent(
     ...Object.values(NFCCGroup),
     ...Object.values(FCCGroup),
     ...Object.values(FGCGroup),
+    ...Object.values(ExtensionGroup),
   ] as Type<any>[];
+  let defaultWrapper = Object.values(WrapperGroup).reduce(
+    (obj, item) => {
+      let result = reflectComponentType(item);
+      if (!result) {
+        return obj;
+      }
+      obj[
+        result.selector.startsWith(selectorPrefix)
+          ? result.selector.slice(selectorPrefix.length)
+          : result.selector
+      ] = {
+        type: item,
+      };
+      return obj;
+    },
+    {} as Record<string, any>,
+  );
+
   let defaultComp = list.reduce(
     (obj, item) => {
-      let { selector } = reflectComponentType(item)!;
-      obj[selector.slice(selectorPrefix.length)] = {
+      let result = reflectComponentType(item);
+      if (!result) {
+        return obj;
+      }
+
+      obj[result.selector.slice(selectorPrefix.length)] = {
         type: item,
       };
       return obj;
@@ -101,6 +126,9 @@ export async function createSchemaComponent(
             type: FCCGroup.InputFCC,
           },
           ...options?.fieldGlobalConfig?.types,
+        },
+        wrappers: {
+          ...defaultWrapper,
         },
       },
     };
