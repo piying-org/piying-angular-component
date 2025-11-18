@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <ng-container #fieldComponent></ng-container>
+
+  <label
+    [class]="'swap swap-rotate' | mergeClass: attr()?.class | cssPrefix"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    <input type="checkbox" (change)="valueChange($event, el)" #el />
+    <div [class]="'swap-indeterminate' | cssPrefix"></div>
+    <div [class]="'swap-on' | cssPrefix"><mat-icon>arrow_upward</mat-icon></div>
+    <div [class]="'swap-off' | cssPrefix"><mat-icon>arrow_downward</mat-icon></div>
+  </label>
+</ng-template>
