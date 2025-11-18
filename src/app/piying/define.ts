@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
 import { DivWC } from './component/div-wrapper/component';
 import { DivNFCC } from './component/div/component';
 import { MenuTreeNFCC, TableNFCC } from '@piying/angular-daisyui/extension';
-import { ThWC, TdWC } from '@piying/angular-daisyui/wrapper';
+import { ThWC, TdWC, SortWC } from '@piying/angular-daisyui/wrapper';
 const selectorPrefix = 'app-';
 
 const list = [
@@ -51,6 +51,9 @@ export const FieldGlobalConfig: PiViewConfig = {
     },
     td: {
       type: TdWC,
+    },
+    sort: {
+      type: SortWC,
     },
   },
 };

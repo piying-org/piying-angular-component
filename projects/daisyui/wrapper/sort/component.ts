@@ -11,13 +11,14 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { SortDirection, SortService } from '@piying/angular-daisyui/service';
-import { PiyingViewWrapperBase } from '@piying/view-angular';
+import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
 
 @Component({
   selector: 'app-sort',
   templateUrl: './component.html',
-  imports: [MatIcon, FormsModule],
+  imports: [MatIcon, FormsModule, CssPrefixPipe, MergeClassPipe, AttributesDirective],
 })
 export class SortWC extends PiyingViewWrapperBase {
   static __version = 2;
@@ -34,7 +35,6 @@ export class SortWC extends PiyingViewWrapperBase {
   });
 
   #sort = inject(SortService);
-
   #index$ = linkedSignal(() => {
     return this.props$$()['direction'] ?? 0;
   });

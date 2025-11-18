@@ -3,6 +3,7 @@ import {
   NFCSchema,
   patchAsyncInputs,
   patchInputs,
+  patchProps,
   setComponent,
   setWrappers,
 } from '@piying/view-angular-core';
@@ -29,6 +30,25 @@ export const TableDefine = v.pipe(
             content: ({ context }) => {
               return computed(() => context.item$().badge1);
             },
+          }),
+        ),
+      },
+      {
+        head: v.pipe(
+          NFCSchema,
+          setComponent('button'),
+          patchInputs({ content: '1234' }),
+          setWrappers(['td', 'sort']),
+        ),
+      },
+      {
+        head: v.pipe(
+          NFCSchema,
+          setComponent('button'),
+          patchInputs({ content: '666' }),
+          setWrappers(['td', 'sort']),
+          patchProps({
+            direction: 1,
           }),
         ),
       },

@@ -2,12 +2,14 @@ import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
+  inject,
   input,
   linkedSignal,
   model,
   resource,
   Signal,
   signal,
+  SimpleChange,
   untracked,
   viewChild,
   WritableSignal,
@@ -26,6 +28,7 @@ import {
 import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
+import { SortService } from '../../service/sort/sort.service';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((node: any) => ItemCellBase);
 export type DataResolved = [number, any[]];
@@ -49,14 +52,18 @@ function goPage(value: number) {
     JsonPipe,
     FormsModule,
   ],
+  providers: [SortService],
 })
 export class TableNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
+  sortMultiple = input<boolean>();
   defineList = input<TableItemDefine[]>();
   data = input<any[] | ((config: any) => Promise<any[]>)>([]);
+  #sortService = inject(SortService);
+
   zebra = input<boolean>();
   params = input<any>();
   page = model<{ size: number; index: number }>({ size: 10, index: 0 });
@@ -68,10 +75,12 @@ export class TableNFCC {
   data$ = resource({
     params: () => {
       let data = this.data();
+      let direction = this.#sortService.direction$();
       return {
         params: this.params(),
         data: data,
         page: this.page(),
+        direction,
       };
     },
     loader: async ({ params }) => {
@@ -87,6 +96,11 @@ export class TableNFCC {
       return result;
     },
   });
+  ngOnChanges(changes: Record<keyof TableNFCC, SimpleChange>): void {
+    if (changes.sortMultiple) {
+      this.#sortService.multiple = this.sortMultiple();
+    }
+  }
   dataConvert(data: any[]): DataResolved {
     if (data.length === 2 && typeof data[0] === 'number' && Array.isArray(data[1])) {
       return data as any;
