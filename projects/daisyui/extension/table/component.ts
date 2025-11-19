@@ -29,6 +29,10 @@ import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 import { SortDirection, SortService } from '../../service/sort/sort.service';
+import {
+  CheckBoxConfig,
+  CheckboxService,
+} from '../../service/table-checkbox/table-checkbox.service';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((node: any) => ItemCellBase);
 export type DataResolved = [number, any[]];
@@ -61,7 +65,7 @@ export type TableQueryParams = {
     JsonPipe,
     FormsModule,
   ],
-  providers: [SortService],
+  providers: [SortService, CheckboxService],
 })
 export class TableNFCC {
   static __version = 2;
@@ -69,9 +73,11 @@ export class TableNFCC {
 
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   sortMultiple = input<boolean>();
+  checkboxConfig = input<CheckBoxConfig<any>>();
   defineList = input<TableItemDefine[]>();
   data = input<any[] | ((config: any) => Promise<any[]>)>([]);
   #sortService = inject(SortService);
+  #checkboxService = inject(CheckboxService);
 
   zebra = input<boolean>();
   params = input<any>();
@@ -114,6 +120,14 @@ export class TableNFCC {
     if (changes.sortMultiple) {
       this.#sortService.multiple = this.sortMultiple();
     }
+    if (changes.checkboxConfig && this.checkboxConfig()) {
+      this.#checkboxService.init(this.checkboxConfig()!);
+    }
+  }
+  constructor() {
+    this.#checkboxService.setAllList(() => {
+      return this.list$$();
+    });
   }
   dataConvert(data: any[]): DataResolved {
     if (data.length === 2 && typeof data[0] === 'number' && Array.isArray(data[1])) {
