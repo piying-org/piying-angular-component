@@ -262,4 +262,75 @@ fdescribe('table', () => {
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('data1');
   });
+  it('str-foot', async () => {
+    const TableDefine = v.pipe(
+      NFCSchema,
+      setComponent('table'),
+      patchInputs({
+        define: {
+          columns: [
+            {
+              head: 'head1',
+              foot: 'foot1',
+            },
+          ],
+        },
+        data: async (input: any) => {
+          return [];
+        },
+        page: {
+          size: 1,
+          index: 0,
+        },
+      }),
+    );
+    let schema = TableDefine;
+    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    expect(element.querySelector('table')).toBeTruthy();
+    let thList = element.querySelectorAll('table td');
+    expect(thList.length).toBeTruthy();
+    expect(thList[0].textContent.trim()).toEqual('foot1');
+  });
+  it('define-head', async () => {
+    const TableDefine = v.pipe(
+      NFCSchema,
+      setComponent('table'),
+      patchInputs({
+        define: {
+          columns: [
+            {
+              head: ''
+            },
+            {
+              head: v.pipe(
+                NFCSchema,
+                setComponent(StrOrTemplateComponent),
+                patchInputs({ content: 'foot1' }),
+                setWrappers(['td']),
+              ),
+            },
+          ],
+        },
+        data: async (input: any) => {
+          return [];
+        },
+        page: {
+          size: 1,
+          index: 0,
+        },
+      }),
+    );
+    let schema = TableDefine;
+    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    expect(element.querySelector('table')).toBeTruthy();
+    let thList = element.querySelectorAll('table td');
+    expect(thList.length).toBeTruthy();
+    expect(thList[0].textContent.trim()).toEqual('foot1');
+  });
 });
