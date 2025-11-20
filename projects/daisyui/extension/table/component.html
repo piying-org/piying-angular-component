@@ -1,74 +1,42 @@
 <ng-template #templateRef let-attr="attributes">
   <div class="overflow-x-auto">
     <table class="table">
-      <thead>
-        <tr>
-          @for (item of defineList(); track $index) {
-            <ng-template #thTemp>
-              <ng-container
-                [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="selectorlessInput | pure: item.head"
-              ></ng-container>
-            </ng-template>
-            @if (isSchema | pure: item.head) {
-              <ng-container *ngTemplateOutlet="thTemp"></ng-container>
-            } @else {
-              <th>
-                <ng-container *ngTemplateOutlet="thTemp"></ng-container>
-              </th>
-            }
-          }
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of list$$(); track $index) {
-          @let itemData = getItemData | pure: $index : item;
-          <tr>
-            @for (define of defineList(); track $index) {
-              <ng-template #itemTemp>
-                <ng-container
-                  [selectlessOutlet]="StrOrTemplateComponent"
-                  [selectlessOutletInputs]="
-                    selectorlessInput
-                      | pure
-                        : ((isFunction | pure: define.body)
-                            ? ($any(define).body | pure: item)
-                            : define.body)
-                        : { item$: itemData }
-                  "
-                ></ng-container>
-              </ng-template>
-
-              @let itemDefine =
-                (isFunction | pure: define.body) ? ($any(define).body | pure: item) : define.body;
-              @if (isSchema | pure: itemDefine) {
-                <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
-              } @else {
-                <td>
-                  <ng-container *ngTemplateOutlet="itemTemp"></ng-container>
-                </td>
-              }
-            }
-          </tr>
-        }
-      </tbody>
-      <tfoot>
-        @for (item of defineList(); track $index) {
-          <ng-template #tdTemp>
+      @let headList = headList$$();
+      @if (headList.length) {
+        <thead>
+          @for (item of headList; track $index) {
             <ng-container
               [selectlessOutlet]="StrOrTemplateComponent"
-              [selectlessOutletInputs]="selectorlessInput | pure: item.foot"
+              [selectlessOutletInputs]="selectorlessInput | pure: item"
             ></ng-container>
-          </ng-template>
-          @if (isSchema | pure: item.foot) {
-            <ng-container *ngTemplateOutlet="tdTemp"></ng-container>
-          } @else {
-            <td>
-              <ng-container *ngTemplateOutlet="tdTemp"></ng-container>
-            </td>
           }
-        }
-      </tfoot>
+        </thead>
+      }
+      @let bodyList = bodyList$$();
+      @if (bodyList.length) {
+        <tbody>
+          @for (item of list$$(); track $index) {
+            @let itemData = getItemData | pure: $index : item;
+            @for (row of bodyList; track $index) {
+              <ng-container
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="selectorlessInput | pure: row : { item$: itemData }"
+              ></ng-container>
+            }
+          }
+        </tbody>
+      }
+      @let footList = footList$$();
+      @if (footList.length) {
+        <tfoot>
+          @for (item of footList; track $index) {
+            <ng-container
+              [selectlessOutlet]="StrOrTemplateComponent"
+              [selectlessOutletInputs]="selectorlessInput | pure: item"
+            ></ng-container>
+          }
+        </tfoot>
+      }
     </table>
   </div>
   @if (pagination()?.enable) {

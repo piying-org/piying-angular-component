@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <tr [attributes]="attr()">
+    @for (field of children$$(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+      ></ng-container>
+    }
+  </tr>
+</ng-template>

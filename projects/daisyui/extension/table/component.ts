@@ -33,13 +33,39 @@ import {
   CheckBoxConfig,
   CheckboxService,
 } from '../../service/table-checkbox/table-checkbox.service';
+import {
+  NFCSchema,
+  patchAsyncInputs,
+  patchInputs,
+  setComponent,
+  setWrappers,
+  Writeable,
+} from '@piying/view-angular-core';
+import { TableRowFGC } from './row/component';
+import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
-export type ItemCell = ItemCellBase | ((node: any) => ItemCellBase);
+export type ItemCell = ItemCellBase | ((rowData: any) => any);
 export type DataResolved = [number, any[]];
-export interface TableItemDefine {
-  head: ItemCellBase;
-  body: ItemCell;
-  foot: ItemCellBase;
+
+interface RowItem {
+  define: v.TupleSchema<[], undefined>;
+  columns?: string[];
+}
+
+interface ColumnDefine {
+  head?: ItemCellBase;
+  body?: ItemCell;
+  foot?: ItemCellBase;
+}
+
+export interface TableItemDefine2 {
+  row?: {
+    head?: RowItem[];
+    body?: RowItem[];
+    foot?: RowItem[];
+  };
+
+  columns: Record<string, ColumnDefine>;
 }
 function goPage(value: number) {
   return { type: 'go' as const, value };
@@ -53,6 +79,38 @@ export type TableQueryParams = {
   };
   direction: Record<string, SortDirection>;
 };
+
+export function createRowDefine() {
+  return v.pipe(v.tuple([]), setComponent(TableRowFGC));
+}
+export function createDefaultColDefine(isHeader: boolean, content: any, context?: any) {
+  return v.pipe(
+    NFCSchema,
+    setComponent(StrOrTemplateComponent),
+    patchInputs({ content, context }),
+    setWrappers([{ type: isHeader ? ThWC : TdWC }]),
+  );
+}
+export function createDefaultColDefineFn(
+  isHeader: boolean,
+  content: (item: any) => any,
+  context?: any,
+) {
+  return v.pipe(
+    NFCSchema,
+    setComponent(StrOrTemplateComponent),
+    patchInputs({ context }),
+    patchAsyncInputs({
+      content: ({ context }) => {
+        return computed(() => {
+          let item = context['item$']();
+          return content(item);
+        });
+      },
+    }),
+    setWrappers([{ type: isHeader ? ThWC : TdWC }]),
+  );
+}
 @Component({
   selector: 'app-table',
   templateUrl: './component.html',
@@ -74,7 +132,7 @@ export class TableNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   sortMultiple = input<boolean>();
   checkboxConfig = input<CheckBoxConfig<any>>();
-  defineList = input<TableItemDefine[]>();
+  define = input<TableItemDefine2>();
   data = input<any[] | ((config: any) => Promise<any[]>)>([]);
   #sortService = inject(SortService);
   #checkboxService = inject(CheckboxService);
@@ -87,6 +145,57 @@ export class TableNFCC {
     enable: boolean;
     optionsLabel?: (size: number, index: number, count: number) => string;
   }>();
+  columnsList$$ = computed(() => {
+    return Object.values(this.define()!.columns);
+  });
+  headList$$ = computed(() => {
+    return this.#toColList('head');
+  });
+  bodyList$$ = computed(() => {
+    return this.#toColList('body');
+  });
+  footList$$ = computed(() => {
+    return this.#toColList('foot');
+  });
+  #toColList<T extends 'head' | 'body' | 'foot'>(name: T) {
+    let define = this.define()!;
+    let rowList = define.row?.[name]
+      ? define.row[name]
+      : [{ define: createRowDefine() } as RowItem];
+    let isHeader = name === 'head';
+    return rowList
+      .map((row) => {
+        let colList;
+        if (!row.columns) {
+          colList = this.columnsList$$().map((item) => item[name]);
+        } else {
+          colList = row.columns.map((col) => {
+            let item = define.columns[col][name];
+            return item;
+          });
+        }
+        colList = colList
+          .map((itemDefine) => {
+            if (itemDefine) {
+              if (isSchema(itemDefine)) {
+                return itemDefine;
+              } else if (typeof itemDefine === 'function') {
+                return createDefaultColDefineFn(isHeader, itemDefine);
+              } else {
+                return createDefaultColDefine(isHeader, itemDefine);
+              }
+            }
+            return undefined;
+          })
+          .filter(Boolean);
+        if (colList.length) {
+          (row.define as Writeable<v.TupleSchema<any, any>>).items.push(...colList);
+          return row.define;
+        }
+        return undefined;
+      })
+      .filter((a): a is v.TupleSchema<any, undefined> => !!a);
+  }
   data$ = resource({
     params: () => {
       let data = this.data();
@@ -112,7 +221,6 @@ export class TableNFCC {
       let start = params.page.index * params.page.size;
       let result = this.dataConvert(params.data);
       result[1] = result[1].slice(start, start + params.page.size);
-
       return result;
     },
   });

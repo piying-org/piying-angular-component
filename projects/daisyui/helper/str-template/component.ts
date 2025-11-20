@@ -2,6 +2,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
+  effect,
   inject,
   input,
   OnInit,
@@ -21,6 +22,7 @@ import { isSchema } from '../../util/is';
   imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet, PiyingView],
 })
 export class StrOrTemplateComponent {
+  static __version = 2;
   readonly PiyingView = PiyingView;
   templateRef = viewChild.required('templateRef');
   content = input();
@@ -42,7 +44,7 @@ export class StrOrTemplateComponent {
   isObject(input: any) {
     return typeof input === 'object';
   }
-  isSchema=isSchema
+  isSchema = isSchema;
   piyingInput = (schema: any, options: any) => {
     return {
       schema,
