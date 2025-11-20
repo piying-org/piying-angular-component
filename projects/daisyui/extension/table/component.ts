@@ -211,9 +211,6 @@ export class TableNFCC {
     loader: async (res) => {
       let { params } = res;
       if (typeof params.data === 'function') {
-        if (!res.params.sortInited) {
-          return [];
-        }
         return params.data(res).then((data) => {
           return this.dataConvert(data);
         });
