@@ -14,22 +14,27 @@ import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { SortDirection, SortService } from '@piying/angular-daisyui/service';
 import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
+import { RefBindDirective } from './ref-bind.directive';
 
 @Component({
   selector: 'app-sort-header',
   templateUrl: './component.html',
-  imports: [MatIcon, FormsModule, CssPrefixPipe, MergeClassPipe, AttributesDirective],
+  imports: [
+    MatIcon,
+    FormsModule,
+    CssPrefixPipe,
+    MergeClassPipe,
+    AttributesDirective,
+    RefBindDirective,
+  ],
 })
 export class SortHeaderWC extends PiyingViewWrapperBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  elRef = viewChild.required<ElementRef<HTMLInputElement>>('el');
-  #ref$$ = computed(
-    () => {
-      return this.elRef().nativeElement;
-    },
-    { equal: () => true },
-  );
+  elRef = signal<ElementRef<HTMLInputElement> | undefined>(undefined);
+  #ref$$ = computed(() => {
+    return this.elRef()?.nativeElement;
+  });
   #key$$ = computed(() => {
     return this.props$$()['key'];
   });
@@ -48,6 +53,10 @@ export class SortHeaderWC extends PiyingViewWrapperBase {
     let inited = false;
     effect(() => {
       let nativeElement = this.#ref$$();
+      if (!nativeElement) {
+        return;
+      }
+
       let result = this.#value$$();
       switch (result) {
         case 0:
@@ -74,7 +83,7 @@ export class SortHeaderWC extends PiyingViewWrapperBase {
     });
   }
 
-  valueChange($event: Event, el: HTMLInputElement) {
+  valueChange() {
     this.#index$.update((a) => ++a);
   }
 }
