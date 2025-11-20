@@ -49,7 +49,7 @@ export type DataResolved = [number, any[]];
 
 interface RowItem {
   define: v.TupleSchema<[], undefined>;
-  columns?: string[];
+  columns?: (string | number)[];
 }
 
 interface ColumnDefine {
@@ -57,7 +57,7 @@ interface ColumnDefine {
   body?: ItemCell;
   foot?: ItemCellBase;
 }
-
+type ColumnGroupDefine = { [s: string]: ColumnDefine } | ArrayLike<ColumnDefine>;
 export interface TableItemDefine2 {
   row?: {
     head?: RowItem[];
@@ -65,7 +65,7 @@ export interface TableItemDefine2 {
     foot?: RowItem[];
   };
 
-  columns: Record<string, ColumnDefine>;
+  columns: ColumnGroupDefine;
 }
 function goPage(value: number) {
   return { type: 'go' as const, value };
@@ -170,7 +170,7 @@ export class TableNFCC {
           colList = this.columnsList$$().map((item) => item[name]);
         } else {
           colList = row.columns.map((col) => {
-            let item = define.columns[col][name];
+            let item = (define.columns as any)[col][name];
             return item;
           });
         }
