@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
-  <div class="overflow-x-auto">
-    <table class="table">
+  <div class="overflow-x-auto" [attributes]="attr()">
+    <table [class]="'table' | cssPrefix | mergeClass: wrapperClass$$()">
       @let headList = headList$$();
       @if (headList.length) {
         <thead>

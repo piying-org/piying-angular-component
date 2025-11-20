@@ -17,7 +17,7 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { computedWithPrev, isSchema } from '@piying/angular-daisyui/util';
+import { computedWithPrev, isSchema, Size } from '@piying/angular-daisyui/util';
 import { range } from 'es-toolkit';
 
 import {
@@ -43,6 +43,8 @@ import {
 } from '@piying/view-angular-core';
 import { TableRowFGC } from './row/component';
 import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
+import { ThemeService } from '@piying/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((rowData: any) => any);
 export type DataResolved = [number, any[]];
@@ -122,6 +124,8 @@ export function createDefaultColDefineFn(
     StrOrTemplateComponent,
     JsonPipe,
     FormsModule,
+    CssPrefixPipe,
+    MergeClassPipe,
   ],
   providers: [SortService, CheckboxService],
 })
@@ -138,6 +142,8 @@ export class TableNFCC {
   #checkboxService = inject(CheckboxService);
 
   zebra = input<boolean>();
+  pin = input<{ rows?: boolean; cols?: boolean }>();
+  size = input<Size>();
   params = input<any>();
   page = model<{ size: number; index: number }>({ size: 10, index: 0 });
   pagination = input<{
@@ -145,6 +151,16 @@ export class TableNFCC {
     enable: boolean;
     optionsLabel?: (size: number, index: number, count: number) => string;
   }>();
+  #theme = inject(ThemeService);
+
+  wrapperClass$$ = computed(() => {
+    return clsx(
+      this.zebra() ? this.#theme.addPrefix(`table-zebra`) : undefined,
+      this.pin()?.rows ? this.#theme.addPrefix(`table-pin-rows	`) : undefined,
+      this.pin()?.cols ? this.#theme.addPrefix(`table-pin-cols	`) : undefined,
+      this.#theme.setSize('table', this.size()),
+    );
+  });
   columnsList$$ = computed(() => {
     return Object.values(this.define()!.columns);
   });
