@@ -15,8 +15,9 @@
       @let bodyList = bodyList$$();
       @if (bodyList.length) {
         <tbody>
-          @for (item of list$$(); track $index) {
-            @let itemData = getItemData | pure: $index : item;
+          @for (item of list$$(); track trackBy()(offset$$() + $index, item)) {
+            @let id = trackBy() | pure: offset$$() + $index : item;
+            @let itemData = getItemData | pure: id : item;
             @for (row of bodyList; track $index) {
               <ng-container
                 [selectlessOutlet]="StrOrTemplateComponent"

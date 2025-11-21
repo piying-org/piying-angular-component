@@ -1,5 +1,7 @@
 import * as v from 'valibot';
 import {
+  hideWhen,
+  mergeHooks,
   NFCSchema,
   patchAsyncInputs,
   patchInputs,
@@ -8,12 +10,39 @@ import {
   setWrappers,
 } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
+import { setDirectives } from '@piying/view-angular';
+import { ClickDirective } from '@piying/angular-daisyui/directive';
+import { map, startWith, Subject } from 'rxjs';
+
 export const TableDefine = v.pipe(
   NFCSchema,
   setComponent('table'),
+  setWrappers(['table-status']),
   patchInputs({
     pagination: { enable: true, sizeOptions: [1, 10, 20, 30] },
     define: {
+      row: {
+        body: [
+          {
+            define: v.pipe(
+              v.tuple([]),
+              setComponent('tr'),
+              setDirectives([
+                {
+                  type: ClickDirective,
+                  outputs: {
+                    clicked: (event: any, field) => {
+                      field.context.status.toggleExpand(field.context.item$());
+                    },
+                  },
+                },
+              ]),
+            ),
+            columns: ['1'],
+          },
+          { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
+        ],
+      },
       columns: {
         '0': {
           head: '测试',
@@ -50,6 +79,28 @@ export const TableDefine = v.pipe(
             setWrappers(['td', 'sort']),
             patchProps({
               direction: 1,
+            }),
+          ),
+        },
+        extra: {
+          body: v.pipe(
+            NFCSchema,
+            setComponent('button'),
+            setWrappers(['td']),
+            hideWhen({
+              listen(fn, field) {
+                return (field.context.status.expanded as Subject<any>).pipe(
+                  map((item) => {
+                    return item !== field.context.item$();
+                  }),
+                  startWith(true),
+                );
+              },
+            }),
+            mergeHooks({
+              allFieldsResolved(field) {
+                field.context!['status'];
+              },
             }),
           ),
         },

@@ -30,7 +30,7 @@ import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-table',
+  selector: 'tr',
   templateUrl: './component.html',
   imports: [
     AttributesDirective,
@@ -44,6 +44,5 @@ import { FormsModule } from '@angular/forms';
   providers: [],
 })
 export class TableRowFGC extends PiyingViewGroupBase {
-  static __version = 2;
-  templateRef = viewChild.required('templateRef');
+
 }

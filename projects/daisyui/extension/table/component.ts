@@ -45,6 +45,7 @@ import { TableRowFGC } from './row/component';
 import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { TABLE_STATUS_TOKEN } from './token';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((rowData: any) => any);
 export type DataResolved = [number, any[]];
@@ -140,12 +141,19 @@ export class TableNFCC {
   data = input<any[] | ((config: any) => Promise<any[]>)>([]);
   #sortService = inject(SortService);
   #checkboxService = inject(CheckboxService);
-
+  #status = inject(TABLE_STATUS_TOKEN, { optional: true });
   zebra = input<boolean>();
   pin = input<{ rows?: boolean; cols?: boolean }>();
   size = input<Size>();
   params = input<any>();
+  trackBy = input((key: number, value: any) => {
+    return key;
+  });
   page = model<{ size: number; index: number }>({ size: 10, index: 0 });
+  offset$$ = computed(() => {
+    let page = this.page();
+    return page.index * page.size;
+  });
   pagination = input<{
     sizeOptions?: number[];
     enable: boolean;
@@ -313,7 +321,7 @@ export class TableNFCC {
     let obj: Record<string, any> = { content: computed(() => content) };
     if (context) {
       obj['context'] = computed(() => {
-        return context;
+        return { ...context, status: this.#status };
       });
     }
     return obj;
@@ -323,15 +331,16 @@ export class TableNFCC {
       return { ...data, index: value };
     });
   }
-  #itemDataMap = new Map<number, WritableSignal<any>>();
-  getItemData = (index: number, item: any) => {
+  #itemDataMap = new Map<unknown, WritableSignal<any>>();
+  getItemData = (id: unknown, value: any) => {
     return untracked(() => {
-      let data = this.#itemDataMap.get(index) ?? signal(undefined);
-      data.set(item);
-      this.#itemDataMap.set(index, data);
+      let data = this.#itemDataMap.get(id) ?? signal(undefined);
+      data.set(value);
+      this.#itemDataMap.set(id, data);
       return data;
     });
   };
+
   isSchema = isSchema;
   pageSizeChange(value: number) {
     this.page.update((item) => {

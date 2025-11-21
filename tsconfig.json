@@ -31,6 +31,9 @@
       "@piying/angular-daisyui/extension": [
         "./projects/daisyui/extension"
       ],
+      "@piying/angular-daisyui/directive": [
+        "./projects/daisyui/directive"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,
