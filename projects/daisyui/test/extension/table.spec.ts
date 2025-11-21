@@ -302,7 +302,7 @@ fdescribe('table', () => {
         define: {
           columns: [
             {
-              head: ''
+              head: '',
             },
             {
               head: v.pipe(
@@ -332,5 +332,73 @@ fdescribe('table', () => {
     let thList = element.querySelectorAll('table td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('foot1');
+  });
+  it('input-class-none', async () => {
+    const TableDefine = v.pipe(
+      NFCSchema,
+      setComponent('table'),
+      patchInputs({
+  
+        define: {
+          columns: [
+            {
+              head: '1',
+            },
+          ],
+        },
+        data: async (input: any) => {
+          return [];
+        },
+        page: {
+          size: 1,
+          index: 0,
+        },
+      }),
+    );
+    let schema = TableDefine;
+    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    expect(element.querySelector('table')).toBeTruthy();
+    expect(element.querySelector(`table.pc-table-zebra`)).toBeFalsy();
+    expect(element.querySelector(`table.pc-table-pin-rows`)).toBeFalsy();
+    expect(element.querySelector(`table.pc-table-pin-cols`)).toBeFalsy();
+    expect(element.querySelector(`table.pc-table-xs`)).toBeFalsy();
+  });
+  it('input-class', async () => {
+    const TableDefine = v.pipe(
+      NFCSchema,
+      setComponent('table'),
+      patchInputs({
+        zebra: true,
+        pin: { rows: true, cols: true },
+        size: 'xs',
+        define: {
+          columns: [
+            {
+              head: '1',
+            },
+          ],
+        },
+        data: async (input: any) => {
+          return [];
+        },
+        page: {
+          size: 1,
+          index: 0,
+        },
+      }),
+    );
+    let schema = TableDefine;
+    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    expect(element.querySelector('table')).toBeTruthy();
+    expect(element.querySelector(`table.pc-table-zebra`)).toBeTruthy();
+    expect(element.querySelector(`table.pc-table-pin-rows`)).toBeTruthy();
+    expect(element.querySelector(`table.pc-table-pin-cols`)).toBeTruthy();
+    expect(element.querySelector(`table.pc-table-xs`)).toBeTruthy();
   });
 });

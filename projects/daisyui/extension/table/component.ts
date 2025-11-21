@@ -156,8 +156,8 @@ export class TableNFCC {
   wrapperClass$$ = computed(() => {
     return clsx(
       this.zebra() ? this.#theme.addPrefix(`table-zebra`) : undefined,
-      this.pin()?.rows ? this.#theme.addPrefix(`table-pin-rows	`) : undefined,
-      this.pin()?.cols ? this.#theme.addPrefix(`table-pin-cols	`) : undefined,
+      this.pin()?.rows ? this.#theme.addPrefix(`table-pin-rows`) : undefined,
+      this.pin()?.cols ? this.#theme.addPrefix(`table-pin-cols`) : undefined,
       this.#theme.setSize('table', this.size()),
     );
   });
