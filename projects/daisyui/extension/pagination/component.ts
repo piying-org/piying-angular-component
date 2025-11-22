@@ -8,13 +8,13 @@ import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { AlertColor, Color, computedWithPrev, IconConfig } from '@piying/angular-daisyui/util';
-import { AttributesDirective } from '@piying/view-angular';
+import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import clsx from 'clsx';
 function goPage(value: number) {
   return { type: 'go' as const, value };
 }
 @Component({
-  selector: 'app-alert',
+  selector: 'app-pagination',
   templateUrl: './component.html',
   imports: [
     AttributesDirective,
@@ -31,7 +31,6 @@ function goPage(value: number) {
 export class PaginationNFCC {
   static __version = 2;
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
-
   templateRef = viewChild.required('templateRef');
   direction = input<'vertical' | 'horizontal'>();
   sizeOptions = input<number[]>();
@@ -86,14 +85,33 @@ export class PaginationNFCC {
 
     return list;
   });
+  #field = inject(PI_VIEW_FIELD_TOKEN, { optional: true });
+  ngOnInit(): void {
+    this.updatePageToProps();
+  }
   gotoPage(value: number) {
     this.value.update((data) => {
       return { ...data, index: value };
     });
+    this.updatePageToProps();
   }
   pageSizeChange(value: number) {
     this.value.update((item) => {
       return { ...item, size: value };
+    });
+    this.updatePageToProps();
+  }
+  updatePageToProps() {
+    let field = this.#field?.();
+    if (!field) {
+      console.warn(`❌piying-view🗄️`);
+      return;
+    }
+    field.props.update((data) => {
+      return {
+        ...data,
+        pageQueryParams: this.value(),
+      };
     });
   }
 }

@@ -3,10 +3,12 @@ import {
   Component,
   computed,
   inject,
+  Injector,
   input,
   linkedSignal,
   model,
   resource,
+  ResourceRef,
   Signal,
   signal,
   SimpleChange,
@@ -28,7 +30,7 @@ import {
 import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
-import { SortDirection, SortService } from '../../service/sort/sort.service';
+import { SortDirection } from '../../service/sort/sort.service';
 import {
   CheckBoxConfig,
   CheckboxService,
@@ -46,7 +48,7 @@ import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
-import { QueryService } from './query.service';
+// import { QueryService } from './query.service';
 import { localData } from './local-data';
 import { LoadingData } from './type';
 import { dataConvert } from './util';
@@ -142,10 +144,15 @@ export class TableNFCC {
   sortMultiple = input<boolean>();
   checkboxConfig = input<CheckBoxConfig<any>>();
   define = input<TableItemDefine2>();
-  data = input<any[] | ((data: LoadingData) => Promise<any[]>)>([]);
+  data = input<any[] | ResourceRef<any[]>>([]);
+  injector = inject(Injector);
   rawData$$ = computed(() => {
     let data = this.data();
-    return Array.isArray(data) ? localData(data) : data;
+    return Array.isArray(data)
+      ? untracked(() =>
+          resource({ loader: async () => dataConvert(data), injector: this.injector }),
+        )
+      : data;
   });
   #checkboxService = inject(CheckboxService);
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
@@ -156,11 +163,7 @@ export class TableNFCC {
   trackBy = input((key: number, value: any) => {
     return key;
   });
-  page = model<{ size: number; index: number }>({ size: 10, index: 0 });
-  offset$$ = computed(() => {
-    let page = this.page();
-    return page.index * page.size;
-  });
+
   pagination = input<{
     sizeOptions?: number[];
     enable: boolean;
@@ -227,35 +230,7 @@ export class TableNFCC {
       })
       .filter((a): a is v.TupleSchema<any, undefined> => !!a);
   }
-  #queryService = inject(QueryService, { optional: true });
-  data$ = resource({
-    params: computed(
-      () => {
-        let data = this.rawData$$();
-        if (!this.#queryService) {
-          return { data: data, isLoading: false };
-        }
-        let params = this.#queryService.params$$();
-        let isLoading = this.#queryService.isLoading$$();
-        return {
-          data: data,
-          isLoading,
-          params,
-        };
-      },
-      {
-        equal: (a, b) => {
-          return b.isLoading ? true : a === b;
-        },
-      },
-    ),
-    loader: async (res) => {
-      let { params } = res;
-      return params.data(res as LoadingData).then((data) => {
-        return dataConvert(data);
-      });
-    },
-  });
+
   ngOnChanges(changes: Record<keyof TableNFCC, SimpleChange>): void {
     if (changes.checkboxConfig && this.checkboxConfig()) {
       this.#checkboxService.init(this.checkboxConfig()!);
@@ -273,54 +248,12 @@ export class TableNFCC {
     return [data.length, data];
   }
   list$$ = computedWithPrev<any[]>((prev) => {
-    return this.data$.value()?.[1] ?? prev!;
+    return this.rawData$$().value()?.[1] ?? prev!;
   });
   count$$ = computedWithPrev<number>((prev) => {
-    return this.data$.value()?.[0] ?? prev!;
+    return this.rawData$$().value()?.[0] ?? prev!;
   });
-  maxPageCount$$ = computed(() => {
-    return Math.ceil(this.count$$() / this.page().size);
-  });
-  // currentPage$ = signal(0);
-  pageRange$$ = computed(() => {
-    let list = [];
-    let current = this.page().index;
-    let fullStart = current - 4 < 0;
-    let fullEnd = current + 5 > this.maxPageCount$$();
-    if (fullStart) {
-      let index = current - 1;
-      while (index !== -1) {
-        list.unshift(goPage(index));
-        index--;
-      }
-    } else {
-      let index = current - 1;
-      while (index !== -1 && current - index !== 2) {
-        list.unshift(goPage(index));
-        index--;
-      }
-      list.push({ type: 'prev', value: 5 });
-    }
-    list.push(goPage(current));
 
-    if (fullEnd) {
-      let index = current + 1;
-      while (index < this.maxPageCount$$()) {
-        list.push(goPage(index));
-        index++;
-      }
-    } else {
-      let index = current + 1;
-
-      while (index < this.maxPageCount$$() && index - current !== 2) {
-        list.push(goPage(index));
-        index++;
-      }
-      list.push({ type: 'next', value: 5 });
-    }
-
-    return list;
-  });
   isFunction(input: any) {
     return typeof input === 'function';
   }
@@ -334,11 +267,7 @@ export class TableNFCC {
     }
     return obj;
   };
-  gotoPage(value: number) {
-    this.page.update((data) => {
-      return { ...data, index: value };
-    });
-  }
+
   #itemDataMap = new Map<unknown, WritableSignal<any>>();
   getItemData = (id: unknown, value: any) => {
     return untracked(() => {
@@ -350,9 +279,4 @@ export class TableNFCC {
   };
 
   isSchema = isSchema;
-  pageSizeChange(value: number) {
-    this.page.update((item) => {
-      return { ...item, size: value };
-    });
-  }
 }

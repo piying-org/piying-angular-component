@@ -35,7 +35,7 @@
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.8",
     "@cyia/ngx-common": "^20.0.1",
-    "@piying/view-angular": "^1.9.9",
+    "@piying/view-angular": "^1.9.11",
     "@tailwindcss/postcss": "^4.1.16",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.41.0",

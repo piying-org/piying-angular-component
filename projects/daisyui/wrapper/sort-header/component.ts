@@ -12,7 +12,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { SortDirection, SortService } from '@piying/angular-daisyui/service';
+import { SortDirection } from '@piying/angular-daisyui/service';
 import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
 import { inputSortDirective } from './input-checkbox.directive';
 

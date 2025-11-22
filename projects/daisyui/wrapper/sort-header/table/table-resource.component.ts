@@ -1,0 +1,53 @@
+import { Component, computed, inject, OnInit, resource, viewChild } from '@angular/core';
+import { SortService } from '@piying/angular-daisyui/service';
+import { PiyingViewWrapperBase } from '@piying/view-angular';
+import { dataConvert } from '../../../extension/table/util';
+import { localData } from '../../../extension/table/local-data';
+
+@Component({
+  selector: 'app-table-resource',
+  template: `<ng-template #templateRef>
+    <ng-container #fieldComponent></ng-container
+  ></ng-template>`,
+})
+export class TableResourceWC extends PiyingViewWrapperBase {
+  static __version = 2;
+  templateRef = viewChild.required('templateRef');
+  rawData$$ = computed(() => {
+    let data = this.field$$().props()['data'];
+    return Array.isArray(data) ? localData(data) : data;
+  });
+  queryParams$$ = computed(() => {
+    return this.field$$().props()['queryParams'];
+  });
+  data$ = resource({
+    params: computed(() => {
+      let params = this.queryParams$$();
+      return {
+        data: this.rawData$$(),
+        params,
+      };
+    }),
+    loader: async (res) => {
+      let { params } = res;
+      return params.data(res as any).then((data: any) => {
+        return dataConvert(data);
+      });
+    },
+  });
+  constructor() {
+    super();
+    this.field$$().inputs.update((inputs) => {
+      return {
+        ...inputs,
+        data: this.data$,
+      };
+    });
+    this.field$$().props.update((props) => {
+      return {
+        ...props,
+        data$: this.data$,
+      };
+    });
+  }
+}
