@@ -39,7 +39,7 @@ const types = list.reduce(
 );
 let defaultWrapper = Object.values(WrapperGroup).reduce(
   (obj, item) => {
-    let result = reflectComponentType(item);
+    let result = reflectComponentType(item as any);
     if (!result) {
       return obj;
     }

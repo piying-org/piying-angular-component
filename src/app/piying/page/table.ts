@@ -11,8 +11,8 @@ import {
 } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import { setDirectives } from '@piying/view-angular';
-import { ClickDirective } from '@piying/angular-daisyui/directive';
 import { map, startWith, Subject } from 'rxjs';
+import { ExpandRowDirective } from '@piying/angular-daisyui/wrapper';
 
 export const TableDefine = v.pipe(
   NFCSchema,
@@ -29,12 +29,7 @@ export const TableDefine = v.pipe(
               setComponent('tr'),
               setDirectives([
                 {
-                  type: ClickDirective,
-                  outputs: {
-                    clicked: (event: any, field) => {
-                      field.context.status.toggleExpand(field.context.item$());
-                    },
-                  },
+                  type: ExpandRowDirective,
                 },
               ]),
             ),
