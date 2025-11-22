@@ -18,8 +18,8 @@ import {
 
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementExist, assertElementSelector } from '../util/element';
-import { TableQueryParams } from '@piying/angular-daisyui/extension';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { TableQueryParams } from '../../extension/table/type';
 fdescribe('table', () => {
   it('str-head', async () => {
     let data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);

@@ -76,18 +76,6 @@ export interface TableItemDefine2 {
 
   columns: ColumnGroupDefine;
 }
-function goPage(value: number) {
-  return { type: 'go' as const, value };
-}
-export type TableQueryParams = {
-  params: any;
-  data: any[] | ((config: any) => Promise<any[]>);
-  page: {
-    size: number;
-    index: number;
-  };
-  direction: Record<string, SortDirection>;
-};
 
 export function createRowDefine() {
   return v.pipe(v.tuple([]), setComponent(TableRowFGC));

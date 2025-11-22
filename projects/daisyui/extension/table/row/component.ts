@@ -43,6 +43,4 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [],
 })
-export class TableRowFGC extends PiyingViewGroupBase {
-
-}
+export class TableRowFGC extends PiyingViewGroupBase {}

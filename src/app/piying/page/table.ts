@@ -122,7 +122,9 @@ export const TableDefine = v.object({
         let pageProps = field.get(['..', 'page'])?.props;
         return computed(() => {
           return {
+            // page field
             page: pageProps?.()['pageQueryParams'],
+            // sort-table
             direction: props()['sortQueryParams'],
           };
         });
