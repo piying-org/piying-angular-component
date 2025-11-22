@@ -7,8 +7,10 @@ import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 })
 export class ExpandRowDirective {
   #field = inject(PI_VIEW_FIELD_TOKEN);
+  #status = inject(TableStatusService);
+
   @HostListener('click', [])
   a() {
-    this.#field().context['status'].toggleExpand(this.#field().context!['item$']());
+    this.#status.toggleExpand(this.#field().context!['item$']());
   }
 }

@@ -6,7 +6,7 @@ import { TABLE_STATUS_TOKEN } from '../../../extension/table/token';
 @Component({
   selector: 'app-table-status',
   templateUrl: './component.html',
-  providers: [{ provide: TABLE_STATUS_TOKEN, useClass: TableStatusService }],
+  providers: [TableStatusService, { provide: TABLE_STATUS_TOKEN, useExisting: TableStatusService }],
 })
 export class TableStatusComponent extends PiyingViewWrapperBase {
   static __version = 2;
