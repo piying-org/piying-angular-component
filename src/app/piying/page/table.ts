@@ -66,8 +66,8 @@ export const TableDefine = v.object({
               patchInputs({ content: '1234' }),
               setWrappers(['td', 'sort']),
               patchProps({
-                  key: 'key2',
-              })
+                key: 'title1',
+              }),
             ),
           },
           '3': {
@@ -77,7 +77,7 @@ export const TableDefine = v.object({
               patchInputs({ content: '666' }),
               setWrappers(['td', 'sort']),
               patchProps({
-                key: 'key1',
+                key: 'badge1',
                 direction: 1,
               }),
             ),
@@ -102,16 +102,21 @@ export const TableDefine = v.object({
         },
       },
     }),
+    patchProps({ sortList: ['title1', 'badge1'] }),
     patchAsyncProps({
       data: () => {
         return [
           {
-            title1: '测试内容',
+            title1: '测试内容1',
             badge1: 'data1',
           },
           {
             title1: '测试内容2',
             badge1: 'data2',
+          },
+          {
+            title1: '测试内容3',
+            badge1: 'data3',
           },
         ];
       },
@@ -136,7 +141,7 @@ export const TableDefine = v.object({
     setComponent('pagination'),
     patchInputs({
       value: {
-        size: 1,
+        size: 2,
         index: 0,
       },
     }),

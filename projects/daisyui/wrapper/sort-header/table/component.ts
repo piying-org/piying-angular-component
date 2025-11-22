@@ -20,7 +20,11 @@ export class SortTablehWC extends PiyingViewWrapperBase {
       this.field$$().props.update((data) => {
         return {
           ...data,
-          sortQueryParams: value,
+          sortQueryParams: ((this.props$$()['sortList'] ?? Object.keys(value)) as string[])
+            .map((key) => {
+              return value[key] ? { key: key, value: value[key] } : undefined;
+            })
+            .filter(Boolean),
         };
       });
     });
