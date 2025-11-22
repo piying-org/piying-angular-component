@@ -65,6 +65,9 @@ export const TableDefine = v.object({
               setComponent('button'),
               patchInputs({ content: '1234' }),
               setWrappers(['td', 'sort']),
+              patchProps({
+                  key: 'key2',
+              })
             ),
           },
           '3': {
@@ -74,6 +77,7 @@ export const TableDefine = v.object({
               patchInputs({ content: '666' }),
               setWrappers(['td', 'sort']),
               patchProps({
+                key: 'key1',
                 direction: 1,
               }),
             ),
@@ -91,11 +95,6 @@ export const TableDefine = v.object({
                     }),
                     startWith(true),
                   );
-                },
-              }),
-              mergeHooks({
-                allFieldsResolved(field) {
-                  field.context!['status'];
                 },
               }),
             ),
