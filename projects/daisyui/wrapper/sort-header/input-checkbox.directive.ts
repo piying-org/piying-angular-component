@@ -2,17 +2,16 @@ import { Directive, effect, ElementRef, inject, input, WritableSignal } from '@a
 import { SortDirection, SortService } from '@piying/angular-daisyui/service';
 
 @Directive({
-  selector: '[inputCheckbox]',
+  selector: '[inputSort]',
 })
-export class inputCheckboxDirective {
+export class inputSortDirective {
   key = input.required<string>();
-  inputCheckbox = input.required<SortDirection>();
+  inputSort = input.required<SortDirection>();
   #el = inject(ElementRef).nativeElement;
   #sort = inject(SortService);
 
-  #inited = false;
   ngOnChanges(): void {
-    let result = this.inputCheckbox();
+    let result = this.inputSort();
     switch (result) {
       case 0:
         this.#el.indeterminate = true;
@@ -28,12 +27,5 @@ export class inputCheckboxDirective {
     }
 
     this.#sort.update(this.key(), result);
-    if (!this.#inited) {
-      this.#inited = true;
-      this.#sort.pendingCount--;
-      if (this.#sort.pendingCount === 0) {
-        this.#sort.inited$.set(true);
-      }
-    }
   }
 }

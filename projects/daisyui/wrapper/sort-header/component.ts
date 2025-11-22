@@ -14,7 +14,7 @@ import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { SortDirection, SortService } from '@piying/angular-daisyui/service';
 import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
-import { inputCheckboxDirective } from './input-checkbox.directive';
+import { inputSortDirective } from './input-checkbox.directive';
 
 @Component({
   selector: 'app-sort-header',
@@ -25,7 +25,7 @@ import { inputCheckboxDirective } from './input-checkbox.directive';
     CssPrefixPipe,
     MergeClassPipe,
     AttributesDirective,
-    inputCheckboxDirective,
+    inputSortDirective,
   ],
 })
 export class SortHeaderWC extends PiyingViewWrapperBase {
@@ -36,7 +36,6 @@ export class SortHeaderWC extends PiyingViewWrapperBase {
     return this.props$$()['key'];
   });
 
-  #sort = inject(SortService);
   #index$ = linkedSignal(() => {
     return this.props$$()['direction'] ?? 0;
   });
@@ -46,7 +45,6 @@ export class SortHeaderWC extends PiyingViewWrapperBase {
   });
   constructor() {
     super();
-    this.#sort.pendingCount++;
   }
 
   valueChange() {

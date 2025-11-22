@@ -46,6 +46,10 @@ import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
+import { QueryService } from './query.service';
+import { localData } from './local-data';
+import { LoadingData } from './type';
+import { dataConvert } from './util';
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((rowData: any) => any);
 export type DataResolved = [number, any[]];
@@ -128,7 +132,7 @@ export function createDefaultColDefineFn(
     CssPrefixPipe,
     MergeClassPipe,
   ],
-  providers: [SortService, CheckboxService],
+  providers: [CheckboxService],
 })
 export class TableNFCC {
   static __version = 2;
@@ -138,8 +142,11 @@ export class TableNFCC {
   sortMultiple = input<boolean>();
   checkboxConfig = input<CheckBoxConfig<any>>();
   define = input<TableItemDefine2>();
-  data = input<any[] | ((config: any) => Promise<any[]>)>([]);
-  #sortService = inject(SortService);
+  data = input<any[] | ((data: LoadingData) => Promise<any[]>)>([]);
+  rawData$$ = computed(() => {
+    let data = this.data();
+    return Array.isArray(data) ? localData(data) : data;
+  });
   #checkboxService = inject(CheckboxService);
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
   zebra = input<boolean>();
@@ -220,35 +227,36 @@ export class TableNFCC {
       })
       .filter((a): a is v.TupleSchema<any, undefined> => !!a);
   }
+  #queryService = inject(QueryService, { optional: true });
   data$ = resource({
-    params: () => {
-      let data = this.data();
-      let direction = this.#sortService.direction$();
-      return {
-        params: this.params(),
-        data: data,
-        page: this.page(),
-        direction,
-        sortInited: this.#sortService.inited$(),
-      };
-    },
+    params: computed(
+      () => {
+        let data = this.rawData$$();
+        if (!this.#queryService) {
+          return { data: data, isLoading: false };
+        }
+        let params = this.#queryService.params$$();
+        let isLoading = this.#queryService.isLoading$$();
+        return {
+          data: data,
+          isLoading,
+          params,
+        };
+      },
+      {
+        equal: (a, b) => {
+          return b.isLoading ? true : a === b;
+        },
+      },
+    ),
     loader: async (res) => {
       let { params } = res;
-      if (typeof params.data === 'function') {
-        return params.data(res).then((data) => {
-          return this.dataConvert(data);
-        });
-      }
-      let start = params.page.index * params.page.size;
-      let result = this.dataConvert(params.data);
-      result[1] = result[1].slice(start, start + params.page.size);
-      return result;
+      return params.data(res as LoadingData).then((data) => {
+        return dataConvert(data);
+      });
     },
   });
   ngOnChanges(changes: Record<keyof TableNFCC, SimpleChange>): void {
-    if (changes.sortMultiple) {
-      this.#sortService.multiple = this.sortMultiple();
-    }
     if (changes.checkboxConfig && this.checkboxConfig()) {
       this.#checkboxService.init(this.checkboxConfig()!);
     }

@@ -1,0 +1,41 @@
+<ng-template #templateRef let-attr="attributes">
+  <div class="flex items-center gap-2">
+    @if (sizeOptions(); as sizeOptions) {
+      <select class="select w-20" [ngModel]="value().size" (ngModelChange)="pageSizeChange($event)">
+        @for (item of sizeOptions; track $index) {
+          <option [ngValue]="item">
+            {{ optionsLabel() ? (optionsLabel()! | pure: item : value().index : count()) : item }}
+          </option>
+        }
+      </select>
+    }
+    <div [class]="wrapperClass$()">
+      <button class="join-item btn" [disabled]="value().index === 0" (click)="gotoPage(0)">
+        «
+      </button>
+      @for (item of pageRange$$(); track $index) {
+        @if (item.type === 'go') {
+          <input
+            class="join-item btn btn-square"
+            type="radio"
+            name="options"
+            [aria-label]="item.value + 1"
+            [checked]="item.value === value().index"
+            (click)="gotoPage(item.value)"
+          />
+        } @else if (item.type === 'prev') {
+          <button class="join-item btn" (click)="gotoPage(value().index - 5)"><</button>
+        } @else if (item.type === 'next') {
+          <button class="join-item btn" (click)="gotoPage(value().index + 5)">></button>
+        }
+      }
+      <button
+        class="join-item btn"
+        [disabled]="value().index === maxPageCount$$() - 1"
+        (click)="gotoPage(maxPageCount$$() - 1)"
+      >
+        »
+      </button>
+    </div>
+  </div>
+</ng-template>
