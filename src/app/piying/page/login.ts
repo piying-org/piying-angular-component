@@ -7,28 +7,20 @@ import {
   setWrappers,
   topClass,
 } from '@piying/view-angular-core';
-export const LoginDefine = v.pipe(
+import { LoginDefine } from './component/login';
+export const LoginPageDefine = v.pipe(
   v.object({
-    name: v.pipe(
-      v.string(),
-      setWrappers(['label-wrapper']),
-      v.title('用户名'),
-      componentClass('w-full'),
-    ),
-    password: v.pipe(
-      v.string(),
-      setWrappers(['label-wrapper']),
-      v.title('密码'),
-      componentClass('w-full'),
-    ),
-    __button: v.pipe(
+    __logo: v.pipe(
       NFCSchema,
-      setComponent('button'),
+      setComponent('common-data'),
       patchInputs({
-        content: '登录',
-        color: 'primary',
+        content: {
+          icon: { fontSet: 'icon', fontIcon: 'icon-logo' },
+        },
       }),
     ),
+    __login: v.pipe(LoginDefine, topClass('max-w-[50vw] w-full')),
   }),
-  setComponent('fieldset'),
+  setWrappers(['div']),
+  topClass('flex items-center justify-center h-[100vh] flex-col'),
 );

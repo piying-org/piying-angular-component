@@ -40,8 +40,8 @@ export const MainPage = v.pipe(
           setComponent('menu-tree'),
           patchInputs({
             list: [
-              { title: 'table', router: { routerLink: './table' } },
-              { title: 'login', router: { routerLink: './login' } },
+              { title: 'table', router: { routerLink: './component/table' } },
+              { title: 'login', router: { routerLink: './component/login' } },
             ],
           }),
         ),
