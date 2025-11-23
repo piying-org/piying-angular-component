@@ -2,6 +2,7 @@ import * as v from 'valibot';
 import {
   componentClass,
   NFCSchema,
+  patchAsyncInputs,
   patchInputs,
   setComponent,
   setWrappers,
@@ -27,6 +28,13 @@ export const LoginDefine = v.pipe(
       patchInputs({
         content: '登录',
         color: 'primary',
+      }),
+      patchAsyncInputs({
+        clicked: (field) => {
+          return () => {
+            return field.context?.['account'] && field.context['account'].login();
+          };
+        },
       }),
     ),
   }),

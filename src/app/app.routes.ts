@@ -4,6 +4,8 @@ import { MainPage } from './piying/page/main';
 import { TableDefine } from './piying/page/component/table';
 import { LoginDefine } from './piying/page/component/login';
 import { LoginPageDefine } from './piying/page/login';
+import { inject } from '@angular/core';
+import { AccountService } from './service/account.service';
 
 export const routes: Routes = [
   {
@@ -16,6 +18,11 @@ export const routes: Routes = [
     component: SchemaViewRC,
     data: {
       schema: () => LoginPageDefine,
+      context: () => {
+        return {
+          account: inject(AccountService),
+        };
+      },
     },
   },
   {
@@ -32,6 +39,11 @@ export const routes: Routes = [
       {
         path: 'component',
         children: [
+          {
+            path: '',
+            redirectTo: 'table',
+            pathMatch: 'full',
+          },
           {
             path: 'table',
             component: SchemaViewRC,
