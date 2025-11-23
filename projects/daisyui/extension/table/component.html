@@ -1,45 +1,82 @@
 <ng-template #templateRef let-attr="attributes">
-  <div class="overflow-x-auto" [attributes]="attr()">
+  <div
+    [class]="'overflow-x-auto' | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
     <table [class]="'table' | cssPrefix | mergeClass: wrapperClass$$()">
       @let headList = headList$$();
-      @if (headList.length) {
-        <thead>
-          @for (item of headList; track $index) {
+      @let bodyList = bodyList$$();
+      @if (type() === 'category') {
+        @for (item of data$$(); track trackBy()($index, item)) {
+          @let id = trackBy() | pure: $index : item;
+          @let itemData = getItemData | pure: id : item;
+          <thead>
+            @let row = headList[0];
             <ng-container
               [selectlessOutlet]="StrOrTemplateComponent"
-              [selectlessOutletInputs]="selectorlessInput | pure: item"
+              [selectlessOutletInputs]="
+                selectorlessInput | pure: row : { item$: categoryHeadData | pure: itemData }
+              "
             ></ng-container>
-          }
-        </thead>
-      }
-      @let bodyList = bodyList$$();
-      @if (bodyList.length) {
-        <tbody>
-          @for (item of list$$(); track trackBy()($index, item)) {
-            @let index2 = $index;
-            @let id = trackBy() | pure: $index : item;
-            @let itemData = getItemData | pure: id : item;
-            @for (row of bodyList; track $index) {
+          </thead>
+          <tbody>
+            @let bodyData = item[1];
+            @for (groupItem of bodyData; track $index) {
+              @let index3 = $index;
+              @for (row of bodyList; track $index) {
+                <ng-container
+                  [selectlessOutlet]="StrOrTemplateComponent"
+                  [selectlessOutletInputs]="
+                    selectorlessInput
+                      | pure
+                        : row
+                        : { item$: categoryBodyData | pure: itemData : index3, index: index3 }
+                  "
+                ></ng-container>
+              }
+            }
+          </tbody>
+        }
+      } @else {
+        @if (headList.length) {
+          <thead>
+            @for (item of headList; track $index) {
               <ng-container
                 [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="
-                  selectorlessInput | pure: row : { item$: itemData, index: index2 }
-                "
+                [selectlessOutletInputs]="selectorlessInput | pure: item"
               ></ng-container>
             }
-          }
-        </tbody>
-      }
-      @let footList = footList$$();
-      @if (footList.length) {
-        <tfoot>
-          @for (item of footList; track $index) {
-            <ng-container
-              [selectlessOutlet]="StrOrTemplateComponent"
-              [selectlessOutletInputs]="selectorlessInput | pure: item"
-            ></ng-container>
-          }
-        </tfoot>
+          </thead>
+        }
+        @if (bodyList.length) {
+          <tbody>
+            @for (item of data$$(); track trackBy()($index, item)) {
+              @let index2 = $index;
+              @let id = trackBy() | pure: $index : item;
+              @let itemData = getItemData | pure: id : item;
+              @for (row of bodyList; track $index) {
+                <ng-container
+                  [selectlessOutlet]="StrOrTemplateComponent"
+                  [selectlessOutletInputs]="
+                    selectorlessInput | pure: row : { item$: itemData, index: index2 }
+                  "
+                ></ng-container>
+              }
+            }
+          </tbody>
+        }
+        @let footList = footList$$();
+        @if (footList.length) {
+          <tfoot>
+            @for (item of footList; track $index) {
+              <ng-container
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="selectorlessInput | pure: item"
+              ></ng-container>
+            }
+          </tfoot>
+        }
       }
     </table>
   </div>

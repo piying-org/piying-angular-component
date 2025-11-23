@@ -6,6 +6,7 @@ import { LoginDefine } from './piying/page/component/login';
 import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
+import { CategoryDefine } from './piying/page/component/category';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => TableDefine,
+            },
+          },
+          {
+            path: 'category',
+            component: SchemaViewRC,
+            data: {
+              schema: () => CategoryDefine,
             },
           },
           {

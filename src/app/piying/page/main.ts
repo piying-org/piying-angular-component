@@ -41,6 +41,7 @@ export const MainPage = v.pipe(
           patchInputs({
             list: [
               { title: 'table', router: { routerLink: './component/table' } },
+              { title: 'category', router: { routerLink: './component/category' } },
               { title: 'login', router: { routerLink: './component/login' } },
               { type: 'divider' },
               {

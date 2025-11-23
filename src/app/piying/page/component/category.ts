@@ -1,0 +1,85 @@
+import * as v from 'valibot';
+import {
+  componentClass,
+  hideWhen,
+  mergeHooks,
+  NFCSchema,
+  patchAsyncInputs,
+  patchAsyncProps,
+  patchInputs,
+  patchProps,
+  setComponent,
+  setWrappers,
+} from '@piying/view-angular-core';
+import { computed, isSignal } from '@angular/core';
+import { setDirectives } from '@piying/view-angular';
+import { map, startWith, Subject } from 'rxjs';
+import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
+import { range } from 'es-toolkit';
+
+export const CategoryDefine = v.object({
+  table: v.pipe(
+    NFCSchema,
+    setComponent('table'),
+    setWrappers(['table-status', 'table-resource']),
+    patchInputs({ type: 'category', pin: { rows: true } }),
+    patchAsyncInputs({
+      define: (field) => {
+        return {
+          row: {
+            head: [{ columns: ['0'] }],
+            body: [
+              {
+                columns: ['0'],
+              },
+              {
+                columns: ['extra'],
+                define: v.pipe(
+                  v.tuple([]),
+                  setComponent('tr'),
+                  setDirectives([
+                    {
+                      type: ExpandRowDirective,
+                    },
+                  ]),
+                  hideWhen({
+                    listen(fn, field) {
+                      return (field.context.status.expanded as Subject<any>).pipe(
+                        map((item) => {
+                          return item !== field.context.item$();
+                        }),
+                        startWith(true),
+                      );
+                    },
+                  }),
+                ),
+              },
+            ],
+          },
+          columns: {
+            '0': {
+              head: (data: any) => data,
+              body: (node: any, index: number) => {
+                return node;
+              },
+            },
+            extra: {
+              head: (data: any) => data,
+              body: (node: any, index: number) => {
+                return `extra-${node}`;
+              },
+            },
+          },
+        };
+      },
+    }),
+    patchAsyncProps({
+      data: () => {
+        return range(1, 100).map((index) => {
+          return [`k${index}`, range(4).map((i) => `k${index}v${i}`)];
+        });
+      },
+    }),
+    componentClass('h-100'),
+  ),
+});

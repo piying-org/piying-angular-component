@@ -36,7 +36,10 @@ export class TableResourceWC extends PiyingViewWrapperBase {
       });
     },
   });
-  count$$ = computedWithPrev((value) => {    
+  list$$ = computedWithPrev((value) => {
+    return this.data$.value()?.[1] ?? value;
+  });
+  count$$ = computedWithPrev((value) => {
     return this.data$.value()?.[0] ?? value;
   });
   constructor() {
@@ -44,10 +47,10 @@ export class TableResourceWC extends PiyingViewWrapperBase {
     this.field$$().inputs.update((inputs) => {
       return {
         ...inputs,
-        data: this.data$,
+        data: this.list$$,
       };
     });
-    this.field$$().props.update((props) => {      
+    this.field$$().props.update((props) => {
       return {
         ...props,
         count$$: this.count$$,

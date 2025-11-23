@@ -7,7 +7,7 @@ export function localData(data: any) {
     let page = res.params.params?.['page'];
     let list: any[];
     if (!page) {
-      list = result;
+      list = result[1];
     } else {
       let start = page.index * page.size;
       list = result[1].slice(start, start + page.size);

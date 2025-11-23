@@ -48,7 +48,7 @@ import { TABLE_STATUS_TOKEN } from './token';
 // import { QueryService } from './query.service';
 import { localData } from './local-data';
 import { LoadingData } from './type';
-import { dataConvert } from './util';
+
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((rowData: any) => any);
 export type DataResolved = [number, any[]];
@@ -127,15 +127,11 @@ export class TableNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   define = input<TableItemDefine2>();
   // todo待修改
-  data = input<any[] | ResourceRef<any[]>>([]);
+  data = input<any[] | Signal<any[]>>([]);
   injector = inject(Injector);
-  rawData$$ = computed(() => {
+  data$$ = computed(() => {
     let data = this.data();
-    return Array.isArray(data)
-      ? untracked(() =>
-          resource({ loader: async () => dataConvert(data), injector: this.injector }),
-        )
-      : data;
+    return Array.isArray(data) ? data : data();
   });
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
   zebra = input<boolean>();
@@ -150,6 +146,7 @@ export class TableNFCC {
     enable: boolean;
     optionsLabel?: (size: number, index: number, count: number) => string;
   }>();
+  type = input<'category'>();
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
@@ -219,12 +216,6 @@ export class TableNFCC {
     }
     return [data.length, data];
   }
-  list$$ = computedWithPrev<any[]>((prev) => {
-    return this.rawData$$().value()?.[1] ?? prev!;
-  });
-  count$$ = computedWithPrev<number>((prev) => {
-    return this.rawData$$().value()?.[0] ?? prev!;
-  });
 
   isFunction(input: any) {
     return typeof input === 'function';
@@ -251,4 +242,14 @@ export class TableNFCC {
   };
 
   isSchema = isSchema;
+  categoryHeadData = (data: Signal<any>) => {
+    return computed(() => {
+      return data()[0];
+    });
+  };
+  categoryBodyData = (data: Signal<any>, index: number) => {
+    return computed(() => {
+      return data()[1][index];
+    });
+  };
 }
