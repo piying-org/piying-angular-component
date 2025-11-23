@@ -1,8 +1,9 @@
-import { Component, computed, inject, OnInit, resource, viewChild } from '@angular/core';
+import { Component, computed, inject, isSignal, OnInit, resource, viewChild } from '@angular/core';
 import { SortService } from '@piying/angular-daisyui/service';
 import { PiyingViewWrapperBase } from '@piying/view-angular';
 import { dataConvert } from '../../../extension/table/util';
 import { localData } from '../../../extension/table/local-data';
+import { computedWithPrev } from '@piying/angular-daisyui/util';
 
 @Component({
   selector: 'app-table-resource',
@@ -35,6 +36,9 @@ export class TableResourceWC extends PiyingViewWrapperBase {
       });
     },
   });
+  count$$ = computedWithPrev((value) => {    
+    return this.data$.value()?.[0] ?? value;
+  });
   constructor() {
     super();
     this.field$$().inputs.update((inputs) => {
@@ -43,10 +47,10 @@ export class TableResourceWC extends PiyingViewWrapperBase {
         data: this.data$,
       };
     });
-    this.field$$().props.update((props) => {
+    this.field$$().props.update((props) => {      
       return {
         ...props,
-        data$: this.data$,
+        count$$: this.count$$,
       };
     });
   }

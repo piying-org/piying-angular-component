@@ -10,7 +10,7 @@ import {
   setComponent,
   setWrappers,
 } from '@piying/view-angular-core';
-import { computed } from '@angular/core';
+import { computed, isSignal } from '@angular/core';
 import { setDirectives } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying/angular-daisyui/wrapper';
@@ -149,7 +149,7 @@ export const TableDefine = v.object({
       count: (field) => {
         let tableField = field.get(['..', 'table'])!;
         return computed(() => {
-          return tableField.props()['data$'].value()?.[0];
+          return tableField.props()['count$$']();
         });
       },
     }),
