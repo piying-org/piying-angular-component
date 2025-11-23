@@ -16,12 +16,15 @@
       @if (bodyList.length) {
         <tbody>
           @for (item of list$$(); track trackBy()($index, item)) {
+            @let index2 = $index;
             @let id = trackBy() | pure: $index : item;
             @let itemData = getItemData | pure: id : item;
             @for (row of bodyList; track $index) {
               <ng-container
                 [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="selectorlessInput | pure: row : { item$: itemData }"
+                [selectlessOutletInputs]="
+                  selectorlessInput | pure: row : { item$: itemData, index: index2 }
+                "
               ></ng-container>
             }
           }

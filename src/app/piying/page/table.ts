@@ -19,95 +19,107 @@ export const TableDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
-    setWrappers(['table-status', 'sort-table', 'table-resource','checkbox-table']),
-    patchInputs({
-      define: {
-        row: {
-          body: [
-            {
-              define: v.pipe(
-                v.tuple([]),
-                setComponent('tr'),
-                setDirectives([
-                  {
-                    type: ExpandRowDirective,
-                  },
-                ]),
+    setWrappers(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
+
+    patchAsyncInputs({
+      define: (field) => {
+        let pageFiled = field.get(['..', 'page']);
+        return {
+          row: {
+            head: [{ columns: ['checkbox', 'index', '1'] }],
+            body: [
+              {
+                define: v.pipe(
+                  v.tuple([]),
+                  setComponent('tr'),
+                  setDirectives([
+                    {
+                      type: ExpandRowDirective,
+                    },
+                  ]),
+                ),
+                columns: ['checkbox', 'index', '1'],
+              },
+              { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
+            ],
+          },
+          columns: {
+            checkbox: {
+              head: ' ',
+              body: v.pipe(
+                v.boolean(),
+                setComponent('checkbox'),
+                setWrappers(['td', 'table-checkbox-body']),
               ),
-              columns: ['checkbox', '1'],
             },
-            { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
-          ],
-        },
-        columns: {
-          checkbox: {
-            head: '',
-            body: v.pipe(
-              v.boolean(),
-              setComponent('checkbox'),
-              setWrappers(['table-checkbox-body']),
-            ),
-          },
-          '0': {
-            head: '测试',
-            body: (data: any) => {
-              return data.title1;
+            index: {
+              head: '索引',
+              body: (node: any, index: number) => {
+                let { pageQueryParams } = pageFiled?.props()!;
+                return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
+              },
+            },
+            '0': {
+              head: '测试',
+              body: (data: any) => {
+                return data.title1;
+              },
+            },
+            '1': {
+              head: 'badge',
+              body: v.pipe(
+                NFCSchema,
+                setComponent('badge'),
+                setWrappers(['td']),
+                patchAsyncInputs({
+                  content: ({ context }) => {
+                    return computed(() => context.item$().badge1);
+                  },
+                }),
+              ),
+            },
+            '2': {
+              head: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                patchInputs({ content: '1234' }),
+                setWrappers(['td', 'sort-header']),
+                patchProps({
+                  key: 'title1',
+                }),
+              ),
+            },
+            '3': {
+              head: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                patchInputs({ content: '666' }),
+                setWrappers(['td', 'sort-header']),
+                patchProps({
+                  key: 'badge1',
+                  direction: 1,
+                }),
+              ),
+            },
+            extra: {
+              body: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                setWrappers(['td']),
+                hideWhen({
+                  listen(fn, field) {
+                    return (field.context.status.expanded as Subject<any>).pipe(
+                      map((item) => {
+                        return item !== field.context.item$();
+                      }),
+                      startWith(true),
+                    );
+                  },
+                }),
+              ),
             },
           },
-          '1': {
-            head: 'badge',
-            body: v.pipe(
-              NFCSchema,
-              setComponent('badge'),
-              setWrappers(['td']),
-              patchAsyncInputs({
-                content: ({ context }) => {
-                  return computed(() => context.item$().badge1);
-                },
-              }),
-            ),
-          },
-          '2': {
-            head: v.pipe(
-              NFCSchema,
-              setComponent('button'),
-              patchInputs({ content: '1234' }),
-              setWrappers(['td', 'sort-header']),
-              patchProps({
-                key: 'title1',
-              }),
-            ),
-          },
-          '3': {
-            head: v.pipe(
-              NFCSchema,
-              setComponent('button'),
-              patchInputs({ content: '666' }),
-              setWrappers(['td', 'sort-header']),
-              patchProps({
-                key: 'badge1',
-                direction: 1,
-              }),
-            ),
-          },
-          extra: {
-            body: v.pipe(
-              NFCSchema,
-              setComponent('button'),
-              setWrappers(['td']),
-              hideWhen({
-                listen(fn, field) {
-                  return (field.context.status.expanded as Subject<any>).pipe(
-                    map((item) => {
-                      return item !== field.context.item$();
-                    }),
-                    startWith(true),
-                  );
-                },
-              }),
-            ),
-          },
-        },
+        };
       },
     }),
     patchProps({ sortList: ['title1', 'badge1'] }),

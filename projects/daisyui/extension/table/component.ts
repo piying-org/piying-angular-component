@@ -87,7 +87,7 @@ export function createDefaultColDefine(isHeader: boolean, content: any, context?
 }
 export function createDefaultColDefineFn(
   isHeader: boolean,
-  content: (item: any) => any,
+  content: (item: any, index: number) => any,
   context?: any,
 ) {
   return v.pipe(
@@ -98,7 +98,7 @@ export function createDefaultColDefineFn(
       content: ({ context }) => {
         return computed(() => {
           let item = context['item$']();
-          return content(item);
+          return content(item, context['index']);
         });
       },
     }),
@@ -125,7 +125,6 @@ export class TableNFCC {
   templateRef = viewChild.required('templateRef');
 
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
-  sortMultiple = input<boolean>();
   define = input<TableItemDefine2>();
   // todo待修改
   data = input<any[] | ResourceRef<any[]>>([]);
@@ -175,9 +174,10 @@ export class TableNFCC {
   });
   #toColList<T extends 'head' | 'body' | 'foot'>(name: T) {
     let define = this.define()!;
-    let rowList = define.row?.[name]
-      ? define.row[name]
-      : [{ define: createRowDefine() } as RowItem];
+    let rowList = (define.row?.[name] ?? [{}]).map((item) => {
+      return 'define' in item ? (item as RowItem) : { ...item, define: createRowDefine() };
+    });
+
     let isHeader = name === 'head';
     return rowList
       .map((row) => {
