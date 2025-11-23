@@ -19,7 +19,7 @@ export const TableDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
-    setWrappers(['table-status', 'sort-table', 'table-resource']),
+    setWrappers(['table-status', 'sort-table', 'table-resource','checkbox-table']),
     patchInputs({
       define: {
         row: {
@@ -34,12 +34,20 @@ export const TableDefine = v.object({
                   },
                 ]),
               ),
-              columns: ['1'],
+              columns: ['checkbox', '1'],
             },
             { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
           ],
         },
         columns: {
+          checkbox: {
+            head: '',
+            body: v.pipe(
+              v.boolean(),
+              setComponent('checkbox'),
+              setWrappers(['table-checkbox-body']),
+            ),
+          },
           '0': {
             head: '测试',
             body: (data: any) => {
