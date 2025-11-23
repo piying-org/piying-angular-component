@@ -6,7 +6,7 @@ import { PiyingViewWrapperBase } from '@piying/view-angular';
   selector: 'app-table-checkbox-one',
   templateUrl: './component.html',
 })
-export class TableCheckboxOneComponent extends PiyingViewWrapperBase {
+export class TableCheckboxOneWC extends PiyingViewWrapperBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   #checkboxService = inject(CheckboxService);

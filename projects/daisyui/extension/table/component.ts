@@ -31,10 +31,7 @@ import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 import { SortDirection } from '../../service/sort/sort.service';
-import {
-  CheckBoxConfig,
-  CheckboxService,
-} from '../../service/table-checkbox/table-checkbox.service';
+
 import {
   NFCSchema,
   patchAsyncInputs,
@@ -122,7 +119,6 @@ export function createDefaultColDefineFn(
     CssPrefixPipe,
     MergeClassPipe,
   ],
-  providers: [CheckboxService],
 })
 export class TableNFCC {
   static __version = 2;
@@ -130,8 +126,8 @@ export class TableNFCC {
 
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   sortMultiple = input<boolean>();
-  checkboxConfig = input<CheckBoxConfig<any>>();
   define = input<TableItemDefine2>();
+  // todo待修改
   data = input<any[] | ResourceRef<any[]>>([]);
   injector = inject(Injector);
   rawData$$ = computed(() => {
@@ -142,12 +138,10 @@ export class TableNFCC {
         )
       : data;
   });
-  #checkboxService = inject(CheckboxService);
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
   zebra = input<boolean>();
   pin = input<{ rows?: boolean; cols?: boolean }>();
   size = input<Size>();
-  params = input<any>();
   trackBy = input((key: number, value: any) => {
     return key;
   });
@@ -219,16 +213,6 @@ export class TableNFCC {
       .filter((a): a is v.TupleSchema<any, undefined> => !!a);
   }
 
-  ngOnChanges(changes: Record<keyof TableNFCC, SimpleChange>): void {
-    if (changes.checkboxConfig && this.checkboxConfig()) {
-      this.#checkboxService.init(this.checkboxConfig()!);
-    }
-  }
-  constructor() {
-    this.#checkboxService.setAllList(() => {
-      return this.list$$();
-    });
-  }
   dataConvert(data: any[]): DataResolved {
     if (data.length === 2 && typeof data[0] === 'number' && Array.isArray(data[1])) {
       return data as any;

@@ -3,10 +3,10 @@ import { CheckboxService } from '@piying/angular-daisyui/service';
 import { PiyingViewWrapperBase } from '@piying/view-angular';
 
 @Component({
-  selector: 'app-table-checkbox-one',
+  selector: 'app-table-checkbox-all',
   templateUrl: './component.html',
 })
-export class TableCheckboxOneComponent extends PiyingViewWrapperBase {
+export class TableCheckboxAllWC extends PiyingViewWrapperBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   #checkboxService = inject(CheckboxService);

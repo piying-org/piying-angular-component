@@ -30,6 +30,7 @@ export class CheckboxService<D = any> {
     result?.toggle(value);
   }
   #fn: (() => D[]) | undefined;
+  /** 用来设置一个获得所有列表数据的方法 */
   setAllList(fn: () => D[]) {
     this.#fn = fn;
   }
