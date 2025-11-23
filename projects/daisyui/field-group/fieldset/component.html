@@ -1,0 +1,15 @@
+<ng-template #templateRef let-attr="attributes">
+  <fieldset
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="'fieldset' | cssPrefix | mergeClass: attr()?.class"
+  >
+    <legend [class]="'fieldset-legend' | cssPrefix">{{ props$$()['title'] }}</legend>
+
+    @for (field of children$$(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+      ></ng-container>
+    }
+  </fieldset>
+</ng-template>

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { SchemaViewRC } from './schema-view/component';
 import { MainPage } from './piying/page/main';
 import { TableDefine } from './piying/page/table';
+import { LoginDefine } from './piying/page/login';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,13 @@ export const routes: Routes = [
         component: SchemaViewRC,
         data: {
           schema: () => TableDefine,
+        },
+      },
+      {
+        path: 'login',
+        component: SchemaViewRC,
+        data: {
+          schema: () => LoginDefine,
         },
       },
     ],

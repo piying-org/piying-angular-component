@@ -32,8 +32,10 @@
       [routerLink]="router.routerLink"
       [preserveFragment]="router.preserveFragment"
       [routerLinkActive]="'menu-active'"
-      [routerLinkActiveOptions]="router.activate?.routerLinkActiveOptions ?? routerLinkActiveOptions"
-      [ariaCurrentWhenActive]="router.activate?.ariaCurrentWhenActive"
+      [routerLinkActiveOptions]="
+        router.activate?.routerLinkActiveOptions ?? routerLinkActiveOptions
+      "
+      [ariaCurrentWhenActive]="router.activate?.ariaCurrentWhenActive ?? undefined"
       class="tooltip"
       [attr.data-tip]="item.tooltip || ''"
     >

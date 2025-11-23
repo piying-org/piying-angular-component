@@ -39,7 +39,10 @@ export const MainPage = v.pipe(
           NFCSchema,
           setComponent('menu-tree'),
           patchInputs({
-            list: [{ title: '测试', router: { routerLink: './abc' } }],
+            list: [
+              { title: 'table', router: { routerLink: './table' } },
+              { title: 'login', router: { routerLink: './login' } },
+            ],
           }),
         ),
       }),
@@ -49,5 +52,5 @@ export const MainPage = v.pipe(
   }),
   setComponent('drawer'),
 
-  topClass('h-[100vh]'),
+  topClass('h-[100vh] lg:drawer-open'),
 );

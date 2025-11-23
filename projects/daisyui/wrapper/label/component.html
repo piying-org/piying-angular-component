@@ -1,18 +1,37 @@
 <ng-template #templateRef let-attr="attributes">
-  <label
-    [ngClass]="props$$()['type']"
-    [class]="attr()?.class"
-    [attributes]="attr()"
-    [excludes]="['class']"
-  >
-    @let title = props$$()['title'];
-    @let isEnd = props$$()['labelPosition'] === 'end';
-    @if (title && !isEnd) {
-      <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
-    }
-    <input type="text" placeholder="URL" />
-    @if (title && isEnd) {
-      <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
-    }
-  </label>
+  @let title = props$$()['title'];
+  @let isEnd = isEnd$$();
+
+  @if (labelInline$$()) {
+    <label
+      [class]="
+        attr()?.class
+          | mergeClass: (props$$()['floating'] ? ('floating-label' | cssPrefix) : undefined)
+      "
+      [attributes]="attr()"
+      [excludes]="['class']"
+    >
+      @if (title && !isEnd) {
+        <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
+      }
+      <ng-container #fieldComponent></ng-container>
+      @if (title && isEnd) {
+        <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
+      }
+    </label>
+  } @else {
+    <div
+      [class]="layout$$() | twPrefix | mergeClass: attr()?.class"
+      [attributes]="attr()"
+      [excludes]="['class']"
+    >
+      @if (title && !isEnd) {
+        <label class="{{ 'label' | cssPrefix }}">{{ title }}</label>
+      }
+      <ng-container #fieldComponent></ng-container>
+      @if (title && isEnd) {
+        <label class="{{ 'label' | cssPrefix }}">{{ title }}</label>
+      }
+    </div>
+  }
 </ng-template>

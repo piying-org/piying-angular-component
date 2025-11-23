@@ -8,6 +8,7 @@ import { DivWC } from './component/div-wrapper/component';
 import { DivNFCC } from './component/div/component';
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/extension';
 import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
+import { InputFCC } from '@piying/angular-daisyui/field-control';
 
 const selectorPrefix = 'app-';
 
@@ -60,6 +61,9 @@ export const FieldGlobalConfig: PiViewConfig = {
     object: { type: PiyingViewGroup },
     div: {
       type: DivNFCC,
+    },
+    string: {
+      type: InputFCC,
     },
   },
   wrappers: {
