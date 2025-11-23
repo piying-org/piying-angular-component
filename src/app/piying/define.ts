@@ -6,10 +6,8 @@ import { PiViewConfig, PiyingViewGroup } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 import { DivWC } from './component/div-wrapper/component';
 import { DivNFCC } from './component/div/component';
-import { MenuTreeNFCC, TableNFCC } from '@piying/angular-daisyui/extension';
-import { ThWC, TdWC, SortHeaderWC } from '@piying/angular-daisyui/wrapper';
+import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/extension';
 import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
-import * as ExtensionGroup from '@piying/angular-daisyui/extension';
 
 const selectorPrefix = 'app-';
 
@@ -17,7 +15,7 @@ const list = [
   ...Object.values(NFCCGroup),
   ...Object.values(FCCGroup),
   ...Object.values(FGCGroup),
-  ...Object.values(ExtensionGroup),
+  ...Object.values(ExtComponentGroup),
 ] as Type<any>[];
 
 const types = list.reduce(
@@ -37,7 +35,7 @@ const types = list.reduce(
   },
   {} as Record<string, any>,
 );
-let defaultWrapper = Object.values(WrapperGroup).reduce(
+let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
   (obj, item) => {
     let result = reflectComponentType(item as any);
     if (!result) {
@@ -63,26 +61,11 @@ export const FieldGlobalConfig: PiViewConfig = {
     div: {
       type: DivNFCC,
     },
-    'menu-tree': {
-      type: MenuTreeNFCC,
-    },
-    table: {
-      type: TableNFCC,
-    },
   },
   wrappers: {
     ...defaultWrapper,
     div: {
       type: DivWC,
-    },
-    th: {
-      type: ThWC,
-    },
-    td: {
-      type: TdWC,
-    },
-    sort: {
-      type: SortHeaderWC,
     },
   },
 };
