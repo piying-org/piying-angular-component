@@ -27,6 +27,7 @@ const routerLinkActiveOptions = { exact: false };
     MatIconModule,
     MergeClassPipe,
     JsonPipe,
+    MergeClassPipe,
   ],
 })
 export class MenuTreeNFCC {

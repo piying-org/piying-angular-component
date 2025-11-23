@@ -83,7 +83,11 @@
   }
 </ng-template>
 <ng-template #templateRef let-attr="attributes">
-  <ul [class]="wrapperClass$()">
+  <ul
+    [class]="wrapperClass$() | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
     @for (child of list(); track $index) {
       <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"></ng-container>
     }

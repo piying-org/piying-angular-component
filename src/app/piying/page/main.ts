@@ -42,8 +42,43 @@ export const MainPage = v.pipe(
             list: [
               { title: 'table', router: { routerLink: './component/table' } },
               { title: 'login', router: { routerLink: './component/login' } },
+              { type: 'divider' },
+              {
+                type: 'group',
+                title: 'DEMO LINK',
+                children: [
+                  {
+                    router: { routerLink: '/demo1' },
+                    title: 'demo1 link',
+                  },
+                  {
+                    router: { routerLink: '/demo2' },
+                    title: 'demo2 link',
+                  },
+                  {
+                    title: 'group',
+                    type: 'group',
+                    children: [
+                      {
+                        router: { routerLink: '/demo3/child1' },
+                        title: 'child1 link',
+                      },
+                      {
+                        router: { routerLink: '/demo3/child2' },
+                        title: 'child2 link',
+                      },
+                    ],
+                  },
+                  {
+                    href: 'https://github.com/piying-org/piying-angular-component',
+                    title: 'repo',
+                    icon: { svgIcon: 'github' },
+                  },
+                ],
+              },
             ],
           }),
+          topClass('min-w-[250px]')
         ),
       }),
       setWrappers([{ type: 'div' }]),
