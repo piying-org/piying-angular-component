@@ -17,11 +17,12 @@ import { PiyingViewGroup } from '@piying/view-angular';
 import * as NFCCGroup from '@piying/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying/angular-daisyui/field-control';
 import * as FGCGroup from '@piying/angular-daisyui/field-group';
-import * as ExtensionGroup from '@piying/angular-daisyui/extension';
 import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
 import * as v from 'valibot';
 import { CSSClassPrefixToken, ThemeService } from '@piying/angular-daisyui/service';
 import { provideRouter } from '@angular/router';
+import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/extension';
+
 export type Schema2 =
   | v.BaseSchema<any, any, any>
   | v.SchemaWithPipe<
@@ -44,9 +45,9 @@ export async function createSchemaComponent(
     ...Object.values(NFCCGroup),
     ...Object.values(FCCGroup),
     ...Object.values(FGCGroup),
-    ...Object.values(ExtensionGroup),
+    ...Object.values(ExtComponentGroup),
   ] as Type<any>[];
-  let defaultWrapper = Object.values(WrapperGroup).reduce(
+  let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
     (obj, item) => {
       let result = reflectComponentType(item);
       if (!result) {

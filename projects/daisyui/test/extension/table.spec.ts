@@ -38,10 +38,6 @@ fdescribe('table', () => {
           data.set(input);
           return [];
         },
-        page: {
-          size: 1,
-          index: 0,
-        },
       }),
     );
     let schema = TableDefine;
@@ -76,10 +72,6 @@ fdescribe('table', () => {
           data.set(input);
           return [];
         },
-        page: {
-          size: 1,
-          index: 0,
-        },
       }),
     );
     let schema = TableDefine;
@@ -97,6 +89,7 @@ fdescribe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
+      setWrappers(['sort-table']),
       patchInputs({
         define: {
           columns: [
@@ -118,28 +111,23 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          data.set(input);
-          return [];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [],
       }),
     );
     let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
-      teardown: { destroyAfterEach: false },
-    });
+    let { element, field$$ } = await createSchemaComponent(
+      signal(schema),
+      signal(undefined),
+      undefined,
+      {
+        teardown: { destroyAfterEach: false },
+      },
+    );
     assertElementExist(element);
-    expect(element.querySelector('table')).toBeTruthy();
-
-    expect(data()!.params.direction['k2']).toBe(1);
+    expect(field$$()?.props()['sortQueryParams'][0]['value']).toBe(1);
   });
 
   it('str-body', async () => {
-    let data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
@@ -157,13 +145,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [{ data: 1 }];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [{ data: 1 }],
       }),
     );
     let schema = TableDefine;
@@ -196,13 +178,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [{ data: 'data1' }];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [{ data: 'data1' }],
       }),
     );
     let schema = TableDefine;
@@ -243,13 +219,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [{ data: 'data1' }];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [{ data: 'data1' }],
       }),
     );
     let schema = TableDefine;
@@ -275,13 +245,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [],
       }),
     );
     let schema = TableDefine;
@@ -314,13 +278,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [],
       }),
     );
     let schema = TableDefine;
@@ -338,7 +296,6 @@ fdescribe('table', () => {
       NFCSchema,
       setComponent('table'),
       patchInputs({
-  
         define: {
           columns: [
             {
@@ -346,13 +303,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [],
       }),
     );
     let schema = TableDefine;
@@ -381,13 +332,7 @@ fdescribe('table', () => {
             },
           ],
         },
-        data: async (input: any) => {
-          return [];
-        },
-        page: {
-          size: 1,
-          index: 0,
-        },
+        data: [],
       }),
     );
     let schema = TableDefine;
