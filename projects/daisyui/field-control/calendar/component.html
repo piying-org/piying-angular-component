@@ -1,0 +1,52 @@
+<ng-template #templateRef let-attr="attributes">
+  @defer (when callyInited$$()) {
+    @switch (type()) {
+      @case ('date') {
+        <calendar-date
+          class="cally"
+          (focusday)="focusdayChanged($any($event))"
+          [calendarProps]="dateProps$$()"
+        >
+          <svg
+            aria-label="Previous"
+            class="fill-current size-4"
+            slot="previous"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+          </svg>
+          <svg
+            aria-label="Next"
+            class="fill-current size-4"
+            slot="next"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+          </svg>
+          <calendar-month></calendar-month>
+        </calendar-date>
+      }
+      @case ('multi') {
+        <calendar-multi [calendarProps]="dateProps$$()" (focusday)="focusdayChanged($any($event))">
+          <calendar-month></calendar-month>
+        </calendar-multi>
+      }
+      @case ('range') {
+        <calendar-range
+          [calendarProps]="dateProps$$()"
+          (focusday)="focusdayChanged($any($event))"
+          (rangestart)="rangestartChanged($any($event))"
+          (rangeend)="rangeendChanged($any($event))"
+        >
+          @for (item of monthProps$$(); track $index) {
+            <calendar-month [attr.offset]="item"></calendar-month>
+          }
+        </calendar-range>
+      }
+    }
+  } @loading {
+    <span class="loading loading-spinner loading-xs"></span>
+  }
+</ng-template>

@@ -37,6 +37,7 @@
     "@cyia/ngx-common": "^20.0.1",
     "@piying/view-angular": "^1.9.11",
     "@tailwindcss/postcss": "^4.1.16",
+    "cally": "^0.8.0",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.41.0",
     "express": "^5.1.0",

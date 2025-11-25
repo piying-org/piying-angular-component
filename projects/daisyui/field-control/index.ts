@@ -8,3 +8,4 @@ export * from './select';
 export * from './textarea';
 export * from './toggle';
 export * from './swap';
+export * from './calendar';
