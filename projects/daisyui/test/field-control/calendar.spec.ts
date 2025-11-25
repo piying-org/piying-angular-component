@@ -54,13 +54,10 @@ describe('calendar', () => {
   it('range-inputValue', async () => {
     let schema = v.pipe(v.date(), setComponent('calendar'), patchInputs({ type: 'range' }));
     let list = range(2).map((i) => {
-      console.log(i);
-
       let a = new Date();
       a.setDate(a.getDate() + (i ? 15 : -15));
       return a;
     });
-    console.log(list);
 
     let { element } = await createSchemaComponent(signal(schema), signal(list), undefined, {
       teardown: { destroyAfterEach: false },
@@ -70,5 +67,27 @@ describe('calendar', () => {
     let monthEl = element.querySelector('calendar-month');
     expect(monthEl?.shadowRoot?.querySelectorAll('[part~=selected]').length).toBeGreaterThan(1);
     expect(monthEl?.shadowRoot?.querySelector('[part~=range-start]')).toBeTruthy();
+  });
+  it('range-month2', async () => {
+    let schema = v.pipe(
+      v.date(),
+      setComponent('calendar'),
+      patchInputs({ type: 'range', monthProps: 2 }),
+    );
+    let list = range(2).map((i) => {
+      let a = new Date();
+      a.setDate(a.getDate() + (i ? 30 : -30));
+      return a;
+    });
+
+    let { element } = await createSchemaComponent(signal(schema), signal(list), undefined, {
+      teardown: { destroyAfterEach: false },
+    });
+    assertElementExist(element);
+    expect(element.querySelector('calendar-range.pc-cally')).toBeTruthy();
+    let monthEl = element.querySelector('calendar-month');
+    expect(monthEl?.shadowRoot?.querySelectorAll('[part~=selected]').length).toBeGreaterThan(1);
+    expect(monthEl?.shadowRoot?.querySelector('[part~=range-start]')).toBeTruthy();
+    expect(element?.querySelectorAll('calendar-month').length).toBe(2)
   });
 });

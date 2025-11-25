@@ -73,11 +73,14 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
   templateRef = viewChild.required('templateRef');
   type = input<'date' | 'multi' | 'range'>('date');
   dateProps = input<DatedCalendarDateProps | DatedCalendarMultiProps | DatedCalendarRangeProps>();
-  monthProps = input<number>(1);
+  monthProps = input<number | number[]>(1);
   monthProps$$ = computed(() => {
-    return range(this.monthProps()).map((value) => {
-      return value;
-    });
+    let value = this.monthProps();
+    return typeof value === 'number'
+      ? range(value).map((value) => {
+          return value;
+        })
+      : value;
   });
 
   #multiList$$ = computed(() => {
