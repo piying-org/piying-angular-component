@@ -96,9 +96,12 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
     }
     let value;
     switch (this.type()) {
-      case 'date':
-        value = toDateStr(this.value$() as Date);
+      case 'date': {
+        if (this.value$()) {
+          value = toDateStr(this.value$() as Date);
+        }
         break;
+      }
       case 'range': {
         value = ((this.value$() ?? []) as Date[])
           .map((item) => {

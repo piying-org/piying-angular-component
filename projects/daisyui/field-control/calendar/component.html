@@ -1,9 +1,10 @@
 <ng-template #templateRef let-attr="attributes">
   @defer (when callyInited$$()) {
+    @let ClassStr = 'cally' | cssPrefix | mergeClass: attr()?.class;
     @switch (type()) {
       @case ('date') {
         <calendar-date
-          class="cally"
+          [class]="ClassStr"
           (focusday)="focusdayChanged($any($event))"
           [calendarProps]="dateProps$$()"
         >
@@ -29,12 +30,17 @@
         </calendar-date>
       }
       @case ('multi') {
-        <calendar-multi [calendarProps]="dateProps$$()" (focusday)="focusdayChanged($any($event))">
+        <calendar-multi
+          [class]="ClassStr"
+          [calendarProps]="dateProps$$()"
+          (focusday)="focusdayChanged($any($event))"
+        >
           <calendar-month></calendar-month>
         </calendar-multi>
       }
       @case ('range') {
         <calendar-range
+          [class]="ClassStr"
           [calendarProps]="dateProps$$()"
           (focusday)="focusdayChanged($any($event))"
           (rangestart)="rangestartChanged($any($event))"

@@ -9,7 +9,9 @@ export function assertElementExist(parent: HTMLElement) {
   expect(result).toBeTrue();
   let allChildren = parent.querySelectorAll('piying-view *')!;
   allChildren.forEach((item) => {
-    expect(item.className.includes('undefined')).toBeFalse();
+    if (item instanceof HTMLElement) {
+      expect(item.className.includes('undefined')).toBeFalse();
+    }
   });
 }
 export function assertElementSelector(parent: HTMLElement, selector: string, not?: boolean) {
