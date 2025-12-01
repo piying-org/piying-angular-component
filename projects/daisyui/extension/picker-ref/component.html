@@ -10,6 +10,7 @@
     cdkConnectedOverlay
     [origin]="trigger"
     [open]="isOpen$()"
+    [overlayConfig]="overlayConfig()"
     (detach)="isOpen$.set(false)"
     (overlayOutsideClick)="outsideClick()"
   >
