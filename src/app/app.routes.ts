@@ -7,6 +7,7 @@ import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
 import { CategoryDefine } from './piying/page/component/category';
+import { CalendarDefine } from './piying/page/component/calendar';
 
 export const routes: Routes = [
   {
@@ -64,6 +65,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => LoginDefine,
+            },
+          },
+          {
+            path: 'calendar',
+            component: SchemaViewRC,
+            data: {
+              schema: () => CalendarDefine,
             },
           },
         ],
