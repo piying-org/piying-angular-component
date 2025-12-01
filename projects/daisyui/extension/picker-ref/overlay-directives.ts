@@ -158,10 +158,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   growAfterOpen = input(false);
   /** Whether the overlay can be pushed on-screen if none of the provided positions fit. */
   push = input(false);
-
-  /** Whether the overlay should match the trigger's width. */
-  @Input({ alias: 'cdkConnectedOverlayMatchWidth', transform: booleanAttribute })
-  matchWidth: boolean = false;
+  matchWidth = input(false);
 
   /** Event emitted when the backdrop is clicked. */
   @Output() readonly backdropClick = new EventEmitter<MouseEvent>();
@@ -185,11 +182,11 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   defaultStrategy$$ = computed(() => {
     return this._scrollStrategyFactory();
   });
-  templateRef = inject<TemplateRef<any>>(TemplateRef);
-  viewContainerRef = inject(ViewContainerRef);
 
-  _templatePortal = new TemplatePortal(this.templateRef, this.viewContainerRef);
-
+  _templatePortal = new TemplatePortal(
+    inject<TemplateRef<any>>(TemplateRef),
+    inject(ViewContainerRef),
+  );
   /** The associated overlay reference. */
   get overlayRef(): OverlayRef {
     return this._overlayRef!;
@@ -206,6 +203,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
     this._backdropSubscription.unsubscribe();
     this._positionSubscription.unsubscribe();
     this._overlayRef?.dispose();
+    this.disposeResizeUpdate?.();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -230,11 +228,25 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
       this._updatePositionStrategy(this._position);
     }
   }
+  disposeResizeUpdate?: () => void;
 
   /** Creates an overlay */
   private _createOverlay() {
     const overlayRef = (this._overlayRef = createOverlayRef(this._injector, this._buildConfig()));
-    this._attachSubscription = overlayRef.attachments().subscribe(() => this.attach.emit());
+    this.disposeResizeUpdate?.();
+    let ob = new ResizeObserver(() => {
+      overlayRef.getConfig().positionStrategy!.apply();
+    });
+
+    // 开始观察 overlay 元素
+    ob.observe(overlayRef.overlayElement);
+    this.disposeResizeUpdate = () => {
+      this.disposeResizeUpdate = undefined;
+      ob.disconnect();
+    };
+    this._attachSubscription = overlayRef.attachments().subscribe(() => {
+      this.attach.emit();
+    });
     this._detachSubscription = overlayRef.detachments().subscribe(() => this.detach.emit());
     overlayRef.keydownEvents().subscribe((event: KeyboardEvent) => {
       this.overlayKeydown.next(event);
@@ -312,16 +324,17 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   }
 
   private _getOriginElement(): Element | null {
-    if (this.origin instanceof CdkOverlayOrigin) {
-      return this.origin.elementRef.nativeElement;
+    let origin = this.origin();
+    if (origin instanceof CdkOverlayOrigin) {
+      return origin.elementRef.nativeElement;
     }
 
-    if (this.origin instanceof ElementRef) {
-      return this.origin.nativeElement;
+    if (origin instanceof ElementRef) {
+      return origin.nativeElement;
     }
 
-    if (typeof Element !== 'undefined' && this.origin instanceof Element) {
-      return this.origin;
+    if (typeof Element !== 'undefined' && origin instanceof Element) {
+      return origin;
     }
 
     return null;
@@ -333,7 +346,9 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
     }
 
     // Null check `getBoundingClientRect` in case this is called during SSR.
-    return this.matchWidth ? this._getOriginElement()?.getBoundingClientRect?.().width : undefined;
+    return this.matchWidth()
+      ? this._getOriginElement()?.getBoundingClientRect?.().width
+      : undefined;
   }
 
   /** Attaches the overlay. */
