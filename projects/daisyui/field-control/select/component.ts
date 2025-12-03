@@ -68,6 +68,7 @@ export class SelectFCC extends BaseControl {
         value: this.optionConvert().value(option),
         disabled: this.optionConvert().disabled?.(option) ?? false,
         type: 'option',
+        origin: option,
       };
       return resolvedItem;
     });

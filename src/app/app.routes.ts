@@ -8,6 +8,7 @@ import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
 import { CategoryDefine } from './piying/page/component/category';
 import { CalendarDefine } from './piying/page/component/calendar';
+import { SelectDefine } from './piying/page/component/select';
 
 export const routes: Routes = [
   {
@@ -72,6 +73,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => CalendarDefine,
+            },
+          },
+          {
+            path: 'select',
+            component: SchemaViewRC,
+            data: {
+              schema: () => SelectDefine,
             },
           },
         ],

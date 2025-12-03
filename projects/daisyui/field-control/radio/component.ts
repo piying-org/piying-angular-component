@@ -64,6 +64,7 @@ export class RadioFCC extends BaseControl {
         disabled: this.optionConvert().disabled?.(option) ?? false,
         description: this.optionConvert().description?.(option),
         type: 'option',
+        origin: option,
       };
       return resolvedItem;
     });

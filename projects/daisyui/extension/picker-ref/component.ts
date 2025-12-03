@@ -82,7 +82,6 @@ export class PickerRefFCC extends BaseControl {
       selectorless: computed(() => true),
     } as any;
   });
-  outputValue$ = signal;
   contentOutput$$ = computed(() => {
     return {
       modelChange: (value: any) => {

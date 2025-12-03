@@ -1,0 +1,56 @@
+<ng-template #liGroup let-item>
+  <!-- todo open测试 -->
+  <details open>
+    <summary>{{ item.label }}</summary>
+    <ul>
+      @for (child of item.children; track $index) {
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"
+        ></ng-container>
+      }
+    </ul>
+  </details>
+</ng-template>
+<ng-template #itemTemplate let-option>
+  @let rOption = transformOption | pure: option : optionConvert();
+  <li (click)="selectOption(rOption)">
+    @let template = optionTemplate()?.[rOption.type];
+    @if (template) {
+      <ng-container
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="getInput$$ | pure: template"
+      ></ng-container>
+    } @else if (rOption.type === 'option') {
+      <button>
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="optionInput | pure: rOption.label"
+        ></ng-template>
+      </button>
+    } @else if (rOption.type === 'group') {
+      <details open>
+        <summary>
+          <ng-template
+            [selectlessOutlet]="StrOrTemplateComponent"
+            [selectlessOutletInputs]="optionInput | pure: rOption.label"
+          ></ng-template>
+        </summary>
+        <ul>
+          @for (child of rOption.children; track $index) {
+            <ng-container
+              *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"
+            ></ng-container>
+          }
+        </ul>
+      </details>
+    }
+  </li>
+</ng-template>
+
+<ng-template #templateRef let-attr="attributes">
+  <ul class="menu">
+    @for (option of options(); track $index) {
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
+    }
+  </ul>
+</ng-template>

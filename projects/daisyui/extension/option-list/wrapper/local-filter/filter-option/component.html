@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    type="text"
+    [attributes]="attr?.()"
+    [excludes]="['class']"
+    [class]="attr?.().class | mergeClass: 'input' | cssPrefix"
+    [(ngModel)]="content"
+  />
+</ng-template>
