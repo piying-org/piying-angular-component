@@ -55,6 +55,7 @@ export class PickerRefFCC extends BaseControl {
   readonly PiyingView = PiyingView;
   trigger = input();
   content = input();
+  changeClose = input<boolean>();
   isOpen$ = signal(false);
   overlayConfig = input<OverlayConfig>();
   position$ = signal('');
@@ -80,12 +81,16 @@ export class PickerRefFCC extends BaseControl {
       schema: this.content,
       options: this.parentPyOptions!,
       selectorless: computed(() => true),
+      model: this.value$,
     } as any;
   });
   contentOutput$$ = computed(() => {
     return {
       modelChange: (value: any) => {
         this.valueChange(value);
+        if (this.changeClose()) {
+          this.isOpen$.set(false);
+        }
       },
     };
   });

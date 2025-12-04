@@ -14,6 +14,9 @@ export const SelectDefine = v.object({
     v.string(),
     setComponent('picker-ref'),
     patchInputs({
+      changeClose: true,
+    }),
+    patchInputs({
       trigger: v.pipe(
         NFCSchema,
         setComponent('button'),

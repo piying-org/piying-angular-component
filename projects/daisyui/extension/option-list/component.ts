@@ -89,6 +89,9 @@ export class OptionListFCC extends BaseControl {
       selectorless: computed(() => true),
     } as any;
   };
+  activateClass = (a: any, b: any) => {
+    return a === b ? 'menu-active' : '';
+  };
 }
 
 // 加item/group和注册

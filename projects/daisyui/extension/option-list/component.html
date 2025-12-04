@@ -13,21 +13,23 @@
 </ng-template>
 <ng-template #itemTemplate let-option>
   @let rOption = transformOption | pure: option : optionConvert();
-  <li (click)="selectOption(rOption)">
-    @let template = optionTemplate()?.[rOption.type];
-    @if (template) {
-      <ng-container
-        [selectlessOutlet]="PiyingView"
-        [selectlessOutletInputs]="getInput$$ | pure: template"
-      ></ng-container>
-    } @else if (rOption.type === 'option') {
-      <button>
+  @let template = optionTemplate()?.[rOption.type];
+  @if (template) {
+    <ng-container
+      [selectlessOutlet]="PiyingView"
+      [selectlessOutletInputs]="getInput$$ | pure: template"
+    ></ng-container>
+  } @else if (rOption.type === 'option') {
+    <li (click)="selectOption(rOption)">
+      <button [class]="activateClass | pure: rOption.value : value$()">
         <ng-template
           [selectlessOutlet]="StrOrTemplateComponent"
           [selectlessOutletInputs]="optionInput | pure: rOption.label"
         ></ng-template>
       </button>
-    } @else if (rOption.type === 'group') {
+    </li>
+  } @else if (rOption.type === 'group') {
+    <li>
       <details open>
         <summary>
           <ng-template
@@ -43,8 +45,8 @@
           }
         </ul>
       </details>
-    }
-  </li>
+    </li>
+  }
 </ng-template>
 
 <ng-template #templateRef let-attr="attributes">

@@ -19,27 +19,30 @@ export class OptionListLocalFilterWC extends PiyingViewWrapperBase {
     this.field$$().props.update((a) => {
       return { ...a, searchContent: this.searchContent };
     });
+    let localFilterDefine =
+      this.props$$()['filterDefine'] ?? v.pipe(NFCSchema, setComponent(FilterOptionNFCC));
     this.field$$().inputs.update((a) => {
       return {
         ...a,
         optionTemplate: {
           ...a?.['optionTemplate'],
           'local-filter': v.pipe(
-            NFCSchema,
-            setComponent(FilterOptionNFCC),
+            localFilterDefine,
             patchProps({ seachContent: this.searchContent }),
           ),
         },
         options: [],
       };
     });
+    let filterWith =
+      this.field$$().props()['filterWith'] ??
+      ((list: any[], content: string) => list.filter((item: any) => item.includes(content)));
     effect(() => {
       let content = this.searchContent();
       let list = this.field$$().props()['options'];
       let filterList = list;
       if (content) {
-        // todo custom filter
-        filterList = list.filter((item: any) => item.includes(content));
+        filterList = filterWith(list, content);
       }
 
       this.field$$().inputs.update((a) => {
