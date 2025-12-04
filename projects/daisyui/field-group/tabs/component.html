@@ -14,20 +14,14 @@
             | cssPrefix
             | mergeClass: ($index === activatedIndex$() ? ('tab-active' | cssPrefix) : undefined)
         "
+        (click)="changeIndex($index)"
       >
-        <input type="radio" [name]="name" />
+        <!-- <input type="radio" [name]="name" /> -->
 
-        @if (item['icon']; as icon) {
-          <mat-icon
-            [inline]="icon.inline"
-            [fontIcon]="icon.fontIcon"
-            [fontSet]="icon.fontSet"
-            [svgIcon]="icon.svgIcon"
-          ></mat-icon>
-        }
-        @if (item['title']) {
-          <span class="{{ 'tab-label' | cssPrefix }}">{{ item['title'] }}</span>
-        }
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="labelInputs | pure: item['title']"
+        ></ng-template>
       </label>
       <div [class]="'tab-content' | cssPrefix | mergeClass: tabContentClass()">
         <ng-container
