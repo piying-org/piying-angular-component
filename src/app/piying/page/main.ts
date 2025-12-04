@@ -46,6 +46,7 @@ export const MainPage = v.pipe(
               { title: 'calendar', router: { routerLink: './component/calendar' } },
               { title: 'select', router: { routerLink: './component/select' } },
               { title: 'tabs', router: { routerLink: './component/tabs' } },
+              { title: 'card', router: { routerLink: './component/card' } },
               { type: 'divider' },
               {
                 type: 'group',

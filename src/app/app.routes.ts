@@ -10,6 +10,7 @@ import { CategoryDefine } from './piying/page/component/category';
 import { CalendarDefine } from './piying/page/component/calendar';
 import { SelectDefine } from './piying/page/component/select';
 import { TabsDefine } from './piying/page/component/tabs';
+import { CardDefine } from './piying/page/component/card';
 
 export const routes: Routes = [
   {
@@ -88,6 +89,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => TabsDefine,
+            },
+          },
+          {
+            path: 'card',
+            component: SchemaViewRC,
+            data: {
+              schema: () => CardDefine,
             },
           },
         ],

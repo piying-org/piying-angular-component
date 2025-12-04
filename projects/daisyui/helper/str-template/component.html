@@ -10,6 +10,9 @@
       [selectlessOutletInputs]="piyingInput | pure: content : schemaOptions$$"
     ></ng-container>
   } @else if (isObject | pure: data) {
+    @if (data['image']; as image) {
+      <img [src]="image.src" [alt]="image.alt" />
+    }
     @if (data['icon']; as icon) {
       <mat-icon
         [inline]="icon.inline"
