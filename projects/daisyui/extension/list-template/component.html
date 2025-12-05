@@ -1,0 +1,8 @@
+<ng-template #templateRef let-attr="attributes">
+  @for (child of list(); track $index) {
+    <ng-container
+      [selectlessOutlet]="PiyingView"
+      [selectlessOutletInputs]="templateInput$$ | pure: child"
+    ></ng-container>
+  }
+</ng-template>

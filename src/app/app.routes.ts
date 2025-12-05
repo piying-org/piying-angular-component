@@ -11,6 +11,8 @@ import { CalendarDefine } from './piying/page/component/calendar';
 import { SelectDefine } from './piying/page/component/select';
 import { TabsDefine } from './piying/page/component/tabs';
 import { CardDefine } from './piying/page/component/card';
+import { range } from 'es-toolkit';
+import { faker } from '@faker-js/faker';
 
 export const routes: Routes = [
   {
@@ -96,6 +98,27 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => CardDefine,
+              context: () => {
+                return {
+                  getCardList: () => {
+                    return range(10).map((a) => {
+                      return {
+                        image: {
+                          src: faker.image.url({ width: 400, height: 400 }),
+                        },
+                        title: faker.book.title(),
+                        body: {
+                          author: faker.book.author(),
+                          format: faker.book.format(),
+                          genre: faker.book.genre(),
+                          publisher: faker.book.publisher(),
+                          series: faker.book.series(),
+                        },
+                      };
+                    });
+                  },
+                };
+              },
             },
           },
         ],

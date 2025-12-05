@@ -5,9 +5,5 @@ import { Component, input, OnInit, viewChild } from '@angular/core';
   templateUrl: './component.html',
 })
 export class CardBodyDemoNFCC {
-  author = input();
-  format = input();
-  genre = input();
-  publisher = input();
-  series = input();
+  data = input<any>();
 }
