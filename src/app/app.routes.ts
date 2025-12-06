@@ -100,7 +100,7 @@ export const routes: Routes = [
               schema: () => CardDefine,
               context: () => {
                 return {
-                  getCardList: () => {
+                  getCardList: async () => {
                     return range(10).map((a) => {
                       return {
                         image: {

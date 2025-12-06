@@ -30,6 +30,7 @@ export const MainPage = v.pipe(
           }),
         }),
         setComponent('navbar'),
+        topClass('sticky top-0 bg-base-100 z-9'),
       ),
       router: v.pipe(NFCSchema, setComponent('div'), patchDirectives([{ type: RouterOutlet }])),
     }),
@@ -83,14 +84,14 @@ export const MainPage = v.pipe(
               },
             ],
           }),
-          topClass('min-w-[250px]')
+          topClass('min-w-[250px]'),
         ),
       }),
       setWrappers([{ type: 'div' }]),
-      topClass('bg-base-100 h-full'),
+      topClass('bg-base-100 h-full z-9'),
     ),
   }),
   setComponent('drawer'),
 
-  topClass('h-[100vh] lg:drawer-open'),
+  topClass('lg:drawer-open'),
 );

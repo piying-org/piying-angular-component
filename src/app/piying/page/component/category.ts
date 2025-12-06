@@ -80,6 +80,6 @@ export const CategoryDefine = v.object({
         });
       },
     }),
-    componentClass('h-100'),
+    componentClass('h-full'),
   ),
 });
