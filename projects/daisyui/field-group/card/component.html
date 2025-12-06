@@ -20,13 +20,13 @@
         </h2>
       }
       @if (bodyChildren$$(); as bodyChildren) {
-        <p>
+        <div>
           @for (field of bodyChildren; track $index) {
             <ng-container
               *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
             ></ng-container>
           }
-        </p>
+        </div>
       }
       @if (actionsFiled$$(); as field) {
         <div [class]="actionsClass() | mergeClass: ('card-actions' | cssPrefix)">
