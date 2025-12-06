@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, viewChild } from '@angular/core';
-import { CheckboxService, SortService } from '@piying/angular-daisyui/service';
+import { CheckboxService } from '@piying/angular-daisyui/service';
 import { PiyingViewWrapperBase } from '@piying/view-angular';
 
 @Component({

@@ -1,5 +1,4 @@
 import { Component, computed, inject, isSignal, OnInit, resource, viewChild } from '@angular/core';
-import { SortService } from '@piying/angular-daisyui/service';
 import { PiyingViewWrapperBase } from '@piying/view-angular';
 import { dataConvert } from '../util';
 import { localData } from '../local-data';

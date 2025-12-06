@@ -26,7 +26,7 @@ export const TableDefine = v.object({
         let pageFiled = field.get(['..', 'page']);
         return {
           row: {
-            head: [{ columns: ['checkbox', 'index', '1'] }],
+            head: [{ columns: ['checkbox', 'index', '1', '2', '3'] }],
             body: [
               {
                 define: v.pipe(

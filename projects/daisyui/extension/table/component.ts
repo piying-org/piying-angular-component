@@ -30,7 +30,6 @@ import {
 import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
-import { SortDirection } from '../../service/sort/sort.service';
 
 import {
   NFCSchema,

@@ -12,7 +12,6 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { SortDirection } from '@piying/angular-daisyui/service';
 import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
 import { inputSortDirective } from './input-checkbox.directive';
 
@@ -35,19 +34,13 @@ export class SortHeaderWC extends PiyingViewWrapperBase {
   key$$ = computed(() => {
     return this.props$$()['key'];
   });
-
-  #index$ = linkedSignal(() => {
-    return this.props$$()['direction'] ?? 0;
+  #direction$$ = computed(
+    () => {
+      return this.props$$()['direction'];
+    },
+    { equal: () => false },
+  );
+  index$ = linkedSignal(() => {
+    return this.#direction$$() ?? 0;
   });
-  value$$ = computed(() => {
-    let result = this.#index$() % 3;
-    return result === 2 ? -1 : (result as SortDirection);
-  });
-  constructor() {
-    super();
-  }
-
-  valueChange() {
-    this.#index$.update((a) => ++a);
-  }
 }
