@@ -36,7 +36,7 @@ export class StrOrTemplateComponent {
   });
 
   isString(input: any) {
-    return typeof input === 'string';
+    return typeof input === 'string' || typeof input === 'number' || typeof input === 'boolean';
   }
   isTemplateRef(input: any) {
     return input instanceof TemplateRef;

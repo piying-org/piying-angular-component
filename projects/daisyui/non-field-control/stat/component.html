@@ -1,0 +1,40 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [class]="'stat' | cssPrefix | mergeClass: attr?.().class"
+    [attributes]="attr?.()"
+    [excludes]="['class']"
+  >
+    @if (title()) {
+      <div [class]="'stat-title' | cssPrefix | mergeClass: titleClass()">
+        <ng-template
+          [selectlessOutlet]="PiyingView"
+          [selectlessOutletInputs]="templateInput | pure: title"
+        ></ng-template>
+      </div>
+    }
+    @if (value()) {
+      <div [class]="'stat-value' | cssPrefix | mergeClass: valueClass()">
+        <ng-template
+          [selectlessOutlet]="PiyingView"
+          [selectlessOutletInputs]="templateInput | pure: value"
+        ></ng-template>
+      </div>
+    }
+    @if (desc()) {
+      <div [class]="'stat-desc' | cssPrefix | mergeClass: descClass()">
+        <ng-template
+          [selectlessOutlet]="PiyingView"
+          [selectlessOutletInputs]="templateInput | pure: desc"
+        ></ng-template>
+      </div>
+    }
+    @if (figure()) {
+      <div [class]="'stat-figure' | cssPrefix | mergeClass: figureClass()">
+        <ng-template
+          [selectlessOutlet]="PiyingView"
+          [selectlessOutletInputs]="templateInput | pure: figure"
+        ></ng-template>
+      </div>
+    }
+  </div>
+</ng-template>

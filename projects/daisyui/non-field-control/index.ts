@@ -12,3 +12,4 @@ export * from './radial-progress';
 export * from './status';
 export * from './theme-controller';
 export * from './dropdown';
+export * from './stat';

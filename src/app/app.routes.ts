@@ -13,6 +13,7 @@ import { TabsDefine } from './piying/page/component/tabs';
 import { CardDefine } from './piying/page/component/card';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
+import { StatsDefine } from './piying/page/component/stats';
 
 export const routes: Routes = [
   {
@@ -114,6 +115,29 @@ export const routes: Routes = [
                           publisher: faker.book.publisher(),
                           series: faker.book.series(),
                         },
+                      };
+                    });
+                  },
+                };
+              },
+            },
+          },
+          {
+            path: 'stat',
+            component: SchemaViewRC,
+            data: {
+              schema: () => StatsDefine,
+              context: () => {
+                let data = ['text-primary', 'text-secondary', 'text-accent', 'text-neutral', 'text-base-content'];
+                return {
+                  getStatList: async () => {
+                    return range(10).map((a) => {
+                      let value = faker.number.int(8);
+                      return {
+                        title: faker.food.fruit(),
+                        value: value,
+                        desc: faker.food.description().slice(0, 10),
+                        valueClass: data[value % 5],
                       };
                     });
                   },
