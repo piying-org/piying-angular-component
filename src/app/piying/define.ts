@@ -54,18 +54,33 @@ let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrappe
   },
   {} as Record<string, any>,
 );
+export const FormDefine = {
+  string: {
+    type: InputFCC,
+  },
+  number: {
+    type: InputFCC,
+    inputs: { type: 'number' },
+  },
+  date: {
+    type: InputFCC,
+    inputs: { type: 'date' },
+  },
+  boolean: {
+    type: FCCGroup.CheckboxFCC,
+  },
+} as PiViewConfig['types'];
 
 export const FieldGlobalConfig: PiViewConfig = {
   types: {
     ...types,
+    ...FormDefine,
     'router-outlet': { type: RouterOutlet },
     object: { type: PiyingViewGroup },
     div: {
       type: DivNFCC,
     },
-    string: {
-      type: InputFCC,
-    },
+
     'common-data': {
       type: StrOrTemplateComponent,
     },

@@ -14,6 +14,7 @@ import { CardDefine } from './piying/page/component/card';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { StatsDefine } from './piying/page/component/stats';
+import { FormDefine } from './piying/page/component/form';
 
 export const routes: Routes = [
   {
@@ -128,7 +129,13 @@ export const routes: Routes = [
             data: {
               schema: () => StatsDefine,
               context: () => {
-                let data = ['text-primary', 'text-secondary', 'text-accent', 'text-neutral', 'text-base-content'];
+                let data = [
+                  'text-primary',
+                  'text-secondary',
+                  'text-accent',
+                  'text-neutral',
+                  'text-base-content',
+                ];
                 return {
                   getStatList: async () => {
                     return range(10).map((a) => {
@@ -143,6 +150,13 @@ export const routes: Routes = [
                   },
                 };
               },
+            },
+          },
+          {
+            path: 'form',
+            component: SchemaViewRC,
+            data: {
+              schema: () => FormDefine,
             },
           },
         ],

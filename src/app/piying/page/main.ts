@@ -41,6 +41,7 @@ export const MainPage = v.pipe(
           setComponent('menu-tree'),
           patchInputs({
             list: [
+              { title: 'form', router: { routerLink: './component/form' } },
               { title: 'table', router: { routerLink: './component/table' } },
               { title: 'category', router: { routerLink: './component/category' } },
               { title: 'login', router: { routerLink: './component/login' } },
