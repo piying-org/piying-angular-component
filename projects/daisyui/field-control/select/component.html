@@ -1,35 +1,75 @@
 <ng-template #templateRef let-attr="attributes">
-  <ng-template #optionTemp let-config="config">
-    @if (config.type === 'group') {
-      <optgroup [label]="config.label">
-        @for (item of config.children; track $index) {
-          <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
+  @let multi = multiple();
+  @if (multi) {
+    <select
+      [attributes]="attr()"
+      [excludes]="['class']"
+      [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
+      [ngModel]="value$()"
+      (ngModelChange)="valueChange($event)"
+      [disabled]="disabled$()"
+      multiple
+    >
+      <ng-template #optionTemp let-config="config">
+        @if (config.type === 'group') {
+          <optgroup [label]="config.label">
+            @for (item of config.children; track $index) {
+              <ng-container
+                *ngTemplateOutlet="optionTemp; context: { config: item }"
+              ></ng-container>
+            }
+          </optgroup>
+        } @else {
+          <option
+            [disabled]="config.disabled"
+            [ngValue]="config.value"
+            [attr.data-tip]="config.description!"
+            [class]="!!config.description ? ('tooltip' | cssPrefix) : undefined"
+          >
+            {{ config.label }}
+          </option>
         }
-      </optgroup>
-    } @else {
-      <option
-        [disabled]="config.disabled"
-        [ngValue]="config.value"
-        [attr.data-tip]="config.description!"
-        [class]="!!config.description ? ('tooltip' | cssPrefix) : undefined"
-      >
-        {{ config.label }}
-      </option>
-    }
-  </ng-template>
-  <select
-    [attributes]="attr()"
-    [excludes]="['class']"
-    [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
-    [ngModel]="value$()"
-    (ngModelChange)="valueChange($event)"
-    [disabled]="disabled$()"
-    [multiple]="multiple()"
-  >
-    <option disabled selected>{{ emptyOptionContent() }}</option>
+      </ng-template>
+      <option disabled selected>{{ emptyOptionContent() }}</option>
 
-    @for (item of resolvedOptions$$(); track $index) {
-      <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
-    }
-  </select>
+      @for (item of resolvedOptions$$(); track $index) {
+        <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
+      }
+    </select>
+  } @else {
+    <select
+      [attributes]="attr()"
+      [excludes]="['class']"
+      [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
+      [ngModel]="value$()"
+      (ngModelChange)="valueChange($event)"
+      [disabled]="disabled$()"
+    >
+      <ng-template #optionTemp let-config="config">
+        @if (config.type === 'group') {
+          <optgroup [label]="config.label">
+            @for (item of config.children; track $index) {
+              <ng-container
+                *ngTemplateOutlet="optionTemp; context: { config: item }"
+              ></ng-container>
+            }
+          </optgroup>
+        } @else {
+          <option
+            [disabled]="config.disabled"
+            [ngValue]="config.value"
+            [attr.data-tip]="config.description!"
+            [class]="!!config.description ? ('tooltip' | cssPrefix) : undefined"
+          >
+            {{ config.label }}
+          </option>
+        }
+      </ng-template>
+      <option disabled selected>{{ emptyOptionContent() }}</option>
+
+      @for (item of resolvedOptions$$(); track $index) {
+        <ng-container *ngTemplateOutlet="optionTemp; context: { config: item }"></ng-container>
+      }
+    </select>
+  }
 </ng-template>

@@ -57,6 +57,12 @@ export const MainPage = v.pipe(
                 children: [{ title: 'login', router: { routerLink: '/login' } }],
               },
               { type: 'divider' },
+              {
+                type: 'group',
+                title: 'DEMO',
+                children: [{ title: 'Query Table', router: { routerLink: './demo/query-table' } }],
+              },
+              { type: 'divider' },
 
               {
                 type: 'group',

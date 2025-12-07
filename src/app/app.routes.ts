@@ -15,6 +15,7 @@ import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { StatsDefine } from './piying/page/component/stats';
 import { FormDefine } from './piying/page/component/form';
+import { QueryTableDefine } from './piying/page/demo/query-table';
 
 export const routes: Routes = [
   {
@@ -157,6 +158,23 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => FormDefine,
+            },
+          },
+        ],
+      },
+      {
+        path: 'demo',
+        children: [
+          {
+            path: '',
+            redirectTo: 'query-table',
+            pathMatch: 'full',
+          },
+          {
+            path: 'query-table',
+            component: SchemaViewRC,
+            data: {
+              schema: () => QueryTableDefine,
             },
           },
         ],
