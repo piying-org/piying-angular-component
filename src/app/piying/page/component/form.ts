@@ -10,40 +10,16 @@ import {
 } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 const FormBase = v.object({
-  input: v.pipe(v.string(), setWrappers(['label-wrapper']), v.title('string-control')),
-  number: v.pipe(v.number(), setWrappers(['label-wrapper']), v.title('number-control')),
-  range: v.pipe(
-    v.number(),
-    setComponent('range'),
-    setWrappers(['label-wrapper']),
-    v.title('range-control'),
-  ),
+  input: v.pipe(v.string(), v.title('string-control')),
+  number: v.pipe(v.number(), v.title('number-control')),
+  range: v.pipe(v.number(), setComponent('range'), v.title('range-control')),
 
-  boolean: v.pipe(
-    v.boolean(),
-    setWrappers(['label-wrapper']),
-    v.title('boolean-control'),
-    patchProps({
-      labelPosition: 'right',
-    }),
-  ),
-  toggle: v.pipe(
-    v.boolean(),
-    setComponent('toggle'),
-    setWrappers(['label-wrapper']),
-    v.title('toggle-control'),
-    patchProps({
-      labelPosition: 'right',
-    }),
-  ),
+  boolean: v.pipe(v.boolean(), v.title('boolean-control')),
+  toggle: v.pipe(v.boolean(), setComponent('toggle'), v.title('toggle-control')),
   select: v.pipe(
     v.string(),
     setComponent('select'),
-    setWrappers(['label-wrapper']),
     v.title('select-control'),
-    patchProps({
-      labelPosition: 'top',
-    }),
     patchInputs({
       options: [
         { label: 'label1', value: 'value1' },
@@ -55,11 +31,7 @@ const FormBase = v.object({
   radio1: v.pipe(
     v.string(),
     setComponent('radio'),
-    setWrappers(['label-wrapper']),
     v.title('radio-control'),
-    patchProps({
-      labelPosition: 'top',
-    }),
     patchInputs({
       options: [
         { label: 'label1', value: 'value1' },
@@ -68,15 +40,7 @@ const FormBase = v.object({
       ],
     }),
   ),
-  textarea1: v.pipe(
-    v.string(),
-    setComponent('textarea'),
-    setWrappers(['label-wrapper']),
-    v.title('textarea-control'),
-    patchProps({
-      labelPosition: 'top',
-    }),
-  ),
+  textarea1: v.pipe(v.string(), setComponent('textarea'), v.title('textarea-control')),
   date: v.pipe(v.date()),
   calendar: v.pipe(
     v.date(),

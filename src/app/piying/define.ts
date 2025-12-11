@@ -10,7 +10,7 @@ import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/exte
 import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
 import { InputFCC } from '@piying/angular-daisyui/field-control';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-
+import { patchProps, setComponent, setInputs, setWrappers } from '@piying/view-angular-core';
 const selectorPrefix = 'app-';
 
 const list = [
@@ -56,18 +56,47 @@ let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrappe
 );
 export const FormDefine = {
   string: {
-    type: InputFCC,
+    actions: [setComponent(InputFCC), setWrappers(['label-wrapper'])],
   },
   number: {
-    type: InputFCC,
-    inputs: { type: 'number' },
+    actions: [
+      setComponent(InputFCC),
+      setInputs({ type: 'number' }),
+      setWrappers(['label-wrapper']),
+    ],
+  },
+  range: {
+    actions: [setComponent(FCCGroup.RangeFCC), setWrappers(['label-wrapper'])],
   },
   date: {
-    type: InputFCC,
-    inputs: { type: 'date' },
+    actions: [setComponent(InputFCC), setInputs({ type: 'date' }), setWrappers(['label-wrapper'])],
   },
   boolean: {
-    type: FCCGroup.CheckboxFCC,
+    actions: [
+      setComponent(FCCGroup.CheckboxFCC),
+      setWrappers(['label-wrapper']),
+      patchProps({
+        labelPosition: 'right',
+      }),
+    ],
+  },
+  toggle: {
+    actions: [
+      setComponent(FCCGroup.ToggleFCC),
+      setWrappers(['label-wrapper']),
+      patchProps({
+        labelPosition: 'right',
+      }),
+    ],
+  },
+  select: {
+    actions: [setComponent(FCCGroup.SelectFCC), setWrappers(['label-wrapper'])],
+  },
+  radio: {
+    actions: [setComponent(FCCGroup.RadioFCC), setWrappers(['label-wrapper'])],
+  },
+  textarea: {
+    actions: [setComponent(FCCGroup.TextareaFCC), setWrappers(['label-wrapper'])],
   },
 } as PiViewConfig['types'];
 
