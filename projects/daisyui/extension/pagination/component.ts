@@ -44,7 +44,7 @@ export class PaginationNFCC {
   });
 
   maxPageCount$$ = computed(() => {
-    return Math.ceil(this.count() / this.value().size);
+    return Math.ceil((this.count() ?? 0) / this.value().size);
   });
   pageRange$$ = computed(() => {
     let list = [];
@@ -58,12 +58,14 @@ export class PaginationNFCC {
         index--;
       }
     } else {
+      list.push({ type: 'prev', value: 5 });
       let index = current - 1;
-      while (index !== -1 && current - index !== 2) {
-        list.unshift(goPage(index));
+      let tempList = [];
+      while (index !== -1 && current - index <3) {
+        tempList.unshift(goPage(index));
         index--;
       }
-      list.push({ type: 'prev', value: 5 });
+      list = list.concat(tempList);
     }
     list.push(goPage(current));
 
@@ -75,14 +77,12 @@ export class PaginationNFCC {
       }
     } else {
       let index = current + 1;
-
-      while (index < this.maxPageCount$$() && index - current !== 2) {
+      while (index < this.maxPageCount$$() && index - current < 3) {
         list.push(goPage(index));
         index++;
       }
       list.push({ type: 'next', value: 5 });
     }
-
     return list;
   });
   #field = inject(PI_VIEW_FIELD_TOKEN, { optional: true });

@@ -15,14 +15,16 @@
       </button>
       @for (item of pageRange$$(); track $index) {
         @if (item.type === 'go') {
-          <input
+          <button
             class="join-item btn btn-square"
             type="radio"
             name="options"
             [aria-label]="item.value + 1"
-            [checked]="item.value === value().index"
+            [class.btn-active]="item.value === value().index"
             (click)="gotoPage(item.value)"
-          />
+          >
+            {{ item.value + 1 }}
+          </button>
         } @else if (item.type === 'prev') {
           <button class="join-item btn" (click)="gotoPage(value().index - 5)"><</button>
         } @else if (item.type === 'next') {
