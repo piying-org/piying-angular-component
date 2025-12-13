@@ -17,5 +17,8 @@
 cdk-dialog-container.cdk-dialog-container {
   overflow: hidden;
   flex: 1;
-  display: flex ;
+  display: flex;
+}
+input {
+  outline: none !important;
 }

@@ -99,11 +99,11 @@ const TableDefine = v.object({
         let pageFiled = field.get(['..', 'page']);
         return {
           row: {
-            head: [{ columns: ['checkbox', 'index', 'title', 'level', 'badge'] }],
+            head: [{ columns: ['checkbox', 'index', 'title', 'level', 'badge', 'actions'] }],
             body: [
               {
                 define: v.pipe(v.tuple([]), setComponent('tr')),
-                columns: ['checkbox', 'index', 'title', 'level', 'badge'],
+                columns: ['checkbox', 'index', 'title', 'level', 'badge', 'actions'],
               },
             ],
             foot: [{ columns: ['add'] }],
@@ -125,13 +125,13 @@ const TableDefine = v.object({
               },
             },
             title: {
-              head: '测试',
+              head: '标题',
               body: (data: any) => {
                 return data.title;
               },
             },
             level: {
-              head: '测试',
+              head: '等级',
               body: (data: any) => {
                 return LevelObj[data.level];
               },
@@ -150,11 +150,45 @@ const TableDefine = v.object({
               ),
             },
             actions: {
-              head: ' ',
+              head: '操作',
               body: v.pipe(
                 v.object({
-                  add: v.pipe(NFCSchema, setComponent('button')),
+                  edit: v.pipe(
+                    NFCSchema,
+                    setComponent('button'),
+                    patchInputs({
+                      content: { icon: { fontIcon: 'edit' } },
+                      shape: 'circle',
+                      size: 'sm',
+                    }),
+                    patchAsyncInputs({
+                      clicked: (field) => {
+                        return () => {
+                          console.log(field.context['item$']());
+                        };
+                      },
+                    }),
+                  ),
+                  delete: v.pipe(
+                    NFCSchema,
+                    setComponent('button'),
+                    patchInputs({
+                      content: { icon: { fontIcon: 'delete' } },
+                      shape: 'circle',
+                      size: 'sm',
+                    }),
+                    topClass('text-error'),
+                    patchAsyncInputs({
+                      clicked: (field) => {
+                        return () => {
+                          console.log(field.context['item$']());
+                        };
+                      },
+                    }),
+                  ),
                 }),
+                topClass('flex gap-2'),
+                setWrappers(['td']),
               ),
             },
             add: {
