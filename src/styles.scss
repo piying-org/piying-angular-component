@@ -7,3 +7,15 @@
   height: 100%;
   background-size: contain;
 }
+.cdk-global-overlay-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+.cdk-overlay-pane {
+  flex-direction: column;
+}
+cdk-dialog-container.cdk-dialog-container {
+  overflow: hidden;
+  flex: 1;
+  display: flex ;
+}

@@ -9,7 +9,7 @@ import {
   topClass,
 } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
-const FormBase = v.object({
+export const FormBase = v.object({
   input: v.pipe(v.string(), v.title('string-control')),
   number: v.pipe(v.number(), v.title('number-control')),
   range: v.pipe(v.number(), setComponent('range'), v.title('range-control')),

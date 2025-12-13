@@ -19,6 +19,8 @@ import { setDirectives } from '@piying/view-angular';
 import { Subject, map, startWith } from 'rxjs';
 import { da, faker } from '@faker-js/faker';
 import { range } from 'es-toolkit';
+import { DialogService } from '../../../service/dialog.service';
+import { FormBase, FormDefine } from '../component/form';
 let LevelOptions = [
   {
     label: 'all',
@@ -104,6 +106,7 @@ const TableDefine = v.object({
                 columns: ['checkbox', 'index', 'title', 'level', 'badge'],
               },
             ],
+            foot: [{ columns: ['add'] }],
           },
           columns: {
             checkbox: {
@@ -151,6 +154,27 @@ const TableDefine = v.object({
               body: v.pipe(
                 v.object({
                   add: v.pipe(NFCSchema, setComponent('button')),
+                }),
+              ),
+            },
+            add: {
+              foot: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                patchInputs({ content: 'add' }),
+                patchAsyncInputs({
+                  clicked: (field) => {
+                    return () => {
+                      let dialog: DialogService = field.context['dialog'];
+                      dialog.openDialog({
+                        title: '添加',
+                        schema: FormBase,
+                        applyValue: (value) => {
+                          // 更新或添加
+                        },
+                      });
+                    };
+                  },
                 }),
               ),
             },

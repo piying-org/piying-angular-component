@@ -31,7 +31,7 @@ export class StrOrTemplateComponent {
   schemaOptions$$ = computed(() => {
     return {
       ...this.parentPyOptions!(),
-      context: this.context(),
+      context: { ...this.parentPyOptions!().context, ...(this.context() as any) },
     };
   });
 

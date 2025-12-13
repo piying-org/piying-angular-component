@@ -21,10 +21,12 @@ import { NgTemplateOutlet } from '@angular/common';
 import clsx from 'clsx';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { toDateStr } from '../calendar/date.util';
+import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-input',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe],
+  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe, PurePipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -62,4 +64,28 @@ export class InputFCC extends BaseControl {
       this.ghost() ? this.#theme.addPrefix(`input-ghost`) : undefined,
     );
   });
+
+  valueChange2(value: any, el: HTMLInputElement) {
+    switch (this.type()) {
+      case 'number': {
+        this.valueChange(el.valueAsNumber);
+        break;
+      }
+      case 'date': {
+        this.valueChange(el.valueAsDate);
+        break;
+      }
+
+      default: {
+        this.valueChange(value);
+        break;
+      }
+    }
+  }
+  inputFormat(value: any, type: string) {
+    if (type === 'date' && value instanceof Date) {
+      return toDateStr(value);
+    }
+    return value;
+  }
 }

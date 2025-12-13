@@ -34,12 +34,9 @@ import {
 } from './type';
 import { range } from 'es-toolkit';
 import { SelectionModel } from '@angular/cdk/collections';
+import { toDateStr } from './date.util';
 
-function toDateStr(date: Date) {
-  let month = `${date.getMonth() + 1}`.padStart(2, '0');
-  let day = `${date.getDate()}`.padStart(2, '0');
-  return `${date.getFullYear()}-${month}-${day}`;
-}
+
 function DateEqual(a: Date, b: Date) {
   return a.getTime() === b.getTime();
 }

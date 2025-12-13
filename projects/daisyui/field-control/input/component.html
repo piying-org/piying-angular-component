@@ -4,8 +4,9 @@
     [attributes]="attr()"
     [excludes]="['class']"
     [type]="type()"
-    [ngModel]="value$()"
-    (ngModelChange)="valueChange($event)"
+    [ngModel]="inputFormat | pure: value$() : type()"
+    #el
+    (ngModelChange)="valueChange2($event, el)"
     [disabled]="disabled$()"
   />
 </ng-template>
