@@ -84,9 +84,9 @@ export class OptionListFCC extends BaseControl {
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   getInput$$ = (schema: any) => {
     return {
-      schema: computed(() => schema),
+      schema: schema,
       options: this.parentPyOptions!,
-      selectorless: computed(() => true),
+      selectorless: true,
     } as any;
   };
   activateClass = (a: any, b: any) => {

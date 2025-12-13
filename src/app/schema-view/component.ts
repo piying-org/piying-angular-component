@@ -23,9 +23,9 @@ export class SchemaViewRC {
     fieldGlobalConfig: FieldGlobalConfig,
   };
   inputs = {
-    schema: () => this.schema,
-    options: () => this.options,
+    schema: this.schema,
+    options: this.options,
     model: this.model.value,
-    selectorless: () => true,
+    selectorless: true,
   };
 }

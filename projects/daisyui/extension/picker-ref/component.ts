@@ -72,7 +72,7 @@ export class PickerRefFCC extends BaseControl {
           pickerValue: this.value$,
         },
       })),
-      selectorless: computed(() => true),
+      selectorless: true,
     } as any;
   });
   // content应该是model
@@ -80,7 +80,7 @@ export class PickerRefFCC extends BaseControl {
     return {
       schema: this.content,
       options: this.parentPyOptions!,
-      selectorless: computed(() => true),
+      selectorless: true,
       model: this.value$,
     } as any;
   });

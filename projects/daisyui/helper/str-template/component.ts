@@ -49,7 +49,7 @@ export class StrOrTemplateComponent {
     return {
       schema,
       options,
-      selectorless: computed(() => true),
+      selectorless:true,
     };
   };
 }

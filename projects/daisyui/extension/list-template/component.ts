@@ -58,7 +58,7 @@ export class ListTemplateNFCC {
           getItem: () => data,
         },
       })),
-      selectorless: computed(() => true),
+      selectorless: true,
     };
   };
 }

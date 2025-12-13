@@ -56,7 +56,7 @@ export class StatNFCC {
     return {
       schema: schema,
       options: this.parentPyOptions!,
-      selectorless: computed(() => true),
+      selectorless: true,
     };
   };
 }
