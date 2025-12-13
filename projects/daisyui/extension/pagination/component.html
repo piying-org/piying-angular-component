@@ -10,15 +10,13 @@
       </select>
     }
     <div [class]="wrapperClass$()">
-      <button class="join-item btn" [disabled]="value().index === 0" (click)="gotoPage(0)">
+      <button class="join-item btn p-0 w-(--size)" [disabled]="value().index === 0" (click)="gotoPage(0)">
         «
       </button>
       @for (item of pageRange$$(); track $index) {
         @if (item.type === 'go') {
           <button
-            class="join-item btn btn-square"
-            type="radio"
-            name="options"
+            class="join-item btn p-0 w-(--size)"
             [aria-label]="item.value + 1"
             [class.btn-active]="item.value === value().index"
             (click)="gotoPage(item.value)"
@@ -26,13 +24,13 @@
             {{ item.value + 1 }}
           </button>
         } @else if (item.type === 'prev') {
-          <button class="join-item btn" (click)="gotoPage(value().index - 5)"><</button>
+          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index - 5)"><</button>
         } @else if (item.type === 'next') {
-          <button class="join-item btn" (click)="gotoPage(value().index + 5)">></button>
+          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index + 5)">></button>
         }
       }
       <button
-        class="join-item btn"
+        class="join-item btn p-0 w-(--size)"
         [disabled]="value().index === maxPageCount$$() - 1"
         (click)="gotoPage(maxPageCount$$() - 1)"
       >
