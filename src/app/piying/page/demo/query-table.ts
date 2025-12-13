@@ -233,6 +233,7 @@ const TableDefine = v.object({
   page: v.pipe(
     NFCSchema,
     setComponent('pagination'),
+    topClass('mt-2'),
     patchInputs({
       value: {
         size: 10,

@@ -1,5 +1,9 @@
 <ng-template #templateRef let-attr="attributes">
-  <div class="flex items-center gap-2">
+  <div
+    [class]="'flex items-center gap-2' | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
     @if (sizeOptions(); as sizeOptions) {
       <select class="select w-20" [ngModel]="value().size" (ngModelChange)="pageSizeChange($event)">
         @for (item of sizeOptions; track $index) {
@@ -10,7 +14,11 @@
       </select>
     }
     <div [class]="wrapperClass$()">
-      <button class="join-item btn p-0 w-(--size)" [disabled]="value().index === 0" (click)="gotoPage(0)">
+      <button
+        class="join-item btn p-0 w-(--size)"
+        [disabled]="value().index === 0"
+        (click)="gotoPage(0)"
+      >
         «
       </button>
       @for (item of pageRange$$(); track $index) {
@@ -24,9 +32,13 @@
             {{ item.value + 1 }}
           </button>
         } @else if (item.type === 'prev') {
-          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index - 5)"><</button>
+          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index - 5)">
+            <
+          </button>
         } @else if (item.type === 'next') {
-          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index + 5)">></button>
+          <button class="join-item btn p-0 w-(--size)" (click)="gotoPage(value().index + 5)">
+            >
+          </button>
         }
       }
       <button

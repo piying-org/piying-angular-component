@@ -5,7 +5,7 @@ import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { AlertColor, Color, computedWithPrev, IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
@@ -26,6 +26,7 @@ function goPage(value: number) {
     SelectorlessOutlet,
     PurePipe,
     FormsModule,
+    MergeClassPipe
   ],
 })
 export class PaginationNFCC {
