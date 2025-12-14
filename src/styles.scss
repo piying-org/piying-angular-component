@@ -20,6 +20,7 @@ cdk-dialog-container.cdk-dialog-container {
   display: flex;
 }
 input,
-select {
+select,
+textarea {
   outline: none !important;
 }
