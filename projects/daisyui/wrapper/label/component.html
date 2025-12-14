@@ -1,6 +1,12 @@
 <ng-template #templateRef let-attr="attributes">
   @let title = props$$()['title'];
   @let isEnd = isEnd$$();
+  <ng-template #requiredTemplate>
+    @if (field$$().form.control?.required$$()) {
+      <span>{{ title }}</span
+      ><span class="text-error">*</span>
+    }
+  </ng-template>
 
   @if (labelInline$$()) {
     <label
@@ -12,11 +18,15 @@
       [excludes]="['class']"
     >
       @if (title && !isEnd) {
-        <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
+        <span class="{{ 'label' | cssPrefix }}">
+          <ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
+        ></span>
       }
       <ng-container #fieldComponent></ng-container>
       @if (title && isEnd) {
-        <span class="{{ 'label' | cssPrefix }}">{{ title }}</span>
+        <span class="{{ 'label' | cssPrefix }}"
+          ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
+        ></span>
       }
     </label>
   } @else {
@@ -26,11 +36,15 @@
       [excludes]="['class']"
     >
       @if (title && !isEnd) {
-        <label class="{{ 'label' | cssPrefix }}">{{ title }}</label>
+        <label class="{{ 'label' | cssPrefix }}"
+          ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
+        ></label>
       }
       <ng-container #fieldComponent></ng-container>
       @if (title && isEnd) {
-        <label class="{{ 'label' | cssPrefix }}">{{ title }}</label>
+        <label class="{{ 'label' | cssPrefix }}"
+          ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
+        ></label>
       }
     </div>
   }

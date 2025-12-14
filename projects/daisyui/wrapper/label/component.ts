@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -29,6 +30,7 @@ import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-dai
     MergeClassPipe,
     TwPrefixPipe,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelWC extends PiyingViewWrapperBase {
   static __version = 2;

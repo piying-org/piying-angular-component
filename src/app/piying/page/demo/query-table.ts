@@ -262,7 +262,7 @@ const TableDefine = v.pipe(
                 let dialog: DialogService = field.context['dialog'];
                 dialog.openDialog({
                   title: '添加',
-                  schema: FormBase,
+                  schema: v.pipe(FormBase, setWrappers(['div']), topClass('grid gap-2')),
                   applyValue: (value) => {
                     // 更新或添加
                   },
