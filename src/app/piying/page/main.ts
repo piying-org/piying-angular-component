@@ -1,13 +1,6 @@
 import * as v from 'valibot';
-import {
-  NFCSchema,
-  patchAttributes,
-  patchInputs,
-  setComponent,
-  setWrappers,
-  topClass,
-} from '@piying/view-angular-core';
-import { patchDirectives } from '@piying/view-angular';
+import { NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 export const MainPage = v.pipe(
   v.object({
@@ -18,28 +11,32 @@ export const MainPage = v.pipe(
             menu: v.pipe(
               NFCSchema,
               setComponent('button'),
-              patchInputs({
+              actions.inputs.patch({
                 content: { icon: { fontIcon: 'menu' } },
                 shape: 'square',
                 style: 'ghost',
               }),
-              patchAttributes({
+              actions.attributes.patch({
                 for: 'drawer-0',
               }),
             ),
           }),
         }),
         setComponent('navbar'),
-        topClass('sticky top-0 bg-base-100 z-9'),
+        actions.class.top('sticky top-0 bg-base-100 z-9'),
       ),
-      router: v.pipe(NFCSchema, setComponent('div'), patchDirectives([{ type: RouterOutlet }])),
+      router: v.pipe(
+        NFCSchema,
+        setComponent('div'),
+        actions.directives.patch([{ type: RouterOutlet }]),
+      ),
     }),
     side: v.pipe(
       v.object({
         list: v.pipe(
           NFCSchema,
           setComponent('menu-tree'),
-          patchInputs({
+          actions.inputs.patch({
             list: [
               { title: 'form', router: { routerLink: './component/form' } },
               { title: 'table', router: { routerLink: './component/table' } },
@@ -99,14 +96,14 @@ export const MainPage = v.pipe(
               },
             ],
           }),
-          topClass('min-w-[250px]'),
+          actions.class.top('min-w-[250px]'),
         ),
       }),
-      setWrappers([{ type: 'div' }]),
-      topClass('bg-base-100 h-full z-9'),
+      actions.wrappers.set([{ type: 'div' }]),
+      actions.class.top('bg-base-100 h-full z-9'),
     ),
   }),
   setComponent('drawer'),
 
-  topClass('lg:drawer-open'),
+  actions.class.top('lg:drawer-open'),
 );

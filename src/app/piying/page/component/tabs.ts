@@ -1,12 +1,8 @@
 import * as v from 'valibot';
 import {
   NFCSchema,
-  patchAsyncInputs,
-  patchAttributes,
-  patchInputs,
-  patchProps,
+  actions,
   setComponent,
-  setWrappers,
 } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 export const TabsDefine = v.object({
@@ -14,15 +10,15 @@ export const TabsDefine = v.object({
     v.object({
       k1: v.pipe(
         v.object({
-          d1: v.pipe(v.string(), setComponent('input'), patchAttributes({ placeholder: 'tab1' })),
+          d1: v.pipe(v.string(), setComponent('input'), actions.attributes.patch({ placeholder: 'tab1' })),
         }),
         v.title('k1-title'),
       ),
       k2: v.pipe(
         v.object({
-          d1: v.pipe(v.string(), setComponent('input'), patchAttributes({ placeholder: 'tab2' })),
+          d1: v.pipe(v.string(), setComponent('input'), actions.attributes.patch({ placeholder: 'tab2' })),
         }),
-        patchProps({
+        actions.props.patch({
           title: v.pipe(NFCSchema, setComponent('button')),
         }),
       ),

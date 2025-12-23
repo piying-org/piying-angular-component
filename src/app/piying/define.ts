@@ -10,7 +10,7 @@ import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/exte
 import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
 import { InputFCC } from '@piying/angular-daisyui/field-control';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { patchProps, setComponent, setInputs, setWrappers } from '@piying/view-angular-core';
+import { actions, setComponent } from '@piying/view-angular-core';
 const selectorPrefix = 'app-';
 
 const list = [
@@ -56,26 +56,30 @@ let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrappe
 );
 export const FormDefine = {
   string: {
-    actions: [setComponent(InputFCC), setWrappers(['label-wrapper'])],
+    actions: [setComponent(InputFCC), actions.wrappers.set(['label-wrapper'])],
   },
   number: {
     actions: [
       setComponent(InputFCC),
-      setInputs({ type: 'number' }),
-      setWrappers(['label-wrapper']),
+      actions.inputs.set({ type: 'number' }),
+      actions.wrappers.set(['label-wrapper']),
     ],
   },
   range: {
-    actions: [setComponent(FCCGroup.RangeFCC), setWrappers(['label-wrapper'])],
+    actions: [setComponent(FCCGroup.RangeFCC), actions.wrappers.set(['label-wrapper'])],
   },
   date: {
-    actions: [setComponent(InputFCC), setInputs({ type: 'date' }), setWrappers(['label-wrapper'])],
+    actions: [
+      setComponent(InputFCC),
+      actions.inputs.set({ type: 'date' }),
+      actions.wrappers.set(['label-wrapper']),
+    ],
   },
   boolean: {
     actions: [
       setComponent(FCCGroup.CheckboxFCC),
-      setWrappers(['label-wrapper']),
-      patchProps({
+      actions.wrappers.set(['label-wrapper']),
+      actions.props.patch({
         labelPosition: 'right',
       }),
     ],
@@ -83,20 +87,20 @@ export const FormDefine = {
   toggle: {
     actions: [
       setComponent(FCCGroup.ToggleFCC),
-      setWrappers(['label-wrapper']),
-      patchProps({
+      actions.wrappers.set(['label-wrapper']),
+      actions.props.patch({
         labelPosition: 'right',
       }),
     ],
   },
   select: {
-    actions: [setComponent(FCCGroup.SelectFCC), setWrappers(['label-wrapper'])],
+    actions: [setComponent(FCCGroup.SelectFCC), actions.wrappers.set(['label-wrapper'])],
   },
   radio: {
-    actions: [setComponent(FCCGroup.RadioFCC), setWrappers(['label-wrapper'])],
+    actions: [setComponent(FCCGroup.RadioFCC), actions.wrappers.set(['label-wrapper'])],
   },
   textarea: {
-    actions: [setComponent(FCCGroup.TextareaFCC), setWrappers(['label-wrapper'])],
+    actions: [setComponent(FCCGroup.TextareaFCC), actions.wrappers.set(['label-wrapper'])],
   },
 } as PiViewConfig['types'];
 

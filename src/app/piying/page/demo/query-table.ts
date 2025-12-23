@@ -1,22 +1,14 @@
 import * as v from 'valibot';
 import {
-  bottomClass,
   formConfig,
   hideWhen,
   mergeHooks,
   NFCSchema,
-  patchAsyncInputs,
-  patchAsyncProps,
-  patchInputs,
-  patchOutputs,
-  patchProps,
   setComponent,
-  setWrappers,
-  topClass,
 } from '@piying/view-angular-core';
 import { computed, signal } from '@angular/core';
 import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
-import { setDirectives } from '@piying/view-angular';
+import { actions } from '@piying/view-angular';
 import { Subject, map, startWith } from 'rxjs';
 import { da, faker } from '@faker-js/faker';
 import { range } from 'es-toolkit';
@@ -44,39 +36,39 @@ const QueryCondition = v.pipe(
         content: v.pipe(
           v.string(),
           v.title('searchTitle'),
-          setWrappers(['label-wrapper']),
-          patchProps({
+          actions.wrappers.set(['label-wrapper']),
+          actions.props.patch({
             labelPosition: 'left',
           }),
-          topClass('gap-2'),
+          actions.class.top('gap-2'),
         ),
 
         level: v.pipe(
           v.number(),
           v.title('level'),
-          setWrappers(['label-wrapper']),
-          topClass('gap-2'),
-          patchProps({
+          actions.wrappers.set(['label-wrapper']),
+          actions.class.top('gap-2'),
+          actions.props.patch({
             labelPosition: 'left',
           }),
           setComponent('select'),
-          patchInputs({
+          actions.inputs.patch({
             options: LevelOptions,
           }),
         ),
       }),
       formConfig({ updateOn: 'submit' }),
-      setWrappers(['div']),
-      topClass('flex gap-4'),
+      actions.wrappers.set(['div']),
+      actions.class.top('flex gap-4'),
     ),
     submit: v.pipe(
       NFCSchema,
       setComponent('button'),
-      patchInputs({
+      actions.inputs.patch({
         content: 'Submit',
         color: 'primary',
       }),
-      patchAsyncInputs({
+      actions.inputs.patchAsync({
         clicked: (field) => {
           return () => {
             let result = field.get(['..', 'params'])!.form.control!;
@@ -86,17 +78,17 @@ const QueryCondition = v.pipe(
       }),
     ),
   }),
-  setWrappers(['div']),
-  topClass('flex justify-between'),
+  actions.wrappers.set(['div']),
+  actions.class.top('flex justify-between'),
 );
 const TableDefine = v.pipe(
   v.object({
     table: v.pipe(
       NFCSchema,
       setComponent('table'),
-      setWrappers(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
+      actions.wrappers.set(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
 
-      patchAsyncInputs({
+      actions.inputs.patchAsync({
         define: (field) => {
           let pageFiled = field.get(['..', 'bottom', 'page']);
           return {
@@ -104,7 +96,7 @@ const TableDefine = v.pipe(
               head: [
                 {
                   columns: ['checkbox', 'index', 'title', 'level', 'badge', 'actions'],
-                  define: v.pipe(v.tuple([]), setComponent('tr'), topClass('bg-base-200')),
+                  define: v.pipe(v.tuple([]), setComponent('tr'), actions.class.top('bg-base-200')),
                 },
               ],
               body: [
@@ -120,7 +112,7 @@ const TableDefine = v.pipe(
                 body: v.pipe(
                   v.boolean(),
                   setComponent('checkbox'),
-                  setWrappers(['td', 'table-checkbox-body']),
+                  actions.wrappers.set(['td', 'table-checkbox-body']),
                 ),
               },
               index: {
@@ -147,8 +139,8 @@ const TableDefine = v.pipe(
                 body: v.pipe(
                   NFCSchema,
                   setComponent('badge'),
-                  setWrappers(['td']),
-                  patchAsyncInputs({
+                  actions.wrappers.set(['td']),
+                  actions.inputs.patchAsync({
                     content: ({ context }) => {
                       return computed(() => context.item$().badge);
                     },
@@ -162,12 +154,12 @@ const TableDefine = v.pipe(
                     edit: v.pipe(
                       NFCSchema,
                       setComponent('button'),
-                      patchInputs({
+                      actions.inputs.patch({
                         content: { icon: { fontIcon: 'edit' } },
                         shape: 'circle',
                         size: 'sm',
                       }),
-                      patchAsyncInputs({
+                      actions.inputs.patchAsync({
                         clicked: (field) => {
                           return () => {
                             console.log(field.context['item$']());
@@ -178,13 +170,13 @@ const TableDefine = v.pipe(
                     delete: v.pipe(
                       NFCSchema,
                       setComponent('button'),
-                      patchInputs({
+                      actions.inputs.patch({
                         content: { icon: { fontIcon: 'delete' } },
                         shape: 'circle',
                         size: 'sm',
                       }),
-                      topClass('text-error'),
-                      patchAsyncInputs({
+                      actions.class.top('text-error'),
+                      actions.inputs.patchAsync({
                         clicked: (field) => {
                           return () => {
                             console.log(field.context['item$']());
@@ -193,16 +185,16 @@ const TableDefine = v.pipe(
                       }),
                     ),
                   }),
-                  topClass('flex gap-2'),
-                  setWrappers(['td']),
+                  actions.class.top('flex gap-2'),
+                  actions.wrappers.set(['td']),
                 ),
               },
             },
           };
         },
       }),
-      patchProps({ sortList: ['title', 'level'] }),
-      patchAsyncProps({
+      actions.props.patch({ sortList: ['title', 'level'] }),
+      actions.props.patchAsync({
         data: (field) => {
           let init = range(100).map((item) => {
             return {
@@ -234,35 +226,39 @@ const TableDefine = v.pipe(
           return value;
         },
       }),
-      patchAsyncProps({
-        queryParams: (field) => {
-          let { props } = field;
-          let pageProps = field.get(['..', 'bottom', 'page'])?.props;
-          return computed(() => {
-            return {
+       actions.props.mapAsync((field) => {
+        let pageProps = field.get(['..', 'bottom', 'page'])?.props;
+        return (value) => {
+          return {
+            ...value,
+            queryParams: {
               // page field
               page: pageProps?.()['pageQueryParams'],
               // sort-table
-              direction: props()['sortQueryParams'],
-            };
-          });
-        },
+              direction: value['sortQueryParams'],
+            },
+          };
+        };
       }),
-      bottomClass('mt-4 border rounded-box border-base-content/5'),
+      actions.class.bottom('mt-4 border rounded-box border-base-content/5'),
     ),
     bottom: v.pipe(
       v.object({
         add: v.pipe(
           NFCSchema,
           setComponent('button'),
-          patchInputs({ content: { icon: { fontIcon: 'add' }, title: 'add' } }),
-          patchAsyncInputs({
+          actions.inputs.patch({ content: { icon: { fontIcon: 'add' }, title: 'add' } }),
+          actions.inputs.patchAsync({
             clicked: (field) => {
               return () => {
                 let dialog: DialogService = field.context['dialog'];
                 dialog.openDialog({
                   title: '添加',
-                  schema: v.pipe(FormBase, setWrappers(['div']), topClass('grid gap-2')),
+                  schema: v.pipe(
+                    FormBase,
+                    actions.wrappers.set(['div']),
+                    actions.class.top('grid gap-2'),
+                  ),
                   applyValue: (value) => {
                     // 更新或添加
                   },
@@ -274,14 +270,14 @@ const TableDefine = v.pipe(
         page: v.pipe(
           NFCSchema,
           setComponent('pagination'),
-          topClass('mt-4 flex justify-end'),
-          patchInputs({
+          actions.class.top('mt-4 flex justify-end'),
+          actions.inputs.patch({
             value: {
               size: 10,
               index: 0,
             },
           }),
-          patchAsyncInputs({
+          actions.inputs.patchAsync({
             count: (field) => {
               let tableField = field.get(['..', '..', 'table'])!;
               return computed(() => {
@@ -291,13 +287,13 @@ const TableDefine = v.pipe(
           }),
         ),
       }),
-      setWrappers(['div']),
-      topClass('flex justify-between items-center'),
+      actions.wrappers.set(['div']),
+      actions.class.top('flex justify-between items-center'),
     ),
   }),
 );
 export const QueryTableDefine = v.pipe(
   v.object({ query: QueryCondition, table: TableDefine }),
-  setWrappers(['div']),
-  topClass('m-4'),
+  actions.wrappers.set(['div']),
+  actions.class.top('m-4'),
 );

@@ -1,18 +1,7 @@
 import * as v from 'valibot';
-import {
-  componentClass,
-  hideWhen,
-  mergeHooks,
-  NFCSchema,
-  patchAsyncInputs,
-  patchAsyncProps,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-} from '@piying/view-angular-core';
+import { hideWhen, mergeHooks, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed, isSignal } from '@angular/core';
-import { setDirectives } from '@piying/view-angular';
+import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
 import { range } from 'es-toolkit';
@@ -21,9 +10,9 @@ export const CategoryDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
-    setWrappers(['table-status', 'table-resource']),
-    patchInputs({ type: 'category', pin: { rows: true } }),
-    patchAsyncInputs({
+    actions.wrappers.set(['table-status', 'table-resource']),
+    actions.inputs.patch({ type: 'category', pin: { rows: true } }),
+    actions.inputs.patchAsync({
       define: (field) => {
         return {
           row: {
@@ -37,7 +26,7 @@ export const CategoryDefine = v.object({
                 define: v.pipe(
                   v.tuple([]),
                   setComponent('tr'),
-                  setDirectives([
+                  actions.directives.set([
                     {
                       type: ExpandRowDirective,
                     },
@@ -73,13 +62,13 @@ export const CategoryDefine = v.object({
         };
       },
     }),
-    patchAsyncProps({
+    actions.props.patchAsync({
       data: () => {
         return range(1, 100).map((index) => {
           return [`k${index}`, range(4).map((i) => `k${index}v${i}`)];
         });
       },
     }),
-    componentClass('h-100'),
+    actions.class.component('h-100'),
   ),
 });

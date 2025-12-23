@@ -4,7 +4,7 @@ import { Daisyui } from './daisyui';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { assertElementContent, assertElementExist, assertElementSelector } from './util/element';
 import { htmlInput } from './util/action';
 describe('avatar', () => {
@@ -21,7 +21,7 @@ describe('avatar', () => {
   it('input-placeholder', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ placeholder: 'input1', placeholderClass: 'test1' }),
+      actions.inputs.patch({ placeholder: 'input1', placeholderClass: 'test1' }),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
@@ -31,7 +31,7 @@ describe('avatar', () => {
     assertElementContent(element, `.${prefix} span.test1`, 'input1');
   });
   it('input-imgUrl', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ imgUrl: 'htpp://a.b.com' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ imgUrl: 'htpp://a.b.com' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -39,7 +39,7 @@ describe('avatar', () => {
     assertElementSelector(element, `.${prefix} img`);
   });
   it('input-wrapperClass', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ wrapperClass: 'test1', }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ wrapperClass: 'test1', }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -47,7 +47,7 @@ describe('avatar', () => {
     assertElementSelector(element, `.${prefix} .test1`);
   });
   it('input-status', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ status: 'online' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ status: 'online' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });

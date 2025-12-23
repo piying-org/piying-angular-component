@@ -1,17 +1,7 @@
 import * as v from 'valibot';
-import {
-  hideWhen,
-  mergeHooks,
-  NFCSchema,
-  patchAsyncInputs,
-  patchAsyncProps,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-} from '@piying/view-angular-core';
+import { hideWhen, mergeHooks, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed, isSignal } from '@angular/core';
-import { setDirectives } from '@piying/view-angular';
+import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
 
@@ -19,9 +9,9 @@ export const TableDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
-    setWrappers(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
+    actions.wrappers.set(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
 
-    patchAsyncInputs({
+    actions.inputs.patchAsync({
       define: (field) => {
         let pageFiled = field.get(['..', 'page']);
         return {
@@ -32,7 +22,7 @@ export const TableDefine = v.object({
                 define: v.pipe(
                   v.tuple([]),
                   setComponent('tr'),
-                  setDirectives([
+                  actions.directives.set([
                     {
                       type: ExpandRowDirective,
                     },
@@ -49,7 +39,7 @@ export const TableDefine = v.object({
               body: v.pipe(
                 v.boolean(),
                 setComponent('checkbox'),
-                setWrappers(['td', 'table-checkbox-body']),
+                actions.wrappers.set(['td', 'table-checkbox-body']),
               ),
             },
             index: {
@@ -70,8 +60,8 @@ export const TableDefine = v.object({
               body: v.pipe(
                 NFCSchema,
                 setComponent('badge'),
-                setWrappers(['td']),
-                patchAsyncInputs({
+                actions.wrappers.set(['td']),
+                actions.inputs.patchAsync({
                   content: ({ context }) => {
                     return computed(() => context.item$().badge1);
                   },
@@ -82,9 +72,9 @@ export const TableDefine = v.object({
               head: v.pipe(
                 NFCSchema,
                 setComponent('button'),
-                patchInputs({ content: '1234' }),
-                setWrappers(['td', 'sort-header']),
-                patchProps({
+                actions.inputs.patch({ content: '1234' }),
+                actions.wrappers.set(['td', 'sort-header']),
+                actions.props.patch({
                   key: 'title1',
                 }),
               ),
@@ -93,9 +83,9 @@ export const TableDefine = v.object({
               head: v.pipe(
                 NFCSchema,
                 setComponent('button'),
-                patchInputs({ content: '666' }),
-                setWrappers(['td', 'sort-header']),
-                patchProps({
+                actions.inputs.patch({ content: '666' }),
+                actions.wrappers.set(['td', 'sort-header']),
+                actions.props.patch({
                   key: 'badge1',
                   direction: 1,
                 }),
@@ -105,7 +95,7 @@ export const TableDefine = v.object({
               body: v.pipe(
                 NFCSchema,
                 setComponent('button'),
-                setWrappers(['td']),
+                actions.wrappers.set(['td']),
                 hideWhen({
                   listen(fn, field) {
                     return (field.context.status.expanded as Subject<any>).pipe(
@@ -122,8 +112,8 @@ export const TableDefine = v.object({
         };
       },
     }),
-    patchProps({ sortList: ['title1', 'badge1'] }),
-    patchAsyncProps({
+    actions.props.patch({ sortList: ['title1', 'badge1'] }),
+    actions.props.patchAsync({
       data: () => {
         return [
           {
@@ -141,31 +131,31 @@ export const TableDefine = v.object({
         ];
       },
     }),
-    patchAsyncProps({
-      queryParams: (field) => {
-        let { props } = field;
-        let pageProps = field.get(['..', 'page'])?.props;
-        return computed(() => {
-          return {
+    actions.props.mapAsync((field) => {
+      let pageProps = field.get(['..', 'page'])!.props;
+      return (value) => {
+        return {
+          ...value,
+          queryParams: {
             // page field
             page: pageProps?.()['pageQueryParams'],
             // sort-table
-            direction: props()['sortQueryParams'],
-          };
-        });
-      },
+            direction: value['sortQueryParams'],
+          },
+        };
+      };
     }),
   ),
   page: v.pipe(
     NFCSchema,
     setComponent('pagination'),
-    patchInputs({
+    actions.inputs.patch({
       value: {
         size: 2,
         index: 0,
       },
     }),
-    patchAsyncInputs({
+    actions.inputs.patchAsync({
       count: (field) => {
         let tableField = field.get(['..', 'table'])!;
         return computed(() => {

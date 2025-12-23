@@ -1,16 +1,5 @@
 import * as v from 'valibot';
-import {
-  componentClass,
-  NFCSchema,
-  patchAsyncInputs,
-  patchAsyncProps,
-  patchAttributes,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-  topClass,
-} from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { computed, signal } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { CardBodyDemoNFCC } from '../../component/card-body/component';
@@ -22,7 +11,7 @@ export const CardDefine = v.object({
       figure: v.pipe(
         NFCSchema,
         setComponent('common-data'),
-        patchInputs({
+        actions.inputs.patch({
           content: {
             image: {
               src: faker.image.url({ width: 400, height: 400 }),
@@ -33,12 +22,12 @@ export const CardDefine = v.object({
       title: v.pipe(
         NFCSchema,
         setComponent('common-data'),
-        patchInputs({ content: faker.book.title() }),
+        actions.inputs.patch({ content: faker.book.title() }),
       ),
       body: v.pipe(
         NFCSchema,
         setComponent(CardBodyDemoNFCC),
-        patchInputs({
+        actions.inputs.patch({
           data: {
             author: faker.book.author(),
             format: faker.book.format(),
@@ -49,30 +38,30 @@ export const CardDefine = v.object({
         }),
       ),
       actions: v.object({
-        __btn: v.pipe(NFCSchema, setComponent('button'), patchInputs({ content: 'Go' })),
+        __btn: v.pipe(NFCSchema, setComponent('button'), actions.inputs.patch({ content: 'Go' })),
       }),
     }),
     setComponent('card'),
-    componentClass('shadow-sm w-100'),
+    actions.class.component('shadow-sm w-100'),
   ),
 
   cardList2: v.pipe(
     v.object({
       search: v.object({
-        title: v.pipe(v.string(), patchAttributes({ placeholder: 'search Title' })),
+        title: v.pipe(v.string(), actions.attributes.patch({ placeholder: 'search Title' })),
       }),
       list: v.pipe(
         NFCSchema,
         setComponent('list-template'),
-        setWrappers(['div']),
-        topClass('grid grid-cols-3 gap-2'),
-        patchInputs({
+        actions.wrappers.set(['div']),
+        actions.class.top('grid grid-cols-3 gap-2'),
+        actions.inputs.patch({
           template: v.pipe(
             v.object({
               figure: v.pipe(
                 NFCSchema,
                 setComponent('common-data'),
-                patchAsyncInputs({
+                actions.inputs.patchAsync({
                   content: (field) => {
                     return { image: field.context['getItem']().image };
                   },
@@ -81,7 +70,7 @@ export const CardDefine = v.object({
               title: v.pipe(
                 NFCSchema,
                 setComponent('common-data'),
-                patchAsyncInputs({
+                actions.inputs.patchAsync({
                   content: (field) => {
                     return field.context['getItem']().title;
                   },
@@ -90,21 +79,25 @@ export const CardDefine = v.object({
               body: v.pipe(
                 NFCSchema,
                 setComponent(CardBodyDemoNFCC),
-                patchAsyncInputs({
+                actions.inputs.patchAsync({
                   data: (field) => {
                     return field.context['getItem']().body;
                   },
                 }),
               ),
               actions: v.object({
-                __btn: v.pipe(NFCSchema, setComponent('button'), patchInputs({ content: 'Go' })),
+                __btn: v.pipe(
+                  NFCSchema,
+                  setComponent('button'),
+                  actions.inputs.patch({ content: 'Go' }),
+                ),
               }),
             }),
             setComponent('card'),
-            componentClass('shadow-sm w-full'),
+            actions.class.component('shadow-sm w-full'),
           ),
         }),
-        patchAsyncInputs({
+        actions.inputs.patchAsync({
           list: (field) => {
             let list = signal<any[]>([]);
             let result = field.context['getCardList']();

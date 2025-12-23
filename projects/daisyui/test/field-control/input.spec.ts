@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -18,7 +18,7 @@ describe('input', () => {
   testClassInput('size', 'xs', prefix, BaseDefine);
   testClassInputBoolean('ghost', 'ghost', prefix, BaseDefine);
   it(`input-type`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ type: 'number' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ type: 'number' }));
     let { element } = await createSchemaComponent(signal(schema), signal(123), undefined, {
       teardown: { destroyAfterEach: false },
     });

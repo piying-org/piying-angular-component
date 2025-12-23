@@ -15,7 +15,6 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import * as v from 'valibot';
-import { patchProps } from '@piying/view-angular-core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-list-template',

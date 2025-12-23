@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist } from '../util/element';
@@ -21,7 +21,7 @@ describe('calendar', () => {
     expect(element.querySelector('calendar-date.pc-cally')).toBeTruthy();
   });
   it('multi', async () => {
-    let schema = v.pipe(v.date(), setComponent('calendar'), patchInputs({ type: 'multi' }));
+    let schema = v.pipe(v.date(), setComponent('calendar'), actions.inputs.patch({ type: 'multi' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -29,7 +29,7 @@ describe('calendar', () => {
     expect(element.querySelector('calendar-multi.pc-cally')).toBeTruthy();
   });
   it('multi-inputvalue', async () => {
-    let schema = v.pipe(v.date(), setComponent('calendar'), patchInputs({ type: 'multi' }));
+    let schema = v.pipe(v.date(), setComponent('calendar'), actions.inputs.patch({ type: 'multi' }));
     let list = range(-15, 15).map((i) => {
       let a = new Date();
       a.setDate(a.getDate() + i);
@@ -44,7 +44,7 @@ describe('calendar', () => {
     expect(monthEl?.shadowRoot?.querySelectorAll('[part~=selected]').length).toBeGreaterThan(1);
   });
   it('range', async () => {
-    let schema = v.pipe(v.date(), setComponent('calendar'), patchInputs({ type: 'range' }));
+    let schema = v.pipe(v.date(), setComponent('calendar'), actions.inputs.patch({ type: 'range' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -52,7 +52,7 @@ describe('calendar', () => {
     expect(element.querySelector('calendar-range.pc-cally')).toBeTruthy();
   });
   it('range-inputValue', async () => {
-    let schema = v.pipe(v.date(), setComponent('calendar'), patchInputs({ type: 'range' }));
+    let schema = v.pipe(v.date(), setComponent('calendar'), actions.inputs.patch({ type: 'range' }));
     let list = range(2).map((i) => {
       let a = new Date();
       a.setDate(a.getDate() + (i ? 15 : -15));
@@ -72,7 +72,7 @@ describe('calendar', () => {
     let schema = v.pipe(
       v.date(),
       setComponent('calendar'),
-      patchInputs({ type: 'range', monthProps: 2 }),
+      actions.inputs.patch({ type: 'range', monthProps: 2 }),
     );
     let list = range(2).map((i) => {
       let a = new Date();

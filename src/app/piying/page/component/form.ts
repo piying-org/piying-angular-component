@@ -1,13 +1,5 @@
 import * as v from 'valibot';
-import {
-  NFCSchema,
-  patchAsyncInputs,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-  topClass,
-} from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 export const FormBase = v.object({
   input: v.pipe(v.string(), v.title('string-control')),
@@ -20,7 +12,7 @@ export const FormBase = v.object({
     v.string(),
     setComponent('select'),
     v.title('select-control'),
-    patchInputs({
+    actions.inputs.patch({
       options: [
         { label: 'label1', value: 'value1' },
         { label: 'label2', value: 'value2' },
@@ -32,7 +24,7 @@ export const FormBase = v.object({
     v.string(),
     setComponent('radio'),
     v.title('radio-control'),
-    patchInputs({
+    actions.inputs.patch({
       options: [
         { label: 'label1', value: 'value1' },
         { label: 'label2', value: 'value2' },
@@ -45,16 +37,16 @@ export const FormBase = v.object({
   calendar: v.pipe(
     v.date(),
     setComponent('picker-ref'),
-    patchInputs({
+    actions.inputs.patch({
       overlayConfig: {
         panelClass: 'bg-base-100',
       },
     }),
-    patchInputs({
+    actions.inputs.patch({
       trigger: v.pipe(
         NFCSchema,
         setComponent('button'),
-        patchAsyncInputs({
+        actions.inputs.patchAsync({
           content: (field) => {
             return computed(() => {
               let pickerValue = field.context['pickerValue']();
@@ -69,12 +61,12 @@ export const FormBase = v.object({
 });
 export const FormDefine = v.pipe(
   v.object({
-    form1: v.pipe(FormBase, setWrappers(['div']), topClass('grid gap-2')),
+    form1: v.pipe(FormBase, actions.wrappers.set(['div']), actions.class.top('grid gap-2')),
     form2: v.pipe(
       FormBase,
       setComponent('fieldset'),
       v.title('form-field title'),
-      topClass('bg-base-200 border-base-300 rounded-box border w-fit p-4'),
+      actions.class.top('bg-base-200 border-base-300 rounded-box border w-fit p-4'),
     ),
   }),
 );

@@ -4,7 +4,7 @@ import { Daisyui } from './daisyui';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { assertElementContent, assertElementExist, assertElementSelector } from './util/element';
 import { htmlInput } from './util/action';
 describe('Button', () => {
@@ -21,7 +21,7 @@ describe('Button', () => {
     assertElementContent(element, 'button', 'Default');
   });
   it('input-color', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ color: 'primary' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ color: 'primary' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -29,7 +29,7 @@ describe('Button', () => {
     assertElementSelector(element, 'button.pc-btn-primary');
   });
   it('input-style', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ style: 'outline' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ style: 'outline' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -37,7 +37,7 @@ describe('Button', () => {
     assertElementSelector(element, 'button.pc-btn-outline');
   });
   it('input-size', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ size: 'xs' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ size: 'xs' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -45,7 +45,7 @@ describe('Button', () => {
     assertElementSelector(element, 'button.pc-btn-xs');
   });
   it('input-active', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ active: true }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ active: true }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -53,7 +53,7 @@ describe('Button', () => {
     assertElementSelector(element, 'button.pc-btn-active');
   });
   it('input-shape', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ shape: 'wide' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ shape: 'wide' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -61,7 +61,7 @@ describe('Button', () => {
     assertElementSelector(element, 'button.pc-btn-wide');
   });
   it('input-content', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ content: 'input1' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ content: 'input1' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -72,7 +72,7 @@ describe('Button', () => {
     let p = Promise.withResolvers<void>();
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         clicked: () => {
           return p.promise;
         },
@@ -100,7 +100,7 @@ describe('Button', () => {
     let p = Promise.withResolvers<void>();
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         clicked: () => {
           return p.promise;
         },

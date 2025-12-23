@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -33,7 +33,7 @@ describe('dock', () => {
     expect(list[0].classList.contains(`${prefix}-active`)).toBeTrue();
   });
   it('input-activatedIndex', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ activatedIndex: 1 }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ activatedIndex: 1 }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });

@@ -4,12 +4,18 @@ import {
   computed,
   effect,
   forwardRef,
+  inject,
   input,
   TemplateRef,
   viewChild,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AttributesDirective, BaseControl, PiyingViewWrapperBase } from '@piying/view-angular';
+import {
+  AttributesDirective,
+  BaseControl,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import {
   DefaultOptionConvert,
   OptionConvert,
@@ -29,12 +35,15 @@ import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-dai
     CssPrefixPipe,
     MergeClassPipe,
     TwPrefixPipe,
+    InsertFieldDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabelWC extends PiyingViewWrapperBase {
+export class LabelWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  props$$ = computed(() => this.field$$().props());
   labelInline$$ = computed(() => {
     return this.props$$()['labelInline'] ?? false;
   });
@@ -49,16 +58,4 @@ export class LabelWC extends PiyingViewWrapperBase {
     let direction = this.labelPosition$$();
     return direction === 'top' || direction === 'bottom' ? 'flex flex-col' : 'flex';
   });
-  override ngOnInit(): void {}
-  constructor() {
-    super();
-    effect(() => {
-      let ref = this.fieldComponentAnchor();
-      if (ref) {
-        this.createComponent();
-      } else {
-        this.destroyComponentFn?.();
-      }
-    });
-  }
 }

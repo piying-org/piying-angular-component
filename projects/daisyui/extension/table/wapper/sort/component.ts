@@ -12,7 +12,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
+import { AttributesDirective, InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { inputSortDirective } from './input-checkbox.directive';
 
 @Component({
@@ -25,12 +25,14 @@ import { inputSortDirective } from './input-checkbox.directive';
     MergeClassPipe,
     AttributesDirective,
     inputSortDirective,
+    InsertFieldDirective,
   ],
 })
-export class SortHeaderWC extends PiyingViewWrapperBase {
+export class SortHeaderWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-
+  field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  props$$ = computed(() => this.field$$().props());
   key$$ = computed(() => {
     return this.props$$()['key'];
   });

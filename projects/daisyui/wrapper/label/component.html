@@ -22,7 +22,7 @@
           <ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
         ></span>
       }
-      <ng-container #fieldComponent></ng-container>
+      <ng-container insertField></ng-container>
       @if (title && isEnd) {
         <span class="{{ 'label' | cssPrefix }}"
           ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
@@ -40,7 +40,7 @@
           ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container
         ></label>
       }
-      <ng-container #fieldComponent></ng-container>
+      <ng-container insertField></ng-container>
       @if (title && isEnd) {
         <label class="{{ 'label' | cssPrefix }}"
           ><ng-container *ngTemplateOutlet="requiredTemplate"></ng-container

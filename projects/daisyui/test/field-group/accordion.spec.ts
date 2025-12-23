@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -37,7 +37,7 @@ describe('accordion', () => {
     });
   });
   it(`input-collapseIcon`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ collapseIcon: 'arrow' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ collapseIcon: 'arrow' }));
     let { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
@@ -49,7 +49,7 @@ describe('accordion', () => {
     expect(element.querySelector(`.${prefix2}-arrow`)!).toBeTruthy();
   });
   it(`input-joinChild`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ joinChild: false }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ joinChild: false }));
     let { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
@@ -61,7 +61,7 @@ describe('accordion', () => {
     assertElementSelector(element, `.pc-join`, true);
   });
   it(`input-childClass`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ childClass: 'child1' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ childClass: 'child1' }));
     let { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
@@ -73,7 +73,7 @@ describe('accordion', () => {
     assertElementSelector(element, `.child1`);
   });
   it(`input-multi`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ multi: true }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ multi: true }));
     let { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),

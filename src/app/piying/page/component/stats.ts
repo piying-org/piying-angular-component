@@ -1,17 +1,5 @@
 import * as v from 'valibot';
-import {
-  componentClass,
-  NFCSchema,
-  patchAsyncClass,
-  patchAsyncInputs,
-  patchAsyncProps,
-  patchAttributes,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-  topClass,
-} from '@piying/view-angular-core';
+import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed, signal } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { CardBodyDemoNFCC } from '../../component/card-body/component';
@@ -23,85 +11,85 @@ export const StatsDefine = v.object({
         v.object({
           title: v.pipe(
             NFCSchema,
-            setWrappers(['div']),
+            actions.wrappers.set(['div']),
             setComponent('common-data'),
-            patchInputs({ content: 'Angular' }),
-            topClass('stat-title'),
+            actions.inputs.patch({ content: 'Angular' }),
+            actions.class.top('stat-title'),
           ),
           value: v.pipe(
             NFCSchema,
-            setWrappers(['div']),
+            actions.wrappers.set(['div']),
             setComponent('common-data'),
-            patchInputs({ content: '20' }),
-            topClass('stat-value'),
+            actions.inputs.patch({ content: '20' }),
+            actions.class.top('stat-value'),
           ),
           desc: v.pipe(
             NFCSchema,
-            setWrappers(['div']),
+            actions.wrappers.set(['div']),
             setComponent('common-data'),
-            patchInputs({ content: 'Version' }),
-            topClass('stat-desc'),
+            actions.inputs.patch({ content: 'Version' }),
+            actions.class.top('stat-desc'),
           ),
         }),
-        setWrappers(['div']),
-        topClass('stat'),
+        actions.wrappers.set(['div']),
+        actions.class.top('stat'),
       ),
     }),
-    setWrappers(['div']),
-    topClass('stats shadow'),
+    actions.wrappers.set(['div']),
+    actions.class.top('stats shadow'),
   ),
   stats2: v.pipe(
     NFCSchema,
     setComponent('list-template'),
-    setWrappers(['div']),
-    topClass('stats shadow'),
-    patchInputs({
+    actions.wrappers.set(['div']),
+    actions.class.top('stats shadow'),
+    actions.inputs.patch({
       template: v.pipe(
         NFCSchema,
         setComponent('stat'),
-        patchAsyncInputs({
+        actions.inputs.patchAsync({
           valueClass: (field) => {
             let item = field.context['getItem']().valueClass;
-            return item
+            return item;
           },
         }),
-        patchInputs({
+        actions.inputs.patch({
           title: v.pipe(
             NFCSchema,
             setComponent('common-data'),
-            patchAsyncInputs({
+            actions.inputs.patchAsync({
               content: (field) => {
                 return field.context['getItem']().title;
               },
             }),
-            topClass('stat-title'),
+            actions.class.top('stat-title'),
           ),
 
           value: v.pipe(
             NFCSchema,
             setComponent('common-data'),
-            patchAsyncInputs({
+            actions.inputs.patchAsync({
               content: (field) => {
                 return field.context['getItem']().value;
               },
             }),
 
-            topClass('stat-value'),
+            actions.class.top('stat-value'),
           ),
           desc: v.pipe(
             NFCSchema,
             setComponent('common-data'),
-            patchAsyncInputs({
+            actions.inputs.patchAsync({
               content: (field) => {
                 return field.context['getItem']().desc;
               },
             }),
-            topClass('stat-desc'),
+            actions.class.top('stat-desc'),
           ),
         }),
       ),
     }),
-    patchAsyncInputs({
+    actions.inputs.patchAsync({
       list: (field) => {
         return field.context['getStatList']();
       },

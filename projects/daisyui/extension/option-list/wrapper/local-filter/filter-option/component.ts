@@ -16,7 +16,6 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import {
   AttributesDirective,
   PI_VIEW_FIELD_TOKEN,
-  PiyingViewWrapperBase,
 } from '@piying/view-angular';
 
 @Component({

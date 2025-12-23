@@ -4,7 +4,7 @@ import { Daisyui } from './daisyui';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { assertElementContent, assertElementExist, assertElementSelector } from './util/element';
 import { htmlInput } from './util/action';
 describe('breadcrumbs', () => {
@@ -20,7 +20,7 @@ describe('breadcrumbs', () => {
   });
 
   it('input-options-label', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ options: [{ label: 'input1' }] }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ options: [{ label: 'input1' }] }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -31,7 +31,7 @@ describe('breadcrumbs', () => {
   it('input-options-link', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ options: [{ label: 'input1', url: '/path/to' }] }),
+      actions.inputs.patch({ options: [{ label: 'input1', url: '/path/to' }] }),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
@@ -44,7 +44,7 @@ describe('breadcrumbs', () => {
   it('input-options-extraLink', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ options: [{ label: 'input1', url: 'http://a.b.c', extraLink: true }] }),
+      actions.inputs.patch({ options: [{ label: 'input1', url: 'http://a.b.c', extraLink: true }] }),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
@@ -57,7 +57,7 @@ describe('breadcrumbs', () => {
   it('input-optionClass', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ options: [{ label: 'input1' }], optionClass: 'test1' }),
+      actions.inputs.patch({ options: [{ label: 'input1' }], optionClass: 'test1' }),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },

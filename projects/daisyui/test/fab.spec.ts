@@ -4,7 +4,7 @@ import { Daisyui } from './daisyui';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import {
   assertElementContent,
   assertElementExist,
@@ -28,21 +28,21 @@ describe('fab', () => {
     assertElementContent(element, '.pc-fab .pc-btn', 'D');
   });
   it('input-flower', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ flower: true }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ flower: true }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementSelector(element, '.pc-fab.pc-fab-flower');
   });
   it('input-common', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ commonClass: 'common' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ commonClass: 'common' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementSelector(element, '.pc-fab .common');
   });
   it('input-defaultIcon', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ defaultIcon: { label: 'input1' } }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ defaultIcon: { label: 'input1' } }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -52,7 +52,7 @@ describe('fab', () => {
   it('input-closeIcon', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         closeIcon: { label: 'G' },
       }),
     );
@@ -64,7 +64,7 @@ describe('fab', () => {
   it('input-mainIcon', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         mainIcon: { label: 'J' },
       }),
     );
@@ -77,7 +77,7 @@ describe('fab', () => {
     let value = 0;
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         options: [
           {
             label: 'run1',
@@ -113,7 +113,7 @@ describe('fab', () => {
     let value = 0;
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         autoClose: false,
         options: [
           {

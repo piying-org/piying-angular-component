@@ -4,7 +4,7 @@ import { Daisyui } from './daisyui';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { assertElementContent, assertElementExist, assertElementSelector } from './util/element';
 import { htmlInput } from './util/action';
 describe('badge', () => {
@@ -20,7 +20,7 @@ describe('badge', () => {
   });
 
   it('input-style', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ style: 'outline' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ style: 'outline' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -28,7 +28,7 @@ describe('badge', () => {
     assertElementSelector(element, `.${prefix}.${prefix}-outline`);
   });
   it('input-style', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ style: 'outline' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ style: 'outline' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -36,7 +36,7 @@ describe('badge', () => {
     assertElementSelector(element, `.${prefix}.${prefix}-outline`);
   });
   it('input-color', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ color: 'neutral' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ color: 'neutral' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -44,7 +44,7 @@ describe('badge', () => {
     assertElementSelector(element, `.${prefix}.${prefix}-neutral`);
   });
   it('input-size', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ size: 'xs' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ size: 'xs' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
@@ -52,7 +52,7 @@ describe('badge', () => {
     assertElementSelector(element, `.${prefix}.${prefix}-xs`);
   });
   it('input-content', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ content: 'input1' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ content: 'input1' }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });

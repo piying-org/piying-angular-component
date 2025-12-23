@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -16,7 +16,7 @@ describe('radio', () => {
   it(`input`, async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ options: [1, 2, 3], color: 'neutral', size: 'xs' }),
+      actions.inputs.patch({ options: [1, 2, 3], color: 'neutral', size: 'xs' }),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(1), undefined, {
       teardown: { destroyAfterEach: false },
@@ -34,7 +34,7 @@ describe('radio', () => {
   it(`input-options-description`, async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         options: [
           { label: 'v1', value: 1, description: 'd1' },
           { label: 'v2', value: 2, description: 'd2' },

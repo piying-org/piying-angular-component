@@ -1,21 +1,21 @@
-import { Component, computed, effect, OnInit, signal, viewChild } from '@angular/core';
-import { PiyingViewWrapperBase } from '@piying/view-angular';
-import { NFCSchema, patchProps, setComponent } from '@piying/view-angular-core';
+import { Component, computed, effect, inject, OnInit, signal, viewChild } from '@angular/core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { FilterOptionNFCC } from './filter-option/component';
 import * as v from 'valibot';
+import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 @Component({
   selector: 'app-local-filter',
-  template: `<ng-template #templateRef>
-    <ng-container #fieldComponent></ng-container
-  ></ng-template>`,
+  template: `<ng-template #templateRef> <ng-container insertField></ng-container></ng-template>`,
+  imports: [InsertFieldDirective],
 })
-export class OptionListLocalFilterWC extends PiyingViewWrapperBase {
+export class OptionListLocalFilterWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   searchContent = signal('');
   fileterOption = { type: 'local-filter' };
+  field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  props$$ = computed(() => this.field$$().props());
   constructor() {
-    super();
     this.field$$().props.update((a) => {
       return { ...a, searchContent: this.searchContent };
     });
@@ -28,7 +28,7 @@ export class OptionListLocalFilterWC extends PiyingViewWrapperBase {
           ...a?.['optionTemplate'],
           'local-filter': v.pipe(
             localFilterDefine,
-            patchProps({ seachContent: this.searchContent }),
+            actions.props.patch({ seachContent: this.searchContent }),
           ),
         },
         options: [],

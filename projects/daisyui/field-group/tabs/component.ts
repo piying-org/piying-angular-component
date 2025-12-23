@@ -51,7 +51,7 @@ export class TabsFGC extends PiyingViewGroupBase {
   });
   labelInputs = (input: any) => {
     return {
-      content: () => input,
+      content: input,
     };
   };
   changeIndex(index: number) {

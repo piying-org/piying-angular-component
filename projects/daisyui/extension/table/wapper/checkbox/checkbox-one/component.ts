@@ -1,22 +1,24 @@
 import { Component, computed, inject, OnInit, viewChild } from '@angular/core';
 import { CheckboxService } from '@piying/angular-daisyui/service';
-import { PiyingViewWrapperBase } from '@piying/view-angular';
+import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-table-checkbox-body',
   templateUrl: './component.html',
+  imports: [InsertFieldDirective],
 })
-export class TableCheckboxOneWC extends PiyingViewWrapperBase {
+export class TableCheckboxOneWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  props$$ = computed(() => this.field$$().props());
   #checkboxService = inject(CheckboxService);
   #key$$ = computed(() => {
     return this.props$$()['key'];
   });
 
   constructor() {
-    super();
     this.field$$()
       .form.control!.valueChanges.pipe(filter((a) => a !== undefined))
       .subscribe((a) => {

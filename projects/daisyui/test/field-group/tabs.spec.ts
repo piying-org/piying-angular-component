@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -31,8 +31,7 @@ describe('tabs', () => {
     expect(list.length).toEqual(2);
     let list2 = element.querySelectorAll(`.pc-tab-content`);
     expect(list2.length).toEqual(2);
-    let list3 = element.querySelectorAll(`.pc-tab-label`);
-
+    let list3 = element.querySelectorAll(`.pc-tab`);
     expect(list3[0].textContent.trim()).toEqual('k1-title');
   });
   testClassInput('size', 'xs', prefix, BaseDefine);
@@ -41,7 +40,7 @@ describe('tabs', () => {
   it('tabContentClass', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ tabContentClass: 'content1' }),
+      actions.inputs.patch({ tabContentClass: 'content1' }),
       v.title('title1'),
     );
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
@@ -52,7 +51,7 @@ describe('tabs', () => {
     expect(result).toBeTruthy();
   });
   it('input-activatedIndex', async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ activatedIndex: 1 }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ activatedIndex: 1 }));
     let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });

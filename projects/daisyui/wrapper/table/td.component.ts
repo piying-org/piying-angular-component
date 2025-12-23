@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PiyingViewWrapperBase } from '@piying/view-angular';
+import { InsertFieldDirective } from '@piying/view-angular';
 
 @Component({
   selector: 'td',
-  template: '<ng-container #fieldComponent></ng-container>',
+  template: '<ng-container insertField></ng-container>',
+  imports: [InsertFieldDirective],
 })
-export class TdWC extends PiyingViewWrapperBase {}
+export class TdWC {}

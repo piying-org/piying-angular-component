@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
@@ -35,7 +35,7 @@ describe('drawer', () => {
   it('input-contentClass', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         contentClass: 'content1',
       }),
     );
@@ -47,7 +47,7 @@ describe('drawer', () => {
   it('input-sideClass', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         sideClass: 'side1',
       }),
     );
@@ -59,7 +59,7 @@ describe('drawer', () => {
   it('input-overlayClass', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         overlayClass: 'overlay1',
       }),
     );
@@ -71,7 +71,7 @@ describe('drawer', () => {
   it('input-opened/mode', async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({
+      actions.inputs.patch({
         mode: 'side',
         opened: true,
       }),

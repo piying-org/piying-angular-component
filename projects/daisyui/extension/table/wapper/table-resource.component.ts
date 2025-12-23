@@ -1,18 +1,19 @@
 import { Component, computed, inject, isSignal, OnInit, resource, viewChild } from '@angular/core';
-import { PiyingViewWrapperBase } from '@piying/view-angular';
+import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { dataConvert } from '../util';
 import { localData } from '../local-data';
 import { computedWithPrev } from '@piying/angular-daisyui/util';
 
 @Component({
   selector: 'app-table-resource',
-  template: `<ng-template #templateRef>
-    <ng-container #fieldComponent></ng-container
-  ></ng-template>`,
+  template: `<ng-template #templateRef> <ng-container insertField></ng-container></ng-template>`,
+  imports: [InsertFieldDirective],
 })
-export class TableResourceWC extends PiyingViewWrapperBase {
+export class TableResourceWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  props$$ = computed(() => this.field$$().props());
   rawData$$ = computed(() => {
     let data = this.field$$().props()['data'];
     return Array.isArray(data) ? localData(data) : data;
@@ -42,7 +43,6 @@ export class TableResourceWC extends PiyingViewWrapperBase {
     return this.data$.value()?.[0] ?? value;
   });
   constructor() {
-    super();
     this.field$$().inputs.update((inputs) => {
       return {
         ...inputs,

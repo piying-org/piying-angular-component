@@ -1,35 +1,27 @@
 import * as v from 'valibot';
-import {
-  componentClass,
-  NFCSchema,
-  patchAsyncInputs,
-  patchInputs,
-  setComponent,
-  setWrappers,
-  topClass,
-} from '@piying/view-angular-core';
+import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
 export const LoginDefine = v.pipe(
   v.object({
     name: v.pipe(
       v.string(),
-      setWrappers(['label-wrapper']),
+      actions.wrappers.set(['label-wrapper']),
       v.title('用户名'),
-      componentClass('w-full'),
+      actions.class.component('w-full'),
     ),
     password: v.pipe(
       v.string(),
-      setWrappers(['label-wrapper']),
+      actions.wrappers.set(['label-wrapper']),
       v.title('密码'),
-      componentClass('w-full'),
+      actions.class.component('w-full'),
     ),
     __button: v.pipe(
       NFCSchema,
       setComponent('button'),
-      patchInputs({
+      actions.inputs.patch({
         content: '登录',
         color: 'primary',
       }),
-      patchAsyncInputs({
+      actions.inputs.patchAsync({
         clicked: (field) => {
           return () => {
             return field.context?.['account'] && field.context['account'].login();

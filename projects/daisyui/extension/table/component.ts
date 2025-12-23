@@ -31,14 +31,7 @@ import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 
-import {
-  NFCSchema,
-  patchAsyncInputs,
-  patchInputs,
-  setComponent,
-  setWrappers,
-  Writeable,
-} from '@piying/view-angular-core';
+import { NFCSchema, setComponent, actions, Writeable } from '@piying/view-angular-core';
 import { TableRowFGC } from './row/component';
 import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
 import { ThemeService } from '@piying/angular-daisyui/service';
@@ -80,8 +73,8 @@ export function createDefaultColDefine(isHeader: boolean, content: any, context?
   return v.pipe(
     NFCSchema,
     setComponent(StrOrTemplateComponent),
-    patchInputs({ content, context }),
-    setWrappers([{ type: isHeader ? ThWC : TdWC }]),
+    actions.inputs.patch({ content, context }),
+    actions.wrappers.set([{ type: isHeader ? ThWC : TdWC }]),
   );
 }
 export function createDefaultColDefineFn(
@@ -92,8 +85,8 @@ export function createDefaultColDefineFn(
   return v.pipe(
     NFCSchema,
     setComponent(StrOrTemplateComponent),
-    patchInputs({ context }),
-    patchAsyncInputs({
+    actions.inputs.patch({ context }),
+    actions.inputs.patchAsync({
       content: ({ context }) => {
         return computed(() => {
           let item = context['item$']();
@@ -101,7 +94,7 @@ export function createDefaultColDefineFn(
         });
       },
     }),
-    setWrappers([{ type: isHeader ? ThWC : TdWC }]),
+    actions.wrappers.set([{ type: isHeader ? ThWC : TdWC }]),
   );
 }
 @Component({

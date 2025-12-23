@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection, signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, patchInputs, setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent } from '../util/element';
@@ -15,7 +15,7 @@ describe('swap', () => {
 
   testHello(prefix, BaseDefine);
   it(`input-onContent/offContent`, async () => {
-    let schema = v.pipe(BaseDefine, patchInputs({ onContent: 'y', offContent: 'x' }));
+    let schema = v.pipe(BaseDefine, actions.inputs.patch({ onContent: 'y', offContent: 'x' }));
     let { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(true),
@@ -35,7 +35,7 @@ describe('swap', () => {
   it(`input-indeterminate/indeterminateContent`, async () => {
     let schema = v.pipe(
       BaseDefine,
-      patchInputs({ indeterminate: true, indeterminateContent: '-' }),
+      actions.inputs.patch({ indeterminate: true, indeterminateContent: '-' }),
     );
     let { element, fixture } = await createSchemaComponent(
       signal(schema),

@@ -7,14 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import * as v from 'valibot';
-import {
-  NFCSchema,
-  patchAsyncInputs,
-  patchInputs,
-  patchProps,
-  setComponent,
-  setWrappers,
-} from '@piying/view-angular-core';
+import { NFCSchema, setComponent, actions } from '@piying/view-angular-core';
 
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementExist, assertElementSelector } from '../util/element';
@@ -26,7 +19,7 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
@@ -55,15 +48,15 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchInputs({ content: 'head1' }),
-                setWrappers(['th']),
+                actions.inputs.patch({ content: 'head1' }),
+                actions.wrappers.set(['th']),
               ),
             },
           ],
@@ -89,24 +82,24 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      setWrappers(['sort-table']),
-      patchInputs({
+      actions.wrappers.set(['sort-table']),
+      actions.inputs.patch({
         define: {
           columns: [
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent('button'),
-                patchProps({ key: 'k1' }),
-                setWrappers(['th', 'sort-header']),
+                actions.props.patch({ key: 'k1' }),
+                actions.wrappers.set(['th', 'sort-header']),
               ),
             },
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent('button'),
-                patchProps({ key: 'k2', direction: 1 }),
-                setWrappers(['th', 'sort-header']),
+                actions.props.patch({ key: 'k2', direction: 1 }),
+                actions.wrappers.set(['th', 'sort-header']),
               ),
             },
           ],
@@ -131,15 +124,15 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchInputs({ content: 'head1' }),
-                setWrappers(['th']),
+                actions.inputs.patch({ content: 'head1' }),
+                actions.wrappers.set(['th']),
               ),
               body: 'data1',
             },
@@ -162,15 +155,15 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchInputs({ content: 'head1' }),
-                setWrappers(['th']),
+                actions.inputs.patch({ content: 'head1' }),
+                actions.wrappers.set(['th']),
               ),
               body: (item: any) => {
                 return item.data;
@@ -195,26 +188,26 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
               head: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchInputs({ content: 'head1' }),
-                setWrappers(['th']),
+                actions.inputs.patch({ content: 'head1' }),
+                actions.wrappers.set(['th']),
               ),
               body: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchAsyncInputs({
+                actions.inputs.patchAsync({
                   content: ({ context }) =>
                     computed(() => {
                       return context['item$']()['data'];
                     }),
                 }),
-                setWrappers(['td']),
+                actions.wrappers.set(['td']),
               ),
             },
           ],
@@ -236,7 +229,7 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
@@ -262,7 +255,7 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
@@ -272,8 +265,8 @@ describe('table', () => {
               head: v.pipe(
                 NFCSchema,
                 setComponent(StrOrTemplateComponent),
-                patchInputs({ content: 'foot1' }),
-                setWrappers(['td']),
+                actions.inputs.patch({ content: 'foot1' }),
+                actions.wrappers.set(['td']),
               ),
             },
           ],
@@ -295,7 +288,7 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         define: {
           columns: [
             {
@@ -321,7 +314,7 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      patchInputs({
+      actions.inputs.patch({
         zebra: true,
         pin: { rows: true, cols: true },
         size: 'xs',

@@ -1,14 +1,14 @@
 import { Component, OnInit, viewChild } from '@angular/core';
-import { AttributesDirective, PiyingViewWrapperBase } from '@piying/view-angular';
+import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 
 @Component({
   selector: 'app-div',
   template: `<ng-template #templateRef let-attr="attributes">
-    <div [attributes]="attr()"><ng-container #fieldComponent></ng-container></div>
+    <div [attributes]="attr()"><ng-container insertField></ng-container></div>
   </ng-template>`,
-  imports: [AttributesDirective],
+  imports: [AttributesDirective, InsertFieldDirective],
 })
-export class DivWC extends PiyingViewWrapperBase {
+export class DivWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 }
