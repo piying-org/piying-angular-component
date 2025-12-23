@@ -29,4 +29,8 @@ export class FilterOptionNFCC {
   templateRef = viewChild.required('templateRef');
   #field = inject(PI_VIEW_FIELD_TOKEN);
   content: WritableSignal<string> = this.#field().props()['seachContent'];
+
+  stopKeyboardListen(event: KeyboardEvent) {
+    event.stopPropagation();
+  }
 }
