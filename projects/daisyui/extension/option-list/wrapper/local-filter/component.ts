@@ -1,4 +1,13 @@
-import { Component, computed, effect, inject, OnInit, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  OnInit,
+  signal,
+  untracked,
+  viewChild,
+} from '@angular/core';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { FilterOptionNFCC } from './filter-option/component';
 import * as v from 'valibot';
@@ -44,12 +53,13 @@ export class OptionListLocalFilterWC {
       if (content) {
         filterList = filterWith(list, content);
       }
-
-      this.field$$().inputs.update((a) => {
-        return {
-          ...a,
-          options: [this.fileterOption, ...filterList],
-        };
+      untracked(() => {
+        this.field$$().inputs.update((a) => {
+          return {
+            ...a,
+            options: [this.fileterOption, ...filterList],
+          };
+        });
       });
     });
   }
