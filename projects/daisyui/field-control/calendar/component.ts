@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Component,
   computed,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -6,6 +7,7 @@ import {
   inject,
   input,
   resource,
+  signal,
   TemplateRef,
   viewChild,
 } from '@angular/core';
@@ -35,7 +37,6 @@ import {
 import { range } from 'es-toolkit';
 import { SelectionModel } from '@angular/cdk/collections';
 import { toDateStr } from './date.util';
-
 
 function DateEqual(a: Date, b: Date) {
   return a.getTime() === b.getTime();
@@ -127,15 +128,17 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
     } as CalendarDateProps;
   });
   #theme = inject(ThemeService);
-  callyInstance = resource({
-    loader: () => {
-      return import('cally');
-    },
-  });
-  callyInited$$ = computed(() => {
-    return !!this.callyInstance.value();
-  });
+  #callyInstance$$ = signal<typeof import('cally') | undefined>(undefined);
 
+  callyInited$$ = computed(() => {
+    return !!this.#callyInstance$$();
+  });
+  constructor() {
+    super();
+    afterNextRender(() => {
+      import('cally').then((a) => this.#callyInstance$$.set(a));
+    });
+  }
   focusdayChanged($event: CustomEvent<Date>) {
     switch (this.type()) {
       case 'multi':
