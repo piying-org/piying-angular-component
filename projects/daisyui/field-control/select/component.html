@@ -6,7 +6,7 @@
       [excludes]="['class']"
       [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
       [ngModel]="value$()"
-      (ngModelChange)="valueChange($event)"
+      (ngModelChange)="valueAndTouchedChange($event)"
       [disabled]="disabled$()"
       multiple
     >
@@ -42,7 +42,7 @@
       [excludes]="['class']"
       [class]="attr()?.class | mergeClass: ('select' | cssPrefix) : wrapperClass$$()"
       [ngModel]="value$()"
-      (ngModelChange)="valueChange($event)"
+      (ngModelChange)="valueAndTouchedChange($event)"
       [disabled]="disabled$()"
     >
       <ng-template #optionTemp let-config="config">

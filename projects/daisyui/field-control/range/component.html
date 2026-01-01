@@ -8,6 +8,6 @@
     [class]="attr()?.class | mergeClass: ('range' | cssPrefix) : wrapperClass$()"
     [step]="step()"
     [ngModel]="value$()"
-    (ngModelChange)="valueChange($event)"
+    (ngModelChange)="valueAndTouchedChange($event)"
   />
 </ng-template>

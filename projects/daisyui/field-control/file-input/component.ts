@@ -53,10 +53,10 @@ export class FileInputFCC extends BaseControl {
       return;
     }
     if (this.multiple()) {
-      this.valueChange([...input.files]);
+      this.valueAndTouchedChange([...input.files]);
       this.fileChange.emit([...input.files]);
     } else {
-      this.valueChange(input.files[0]);
+      this.valueAndTouchedChange(input.files[0]);
       this.fileChange.emit(input.files[0]);
     }
   }

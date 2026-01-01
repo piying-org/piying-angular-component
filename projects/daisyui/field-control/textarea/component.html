@@ -6,5 +6,6 @@
     [ngModel]="value$()"
     (ngModelChange)="valueChange($event)"
     [disabled]="disabled$()"
+    (blur)="touchedChange()"
   ></textarea>
 </ng-template>

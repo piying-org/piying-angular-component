@@ -144,11 +144,11 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
       case 'multi':
         this.#multiList$$().toggle($event.detail);
         this.value$.set(this.#multiList$$().selected);
-        this.valueChange(this.value$());
+        this.valueAndTouchedChange(this.value$());
         break;
       case 'date': {
         this.value$.set($event.detail);
-        this.valueChange(this.value$());
+        this.valueAndTouchedChange(this.value$());
         break;
       }
     }
@@ -161,6 +161,6 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
   rangeendChanged(event: CustomEvent<Date>) {
     this.#rangeList[1] = event.detail;
     this.value$.set(this.#rangeList.sort(DateAsc));
-    this.valueChange(this.value$());
+    this.valueAndTouchedChange(this.value$());
   }
 }

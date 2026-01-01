@@ -78,7 +78,7 @@ export class OptionListFCC extends BaseControl {
     };
   };
   selectOption(item: ResolvedOption) {
-    this.valueChange(item.value);
+    this.valueAndTouchedChange(item.value);
   }
 
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });

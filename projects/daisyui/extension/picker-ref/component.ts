@@ -87,7 +87,7 @@ export class PickerRefFCC extends BaseControl {
   contentOutput$$ = computed(() => {
     return {
       modelChange: (value: any) => {
-        this.valueChange(value);
+        this.valueAndTouchedChange(value);
         if (this.changeClose()) {
           this.isOpen$.set(false);
         }

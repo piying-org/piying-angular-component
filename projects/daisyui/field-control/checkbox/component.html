@@ -2,7 +2,7 @@
   <input
     type="checkbox"
     [ngModel]="value$()"
-    (ngModelChange)="valueChange($event)"
+    (ngModelChange)="valueAndTouchedChange($event)"
     [class]="attr()?.class | mergeClass: ('checkbox' | cssPrefix) : wrapperClass$()"
     [attributes]="attr()"
     [excludes]="['class']"

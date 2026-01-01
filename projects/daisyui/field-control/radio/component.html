@@ -7,7 +7,7 @@
         [name]="name"
         [disabled]="item.disabled || disabled$()"
         [checked]="item.value === value$()"
-        (change)="valueChange(item.value)"
+        (change)="valueAndTouchedChange(item.value)"
         [attributes]="attr()"
         [excludes]="['class']"
         [class]="attr()?.class | mergeClass: ('radio' | cssPrefix) : wrapperClass$()"

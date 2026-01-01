@@ -5,7 +5,7 @@
     [attributes]="attr()"
     [excludes]="['class']"
     [ngModel]="value$()"
-    (ngModelChange)="valueChange($event)"
+    (ngModelChange)="valueAndTouchedChange($event)"
     [disabled]="disabled$()"
     [indeterminate]="indeterminate()"
   />
