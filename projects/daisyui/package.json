@@ -2,9 +2,9 @@
   "name": "@piying-lib/angular-daisyui",
   "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@piying/view-angular": "2.0.8",
+    "@angular/common": ">=20.3.0",
+    "@angular/core": ">=20.3.0",
+    "@piying/view-angular": "^2.0.8",
     "daisyui": "^5.3.10"
   },
   "dependencies": {
