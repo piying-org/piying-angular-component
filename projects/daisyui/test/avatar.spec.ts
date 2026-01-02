@@ -27,7 +27,7 @@ describe('avatar', () => {
     assertElementContent(element, `.${prefix} span.test1`, 'input1');
   });
   it('input-imgUrl', async () => {
-    const schema = v.pipe(BaseDefine, actions.inputs.patch({ imgUrl: 'htpp://a.b.com' }));
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ imgUrl: 'http://a.b.com' }));
     const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
