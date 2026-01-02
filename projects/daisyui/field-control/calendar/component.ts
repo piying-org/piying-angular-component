@@ -6,6 +6,7 @@ import {
   forwardRef,
   inject,
   input,
+  PendingTasks,
   signal,
   viewChild,
 } from '@angular/core';
@@ -124,10 +125,13 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
   callyInited$$ = computed(() => {
     return !!this.#callyInstance$$();
   });
+  #pt = inject(PendingTasks);
   constructor() {
     super();
     afterNextRender(() => {
-      import('cally').then((a) => this.#callyInstance$$.set(a));
+      this.#pt.run(() => {
+        return import('cally').then((a) => this.#callyInstance$$.set(a));
+      });
     });
   }
   focusdayChanged($event: CustomEvent<Date>) {
