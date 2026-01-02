@@ -1,6 +1,6 @@
 {
   "name": "piying-angular-component",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4444",
@@ -9,7 +9,8 @@
     "test": "ng test",
     "serve:ssr:piying-angular-component": "node dist/piying-angular-component/server/server.mjs",
     "test:ci": "ng test daisyui -c ci",
-    "lint": "eslint --fix ./src  && prettier ./src --write && eslint --fix ./projects  && prettier ./projects --write"
+    "lint": "eslint --fix ./src  && prettier ./src --write && eslint --fix ./projects  && prettier ./projects --write",
+    "publish-only": "tsx ./script/change-version.ts && tsx ./script/publish.ts"
   },
   "prettier": {
     "printWidth": 100,
@@ -58,6 +59,7 @@
     "@types/node": "^20.19.24",
     "daisyui": "^5.3.10",
     "eslint-plugin-unused-imports": "^4.3.0",
+    "execa": "^9.6.1",
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
     "jasmine-core": "~5.9.0",
@@ -69,7 +71,7 @@
     "material-icons": "^1.13.14",
     "ng-packagr": "^20.3.0",
     "prettier": "^3.7.4",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.51.0"
   }
