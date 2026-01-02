@@ -1,9 +1,8 @@
-import { NgClass, NgTemplateOutlet, NgStyle } from '@angular/common';
-import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
+import { NgClass, NgStyle } from '@angular/common';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({
@@ -24,7 +23,7 @@ export class RadialProgressNFCC {
   });
   #theme = inject(ThemeService);
   wrapperStyle$$ = computed(() => {
-    let obj: Record<string, string> = {};
+    const obj: Record<string, string> = {};
     if (typeof this.strokeWidth() === 'string') {
       obj[this.#theme.addVarPrefix('thickness')] = this.strokeWidth()!;
     }

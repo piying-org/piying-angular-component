@@ -133,7 +133,7 @@ export const routes: Routes = [
             data: {
               schema: () => StatsDefine,
               context: () => {
-                let data = [
+                const data = [
                   'text-primary',
                   'text-secondary',
                   'text-accent',
@@ -143,7 +143,7 @@ export const routes: Routes = [
                 return {
                   getStatList: async () => {
                     return range(10).map((a) => {
-                      let value = faker.number.int(8);
+                      const value = faker.number.int(8);
                       return {
                         title: faker.food.fruit(),
                         value: value,
@@ -179,7 +179,7 @@ export const routes: Routes = [
             data: {
               schema: () => QueryTableDefine,
               context: () => {
-                let service = inject(DialogService);
+                const service = inject(DialogService);
                 service.setPiyingOptions({
                   fieldGlobalConfig: FieldGlobalConfig,
                 });

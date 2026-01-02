@@ -1,3 +1,1 @@
-export const WINDOW_MOCKUP_PREFIX_LIST=[
-    "mockup-window"
-]
+export const WINDOW_MOCKUP_PREFIX_LIST = ['mockup-window'];

@@ -1,14 +1,14 @@
-export const LOADING_PREFIX_LIST=[
-    "loading",
-    "loading-spinner",
-    "loading-dots",
-    "loading-ring",
-    "loading-ball",
-    "loading-bars",
-    "loading-infinity",
-    "loading-xs",
-    "loading-sm",
-    "loading-md",
-    "loading-lg",
-    "loading-xl"
-]
+export const LOADING_PREFIX_LIST = [
+  'loading',
+  'loading-spinner',
+  'loading-dots',
+  'loading-ring',
+  'loading-ball',
+  'loading-bars',
+  'loading-infinity',
+  'loading-xs',
+  'loading-sm',
+  'loading-md',
+  'loading-lg',
+  'loading-xl',
+];

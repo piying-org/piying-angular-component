@@ -3,7 +3,7 @@ import { isString } from 'es-toolkit';
 import { ThemeService } from './theme.service';
 
 export function useDefaultClass(str?: string | string[]) {
-  let theme = inject(ThemeService);
+  const theme = inject(ThemeService);
   return (isString(str) ? str.split(' ') : (str ?? []))
     .map((a) => {
       return theme.addPrefix(a);
@@ -11,7 +11,7 @@ export function useDefaultClass(str?: string | string[]) {
     .join(' ');
 }
 export function useTwClass(str?: string | string[]) {
-  let theme = inject(ThemeService);
+  const theme = inject(ThemeService);
   return (isString(str) ? str.split(' ') : (str ?? []))
     .map((a) => {
       return theme.addTwPrefix(a);

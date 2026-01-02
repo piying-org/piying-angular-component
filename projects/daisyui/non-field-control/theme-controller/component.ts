@@ -1,6 +1,5 @@
-import { Component, computed, inject, input, viewChild } from '@angular/core';
+import { Component, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({

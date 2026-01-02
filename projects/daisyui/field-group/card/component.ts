@@ -2,7 +2,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService, useTwClass } from '@piying/angular-daisyui/service';
-import { Color, Size } from '@piying/angular-daisyui/util';
+import { Size } from '@piying/angular-daisyui/util';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
@@ -47,7 +47,7 @@ export class CardFGC extends PiyingViewGroupBase {
     return this.field$$()
       .children?.()
       .filter((field) => {
-        let key = field.keyPath?.slice(-1)[0];
+        const key = field.keyPath?.slice(-1)[0];
         return !(key === this.titleKey() || key === this.figureKey() || key === this.actionsKey());
       });
   });

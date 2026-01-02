@@ -1,17 +1,12 @@
-import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
+import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
   inject,
   Injector,
   input,
-  linkedSignal,
-  model,
-  resource,
-  ResourceRef,
   Signal,
   signal,
-  SimpleChange,
   untracked,
   viewChild,
   WritableSignal,
@@ -19,14 +14,9 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { computedWithPrev, isSchema, Size } from '@piying/angular-daisyui/util';
-import { range } from 'es-toolkit';
+import { isSchema, Size } from '@piying/angular-daisyui/util';
 
-import {
-  AttributesDirective,
-  PiResolvedViewFieldConfig,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { AttributesDirective } from '@piying/view-angular';
 import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
@@ -38,8 +28,6 @@ import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
 // import { QueryService } from './query.service';
-import { localData } from './local-data';
-import { LoadingData } from './type';
 
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
 export type ItemCell = ItemCellBase | ((rowData: any) => any);
@@ -89,7 +77,7 @@ export function createDefaultColDefineFn(
     actions.inputs.patchAsync({
       content: ({ context }) => {
         return computed(() => {
-          let item = context['item$']();
+          const item = context['item$']();
           return content(item, context['index']);
         });
       },
@@ -122,7 +110,7 @@ export class TableNFCC {
   data = input<any[] | Signal<any[]>>([]);
   injector = inject(Injector);
   data$$ = computed(() => {
-    let data = this.data();
+    const data = this.data();
     return Array.isArray(data) ? data : data();
   });
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
@@ -162,12 +150,12 @@ export class TableNFCC {
     return this.#toColList('foot');
   });
   #toColList<T extends 'head' | 'body' | 'foot'>(name: T) {
-    let define = this.define()!;
-    let rowList = (define.row?.[name] ?? [{}]).map((item) => {
+    const define = this.define()!;
+    const rowList = (define.row?.[name] ?? [{}]).map((item) => {
       return 'define' in item ? (item as RowItem) : { ...item, define: createRowDefine() };
     });
 
-    let isHeader = name === 'head';
+    const isHeader = name === 'head';
     return rowList
       .map((row) => {
         let colList;
@@ -175,7 +163,7 @@ export class TableNFCC {
           colList = this.columnsList$$().map((item) => item[name]);
         } else {
           colList = row.columns.map((col) => {
-            let item = (define.columns as any)[col][name];
+            const item = (define.columns as any)[col][name];
             return item;
           });
         }
@@ -214,7 +202,7 @@ export class TableNFCC {
   }
 
   selectorlessInput = (content: any, context?: any) => {
-    let obj: Record<string, any> = { content: computed(() => content) };
+    const obj: Record<string, any> = { content: computed(() => content) };
     if (context) {
       obj['context'] = computed(() => {
         return { ...context, status: this.#status };
@@ -226,7 +214,7 @@ export class TableNFCC {
   #itemDataMap = new Map<unknown, WritableSignal<any>>();
   getItemData = (id: unknown, value: any) => {
     return untracked(() => {
-      let data = this.#itemDataMap.get(id) ?? signal(undefined);
+      const data = this.#itemDataMap.get(id) ?? signal(undefined);
       data.set(value);
       this.#itemDataMap.set(id, data);
       return data;

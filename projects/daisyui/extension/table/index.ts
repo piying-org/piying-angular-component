@@ -1,3 +1,3 @@
 export * from './component';
 export * from './row/component';
-export * from './wapper'
+export * from './wapper';

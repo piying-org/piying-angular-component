@@ -1,9 +1,5 @@
 import * as v from 'valibot';
 import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed, signal } from '@angular/core';
-import { faker } from '@faker-js/faker';
-import { CardBodyDemoNFCC } from '../../component/card-body/component';
-import { filter } from 'rxjs';
 export const StatsDefine = v.object({
   stats1: v.pipe(
     v.object({
@@ -49,7 +45,7 @@ export const StatsDefine = v.object({
         setComponent('stat'),
         actions.inputs.patchAsync({
           valueClass: (field) => {
-            let item = field.context['getItem']().valueClass;
+            const item = field.context['getItem']().valueClass;
             return item;
           },
         }),

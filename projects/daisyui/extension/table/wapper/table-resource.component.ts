@@ -1,4 +1,4 @@
-import { Component, computed, inject, isSignal, OnInit, resource, viewChild } from '@angular/core';
+import { Component, computed, inject, resource, viewChild } from '@angular/core';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { dataConvert } from '../util';
 import { localData } from '../local-data';
@@ -15,7 +15,7 @@ export class TableResourceWC {
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
   props$$ = computed(() => this.field$$().props());
   rawData$$ = computed(() => {
-    let data = this.field$$().props()['data'];
+    const data = this.field$$().props()['data'];
     return Array.isArray(data) ? localData(data) : data;
   });
   queryParams$$ = computed(() => {
@@ -23,14 +23,14 @@ export class TableResourceWC {
   });
   data$ = resource({
     params: computed(() => {
-      let params = this.queryParams$$();
+      const params = this.queryParams$$();
       return {
         data: this.rawData$$(),
         params,
       };
     }),
     loader: async (res) => {
-      let { params } = res;
+      const { params } = res;
       return params.data(res as any).then((data: any) => {
         return dataConvert(data);
       });

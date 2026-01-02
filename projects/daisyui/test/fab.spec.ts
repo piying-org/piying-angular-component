@@ -1,7 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { Daisyui } from './daisyui';
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
@@ -11,14 +8,13 @@ import {
   assertElementSelector,
   checkElementVisibile,
 } from './util/element';
-import { htmlFocus, htmlInput, htmlInput2 } from './util/action';
-import { delay } from 'es-toolkit';
+import { htmlFocus, htmlInput2 } from './util/action';
 describe('fab', () => {
   const BaseDefine = v.pipe(NFCSchema, setComponent('fab'));
 
   it('hello', async () => {
-    let schema = v.pipe(BaseDefine);
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine);
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
@@ -28,54 +24,54 @@ describe('fab', () => {
     assertElementContent(element, '.pc-fab .pc-btn', 'D');
   });
   it('input-flower', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ flower: true }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ flower: true }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementSelector(element, '.pc-fab.pc-fab-flower');
   });
   it('input-common', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ commonClass: 'common' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ commonClass: 'common' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementSelector(element, '.pc-fab .common');
   });
   it('input-defaultIcon', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ defaultIcon: { label: 'input1' } }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ defaultIcon: { label: 'input1' } }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementContent(element, '.pc-fab .pc-btn', 'input1');
   });
   it('input-closeIcon', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         closeIcon: { label: 'G' },
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementContent(element, '.pc-fab .pc-fab-close span', 'G');
   });
   it('input-mainIcon', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         mainIcon: { label: 'J' },
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementContent(element, '.pc-fab .pc-fab-main-action button', 'J');
   });
   it('input-options', async () => {
     let value = 0;
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         options: [
@@ -89,7 +85,7 @@ describe('fab', () => {
         ],
       }),
     );
-    let { element, fixture } = await createSchemaComponent(
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,
@@ -99,9 +95,9 @@ describe('fab', () => {
     );
     assertElementExist(element);
     assertElementSelector(element, '.pc-fab .test1');
-    let btn = element.querySelector('.pc-fab .test1')! as HTMLElement;
+    const btn = element.querySelector('.pc-fab .test1')! as HTMLElement;
     checkElementVisibile(btn, true);
-    let defEl = element.querySelector('.pc-fab [tabindex="0"]');
+    const defEl = element.querySelector('.pc-fab [tabindex="0"]');
     htmlFocus(defEl);
     expect(document.activeElement).toBe(defEl);
     // todo focus状态貌似必须处于浏览器激活才会附加
@@ -111,7 +107,7 @@ describe('fab', () => {
   });
   it('input-autoClose', async () => {
     let value = 0;
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         autoClose: false,
@@ -126,7 +122,7 @@ describe('fab', () => {
         ],
       }),
     );
-    let { element, fixture } = await createSchemaComponent(
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,
@@ -136,9 +132,9 @@ describe('fab', () => {
     );
     assertElementExist(element);
     assertElementSelector(element, '.pc-fab .test1');
-    let btn = element.querySelector('.pc-fab .test1')! as HTMLElement;
+    const btn = element.querySelector('.pc-fab .test1')! as HTMLElement;
     checkElementVisibile(btn, true);
-    let defEl = element.querySelector('.pc-fab [tabindex="0"]');
+    const defEl = element.querySelector('.pc-fab [tabindex="0"]');
     htmlFocus(defEl);
     expect(document.activeElement).toBe(defEl);
     // todo focus状态貌似必须处于浏览器激活才会附加

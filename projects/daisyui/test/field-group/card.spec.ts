@@ -1,13 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { testClassInput } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
+import { assertElementExist, assertElementSelector } from '../util/element';
 import { uniq } from 'es-toolkit';
 
 describe('card', () => {
@@ -25,8 +22,8 @@ describe('card', () => {
   const prefix = 'pc-card';
 
   it('hello', async () => {
-    let schema = v.pipe(BaseDefine);
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine);
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
@@ -42,7 +39,7 @@ describe('card', () => {
   testClassInput('size', 'xs', prefix, BaseDefine);
   testClassInput('border', 'dash', prefix, BaseDefine);
   it('hello', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         bodyClass: 'body1',
@@ -50,7 +47,7 @@ describe('card', () => {
         actionsClass: 'actions1',
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);

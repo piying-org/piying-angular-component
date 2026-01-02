@@ -1,20 +1,12 @@
 import * as v from 'valibot';
-import {
-  formConfig,
-  hideWhen,
-  mergeHooks,
-  NFCSchema,
-  setComponent,
-} from '@piying/view-angular-core';
+import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed, signal } from '@angular/core';
-import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
 import { actions } from '@piying/view-angular';
-import { Subject, map, startWith } from 'rxjs';
-import { da, faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { range } from 'es-toolkit';
 import { DialogService } from '../../../service/dialog.service';
-import { FormBase, FormDefine } from '../component/form';
-let LevelOptions = [
+import { FormBase } from '../component/form';
+const LevelOptions = [
   {
     label: 'all',
     value: 0,
@@ -25,7 +17,7 @@ let LevelOptions = [
   },
   { label: 'hight', value: 2 },
 ];
-let LevelObj = LevelOptions.reduce((obj, item) => {
+const LevelObj = LevelOptions.reduce((obj, item) => {
   obj[item.value] = item.label;
   return obj;
 }, {} as any);
@@ -71,7 +63,7 @@ const QueryCondition = v.pipe(
       actions.inputs.patchAsync({
         clicked: (field) => {
           return () => {
-            let result = field.get(['..', 'params'])!.form.control!;
+            const result = field.get(['..', 'params'])!.form.control!;
             result.emitSubmit();
           };
         },
@@ -90,7 +82,7 @@ const TableDefine = v.pipe(
 
       actions.inputs.patchAsync({
         define: (field) => {
-          let pageFiled = field.get(['..', 'bottom', 'page']);
+          const pageFiled = field.get(['..', 'bottom', 'page']);
           return {
             row: {
               head: [
@@ -118,7 +110,7 @@ const TableDefine = v.pipe(
               index: {
                 head: '索引',
                 body: (node: any, index: number) => {
-                  let { pageQueryParams } = pageFiled?.props()!;
+                  const { pageQueryParams } = pageFiled!.props();
                   return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
                 },
               },
@@ -196,14 +188,14 @@ const TableDefine = v.pipe(
       actions.props.patch({ sortList: ['title', 'level'] }),
       actions.props.patchAsync({
         data: (field) => {
-          let init = range(100).map((item) => {
+          const init = range(100).map((item) => {
             return {
               title: faker.animal.type(),
               level: faker.number.int(2),
               badge: faker.animal.dog(),
             };
           });
-          let value = signal(init);
+          const value = signal(init);
           field
             .get(['..', '..', 'query', 'params'])!
             .form.control!.valueChanges.subscribe((searchObj) => {
@@ -212,7 +204,7 @@ const TableDefine = v.pipe(
               } else {
                 let list = init;
                 if (searchObj.content) {
-                  let content = (searchObj.content as string).toLowerCase();
+                  const content = (searchObj.content as string).toLowerCase();
                   list = init.filter((item) => item.title.toLowerCase().includes(content));
                 } else {
                   list = init;
@@ -226,8 +218,8 @@ const TableDefine = v.pipe(
           return value;
         },
       }),
-       actions.props.mapAsync((field) => {
-        let pageProps = field.get(['..', 'bottom', 'page'])?.props;
+      actions.props.mapAsync((field) => {
+        const pageProps = field.get(['..', 'bottom', 'page'])?.props;
         return (value) => {
           return {
             ...value,
@@ -251,7 +243,7 @@ const TableDefine = v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return () => {
-                let dialog: DialogService = field.context['dialog'];
+                const dialog: DialogService = field.context['dialog'];
                 dialog.openDialog({
                   title: '添加',
                   schema: v.pipe(
@@ -279,7 +271,7 @@ const TableDefine = v.pipe(
           }),
           actions.inputs.patchAsync({
             count: (field) => {
-              let tableField = field.get(['..', '..', 'table'])!;
+              const tableField = field.get(['..', '..', 'table'])!;
               return computed(() => {
                 return tableField.props()['count$$']();
               });

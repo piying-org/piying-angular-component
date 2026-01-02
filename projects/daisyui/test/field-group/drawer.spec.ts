@@ -1,14 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { actions, setComponent } from '@piying/view-angular-core';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
-import { uniq } from 'es-toolkit';
+import { assertElementExist, assertElementSelector } from '../util/element';
 
 describe('drawer', () => {
   const BaseDefine = v.pipe(
@@ -21,8 +16,8 @@ describe('drawer', () => {
   const prefix = 'pc-drawer';
 
   it('hello', async () => {
-    let schema = v.pipe(BaseDefine);
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine);
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
@@ -33,50 +28,50 @@ describe('drawer', () => {
     expect(element.querySelector(`.${prefix}-toggle`)).toBeTruthy();
   });
   it('input-contentClass', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         contentClass: 'content1',
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     expect(element.querySelector(`.content1`)).toBeTruthy();
   });
   it('input-sideClass', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         sideClass: 'side1',
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     expect(element.querySelector(`.side1`)).toBeTruthy();
   });
   it('input-overlayClass', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         overlayClass: 'overlay1',
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     expect(element.querySelector(`.overlay1`)).toBeTruthy();
   });
   it('input-opened/mode', async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         mode: 'side',
         opened: true,
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     expect(element.querySelector(`.${prefix}-open`)).toBeTruthy();

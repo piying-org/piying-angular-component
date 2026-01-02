@@ -1,13 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { actions, setComponent } from '@piying/view-angular-core';
+import { testClassInput, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
 
 describe('checkbox', () => {
   const BaseDefine = v.pipe(v.boolean(), setComponent('checkbox'));
@@ -18,8 +14,8 @@ describe('checkbox', () => {
   testClassInput('size', 'xs', prefix, BaseDefine);
 
   it(`input-indeterminate`, async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ indeterminate: true }));
-    let { element, fixture } = await createSchemaComponent(
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ indeterminate: true }));
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,
@@ -29,5 +25,4 @@ describe('checkbox', () => {
     );
     expect(element.querySelector('input')!.indeterminate).toBeTrue();
   });
-
 });

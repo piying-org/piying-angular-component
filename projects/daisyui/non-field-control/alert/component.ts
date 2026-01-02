@@ -1,11 +1,11 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { AlertColor, Color, IconConfig } from '@piying/angular-daisyui/util';
+import { AlertColor } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({

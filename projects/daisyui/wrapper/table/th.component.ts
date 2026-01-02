@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { InsertFieldDirective } from "@piying/view-angular";
+import { Component } from '@angular/core';
+import { InsertFieldDirective } from '@piying/view-angular';
 
 @Component({
   selector: 'th',
   template: '<ng-container insertField></ng-container>',
-  imports: [InsertFieldDirective]
+  imports: [InsertFieldDirective],
 })
-export class ThWC  {}
+export class ThWC {}

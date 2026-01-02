@@ -1,6 +1,5 @@
-import { Dialog, DIALOG_DATA, DialogModule, DialogRef } from '@angular/cdk/dialog';
-import { Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import { Component, inject, signal } from '@angular/core';
 import { PiyingView } from '@piying/view-angular';
 
 @Component({
@@ -16,7 +15,7 @@ export class PiDialogContainer {
   async apply() {
     this.loading$.set(true);
     try {
-      let result = await this.data.applyValue(this.changedValue());
+      const result = await this.data.applyValue(this.changedValue());
       this.ref.close(result);
     } catch (error) {
       throw error;

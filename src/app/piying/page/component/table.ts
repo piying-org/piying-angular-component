@@ -1,6 +1,6 @@
 import * as v from 'valibot';
-import { hideWhen, mergeHooks, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed, isSignal } from '@angular/core';
+import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
@@ -13,7 +13,7 @@ export const TableDefine = v.object({
 
     actions.inputs.patchAsync({
       define: (field) => {
-        let pageFiled = field.get(['..', 'page']);
+        const pageFiled = field.get(['..', 'page']);
         return {
           row: {
             head: [{ columns: ['checkbox', 'index', '1', '2', '3'] }],
@@ -45,7 +45,7 @@ export const TableDefine = v.object({
             index: {
               head: '索引',
               body: (node: any, index: number) => {
-                let { pageQueryParams } = pageFiled?.props()!;
+                const { pageQueryParams } = pageFiled!.props();
                 return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
               },
             },
@@ -132,7 +132,7 @@ export const TableDefine = v.object({
       },
     }),
     actions.props.mapAsync((field) => {
-      let pageProps = field.get(['..', 'page'])!.props;
+      const pageProps = field.get(['..', 'page'])!.props;
       return (value) => {
         return {
           ...value,
@@ -157,7 +157,7 @@ export const TableDefine = v.object({
     }),
     actions.inputs.patchAsync({
       count: (field) => {
-        let tableField = field.get(['..', 'table'])!;
+        const tableField = field.get(['..', 'table'])!;
         return computed(() => {
           return tableField.props()['count$$']();
         });

@@ -1,13 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
+import { actions, setComponent } from '@piying/view-angular-core';
 import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
+import { assertElementExist, assertElementSelector } from '../util/element';
 
 describe('textarea', () => {
   const BaseDefine = v.pipe(v.string(), setComponent('textarea'));
@@ -18,8 +15,8 @@ describe('textarea', () => {
   testClassInput('size', 'xs', prefix, BaseDefine);
   testClassInputBoolean('ghost', 'ghost', prefix, BaseDefine);
   it(`model`, async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({}));
-    let { element } = await createSchemaComponent(signal(schema), signal('123'), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({}));
+    const { element } = await createSchemaComponent(signal(schema), signal('123'), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);

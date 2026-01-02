@@ -1,14 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { actions, setComponent } from '@piying/view-angular-core';
+import { testClassInput } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
-import { uniq } from 'es-toolkit';
+import { assertElementExist, assertElementSelector } from '../util/element';
 
 describe('dock', () => {
   const BaseDefine = v.pipe(
@@ -22,23 +18,23 @@ describe('dock', () => {
 
   testClassInput('size', 'xs', prefix, BaseDefine);
   it('hello', async () => {
-    let schema = v.pipe(BaseDefine);
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine);
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, `.${prefix}`);
-    let list = element.querySelectorAll(`button`);
+    const list = element.querySelectorAll(`button`);
     expect(list.length).toEqual(2);
     expect(list[0].classList.contains(`${prefix}-active`)).toBeTrue();
   });
   it('input-activatedIndex', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ activatedIndex: 1 }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ activatedIndex: 1 }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
 
-    let list = element.querySelectorAll(`button`);
+    const list = element.querySelectorAll(`button`);
     expect(list.length).toEqual(2);
     expect(list[1].classList.contains(`${prefix}-active`)).toBeTrue();
   });

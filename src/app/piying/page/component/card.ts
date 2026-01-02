@@ -1,6 +1,6 @@
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { computed, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { CardBodyDemoNFCC } from '../../component/card-body/component';
 import { filter } from 'rxjs';
@@ -99,8 +99,8 @@ export const CardDefine = v.object({
         }),
         actions.inputs.patchAsync({
           list: (field) => {
-            let list = signal<any[]>([]);
-            let result = field.context['getCardList']();
+            const list = signal<any[]>([]);
+            const result = field.context['getCardList']();
             result.then((value: any) => {
               list.set(value);
             });

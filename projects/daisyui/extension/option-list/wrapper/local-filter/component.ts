@@ -1,13 +1,4 @@
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  OnInit,
-  signal,
-  untracked,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, effect, inject, signal, untracked, viewChild } from '@angular/core';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { FilterOptionNFCC } from './filter-option/component';
 import * as v from 'valibot';
@@ -28,7 +19,7 @@ export class OptionListLocalFilterWC {
     this.field$$().props.update((a) => {
       return { ...a, searchContent: this.searchContent };
     });
-    let localFilterDefine =
+    const localFilterDefine =
       this.props$$()['filterDefine'] ?? v.pipe(NFCSchema, setComponent(FilterOptionNFCC));
     this.field$$().inputs.update((a) => {
       return {
@@ -43,12 +34,12 @@ export class OptionListLocalFilterWC {
         options: [],
       };
     });
-    let filterWith =
+    const filterWith =
       this.field$$().props()['filterWith'] ??
       ((list: any[], content: string) => list.filter((item: any) => item.includes(content)));
     effect(() => {
-      let content = this.searchContent();
-      let list = this.field$$().props()['options'];
+      const content = this.searchContent();
+      const list = this.field$$().props()['options'];
       let filterList = list;
       if (content) {
         filterList = filterWith(list, content);

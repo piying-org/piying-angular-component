@@ -1,29 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { actions, setComponent } from '@piying/view-angular-core';
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementContent, assertElementExist, assertElementSelector } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
+import { assertElementExist } from '../util/element';
 
 describe('radio', () => {
   const BaseDefine = v.pipe(v.number(), setComponent('radio'));
   const prefix = 'pc-radio';
 
   it(`input`, async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({ options: [1, 2, 3], color: 'neutral', size: 'xs' }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(1), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(1), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
 
-    let list = element.querySelectorAll('input');
+    const list = element.querySelectorAll('input');
     expect(list.length).toEqual(3);
     for (const item of [...list]) {
       expect(item.classList.contains(`${prefix}`)).toBeTrue();
@@ -32,7 +28,7 @@ describe('radio', () => {
     }
   });
   it(`input-options-description`, async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         options: [
@@ -41,12 +37,12 @@ describe('radio', () => {
         ],
       }),
     );
-    let { element } = await createSchemaComponent(signal(schema), signal(1), undefined, {
+    const { element } = await createSchemaComponent(signal(schema), signal(1), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
 
-    let list = element.querySelectorAll('span');
+    const list = element.querySelectorAll('span');
     for (const item of [...list]) {
       expect(item.querySelector('input')!.classList.contains(`${prefix}`)).toBeTrue();
       expect(item.querySelector('label')).toBeTruthy();

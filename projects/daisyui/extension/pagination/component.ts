@@ -1,5 +1,5 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input, model, TemplateRef, viewChild } from '@angular/core';
+import { Component, computed, inject, input, model, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
@@ -7,7 +7,6 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { AlertColor, Color, computedWithPrev, IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import clsx from 'clsx';
 function goPage(value: number) {
@@ -26,7 +25,7 @@ function goPage(value: number) {
     SelectorlessOutlet,
     PurePipe,
     FormsModule,
-    MergeClassPipe
+    MergeClassPipe,
   ],
 })
 export class PaginationNFCC {
@@ -49,9 +48,9 @@ export class PaginationNFCC {
   });
   pageRange$$ = computed(() => {
     let list = [];
-    let current = this.value().index;
-    let fullStart = current - 4 < 0;
-    let fullEnd = current + 5 > this.maxPageCount$$();
+    const current = this.value().index;
+    const fullStart = current - 4 < 0;
+    const fullEnd = current + 5 > this.maxPageCount$$();
     if (fullStart) {
       let index = current - 1;
       while (index !== -1) {
@@ -61,8 +60,8 @@ export class PaginationNFCC {
     } else {
       list.push({ type: 'prev', value: 5 });
       let index = current - 1;
-      let tempList = [];
-      while (index !== -1 && current - index <3) {
+      const tempList = [];
+      while (index !== -1 && current - index < 3) {
         tempList.unshift(goPage(index));
         index--;
       }
@@ -103,7 +102,7 @@ export class PaginationNFCC {
     this.updatePageToProps();
   }
   updatePageToProps() {
-    let field = this.#field?.();
+    const field = this.#field?.();
     if (!field) {
       console.warn(`❌piying-view🗄️`);
       return;

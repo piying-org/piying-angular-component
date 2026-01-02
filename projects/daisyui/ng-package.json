@@ -5,7 +5,5 @@
     "entryFile": "index.ts"
   },
   "deleteDestPath": true,
-  "assets": [
-    "./preset-css"
-  ]
+  "assets": ["./preset-css"]
 }

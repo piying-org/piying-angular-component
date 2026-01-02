@@ -16,7 +16,6 @@ import {
   ResolvedOption,
   SelectOption,
   Size,
-  transformOptions,
 } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service';

@@ -1,20 +1,7 @@
-import {
-  Component,
-  computed,
-  forwardRef,
-  inject,
-  input,
-  TemplateRef,
-  viewChild,
-} from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import {
-  DefaultOptionConvert,
-  OptionConvert,
-  SelectOption,
-  transformOptions,
-} from '@piying/angular-daisyui/util';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AttributesDirective } from '@piying/view-angular';
+
 import { NgTemplateOutlet, NgClass } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';

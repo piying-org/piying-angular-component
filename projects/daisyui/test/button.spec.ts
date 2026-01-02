@@ -1,7 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { Daisyui } from './daisyui';
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
@@ -11,8 +8,8 @@ describe('Button', () => {
   const BaseDefine = v.pipe(NFCSchema, setComponent('button'));
 
   it('hello', async () => {
-    let schema = v.pipe(BaseDefine);
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine);
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
@@ -21,56 +18,56 @@ describe('Button', () => {
     assertElementContent(element, 'button', 'Default');
   });
   it('input-color', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ color: 'primary' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ color: 'primary' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, 'button.pc-btn-primary');
   });
   it('input-style', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ style: 'outline' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ style: 'outline' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, 'button.pc-btn-outline');
   });
   it('input-size', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ size: 'xs' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ size: 'xs' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, 'button.pc-btn-xs');
   });
   it('input-active', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ active: true }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ active: true }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, 'button.pc-btn-active');
   });
   it('input-shape', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ shape: 'wide' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ shape: 'wide' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementSelector(element, 'button.pc-btn-wide');
   });
   it('input-content', async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ content: 'input1' }));
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ content: 'input1' }));
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     assertElementContent(element, 'button', 'input1');
   });
   it('input-loading', async () => {
-    let p = Promise.withResolvers<void>();
-    let schema = v.pipe(
+    const p = Promise.withResolvers<void>();
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         clicked: () => {
@@ -78,7 +75,7 @@ describe('Button', () => {
         },
       }),
     );
-    let { element, fixture } = await createSchemaComponent(
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,
@@ -97,8 +94,8 @@ describe('Button', () => {
     assertElementSelector(element, '.pc-btn .pc-loading', true);
   });
   it('input-loading-disable', async () => {
-    let p = Promise.withResolvers<void>();
-    let schema = v.pipe(
+    const p = Promise.withResolvers<void>();
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({
         clicked: () => {
@@ -107,7 +104,7 @@ describe('Button', () => {
         disableLoadingIcon: true,
       }),
     );
-    let { element, fixture } = await createSchemaComponent(
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,

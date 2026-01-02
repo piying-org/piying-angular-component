@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, viewChild } from '@angular/core';
+import { Component, computed, inject, viewChild } from '@angular/core';
 import { CheckboxService } from '@piying/angular-daisyui/service';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
@@ -17,7 +17,7 @@ export class CheckboxTableWC {
   constructor() {
     this.#checkbox.setAllList(() => {
       // todo 去掉数量
-      let data = this.field$$().inputs()['data'];
+      const data = this.field$$().inputs()['data'];
       return Array.isArray(data) ? data[1] : data.value();
     });
   }

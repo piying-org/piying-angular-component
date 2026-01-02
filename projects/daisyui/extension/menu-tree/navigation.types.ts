@@ -2,7 +2,6 @@ import {
   ActivatedRoute,
   IsActiveMatchOptions,
   Params,
-  QueryParamsHandling,
   RouterLinkActive,
   UrlTree,
 } from '@angular/router';

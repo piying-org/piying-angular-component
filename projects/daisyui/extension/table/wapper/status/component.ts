@@ -1,4 +1,4 @@
-import { Component, OnInit, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { TableStatusService } from './service';
 import { TABLE_STATUS_TOKEN } from '../../token';
 import { InsertFieldDirective } from '@piying/view-angular';

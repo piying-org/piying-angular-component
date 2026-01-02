@@ -1,14 +1,16 @@
 import { Directive, ElementRef, inject, input } from '@angular/core';
-import type { CalendarDateProps, CalendarMonthProps, CalendarMultiProps, CalendarRangeProps } from 'cally';
+import type { CalendarDateProps, CalendarMultiProps, CalendarRangeProps } from 'cally';
 @Directive({
   selector: '[calendarProps]',
 })
-export class CalendarPropsDirective<T extends CalendarDateProps| CalendarMultiProps| CalendarRangeProps> {
+export class CalendarPropsDirective<
+  T extends CalendarDateProps | CalendarMultiProps | CalendarRangeProps,
+> {
   calendarProps = input<T>();
   #el = inject(ElementRef);
 
   ngOnChanges(): void {
-    let attr = this.calendarProps();
+    const attr = this.calendarProps();
     if (!attr) {
       return;
     }

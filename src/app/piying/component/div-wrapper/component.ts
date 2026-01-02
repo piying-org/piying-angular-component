@@ -1,4 +1,4 @@
-import { Component, OnInit, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 
 @Component({

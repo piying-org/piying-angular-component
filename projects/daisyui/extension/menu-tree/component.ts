@@ -4,12 +4,12 @@ import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { Color, Size } from '@piying/angular-daisyui/util';
+import { Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 import { NavigationItem } from './navigation.types';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 const routerLinkActiveOptions = { exact: false };
 @Component({
   selector: 'app-menu-tree',

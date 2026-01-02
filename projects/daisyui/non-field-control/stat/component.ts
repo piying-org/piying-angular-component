@@ -1,20 +1,12 @@
 import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, effect, inject, input, Signal, viewChild } from '@angular/core';
+import { Component, inject, input, Signal, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { Color, Size } from '@piying/angular-daisyui/util';
-import {
-  AttributesDirective,
-  PI_INPUT_OPTIONS_TOKEN,
-  PI_VIEW_FIELD_TOKEN,
-  PiyingView,
-} from '@piying/view-angular';
+import { AttributesDirective, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import * as v from 'valibot';
+import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-stat',

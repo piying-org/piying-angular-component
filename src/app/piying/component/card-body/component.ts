@@ -1,4 +1,4 @@
-import { Component, input, OnInit, viewChild } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'div',

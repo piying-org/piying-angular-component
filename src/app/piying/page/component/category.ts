@@ -1,6 +1,5 @@
 import * as v from 'valibot';
-import { hideWhen, mergeHooks, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed, isSignal } from '@angular/core';
+import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying/angular-daisyui/extension';

@@ -1,15 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  input,
-  OnInit,
-  SimpleChanges,
-  TemplateRef,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
@@ -49,7 +39,7 @@ export class StrOrTemplateComponent {
     return {
       schema,
       options,
-      selectorless:true,
+      selectorless: true,
     };
   };
 }

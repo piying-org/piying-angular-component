@@ -1,5 +1,5 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { ThemeService } from "@piying/angular-daisyui/service";
+import { ThemeService } from '@piying/angular-daisyui/service';
 
 @Pipe({ name: 'twPrefix' })
 export class TwPrefixPipe implements PipeTransform {

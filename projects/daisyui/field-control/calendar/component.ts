@@ -6,27 +6,18 @@ import {
   forwardRef,
   inject,
   input,
-  resource,
   signal,
-  TemplateRef,
   viewChild,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import {
-  Color,
-  DefaultOptionConvert,
-  OptionConvert,
-  SelectOption,
-  Size,
-  transformOptions,
-} from '@piying/angular-daisyui/util';
+
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CalendarPropsDirective } from './props.directive';
-import type { CalendarDateProps, CalendarMultiProps, CalendarRangeProps } from 'cally';
+import type { CalendarDateProps } from 'cally';
 import {
   DatedCalendarDateProps,
   DatedCalendarMultiProps,
@@ -73,7 +64,7 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
   dateProps = input<DatedCalendarDateProps | DatedCalendarMultiProps | DatedCalendarRangeProps>();
   monthProps = input<number | number[]>(1);
   monthProps$$ = computed(() => {
-    let value = this.monthProps();
+    const value = this.monthProps();
     return typeof value === 'number'
       ? range(value).map((value) => {
           return value;
@@ -86,8 +77,8 @@ export class CalendarFCC extends BaseControl<Date | Date[]> {
   });
 
   dateProps$$ = computed(() => {
-    let props = this.dateProps();
-    let converted: Record<string, any> = {};
+    const props = this.dateProps();
+    const converted: Record<string, any> = {};
     if (props) {
       (this.type() === 'range' ? RangeDateKey : DateKey).forEach((item) => {
         if ((props as any)[item]) {

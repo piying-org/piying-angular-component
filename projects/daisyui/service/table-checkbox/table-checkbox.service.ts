@@ -26,7 +26,7 @@ export class CheckboxService<D = any> {
     }
   }
   toggle(key = defaultKey, value: any) {
-    let result = this.#selectModelMap.get(key);
+    const result = this.#selectModelMap.get(key);
     result?.toggle(value);
   }
   #fn: (() => D[]) | undefined;
@@ -36,9 +36,9 @@ export class CheckboxService<D = any> {
   }
 
   selectAll(key = defaultKey) {
-    let list = this.#fn!();
-    let result = this.#selectModelMap.get(key)!;
-    let isAll = list.every((item) => {
+    const list = this.#fn!();
+    const result = this.#selectModelMap.get(key)!;
+    const isAll = list.every((item) => {
       return result.isSelected(item);
     });
     for (const item of list) {

@@ -1,22 +1,8 @@
-import {
-  Component,
-  computed,
-  effect,
-  ElementRef,
-  inject,
-  linkedSignal,
-  OnInit,
-  signal,
-  viewChild,
-  WritableSignal,
-} from '@angular/core';
+import { Component, inject, viewChild, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import {
-  AttributesDirective,
-  PI_VIEW_FIELD_TOKEN,
-} from '@piying/view-angular';
+import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
 @Component({
   selector: 'app-filter-option',

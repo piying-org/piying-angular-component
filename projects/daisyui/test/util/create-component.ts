@@ -10,9 +10,8 @@ import {
 } from '@angular/core';
 import { PiyingView } from '@piying/view-angular';
 import { PiViewConfig } from '@piying/view-angular';
-import { ComponentFixtureAutoDetect, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { FieldArray, FieldControl, FieldGroup } from '@piying/view-angular-core';
-import { SchemaOrPipe } from '@piying/valibot-visit';
 import { PiyingViewGroup } from '@piying/view-angular';
 import * as NFCCGroup from '@piying/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying/angular-daisyui/field-control';
@@ -41,15 +40,15 @@ export async function createSchemaComponent(
   },
   moduleOptions?: TestModuleMetadata,
 ) {
-  let list = [
+  const list = [
     ...Object.values(NFCCGroup),
     ...Object.values(FCCGroup),
     ...Object.values(FGCGroup),
     ...Object.values(ExtComponentGroup),
   ] as Type<any>[];
-  let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
+  const defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
     (obj, item) => {
-      let result = reflectComponentType(item);
+      const result = reflectComponentType(item);
       if (!result) {
         return obj;
       }
@@ -65,9 +64,9 @@ export async function createSchemaComponent(
     {} as Record<string, any>,
   );
 
-  let defaultComp = list.reduce(
+  const defaultComp = list.reduce(
     (obj, item) => {
-      let result = reflectComponentType(item);
+      const result = reflectComponentType(item);
       if (!result) {
         return obj;
       }

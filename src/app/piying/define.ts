@@ -22,7 +22,7 @@ const list = [
 
 const types = list.reduce(
   (obj, item) => {
-    let result = reflectComponentType(item);
+    const result = reflectComponentType(item);
     if (!result) {
       return obj;
     }
@@ -37,9 +37,9 @@ const types = list.reduce(
   },
   {} as Record<string, any>,
 );
-let defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
+const defaultWrapper = [...Object.values(WrapperGroup), ...Object.values(ExtWrapperGroup)].reduce(
   (obj, item) => {
-    let result = reflectComponentType(item as any);
+    const result = reflectComponentType(item as any);
     if (!result) {
       return obj;
     }

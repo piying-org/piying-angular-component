@@ -1,11 +1,11 @@
 import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
-import { Component, computed, inject, input, model, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, model, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { Color, Size } from '@piying/angular-daisyui/util';
+import { Color } from '@piying/angular-daisyui/util';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
 
@@ -52,5 +52,4 @@ export class StepsFGC extends PiyingViewGroupBase {
   wrapperClass$$ = computed(() => {
     return clsx(this.#theme.addPrefix('steps'), this.#theme.addPrefix2('steps', this.direction()));
   });
-
 }

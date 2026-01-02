@@ -1,14 +1,8 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
-import { PurePipe } from '@cyia/ngx-common/pipe';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 
-import {
-  AttributesDirective,
-  PiResolvedViewFieldConfig,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
-import clsx from 'clsx';
+import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 
 @Component({
   selector: 'app-list',

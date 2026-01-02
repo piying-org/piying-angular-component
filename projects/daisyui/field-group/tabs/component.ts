@@ -1,14 +1,13 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input, linkedSignal, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService, useTwClass } from '@piying/angular-daisyui/service';
-import { Color, Size } from '@piying/angular-daisyui/util';
+import { Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-import clsx from 'clsx';
 
 @Component({
   selector: 'app-tabs',

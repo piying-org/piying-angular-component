@@ -27,7 +27,6 @@ import {
   EventEmitter,
   InjectionToken,
   Injector,
-  Input,
   NgZone,
   OnChanges,
   OnDestroy,
@@ -35,7 +34,6 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewContainerRef,
-  booleanAttribute,
   computed,
   inject,
   input,
@@ -133,7 +131,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   /** Registered connected position pairs. */
   positions = input<ConnectedPosition[]>();
   positions$$ = computed(() => {
-    let pos = this.positions();
+    const pos = this.positions();
     return pos && pos.length ? pos : defaultPositionList;
   });
 
@@ -234,7 +232,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   private _createOverlay() {
     const overlayRef = (this._overlayRef = createOverlayRef(this._injector, this._buildConfig()));
     this.disposeResizeUpdate?.();
-    let ob = new ResizeObserver(() => {
+    const ob = new ResizeObserver(() => {
       overlayRef.getConfig().positionStrategy!.apply();
     });
 
@@ -315,7 +313,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   }
 
   private _getOrigin(): FlexibleConnectedPositionStrategyOrigin {
-    let origin = this.origin();
+    const origin = this.origin();
     if (origin instanceof CdkOverlayOrigin) {
       return origin.elementRef;
     } else {
@@ -324,7 +322,7 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   }
 
   private _getOriginElement(): Element | null {
-    let origin = this.origin();
+    const origin = this.origin();
     if (origin instanceof CdkOverlayOrigin) {
       return origin.elementRef.nativeElement;
     }

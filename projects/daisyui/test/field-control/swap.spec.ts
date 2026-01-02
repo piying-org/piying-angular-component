@@ -1,13 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { signal } from '@angular/core';
 
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
-import { testClassInput, testClassInputBoolean, testHello } from '../util/helper';
+import { actions, setComponent } from '@piying/view-angular-core';
+import { testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent } from '../util/element';
-import { htmlInput, htmlInput2 } from '../util/action';
+import { htmlInput } from '../util/action';
 
 describe('swap', () => {
   const BaseDefine = v.pipe(v.boolean(), setComponent('swap'));
@@ -15,8 +13,8 @@ describe('swap', () => {
 
   testHello(prefix, BaseDefine);
   it(`input-onContent/offContent`, async () => {
-    let schema = v.pipe(BaseDefine, actions.inputs.patch({ onContent: 'y', offContent: 'x' }));
-    let { element, fixture } = await createSchemaComponent(
+    const schema = v.pipe(BaseDefine, actions.inputs.patch({ onContent: 'y', offContent: 'x' }));
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(true),
       undefined,
@@ -33,11 +31,11 @@ describe('swap', () => {
     expect(element.querySelector('input')!.checked).toBeFalse();
   });
   it(`input-indeterminate/indeterminateContent`, async () => {
-    let schema = v.pipe(
+    const schema = v.pipe(
       BaseDefine,
       actions.inputs.patch({ indeterminate: true, indeterminateContent: '-' }),
     );
-    let { element, fixture } = await createSchemaComponent(
+    const { element, fixture } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,

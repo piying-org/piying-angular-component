@@ -11,11 +11,10 @@ import {
 } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { MatIcon } from '@angular/material/icon';
-import clsx from 'clsx';
 import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { IconConfig, Size,  } from '@piying/angular-daisyui/util';
+import { IconConfig } from '@piying/angular-daisyui/util';
 import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService ,useDefaultClass} from '@piying/angular-daisyui/service';
+import { ThemeService, useDefaultClass } from '@piying/angular-daisyui/service';
 
 export interface FabOption {
   class?: string;
@@ -90,11 +89,11 @@ export class FabNFCC {
     return new FabItem(this.defaultIcon(), this.autoClose);
   });
   closeIcon$$ = computed(() => {
-    let item = this.closeIcon();
+    const item = this.closeIcon();
     return item ? new FabItem(item, this.autoClose) : undefined;
   });
   mainIcon$$ = computed(() => {
-    let item = this.mainIcon();
+    const item = this.mainIcon();
     return item ? new FabItem(item, this.autoClose) : undefined;
   });
   #theme = inject(ThemeService);

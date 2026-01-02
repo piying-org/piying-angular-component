@@ -4,7 +4,6 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
-import clsx from 'clsx';
 @Component({
   selector: 'app-divider',
   templateUrl: './component.html',

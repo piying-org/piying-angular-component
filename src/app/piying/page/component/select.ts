@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { NFCSchema, actions,  setComponent } from '@piying/view-angular-core';
+import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 export const SelectDefine = v.object({
   native1: v.pipe(
@@ -20,7 +20,7 @@ export const SelectDefine = v.object({
         actions.inputs.patchAsync({
           content: (field) => {
             return computed(() => {
-              let pickerValue = field.context['pickerValue']();
+              const pickerValue = field.context['pickerValue']();
               return pickerValue ?? '[empty]';
             });
           },

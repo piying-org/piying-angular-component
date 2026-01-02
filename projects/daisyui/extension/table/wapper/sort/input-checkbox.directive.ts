@@ -1,13 +1,4 @@
-import {
-  Directive,
-  effect,
-  ElementRef,
-  HostListener,
-  inject,
-  input,
-  model,
-  WritableSignal,
-} from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, input, model } from '@angular/core';
 import { SortDirection, SortService } from './sort.service';
 
 @Directive({
@@ -20,7 +11,7 @@ export class inputSortDirective {
   #sort = inject(SortService);
 
   ngOnChanges(): void {
-    let result = this.inputSort();
+    const result = this.inputSort();
     this.#changeElProps(result);
 
     this.#sort.update(this.key(), result);
@@ -49,7 +40,7 @@ export class inputSortDirective {
   @HostListener('change')
   chagne() {
     this.inputSort.update((a) => {
-      let value = ++a;
+      const value = ++a;
       return value === 2 ? -1 : (value as SortDirection);
     });
   }

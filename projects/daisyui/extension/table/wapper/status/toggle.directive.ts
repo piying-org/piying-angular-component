@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, inject, output } from '@angular/core';
+import { Directive, HostListener, inject } from '@angular/core';
 import { TableStatusService } from './service';
 import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 

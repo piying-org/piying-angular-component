@@ -1,5 +1,5 @@
-import { Injectable, signal } from '@angular/core';
-import { BehaviorSubject, combineLatest, filter, map, Observable, Subject, switchMap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, combineLatest, filter, map, Observable, switchMap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 export type QueryParamsOb = { value?: Record<string, any>; loading: boolean };
 @Injectable()

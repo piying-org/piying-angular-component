@@ -49,7 +49,7 @@ export const FormBase = v.object({
         actions.inputs.patchAsync({
           content: (field) => {
             return computed(() => {
-              let pickerValue = field.context['pickerValue']();
+              const pickerValue = field.context['pickerValue']();
               return pickerValue ? `${pickerValue}` : 'default';
             });
           },

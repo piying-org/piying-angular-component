@@ -1,27 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  forwardRef,
-  inject,
-  input,
-  TemplateRef,
-  viewChild,
-} from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, computed, inject, viewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   AttributesDirective,
-  BaseControl,
   InsertFieldDirective,
   PI_VIEW_FIELD_TOKEN,
 } from '@piying/view-angular';
-import {
-  DefaultOptionConvert,
-  OptionConvert,
-  SelectOption,
-  transformOptions,
-} from '@piying/angular-daisyui/util';
+
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
 @Component({
@@ -51,11 +35,11 @@ export class LabelWC {
     return this.props$$()['labelPosition'] ?? 'top';
   });
   isEnd$$ = computed(() => {
-    let direction = this.labelPosition$$();
+    const direction = this.labelPosition$$();
     return direction === 'bottom' || direction === 'end';
   });
   layout$$ = computed(() => {
-    let direction = this.labelPosition$$();
+    const direction = this.labelPosition$$();
     return direction === 'top' || direction === 'bottom' ? 'flex flex-col' : 'flex';
   });
 }

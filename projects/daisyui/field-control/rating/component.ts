@@ -1,22 +1,7 @@
-import {
-  Component,
-  computed,
-  forwardRef,
-  inject,
-  input,
-  TemplateRef,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, forwardRef, inject, input, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import {
-  Color,
-  DefaultOptionConvert,
-  OptionConvert,
-  SelectOption,
-  Size,
-  transformOptions,
-} from '@piying/angular-daisyui/util';
+import { Size } from '@piying/angular-daisyui/util';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { range } from 'es-toolkit';
 import { ThemeService } from '@piying/angular-daisyui/service';

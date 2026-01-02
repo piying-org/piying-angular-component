@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 

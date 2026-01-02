@@ -1,7 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, input, TemplateRef, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { IconConfig } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({

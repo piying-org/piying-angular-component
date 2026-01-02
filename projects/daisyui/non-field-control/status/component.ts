@@ -4,7 +4,6 @@ import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-dai
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { Color, Size } from '@piying/angular-daisyui/util';
 import { AttributesDirective } from '@piying/view-angular';
-import clsx from 'clsx';
 @Component({
   selector: 'app-status',
   templateUrl: './component.html',

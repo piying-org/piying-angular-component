@@ -1,18 +1,12 @@
-import {
-  Component,
-  computed,
-  effect,
-  ElementRef,
-  inject,
-  linkedSignal,
-  OnInit,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, linkedSignal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { AttributesDirective, InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { inputSortDirective } from './input-checkbox.directive';
 
 @Component({

@@ -1,21 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import {
-  computed,
-  provideZonelessChangeDetection,
-  ResourceLoaderParams,
-  signal,
-} from '@angular/core';
+import { computed, ResourceLoaderParams, signal } from '@angular/core';
 import * as v from 'valibot';
 import { NFCSchema, setComponent, actions } from '@piying/view-angular-core';
 
 import { createSchemaComponent } from '../util/create-component';
-import { assertElementExist, assertElementSelector } from '../util/element';
+import { assertElementExist } from '../util/element';
 import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
 import { TableQueryParams } from '../../extension/table/type';
 describe('table', () => {
   it('str-head', async () => {
-    let data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
+    const data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
@@ -33,18 +26,18 @@ describe('table', () => {
         },
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table th');
+    const thList = element.querySelectorAll('table th');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('head1');
   });
   it('define-head', async () => {
-    let data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
+    const data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
@@ -67,18 +60,18 @@ describe('table', () => {
         },
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table th');
+    const thList = element.querySelectorAll('table th');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('head1');
   });
   it('sort', async () => {
-    let data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
+    const data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
@@ -107,8 +100,8 @@ describe('table', () => {
         data: [],
       }),
     );
-    let schema = TableDefine;
-    let { element, field$$ } = await createSchemaComponent(
+    const schema = TableDefine;
+    const { element, field$$ } = await createSchemaComponent(
       signal(schema),
       signal(undefined),
       undefined,
@@ -141,13 +134,13 @@ describe('table', () => {
         data: [{ data: 1 }],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table tbody td');
+    const thList = element.querySelectorAll('table tbody td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('data1');
   });
@@ -174,13 +167,13 @@ describe('table', () => {
         data: [{ data: 'data1' }],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table tbody td');
+    const thList = element.querySelectorAll('table tbody td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('data1');
   });
@@ -215,13 +208,13 @@ describe('table', () => {
         data: [{ data: 'data1' }],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table tbody td');
+    const thList = element.querySelectorAll('table tbody td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('data1');
   });
@@ -241,13 +234,13 @@ describe('table', () => {
         data: [],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table td');
+    const thList = element.querySelectorAll('table td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('foot1');
   });
@@ -274,13 +267,13 @@ describe('table', () => {
         data: [],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
     expect(element.querySelector('table')).toBeTruthy();
-    let thList = element.querySelectorAll('table td');
+    const thList = element.querySelectorAll('table td');
     expect(thList.length).toBeTruthy();
     expect(thList[0].textContent.trim()).toEqual('foot1');
   });
@@ -299,8 +292,8 @@ describe('table', () => {
         data: [],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
@@ -328,8 +321,8 @@ describe('table', () => {
         data: [],
       }),
     );
-    let schema = TableDefine;
-    let { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
+    const schema = TableDefine;
+    const { element } = await createSchemaComponent(signal(schema), signal(undefined), undefined, {
       teardown: { destroyAfterEach: false },
     });
     assertElementExist(element);
