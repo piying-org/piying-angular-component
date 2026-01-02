@@ -15,13 +15,12 @@ async function main() {
   const TAG = process.env['PUBLISH_TAG'] ?? 'latest';
 
   for (const item of list) {
- 
     await $({ stdio: 'inherit' })('npm', [
       'publish',
       '--access=public',
       '--registry=https://registry.npmjs.org',
       `./dist/${item}`,
-        '--dry-run',
+      // '--dry-run',
       '--tag',
       TAG,
     ]);
@@ -34,8 +33,8 @@ async function main() {
   // await $({ stdio: 'inherit' })`git status`;
   // await $({ stdio: 'inherit' })`git commit -m "changelog"`;
   // await $({ stdio: 'inherit' })`git push`;
-  // await $({ stdio: 'inherit' })`git tag ${version}`;
-  // await $({ stdio: 'inherit' })`git push origin ${version}`;
+  await $({ stdio: 'inherit' })`git tag ${version}`;
+  await $({ stdio: 'inherit' })`git push origin ${version}`;
   console.log(`🏁⬆️🔚`);
 }
 main();
