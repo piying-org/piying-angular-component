@@ -29,9 +29,9 @@ async function main() {
   }
   await $({ stdio: 'inherit' })`git log`;
   // await $({ stdio: 'inherit' })`npm run changelog`;
-  await $({ stdio: 'inherit' })`git status`;
-  await $({ stdio: 'inherit' })`git add .`;
-  await $({ stdio: 'inherit' })`git status`;
+  // await $({ stdio: 'inherit' })`git status`;
+  // await $({ stdio: 'inherit' })`git add .`;
+  // await $({ stdio: 'inherit' })`git status`;
   // await $({ stdio: 'inherit' })`git commit -m "changelog"`;
   // await $({ stdio: 'inherit' })`git push`;
   // await $({ stdio: 'inherit' })`git tag ${version}`;
