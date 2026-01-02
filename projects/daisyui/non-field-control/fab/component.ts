@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { MatIcon } from '@angular/material/icon';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { IconConfig } from '@piying/angular-core';
-import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService, useDefaultClass } from '@piying/angular-daisyui/service';
+import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { IconConfig } from '@piying-lib/angular-core';
+import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService, useDefaultClass } from '@piying-lib/angular-daisyui/service';
 
 export interface FabOption {
   class?: string;

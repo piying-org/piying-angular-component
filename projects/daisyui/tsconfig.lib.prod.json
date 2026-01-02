@@ -5,7 +5,7 @@
   "compilerOptions": {
     "declarationMap": false,
     "paths": {
-      "@piying/angular-core": [
+      "@piying-lib/angular-core": [
         "../../dist/core"
       ],
     }

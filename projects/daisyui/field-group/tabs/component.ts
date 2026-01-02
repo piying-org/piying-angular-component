@@ -3,10 +3,10 @@ import { Component, computed, inject, input, linkedSignal, viewChild } from '@an
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService, useTwClass } from '@piying/angular-daisyui/service';
-import { Size } from '@piying/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
+import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 
 @Component({

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { CSSClassPrefixToken } from './token';
-import { AlertColor, Color, Size } from '@piying/angular-core';
+import { AlertColor, Color, Size } from '@piying-lib/angular-core';
 import clsx from 'clsx';
 type HasColorCmp =
   | 'btn'

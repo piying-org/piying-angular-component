@@ -1,10 +1,10 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { CssPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { useTwClass } from '@piying/angular-daisyui/service';
+import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { useTwClass } from '@piying-lib/angular-daisyui/service';
 
 import {
   AttributesDirective,

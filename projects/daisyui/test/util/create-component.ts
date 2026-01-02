@@ -13,14 +13,14 @@ import { PiViewConfig } from '@piying/view-angular';
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { FieldArray, FieldControl, FieldGroup } from '@piying/view-angular-core';
 import { PiyingViewGroup } from '@piying/view-angular';
-import * as NFCCGroup from '@piying/angular-daisyui/non-field-control';
-import * as FCCGroup from '@piying/angular-daisyui/field-control';
-import * as FGCGroup from '@piying/angular-daisyui/field-group';
-import * as WrapperGroup from '@piying/angular-daisyui/wrapper';
+import * as NFCCGroup from '@piying-lib/angular-daisyui/non-field-control';
+import * as FCCGroup from '@piying-lib/angular-daisyui/field-control';
+import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
+import * as WrapperGroup from '@piying-lib/angular-daisyui/wrapper';
 import * as v from 'valibot';
-import { CSSClassPrefixToken, ThemeService } from '@piying/angular-daisyui/service';
+import { CSSClassPrefixToken, ThemeService } from '@piying-lib/angular-daisyui/service';
 import { provideRouter } from '@angular/router';
-import { ExtComponentGroup, ExtWrapperGroup } from '@piying/angular-daisyui/extension';
+import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
 
 export type Schema2 =
   | v.BaseSchema<any, any, any>

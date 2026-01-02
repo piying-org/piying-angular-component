@@ -7,7 +7,7 @@ import {
 } from '@piying/view-angular';
 
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-label-wrapper',
   templateUrl: './component.html',

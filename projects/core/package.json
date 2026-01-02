@@ -1,5 +1,5 @@
 {
-  "name": "@piying/angular-core",
+  "name": "@piying-lib/angular-core",
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^20.3.0",

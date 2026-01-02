@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
-import { isSchema, Size } from '@piying/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { isSchema, Size } from '@piying-lib/angular-core';
 
 import { AttributesDirective } from '@piying/view-angular';
 import clsx from 'clsx';
@@ -23,9 +23,9 @@ import { FormsModule } from '@angular/forms';
 
 import { NFCSchema, setComponent, actions, Writeable } from '@piying/view-angular-core';
 import { TableRowFGC } from './row/component';
-import { TdWC, ThWC } from '@piying/angular-daisyui/wrapper';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { TdWC, ThWC } from '@piying-lib/angular-daisyui/wrapper';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
 // import { QueryService } from './query.service';
 

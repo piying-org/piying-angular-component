@@ -1,7 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 

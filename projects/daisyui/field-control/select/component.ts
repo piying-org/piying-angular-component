@@ -8,10 +8,10 @@ import {
   ResolvedOption,
   SelectOption,
   Size,
-} from '@piying/angular-core';
+} from '@piying-lib/angular-core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-select',
   templateUrl: './component.html',

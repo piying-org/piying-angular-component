@@ -3,10 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { AttributesDirective } from '@piying/view-angular';
 
 import { NgTemplateOutlet, NgClass } from '@angular/common';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 @Component({
   selector: 'app-dropdown',

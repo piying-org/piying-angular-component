@@ -1,10 +1,10 @@
 import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying/angular-core';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { Size } from '@piying/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
 
 import { NavigationItem } from './navigation.types';

@@ -1,8 +1,8 @@
 import { NgTemplateOutlet, NgClass } from '@angular/common';
 import { Component, computed, inject, input, model, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({

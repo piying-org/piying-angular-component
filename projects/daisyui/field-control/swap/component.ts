@@ -11,9 +11,9 @@ import {
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import clsx from 'clsx';
 @Component({

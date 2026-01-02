@@ -1,9 +1,9 @@
 import { Component, computed, forwardRef, inject, input, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import { Color, Size } from '@piying/angular-core';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { Color, Size } from '@piying-lib/angular-core';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { toDateStr } from '../calendar/date.util';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({

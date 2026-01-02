@@ -4,31 +4,31 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@piying/angular-daisyui/pipe": [
+      "@piying-lib/angular-daisyui/pipe": [
         "./projects/daisyui/pipe"
       ],
-      "@piying/angular-daisyui/service": [
+      "@piying-lib/angular-daisyui/service": [
         "./projects/daisyui/service"
       ],
-      "@piying/angular-daisyui/field-control": [
+      "@piying-lib/angular-daisyui/field-control": [
         "./projects/daisyui/field-control"
       ],
-      "@piying/angular-daisyui/field-group": [
+      "@piying-lib/angular-daisyui/field-group": [
         "./projects/daisyui/field-group"
       ],
-      "@piying/angular-daisyui/non-field-control": [
+      "@piying-lib/angular-daisyui/non-field-control": [
         "./projects/daisyui/non-field-control"
       ],
-      "@piying/angular-daisyui/wrapper": [
+      "@piying-lib/angular-daisyui/wrapper": [
         "./projects/daisyui/wrapper"
       ],
-      "@piying/angular-daisyui/extension": [
+      "@piying-lib/angular-daisyui/extension": [
         "./projects/daisyui/extension"
       ],
-      "@piying/angular-daisyui/directive": [
+      "@piying-lib/angular-daisyui/directive": [
         "./projects/daisyui/directive"
       ],
-      "@piying/angular-core": [
+      "@piying-lib/angular-core": [
         "./projects/core"
       ],
     },

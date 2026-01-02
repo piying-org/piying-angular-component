@@ -1,11 +1,11 @@
 import { Component, computed, forwardRef, inject, input, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import { Size } from '@piying/angular-core';
+import { Size } from '@piying-lib/angular-core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { range } from 'es-toolkit';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-rating',
   templateUrl: './component.html',

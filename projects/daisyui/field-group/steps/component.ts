@@ -2,10 +2,10 @@ import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
 import { Component, computed, inject, input, model, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
-import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { Color } from '@piying/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { Color } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
 

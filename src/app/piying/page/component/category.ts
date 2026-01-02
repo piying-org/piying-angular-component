@@ -2,7 +2,7 @@ import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
-import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
+import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
 import { range } from 'es-toolkit';
 
 export const CategoryDefine = v.object({

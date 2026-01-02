@@ -3,7 +3,7 @@ import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
 import { map, startWith, Subject } from 'rxjs';
-import { ExpandRowDirective } from '@piying/angular-daisyui/extension';
+import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
 
 export const TableDefine = v.object({
   table: v.pipe(

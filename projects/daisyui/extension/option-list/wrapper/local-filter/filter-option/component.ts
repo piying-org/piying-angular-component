@@ -1,7 +1,7 @@
 import { Component, inject, viewChild, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
 @Component({

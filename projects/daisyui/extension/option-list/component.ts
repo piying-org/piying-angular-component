@@ -12,11 +12,11 @@ import {
   ResolvedOption,
   SelectOption,
   transformOption,
-} from '@piying/angular-core';
+} from '@piying-lib/angular-core';
 import { NgTemplateOutlet, NgClass } from '@angular/common';
-import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
-import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-core';
+import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({

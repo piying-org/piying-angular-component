@@ -1,5 +1,5 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
-import { CheckboxService } from '@piying/angular-daisyui/service';
+import { CheckboxService } from '@piying-lib/angular-daisyui/service';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
 @Component({

@@ -2,11 +2,11 @@ import { Component, computed, inject, input, signal, viewChild } from '@angular/
 import { AttributesDirective } from '@piying/view-angular';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Color, Size } from '@piying/angular-core';
-import { ThemeService } from '@piying/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
+import { Color, Size } from '@piying-lib/angular-core';
+import { ThemeService } from '@piying-lib/angular-daisyui/service';
+import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',
