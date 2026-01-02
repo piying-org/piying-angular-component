@@ -6,7 +6,7 @@ import { NgTemplateOutlet, NgClass } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, TwPrefixPipe } from '@piying/angular-daisyui/pipe';
 import { MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { StrOrTemplateComponent } from '@piying/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 @Component({
   selector: 'app-dropdown',

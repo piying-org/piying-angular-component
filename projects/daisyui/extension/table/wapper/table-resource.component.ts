@@ -2,7 +2,7 @@ import { Component, computed, inject, resource, viewChild } from '@angular/core'
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { dataConvert } from '../util';
 import { localData } from '../local-data';
-import { computedWithPrev } from '@piying/angular-daisyui/util';
+import { computedWithPrev } from '@piying/angular-core';
 
 @Component({
   selector: 'app-table-resource',

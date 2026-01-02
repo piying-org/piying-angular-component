@@ -17,7 +17,7 @@ import {
 } from '@piying/view-angular';
 
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { StrOrTemplateComponent } from '@piying/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { OverlayConfig } from '@angular/cdk/overlay';

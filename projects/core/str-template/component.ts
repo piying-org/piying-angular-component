@@ -3,8 +3,8 @@ import { Component, computed, inject, input, TemplateRef, viewChild } from '@ang
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import { isSchema } from '../util';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
-import { isSchema } from '../../util/is';
 
 @Component({
   selector: 'app-str-or-template',

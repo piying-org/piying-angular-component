@@ -5,7 +5,7 @@ import {
   RouterLinkActive,
   UrlTree,
 } from '@angular/router';
-import { IconConfig } from '@piying/angular-daisyui/util';
+import { IconConfig } from '@piying/angular-core';
 export const ExactMatchOptions: IsActiveMatchOptions = {
   paths: 'exact',
   fragment: 'ignored',

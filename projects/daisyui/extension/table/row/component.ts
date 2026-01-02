@@ -2,7 +2,7 @@ import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { StrOrTemplateComponent } from '@piying/angular-core';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { FormsModule } from '@angular/forms';

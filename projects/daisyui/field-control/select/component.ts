@@ -8,7 +8,7 @@ import {
   ResolvedOption,
   SelectOption,
   Size,
-} from '@piying/angular-daisyui/util';
+} from '@piying/angular-core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';

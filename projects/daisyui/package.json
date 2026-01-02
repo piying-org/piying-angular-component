@@ -1,12 +1,15 @@
 {
   "name": "@piying/angular-daisyui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0"
+    "@angular/core": "^20.3.0",
+    "@piying/view-angular": "2.0.8",
+    "daisyui": "^5.3.10"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@piying/angular-core": "1.0.0"
   },
   "sideEffects": false
 }

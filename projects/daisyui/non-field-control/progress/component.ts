@@ -4,7 +4,7 @@ import { MatIcon } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import { ThemeService } from '@piying/angular-daisyui/service';
-import { Color } from '@piying/angular-daisyui/util';
+import { Color } from '@piying/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
 
 @Component({

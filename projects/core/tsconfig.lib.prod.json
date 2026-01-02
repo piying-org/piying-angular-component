@@ -4,11 +4,6 @@
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "declarationMap": false,
-    "paths": {
-      "@piying/angular-core": [
-        "../../dist/core"
-      ],
-    }
   },
   "angularCompilerOptions": {
     "compilationMode": "partial"

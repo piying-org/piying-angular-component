@@ -1,7 +1,7 @@
 import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { StrOrTemplateComponent } from '@piying/angular-core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';
 import {
   AttributesDirective,

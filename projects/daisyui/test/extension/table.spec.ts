@@ -4,7 +4,7 @@ import { NFCSchema, setComponent, actions } from '@piying/view-angular-core';
 
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementExist } from '../util/element';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
+import { StrOrTemplateComponent } from '@piying/angular-core';
 import { TableQueryParams } from '../../extension/table/type';
 describe('table', () => {
   it('str-head', async () => {

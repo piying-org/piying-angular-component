@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { StrOrTemplateComponent } from '@piying/angular-daisyui/helper';
-import { isSchema, Size } from '@piying/angular-daisyui/util';
+import { StrOrTemplateComponent } from '@piying/angular-core';
+import { isSchema, Size } from '@piying/angular-core';
 
 import { AttributesDirective } from '@piying/view-angular';
 import clsx from 'clsx';

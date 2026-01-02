@@ -1,7 +1,7 @@
 import { Component, input, TemplateRef, viewChild } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IconConfig } from '@piying/angular-daisyui/util';
+import { IconConfig } from '@piying/angular-core';
 import { MatIcon } from '@angular/material/icon';
 import { NgTemplateOutlet } from '@angular/common';
 import { CssPrefixPipe, MergeClassPipe } from '@piying/angular-daisyui/pipe';

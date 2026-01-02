@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4444",
-    "build": "ng build daisyui",
+    "build": "ng build core && ng build daisyui",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:piying-angular-component": "node dist/piying-angular-component/server/server.mjs",

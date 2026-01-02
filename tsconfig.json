@@ -4,17 +4,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@piying/angular-daisyui/helper": [
-        "./projects/daisyui/helper"
-      ],
       "@piying/angular-daisyui/pipe": [
         "./projects/daisyui/pipe"
       ],
       "@piying/angular-daisyui/service": [
         "./projects/daisyui/service"
-      ],
-      "@piying/angular-daisyui/util": [
-        "./projects/daisyui/util"
       ],
       "@piying/angular-daisyui/field-control": [
         "./projects/daisyui/field-control"
@@ -33,6 +27,9 @@
       ],
       "@piying/angular-daisyui/directive": [
         "./projects/daisyui/directive"
+      ],
+      "@piying/angular-core": [
+        "./projects/core"
       ],
     },
     "strict": true,
