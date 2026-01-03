@@ -215,7 +215,9 @@ const TableDefine = v.pipe(
                 value.set(list);
               }
             });
-          return value;
+          return async () => {
+            return value();
+          };
         },
       }),
       actions.props.mapAsync((field) => {

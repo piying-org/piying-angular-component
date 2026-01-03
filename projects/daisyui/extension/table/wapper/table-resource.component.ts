@@ -3,6 +3,7 @@ import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular'
 import { dataConvert } from '../util';
 import { localData } from '../local-data';
 import { computedWithPrev } from '@piying-lib/angular-core';
+import { TableStatusService } from './status';
 
 @Component({
   selector: 'app-table-resource',
@@ -13,10 +14,20 @@ export class TableResourceWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  #status = inject(TableStatusService);
   props$$ = computed(() => this.field$$().props());
+  #data$$ = computed(() => this.field$$().props()['data']);
   rawData$$ = computed(() => {
-    const data = this.field$$().props()['data'];
-    return Array.isArray(data) || !data ? localData(data ?? []) : data;
+    const data = this.#data$$();
+    this.#status.updateIndex$();
+    return Array.isArray(data) || !data
+      ? Promise.resolve(localData(data ?? []))
+      : data().then((value: any) => {
+          if (Array.isArray(value) || !value) {
+            return localData(value ?? []);
+          }
+          return value;
+        });
   });
   queryParams$$ = computed(() => {
     return this.field$$().props()['queryParams'];
@@ -31,7 +42,8 @@ export class TableResourceWC {
     }),
     loader: async (res) => {
       const { params } = res;
-      return params.data(res as any).then((data: any) => {
+      let dataResult = await params.data;
+      return dataResult(res as any).then((data: any) => {
         return dataConvert(data);
       });
     },
