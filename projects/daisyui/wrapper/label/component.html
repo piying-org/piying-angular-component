@@ -2,9 +2,9 @@
   @let title = props$$()['title'];
   @let isEnd = isEnd$$();
   <ng-template #requiredTemplate>
+    <span>{{ title }}</span>
     @if (field$$().form.control?.required$$()) {
-      <span>{{ title }}</span
-      ><span class="text-error">*</span>
+      <span class="text-error">*</span>
     }
   </ng-template>
 
