@@ -16,7 +16,7 @@ export class TableResourceWC {
   props$$ = computed(() => this.field$$().props());
   rawData$$ = computed(() => {
     const data = this.field$$().props()['data'];
-    return Array.isArray(data) ? localData(data) : data;
+    return Array.isArray(data) || !data ? localData(data ?? []) : data;
   });
   queryParams$$ = computed(() => {
     return this.field$$().props()['queryParams'];
