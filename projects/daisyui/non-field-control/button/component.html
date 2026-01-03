@@ -16,7 +16,9 @@
       aria-disabled="true"
     >
       @if (isLoading$() && !disableLoadingIcon()) {
-        <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
+        <span
+          [class]="'loading loading-spinner' | cssPrefix | mergeClass: ('absolute z-10' | twPrefix)"
+        ></span>
       }
       <ng-template
         [selectlessOutlet]="StrOrTemplateComponent"
@@ -33,7 +35,9 @@
       [ngClass]="wrapperClass$()"
     >
       @if (isLoading$() && !disableLoadingIcon()) {
-        <span class="{{ 'loading loading-spinner' | cssPrefix }}"></span>
+        <span
+          [class]="'loading loading-spinner' | cssPrefix | mergeClass: ('absolute z-10' | twPrefix)"
+        ></span>
       }
       <ng-template
         [selectlessOutlet]="StrOrTemplateComponent"
