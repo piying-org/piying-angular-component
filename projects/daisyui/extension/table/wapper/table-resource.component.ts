@@ -65,6 +65,7 @@ export class TableResourceWC {
       return {
         ...props,
         count$$: this.count$$,
+        status: this.#status,
       };
     });
   }
