@@ -182,6 +182,8 @@ export class TableNFCC {
           })
           .filter(Boolean);
         if (colList.length) {
+          let items = (row.define as Writeable<v.TupleSchema<any, any>>).items as any[];
+          items.length = 0;
           (row.define as Writeable<v.TupleSchema<any, any>>).items.push(...colList);
           return row.define;
         }
