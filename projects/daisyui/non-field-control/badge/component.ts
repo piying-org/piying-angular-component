@@ -5,18 +5,11 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color, Size } from '@piying-lib/angular-core';
-import { AttributesDirective } from '@piying/view-angular';
-// todo 设计上存在问题,可能不需要这个组件
+import { AttributesDirective, EventsDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-badge',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    NgClass,
-    CssPrefixPipe,
-    SelectorlessOutlet,
-    StrOrTemplateComponent,
-  ],
+  imports: [AttributesDirective, NgClass, SelectorlessOutlet, EventsDirective],
 })
 export class BadgeNFCC {
   static __version = 2;
