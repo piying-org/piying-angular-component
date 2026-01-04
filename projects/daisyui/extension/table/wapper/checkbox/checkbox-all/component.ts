@@ -18,6 +18,6 @@ export class TableCheckboxAllWC {
   });
 
   toggle() {
-    this.#checkboxService.toggle(this.#key$$(), this.props$$()['item$']());
+    this.#checkboxService.selectAll(this.#key$$());
   }
 }

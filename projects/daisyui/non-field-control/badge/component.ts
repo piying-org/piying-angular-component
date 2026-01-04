@@ -2,7 +2,6 @@ import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color, Size } from '@piying-lib/angular-core';
 import { AttributesDirective, EventsDirective } from '@piying/view-angular';

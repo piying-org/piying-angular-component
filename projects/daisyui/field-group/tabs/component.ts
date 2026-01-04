@@ -1,6 +1,5 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -15,8 +14,6 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
   imports: [
     NgTemplateOutlet,
     AttributesDirective,
-    MatIcon,
-    NgClass,
     CssPrefixPipe,
     MergeClassPipe,
     PurePipe,

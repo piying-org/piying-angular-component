@@ -1,4 +1,4 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -9,7 +9,7 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-carousel',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, CssPrefixPipe, MergeClassPipe],
 })
 export class CarouselFGC extends PiyingViewGroupBase {
   static __version = 2;

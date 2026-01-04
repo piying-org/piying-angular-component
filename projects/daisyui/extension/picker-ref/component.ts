@@ -16,10 +16,7 @@ import {
   PiyingView,
 } from '@piying/view-angular';
 
-import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 import { OverlayConfig } from '@angular/cdk/overlay';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
 @Component({
@@ -28,13 +25,9 @@ import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
   imports: [
     FormsModule,
     AttributesDirective,
-    CssPrefixPipe,
-    MergeClassPipe,
-    StrOrTemplateComponent,
     SelectorlessOutlet,
     CdkConnectedOverlay,
     CdkOverlayOrigin,
-    PurePipe,
   ],
   providers: [
     {

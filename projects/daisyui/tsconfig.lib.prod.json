@@ -5,12 +5,10 @@
   "compilerOptions": {
     "declarationMap": false,
     "paths": {
-      "@piying-lib/angular-core": [
-        "../../dist/core"
-      ],
+      "@piying-lib/angular-core": ["../../dist/core"]
     }
   },
   "angularCompilerOptions": {
     "compilationMode": "partial"
-  },
+  }
 }

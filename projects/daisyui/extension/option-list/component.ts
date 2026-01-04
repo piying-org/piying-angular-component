@@ -1,11 +1,6 @@
 import { Component, forwardRef, inject, input, signal, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  AttributesDirective,
-  BaseControl,
-  PI_INPUT_OPTIONS_TOKEN,
-  PiyingView,
-} from '@piying/view-angular';
+import { BaseControl, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import {
   DefaultOptionConvert,
   OptionConvert,
@@ -13,27 +8,14 @@ import {
   SelectOption,
   transformOption,
 } from '@piying-lib/angular-core';
-import { NgTemplateOutlet, NgClass } from '@angular/common';
-import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
-import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { NgTemplateOutlet } from '@angular/common';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-option-list',
   templateUrl: './component.html',
-  imports: [
-    FormsModule,
-    AttributesDirective,
-    NgTemplateOutlet,
-    NgClass,
-    CssPrefixPipe,
-    MergeClassPipe,
-    TwPrefixPipe,
-    StrOrTemplateComponent,
-    SelectorlessOutlet,
-    PurePipe,
-  ],
+  imports: [FormsModule, NgTemplateOutlet, SelectorlessOutlet, PurePipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,4 +1,4 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
@@ -8,7 +8,7 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-card',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, NgClass, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, CssPrefixPipe, MergeClassPipe],
 })
 export class CardFGC extends PiyingViewGroupBase {
   static __version = 2;

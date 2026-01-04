@@ -1,7 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, map, shareReplay, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, shareReplay, switchMap } from 'rxjs';
 
 @Injectable()
 export class TableStatusService {

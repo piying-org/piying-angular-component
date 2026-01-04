@@ -1,13 +1,8 @@
-import { Component, computed, inject, viewChild } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { CheckboxService } from '@piying-lib/angular-daisyui/service';
-import {
-  AttributesDirective,
-  InsertFieldDirective,
-  PI_VIEW_FIELD_TOKEN,
-} from '@piying/view-angular';
-import { filter, map, startWith } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { map, startWith } from 'rxjs';
 import { TableStatusService } from '../../../wapper';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 

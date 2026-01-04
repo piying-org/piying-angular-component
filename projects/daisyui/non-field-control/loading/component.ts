@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
@@ -9,7 +8,7 @@ import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-loading',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, NgClass, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgClass, CssPrefixPipe, MergeClassPipe],
 })
 export class LoadingNFCC {
   static __version = 2;

@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <div [class]="'relative' | twPrefix | mergeClass: attr()?.class">
+    <ng-container insertField></ng-container>
+    @if (isLoading$$()) {
+      <div
+        class="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-base-200/70"
+      >
+        <span [class]="'loading' | cssPrefix | mergeClass: wrapperClass$$()"></span>
+      </div>
+    }
+  </div>
+</ng-template>

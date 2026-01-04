@@ -11,12 +11,10 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AttributesDirective, BaseControl } from '@piying/view-angular';
+import { BaseControl } from '@piying/view-angular';
 
-import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CalendarPropsDirective } from './props.directive';
 import type { CalendarDateProps } from 'cally';
 import {
@@ -39,16 +37,7 @@ function DateAsc(a: Date, b: Date) {
 @Component({
   selector: 'app-calendar',
   templateUrl: './component.html',
-  imports: [
-    FormsModule,
-    AttributesDirective,
-    NgTemplateOutlet,
-    NgClass,
-    CssPrefixPipe,
-    MergeClassPipe,
-    PurePipe,
-    CalendarPropsDirective,
-  ],
+  imports: [FormsModule, CssPrefixPipe, MergeClassPipe, CalendarPropsDirective],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

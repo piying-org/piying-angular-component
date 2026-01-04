@@ -42,7 +42,7 @@ export class TableResourceWC {
     }),
     loader: async (res) => {
       const { params } = res;
-      let dataResult = await params.data;
+      const dataResult = await params.data;
       return dataResult(res as any).then((data: any) => {
         return dataConvert(data);
       });

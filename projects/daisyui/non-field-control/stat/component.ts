@@ -1,11 +1,9 @@
-import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, inject, input, Signal, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { AttributesDirective, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
@@ -13,16 +11,11 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
   templateUrl: './component.html',
   imports: [
     AttributesDirective,
-    NgClass,
     CssPrefixPipe,
     SelectorlessOutlet,
-    StrOrTemplateComponent,
-    RouterLink,
-    RouterLinkActive,
-    NgTemplateOutlet,
+
     MatIconModule,
     MergeClassPipe,
-    JsonPipe,
     MergeClassPipe,
     PurePipe,
   ],

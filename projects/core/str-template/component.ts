@@ -18,7 +18,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'app-str-or-template',
   templateUrl: './component.html',
-  imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet, PiyingView],
+  imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

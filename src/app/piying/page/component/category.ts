@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
-import { map, Observable, startWith, Subject } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
 import { range } from 'es-toolkit';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -33,7 +33,7 @@ export const CategoryDefine = v.object({
                   ]),
                   hideWhen({
                     listen(fn, field) {
-                      let sm = field.context.status['selectionModel$$'] as Observable<
+                      const sm = field.context.status['selectionModel$$'] as Observable<
                         SelectionModel<unknown>
                       >;
                       return sm.pipe(

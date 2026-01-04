@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, resource } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PiyingView } from '@piying/view-angular';
-import { AsyncPipe } from '@angular/common';
 import { FieldGlobalConfig } from '../piying/define';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 const defaultValue = Promise.resolve(undefined);
@@ -9,7 +8,7 @@ const defaultValue = Promise.resolve(undefined);
   selector: 'app-schema-view',
   templateUrl: './component.html',
   standalone: true,
-  imports: [PiyingView, AsyncPipe, SelectorlessOutlet],
+  imports: [SelectorlessOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SchemaViewRC {

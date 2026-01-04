@@ -1,4 +1,3 @@
-import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
@@ -90,11 +89,8 @@ export function createDefaultColDefineFn(
   templateUrl: './component.html',
   imports: [
     AttributesDirective,
-    NgTemplateOutlet,
     PurePipe,
     SelectorlessOutlet,
-    StrOrTemplateComponent,
-    JsonPipe,
     FormsModule,
     CssPrefixPipe,
     MergeClassPipe,
@@ -182,7 +178,7 @@ export class TableNFCC {
           })
           .filter(Boolean);
         if (colList.length) {
-          let items = (row.define as Writeable<v.TupleSchema<any, any>>).items as any[];
+          const items = (row.define as Writeable<v.TupleSchema<any, any>>).items as any[];
           items.length = 0;
           (row.define as Writeable<v.TupleSchema<any, any>>).items.push(...colList);
           return row.define;

@@ -1,4 +1,4 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -10,7 +10,7 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-dock',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, MatIcon, NgClass, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, MatIcon, CssPrefixPipe, MergeClassPipe],
 })
 export class DockFGC extends PiyingViewGroupBase {
   static __version = 2;

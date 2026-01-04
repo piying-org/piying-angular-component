@@ -1,6 +1,5 @@
 import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
 import { Component, computed, inject, input, model, viewChild } from '@angular/core';
-import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -18,8 +17,6 @@ import clsx from 'clsx';
     MergeClassPipe,
     TwPrefixPipe,
     PurePipe,
-    SelectorlessOutlet,
-    StrOrTemplateComponent,
     NgComponentOutlet,
     AttributesDirective,
   ],

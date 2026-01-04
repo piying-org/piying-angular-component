@@ -1,37 +1,14 @@
-import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-import {
-  AttributesDirective,
-  PI_INPUT_OPTIONS_TOKEN,
-  PI_VIEW_FIELD_TOKEN,
-  PiyingView,
-} from '@piying/view-angular';
+import { PI_INPUT_OPTIONS_TOKEN, PI_VIEW_FIELD_TOKEN, PiyingView } from '@piying/view-angular';
 
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-list-template',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    NgClass,
-    CssPrefixPipe,
-    SelectorlessOutlet,
-    StrOrTemplateComponent,
-
-    RouterLink,
-    RouterLinkActive,
-    NgTemplateOutlet,
-    MatIconModule,
-    MergeClassPipe,
-    JsonPipe,
-    MergeClassPipe,
-    PurePipe,
-  ],
+  imports: [SelectorlessOutlet, MatIconModule, PurePipe],
 })
 export class ListTemplateNFCC {
   static __version = 2;

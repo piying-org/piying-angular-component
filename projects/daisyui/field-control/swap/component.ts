@@ -1,4 +1,3 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
@@ -10,7 +9,6 @@ import {
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -19,17 +17,7 @@ import clsx from 'clsx';
 @Component({
   selector: 'app-swap',
   templateUrl: './component.html',
-  imports: [
-    FormsModule,
-    AttributesDirective,
-    PurePipe,
-    NgTemplateOutlet,
-    CssPrefixPipe,
-    SelectorlessOutlet,
-    StrOrTemplateComponent,
-    NgClass,
-    MergeClassPipe,
-  ],
+  imports: [FormsModule, AttributesDirective, CssPrefixPipe, SelectorlessOutlet, MergeClassPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,11 +1,8 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, model, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatIcon } from '@angular/material/icon';
-import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import clsx from 'clsx';
@@ -15,18 +12,7 @@ function goPage(value: number) {
 @Component({
   selector: 'app-pagination',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    MatIcon,
-    NgTemplateOutlet,
-    NgClass,
-    CssPrefixPipe,
-    StrOrTemplateComponent,
-    SelectorlessOutlet,
-    PurePipe,
-    FormsModule,
-    MergeClassPipe,
-  ],
+  imports: [AttributesDirective, PurePipe, FormsModule, MergeClassPipe],
 })
 export class PaginationNFCC {
   static __version = 2;

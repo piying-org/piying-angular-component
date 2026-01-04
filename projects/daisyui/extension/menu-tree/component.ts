@@ -1,6 +1,5 @@
-import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -16,17 +15,12 @@ const routerLinkActiveOptions = { exact: false };
   templateUrl: './component.html',
   imports: [
     AttributesDirective,
-    NgClass,
     CssPrefixPipe,
-    SelectorlessOutlet,
-    StrOrTemplateComponent,
-
     RouterLink,
     RouterLinkActive,
     NgTemplateOutlet,
     MatIconModule,
     MergeClassPipe,
-    JsonPipe,
     MergeClassPipe,
   ],
 })

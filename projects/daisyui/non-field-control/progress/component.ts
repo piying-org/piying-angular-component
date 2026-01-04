@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -10,7 +9,7 @@ import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-progress',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, NgClass, CssPrefixPipe, MergeClassPipe, PurePipe],
+  imports: [AttributesDirective, NgClass, CssPrefixPipe, MergeClassPipe, PurePipe],
 })
 export class ProgressNFCC {
   static __version = 2;

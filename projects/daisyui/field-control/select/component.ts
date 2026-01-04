@@ -9,20 +9,13 @@ import {
   SelectOption,
   Size,
 } from '@piying-lib/angular-core';
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-select',
   templateUrl: './component.html',
-  imports: [
-    FormsModule,
-    AttributesDirective,
-    NgTemplateOutlet,
-    NgClass,
-    CssPrefixPipe,
-    MergeClassPipe,
-  ],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, CssPrefixPipe, MergeClassPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

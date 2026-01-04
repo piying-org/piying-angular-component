@@ -1,9 +1,7 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { AlertColor } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
@@ -11,15 +9,7 @@ import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-alert',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    MatIcon,
-    NgTemplateOutlet,
-    NgClass,
-    CssPrefixPipe,
-    StrOrTemplateComponent,
-    SelectorlessOutlet,
-  ],
+  imports: [AttributesDirective, NgClass, SelectorlessOutlet],
 })
 export class AlertNFCC {
   static __version = 2;

@@ -1,6 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, viewChild } from '@angular/core';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
@@ -8,7 +7,7 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 @Component({
   selector: 'app-navbar',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, PurePipe, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgTemplateOutlet, CssPrefixPipe, MergeClassPipe],
 })
 export class NavbarFGC extends PiyingViewGroupBase {
   static __version = 2;

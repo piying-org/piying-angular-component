@@ -1,6 +1,5 @@
-import { NgClass, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { AttributesDirective } from '@piying/view-angular';
@@ -8,7 +7,7 @@ import { AttributesDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-radial-progress',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, NgClass, NgStyle, CssPrefixPipe, MergeClassPipe],
+  imports: [AttributesDirective, NgStyle, CssPrefixPipe, MergeClassPipe],
 })
 export class RadialProgressNFCC {
   static __version = 2;

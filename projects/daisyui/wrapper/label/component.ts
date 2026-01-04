@@ -6,7 +6,7 @@ import {
   PI_VIEW_FIELD_TOKEN,
 } from '@piying/view-angular';
 
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-label-wrapper',
@@ -15,7 +15,6 @@ import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular
     FormsModule,
     AttributesDirective,
     NgTemplateOutlet,
-    NgClass,
     CssPrefixPipe,
     MergeClassPipe,
     TwPrefixPipe,
