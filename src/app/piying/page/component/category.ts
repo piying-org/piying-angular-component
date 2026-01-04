@@ -1,9 +1,10 @@
 import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
-import { map, startWith, Subject } from 'rxjs';
+import { map, Observable, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
 import { range } from 'es-toolkit';
+import { SelectionModel } from '@angular/cdk/collections';
 
 export const CategoryDefine = v.object({
   table: v.pipe(
@@ -32,10 +33,11 @@ export const CategoryDefine = v.object({
                   ]),
                   hideWhen({
                     listen(fn, field) {
-                      return (field.context.status.expanded as Subject<any>).pipe(
-                        map((item) => {
-                          return item !== field.context.item$();
-                        }),
+                      let sm = field.context.status['selectionModel$$'] as Observable<
+                        SelectionModel<unknown>
+                      >;
+                      return sm.pipe(
+                        map((value) => value.isSelected(field.context.item$())),
                         startWith(true),
                       );
                     },

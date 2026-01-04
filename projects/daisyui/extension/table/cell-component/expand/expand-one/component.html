@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <mat-icon
+    [class]="'cursor-pointer' | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    (click)="toggle()"
+  >
+    @if (expand$$()) {
+      keyboard_arrow_up
+    } @else {
+      keyboard_arrow_down
+    }
+  </mat-icon>
+</ng-template>

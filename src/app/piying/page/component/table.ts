@@ -2,38 +2,39 @@ import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { map, startWith, Subject } from 'rxjs';
+import { map, Observable, startWith, Subject } from 'rxjs';
 import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
+import { SelectionModel } from '@angular/cdk/collections';
 
 export const TableDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
     actions.wrappers.set(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
-
+    actions.props.patch({ expandSelectModel: { _multiple: true } }),
     actions.inputs.patchAsync({
       define: (field) => {
         const pageFiled = field.get(['..', 'page']);
         return {
           row: {
-            head: [{ columns: ['checkbox', 'index', '1', '2', '3'] }],
+            head: [{ columns: ['expand', 'checkbox', 'index', '1', '2', '3'] }],
             body: [
               {
-                define: v.pipe(
-                  v.tuple([]),
-                  setComponent('tr'),
-                  actions.directives.set([
-                    {
-                      type: ExpandRowDirective,
-                    },
-                  ]),
-                ),
-                columns: ['checkbox', 'index', '1'],
+                define: v.pipe(v.tuple([]), setComponent('tr')),
+                columns: ['expand', 'checkbox', 'index', '1'],
               },
               { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
             ],
           },
           columns: {
+            expand: {
+              head: ' ',
+              body: v.pipe(
+                NFCSchema,
+                setComponent('table-expand-cell'),
+                actions.wrappers.set(['td']),
+              ),
+            },
             checkbox: {
               head: ' ',
               body: v.pipe(
@@ -98,9 +99,12 @@ export const TableDefine = v.object({
                 actions.wrappers.set(['td']),
                 hideWhen({
                   listen(fn, field) {
-                    return (field.context.status.expanded as Subject<any>).pipe(
-                      map((item) => {
-                        return item !== field.context.item$();
+                    let sm = field.context.status['selectionModel$$'] as Observable<
+                      SelectionModel<unknown>
+                    >;
+                    return sm.pipe(
+                      map((value) => {
+                        return !value.isSelected(field.context.item$());
                       }),
                       startWith(true),
                     );
