@@ -1,22 +1,41 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { isSchema } from '../util';
-import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
+import { BaseControl, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-str-or-template',
   templateUrl: './component.html',
   imports: [PurePipe, NgTemplateOutlet, MatIcon, SelectorlessOutlet, PiyingView],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => StrOrTemplateComponent),
+      multi: true,
+    },
+  ],
 })
-export class StrOrTemplateComponent {
+export class StrOrTemplateComponent extends BaseControl {
   static __version = 2;
   readonly PiyingView = PiyingView;
   templateRef = viewChild.required('templateRef');
   content = input();
   context = input();
+  content$$ = computed(() => {
+    return this.content() ?? this.value$();
+  });
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   schemaOptions$$ = computed(() => {
     return {

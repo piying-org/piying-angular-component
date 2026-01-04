@@ -1,5 +1,5 @@
 <ng-template #templateRef>
-  @let data = $any(content());
+  @let data = $any(content$$());
   @if (isString | pure: data) {
     {{ data }}
   } @else if (isTemplateRef | pure: data) {
@@ -7,7 +7,7 @@
   } @else if (isSchema | pure: data) {
     <ng-container
       [selectlessOutlet]="PiyingView"
-      [selectlessOutletInputs]="piyingInput | pure: content : schemaOptions$$"
+      [selectlessOutletInputs]="piyingInput | pure: content$$ : schemaOptions$$"
     ></ng-container>
   } @else if (isObject | pure: data) {
     @if (data['image']; as image) {
