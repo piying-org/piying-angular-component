@@ -22,7 +22,7 @@ export function localData(data: any, options?: LocalSearchOptions) {
     const direction = res.params.params?.['direction'] as { key: string; value: 1 | -1 }[];
     if (direction) {
       for (const item of direction) {
-        let compareFn = options?.sortCompareMap
+        const compareFn = options?.sortCompareMap
           ? options.sortCompareMap[item.key]
           : defaultCompare(item.key);
         list = list.sort((a, b) => {
@@ -32,9 +32,7 @@ export function localData(data: any, options?: LocalSearchOptions) {
       }
     }
     const page = res.params.params?.['page'];
-    if (!page) {
-      list = list;
-    } else {
+    if (page) {
       const start = page.index * page.size;
       list = list.slice(start, start + page.size);
     }
