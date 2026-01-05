@@ -1,7 +1,7 @@
 import { Component, computed, inject, linkedSignal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import {
   AttributesDirective,
   InsertFieldDirective,
@@ -20,6 +20,7 @@ import { inputSortDirective } from './input-checkbox.directive';
     AttributesDirective,
     inputSortDirective,
     InsertFieldDirective,
+    TwPrefixPipe
   ],
 })
 export class SortHeaderWC {

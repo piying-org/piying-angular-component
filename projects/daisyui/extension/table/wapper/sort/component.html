@@ -1,15 +1,21 @@
 <ng-template #templateRef let-attr="attributes">
-  <ng-container insertField></ng-container>
+  <div class="flex items-center">
+    <ng-container insertField></ng-container>
 
-  <label
-    [class]="'swap swap-rotate' | mergeClass: attr()?.class | cssPrefix"
-    [attributes]="attr()"
-    [excludes]="['class']"
-  >
-    <input type="checkbox" [(inputSort)]="index$" [key]="key$$()" />
+    <label
+      [class]="'swap swap-rotate' | mergeClass: attr()?.class | cssPrefix"
+      [attributes]="attr()"
+      [excludes]="['class']"
+    >
+      <input type="checkbox" [(inputSort)]="index$" [key]="key$$()" />
 
-    <div [class]="'swap-indeterminate' | cssPrefix"></div>
-    <div [class]="'swap-on' | cssPrefix"><mat-icon>arrow_upward</mat-icon></div>
-    <div [class]="'swap-off' | cssPrefix"><mat-icon>arrow_downward</mat-icon></div>
-  </label>
+      <div [class]="'swap-indeterminate' | cssPrefix"></div>
+      <div [class]="'swap-on' | mergeClass: 'flex' | twPrefix">
+        <mat-icon>arrow_upward</mat-icon>
+      </div>
+      <div [class]="'swap-off' | cssPrefix | mergeClass: 'flex' | twPrefix">
+        <mat-icon>arrow_downward</mat-icon>
+      </div>
+    </label>
+  </div>
 </ng-template>

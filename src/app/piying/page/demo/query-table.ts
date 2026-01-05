@@ -114,7 +114,18 @@ const TableDefine = v.pipe(
                 },
               },
               title: {
-                head: '标题',
+                head: v.pipe(
+                  NFCSchema,
+                  setComponent('common-data'),
+                  actions.inputs.patch({ content: '标题' }),
+                  actions.wrappers.set(['td', 'sort-header']),
+                  actions.props.patch({
+                    key: 'title',
+                    direction: -1,
+                  }),
+                ),
+
+                // '标题',
                 body: (data: any) => {
                   return data.title;
                 },
