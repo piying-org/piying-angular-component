@@ -79,7 +79,6 @@ const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
       actions.wrappers.set(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
-
       actions.inputs.patchAsync({
         define: (field) => {
           const pageFiled = field.get(['..', 'bottom', 'page']);
@@ -196,28 +195,36 @@ const TableDefine = v.pipe(
             };
           });
           const value = signal(init);
-          field
-            .get(['..', '..', 'query', 'params'])!
-            .form.control!.valueChanges.subscribe((searchObj) => {
-              if (!searchObj) {
-                value.set(init);
-              } else {
-                let list = init;
-                if (searchObj.content) {
-                  const content = (searchObj.content as string).toLowerCase();
-                  list = init.filter((item) => item.title.toLowerCase().includes(content));
-                } else {
-                  list = init;
-                }
-                if (searchObj.level) {
-                  list = list.filter((item) => item.level === searchObj.level);
-                }
-                value.set(list);
-              }
-            });
+
           return async () => {
             return value();
           };
+        },
+        localSearchOptions: (field) => {
+          return {
+            filterFn: (item: any, queryParams?: Record<string, any>) => {
+              if (!queryParams) {
+                return true;
+              }
+              let result = true;
+              if (queryParams['content']) {
+                result = item.title.toLowerCase().includes(queryParams['content']);
+                if (!result) {
+                  return result;
+                }
+              }
+              if (queryParams['level']) {
+                result = item.level >= queryParams['level'];
+                if (!result) {
+                  return result;
+                }
+              }
+              return result;
+            },
+          };
+        },
+        filterParams: (field) => {
+          return field.get(['..', '..', 'query', 'params'])!.form.control!.valueChanges;
         },
       }),
       actions.props.mapAsync((field) => {
@@ -230,6 +237,7 @@ const TableDefine = v.pipe(
               page: pageProps?.()['pageQueryParams'],
               // sort-table
               direction: value['sortQueryParams'],
+              filter: value['filterParams'],
             },
           };
         };

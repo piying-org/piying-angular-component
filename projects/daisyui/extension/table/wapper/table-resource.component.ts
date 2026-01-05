@@ -1,7 +1,7 @@
 import { Component, computed, inject, resource, viewChild } from '@angular/core';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { dataConvert } from '../util';
-import { localData } from '../local-data';
+import { localData, LocalSearchOptions } from '../local-data';
 import { computedWithPrev } from '@piying-lib/angular-core';
 import { TableStatusService } from './status';
 
@@ -16,15 +16,16 @@ export class TableResourceWC {
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
   #status = inject(TableStatusService);
   props$$ = computed(() => this.field$$().props());
+  #localSearchOptions$$ = computed<LocalSearchOptions>(() => this.props$$()['localSearchOptions']);
   #data$$ = computed(() => this.field$$().props()['data']);
   rawData$$ = computed(() => {
     const data = this.#data$$();
     this.#status.updateIndex$();
     return Array.isArray(data) || !data
-      ? Promise.resolve(localData(data ?? []))
+      ? Promise.resolve(localData(data ?? [], this.#localSearchOptions$$()))
       : data().then((value: any) => {
           if (Array.isArray(value) || !value) {
-            return localData(value ?? []);
+            return localData(value ?? [], this.#localSearchOptions$$());
           }
           return value;
         });
