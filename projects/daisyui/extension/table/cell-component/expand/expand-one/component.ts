@@ -1,4 +1,4 @@
-import { Component, inject, viewChild } from '@angular/core';
+import { Component, computed, inject, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
@@ -18,14 +18,15 @@ export class TableExpandOneTableCell {
   // props$$ = computed(() => this.field$$().props());
 
   #service = this.field$$().context['status'] as TableStatusService;
-  expand$$ = toSignal(
-    this.#service.selectionModel$$.pipe(
-      map((value) => {
-        return value.isSelected(this.field$$().context['item$']());
-      }),
-      startWith(false),
-    ),
-  );
+
+  #expand$$ = toSignal(this.#service.selectionModel$$);
+  isExpand$$ = computed(() => {
+    let sm = this.#expand$$();
+    if (!sm) {
+      return false;
+    }
+    return sm.isSelected(this.field$$().context['item$']());
+  });
 
   toggle() {
     this.#service.toggleExpand(this.field$$().context['item$']());
