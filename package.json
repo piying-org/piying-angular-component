@@ -1,6 +1,6 @@
 {
   "name": "piying-angular-component",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4444",
