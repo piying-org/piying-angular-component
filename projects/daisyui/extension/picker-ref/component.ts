@@ -64,6 +64,8 @@ export class PickerRefFCC extends BaseControl {
           pickerValue: this.value$,
           parent: this.#field$$(),
           parentCtx: this.parentPyOptions!().context,
+          root: this.parentPyOptions!().context?.['root'] ?? this.#field$$(),
+          rootCtx: this.parentPyOptions!().context?.['rootCtx'] ?? this.parentPyOptions!().context,
         },
       })),
       selectorless: true,
