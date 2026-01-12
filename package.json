@@ -57,7 +57,7 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.19.24",
-    "daisyui": "^5.3.10",
+    "daisyui": "^5.5.14",
     "eslint-plugin-unused-imports": "^4.3.0",
     "execa": "^9.6.1",
     "fast-glob": "^3.3.3",
