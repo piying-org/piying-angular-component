@@ -13,6 +13,7 @@ import {
   AttributesDirective,
   BaseControl,
   PI_INPUT_OPTIONS_TOKEN,
+  PI_VIEW_FIELD_TOKEN,
   PiyingView,
 } from '@piying/view-angular';
 
@@ -51,7 +52,7 @@ export class PickerRefFCC extends BaseControl {
   overlayConfig = input<OverlayConfig>();
   position$ = signal('');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
-
+  #field$$ = inject(PI_VIEW_FIELD_TOKEN);
   triggerInput$$ = computed(() => {
     return {
       model: this.value$,
@@ -61,6 +62,8 @@ export class PickerRefFCC extends BaseControl {
         context: {
           ...this.parentPyOptions!().context,
           pickerValue: this.value$,
+          parent: this.#field$$(),
+          parentCtx: this.parentPyOptions!().context,
         },
       })),
       selectorless: true,
