@@ -64,7 +64,7 @@ export const FormDefine = v.pipe(
     form1: v.pipe(FormBase, actions.wrappers.set(['div']), actions.class.top('grid gap-2')),
     form2: v.pipe(
       FormBase,
-      setComponent('fieldset'),
+      actions.wrappers.set(['fieldset-wrapper']),
       v.title('form-field title'),
       actions.class.top('bg-base-200 border-base-300 rounded-box border w-fit p-4'),
     ),
