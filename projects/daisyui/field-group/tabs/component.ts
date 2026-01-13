@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, effect, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -7,7 +7,7 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-
+import { FieldLogicGroup } from '@piying/view-angular-core';
 @Component({
   selector: 'app-tabs',
   templateUrl: './component.html',
@@ -32,10 +32,9 @@ export class TabsFGC extends PiyingViewGroupBase {
   type = input<'box' | 'border' | 'lift' | undefined>();
   placement = input<'top' | 'bottom'>();
   tabContentClass = input(useTwClass('bg-base-100 border-base-300 p-6'));
+  isUnion = input(false);
   activatedIndex$ = linkedSignal(this.activatedIndex);
-  toggleActivate(index: number) {
-    this.activatedIndex$.set(index);
-  }
+
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
@@ -50,6 +49,17 @@ export class TabsFGC extends PiyingViewGroupBase {
       content: input,
     };
   };
+  constructor() {
+    super();
+    effect(() => {
+      let isUnion = this.isUnion();
+      if (isUnion) {
+        let index = this.activatedIndex$();
+        let control = this.field$$().form.control as FieldLogicGroup;
+        control.activateIndex$.set(index);
+      }
+    });
+  }
   changeIndex(index: number) {
     this.activatedIndex$.set(index);
   }

@@ -28,4 +28,8 @@ export const TabsDefine = v.object({
     }),
     setComponent('tabs'),
   ),
+  tab2: v.pipe(
+    v.union([v.pipe(v.object({}), v.title('tab1')), v.pipe(v.object({}), v.title('tab2'))]),
+    setComponent('tabs'),
+  ),
 });
