@@ -34,7 +34,7 @@ export class TabsFGC extends PiyingViewGroupBase {
   tabContentClass = input(useTwClass('bg-base-100 border-base-300 p-6'));
   isUnion = input(false);
   activatedIndex$ = linkedSignal(this.activatedIndex);
-
+  beforeChange = input<(index: number) => any>();
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
@@ -61,6 +61,9 @@ export class TabsFGC extends PiyingViewGroupBase {
     });
   }
   changeIndex(index: number) {
+    if (this.beforeChange()) {
+      this.beforeChange()!(index);
+    }
     this.activatedIndex$.set(index);
   }
 }
