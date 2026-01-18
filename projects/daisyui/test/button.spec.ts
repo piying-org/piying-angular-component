@@ -3,7 +3,7 @@ import { createSchemaComponent } from './util/create-component';
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { assertElementContent, assertElementExist, assertElementSelector } from './util/element';
-import { htmlInput } from './util/action';
+import { htmlClick } from './util/action';
 describe('Button', () => {
   const BaseDefine = v.pipe(NFCSchema, setComponent('button'));
 
@@ -84,7 +84,7 @@ describe('Button', () => {
       },
     );
     assertElementExist(element);
-    htmlInput(element, 'button');
+    htmlClick(element, 'button');
     await fixture.whenStable();
     fixture.detectChanges();
     assertElementSelector(element, '.pc-btn .pc-loading');
@@ -113,7 +113,7 @@ describe('Button', () => {
       },
     );
     assertElementExist(element);
-    htmlInput(element, 'button');
+    htmlClick(element, 'button');
     await fixture.whenStable();
     fixture.detectChanges();
     assertElementSelector(element, '.pc-btn .pc-loading', true);

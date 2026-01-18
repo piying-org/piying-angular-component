@@ -38,7 +38,7 @@
     "@angular/ssr": "^20.3.8",
     "@cyia/ngx-common": "^20.0.3",
     "@faker-js/faker": "^10.1.0",
-    "@piying/view-angular": "2.2.2",
+    "@piying/view-angular": "2.2.3",
     "@tailwindcss/postcss": "^4.1.16",
     "cally": "^0.8.0",
     "clsx": "^2.1.1",

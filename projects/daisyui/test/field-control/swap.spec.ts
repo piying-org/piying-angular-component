@@ -5,7 +5,7 @@ import { actions, setComponent } from '@piying/view-angular-core';
 import { testClassInputBoolean, testHello } from '../util/helper';
 import { createSchemaComponent } from '../util/create-component';
 import { assertElementContent } from '../util/element';
-import { htmlInput } from '../util/action';
+import { htmlClick } from '../util/action';
 
 describe('swap', () => {
   const BaseDefine = v.pipe(v.boolean(), setComponent('swap'));
@@ -27,7 +27,7 @@ describe('swap', () => {
     expect(element.querySelector('input')!.checked).toBeTrue();
     fixture.detectChanges();
     await fixture.whenStable();
-    htmlInput(element, 'input');
+    htmlClick(element, 'input');
     expect(element.querySelector('input')!.checked).toBeFalse();
   });
   it(`input-indeterminate/indeterminateContent`, async () => {

@@ -20,7 +20,7 @@ import { inputSortDirective } from './input-checkbox.directive';
     AttributesDirective,
     inputSortDirective,
     InsertFieldDirective,
-    TwPrefixPipe
+    TwPrefixPipe,
   ],
 })
 export class SortHeaderWC {

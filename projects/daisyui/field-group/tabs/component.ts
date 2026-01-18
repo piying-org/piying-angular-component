@@ -52,10 +52,10 @@ export class TabsFGC extends PiyingViewGroupBase {
   constructor() {
     super();
     effect(() => {
-      let isUnion = this.isUnion();
+      const isUnion = this.isUnion();
       if (isUnion) {
-        let index = this.activatedIndex$();
-        let control = this.field$$().form.control as FieldLogicGroup;
+        const index = this.activatedIndex$();
+        const control = this.field$$().form.control as FieldLogicGroup;
         control.activateIndex$.set(index);
       }
     });

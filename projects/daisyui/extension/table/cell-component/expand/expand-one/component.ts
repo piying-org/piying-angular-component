@@ -2,7 +2,6 @@ import { Component, computed, inject, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
-import { map, startWith } from 'rxjs';
 import { TableStatusService } from '../../../wapper';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 
@@ -21,7 +20,7 @@ export class TableExpandOneTableCell {
 
   #expand$$ = toSignal(this.#service.selectionModel$$);
   isExpand$$ = computed(() => {
-    let sm = this.#expand$$();
+    const sm = this.#expand$$();
     if (!sm) {
       return false;
     }

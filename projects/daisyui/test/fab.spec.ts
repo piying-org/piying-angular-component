@@ -8,7 +8,7 @@ import {
   assertElementSelector,
   checkElementVisibile,
 } from './util/element';
-import { htmlFocus, htmlInput2 } from './util/action';
+import { htmlFocus, htmlClick2 } from './util/action';
 describe('fab', () => {
   const BaseDefine = v.pipe(NFCSchema, setComponent('fab'));
 
@@ -101,7 +101,7 @@ describe('fab', () => {
     htmlFocus(defEl);
     expect(document.activeElement).toBe(defEl);
     // todo focus状态貌似必须处于浏览器激活才会附加
-    htmlInput2(btn);
+    htmlClick2(btn);
     expect(document.activeElement).toBe(document.body);
     expect(value).toBe(1);
   });
