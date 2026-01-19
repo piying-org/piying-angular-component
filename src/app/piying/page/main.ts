@@ -104,6 +104,8 @@ export const MainPage = v.pipe(
     ),
   }),
   setComponent('drawer'),
-
+  actions.inputs.patch({
+    contentClass: 'flex flex-col *:last:flex-1',
+  }),
   actions.class.top('lg:drawer-open'),
 );
