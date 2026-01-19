@@ -1,16 +1,16 @@
-export const TOGGLE_PREFIX_LIST = [
-  'toggle',
-  'toggle-primary',
-  'toggle-secondary',
-  'toggle-accent',
-  'toggle-neutral',
-  'toggle-success',
-  'toggle-warning',
-  'toggle-info',
-  'toggle-error',
-  'toggle-xs',
-  'toggle-sm',
-  'toggle-md',
-  'toggle-lg',
-  'toggle-xl',
-];
+export const TOGGLE_PREFIX_LIST=[
+    "toggle",
+    "toggle-primary",
+    "toggle-secondary",
+    "toggle-accent",
+    "toggle-neutral",
+    "toggle-success",
+    "toggle-warning",
+    "toggle-info",
+    "toggle-error",
+    "toggle-xs",
+    "toggle-sm",
+    "toggle-md",
+    "toggle-lg",
+    "toggle-xl"
+]

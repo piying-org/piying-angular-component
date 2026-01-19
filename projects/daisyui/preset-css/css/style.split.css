@@ -33,7 +33,7 @@
 /* drawerSidebar */
 @source inline("{drawer,drawer-toggle,drawer-content,drawer-side,drawer-overlay,drawer-end,drawer-open,is-drawer-open:,is-drawer-close:}");
 /* dropdown */
-@source inline("{dropdown,dropdown-content,dropdown-start,dropdown-center,dropdown-end,dropdown-top,dropdown-bottom,dropdown-left,dropdown-right,dropdown-hover,dropdown-open}");
+@source inline("{dropdown,dropdown-content,dropdown-start,dropdown-center,dropdown-end,dropdown-top,dropdown-bottom,dropdown-left,dropdown-right,dropdown-hover,dropdown-open,dropdown-close}");
 /* fabSpeedDial */
 @source inline("{fab,fab-close,fab-main-action,fab-flower}");
 /* fieldset */
@@ -46,13 +46,15 @@
 @source inline("{footer,footer-title,footer-center,footer-horizontal,footer-vertical}");
 /* hero */
 @source inline("{hero,hero-content,hero-overlay}");
+/* hover3DCard */
+@source inline("{hover-3d}");
 /* hoverGallery */
 @source inline("{hover-gallery}");
 /* indicator */
 @source inline("{indicator,indicator-item,indicator-start,indicator-center,indicator-end,indicator-top,indicator-middle,indicator-bottom}");
 /* textInput */
 @source inline("{input,input-ghost,input-neutral,input-primary,input-secondary,input-accent,input-info,input-success,input-warning,input-error,input-xs,input-sm,input-md,input-lg,input-xl}");
-/* join */
+/* joinGroupItems */
 @source inline("{join,join-item,join-vertical,join-horizontal}");
 /* kbd */
 @source inline("{kbd,kbd-xs,kbd-sm,kbd-md,kbd-lg,kbd-xl}");
@@ -95,7 +97,7 @@
 /* select */
 @source inline("{select,select-ghost,select-neutral,select-primary,select-secondary,select-accent,select-info,select-success,select-warning,select-error,select-xs,select-sm,select-md,select-lg,select-xl}");
 /* skeleton */
-@source inline("{skeleton}");
+@source inline("{skeleton,skeleton-text}");
 /* stack */
 @source inline("{stack,stack-top,stack-bottom,stack-start,stack-end}");
 /* stat */
@@ -110,6 +112,8 @@
 @source inline("{tabs,tab,tab-content,tabs-box,tabs-border,tabs-lift,tab-active,tab-disabled,tabs-top,tabs-bottom,tabs-xs,tabs-sm,tabs-md,tabs-lg,tabs-xl}");
 /* table */
 @source inline("{table,table-zebra,table-pin-rows,table-pin-cols,table-xs,table-sm,table-md,table-lg,table-xl}");
+/* textRotate */
+@source inline("{text-rotate}");
 /* textarea */
 @source inline("{textarea,textarea-ghost,textarea-neutral,textarea-primary,textarea-secondary,textarea-accent,textarea-info,textarea-success,textarea-warning,textarea-error,textarea-xs,textarea-sm,textarea-md,textarea-lg,textarea-xl}");
 /* themeController */

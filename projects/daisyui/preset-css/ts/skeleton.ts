@@ -1,1 +1,4 @@
-export const SKELETON_PREFIX_LIST = ['skeleton'];
+export const SKELETON_PREFIX_LIST=[
+    "skeleton",
+    "skeleton-text"
+]

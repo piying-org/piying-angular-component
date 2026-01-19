@@ -1,15 +1,15 @@
-export const CARD_PREFIX_LIST = [
-  'card',
-  'card-title',
-  'card-body',
-  'card-actions',
-  'card-border',
-  'card-dash',
-  'card-side',
-  'image-full',
-  'card-xs',
-  'card-sm',
-  'card-md',
-  'card-lg',
-  'card-xl',
-];
+export const CARD_PREFIX_LIST=[
+    "card",
+    "card-title",
+    "card-body",
+    "card-actions",
+    "card-border",
+    "card-dash",
+    "card-side",
+    "image-full",
+    "card-xs",
+    "card-sm",
+    "card-md",
+    "card-lg",
+    "card-xl"
+]
