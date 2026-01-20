@@ -11,9 +11,9 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-import { isSchema } from '../util';
 import { BaseControl, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isSchema } from '../../util';
 
 @Component({
   selector: 'app-str-or-template',

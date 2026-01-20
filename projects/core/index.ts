@@ -1,2 +1,3 @@
-export * from './str-template/component';
 export * from './util';
+export * from './component';
+export * from './wrapper';
