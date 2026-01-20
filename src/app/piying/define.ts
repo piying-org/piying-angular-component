@@ -4,12 +4,11 @@ import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
 import { reflectComponentType, Type } from '@angular/core';
 import { PiViewConfig, PiyingViewGroup } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
-import { DivWC } from './component/div-wrapper/component';
-import { DivNFCC } from './component/div/component';
+
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
 import * as WrapperGroup from '@piying-lib/angular-daisyui/wrapper';
 import { InputFCC } from '@piying-lib/angular-daisyui/field-control';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { DivNFCC, DivWC, StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { actions, setComponent } from '@piying/view-angular-core';
 const selectorPrefix = 'app-';
 
