@@ -13,7 +13,7 @@ export const TableDefine = v.pipe(
       actions.providers.patch([CheckboxService]),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
-          field.injector.get(CheckboxService).init(true);
+          field.injector.get(CheckboxService).init();
         },
       }),
       setComponent('table'),

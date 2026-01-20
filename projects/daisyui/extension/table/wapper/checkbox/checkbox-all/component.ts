@@ -1,6 +1,7 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { CheckboxService } from '../table-checkbox.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-table-checkbox-all',
@@ -17,7 +18,15 @@ export class TableCheckboxAllWC {
     return this.props$$()['key'];
   });
 
-  toggle() {
-    this.#checkboxService.selectAll(this.#key$$());
+  constructor() {
+    this.field$$()
+      .form.control!.valueChanges.pipe(filter((a) => a !== undefined))
+      .subscribe((a) => {
+        this.#checkboxService.selectAll(a, this.#key$$());
+      });
+
+    this.#checkboxService.listenAllSelect(this.#key$$()).subscribe((value) => {
+      this.field$$().form.control!.updateValue(value);
+    });
   }
 }

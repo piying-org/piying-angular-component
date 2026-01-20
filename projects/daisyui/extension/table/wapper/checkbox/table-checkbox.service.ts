@@ -2,17 +2,16 @@ import { computed, effect, inject, Injectable, Injector, untracked } from '@angu
 import { SelectionModel } from '@angular/cdk/collections';
 import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { Subject } from 'rxjs';
-export type CheckBoxConfig<D> =
-  | boolean
-  | {
-      config: {
-        key: string;
-        selected?: D[];
-        multiple: boolean;
-        compareWith?: (o1: D, o2: D) => boolean;
-      }[];
-      autoDataBind?: boolean;
-    };
+export type CheckBoxConfig<D> = {
+  config: {
+    key: string;
+    selected?: D[];
+    multiple: boolean;
+    compareWith?: (o1: D, o2: D) => boolean;
+  }[];
+  autoDataBind?: boolean;
+  dataChangeClear?: boolean;
+};
 const defaultKey = 'default';
 @Injectable()
 export class CheckboxService<D = any> {
@@ -23,25 +22,30 @@ export class CheckboxService<D = any> {
   });
   #injector = inject(Injector);
 
-  #defaultDataBind() {
+  #defaultDataBind(dataChangeClear: boolean = false) {
     effect(
       () => {
-        const data = this.#data$$();
+        const data1 = this.#data$$();
+        let data2 = Array.isArray(data1) ? data1 : data1?.();
+
         untracked(() => {
           this.setAllList(() => {
-            return Array.isArray(data) ? data : data();
+            return data2;
           });
+          if (dataChangeClear) {
+            this.clear();
+          }
         });
       },
       { injector: this.#injector },
     );
   }
-  init(define: CheckBoxConfig<D>) {
+  init(define?: CheckBoxConfig<D>) {
     this.#selectModelMap.clear();
-    if (typeof define === 'boolean') {
-      this.#selectModelMap.set(defaultKey, new SelectionModel(define));
+    if (!define) {
+      this.#selectModelMap.set(defaultKey, new SelectionModel(true));
       this.#allEvent.set(defaultKey, new Subject());
-      this.#defaultDataBind();
+      this.#defaultDataBind(true);
     } else {
       define.config.forEach((item) => {
         this.#selectModelMap.set(
@@ -51,7 +55,7 @@ export class CheckboxService<D = any> {
         this.#allEvent.set(item.key, new Subject());
       });
       if (define.autoDataBind) {
-        this.#defaultDataBind();
+        this.#defaultDataBind(define.dataChangeClear);
       }
     }
   }
@@ -73,24 +77,33 @@ export class CheckboxService<D = any> {
     this.#fn = fn;
   }
   #allEvent = new Map<string, Subject<boolean>>();
-  selectAll(key = defaultKey) {
+  selectAll(checked: boolean, key = defaultKey) {
     const list = this.#fn!();
     const result = this.#selectModelMap.get(key)!;
-    const isAllSelect = list.every((item) => {
-      return result.isSelected(item);
-    });
     let event$ = this.#allEvent.get(key)!;
-    if (isAllSelect) {
-      result.clear();
-    } else {
+    if (checked) {
       list.forEach((item) => {
         result.select(item);
       });
+    } else {
+      result.clear();
     }
 
-    event$.next(!isAllSelect);
+    event$.next(checked);
   }
-  listenAllSelect(modelKey = defaultKey) {
-    return this.#allEvent.get(modelKey)!;
+  listenAllSelect(key = defaultKey) {
+    return this.#allEvent.get(key)!;
+  }
+
+  getSelected(key = defaultKey) {
+    return this.#selectModelMap.get(key)!.selected;
+  }
+  clear() {
+    this.#selectModelMap.forEach((item) => {
+      item.clear();
+    });
+    this.#allEvent.forEach((item) => {
+      item.next(false);
+    });
   }
 }
