@@ -2,7 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
-import { BehaviorSubject, map, shareReplay, switchMap } from 'rxjs';
+import { BehaviorSubject, filter, map, shareReplay, switchMap } from 'rxjs';
 
 @Injectable()
 export class TableStatusService {
@@ -44,6 +44,7 @@ export class TableStatusService {
     );
   }
   selectionModel$$ = this.#sm.pipe(
+    filter(Boolean),
     switchMap((sm) => sm!.changed),
     map(() => {
       return this.#sm.value!;
