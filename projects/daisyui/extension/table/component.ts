@@ -20,7 +20,13 @@ import clsx from 'clsx';
 import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 
-import { NFCSchema, setComponent, actions, Writeable } from '@piying/view-angular-core';
+import {
+  NFCSchema,
+  setComponent,
+  actions,
+  Writeable,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular-core';
 import { TableRowFGC } from './row/component';
 import { TdWC, ThWC } from '@piying-lib/angular-daisyui/wrapper';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -99,7 +105,7 @@ export function createDefaultColDefineFn(
 export class TableNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-
+  #field = inject(PI_VIEW_FIELD_TOKEN);
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   define = input<TableItemDefine2>();
   // todo待修改
@@ -203,7 +209,7 @@ export class TableNFCC {
     const obj: Record<string, any> = { content: computed(() => content) };
     if (context) {
       obj['context'] = computed(() => {
-        return { ...context, status: this.#status };
+        return { ...context, status: this.#status, parentField: this.#field };
       });
     }
     return obj;
