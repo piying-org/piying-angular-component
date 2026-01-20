@@ -6,6 +6,7 @@ import { faker } from '@faker-js/faker';
 import { range } from 'es-toolkit';
 import { DialogService } from '../../../service/dialog.service';
 import { FormBase } from '../component/form';
+import { TableStatusService } from '@piying-lib/angular-daisyui/extension';
 const LevelOptions = [
   {
     label: 'all',
@@ -78,7 +79,8 @@ const TableDefine = v.pipe(
     table: v.pipe(
       NFCSchema,
       setComponent('table'),
-      actions.wrappers.set(['table-status', 'sort-table', 'table-resource', 'checkbox-table']),
+      actions.providers.patch([TableStatusService]),
+      actions.wrappers.set(['sort-table', 'table-resource', 'checkbox-table']),
       actions.inputs.patchAsync({
         define: (field) => {
           const pageFiled = field.get(['..', 'bottom', 'page']);

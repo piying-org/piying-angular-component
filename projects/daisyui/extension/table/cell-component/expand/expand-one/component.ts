@@ -16,7 +16,7 @@ export class TableExpandOneTableCell {
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
   // props$$ = computed(() => this.field$$().props());
 
-  #service = this.field$$().context['status'] as TableStatusService;
+  #service = inject(TableStatusService);
 
   #expand$$ = toSignal(this.#service.selectionModel$$);
   isExpand$$ = computed(() => {

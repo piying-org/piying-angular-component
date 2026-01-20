@@ -2,15 +2,15 @@ import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { map, Observable, startWith } from 'rxjs';
-import { ExpandRowDirective } from '@piying-lib/angular-daisyui/extension';
+import { ExpandRowDirective, TableStatusService } from '@piying-lib/angular-daisyui/extension';
 import { range } from 'es-toolkit';
-import { SelectionModel } from '@angular/cdk/collections';
 
 export const CategoryDefine = v.object({
   table: v.pipe(
     NFCSchema,
     setComponent('table'),
-    actions.wrappers.set(['table-status', 'table-resource']),
+    actions.providers.patch([TableStatusService]),
+    actions.wrappers.set(['table-resource']),
     actions.inputs.patch({ type: 'category', pin: { rows: true } }),
     actions.inputs.patchAsync({
       define: (field) => {
@@ -33,9 +33,7 @@ export const CategoryDefine = v.object({
                   ]),
                   hideWhen({
                     listen(fn, field) {
-                      const sm = field.context.status['selectionModel$$'] as Observable<
-                        SelectionModel<unknown>
-                      >;
+                      const sm = field.injector.get(TableStatusService).selectionModel$$;
                       return sm.pipe(
                         map((value) => value.isSelected(field.context.item$())),
                         startWith(true),
