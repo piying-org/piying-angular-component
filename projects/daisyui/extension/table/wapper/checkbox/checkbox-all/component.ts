@@ -1,6 +1,6 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
-import { CheckboxService } from '@piying-lib/angular-daisyui/service';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { CheckboxService } from '../table-checkbox.service';
 
 @Component({
   selector: 'app-table-checkbox-all',

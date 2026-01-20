@@ -1,7 +1,7 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
-import { CheckboxService } from '@piying-lib/angular-daisyui/service';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { filter } from 'rxjs';
+import { CheckboxService } from '../table-checkbox.service';
 
 @Component({
   selector: 'app-table-checkbox-body',
@@ -22,7 +22,11 @@ export class TableCheckboxOneWC {
     this.field$$()
       .form.control!.valueChanges.pipe(filter((a) => a !== undefined))
       .subscribe((a) => {
-        this.#checkboxService.toggle(this.#key$$(), this.field$$().context['item$']());
+        this.#checkboxService.set(this.#key$$(), this.field$$().context['item$'](), a);
       });
+
+    this.#checkboxService.listenAllSelect(this.#key$$()).subscribe((value) => {
+      this.field$$().form.control!.updateValue(value);
+    });
   }
 }
