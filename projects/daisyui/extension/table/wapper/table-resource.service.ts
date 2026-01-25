@@ -1,15 +1,18 @@
 import { computed, inject, Injectable, resource, signal } from '@angular/core';
 import { computedWithPrev } from '@piying-lib/angular-core';
-export type RequestFn = ((input: any) => Promise<[number, any[]]> | [number, any[]]) | undefined;
+export type RequestFn =
+  | ((input: any, needUpdate: boolean) => Promise<[number, any[]]> | [number, any[]])
+  | undefined;
+
 @Injectable()
 export class TableResourceService {
+  EMPTY_VALUE = [0, []];
   #requestFn$ = signal<RequestFn>(undefined);
   #queryParams$ = signal({});
   #data$ = resource({
     params: computed(() => {
       const params = this.#queryParams$();
       let requestFn = this.#requestFn$();
-      this.#updateIndex$();
       return {
         requestFn,
         params,
@@ -17,10 +20,15 @@ export class TableResourceService {
       };
     }),
     loader: async (res) => {
-      if (!res.params.requestFn) {
-        return [0, []];
+      let needUpdate = res.params.index !== this.#preUpdateIndex$();
+      if (needUpdate) {
+        this.#preUpdateIndex$.set(res.params.index);
       }
-      return res.params.requestFn(res.params.params);
+      if (!res.params.requestFn) {
+        return this.EMPTY_VALUE;
+      }
+
+      return res.params.requestFn(res.params.params, needUpdate);
     },
   });
   list$$ = computedWithPrev((value) => {
@@ -33,7 +41,7 @@ export class TableResourceService {
     return this.#data$.isLoading();
   });
   #updateIndex$ = signal(0);
-
+  #preUpdateIndex$ = signal(0);
   needUpdate() {
     this.#updateIndex$.update((a) => ++a);
   }
