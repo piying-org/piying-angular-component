@@ -4,13 +4,13 @@ import { computed, untracked } from '@angular/core';
 import { actions } from '@piying/view-angular';
 import { map, Observable, startWith } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
-import { CheckboxService, TableStatusService } from '@piying-lib/angular-daisyui/extension';
+import { CheckboxService, TableExpandService } from '@piying-lib/angular-daisyui/extension';
 
 export const TableDefine = v.pipe(
   v.object({
     table: v.pipe(
       NFCSchema,
-      actions.providers.patch([CheckboxService, TableStatusService]),
+      actions.providers.patch([CheckboxService, TableExpandService]),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
           field.injector.get(CheckboxService).init();
@@ -110,7 +110,7 @@ export const TableDefine = v.pipe(
                   actions.wrappers.set(['td']),
                   hideWhen({
                     listen(fn, field) {
-                      const sm = field.injector.get(TableStatusService).selectionModel$$;
+                      const sm = field.injector.get(TableExpandService).selectionModel$$;
                       return sm.pipe(
                         map((value) => {
                           return !value.isSelected(field.context.item$());

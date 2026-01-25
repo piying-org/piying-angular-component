@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, resource, signal } from '@angular/core';
 import { computedWithPrev } from '@piying-lib/angular-core';
-export type RequestFn = ((input: any) => [number, any[]]) | undefined;
+export type RequestFn = ((input: any) => Promise<[number, any[]]> | [number, any[]]) | undefined;
 @Injectable()
 export class TableResourceService {
   #requestFn$ = signal<RequestFn>(undefined);

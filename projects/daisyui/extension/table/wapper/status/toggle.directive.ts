@@ -1,5 +1,5 @@
 import { Directive, HostListener, inject } from '@angular/core';
-import { TableStatusService } from './service';
+import { TableExpandService } from './service';
 import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
 @Directive({
@@ -7,7 +7,7 @@ import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 })
 export class ExpandRowDirective {
   #field = inject(PI_VIEW_FIELD_TOKEN);
-  #status = inject(TableStatusService);
+  #status = inject(TableExpandService);
 
   @HostListener('click', ['$event'])
   a(event: PointerEvent) {

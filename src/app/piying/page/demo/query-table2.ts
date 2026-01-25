@@ -10,7 +10,6 @@ import {
   CheckboxService,
   SortService,
   TableResourceService,
-  TableStatusService,
 } from '@piying-lib/angular-daisyui/extension';
 import { DemoTableResourceService } from './mock.service';
 const LevelOptions = [
