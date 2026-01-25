@@ -23,7 +23,7 @@ export class SortService {
     shareReplay(1),
   );
   multiple = signal(true);
-  sortList = signal<string[]>([]);
+  sortList = signal<string[] | undefined>(undefined);
   /** 设置初始值 */
   setInitValue(object: Record<string, SortDirection>) {
     this.#restore$.next(object);
