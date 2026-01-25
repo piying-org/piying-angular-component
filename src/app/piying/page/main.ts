@@ -39,7 +39,7 @@ export const MainPage = v.pipe(
           actions.inputs.patch({
             list: [
               { title: 'form', router: { routerLink: './component/form' } },
-              { title: 'table', router: { routerLink: './component/table' } },
+              // { title: 'table', router: { routerLink: './component/table' } },
               { title: 'category', router: { routerLink: './component/category' } },
               { title: 'login', router: { routerLink: './component/login' } },
               { title: 'calendar', router: { routerLink: './component/calendar' } },

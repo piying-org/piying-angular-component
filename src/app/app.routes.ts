@@ -54,16 +54,16 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'table',
+            redirectTo: 'category',
             pathMatch: 'full',
           },
-          {
-            path: 'table',
-            component: SchemaViewRC,
-            data: {
-              schema: () => TableDefine,
-            },
-          },
+          // {
+          //   path: 'table',
+          //   component: SchemaViewRC,
+          //   data: {
+          //     schema: () => TableDefine,
+          //   },
+          // },
           {
             path: 'category',
             component: SchemaViewRC,
@@ -170,7 +170,7 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'query-table',
+            redirectTo: 'query-table2',
             pathMatch: 'full',
           },
 
