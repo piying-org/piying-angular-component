@@ -1,52 +1,72 @@
-import { inject, Injectable, InjectionToken, signal } from '@angular/core';
-import { filter, Subject } from 'rxjs';
+import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, filter, map, shareReplay, skip, Subject } from 'rxjs';
 
 export type SortDirection = 0 | 1 | -1;
-export const SortMultiToken = new InjectionToken<boolean>('SortMultiToken');
+export type SortList = { key: string; value: SortDirection }[];
 @Injectable()
 export class SortService {
-  direction$ = signal<Record<string, 1 | -1>>({});
-  multiple = inject(SortMultiToken, { optional: true }) ?? true;
+  #direction$ = new BehaviorSubject<Record<string, SortDirection>>({});
+  #restore$ = new BehaviorSubject<Record<string, SortDirection>>({});
 
+  #restore$$ = this.#restore$.pipe(takeUntilDestroyed(), shareReplay());
+  value$$ = this.#direction$.pipe(
+    map(
+      (value) =>
+        (this.sortList() ?? Object.keys(value))
+          .map((key) => {
+            return value[key] ? { key: key, value: value[key] } : undefined;
+          })
+          .filter(Boolean) as unknown as SortList[],
+    ),
+    takeUntilDestroyed(),
+    shareReplay(1),
+  );
+  multiple = signal(true);
+  sortList = signal<string[]>([]);
+
+  setInit(object: Record<string, SortDirection>) {
+    this.#restore$.next(object);
+    this.#direction$.next(object);
+  }
   update(key: string, direction: SortDirection) {
-    if (this.multiple) {
-      this.direction$.update((data) => {
-        if (direction === 0) {
-          data = { ...data };
-          delete data[key];
-          return data;
-        }
-        return {
+    if (this.multiple()) {
+      let data = this.#direction$.value;
+      if (direction === 0) {
+        data = { ...data };
+        delete data[key];
+      } else {
+        data = {
           ...data,
           [key]: direction,
         };
-      });
+      }
+      this.#direction$.next(data);
     } else {
+      let data = this.#direction$.value;
       if (direction === 0) {
-        if (key in this.direction$()) {
-          this.direction$.set({});
+        if (key in data) {
+          this.#direction$.next({});
+          return;
         }
       } else {
-        Object.keys(this.direction$()).forEach((k) => {
+        Object.keys(this.#direction$.value).forEach((k) => {
           if (k === key) {
             return;
           }
-          this.#restore$.next({ key: k, value: 0 });
+          this.#restore$.next({ [key]: 0 });
         });
-        this.direction$.set({
+        this.#direction$.next({
           [key]: direction,
         });
       }
     }
-    this.#update!(this.direction$());
   }
 
-  #update?: (value: any) => void;
-  setUpdate(fn: (value: any) => void) {
-    this.#update = fn;
-  }
-  #restore$ = new Subject<{ key: string; value: SortDirection }>();
-  listenRestore(key: string) {
-    return this.#restore$.pipe(filter((a) => a.key === key));
+  listenChange(key: string) {
+    return this.#restore$$.pipe(
+      map((item) => item[key]),
+      filter(Boolean),
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, inject, input, model } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, input, model, signal } from '@angular/core';
 import { SortDirection, SortService } from './sort.service';
 
 @Directive({
@@ -6,16 +6,10 @@ import { SortDirection, SortService } from './sort.service';
 })
 export class inputSortDirective {
   key = input.required<string>();
-  inputSort = model.required<SortDirection>();
+  inputSort = signal<SortDirection>(0);
   #el = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement;
   #sort = inject(SortService);
 
-  ngOnChanges(): void {
-    const result = this.inputSort();
-    this.#changeElProps(result);
-
-    this.#sort.update(this.key(), result);
-  }
   #changeElProps(value: SortDirection) {
     switch (value) {
       case 0:
@@ -31,8 +25,9 @@ export class inputSortDirective {
         break;
     }
   }
+
   ngOnInit(): void {
-    this.#sort.listenRestore(this.key()).subscribe(({ value }) => {
+    this.#sort.listenChange(this.key()).subscribe((value) => {
       this.inputSort.set(value);
       this.#changeElProps(value);
     });
@@ -43,5 +38,7 @@ export class inputSortDirective {
       const value = ++a;
       return value === 2 ? -1 : (value as SortDirection);
     });
+    this.#sort.update(this.key(), this.inputSort());
+    this.#changeElProps(this.inputSort());
   }
 }

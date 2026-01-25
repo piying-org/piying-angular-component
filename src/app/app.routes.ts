@@ -19,6 +19,7 @@ import { QueryTableDefine } from './piying/page/demo/query-table';
 
 import { DialogService } from './service/dialog.service';
 import { FieldGlobalConfig } from './piying/define';
+import { QueryTable2Define } from './piying/page/demo/query-table2';
 
 export const routes: Routes = [
   {
@@ -178,6 +179,22 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => QueryTableDefine,
+              context: () => {
+                const service = inject(DialogService);
+                service.setPiyingOptions({
+                  fieldGlobalConfig: FieldGlobalConfig,
+                });
+                return {
+                  dialog: service,
+                };
+              },
+            },
+          },
+          {
+            path: 'query-table2',
+            component: SchemaViewRC,
+            data: {
+              schema: () => QueryTable2Define,
               context: () => {
                 const service = inject(DialogService);
                 service.setPiyingOptions({

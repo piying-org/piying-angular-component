@@ -92,7 +92,11 @@ export class CheckboxService<D = any> {
     event$.next(checked);
   }
   listenAllSelect(key = defaultKey) {
-    return this.#allEvent.get(key)!;
+    let result = this.#allEvent.get(key);
+    if (!result) {
+      throw new Error('CheckboxService not call init');
+    }
+    return result;
   }
 
   getSelected(key = defaultKey) {

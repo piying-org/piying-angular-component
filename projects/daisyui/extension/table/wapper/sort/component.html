@@ -7,7 +7,7 @@
       [attributes]="attr()"
       [excludes]="['class']"
     >
-      <input type="checkbox" [(inputSort)]="index$" [key]="key$$()" />
+      <input type="checkbox" inputSort [key]="key$$()" />
 
       <div [class]="'swap-indeterminate' | cssPrefix"></div>
       <div [class]="'swap-on' | mergeClass: 'flex' | twPrefix">

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, model, viewChild } from '@angular/core';
+import { Component, computed, inject, input, model, output, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -22,6 +22,8 @@ export class PaginationNFCC {
   sizeOptions = input<number[]>();
   optionsLabel = input<(size: number, index: number, count: number) => string>();
   value = model.required<{ index: number; size: number }>();
+  // todo 临时兼容
+  valueChange = output<{ index: number; size: number }>();
   count = input.required<number>();
 
   #theme = inject(ThemeService);
@@ -88,6 +90,7 @@ export class PaginationNFCC {
     this.updatePageToProps();
   }
   updatePageToProps() {
+    this.valueChange.emit(this.value());
     const field = this.#field?.();
     if (!field) {
       console.warn(`❌piying-view🗄️`);

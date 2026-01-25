@@ -31,13 +31,4 @@ export class SortHeaderWC {
   key$$ = computed(() => {
     return this.props$$()['key'];
   });
-  #direction$$ = computed(
-    () => {
-      return this.props$$()['direction'];
-    },
-    { equal: () => false },
-  );
-  index$ = linkedSignal(() => {
-    return this.#direction$$() ?? 0;
-  });
 }
