@@ -1,7 +1,10 @@
 import { computed, inject, Injectable, resource, signal } from '@angular/core';
 import { computedWithPrev } from '@piying-lib/angular-core';
 export type RequestFn =
-  | ((input: any, needUpdate: boolean) => Promise<[number, any[]]> | [number, any[]])
+  | ((
+      input: any,
+      needUpdate: boolean,
+    ) => Promise<readonly [number, any[]]> | readonly [number, any[]])
   | undefined;
 
 @Injectable()
