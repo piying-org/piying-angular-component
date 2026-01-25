@@ -58,7 +58,6 @@ export const MainPage = v.pipe(
                 type: 'group',
                 title: 'DEMO',
                 children: [
-                  { title: 'Query Table', router: { routerLink: './demo/query-table' } },
                   { title: 'Query Table2', router: { routerLink: './demo/query-table2' } },
                 ],
               },

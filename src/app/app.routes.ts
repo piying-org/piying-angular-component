@@ -15,7 +15,6 @@ import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { StatsDefine } from './piying/page/component/stats';
 import { FormDefine } from './piying/page/component/form';
-import { QueryTableDefine } from './piying/page/demo/query-table';
 
 import { DialogService } from './service/dialog.service';
 import { FieldGlobalConfig } from './piying/define';
@@ -174,22 +173,7 @@ export const routes: Routes = [
             redirectTo: 'query-table',
             pathMatch: 'full',
           },
-          {
-            path: 'query-table',
-            component: SchemaViewRC,
-            data: {
-              schema: () => QueryTableDefine,
-              context: () => {
-                const service = inject(DialogService);
-                service.setPiyingOptions({
-                  fieldGlobalConfig: FieldGlobalConfig,
-                });
-                return {
-                  dialog: service,
-                };
-              },
-            },
-          },
+
           {
             path: 'query-table2',
             component: SchemaViewRC,
