@@ -28,11 +28,12 @@
   } @else {
     <button
       [attributes]="attr()"
-      [excludes]="['class']"
+      [excludes]="['class', 'type']"
       [class]="attr()?.class"
       (click)="onClick($event)"
       [disabled]="isLoading$() || disabled()"
       [ngClass]="wrapperClass$()"
+      [type]="attr()?.type ?? 'button'"
     >
       @if (isLoading$() && !disableLoadingIcon()) {
         <span
