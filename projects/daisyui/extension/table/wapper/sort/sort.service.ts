@@ -17,15 +17,15 @@ export class SortService {
           .map((key) => {
             return value[key] ? { key: key, value: value[key] } : undefined;
           })
-          .filter(Boolean) as unknown as SortList[],
+          .filter(Boolean) as unknown as SortList,
     ),
     takeUntilDestroyed(),
     shareReplay(1),
   );
   multiple = signal(true);
   sortList = signal<string[]>([]);
-
-  setInit(object: Record<string, SortDirection>) {
+  /** 设置初始值 */
+  setInitValue(object: Record<string, SortDirection>) {
     this.#restore$.next(object);
     this.#direction$.next(object);
   }

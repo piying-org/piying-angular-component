@@ -210,7 +210,7 @@ const TableDefine = v.pipe(
         allFieldsResolved: (field) => {
           let sort = field.injector.get(SortService);
           sort.sortList.set(['title']);
-          sort.setInit({
+          sort.setInitValue({
             title: -1,
           });
           sort.value$$.subscribe((value) => {
