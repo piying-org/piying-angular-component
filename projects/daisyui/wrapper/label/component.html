@@ -3,7 +3,7 @@
   @let isEnd = isEnd$$();
   <ng-template #requiredTemplate>
     <span>{{ title }}</span>
-    @if (field$$().form.control?.required$$()) {
+    @if (field$$().form.control?.required$$() && !disableRequired$$()) {
       <span class="text-error">*</span>
     }
   </ng-template>

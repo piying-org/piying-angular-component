@@ -41,4 +41,7 @@ export class LabelWC {
     const direction = this.labelPosition$$();
     return direction === 'top' || direction === 'bottom' ? 'flex flex-col' : 'flex';
   });
+  disableRequired$$ = computed(() => {
+    return this.props$$()['disableRequired'] ?? false;
+  });
 }
