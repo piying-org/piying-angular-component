@@ -57,13 +57,13 @@ export const routes: Routes = [
             redirectTo: 'category',
             pathMatch: 'full',
           },
-          // {
-          //   path: 'table',
-          //   component: SchemaViewRC,
-          //   data: {
-          //     schema: () => TableDefine,
-          //   },
-          // },
+          {
+            path: 'table',
+            component: SchemaViewRC,
+            data: {
+              schema: () => TableDefine,
+            },
+          },
           {
             path: 'category',
             component: SchemaViewRC,

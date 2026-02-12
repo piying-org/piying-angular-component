@@ -4,21 +4,33 @@ import { computed, untracked } from '@angular/core';
 import { actions } from '@piying/view-angular';
 import { map, Observable, startWith } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
-import { CheckboxService, TableExpandService } from '@piying-lib/angular-daisyui/extension';
+import {
+  CheckboxService,
+  SortService,
+  TableExpandService,
+  TableResourceService,
+} from '@piying-lib/angular-daisyui/extension';
 
 export const TableDefine = v.pipe(
   v.object({
     table: v.pipe(
       NFCSchema,
-      actions.providers.patch([CheckboxService, TableExpandService]),
+      actions.providers.patch([CheckboxService, TableExpandService, SortService]),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
+          let sort = field.injector.get(SortService);
+          sort.sortList.set(['title1', 'badge1']);
+          sort.setInitValue({
+            badge1: 1,
+          });
+          sort.value$$.subscribe((value) => {
+            field.injector.get(TableResourceService).setParams('sort', value);
+          });
           field.injector.get(CheckboxService).init();
+          field.injector.get(TableExpandService).init({ _multiple: true });
         },
       }),
       setComponent('table'),
-      actions.wrappers.set(['sort-table', 'table-resource']),
-      actions.props.patch({ expandSelectModel: { _multiple: true } }),
       actions.inputs.patchAsync({
         define: (field) => {
           const pageFiled = field.get(['..', 'page']);
@@ -99,7 +111,6 @@ export const TableDefine = v.pipe(
                   actions.wrappers.set(['td', 'sort-header']),
                   actions.props.patch({
                     key: 'badge1',
-                    direction: 1,
                   }),
                 ),
               },
@@ -124,59 +135,9 @@ export const TableDefine = v.pipe(
             },
           };
         },
-      }),
-      actions.props.patch({ sortList: ['title1', 'badge1'] }),
-      actions.props.patchAsync({
         data: (field) => {
-          const defineField = field.get(['@table-page'])!;
-          const props = defineField.props;
-          return async () => {
-            untracked(() => {
-              props.update(({ value }) => {
-                return { ...value, isLoading: true };
-              });
-            });
-
-            await new Promise<void>((res) => {
-              setTimeout(() => {
-                res();
-              }, 3000);
-            });
-            untracked(() => {
-              props.update(({ value }) => {
-                return { ...value, isLoading: false };
-              });
-            });
-            return [
-              {
-                title1: '测试内容1',
-                badge1: 'data1',
-              },
-              {
-                title1: '测试内容2',
-                badge1: 'data2',
-              },
-              {
-                title1: '测试内容3',
-                badge1: 'data3',
-              },
-            ];
-          };
+          return field.injector.get(TableResourceService).list$$;
         },
-      }),
-      actions.props.mapAsync((field) => {
-        const pageProps = field.get(['..', 'page'])!.props;
-        return (value) => {
-          return {
-            ...value,
-            queryParams: {
-              // page field
-              page: pageProps?.()['pageQueryParams'],
-              // sort-table
-              direction: value['sortQueryParams'],
-            },
-          };
-        };
       }),
     ),
     page: v.pipe(
@@ -190,14 +151,50 @@ export const TableDefine = v.pipe(
       }),
       actions.inputs.patchAsync({
         count: (field) => {
-          const tableField = field.get(['..', 'table'])!;
-          return computed(() => {
-            return tableField.props()['count$$']();
-          });
+          return field.injector.get(TableResourceService).count$$;
+        },
+      }),
+      actions.outputs.patchAsync({
+        valueChange: (field) => {
+          return (data) => {
+            field.injector.get(TableResourceService).setParams('page', data);
+          };
         },
       }),
     ),
   }),
   setAlias('table-page'),
   actions.wrappers.set([{ type: 'loading-wrapper' }]),
+  actions.props.patchAsync({
+    isLoading: (field) => field.injector.get(TableResourceService).isLoading$$,
+  }),
+  actions.providers.patch([TableResourceService]),
+  actions.hooks.merge({
+    allFieldsResolved: (field) => {
+      field.injector.get(TableResourceService).setRequest(async (inputs, needUpdate) => {
+        await new Promise<void>((res) => {
+          setTimeout(() => {
+            res();
+          }, 1000);
+        });
+        return [
+          3,
+          [
+            {
+              title1: '测试内容1',
+              badge1: 'data1',
+            },
+            {
+              title1: '测试内容2',
+              badge1: 'data2',
+            },
+            {
+              title1: '测试内容3',
+              badge1: 'data3',
+            },
+          ],
+        ];
+      });
+    },
+  }),
 );
