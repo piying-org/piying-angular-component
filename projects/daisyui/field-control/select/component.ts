@@ -50,7 +50,7 @@ export class SelectFCC extends BaseControl {
         label: this.optionConvert().label(option),
         value: this.optionConvert().value(option),
         disabled: this.optionConvert().disabled?.(option) ?? false,
-        type: 'option',
+        type: this.optionConvert().type?.(option) ?? 'option',
         origin: option,
       };
       return resolvedItem;
@@ -62,7 +62,7 @@ export class SelectFCC extends BaseControl {
     return this.#theme.setClass(
       this.#theme.setColor('select', this.color()),
       this.#theme.setSize('select', this.size()),
-      this.ghost() ? this.#theme.addPrefix('select-ghost	') : undefined,
+      this.ghost() ? this.#theme.addPrefix('select-ghost') : undefined,
       this.native() ? this.#theme.addTwPrefix('appearance-none') : undefined,
     );
   });
