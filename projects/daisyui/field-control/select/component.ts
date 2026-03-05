@@ -8,6 +8,7 @@ import {
   ResolvedOption,
   SelectOption,
   Size,
+  transformOptions,
 } from '@piying-lib/angular-core';
 import { NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
@@ -43,19 +44,8 @@ export class SelectFCC extends BaseControl {
   });
   emptyOptionContent = input<string>('------');
 
-  resolvedOptions$$ = computed(() => this.transformOptions(this.options()));
-  transformOptions(options: any[]): ResolvedOption[] {
-    return options.map((option) => {
-      const resolvedItem: ResolvedOption = {
-        label: this.optionConvert().label(option),
-        value: this.optionConvert().value(option),
-        disabled: this.optionConvert().disabled?.(option) ?? false,
-        type: this.optionConvert().type?.(option) ?? 'option',
-        origin: option,
-      };
-      return resolvedItem;
-    });
-  }
+  resolvedOptions$$ = computed(() => transformOptions(this.options(), this.optionConvert()));
+
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {

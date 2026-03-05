@@ -26,7 +26,7 @@ export interface OptionConvert {
   description: (input: any) => string;
   value: (input: any) => any;
   isGroup: (input: any) => boolean;
-  children: (input: any) => any[];
+  children?: (input: any) => any[];
   disabled?: (input: any) => boolean;
   type?: (input: any) => string;
 }
@@ -45,16 +45,16 @@ export const DefaultOptionConvert: OptionConvert = {
 export function transformOptions(options: any[], optionConvert: OptionConvert): ResolvedOption[] {
   return options.map((option) => {
     const resolvedItem: ResolvedOption = {
-      ...option,
       label: optionConvert.label(option),
       value: optionConvert.value(option),
       disabled: optionConvert.disabled?.(option) ?? false,
       type: 'option',
       description: optionConvert.description(option),
+      origin: option,
     };
     if (optionConvert.isGroup(option)) {
       resolvedItem.type = 'group';
-      resolvedItem.children = transformOptions(optionConvert.children(option), optionConvert);
+      resolvedItem.children = transformOptions(optionConvert.children!(option), optionConvert);
       return resolvedItem;
     }
     return resolvedItem;
@@ -71,7 +71,7 @@ export function transformOption(option: any, optionConvert: OptionConvert): Reso
   };
   if (optionConvert.isGroup(option)) {
     resolvedItem.type = 'group';
-    resolvedItem.children = transformOptions(optionConvert.children(option), optionConvert);
+    resolvedItem.children = transformOptions(optionConvert.children!(option), optionConvert);
     return resolvedItem;
   }
   return resolvedItem;
