@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
-  <mat-icon
-    [class]="'cursor-pointer' | mergeClass: attr()?.class"
+  <span
+    [class]="'material-icons cursor-pointer' | mergeClass: attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
     (click)="toggle()"
@@ -10,5 +10,5 @@
     } @else {
       keyboard_arrow_down
     }
-  </mat-icon>
+  </span>
 </ng-template>
