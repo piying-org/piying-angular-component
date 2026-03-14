@@ -17,8 +17,24 @@ export const ArrayDefine = v.object({
     v.array(ItemDefine),
     setComponent('editable-array'),
     actions.inputs.patch({
-      layout:'column',
+      layout: 'column',
       minLength: 1,
+    }),
+  ),
+  array3: v.pipe(
+    v.array(ItemDefine),
+    setComponent('editable-array'),
+    actions.inputs.patch({
+      layout: 'column',
+      addMode: 1,
+      minLength: 1,
+      initValue: (index: any) => {
+        return {
+          v1: `${index}`,
+          v2: index,
+          v3: !!index,
+        };
+      },
     }),
   ),
 });
