@@ -47,6 +47,7 @@ export const MainPage = v.pipe(
               { title: 'tabs', router: { routerLink: './component/tabs' } },
               { title: 'card', router: { routerLink: './component/card' } },
               { title: 'stat', router: { routerLink: './component/stat' } },
+              { title: 'array', router: { routerLink: './component/array' } },
               { type: 'divider' },
               {
                 type: 'group',

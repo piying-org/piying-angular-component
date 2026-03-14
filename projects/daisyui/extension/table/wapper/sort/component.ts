@@ -13,7 +13,6 @@ import { inputSortDirective } from './input-checkbox.directive';
   selector: 'app-sort-header',
   templateUrl: './component.html',
   imports: [
-    MatIcon,
     FormsModule,
     CssPrefixPipe,
     MergeClassPipe,

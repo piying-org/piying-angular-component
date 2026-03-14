@@ -1,0 +1,34 @@
+<ng-template #templateRef let-attr="attributes" let-events="events">
+  <div
+    [class]="wrapperClass$$() | cssPrefix | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [events]="events()"
+  >
+    @let children = children$$();
+    @for (field of children; track field.id || $index) {
+      <div class="flex items-center gap-2">
+        <div class="flex-1">
+          <ng-container
+            *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field, injector }"
+          ></ng-container>
+        </div>
+
+        @if (!disableRemove()) {
+          <button
+            class="btn btn-circle btn-error"
+            (click)="removeItem($index)"
+            [disabled]="minLength() >= children.length"
+          >
+            <span class="material-icons">delete</span>
+          </button>
+        }
+      </div>
+    }
+    @if (!disableAdd()) {
+      <button class="btn btn-circle" (click)="addNew()" color="primary">
+        <span class="material-icons">add</span>
+      </button>
+    }
+  </div>
+</ng-template>

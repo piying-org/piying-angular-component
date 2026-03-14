@@ -19,6 +19,7 @@ import { FormDefine } from './piying/page/component/form';
 import { DialogService } from './service/dialog.service';
 import { FieldGlobalConfig } from './piying/define';
 import { QueryTable2Define } from './piying/page/demo/query-table2';
+import { ArrayDefine } from './piying/page/component/array';
 
 export const routes: Routes = [
   {
@@ -161,6 +162,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => FormDefine,
+            },
+          },
+          {
+            path: 'array',
+            component: SchemaViewRC,
+            data: {
+              schema: () => ArrayDefine,
             },
           },
         ],
