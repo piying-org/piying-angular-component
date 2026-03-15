@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
-  selector: 'app-editable-array',
+  selector: 'app-editable-group',
   templateUrl: './component.html',
   imports: [
     NgTemplateOutlet,
@@ -25,7 +25,7 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
     PurePipe,
   ],
 })
-export class EditableArrayFGC extends PiyingViewGroupBase {
+export class EditableGroupFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 

@@ -8,14 +8,14 @@ const ItemDefine = v.object({
 export const ArrayDefine = v.object({
   array1: v.pipe(
     v.array(ItemDefine),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       minLength: 1,
     }),
   ),
   array2: v.pipe(
     v.array(ItemDefine),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
       minLength: 1,
@@ -23,7 +23,7 @@ export const ArrayDefine = v.object({
   ),
   array3: v.pipe(
     v.array(ItemDefine),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
       addMode: 1,
@@ -39,7 +39,7 @@ export const ArrayDefine = v.object({
   ),
   array4: v.pipe(
     v.array(ItemDefine),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
       addMode: 1,
@@ -56,7 +56,7 @@ export const ArrayDefine = v.object({
   ),
   array5: v.pipe(
     v.array(v.pipe(v.string(), setComponent('editable-badge'))),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
       addMode: 1,

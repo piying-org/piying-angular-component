@@ -6,7 +6,7 @@ export * from './pagination';
 export * from './picker-ref';
 export * from './option-list';
 export * from './list-template';
-export * from './editable-array';
+export * from './editable-group';
 export * from './checkbox-list';
 export * from './logic-group';
 export * from './form-dialog';

@@ -8,7 +8,7 @@ const ItemDefine = v.object({
 export const GroupDefine = v.object({
   group1: v.pipe(
     v.record(v.pipe(v.string(),v.title('key')), ItemDefine),
-    setComponent('editable-array'),
+    setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
     }),
