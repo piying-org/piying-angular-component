@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-export interface AlertItem {
+export interface ToastItem {
   id: number;
   message: string;
   type?: 'success' | 'error' | 'warning' | 'info';
@@ -14,7 +14,7 @@ type YPosition = 'top' | 'middle' | 'bottom';
   providedIn: 'root',
 })
 export class ToastService {
-  readonly #list$ = signal<AlertItem[]>([]);
+  readonly #list$ = signal<ToastItem[]>([]);
   private readonly timeoutDelayIds = new Map<number, any>();
   private readonly timeoutDurationIds = new Map<number, any>();
   private nextId = 0;
@@ -22,10 +22,10 @@ export class ToastService {
   position$$ = this.#position$.asReadonly();
   list$$ = this.#list$.asReadonly();
 
-  add(options: Omit<AlertItem, 'id'> & { delay?: number }): number {
+  add(options: Omit<ToastItem, 'id'> & { delay?: number }): number {
     const id = this.nextId++;
     const delay = options.delay;
-    const item: AlertItem = {
+    const item: ToastItem = {
       id,
       ...options,
       type: options.type || 'info',
@@ -42,7 +42,7 @@ export class ToastService {
 
     return id;
   }
-  #addToList(item: AlertItem) {
+  #addToList(item: ToastItem) {
     this.#list$.update((current) => [...current, item]);
     const timeoutId = setTimeout(() => {
       this.remove(item.id);

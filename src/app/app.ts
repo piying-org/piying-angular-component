@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
-import { ToastPortal } from '@piying-lib/angular-daisyui/overlay';
+import { ConfirmPortal, ToastPortal } from '@piying-lib/angular-daisyui/overlay';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ToastPortal],
+  imports: [RouterOutlet, ConfirmPortal, ToastPortal],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

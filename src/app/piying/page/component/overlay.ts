@@ -2,7 +2,7 @@ import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { FormDialogContainer } from '@piying-lib/angular-daisyui/extension';
 import { Dialog } from '@angular/cdk/dialog';
-import { ToastService } from '@piying-lib/angular-daisyui/overlay';
+import { ConfirmService, ToastService } from '@piying-lib/angular-daisyui/overlay';
 const item = v.object({
   // 弹窗内显示会有问题,本质上是滚动条问题
   l1: v.pipe(v.string(), actions.wrappers.patch(['validate-tooltip-wrapper'])),
@@ -45,6 +45,35 @@ export const OverlayDefine = v.pipe(
             field.injector
               .get(ToastService)
               .add({ message: 'error-message', type: 'error', enableCopy: true, duration: 30000 });
+          };
+        },
+      }),
+    ),
+    overlay1: v.pipe(
+      NFCSchema,
+      setComponent('button'),
+      actions.inputs.patch({ content: 'overlay1' }),
+      actions.inputs.patchAsync({
+        clicked: (field) => {
+          return () => {
+            field.injector.get(ConfirmService).open({ title: 'title1', message: 'message1' });
+          };
+        },
+      }),
+    ),
+    overlay2: v.pipe(
+      NFCSchema,
+      setComponent('button'),
+      actions.inputs.patch({ content: 'overlay2' }),
+      actions.inputs.patchAsync({
+        clicked: (field) => {
+          return () => {
+            field.injector.get(ConfirmService).open({
+              title: 'title1',
+              message: 'message1',
+              modal: true,
+              buttons: [{ close: async () => {}, label: 'close', class: 'btn-primary' }],
+            });
           };
         },
       }),

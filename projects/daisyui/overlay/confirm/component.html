@@ -1,0 +1,27 @@
+@for (item of service.list$$(); track $index) {
+  <dialog [class]="'modal' | cssPrefix | mergeClass: containerClass$$()" open>
+    <div [class]="'modal-box' | cssPrefix">
+      <h3 [class]="'text-lg font-bold' | twPrefix">{{ item.title }}</h3>
+      <p [class]="'py-4 break-all' | twPrefix">{{ item.message }}</p>
+      <form method="dialog" [class]="'flex justify-end gap-2' | twPrefix">
+        @for (button of item.buttons; track $index) {
+          <button
+            [class]="'btn' | cssPrefix | mergeClass: button.class"
+            (click)="item.close($index)"
+            type="button"
+          >
+            <ng-template
+              [selectlessOutlet]="StrOrTemplateComponent"
+              [selectlessOutletInputs]="buttonContent | pure: button.label"
+            ></ng-template>
+          </button>
+        }
+      </form>
+    </div>
+    @if (!item.modal) {
+      <form method="dialog" class="modal-backdrop">
+        <button (click)="item.close(undefined)">close</button>
+      </form>
+    }
+  </dialog>
+}

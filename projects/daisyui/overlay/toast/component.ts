@@ -6,7 +6,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import clsx from 'clsx';
 
 @Component({
-  selector: 'pi-toast',
+  selector: 'pi-toast-portal',
   templateUrl: './component.html',
   imports: [MergeClassPipe, CssPrefixPipe, TwPrefixPipe, CdkCopyToClipboard],
 })
