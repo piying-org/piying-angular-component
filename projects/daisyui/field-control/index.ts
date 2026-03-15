@@ -10,3 +10,4 @@ export * from './toggle';
 export * from './swap';
 export * from './calendar';
 export * from './password';
+export * from './editable-badge';

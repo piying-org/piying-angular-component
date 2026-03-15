@@ -1,0 +1,38 @@
+<ng-template #templateRef let-attr="attributes">
+  @let size = size$$();
+  <span [class]="wrapperClass$()|mergeClass:size.text">
+    @if (isEdit$()) {
+      <input
+        type="text"
+        [class]="
+          'input'
+            | cssPrefix
+            | mergeClass: 'outline-none! border-none! shadow-none! bg-transparent! px-0' : size.input
+        "
+        [(ngModel)]="editContent$"
+      />
+      <button
+        [class]="'btn btn-circle btn-success btn-ghost' | cssPrefix | mergeClass: size.btn"
+        (click)="valueChange2()"
+      >
+        <span class="material-icons">check</span>
+      </button>
+      <button
+        [class]="'btn btn-circle btn-error btn-ghost' | cssPrefix | mergeClass: size.btn"
+        (click)="editContent$.set(''); isEdit$.set(false)"
+      >
+        <span class="material-icons">close</span>
+      </button>
+    } @else {
+      @if (value$()) {
+        {{ value$() }}
+      }
+      <button
+        [class]="'btn btn-circle btn-accent btn-ghost' | cssPrefix | mergeClass: size.btn"
+        (click)="editContent$.set(value$()); isEdit$.set(true)"
+      >
+        <span class="material-icons">edit</span>
+      </button>
+    }
+  </span>
+</ng-template>

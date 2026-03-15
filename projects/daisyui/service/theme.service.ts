@@ -53,7 +53,8 @@ export class ThemeService {
       | 'select'
       | 'input'
       | 'textarea'
-      | 'toggle',
+      | 'toggle'
+      | 'text',
     input: Size | undefined,
   ) {
     if (input === undefined) {

@@ -6,7 +6,7 @@ import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 
 @Component({
   templateUrl: './component.html',
-  imports: [PiyingView, StrOrTemplateComponent, SelectorlessOutlet],
+  imports: [PiyingView, SelectorlessOutlet],
 })
 export class FormDialogContainer {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;

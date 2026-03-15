@@ -54,6 +54,16 @@ export const ArrayDefine = v.object({
       },
     }),
   ),
+  array5: v.pipe(
+    v.array(v.pipe(v.string(), setComponent('editable-badge'))),
+    setComponent('editable-array'),
+    actions.inputs.patch({
+      layout: 'column',
+      addMode: 1,
+      addPosition: 'top',
+      minLength: 1,
+    }),
+  ),
   checkbox1: v.pipe(
     v.array(
       v.pipe(v.string(), setComponent('boolean'), actions.props.patch({ disableRequired: true })),
