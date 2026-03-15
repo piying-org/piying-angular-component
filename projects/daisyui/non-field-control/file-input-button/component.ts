@@ -1,31 +1,14 @@
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, input, signal, viewChild } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
-import {
-  CssPrefixPipe,
-  MergeClassPipe,
-  TwPrefixPipe,
-} from '@piying-lib/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    CssPrefixPipe,
-    SelectorlessOutlet,
-    MergeClassPipe,
-    TwPrefixPipe,
-  ],
+  imports: [AttributesDirective, CssPrefixPipe, SelectorlessOutlet, MergeClassPipe, TwPrefixPipe],
 })
 export class FileInputButtonNFCC {
   static __version = 2;

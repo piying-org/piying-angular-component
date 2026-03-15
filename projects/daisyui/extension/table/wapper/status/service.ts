@@ -1,8 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
-import { BehaviorSubject, filter, map, shareReplay, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, shareReplay, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class TableExpandService {

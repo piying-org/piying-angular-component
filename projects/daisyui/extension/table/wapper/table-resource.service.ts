@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, resource, signal } from '@angular/core';
+import { computed, Injectable, resource, signal } from '@angular/core';
 import { computedWithPrev } from '@piying-lib/angular-core';
 export type RequestFn =
   | ((
@@ -15,7 +15,7 @@ export class TableResourceService {
   #data$ = resource({
     params: computed(() => {
       const params = this.#queryParams$();
-      let requestFn = this.#requestFn$();
+      const requestFn = this.#requestFn$();
       return {
         requestFn,
         params,
@@ -23,7 +23,7 @@ export class TableResourceService {
       };
     }),
     loader: async (res) => {
-      let needUpdate = res.params.index !== this.#preUpdateIndex$();
+      const needUpdate = res.params.index !== this.#preUpdateIndex$();
       if (needUpdate) {
         this.#preUpdateIndex$.set(res.params.index);
       }

@@ -13,7 +13,7 @@ export class logicGroupFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
 
   activateChildren$$ = computed(() => {
-    let control = this.field$$().form.control! as FieldLogicGroup;
+    const control = this.field$$().form.control! as FieldLogicGroup;
     return this.field$$().children!().filter((config, index1) => {
       return !!control.activatedChildren().find(([index2]) => index1 === index2);
     });

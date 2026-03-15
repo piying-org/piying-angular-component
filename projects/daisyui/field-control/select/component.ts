@@ -5,7 +5,6 @@ import {
   Color,
   DefaultOptionConvert,
   OptionConvert,
-  ResolvedOption,
   SelectOption,
   Size,
   transformOptions,

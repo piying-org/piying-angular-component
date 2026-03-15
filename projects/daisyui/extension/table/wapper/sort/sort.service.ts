@@ -1,6 +1,6 @@
-import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, filter, map, shareReplay, skip, Subject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 
 export type SortDirection = 0 | 1 | -1;
 export type SortList = { key: string; value: SortDirection }[];
@@ -43,7 +43,7 @@ export class SortService {
       }
       this.#direction$.next(data);
     } else {
-      let data = this.#direction$.value;
+      const data = this.#direction$.value;
       if (direction === 0) {
         if (key in data) {
           this.#direction$.next({});

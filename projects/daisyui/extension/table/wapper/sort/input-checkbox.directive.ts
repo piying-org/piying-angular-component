@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, inject, input, model, signal } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, input, signal } from '@angular/core';
 import { SortDirection, SortService } from './sort.service';
 
 @Directive({

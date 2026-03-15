@@ -1,12 +1,4 @@
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  signal,
-  viewChild,
-  WritableSignal,
-} from '@angular/core';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
 import {
   PiyingViewGroupBase,
   PiyingView,
@@ -15,7 +7,7 @@ import {
   EventsDirective,
 } from '@piying/view-angular';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -80,7 +72,7 @@ export class EditableArrayFGC extends PiyingViewGroupBase {
   };
   addNew(newValue?: SelectorlessOutlet<PiyingView>) {
     if (newValue) {
-      let form = newValue.componentInstance!.form$$()!;
+      const form = newValue.componentInstance!.form$$()!;
       this.field$$().action.set(form.value);
       form.reset();
     } else {

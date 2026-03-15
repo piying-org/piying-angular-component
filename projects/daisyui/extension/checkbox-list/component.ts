@@ -1,17 +1,6 @@
-import {
-  Component,
-  computed,
-  forwardRef,
-  inject,
-  input,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, forwardRef, inject, input, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  PI_INPUT_OPTIONS_TOKEN,
-  PiyingView,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { PI_INPUT_OPTIONS_TOKEN, PiyingView, PiyingViewGroupBase } from '@piying/view-angular';
 
 import { MatIconModule } from '@angular/material/icon';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
@@ -27,13 +16,7 @@ const Empty_Array: any[] = [];
 @Component({
   selector: 'app-checkbox-list',
   templateUrl: './component.html',
-  imports: [
-    FormsModule,
-    MatIconModule,
-    MatIconModule,
-    SelectorlessOutlet,
-    PurePipe,
-  ],
+  imports: [FormsModule, MatIconModule, MatIconModule, SelectorlessOutlet, PurePipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

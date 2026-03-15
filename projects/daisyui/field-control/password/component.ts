@@ -1,4 +1,4 @@
-import { Component, computed, forwardRef, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, forwardRef, signal, viewChild } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControl } from '@piying/view-angular';
 

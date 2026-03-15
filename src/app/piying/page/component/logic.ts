@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
+import { actions, setComponent } from '@piying/view-angular-core';
 
 export const LogicDefine = v.object({
   i1: v.pipe(

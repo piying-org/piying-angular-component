@@ -1,9 +1,8 @@
 import * as v from 'valibot';
 import { hideWhen, NFCSchema, setAlias, setComponent } from '@piying/view-angular-core';
-import { computed, untracked } from '@angular/core';
+import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { map, Observable, startWith } from 'rxjs';
-import { SelectionModel } from '@angular/cdk/collections';
+import { map, startWith } from 'rxjs';
 import {
   CheckboxService,
   SortService,
@@ -18,7 +17,7 @@ export const TableDefine = v.pipe(
       actions.providers.patch([CheckboxService, TableExpandService, SortService]),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
-          let sort = field.injector.get(SortService);
+          const sort = field.injector.get(SortService);
           sort.sortList.set(['title1', 'badge1']);
           sort.setInitValue({
             badge1: 1,

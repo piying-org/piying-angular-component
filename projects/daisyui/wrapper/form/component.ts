@@ -1,9 +1,5 @@
 import { Component, viewChild } from '@angular/core';
-import {
-  AttributesDirective,
-  InsertFieldDirective,
-  EventsDirective,
-} from '@piying/view-angular';
+import { AttributesDirective, InsertFieldDirective, EventsDirective } from '@piying/view-angular';
 @Component({
   selector: 'app-form',
   templateUrl: './component.html',

@@ -1,9 +1,7 @@
 import * as v from 'valibot';
 import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed, signal } from '@angular/core';
+import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { faker, fi } from '@faker-js/faker';
-import { range } from 'es-toolkit';
 import { DialogService } from '../../../service/dialog.service';
 import { FormBase } from '../component/form';
 import {
@@ -208,7 +206,7 @@ const TableDefine = v.pipe(
       actions.providers.patch([SortService, CheckboxService]),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
-          let sort = field.injector.get(SortService);
+          const sort = field.injector.get(SortService);
           sort.sortList.set(['title']);
           sort.setInitValue({
             title: -1,
@@ -281,7 +279,7 @@ export const QueryTable2Define = v.pipe(
   actions.providers.patch([TableResourceService]),
   actions.hooks.merge({
     allFieldsResolved: (field) => {
-      let demoRequest = field.injector.get(DemoTableResourceService);
+      const demoRequest = field.injector.get(DemoTableResourceService);
       field.injector.get(TableResourceService).setRequest(demoRequest.requestFn);
     },
   }),

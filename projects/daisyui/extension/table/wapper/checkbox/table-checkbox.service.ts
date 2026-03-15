@@ -26,7 +26,7 @@ export class CheckboxService<D = any> {
     effect(
       () => {
         const data1 = this.#data$$();
-        let data2 = Array.isArray(data1) ? data1 : data1?.();
+        const data2 = Array.isArray(data1) ? data1 : data1?.();
 
         untracked(() => {
           this.setAllList(() => {
@@ -80,7 +80,7 @@ export class CheckboxService<D = any> {
   selectAll(checked: boolean, key = defaultKey) {
     const list = this.#fn!();
     const result = this.#selectModelMap.get(key)!;
-    let event$ = this.#allEvent.get(key)!;
+    const event$ = this.#allEvent.get(key)!;
     if (checked) {
       list.forEach((item) => {
         result.select(item);
@@ -92,7 +92,7 @@ export class CheckboxService<D = any> {
     event$.next(checked);
   }
   listenAllSelect(key = defaultKey) {
-    let result = this.#allEvent.get(key);
+    const result = this.#allEvent.get(key);
     if (!result) {
       throw new Error('CheckboxService not call init');
     }

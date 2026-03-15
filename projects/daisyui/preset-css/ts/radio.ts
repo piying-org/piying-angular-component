@@ -1,16 +1,16 @@
-export const RADIO_PREFIX_LIST=[
-    "radio",
-    "radio-neutral",
-    "radio-primary",
-    "radio-secondary",
-    "radio-accent",
-    "radio-success",
-    "radio-warning",
-    "radio-info",
-    "radio-error",
-    "radio-xs",
-    "radio-sm",
-    "radio-md",
-    "radio-lg",
-    "radio-xl"
-]
+export const RADIO_PREFIX_LIST = [
+  'radio',
+  'radio-neutral',
+  'radio-primary',
+  'radio-secondary',
+  'radio-accent',
+  'radio-success',
+  'radio-warning',
+  'radio-info',
+  'radio-error',
+  'radio-xs',
+  'radio-sm',
+  'radio-md',
+  'radio-lg',
+  'radio-xl',
+];

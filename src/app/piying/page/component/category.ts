@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
-import { map, Observable, startWith } from 'rxjs';
+import { map, startWith } from 'rxjs';
 import {
   ExpandRowDirective,
   TableExpandService,
@@ -74,7 +74,7 @@ export const CategoryDefine = v.object({
       allFieldsResolved: (field) => {
         field.injector.get(TableExpandService).init();
         field.injector.get(TableResourceService).setRequest(() => {
-          let list = range(1, 100).map((index) => {
+          const list = range(1, 100).map((index) => {
             return [`k${index}`, range(4).map((i) => `k${index}v${i}`)];
           });
           return [list.length, list];
