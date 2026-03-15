@@ -28,6 +28,9 @@
       "@piying-lib/angular-daisyui/directive": [
         "./projects/daisyui/directive"
       ],
+      "@piying-lib/angular-daisyui/overlay": [
+        "./projects/daisyui/overlay"
+      ],
       "@piying-lib/angular-core": [
         "./projects/core"
       ],
