@@ -9,15 +9,7 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-
-    NgClass,
-    CssPrefixPipe,
-    SelectorlessOutlet,
-    MergeClassPipe,
-    TwPrefixPipe,
-  ],
+  imports: [AttributesDirective, CssPrefixPipe, SelectorlessOutlet, MergeClassPipe, TwPrefixPipe],
 })
 export class ButtonNFCC {
   static __version = 2;

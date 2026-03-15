@@ -32,8 +32,7 @@ export class TabsFGC extends PiyingViewGroupBase {
   type = input<'box' | 'border' | 'lift' | undefined>();
   placement = input<'top' | 'bottom'>();
   tabContentClass = input(useTwClass('bg-base-100 border-base-300 p-6'));
-  isUnion = input(false);
-  activatedIndex$ = linkedSignal(this.activatedIndex);
+  activatedIndex$ = linkedSignal(this.activatedIndex, { equal: () => false });
   beforeChange = input<(index: number) => any>();
   #theme = inject(ThemeService);
 
@@ -44,6 +43,14 @@ export class TabsFGC extends PiyingViewGroupBase {
       this.placement() ? this.#theme.addPrefix(`tabs-${this.placement()}`) : undefined,
     );
   });
+
+  isUnion$$ = computed(() => {
+    return (
+      this.field$$().form.control instanceof FieldLogicGroup &&
+      (this.field$$().form.control as FieldLogicGroup).type() === 'or'
+    );
+  });
+
   labelInputs = (input: any) => {
     return {
       content: input,
@@ -52,8 +59,7 @@ export class TabsFGC extends PiyingViewGroupBase {
   constructor() {
     super();
     effect(() => {
-      const isUnion = this.isUnion();
-      if (isUnion) {
+      if (this.isUnion$$()) {
         const index = this.activatedIndex$();
         const control = this.field$$().form.control as FieldLogicGroup;
         control.activateIndex$.set(index);
