@@ -69,5 +69,11 @@ export const FormDefine = v.pipe(
       v.title('form-field title'),
       actions.class.top('bg-base-200 border-base-300 rounded-box border w-fit p-4'),
     ),
+    form3: v.pipe(
+      v.object({
+        l1: v.string(),
+      }),
+      actions.wrappers.patch(['form']),
+    ),
   }),
 );

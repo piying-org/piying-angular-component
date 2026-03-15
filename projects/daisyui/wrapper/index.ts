@@ -3,3 +3,4 @@ export * from './table/th.component';
 export * from './label';
 export * from './loading';
 export * from './fieldset';
+export * from './form';
