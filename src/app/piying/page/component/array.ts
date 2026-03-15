@@ -37,4 +37,24 @@ export const ArrayDefine = v.object({
       },
     }),
   ),
+  checkbox1: v.pipe(
+    v.array(
+      v.pipe(v.string(), setComponent('boolean'), actions.props.patch({ disableRequired: true })),
+    ),
+    setComponent('checkbox-list'),
+    actions.inputs.patchAsync({
+      options: (field) => {
+        return [
+          {
+            value: '1',
+            props: { title: '1' },
+          },
+          {
+            value: '2',
+            props: { title: '2' },
+          },
+        ];
+      },
+    }),
+  ),
 });

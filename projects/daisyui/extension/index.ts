@@ -6,4 +6,5 @@ export * from './pagination';
 export * from './picker-ref';
 export * from './option-list';
 export * from './list-template';
-export * from './editable-array'
+export * from './editable-array';
+export * from './checkbox-list';
