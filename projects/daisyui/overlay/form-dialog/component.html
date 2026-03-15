@@ -1,0 +1,7 @@
+@for (item of service.list$$(); track item.id) {
+  <ng-template
+    [selectlessOutlet]="FormDialogItemComponent"
+    [selectlessOutletInjector]="item.injector"
+    [selectlessOutletInputs]="{ item: item }"
+  ></ng-template>
+}

@@ -1,0 +1,43 @@
+<ng-template #templateRef>
+  <dialog [class]="'modal' | cssPrefix" open>
+    <div class="modal-box">
+      <h2 [class]="'text-lg font-bold' | twPrefix">{{ item().title }}</h2>
+
+      <piying-view
+        [schema]="item().schema"
+        [options]="options$$()"
+        [model]="item().value"
+        (modelChange)="modelChange($event)"
+        class="flex-1 overflow-auto py-4"
+        #ref
+      ></piying-view>
+      <div class="card-actions justify-end">
+        <button class="btn btn-error" (click)="close()">
+          <ng-template
+            [selectlessOutlet]="StrOrTemplateComponent"
+            [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
+          ></ng-template>
+        </button>
+
+        <input
+          type="submit"
+          class="btn btn-primary"
+          (click)="apply()"
+          [disabled]="!ref.form$$()?.valid"
+        />
+      </div>
+      @if (loading$()) {
+        <div
+          class="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-base-200/70"
+        >
+          <span class="loading text-primary"></span>
+        </div>
+      }
+    </div>
+    @if (!item().modal) {
+      <form method="dialog" class="modal-backdrop">
+        <button (click)="close()">close</button>
+      </form>
+    }
+  </dialog>
+</ng-template>

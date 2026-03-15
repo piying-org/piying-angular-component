@@ -9,4 +9,3 @@ export * from './list-template';
 export * from './editable-group';
 export * from './checkbox-list';
 export * from './logic-group';
-export * from './form-dialog';
