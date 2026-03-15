@@ -8,3 +8,4 @@ export * from './option-list';
 export * from './list-template';
 export * from './editable-array';
 export * from './checkbox-list';
+export * from './logic-group';

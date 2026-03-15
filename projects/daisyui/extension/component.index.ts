@@ -6,3 +6,4 @@ export { OptionListFCC } from './option-list/component';
 export { ListTemplateNFCC } from './list-template/component';
 export { EditableArrayFGC } from './editable-array';
 export { CheckboxListFGC } from './checkbox-list';
+export { logicGroupFGC } from './logic-group';

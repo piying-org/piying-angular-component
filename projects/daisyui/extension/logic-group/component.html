@@ -1,0 +1,7 @@
+<ng-template #templateRef let-attr="attributes">
+  @for (item of activateChildren$$(); track $index) {
+    <ng-container
+      *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: item }"
+    ></ng-container>
+  }
+</ng-template>

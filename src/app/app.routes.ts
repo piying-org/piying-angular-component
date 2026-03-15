@@ -20,6 +20,7 @@ import { DialogService } from './service/dialog.service';
 import { FieldGlobalConfig } from './piying/define';
 import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { ArrayDefine } from './piying/page/component/array';
+import { LogicDefine } from './piying/page/component/logic';
 
 export const routes: Routes = [
   {
@@ -169,6 +170,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => ArrayDefine,
+            },
+          },
+          {
+            path: 'logic',
+            component: SchemaViewRC,
+            data: {
+              schema: () => LogicDefine,
             },
           },
         ],
