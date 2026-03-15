@@ -19,7 +19,7 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 @Component({
   selector: 'app-editable-badge',
   templateUrl: './component.html',
-  imports: [FormsModule, MergeClassPipe,CssPrefixPipe],
+  imports: [FormsModule, MergeClassPipe, CssPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -48,9 +48,9 @@ export class EditableBadgeFCC extends BaseControl {
   size$$ = computed(() => {
     let size = this.size();
     return {
-      input: this.#theme.setSize('input', size ),
+      input: this.#theme.setSize('input', size),
       btn: this.#theme.setSize('btn', size === 'xl' ? 'sm' : 'xs'),
-      text: this.#theme.setSize('text', size),
+      text: this.#theme.setSize('text', size === 'md' ? 'base' : size) + '!',
     };
   });
   valueChange2() {
