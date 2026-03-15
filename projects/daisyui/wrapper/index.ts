@@ -4,3 +4,4 @@ export * from './label';
 export * from './loading';
 export * from './fieldset';
 export * from './form';
+export * from './validate-tooltip';

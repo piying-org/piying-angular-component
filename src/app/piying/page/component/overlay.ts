@@ -3,7 +3,8 @@ import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { FormDialogContainer } from '@piying-lib/angular-daisyui/extension';
 import { Dialog } from '@angular/cdk/dialog';
 const item = v.object({
-  l1: v.string(),
+  // 弹窗内显示会有问题,本质上是滚动条问题
+  l1: v.pipe(v.string(), actions.wrappers.patch(['validate-tooltip-wrapper'])),
   l2: v.number(),
 });
 export const OverlayDefine = v.pipe(
