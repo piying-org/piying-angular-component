@@ -3,6 +3,7 @@ import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 export const FormBase = v.object({
   input: v.pipe(v.string(), v.title('string-control')),
+  password: v.pipe(v.string(), v.title('string-control'), setComponent('password')),
   number: v.pipe(v.number(), v.title('number-control')),
   range: v.pipe(v.number(), setComponent('range'), v.title('range-control')),
 
