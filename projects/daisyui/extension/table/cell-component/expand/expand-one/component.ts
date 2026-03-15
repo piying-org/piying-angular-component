@@ -1,6 +1,5 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { MatIconModule } from '@angular/material/icon';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { TableExpandService } from '../../../wapper';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -8,7 +7,7 @@ import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
   selector: 'app-table-expand-cell',
   templateUrl: './component.html',
-  imports: [MatIconModule, MergeClassPipe, AttributesDirective],
+  imports: [MergeClassPipe, AttributesDirective],
 })
 export class TableExpandOneTableCell {
   static __version = 2;

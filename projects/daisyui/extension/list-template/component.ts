@@ -3,12 +3,11 @@ import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PI_VIEW_FIELD_TOKEN, PiyingView } from '@piying/view-angular';
 
-import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-list-template',
   templateUrl: './component.html',
-  imports: [SelectorlessOutlet, MatIconModule, PurePipe],
+  imports: [SelectorlessOutlet, PurePipe],
 })
 export class ListTemplateNFCC {
   static __version = 2;

@@ -37,16 +37,35 @@ export class EditableArrayFGC extends PiyingViewGroupBase {
   addPosition = input<'top' | 'bottom'>('bottom');
   initValue = input<(index: number | undefined) => any>();
   minLength = input<number>(0);
-
+  isRecord$$ = computed(() => {
+    return !!this.field$$().form.control!.config$().groupKeySchema;
+  });
   wrapperClass$$ = computed(() => {
     return this.layout() === 'row' ? 'flex gap-2 items-center' : 'flex flex-col gap-2';
   });
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
 
+  #keySchema$$ = computed(() => {
+    return this.field$$().form.control!.config$().groupKeySchema;
+  });
   #valueSchema$$ = computed(() => {
     return this.field$$().form.control!.config$().groupValueSchema;
   });
-  schemaOptions$$ = computed(() => {
+  keySchemaOptions$$ = computed(() => {
+    return {
+      schema: this.#keySchema$$(),
+      options: {
+        ...this.parentPyOptions!(),
+        context: {
+          ...this.parentPyOptions!().context,
+          parent: this.parentPyOptions!().context,
+          parentField: this.field$$(),
+        },
+      },
+      selectorless: true,
+    };
+  });
+  valueSchemaOptions$$ = computed(() => {
     return {
       schema: this.#valueSchema$$(),
       options: {
@@ -70,8 +89,14 @@ export class EditableArrayFGC extends PiyingViewGroupBase {
       model: newValueFn?.(model),
     };
   };
-  addNew(newValue?: SelectorlessOutlet<PiyingView>) {
-    if (newValue) {
+  addNew(newValue?: SelectorlessOutlet<PiyingView>, newKey?: SelectorlessOutlet<PiyingView>) {
+    if (newKey && newValue) {
+      const keyForm = newKey.componentInstance!.form$$()!;
+      const valueForm = newValue.componentInstance!.form$$()!;
+      this.field$$().action.set(valueForm.value, keyForm.value);
+      keyForm.reset();
+      valueForm.reset();
+    } else if (newValue) {
       const form = newValue.componentInstance!.form$$()!;
       this.field$$().action.set(form.value);
       form.reset();

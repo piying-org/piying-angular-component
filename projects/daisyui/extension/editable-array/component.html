@@ -8,7 +8,36 @@
     @let children = children$$();
     <ng-template #addTemplate>
       @if (!disableAdd()) {
-        @if (addMode() === 0) {
+        @if (isRecord$$()) {
+          <div class="flex items-center gap-2">
+            <div class="flex-1 flex items-center gap-2">
+              <ng-container
+                [selectlessOutlet]="PiyingView"
+                [selectlessOutletInputs]="
+                  addNewInputs | pure: keySchemaOptions$$() : initValue() : children.length
+                "
+                #newKey="selectlessOutlet"
+              ></ng-container>
+              <ng-container
+                [selectlessOutlet]="PiyingView"
+                [selectlessOutletInputs]="
+                  addNewInputs | pure: valueSchemaOptions$$() : initValue() : children.length
+                "
+                #newValue="selectlessOutlet"
+              ></ng-container>
+            </div>
+            @let keyForm = newKey.componentInstance?.form$$();
+            @let valueFform = newValue.componentInstance?.form$$();
+            <button
+              class="btn btn-circle"
+              (click)="addNew(newValue, newKey)"
+              color="primary"
+              [disabled]="!valueFform?.valid || !keyForm?.valid"
+            >
+              <span class="material-icons">add</span>
+            </button>
+          </div>
+        } @else if (addMode() === 0) {
           <button class="btn btn-circle" (click)="addNew()" color="primary">
             <span class="material-icons">add</span>
           </button>
@@ -18,7 +47,7 @@
               <ng-container
                 [selectlessOutlet]="PiyingView"
                 [selectlessOutletInputs]="
-                  addNewInputs | pure: schemaOptions$$() : initValue() : children.length
+                  addNewInputs | pure: valueSchemaOptions$$() : initValue() : children.length
                 "
                 #newValue="selectlessOutlet"
               ></ng-container>
@@ -41,6 +70,10 @@
     }
     @for (field of children; track field.id || $index) {
       <div class="flex items-center gap-2">
+        @if (isRecord$$()) {
+          @let key = field.key!;
+          {{ key }}
+        }
         <div class="flex-1">
           <ng-container
             *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field, injector }"
