@@ -21,6 +21,7 @@ import { FieldGlobalConfig } from './piying/define';
 import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { ArrayDefine } from './piying/page/component/array';
 import { LogicDefine } from './piying/page/component/logic';
+import { OverlayDefine } from './piying/page/component/overlay';
 
 export const routes: Routes = [
   {
@@ -177,6 +178,13 @@ export const routes: Routes = [
             component: SchemaViewRC,
             data: {
               schema: () => LogicDefine,
+            },
+          },
+          {
+            path: 'overlay',
+            component: SchemaViewRC,
+            data: {
+              schema: () => OverlayDefine,
             },
           },
         ],
