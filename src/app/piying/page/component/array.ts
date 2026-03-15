@@ -37,6 +37,23 @@ export const ArrayDefine = v.object({
       },
     }),
   ),
+  array4: v.pipe(
+    v.array(ItemDefine),
+    setComponent('editable-array'),
+    actions.inputs.patch({
+      layout: 'column',
+      addMode: 1,
+      addPosition:'top',
+      minLength: 1,
+      initValue: (index: any) => {
+        return {
+          v1: `${index}`,
+          v2: index,
+          v3: !!index,
+        };
+      },
+    }),
+  ),
   checkbox1: v.pipe(
     v.array(
       v.pipe(v.string(), setComponent('boolean'), actions.props.patch({ disableRequired: true })),

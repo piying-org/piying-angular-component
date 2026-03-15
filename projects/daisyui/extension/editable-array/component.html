@@ -6,6 +6,39 @@
     [events]="events()"
   >
     @let children = children$$();
+    <ng-template #addTemplate>
+      @if (!disableAdd()) {
+        @if (addMode() === 0) {
+          <button class="btn btn-circle" (click)="addNew()" color="primary">
+            <span class="material-icons">add</span>
+          </button>
+        } @else {
+          <div class="flex items-center gap-2">
+            <div class="flex-1">
+              <ng-container
+                [selectlessOutlet]="PiyingView"
+                [selectlessOutletInputs]="
+                  addNewInputs | pure: schemaOptions$$() : initValue() : children.length
+                "
+                #newValue="selectlessOutlet"
+              ></ng-container>
+            </div>
+            @let form = newValue.componentInstance?.form$$();
+            <button
+              class="btn btn-circle"
+              (click)="addNew(newValue)"
+              color="primary"
+              [disabled]="!form || form.invalid"
+            >
+              <span class="material-icons">add</span>
+            </button>
+          </div>
+        }
+      }
+    </ng-template>
+    @if (addPosition() === 'top') {
+      <ng-container *ngTemplateOutlet="addTemplate"></ng-container>
+    }
     @for (field of children; track field.id || $index) {
       <div class="flex items-center gap-2">
         <div class="flex-1">
@@ -25,33 +58,8 @@
         }
       </div>
     }
-    @if (!disableAdd()) {
-      @if (addMode() === 0) {
-        <button class="btn btn-circle" (click)="addNew()" color="primary">
-          <span class="material-icons">add</span>
-        </button>
-      } @else {
-        <div class="flex items-center gap-2">
-          <div class="flex-1">
-            <ng-container
-              [selectlessOutlet]="PiyingView"
-              [selectlessOutletInputs]="
-                addNewInputs | pure: schemaOptions$$() : initValue() : children.length
-              "
-              #newValue="selectlessOutlet"
-            ></ng-container>
-          </div>
-          @let form = newValue.componentInstance?.form$$();
-          <button
-            class="btn btn-circle"
-            (click)="addNew(newValue)"
-            color="primary"
-            [disabled]="!form || form.invalid"
-          >
-            <span class="material-icons">add</span>
-          </button>
-        </div>
-      }
+    @if (addPosition() === 'bottom') {
+      <ng-container *ngTemplateOutlet="addTemplate"></ng-container>
     }
   </div>
 </ng-template>

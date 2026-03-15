@@ -15,7 +15,7 @@ import {
   EventsDirective,
 } from '@piying/view-angular';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -42,6 +42,7 @@ export class EditableArrayFGC extends PiyingViewGroupBase {
   disableAdd = input(false);
   addMode = input(0);
   disableRemove = input(false);
+  addPosition = input<'top' | 'bottom'>('bottom');
   initValue = input<(index: number | undefined) => any>();
   minLength = input<number>(0);
 
