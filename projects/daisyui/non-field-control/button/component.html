@@ -10,7 +10,6 @@
           | mergeClass: wrapperClass$() : (isDisabled ? ('btn-disabled' | cssPrefix) : undefined)
       "
       (click)="onClick($event)"
-      [ngClass]="wrapperClass$()"
       tabindex="-1"
       role="button"
       aria-disabled="true"
@@ -29,10 +28,9 @@
     <button
       [attributes]="attr()"
       [excludes]="['class', 'type']"
-      [class]="attr()?.class"
+      [class]="attr()?.class | mergeClass: wrapperClass$()"
       (click)="onClick($event)"
       [disabled]="isLoading$() || disabled()"
-      [ngClass]="wrapperClass$()"
       [type]="attr()?.type ?? 'button'"
     >
       @if (isLoading$() && !disableLoadingIcon()) {
