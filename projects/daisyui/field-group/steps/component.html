@@ -11,7 +11,7 @@
           'step'
             | cssPrefix
             | mergeClass
-              : ((isActivated | pure: activatedIndex() : $index)
+              : ((isActivated | pure: activatedIndex$() : $index)
                   ? ('step-' + stepColor() | cssPrefix)
                   : undefined)
         "
@@ -34,17 +34,17 @@
     } @else {
       <div [class]="'flex gap-2 items-center' | twPrefix">
         <button
-          [class]="'btn btn-secondary' | cssPrefix"
-          [disabled]="activatedIndex() === 0 || prevItem$$().form.control?.invalid"
+          [class]="'btn btn-secondary btn-circle' | cssPrefix"
+          [disabled]="activatedIndex$() === 0 || prevItem$$().form.control?.invalid"
           (click)="toPrev()"
         >
           {{ prev() }}
         </button>
 
         <button
-          [class]="'btn btn-primary' | cssPrefix"
+          [class]="'btn btn-primary btn-circle' | cssPrefix"
           [disabled]="
-            activatedItem$$().form.control?.invalid || activatedIndex() + 1 !== children$$().length
+            !activatedItem$$().form.control?.valid || activatedIndex$() + 1 === children$$().length
           "
           (click)="toNext()"
         >

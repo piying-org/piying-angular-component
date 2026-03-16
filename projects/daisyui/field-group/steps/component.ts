@@ -1,5 +1,14 @@
 import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
-import { Component, computed, inject, input, model, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  linkedSignal,
+  model,
+  output,
+  viewChild,
+} from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -25,10 +34,14 @@ export class StepsFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
-  activatedIndex = model(0);
-  activatedItem$$ = computed(() => this.field$$().children!()[this.activatedIndex()]);
+  // todo model
+  activatedIndex = input(0);
+  activatedIndex$ = linkedSignal(this.activatedIndex);
+  activatedIndexChange = output<number>();
+
+  activatedItem$$ = computed(() => this.field$$().children!()[this.activatedIndex$()]);
   prevItem$$ = computed(() => {
-    return this.children$$()[this.activatedIndex() - 1];
+    return this.children$$()[this.activatedIndex$() - 1];
   });
   customAction = input();
   prev = input('⬅️');
@@ -37,10 +50,12 @@ export class StepsFGC extends PiyingViewGroupBase {
   stepColor = input<Color>('primary');
 
   toPrev() {
-    this.activatedIndex.update((value) => value - 1);
+    this.activatedIndex$.update((value) => value - 1);
+    this.activatedIndexChange.emit(this.activatedIndex$());
   }
-  toNext() {
-    this.activatedIndex.update((value) => value + 1);
+  toNext() {    
+    this.activatedIndex$.update((value) => value + 1);
+    this.activatedIndexChange.emit(this.activatedIndex$());
   }
   isActivated(activatedIndex: number, currentIndex: number) {
     return activatedIndex >= currentIndex;

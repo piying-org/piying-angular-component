@@ -7,10 +7,17 @@ const ItemDefine = v.object({
 });
 export const GroupDefine = v.object({
   group1: v.pipe(
-    v.record(v.pipe(v.string(),v.title('key')), ItemDefine),
+    v.record(v.pipe(v.string(), v.title('key')), ItemDefine),
     setComponent('editable-group'),
     actions.inputs.patch({
       layout: 'column',
     }),
+  ),
+  tab1: v.pipe(
+    v.intersect([
+      v.pipe(v.object({ l1: v.string() }), v.title('step1')),
+      v.pipe(v.object({ l2: v.number() }), v.title('step2')),
+    ]),
+    setComponent('steps'),
   ),
 });
