@@ -1,13 +1,13 @@
-export const MODAL_PREFIX_LIST = [
-  'modal',
-  'modal-box',
-  'modal-action',
-  'modal-backdrop',
-  'modal-toggle',
-  'modal-open',
-  'modal-top',
-  'modal-middle',
-  'modal-bottom',
-  'modal-start',
-  'modal-end',
-];
+export const MODAL_PREFIX_LIST=[
+    "modal",
+    "modal-box",
+    "modal-action",
+    "modal-backdrop",
+    "modal-toggle",
+    "modal-open",
+    "modal-top",
+    "modal-middle",
+    "modal-bottom",
+    "modal-start",
+    "modal-end"
+]
