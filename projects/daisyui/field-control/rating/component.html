@@ -13,28 +13,33 @@
     <input
       type="radio"
       [name]="name"
-      aria-label="{{ min() }} rating"
-      [checked]="value$() === min()"
-      (change)="valueAndTouchedChange(min())"
-      [class]="itemClass$$() | mergeClass: ('rating-hidden' | cssPrefix)"
+      aria-label="{{ 0 }} rating"
+      [checked]="value$() === 0"
+      (change)="valueAndTouchedChange(0)"
+      [class]="'rating-hidden' | cssPrefix"
+      [disabled]="min() > 0"
     />
     @for (item of list(); track $index) {
+      @let value2 = item + 1;
       @if (half()) {
+        @let halfValue = item + 0.5;
         <input
           type="radio"
           [name]="name"
-          aria-label="{{ item + 0.5 }} rating"
-          [checked]="value$() === item + 0.5"
-          (change)="valueAndTouchedChange(item + 0.5)"
-          [class]="itemClass$$() | mergeClass: ('mask mask-half-1' | cssPrefix)"
+          aria-label="{{ halfValue }} rating"
+          [checked]="value$() === halfValue"
+          (change)="valueAndTouchedChange(halfValue)"
+          [class]="itemClass$$() | mergeClass: 'mask mask-half-1' | cssPrefix"
+          [disabled]="min() > halfValue"
         />
         <input
           type="radio"
           [name]="name"
-          aria-label="{{ item + 1 }} rating"
-          [checked]="value$() === item + 1"
-          (change)="valueAndTouchedChange(item + 1)"
-          [class]="itemClass$$() | mergeClass: ('mask mask-half-2' | cssPrefix)"
+          aria-label="{{ value2 }} rating"
+          [checked]="value$() === value2"
+          (change)="valueAndTouchedChange(value2)"
+          [class]="itemClass$$() | mergeClass: 'mask mask-half-2' | cssPrefix"
+          [disabled]="min() > value2"
         />
       } @else {
         <input
@@ -43,7 +48,8 @@
           aria-label="{{ item + 1 }} rating"
           [checked]="value$() === item + 1"
           (change)="valueAndTouchedChange(item + 1)"
-          [class]="itemClass$$() | mergeClass: ('mask' | cssPrefix)"
+          [class]="itemClass$$() | mergeClass: 'mask mask-star' | cssPrefix"
+          [disabled]="min() > value2"
         />
       }
     }

@@ -4,6 +4,12 @@ import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+/**
+ * 复选框控件
+ * 
+ * 提供单个复选框的勾选功能，支持确定、不确定两种状态。
+ * 常用于需要选择多个选项的场景。
+ */
 @Component({
   selector: 'app-checkbox',
   templateUrl: './component.html',
@@ -19,9 +25,9 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class CheckboxFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  indeterminate = input<boolean>();
   color = input<Color>();
   size = input<Size>();
+  indeterminate = input<boolean>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {
     return this.#theme.setClass(

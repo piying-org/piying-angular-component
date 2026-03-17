@@ -4,6 +4,12 @@ import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+/**
+ * 范围选择控件
+ * 
+ * 提供滑动条形式的数值输入，支持设置最小值、最大值和步长。
+ * 适用于需要选择数值范围或评分等场景。
+ */
 @Component({
   selector: 'app-range',
   templateUrl: './component.html',

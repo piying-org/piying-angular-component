@@ -33,6 +33,8 @@ export const FormBase = v.object({
       ],
     }),
   ),
+  rating1: v.pipe(v.number(), setComponent('rating'), actions.inputs.patch({ min: 2, half: true })),
+  // rating2: v.pipe(v.number(), setComponent('rating'), actions.inputs.patch({ min: 0, half: true })),
   textarea1: v.pipe(v.string(), setComponent('textarea'), v.title('textarea-control')),
   date: v.pipe(v.date()),
   calendar: v.pipe(

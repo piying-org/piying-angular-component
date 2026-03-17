@@ -12,6 +12,12 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+/**
+ * 选择器控件
+ * 
+ * 提供下拉选择功能，支持单选、多选以及原生 select 样式。
+ * 适用于需要在多个选项中选择一个或多个的场景。
+ */
 @Component({
   selector: 'app-select',
   templateUrl: './component.html',

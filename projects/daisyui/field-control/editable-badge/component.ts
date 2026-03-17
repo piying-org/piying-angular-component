@@ -14,7 +14,12 @@ import { BaseControl } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-
+/**
+ * 可编辑标签控件
+ * 
+ * 提供可直接点击编辑的标签显示功能，支持在显示和编辑状态之间切换。
+ * 适用于需要Inline编辑的场景，如自定义标签、备注等。
+ */
 @Component({
   selector: 'app-editable-badge',
   templateUrl: './component.html',

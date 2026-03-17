@@ -27,7 +27,12 @@ import {
 import { range } from 'es-toolkit';
 import { SelectionModel } from '@angular/cdk/collections';
 import { toDateStr } from './date.util';
-
+/**
+ * 日期选择控件
+ * 
+ * 提供日期、多选日期、范围选择三种模式的日期选择功能。
+ * 支持自定义日期属性配置，适用于需要进行日期选择的表单场景。
+ */
 function DateEqual(a: Date, b: Date) {
   return a.getTime() === b.getTime();
 }

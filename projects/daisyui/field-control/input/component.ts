@@ -6,6 +6,12 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { toDateStr } from '../calendar/date.util';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+/**
+ * 文本输入控件
+ * 
+ * 提供多种类型的文本输入功能，支持文本、密码、数字、日期等常见输入场景。
+ * 适合作为表单中的基础输入组件使用。
+ */
 @Component({
   selector: 'app-input',
   templateUrl: './component.html',
