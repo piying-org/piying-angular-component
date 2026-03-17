@@ -1,1 +1,3 @@
-export const HOVER_GALLERY_PREFIX_LIST = ['hover-gallery'];
+export const HOVER_GALLERY_PREFIX_LIST=[
+    "hover-gallery"
+]

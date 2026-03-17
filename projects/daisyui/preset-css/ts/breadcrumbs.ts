@@ -1,1 +1,3 @@
-export const BREADCRUMBS_PREFIX_LIST = ['breadcrumbs'];
+export const BREADCRUMBS_PREFIX_LIST=[
+    "breadcrumbs"
+]
