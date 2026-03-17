@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
+
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
@@ -16,6 +17,13 @@ class AccordionItem {
   constructor(field: PiResolvedViewFieldConfig) {}
   isActivated() {}
 }
+
+/**
+ * 折叠面板组
+ *
+ * 用于将多个内容块进行折叠/展开管理，支持单展开或多展开模式。
+ * 适合内容较多但需要节省空间的场景，如常见问题解答、设置选项分组等。
+ */
 @Component({
   selector: 'app-accordion',
   templateUrl: './component.html',

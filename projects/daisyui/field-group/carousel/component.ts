@@ -5,7 +5,12 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
-
+/**
+ * 走马灯组
+ *
+ * 用于横向或纵向滚动展示多个表单字段，支持自动滚动和对齐方式设置。
+ * 适合字段较多且需要空间节省的场景，如多步骤表单、长列表项展示等。
+ */
 @Component({
   selector: 'app-carousel',
   templateUrl: './component.html',

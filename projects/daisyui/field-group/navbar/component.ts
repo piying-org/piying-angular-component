@@ -3,7 +3,12 @@ import { Component, computed, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-
+/**
+ * 导航栏组
+ *
+ * 用于将表单字段组织成导航栏布局，支持开始、中间、结束三个区域的智能分配。
+ * 适合需要在顶部导航栏展示表单操作或导航项的场景，如搜索栏、工具栏等。
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './component.html',

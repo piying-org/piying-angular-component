@@ -7,6 +7,11 @@ import { Size } from '@piying-lib/angular-core';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 
+/**
+ * 舷窗组
+ *
+ * 底部导航栏（也称为“Dock”或“底部栏”）是一种用户界面元素，用于向用户提供导航选项。该栏固定在屏幕底部。
+ */
 @Component({
   selector: 'app-dock',
   templateUrl: './component.html',

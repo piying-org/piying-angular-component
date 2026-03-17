@@ -5,6 +5,13 @@ import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
+
+/**
+ * 卡片组
+ *
+ * 用于将表单字段组织成卡片式布局，支持标题、图片和操作区的自定义。
+ * 适合需要突出显示每组字段、创建美观表单界面的场景，如用户资料编辑、表单 Wizard 等。
+ */
 @Component({
   selector: 'app-card',
   templateUrl: './component.html',

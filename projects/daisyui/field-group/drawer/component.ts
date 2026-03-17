@@ -5,6 +5,12 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
+/**
+ * 抽屉组
+ *
+ * 用于将表单字段组织成可侧边抽屉展开/收起的布局，支持覆盖和侧边两种模式。
+ * 适合次要或辅助性的字段组，如筛选条件、详细信息、操作面板等。
+ */
 @Component({
   selector: 'app-drawer',
   templateUrl: './component.html',

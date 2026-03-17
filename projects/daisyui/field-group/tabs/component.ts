@@ -8,6 +8,12 @@ import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { FieldLogicGroup } from '@piying/view-angular-core';
+/**
+ * 标签页组
+ *
+ * 用于将表单字段组织成多标签页切换展示，支持多种标签样式和位置布局。
+ * 适合字段较多需要分类管理、多配置项分页展示的场景，如系统设置、表单分组等。
+ */
 @Component({
   selector: 'app-tabs',
   templateUrl: './component.html',

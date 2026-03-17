@@ -16,7 +16,12 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
-
+/**
+ * 步骤组
+ *
+ * 用于将表单字段组织成多步骤向导流程，支持步骤进度管理和前后切换。
+ * 适合复杂表单分步填写的场景，如注册流程、配置向导、订单填写等。
+ */
 @Component({
   selector: 'app-steps',
   templateUrl: './component.html',
@@ -53,7 +58,7 @@ export class StepsFGC extends PiyingViewGroupBase {
     this.activatedIndex$.update((value) => value - 1);
     this.activatedIndexChange.emit(this.activatedIndex$());
   }
-  toNext() {    
+  toNext() {
     this.activatedIndex$.update((value) => value + 1);
     this.activatedIndexChange.emit(this.activatedIndex$());
   }
