@@ -90,6 +90,25 @@ export function createDefaultColDefineFn(
     actions.wrappers.set([{ type: isHeader ? ThWC : TdWC }]),
   );
 }
+/*
+ * TableNFCC - 数据表格组件
+ *
+ * 用途: 用于显示和管理大量结构化数据，支持丰富的列定义和行操作
+ * 特性:
+ *   - 支持表头、表体、表脚三部分的自定义渲染
+ *   - 支持列组定义，可配置列的显示内容和格式
+ *   - 支持行展开功能（ExpandOneTableCell）
+ *   - 集成 piying-view Schema 系统，支持动态数据和验证
+ *   - 支持排序、状态管理等高级功能
+ *
+ * 使用场景: 数据列表展示、管理后台、报表等需要表格形式展示数据的场景
+ *
+ * 核心类型:
+ *   - ItemCell: 列内容定义（字符串/Schema/函数）
+ *   - ColumnDefine: 列定义（head/body/foot）
+ *   - TableItemDefine2: 表格完整定义（行+列）
+ */
+
 @Component({
   selector: 'app-table',
   templateUrl: './component.html',

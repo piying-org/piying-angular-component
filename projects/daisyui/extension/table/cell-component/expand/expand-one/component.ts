@@ -3,6 +3,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { TableExpandService } from '../../../wapper';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+/*
+ * TableExpandOneTableCell - 表格行展开单元格组件
+ *
+ * 用途: 用于表格行的展开控制，显示和控制行的展开状态
+ * 特性:
+ *   - 显示展开/收起按钮
+ *   - 控制行的展开状态
+ *   - 集成 TableExpandService 进行状态管理
+ *   - 集成 piying-view 字段系统
+ *
+ * 使用场景: 表格行需要展开显示详细信息的场景
+ */
 
 @Component({
   selector: 'app-table-expand-cell',

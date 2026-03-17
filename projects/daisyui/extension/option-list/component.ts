@@ -12,6 +12,19 @@ import { NgTemplateOutlet } from '@angular/common';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+/*
+ * OptionListFCC - 选项列表组件
+ *
+ * 用途: 用于显示可选择的选项列表，支持自定义选项模板和转换规则
+ * 特性:
+ *   - 支持动态选项数据（options）
+ *   - 支持自定义选项模板（optionTemplate）
+ *   - 支持选项转换器（optionConvert）
+ *   - 实现了 ControlValueAccessor 接口，可直接用于表单
+ *   - 集成 piying-view 字段系统
+ *
+ * 使用场景: 下拉选择、单选列表、选项选择等需要选项列表的场景
+ */
 @Component({
   selector: 'app-option-list',
   templateUrl: './component.html',

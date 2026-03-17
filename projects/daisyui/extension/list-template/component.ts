@@ -4,6 +4,19 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PI_VIEW_FIELD_TOKEN, PiyingView } from '@piying/view-angular';
 
 import { PurePipe } from '@cyia/ngx-common/pipe';
+/*
+ * ListTemplateNFCC - 列表模板组件
+ *
+ * 用途: 用于基于模板渲染列表数据，支持动态上下文传递
+ * 特性:
+ *   - 支持自定义模板（template）
+ *   - 支持列表数据渲染（list）
+ *   - 支持传递父级和项的上下文信息
+ *   - 集成 piying-view 字段系统
+ *
+ * 使用场景: 动态列表渲染、模板化列表展示等需要基于模板渲染列表的场景
+ */
+
 @Component({
   selector: 'app-list-template',
   templateUrl: './component.html',

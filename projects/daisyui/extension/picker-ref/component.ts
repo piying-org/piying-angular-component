@@ -20,6 +20,19 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { OverlayConfig } from '@angular/cdk/overlay';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
+/*
+ * PickerRefFCC - 选择器引用组件
+ *
+ * 用途: 用于触发选择器弹窗，支持自定义触发器和内容区域
+ * 特性:
+ *   - 支持自定义触发器内容（trigger）
+ *   - 支持自定义弹窗内容（content）
+ *   - 支持选择后自动关闭（changeClose）
+ *   - 基于 CDK Overlay 实现弹窗定位
+ *   - 实现了 ControlValueAccessor 接口，可直接用于表单
+ *
+ * 使用场景: 选择器、下拉选择、日期时间选择等需要弹窗选择的场景
+ */
 @Component({
   selector: 'app-picker-ref',
   templateUrl: './component.html',

@@ -3,7 +3,19 @@ import { Component, inject, signal } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
-
+/*
+ * FormDialogContainer - 表单对话框容器组件
+ *
+ * 用途: 用于在对话框中显示和编辑表单数据
+ * 特性:
+ *   - 支持表单数据的读取和修改
+ *   - 支持提交和取消操作
+ *   - 支持加载状态显示
+ *   - 支持自定义应用值的函数
+ *   - 基于 CDK Dialog 实现
+ *
+ * 使用场景: 需要在对话框中编辑表单数据的场景，常用于新增、编辑操作
+ */
 @Component({
   templateUrl: './component.html',
   imports: [PiyingView, SelectorlessOutlet],

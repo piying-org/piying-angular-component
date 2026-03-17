@@ -12,6 +12,19 @@ export interface CheckboxOption {
   props?: any;
 }
 const Empty_Array: any[] = [];
+/*
+ * CheckboxListFGC - 复选框列表组件
+ *
+ * 用途: 用于显示可多选的复选框列表，支持动态选项和自定义配置
+ * 特性:
+ *   - 支持动态复选框选项（options）
+ *   - 支持自定义每个选项的 Schema 和属性
+ *   - 实现了 ControlValueAccessor 接口，可直接用于表单
+ *   - 基于 piying-view 字段系统，支持动态验证和状态管理
+ *   - 支持值的增删操作
+ *
+ * 使用场景: 多选列表、权限选择、标签选择等需要多选功能的场景
+ */
 @Component({
   selector: 'app-checkbox-list',
   templateUrl: './component.html',

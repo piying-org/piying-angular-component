@@ -9,6 +9,18 @@ import clsx from 'clsx';
 function goPage(value: number) {
   return { type: 'go' as const, value };
 }
+/*
+ * PaginationNFCC - 分页组件
+ *
+ * 用途: 用于分页显示大量数据，支持自定义每页条数和跳转页面
+ * 特性:
+ *   - 支持横向和纵向布局
+ *   - 可配置每页显示条数选项
+ *   - 支持自定义页码标签
+ *   - 集成 piying-view 字段系统，自动同步分页属性
+ *
+ * 使用场景: 数据表格分页、列表分页等需要分页功能的场景
+ */
 @Component({
   selector: 'app-pagination',
   templateUrl: './component.html',

@@ -11,6 +11,20 @@ import { NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+/*
+ * EditableGroupFGC - 可编辑组组件
+ *
+ * 用途: 用于动态管理可增删的组数据，支持键值对和单值两种模式
+ * 特性:
+ *   - 支持添加和删除组项
+ *   - 支持横向和纵向布局
+ *   - 支持设置最小长度限制
+ *   - 支持自定义新增项的初始值
+ *   - 支持键值对模式（通过 groupKeySchema）
+ *   - 集成 piying-view 字段系统
+ *
+ * 使用场景: 动态表单项、可增删的数据组、键值对列表等需要动态管理组数据的场景
+ */
 @Component({
   selector: 'app-editable-group',
   templateUrl: './component.html',
