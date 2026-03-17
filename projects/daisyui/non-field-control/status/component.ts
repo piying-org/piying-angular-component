@@ -4,6 +4,12 @@ import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color, Size } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
+
+/**
+ * 状态指示器组件
+ * 用于显示对象的当前状态（如在线、离线、完成等），常用于列表项或卡片中
+ * 支持多种动画效果（ping、bounce）增强视觉提示
+ */
 @Component({
   selector: 'app-status',
   templateUrl: './component.html',

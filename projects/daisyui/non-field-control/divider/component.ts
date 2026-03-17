@@ -4,6 +4,12 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
+
+/**
+ * 分割线组件
+ * 用于在内容之间添加视觉分隔，支持水平/垂直方向和内容位置调整
+ * 常用于表单、列表、段落之间的分隔
+ */
 @Component({
   selector: 'app-divider',
   templateUrl: './component.html',

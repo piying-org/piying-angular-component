@@ -6,6 +6,12 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color, Size } from '@piying-lib/angular-core';
+
+/**
+ * 表单提交按钮组件
+ * 用于表单提交、重置等操作，具有与按钮组件相同的样式特性
+ * 常用于表单底部操作区域
+ */
 @Component({
   selector: 'app-input-button',
   templateUrl: './component.html',

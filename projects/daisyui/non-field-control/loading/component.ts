@@ -5,6 +5,11 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
 
+/**
+ * 加载指示器组件
+ * 用于在数据加载、请求处理等异步操作期间显示加载状态
+ * 提供多种样式类型（-spinner、dots、ring 等）供选择
+ */
 @Component({
   selector: 'app-loading',
   templateUrl: './component.html',

@@ -2,6 +2,12 @@ import { NgClass } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { AttributesDirective } from '@piying/view-angular';
+
+/**
+ * 头像组件
+ * 用于显示用户头像、图标或占位符，支持在线/离线状态指示
+ * 可用于个人资料、列表项、评论等场景
+ */
 @Component({
   selector: 'app-avatar',
   templateUrl: './component.html',

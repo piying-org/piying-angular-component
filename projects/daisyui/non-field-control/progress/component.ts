@@ -6,6 +6,11 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color } from '@piying-lib/angular-core';
 import { AttributesDirective } from '@piying/view-angular';
 
+/**
+ * 进度条组件
+ * 用于显示操作完成的进度或数据加载的百分比
+ * 支持自定义颜色和进度值显示
+ */
 @Component({
   selector: 'app-progress',
   templateUrl: './component.html',

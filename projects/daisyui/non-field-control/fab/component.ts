@@ -16,6 +16,11 @@ import { IconConfig } from '@piying-lib/angular-core';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService, useDefaultClass } from '@piying-lib/angular-daisyui/service';
 
+/**
+ * 悬浮操作按钮组件
+ * 通常悬浮在页面角落，用于提供主要或常用的操作入口
+ * 支持展开式菜单和自定义图标配置
+ */
 export interface FabOption {
   class?: string;
   label?: string;

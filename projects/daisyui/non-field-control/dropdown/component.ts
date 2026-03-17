@@ -8,6 +8,12 @@ import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
+
+/**
+ * 下拉菜单组件
+ * 用于在有限空间内展示多个操作选项或列表项
+ * 支持悬停或点击触发，可配置菜单对齐方式和显示位置
+ */
 @Component({
   selector: 'app-dropdown',
   templateUrl: './component.html',

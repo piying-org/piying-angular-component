@@ -5,6 +5,12 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+
+/**
+ * 文件输入按钮组件
+ * 结合按钮样式和文件选择功能，用户点击按钮后可选择本地文件并触发处理逻辑
+ * 支持单文件或多文件上传模式
+ */
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',

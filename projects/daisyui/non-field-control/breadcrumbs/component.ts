@@ -5,6 +5,12 @@ import { IconConfig } from '@piying-lib/angular-core';
 import { MatIcon } from '@angular/material/icon';
 import { NgTemplateOutlet } from '@angular/common';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+
+/**
+ * 面包屑导航组件
+ * 用于显示页面层级结构和当前位置，帮助用户了解所处位置并快速返回上级页面
+ * 支持自定义标签、图标和 URL 配置
+ */
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './component.html',

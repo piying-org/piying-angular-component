@@ -5,6 +5,12 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+
+/**
+ * 按钮组件
+ * 用于触发操作或提交表单，是最常用的操作控件
+ * 支持多种颜色、样式、尺寸、形状以及加载状态
+ */
 @Component({
   selector: 'app-button',
   templateUrl: './component.html',

@@ -6,6 +6,12 @@ import { AttributesDirective, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying
 
 import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
+
+/**
+ * 统计数据显示组件
+ * 用于展示关键数据指标，支持标题、数值、描述和图标的组合展示
+ * 常用于数据报表、仪表盘等数据可视化场景
+ */
 @Component({
   selector: 'app-stat',
   templateUrl: './component.html',
