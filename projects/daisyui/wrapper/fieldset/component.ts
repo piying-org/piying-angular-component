@@ -8,7 +8,7 @@ import {
 
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 @Component({
-  selector: 'app-fieldset-wrapper',
+  selector: 'app-fieldset',
   templateUrl: './component.html',
   imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe, InsertFieldDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,

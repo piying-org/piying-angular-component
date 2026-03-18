@@ -31,6 +31,9 @@
       "@piying-lib/angular-daisyui/overlay": [
         "./projects/daisyui/overlay"
       ],
+      "@piying-lib/angular-daisyui/preset": [
+        "./projects/daisyui/preset"
+      ],
       "@piying-lib/angular-core": [
         "./projects/core"
       ],
