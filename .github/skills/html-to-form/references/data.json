@@ -1,0 +1,1421 @@
+[
+  {
+    "name": "div",
+    "description": "通用容器组件，用于在表单中创建通用的容器元素，主要用作布局容器或包裹其他组件。",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "common-data",
+    "description": "字符串或模板渲染组件，能够根据传入的内容自动判断类型并选择合适的渲染方式，支持字符串、数字、布尔值、TemplateRef模板、Schema对象以及包含image/icon/title的对象。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "content",
+        "type": "any",
+        "description": "要渲染的内容，可以是字符串、TemplateRef、Schema对象或包含image/icon/title的对象"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "checkbox",
+    "description": "复选框控件，提供单个复选框的勾选功能，支持确定、不确定两种状态，常用于需要选择多个选项的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "复选框的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "复选框的尺寸"
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "是否为不确定状态"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "input",
+    "description": "文本输入控件，提供多种类型的文本输入功能，支持文本、密码、数字、日期等常见输入场景，适合作为表单中的基础输入组件使用。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "type",
+        "type": "'text' | 'password' | 'email' | 'number' | 'date' | 'datetime-local' | 'week' | 'month' | 'tel' | 'url' | 'search' | 'time'",
+        "description": "输入框的类型，默认为'text'"
+      },
+      {
+        "name": "ghost",
+        "type": "boolean",
+        "description": "是否为幽灵样式"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "输入框的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "输入框的尺寸"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "select",
+    "description": "选择器控件，提供下拉选择功能，支持单选、多选以及原生select样式，适用于需要在多个选项中选择一个或多个的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "选择器的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "选择器的尺寸"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "是否支持多选"
+      },
+      {
+        "name": "ghost",
+        "type": "boolean",
+        "description": "是否为幽灵样式"
+      },
+      {
+        "name": "native",
+        "type": "boolean",
+        "description": "是否使用原生select样式"
+      },
+      {
+        "name": "options",
+        "type": "SelectOption[]",
+        "description": "选项列表，用于配置可选择的选项"
+      },
+      {
+        "name": "optionConvert",
+        "type": "OptionConvert",
+        "description": "选项转换器，用于自定义选项的label和value映射"
+      },
+      {
+        "name": "emptyOptionContent",
+        "type": "string",
+        "description": "空选项的显示内容，默认为'------'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "accordion",
+    "description": "折叠面板组，用于将多个内容块进行折叠/展开管理，支持单展开或多展开模式，适合内容较多但需要节省空间的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "multi",
+        "type": "boolean",
+        "description": "是否支持多展开模式"
+      },
+      {
+        "name": "childTitleFn",
+        "type": "(item: PiResolvedViewFieldConfig) => string",
+        "description": "子面板标题的生成函数"
+      },
+      {
+        "name": "joinChild",
+        "type": "boolean",
+        "description": "子面板是否使用join样式连接"
+      },
+      {
+        "name": "collapseIcon",
+        "type": "'arrow' | 'plus'",
+        "description": "折叠图标样式"
+      },
+      {
+        "name": "childClass",
+        "type": "string",
+        "description": "子面板的CSS类名"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "card",
+    "description": "卡片组，用于将表单字段组织成卡片式布局，支持标题、图片和操作区的自定义，适合需要突出显示每组字段、创建美观表单界面的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "border",
+        "type": "'border' | 'dash'",
+        "description": "卡片边框样式"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "卡片尺寸"
+      },
+      {
+        "name": "bodyClass",
+        "type": "string",
+        "description": "卡片主体的CSS类名"
+      },
+      {
+        "name": "figureClass",
+        "type": "string",
+        "description": "卡片图片区域的CSS类名"
+      },
+      {
+        "name": "actionsClass",
+        "type": "string",
+        "description": "卡片操作区域的CSS类名"
+      },
+      {
+        "name": "titleKey",
+        "type": "string",
+        "description": "标题字段的键名，默认为'title'"
+      },
+      {
+        "name": "figureKey",
+        "type": "string",
+        "description": "图片字段的键名，默认为'figure'"
+      },
+      {
+        "name": "actionsKey",
+        "type": "string",
+        "description": "操作区域字段的键名，默认为'actions'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "list",
+    "description": "列表组，用于将表单字段以列表形式垂直排列展示，支持自定义标题样式，适合字段较多、需要清晰层级结构的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "titleClass",
+        "type": "any",
+        "description": "标题的CSS类名"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "tabs",
+    "description": "标签页组，用于将表单字段组织成多标签页切换展示，支持多种标签样式和位置布局，适合字段较多需要分类管理、多配置项分页展示的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "标签页尺寸"
+      },
+      {
+        "name": "activatedIndex",
+        "type": "number",
+        "description": "当前激活的标签索引，默认为0"
+      },
+      {
+        "name": "type",
+        "type": "'box' | 'border' | 'lift' | undefined",
+        "description": "标签页样式类型"
+      },
+      {
+        "name": "placement",
+        "type": "'top' | 'bottom'",
+        "description": "标签页位置"
+      },
+      {
+        "name": "tabContentClass",
+        "type": "string",
+        "description": "标签页内容区域的CSS类名"
+      },
+      {
+        "name": "beforeChange",
+        "type": "(index: number) => any",
+        "description": "标签切换前的回调函数"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "steps",
+    "description": "步骤组，用于将表单字段组织成多步骤向导流程，支持步骤进度管理和前后切换，适合复杂表单分步填写的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "activatedIndex",
+        "type": "number",
+        "description": "当前激活的步骤索引，默认为0"
+      },
+      {
+        "name": "customAction",
+        "type": "any",
+        "description": "自定义操作配置"
+      },
+      {
+        "name": "prev",
+        "type": "string",
+        "description": "上一步按钮的显示内容，默认为'⬅️'"
+      },
+      {
+        "name": "next",
+        "type": "string",
+        "description": "下一步按钮的显示内容，默认为'➡️'"
+      },
+      {
+        "name": "direction",
+        "type": "'vertical' | 'horizontal'",
+        "description": "步骤方向"
+      },
+      {
+        "name": "stepColor",
+        "type": "Color",
+        "description": "步骤颜色，默认为'primary'"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "activatedIndexChange",
+        "type": "number",
+        "description": "激活步骤变化时发射的事件"
+      }
+    ],
+    "props": []
+  },
+  {
+    "name": "fieldset",
+    "description": "字段集组，用于将表单字段进行语义分组，使用HTMLfieldset元素进行包裹，适合需要语义化分组、无障碍访问要求较高的场景。",
+    "type": "表单组控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "dock",
+    "description": "舷窗组（底部导航栏），用于底部导航栏布局，固定在屏幕底部，适合移动端或需要底部导航的应用场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "尺寸"
+      },
+      {
+        "name": "activatedIndex",
+        "type": "number",
+        "description": "激活的索引，默认为0"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "drawer",
+    "description": "抽屉组，用于将表单字段组织成可侧边抽屉展开/收起的布局，支持覆盖和侧边两种模式，适合次要或辅助性的字段组。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "contentClass",
+        "type": "string",
+        "description": "抽屉内容区域的CSS类名"
+      },
+      {
+        "name": "sideClass",
+        "type": "string",
+        "description": "抽屉侧边区域的CSS类名"
+      },
+      {
+        "name": "overlayClass",
+        "type": "string",
+        "description": "遮罩层的CSS类名"
+      },
+      {
+        "name": "mode",
+        "type": "'over' | 'side'",
+        "description": "抽屉模式，默认为'over'"
+      },
+      {
+        "name": "position",
+        "type": "'start' | 'end'",
+        "description": "抽屉位置"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "carousel",
+    "description": "走马灯组，用于横向或纵向滚动展示多个表单字段，支持自动滚动和对齐方式设置，适合字段较多且需要空间节省的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "direction",
+        "type": "'horizontal' | 'vertical'",
+        "description": "滚动方向"
+      },
+      {
+        "name": "scrollAlign",
+        "type": "'start' | 'center' | 'end'",
+        "description": "滚动对齐方式"
+      },
+      {
+        "name": "childIdMap",
+        "type": "(compIndex: number, childIndex: number) => string",
+        "description": "子项ID映射函数"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "navbar",
+    "description": "导航栏组，用于将表单字段组织成导航栏布局，支持开始、中间、结束三个区域的智能分配，适合需要在顶部导航栏展示表单操作或导航项的场景。",
+    "type": "表单组控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "rating",
+    "description": "评分控件，提供星级或爱心形式的评分选择功能，支持半星选择，适用于评价、评级、评分等场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "尺寸，默认为'md'"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "description": "最小评分值，默认为1"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "description": "最大评分值，默认为5"
+      },
+      {
+        "name": "half",
+        "type": "boolean",
+        "description": "是否支持半星选择"
+      },
+      {
+        "name": "type",
+        "type": "'star' | 'star-2' | 'heart'",
+        "description": "评分类型，默认为'star'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "toggle",
+    "description": "开关控件，提供开/关状态切换功能，支持确定和不确定两种状态，适用于功能开关、选项启用/禁用等场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "开关的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "开关的尺寸"
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "是否为不确定状态"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "range",
+    "description": "范围选择控件，提供滑动条形式的数值输入，支持设置最小值、最大值和步长，适用于需要选择数值范围或评分等场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "滑动条的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "滑动条的尺寸"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "description": "最小值"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "description": "最大值"
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "description": "步长"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "calendar",
+    "description": "日期选择控件，提供日期、多选日期、范围选择三种模式的日期选择功能，支持自定义日期属性配置，适用于需要进行日期选择的表单场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "type",
+        "type": "'date' | 'multi' | 'range'",
+        "description": "日期选择类型，默认为'date'"
+      },
+      {
+        "name": "dateProps",
+        "type": "DatedCalendarDateProps | DatedCalendarMultiProps | DatedCalendarRangeProps",
+        "description": "日期属性配置"
+      },
+      {
+        "name": "monthProps",
+        "type": "number | number[]",
+        "description": "月份数量配置"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "password",
+    "description": "密码输入控件，提供带有密码可见性切换功能的输入框，适用于需要输入密码等敏感信息的场景。",
+    "type": "表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "textarea",
+    "description": "多行文本输入控件，提供多行文本的输入功能，支持大段文本的编辑场景，适用于评论、描述、备注等需要大量文本输入的表单字段。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "ghost",
+        "type": "boolean",
+        "description": "是否为幽灵样式"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "文本域的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "文本域的尺寸"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "radio",
+    "description": "单选框控件，提供一组选项中的单选功能，支持通过配置项数组动态生成选项列表，适用于需要在多个互斥选项中选择一个的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "单选框的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "单选框的尺寸"
+      },
+      {
+        "name": "options",
+        "type": "SelectOption[]",
+        "description": "选项列表，用于配置可选择的选项"
+      },
+      {
+        "name": "optionTemplate",
+        "type": "TemplateRef<any>",
+        "description": "选项模板"
+      },
+      {
+        "name": "optionConvert",
+        "type": "OptionConvert",
+        "description": "选项转换器，用于自定义选项的label和value映射"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "swap",
+    "description": "交换控件（状态切换控件），提供两种或三种状态之间的切换功能，支持旋转、翻转等动画效果，可自定义不同状态下的显示内容，适用于需要状态切换的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "onContent",
+        "type": "string | TemplateRef<any>",
+        "description": "开启状态的显示内容，默认为'✔️'"
+      },
+      {
+        "name": "offContent",
+        "type": "string | TemplateRef<any>",
+        "description": "关闭状态的显示内容，默认为'❌'"
+      },
+      {
+        "name": "indeterminateContent",
+        "type": "string | TemplateRef<any>",
+        "description": "不确定状态的显示内容"
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "是否为不确定状态"
+      },
+      {
+        "name": "rotate",
+        "type": "boolean",
+        "description": "是否使用旋转动画"
+      },
+      {
+        "name": "flip",
+        "type": "boolean",
+        "description": "是否使用翻转动画"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "file-input",
+    "description": "文件上传控件，提供文件选择和上传功能，支持单文件和多文件选择，适用于需要上传文件的表单场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "文件输入框的颜色主题"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "文件输入框的尺寸"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "是否支持多文件选择"
+      },
+      {
+        "name": "ghost",
+        "type": "boolean",
+        "description": "是否为幽灵样式"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "fileChange",
+        "type": "File | File[]",
+        "description": "文件选择变化时发射的事件"
+      }
+    ],
+    "props": []
+  },
+  {
+    "name": "editable-badge",
+    "description": "可编辑标签控件，提供可直接点击编辑的标签显示功能，支持在显示和编辑状态之间切换，适用于需要Inline编辑的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "尺寸，默认为'md'"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "标签的颜色"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "button",
+    "description": "按钮组件，用于触发操作或提交表单，是最常用的操作控件，支持多种颜色、样式、尺寸、形状以及加载状态。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "按钮的颜色主题"
+      },
+      {
+        "name": "style",
+        "type": "'outline' | 'dash' | 'soft' | 'ghost' | 'link'",
+        "description": "按钮的样式风格"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "按钮的尺寸"
+      },
+      {
+        "name": "shape",
+        "type": "'wide' | 'block' | 'square' | 'circle'",
+        "description": "按钮的形状"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "description": "是否为激活状态"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "按钮的内容，默认为'Default'"
+      },
+      {
+        "name": "clicked",
+        "type": "(event: PointerEvent) => void | Promise<void>",
+        "description": "按钮点击时的回调函数"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "是否禁用"
+      },
+      {
+        "name": "disableLoadingIcon",
+        "type": "boolean",
+        "description": "是否禁用加载图标"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "alert",
+    "description": "警告提示组件，用于显示重要的提示信息，支持多种样式、颜色和布局方向，常用于操作反馈、错误提示、成功通知等场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "style",
+        "type": "'outline' | 'dash' | 'soft'",
+        "description": "警告框的样式风格"
+      },
+      {
+        "name": "color",
+        "type": "AlertColor",
+        "description": "警告框的颜色"
+      },
+      {
+        "name": "direction",
+        "type": "'vertical' | 'horizontal'",
+        "description": "警告框的布局方向"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "警告框的内容，默认为'Default'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "badge",
+    "description": "徽章组件，用于显示数量标签、状态标记或重要提示，如未读消息数、通知提示等，支持多种样式风格和颜色尺寸配置。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "style",
+        "type": "'outline' | 'dash' | 'soft' | 'ghost'",
+        "description": "徽章的样式风格"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "徽章的颜色"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "徽章的尺寸"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "徽章的内容，默认为'Badge'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "divider",
+    "description": "分割线组件，用于在内容之间添加视觉分隔，支持水平/垂直方向和内容位置调整，常用于表单、列表、段落之间的分隔。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "分割线的颜色"
+      },
+      {
+        "name": "direction",
+        "type": "'horizontal' | 'vertical'",
+        "description": "分割线的方向"
+      },
+      {
+        "name": "contentPosition",
+        "type": "'start' | 'end'",
+        "description": "分割线内容的位置"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "分割线的内容，默认为'Default'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "dropdown",
+    "description": "下拉菜单组件，用于在有限空间内展示多个操作选项或列表项，支持悬停或点击触发，可配置菜单对齐方式和显示位置。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "title",
+        "type": "string",
+        "description": "下拉菜单的标题，默认为'Default'"
+      },
+      {
+        "name": "titleClass",
+        "type": "string",
+        "description": "标题的CSS类名"
+      },
+      {
+        "name": "align",
+        "type": "'start' | 'center' | 'end'",
+        "description": "下拉菜单的对齐方式"
+      },
+      {
+        "name": "position",
+        "type": "'top' | 'bottom' | 'left' | 'right'",
+        "description": "下拉菜单的显示位置"
+      },
+      {
+        "name": "triggerAction",
+        "type": "'hover' | 'open'",
+        "description": "触发下拉菜单的动作"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "下拉菜单的内容"
+      },
+      {
+        "name": "contentClass",
+        "type": "string",
+        "description": "下拉菜单内容区域的CSS类名"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "fab",
+    "description": "悬浮操作按钮组件，通常悬浮在页面角落，用于提供主要或常用的操作入口，支持展开式菜单和自定义图标配置。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "options",
+        "type": "FabOption[]",
+        "description": "悬浮按钮的选项列表"
+      },
+      {
+        "name": "flower",
+        "type": "boolean",
+        "description": "是否使用展开式菜单"
+      },
+      {
+        "name": "autoClose",
+        "type": "boolean",
+        "description": "点击选项后是否自动关闭"
+      },
+      {
+        "name": "commonClass",
+        "type": "string",
+        "description": "通用CSS类名"
+      },
+      {
+        "name": "defaultIcon",
+        "type": "FabOption",
+        "description": "默认图标的配置"
+      },
+      {
+        "name": "closeIcon",
+        "type": "FabOption | undefined",
+        "description": "关闭图标的配置"
+      },
+      {
+        "name": "mainIcon",
+        "type": "FabOption",
+        "description": "主图标的配置"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "kbd",
+    "description": "键盘按键组件，用于展示键盘快捷键或组合键提示，常见于帮助文档、教程或功能说明中，可显示单个按键或按键组合。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "按键的尺寸"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "按键的内容，默认为'Default'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "loading",
+    "description": "加载指示器组件，用于在数据加载、请求处理等异步操作期间显示加载状态，提供多种样式类型（spinner、dots、ring等）供选择。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "加载指示器的尺寸"
+      },
+      {
+        "name": "type",
+        "type": "'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'",
+        "description": "加载指示器的类型"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "progress",
+    "description": "进度条组件，用于显示操作完成的进度或数据加载的百分比，支持自定义颜色和进度值显示。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "进度条的颜色"
+      },
+      {
+        "name": "value",
+        "type": "number | undefined",
+        "description": "进度值"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "description": "最大值，默认为100"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "radial-progress",
+    "description": "环形进度组件，用于显示圆形的进度指示器，适合空间受限或需要美观展示的场景，支持自定义线宽和进度值配置。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "number",
+        "description": "进度值，默认为0"
+      },
+      {
+        "name": "valueMap",
+        "type": "(value: number) => string",
+        "description": "进度值映射函数"
+      },
+      {
+        "name": "strokeWidth",
+        "type": "string",
+        "description": "进度条的线宽"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "stat",
+    "description": "统计数据显示组件，用于展示关键数据指标，支持标题、数值、描述和图标的组合展示，常用于数据报表、仪表盘等数据可视化场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "title",
+        "type": "any",
+        "description": "标题内容"
+      },
+      {
+        "name": "titleClass",
+        "type": "string",
+        "description": "标题的CSS类名"
+      },
+      {
+        "name": "value",
+        "type": "any",
+        "description": "数值内容"
+      },
+      {
+        "name": "valueClass",
+        "type": "string",
+        "description": "数值的CSS类名"
+      },
+      {
+        "name": "desc",
+        "type": "any",
+        "description": "描述内容"
+      },
+      {
+        "name": "descClass",
+        "type": "string",
+        "description": "描述的CSS类名"
+      },
+      {
+        "name": "figure",
+        "type": "any",
+        "description": "图示内容"
+      },
+      {
+        "name": "figureClass",
+        "type": "string",
+        "description": "图示的CSS类名"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "status",
+    "description": "状态指示器组件，用于显示对象的当前状态（如在线、离线、完成等），常用于列表项或卡片中，支持多种动画效果（ping、bounce）增强视觉提示。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "content",
+        "type": "any",
+        "description": "状态内容，默认为'Default'"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "状态的颜色"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "状态的尺寸"
+      },
+      {
+        "name": "animatePing",
+        "type": "boolean",
+        "description": "是否使用ping动画效果"
+      },
+      {
+        "name": "animateBounce",
+        "type": "boolean",
+        "description": "是否使用bounce动画效果"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "theme-controller",
+    "description": "主题控制器组件，用于切换应用的主题样式，通常与主题切换功能配合使用，可通过配置不同的主题值来改变整体配色方案。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "string",
+        "description": "主题值，默认为'synthwave'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "toast",
+    "description": "Toast消息提示组件，用于在页面角落显示短暂的消息提示，如成功、失败、警告等反馈信息，通常在操作完成后自动消失，不影响用户继续操作。",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "checkbox-list",
+    "description": "复选框列表组件，用于显示可多选的复选框列表，支持动态选项和自定义配置，适用于多选列表、权限选择、标签选择等需要多选功能的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "options",
+        "type": "CheckboxOption[]",
+        "description": "复选框选项列表"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "editable-group",
+    "description": "可编辑组组件，用于动态管理可增删的组数据，支持键值对和单值两种模式，适用于动态表单项、可增删的数据组、键值对列表等需要动态管理组数据的场景。",
+    "type": "表单组控件组件",
+    "inputs": [
+      {
+        "name": "layout",
+        "type": "'row' | 'columen'",
+        "description": "布局方式，默认为'row'"
+      },
+      {
+        "name": "disableAdd",
+        "type": "boolean",
+        "description": "是否禁用添加功能"
+      },
+      {
+        "name": "addMode",
+        "type": "number",
+        "description": "添加模式"
+      },
+      {
+        "name": "disableRemove",
+        "type": "boolean",
+        "description": "是否禁用删除功能"
+      },
+      {
+        "name": "addPosition",
+        "type": "'top' | 'bottom'",
+        "description": "添加位置，默认为'bottom'"
+      },
+      {
+        "name": "initValue",
+        "type": "(index: number | undefined) => any",
+        "description": "初始化值的函数"
+      },
+      {
+        "name": "minLength",
+        "type": "number",
+        "description": "最小长度限制，默认为0"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "form-dialog",
+    "description": "表单对话框容器组件，用于在对话框中显示和编辑表单数据，支持表单数据的读取和修改、提交和取消操作、加载状态显示等功能，常用于新增、编辑操作。",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "list-template",
+    "description": "列表模板组件，用于基于模板渲染列表数据，支持动态上下文传递，适用于动态列表渲染、模板化列表展示等需要基于模板渲染列表的场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "template",
+        "type": "any",
+        "description": "模板配置"
+      },
+      {
+        "name": "list",
+        "type": "any[]",
+        "description": "列表数据"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "logic-group",
+    "description": "逻辑组组件，用于根据逻辑条件控制子组件的激活状态，适用于条件显示、逻辑控制、动态表单等需要根据逻辑条件控制组件显示的场景。",
+    "type": "表单组控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "menu-tree",
+    "description": "导航菜单树组件，用于显示具有层级结构的导航菜单，支持多种导航项类型（basic/divider/group），适用于侧边栏导航、顶部导航菜单等需要层级结构的导航场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "list",
+        "type": "NavigationItem[]",
+        "description": "导航项列表"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "菜单尺寸"
+      },
+      {
+        "name": "direction",
+        "type": "'horizontal' | 'vertical'",
+        "description": "菜单方向"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "option-list",
+    "description": "选项列表组件，用于显示可选择的选项列表，支持自定义选项模板和转换规则，适用于下拉选择、单选列表、选项选择等需要选项列表的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "options",
+        "type": "SelectOption[]",
+        "description": "选项列表"
+      },
+      {
+        "name": "optionTemplate",
+        "type": "Record<string, any>",
+        "description": "选项模板"
+      },
+      {
+        "name": "optionConvert",
+        "type": "OptionConvert",
+        "description": "选项转换器"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "pagination",
+    "description": "分页组件，用于分页显示大量数据，支持自定义每页条数和跳转页面，适用于数据表格分页、列表分页等需要分页功能的场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "direction",
+        "type": "'vertical' | 'horizontal'",
+        "description": "分页方向"
+      },
+      {
+        "name": "sizeOptions",
+        "type": "number[]",
+        "description": "每页条数选项"
+      },
+      {
+        "name": "optionsLabel",
+        "type": "(size: number, index: number, count: number) => string",
+        "description": "每页条数标签函数"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "总数据条数"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "valueChange",
+        "type": "{ index: number; size: number }",
+        "description": "分页值变化时发射的事件"
+      }
+    ],
+    "props": []
+  },
+  {
+    "name": "picker-ref",
+    "description": "选择器引用组件，用于触发选择器弹窗，支持自定义触发器和内容区域，适用于选择器、下拉选择、日期时间选择等需要弹窗选择的场景。",
+    "type": "表单控件组件",
+    "inputs": [
+      {
+        "name": "trigger",
+        "type": "any",
+        "description": "触发器内容"
+      },
+      {
+        "name": "content",
+        "type": "any",
+        "description": "弹窗内容"
+      },
+      {
+        "name": "changeClose",
+        "type": "boolean",
+        "description": "选择后是否自动关闭"
+      },
+      {
+        "name": "overlayConfig",
+        "type": "OverlayConfig",
+        "description": "弹窗配置"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "table",
+    "description": "数据表格组件，用于显示和管理大量结构化数据，支持丰富的列定义和行操作，适用于数据列表展示、管理后台、报表等需要表格形式展示数据的场景。",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "define",
+        "type": "TableItemDefine2",
+        "description": "表格定义"
+      },
+      {
+        "name": "data",
+        "type": "any[] | Signal<any[]>",
+        "description": "表格数据"
+      },
+      {
+        "name": "zebra",
+        "type": "boolean",
+        "description": "是否显示斑马纹"
+      },
+      {
+        "name": "pin",
+        "type": "{ rows?: boolean; cols?: boolean }",
+        "description": "固定行列配置"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "表格尺寸"
+      },
+      {
+        "name": "trackBy",
+        "type": "(key: number, value: any) => any",
+        "description": "跟踪函数"
+      },
+      {
+        "name": "pagination",
+        "type": "{ sizeOptions?: number[]; enable: boolean; optionsLabel?: (size: number, index: number, count: number) => string }",
+        "description": "分页配置"
+      },
+      {
+        "name": "type",
+        "type": "'category'",
+        "description": "表格类型"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "table-expand-cell",
+    "description": "表格行展开单元格组件，用于表格行的展开控制，显示和控制行的展开状态，适用于表格行需要展开显示详细信息的场景。",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "table-checkbox-body",
+    "description": "表格单行复选框包装器组件，用于表格单行的复选框控制，管理单行的选中状态，适用于表格需要批量操作时控制单行的选中状态。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "table-checkbox-all",
+    "description": "表格全选复选框包装器组件，用于表格的全选功能，控制所有行的选中状态，适用于表格需要批量操作时控制所有行的选中状态。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "sort-header",
+    "description": "排序列头包装器组件，用于表格列的排序控制，通常与Table组件配合使用，适用于表格列需要排序功能时作为列的包装器使用。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "local-filter",
+    "description": "选项列表本地过滤包装器组件，用于在客户端对选项列表进行本地过滤筛选，适用于选项列表数据量较小，需要在客户端进行筛选的场景。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "filter-option",
+    "description": "过滤选项组件，用于显示过滤输入框，通常与OptionList组件配合使用，适用于选项列表需要本地过滤功能时用于输入过滤条件。",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "form",
+    "description": "表单包装器组件，用于包裹表单元素，提供表单提交处理等功能，适用于需要表单包装的场景。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "label-wrapper",
+    "description": "标签包装器组件，用于包装表单控件，提供标签的布局和显示功能，适用于需要标签包装的表单控件。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "validate-tooltip-wrapper",
+    "description": "验证提示工具包装器组件，用于在表单控件周围显示验证错误信息，提供 tooltip 样式的错误提示，适用于需要验证提示的表单控件。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  }
+]

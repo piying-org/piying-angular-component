@@ -35,12 +35,46 @@ HTML to Form 是一个**架构设计工具**，而不是代码生成器。
 | 表单重构      | 重构现有表单，保留功能并使用 Schema      | 分析布局容器，生成分组结构   |
 | 架构设计      | 设计新表单的架构                         | 定义组件依赖和数据结构       |
 
+### 组件查找策略
+
+**优先级规则：先查表，后语义**
+
+1. **优先从 data.json 查找已有的组件定义**：
+   - 根据 HTML 元素和属性，查找 [`references/data.json`](./references/data.json) 中定义的组件
+   - data.json 包含项目中已有的所有组件信息（控件、容器、包装器等）
+   - 如果找到匹配组件，使用其预定义的组件名称和属性
+
+2. **找不到时使用语义化创建**：
+   - 对于未在 data.json 中定义的组件，使用语义化命名
+   - 例如：`video` 元素 → `setComponent('video-player')`
+
+**组件查找参考表**：
+
+HTML 元素 | data.json 组件名 | 说明
+--------- | --------------- | ----
+`<input type="text">` | `input` | 文本输入控件
+`<input type="password">` | `password` | 密码控件
+`<input type="email">` | `input` | 邮箱控件（使用验证器）
+`<input type="number">` | `input` | 数字输入控件
+`<input type="date">` | `calendar` | 日期控件
+`<button>` | `button` | 按钮组件
+`<select>` | `select` | 下拉选择控件
+`<textarea>` | `textarea` | 多行文本控件
+`<fieldset>` | `fieldset` | 字段集容器
+`<video>` | *不存在* | 视频播放器（语义化创建）
+`<div class="card">` | `card` | 卡片容器
+
+**为什么优先查 data.json？**
+- data.json 定义了项目中已有的组件，确保 Schema 使用正确的组件名称
+- 避免创建不存在的组件引用
+- 保证生成的 Schema 与项目实际组件一致
+
 ### 生成原则
 
 1. **控件类型识别**:
    - 表单控件 → Valibot 验证器（如 `v.string()`, `v.number()`）
    - 非表单控件 → `NFCSchema` + `setComponent('组件名')`
-   - **未知组件** → 直接定义 `setComponent('your-custom-component')`
+   - **未知组件** → 语义化定义 `setComponent('your-custom-component')`
 
 2. **属性推断**:
    - `class="w-full"` → `actions.class.component('w-full')`
@@ -57,6 +91,37 @@ HTML to Form 是一个**架构设计工具**，而不是代码生成器。
    - 需要附加功能时，使用包装器（如 `label-wrapper`）
 
 ## 技能使用流程
+
+### 第零步：组件查找
+
+在开始生成 Schema 之前，先从 [`references/data.json`](./references/data.json) 中查找对应的组件定义：
+
+**查找步骤**：
+
+1. **识别 HTML 元素类型**：`input`、`button`、`select`、`textarea` 等
+2. **检查 type 属性**：`type="password"`、`type="email"`、`type="number"` 等
+3. **查找 data.json**：根据元素类型和属性，在 data.json 中查找匹配的组件
+4. **记录组件名称**：记录找到的组件名，如 `input`、`password`、`calendar` 等
+
+**示例**：
+
+```html
+<!-- 1. 识别元素类型 -->
+<input type="password" />
+<!-- 2. 检查 type 属性 -->
+type="password"
+<!-- 3. 查找 data.json -->
+search: "password"
+<!-- 4. 找到组件 -->
+{ "name": "password", "type": "表单控件组件" }
+```
+
+**data.json 中的组件分类**：
+
+- **表单控件组件** (`表单控件组件`)：`input`、`password`、`select`、`textarea`、`checkbox`、`radio`、`range`、`rating`、`toggle`、`swap`、`file-input`、`editable-badge`、`calendar`、`option-list`、`picker-ref`
+- **非表单控件组件** (`非表单控件组件`)：`button`、`alert`、`badge`、`divider`、`dropdown`、`fab`、`kbd`、`loading`、`progress`、`radial-progress`、`stat`、`status`、`theme-controller`、`toast`、`table`、`pagination`、`menu-tree`、`list-template`、`form-dialog`、`picker-ref`
+- **表单组控件组件** (`表单组控件组件`)：`fieldset`、`accordion`、`card`、`list`、`tabs`、`steps`、`dock`、`drawer`、`carousel`、`navbar`、`checkbox-list`、`editable-group`、`logic-group`
+- **包装器** (`包装器`)：`label-wrapper`、`validate-tooltip-wrapper`、`form`、`table-checkbox-all`、`table-checkbox-body`、`sort-header`、`local-filter`
 
 ### 第一步：HTML 分析
 
@@ -98,19 +163,37 @@ HTML to Form 是一个**架构设计工具**，而不是代码生成器。
 - [ ] CSS 类名 (w-full, btn-primary, etc.)
 - [ ] HTML 属性 (placeholder, type, etc.)
 
-### 第二步：控件类型映射
+### 第二步：控件类型映射（基于 data.json）
 
-根据 HTML 元素类型生成对应的 Valibot Schema：
-举例:
-| HTML 元素 | Valibot Schema | 说明 |
-| ------------------------- | ------------------------------------------------------ | -------------- |
-| `<input type="text">` | `v.string()` | 基础字符串控件 |
-| `<input type="password">` | `v.pipe(v.string(), setComponent('password'))` | 密码控件 |
-| `<input type="email">` | `v.pipe(v.string(), v.email(), setComponent('email'))` | 邮箱控件 |
-| `<button>` | `v.pipe(NFCSchema, setComponent('button'))` | 非表单控件 |
-| `<select>` | `v.pipe(v.string(), setComponent('select'))` | 下拉选择控件 |
-| `<textarea>` | `v.pipe(v.string(), setComponent('textarea'))` | 多行文本控件 |
-| `<fieldset>` | `v.pipe(v.object(), setComponent('fieldset'))` | 分组容器 |
+**根据 data.json 中定义的组件名称生成对应的 Valibot Schema**：
+
+| HTML 元素 | type 属性 | data.json 组件名 | Valibot Schema | 说明 |
+| ------------------------- | ------------------------- | --------------- | ------------------------------------------------------ | -------------- |
+| `<input>` | `text` (默认) | `input` | `v.string()` | 基础字符串控件 |
+| `<input>` | `password` | `password` | `v.pipe(v.string(), setComponent('password'))` | 密码控件 |
+| `<input>` | `email` | `input` | `v.pipe(v.string(), v.email(), setComponent('email'))` | 邮箱控件 |
+| `<input>` | `number` | `input` | `v.number()` | 数字控件 |
+| `<input>` | `date` | `calendar` | `v.pipe(NFCSchema, setComponent('calendar'))` | 日期控件 |
+| `<button>` | - | `button` | `v.pipe(NFCSchema, setComponent('button'))` | 按钮组件 |
+| `<select>` | - | `select` | `v.pipe(v.string(), setComponent('select'))` | 下拉选择控件 |
+| `<textarea>` | - | `textarea` | `v.pipe(v.string(), setComponent('textarea'))` | 多行文本控件 |
+| `<fieldset>` | - | `fieldset` | `v.pipe(v.object(), setComponent('fieldset'))` | 字段集容器 |
+
+**组件查找流程**：
+
+```typescript
+// 示例 1: 查找已存在的组件
+<input type="password" />
+→ 查找 data.json: name="password"
+→ 找到组件: { "name": "password", "type": "表单控件组件" }
+→ 生成 Schema: v.pipe(v.string(), setComponent('password'))
+
+// 示例 2: 未知组件，语义化创建
+<video src="movie.mp4" />
+→ 查找 data.json: name="video" → 未找到
+→ 语义化创建: setComponent('video-player')
+→ 生成 Schema: v.pipe(NFCSchema, setComponent('video-player'))
+```
 
 ### 第三步：属性转换
 
@@ -183,7 +266,7 @@ actions.inputs.patch({
 
 ### 示例 1: 登录表单（表单控件 + 非表单控件）
 
-\*\*HTML 输入:
+**HTML 输入**:
 
 ```html
 <fieldset class="fieldset">
@@ -286,7 +369,7 @@ export const SimpleFormDefine = v.pipe(
     ),
     videoPlayer: v.pipe(
       NFCSchema,
-      setComponent('video-component'),
+      setComponent('video-player'),
       actions.inputs.patch({
         src: 'movie.mp4',
         controls: true,
@@ -295,7 +378,7 @@ export const SimpleFormDefine = v.pipe(
   }),
   setComponent('div'),
 );
-// 开发者稍后实现 video-component 组件
+// video-player 是语义化创建的未知组件
 ```
 
 ### 示例 3: 复杂布局（包含未知组件）
@@ -369,10 +452,10 @@ export const ComplexFormDefine = v.pipe(
       }),
       actions.class.component('mt-4'),
     ),
-    // 未知组件声明
+    // 未知组件声明（语义化创建）
     videoPlayer: v.pipe(
       NFCSchema,
-      setComponent('video-component'),
+      setComponent('video-player'),
       actions.inputs.patch({
         src: 'intro.mp4',
       }),
@@ -380,7 +463,7 @@ export const ComplexFormDefine = v.pipe(
   }),
   setComponent('fieldset'),
 );
-// 开发者稍后实现 video-component 组件
+// video-player 是语义化创建的未知组件
 ```
 
 ## 生成规则详解
@@ -403,27 +486,41 @@ export const ComplexFormDefine = v.pipe(
 
 ### 2. 控件类型判断（包括未知组件）
 
+**第一步：从 data.json 查找组件**
+
 ```typescript
 // 已知控件
 <input type="text" />
+→ 查找 data.json: name="input"
+→ 找到组件，使用预定义名称
 → v.string()
 
-// 未知组件（如视频播放器）
-<video src="movie.mp4" />
-→ v.pipe(
-  NFCSchema,
-  setComponent('video-component'),
-  actions.inputs.patch({ src: 'movie.mp4' })
-)
-// 开发者稍后实现 video-component 组件
-
-// 表单控件
+// 已知控件
 <input type="password" />
+→ 查找 data.json: name="password"
+→ 找到组件，使用预定义名称
 → v.pipe(v.string(), setComponent('password'))
 
 // 非表单控件
 <button type="button"></button>
+→ 查找 data.json: name="button"
+→ 找到组件，使用预定义名称
 → v.pipe(NFCSchema, setComponent('button'))
+```
+
+**第二步：未知组件语义化创建**
+
+```typescript
+// 未知组件（如视频播放器）
+<video src="movie.mp4" />
+→ 查找 data.json: name="video" → 未找到
+→ 语义化创建组件名
+→ v.pipe(
+  NFCSchema,
+  setComponent('video-player'),
+  actions.inputs.patch({ src: 'movie.mp4' })
+)
+// 开发者稍后实现 video-player 组件
 ```
 
 ### 3. 包装器判断
@@ -471,18 +568,27 @@ export const ComplexFormDefine = v.pipe(
 
 ### Q1: 如何处理未知组件（如视频播放器）？
 
-**A**: 直接声明组件依赖，不需要组件已存在：
+**A**: 未知组件的处理流程：
+
+**步骤 1：先从 data.json 查找**
+
+```typescript
+<video src="movie.mp4" />
+→ 查找 data.json: name="video" → 未找到
+```
+
+**步骤 2：语义化创建组件**
 
 ```typescript
 v.pipe(
   NFCSchema,
-  setComponent('video-component'),
+  setComponent('video-player'),
   actions.inputs.patch({
     src: 'movie.mp4',
     controls: true,
   }),
 );
-// 开发者稍后实现 video-component 组件
+// 开发者稍后实现 video-player 组件
 ```
 
 ### Q2: 如何处理需要传入属性的组件？
@@ -498,6 +604,12 @@ actions.inputs.patch({
 // 或使用 patchAsync 从上下文获取
 actions.inputs.patchAsync({
   options: (field) => field.context?.['options$'],
+});
+
+// data.json 中定义的组件可能需要特定属性
+// 例如：select 组件需要 options 和 optionConvert 属性
+actions.inputs.patch({
+  options: [], // 从 data.json 中查询 select 组件的 requiredProps
 });
 ```
 
@@ -540,9 +652,26 @@ v.pipe(
 
 ## 使用建议
 
-1. **先分析再生成**: 仔细分析 HTML 结构，确保准确识别控件类型
-2. **声明未知组件**: 对于未知组件，直接声明 `setComponent('your-component')`
-3. **声明所需属性**: 对于未知属性，使用 `actions.inputs.patch({ prop: value })`
-4. **验证生成结果**: 生成 Schema 后运行测试，确保渲染正确
-5. **逐步实现组件**: 先生成 Schema，再手动实现组件
-6. **包装器使用**: 使用包装器添加标签、验证等周边功能
+1. **先查表再生成**: 先从 [`references/data.json`](./references/data.json) 查找已有组件，找不到再语义化创建
+2. **先分析再生成**: 仔细分析 HTML 结构，确保准确识别控件类型
+3. **声明未知组件**: 对于未知组件，使用语义化命名 `setComponent('your-component')`
+4. **声明所需属性**: 对于未知属性，使用 `actions.inputs.patch({ prop: value })`
+5. **验证生成结果**: 生成 Schema 后运行测试，确保渲染正确
+6. **逐步实现组件**: 先生成 Schema，再手动实现组件
+7. **包装器使用**: 使用包装器添加标签、验证等周边功能
+
+**组件查找流程图**：
+
+```
+HTML 元素
+    ↓
+查找 data.json (name)
+    ↓
+    ├─ 找到 → 使用预定义组件名
+    │         ↓
+    │       生成 Schema
+    │
+    └─ 未找到 → 语义化创建组件名
+               ↓
+             生成 Schema
+```
