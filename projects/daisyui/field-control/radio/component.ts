@@ -42,13 +42,18 @@ export class RadioFCC extends BaseControl {
   static __version = 2;
   static index = 0;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
   name = `radio-${RadioFCC.index++}`;
+  /** 选项列表 */
   options = input<SelectOption[], SelectOption[] | undefined>([], {
     transform: (input) => input ?? [],
   });
+  /** 选项模板 */
   optionTemplate = input<TemplateRef<any>>();
+  /** 选项转换器 */
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });

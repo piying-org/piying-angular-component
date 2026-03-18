@@ -37,7 +37,9 @@ export class EditableBadgeFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   isEdit$ = signal(false);
   editContent$ = linkedSignal(this.value$);
+  /** 尺寸大小 */
   size = input<Size>('md');
+  /** 颜色主题 */
   color = input<Color>();
   #theme = inject(ThemeService);
 

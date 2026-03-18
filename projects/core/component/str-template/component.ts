@@ -51,7 +51,9 @@ export class StrOrTemplateComponent extends BaseControl {
   static __version = 2;
   readonly PiyingView = PiyingView;
   templateRef = viewChild.required('templateRef');
+  /** 内容 */
   content = input();
+  /** 上下文数据 */
   context = input();
   content$$ = computed(() => {
     return this.content() ?? this.value$();

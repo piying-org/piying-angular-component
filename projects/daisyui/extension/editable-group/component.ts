@@ -44,12 +44,19 @@ export class EditableGroupFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
 
   PiyingView = PiyingView;
+  /** 布局方式 */
   layout = input<'row' | 'columen'>('row');
+  /** 是否禁用添加 */
   disableAdd = input(false);
+  /** 添加模式 */
   addMode = input(0);
+  /** 是否禁用删除 */
   disableRemove = input(false);
+  /** 添加位置 */
   addPosition = input<'top' | 'bottom'>('bottom');
+  /** 初始值生成函数 */
   initValue = input<(index: number | undefined) => any>();
+  /** 最小长度 */
   minLength = input<number>(0);
   isRecord$$ = computed(() => {
     return !!this.field$$().form.control!.config$().groupKeySchema;

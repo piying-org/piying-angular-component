@@ -5,6 +5,7 @@ import { SortDirection, SortService } from './sort.service';
   selector: '[inputSort]',
 })
 export class inputSortDirective {
+  /** 排序键 */
   key = input.required<string>();
   inputSort = signal<SortDirection>(0);
   #el = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement;

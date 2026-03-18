@@ -21,10 +21,15 @@ export class DrawerFGC extends PiyingViewGroupBase {
   static index = 0;
   name = `drawer-${DrawerFGC.index++}`;
   templateRef = viewChild.required('templateRef');
+  /** 抽屉内容区域 CSS 类名 */
   contentClass = input<string>();
+  /** 侧边栏区域 CSS 类名 */
   sideClass = input<string>();
+  /** 遮罩层 CSS 类名 */
   overlayClass = input<string>();
+  /** 抽屉模式 */
   mode = input<'over' | 'side'>('over');
+  /** 抽屉位置 */
   position = input<'start' | 'end'>();
   contentFiled$$ = computed(() => {
     return this.field$$()

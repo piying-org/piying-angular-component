@@ -32,12 +32,19 @@ export class DropdownNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
 
   templateRef = viewChild.required('templateRef');
+  /** 标题内容 */
   title = input('Default');
+  /** 标题 CSS 类名 */
   titleClass = input<string>();
+  /** 对齐方式 */
   align = input<'start' | 'center' | 'end'>();
+  /** 位置 */
   position = input<'top' | 'bottom' | 'left' | 'right'>();
+  /** 触发动作 */
   triggerAction = input<'hover' | 'open'>();
+  /** 内容 */
   content = input();
+  /** 内容 CSS 类名 */
   contentClass = input<string>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

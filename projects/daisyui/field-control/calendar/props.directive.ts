@@ -6,6 +6,7 @@ import type { CalendarDateProps, CalendarMultiProps, CalendarRangeProps } from '
 export class CalendarPropsDirective<
   T extends CalendarDateProps | CalendarMultiProps | CalendarRangeProps,
 > {
+  /** 日历属性配置 */
   calendarProps = input<T>();
   #el = inject(ElementRef);
 

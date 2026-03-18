@@ -25,10 +25,15 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class RangeFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 最小值 */
   min = input<number>();
+  /** 最大值 */
   max = input<number>();
+  /** 步长 */
   step = input<number>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

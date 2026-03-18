@@ -41,6 +41,7 @@ export class CheckboxListFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   readonly PiyingView = PiyingView;
+  /** 选项列表 */
   options = input<CheckboxOption[]>();
   #parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
 

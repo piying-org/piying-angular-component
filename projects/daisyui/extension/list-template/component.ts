@@ -28,7 +28,9 @@ export class ListTemplateNFCC {
   readonly PiyingView = PiyingView;
 
   templateRef = viewChild.required('templateRef');
+  /** 模板 */
   template = input.required<any>();
+  /** 列表数据 */
   list = input<any[]>([]);
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   field = inject(PI_VIEW_FIELD_TOKEN);

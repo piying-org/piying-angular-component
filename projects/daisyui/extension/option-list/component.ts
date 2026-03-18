@@ -43,10 +43,13 @@ export class OptionListFCC extends BaseControl {
   readonly PiyingView = PiyingView;
 
   templateRef = viewChild.required('templateRef');
+  /** 选项列表 */
   options = input<SelectOption[], SelectOption[] | undefined>([], {
     transform: (input) => input ?? [],
   });
+  /** 选项模板 */
   optionTemplate = input<Record<string, any>>();
+  /** 选项转换器 */
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });

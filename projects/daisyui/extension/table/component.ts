@@ -126,8 +126,10 @@ export class TableNFCC {
   templateRef = viewChild.required('templateRef');
   #field = inject(PI_VIEW_FIELD_TOKEN);
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
+  /** 表格定义 */
   define = input<TableItemDefine2>();
   // todo待修改
+  /** 数据列表 */
   data = input<any[] | Signal<any[]>>([]);
   injector = inject(Injector);
   data$$ = computed(() => {
@@ -135,13 +137,18 @@ export class TableNFCC {
     return Array.isArray(data) ? data : data();
   });
   #status = inject(TABLE_STATUS_TOKEN, { optional: true });
+  /** 是否启用斑马纹效果 */
   zebra = input<boolean>();
+  /** 固定配置 */
   pin = input<{ rows?: boolean; cols?: boolean }>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 跟踪函数 */
   trackBy = input((key: number, value: any) => {
     return key;
   });
 
+  /** 分页配置 */
   pagination = input<{
     sizeOptions?: number[];
     enable: boolean;

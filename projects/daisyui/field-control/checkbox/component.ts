@@ -25,8 +25,11 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class CheckboxFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 是否为不确定状态 */
   indeterminate = input<boolean>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

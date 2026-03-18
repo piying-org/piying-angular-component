@@ -15,5 +15,6 @@ import { AttributesDirective } from '@piying/view-angular';
 export class ThemeControllerNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 主题值 */
   value = input('synthwave');
 }

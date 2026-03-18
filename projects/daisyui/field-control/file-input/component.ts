@@ -25,9 +25,13 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class FileInputFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 是否支持多文件选择 */
   multiple = input<boolean>();
+  /** 是否使用幽灵样式 */
   ghost = input<boolean>();
   fileChange = output<File | File[]>();
   fileChanged(input: HTMLInputElement) {

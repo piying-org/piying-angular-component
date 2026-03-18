@@ -21,9 +21,13 @@ export class AlertNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
 
   templateRef = viewChild.required('templateRef');
+  /** 样式风格 */
   style = input<'outline' | 'dash' | 'soft'>();
+  /** 颜色主题 */
   color = input<AlertColor>();
+  /** 方向 */
   direction = input<'vertical' | 'horizontal'>();
+  /** 内容 */
   content = input('Default');
 
   #theme = inject(ThemeService);

@@ -25,9 +25,12 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class TextareaFCC extends BaseControl {
   static __version = 2;
 
+  /** 是否使用幽灵样式 */
   ghost = input<boolean>();
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
   #theme = inject(ThemeService);
 

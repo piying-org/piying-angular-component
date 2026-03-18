@@ -33,20 +33,25 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 export class SelectFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 是否多选 */
   multiple = input(false);
+  /** 是否使用幽灵样式 */
   ghost = input<boolean>();
+  /** 是否使用原生 select 样式 */
   native = input<boolean>();
-  /** ---输入--- */
-  /** @title 列表
-  @default [] */
+  /** 选项列表 */
   options = input<SelectOption[], SelectOption[] | undefined>([], {
     transform: (input) => input ?? [],
   });
+  /** 选项转换器 */
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });
+  /** 空选项时显示的内容 */
   emptyOptionContent = input<string>('------');
 
   resolvedOptions$$ = computed(() => transformOptions(this.options(), this.optionConvert()));

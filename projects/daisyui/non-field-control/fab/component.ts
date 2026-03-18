@@ -70,8 +70,11 @@ type FabMainOption = Omit<FabOption, 'clicked'>;
 export class FabNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 选项列表 */
   options = input<FabOption[]>();
+  /** 是否启用花朵式展开 */
   flower = input(false);
+  /** 点击选项后是否自动关闭 */
   autoClose = input(true);
   resolvedOptions$$ = computed(() => {
     return (

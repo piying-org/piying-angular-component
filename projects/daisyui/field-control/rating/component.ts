@@ -28,11 +28,16 @@ export class RatingFCC extends BaseControl {
   name = `rating-${RatingFCC.index++}`;
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 尺寸大小 */
   size = input<Size>('md');
 
+  /** 最小值 */
   min = input<number>(1);
+  /** 最大值 */
   max = input<number>(5);
+  /** 是否支持半星选择 */
   half = input<boolean>();
+  /** 类型，支持星形或爱心形状 */
   type = input<'star' | 'star-2' | 'heart'>('star');
   list = computed(() => {
     return range(0, this.max());

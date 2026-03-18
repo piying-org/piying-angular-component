@@ -55,8 +55,11 @@ function DateAsc(a: Date, b: Date) {
 export class CalendarFCC extends BaseControl<Date | Date[]> {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 日期选择模式，支持单选、多选、范围选择 */
   type = input<'date' | 'multi' | 'range'>('date');
+  /** 日期属性配置 */
   dateProps = input<DatedCalendarDateProps | DatedCalendarMultiProps | DatedCalendarRangeProps>();
+  /** 显示的月份数量 */
   monthProps = input<number | number[]>(1);
   monthProps$$ = computed(() => {
     const value = this.monthProps();

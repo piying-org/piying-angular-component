@@ -33,14 +33,19 @@ export class AccordionFGC extends PiyingViewGroupBase {
   static __version = 2;
   static index = 0;
   name = `accordion-${AccordionFGC.index++}`;
+  /** 是否允许多个面板同时展开 */
   multi = input(false);
   templateRef = viewChild.required('templateRef');
 
+  /** 子项标题函数，用于自定义标题显示 */
   childTitleFn = input((item: PiResolvedViewFieldConfig) => {
     return item.props()?.['title'] ?? item.keyPath?.slice(-1)[0] ?? '';
   });
+  /** 是否连接子项 */
   joinChild = input(true);
+  /** 折叠图标样式 */
   collapseIcon = input<'arrow' | 'plus'>();
+  /** 子项 CSS 类名 */
   childClass = input<string>(useTwClass('bg-base-100 border border-base-300'));
   #theme = inject(ThemeService);
   childClass$$ = computed(() => {

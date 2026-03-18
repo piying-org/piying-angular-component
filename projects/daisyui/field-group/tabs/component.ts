@@ -31,14 +31,20 @@ export class TabsFGC extends PiyingViewGroupBase {
 
   static index = 0;
   templateRef = viewChild.required('templateRef');
-  StrOrTemplateComponent = StrOrTemplateComponent;
+  readonly StrOrTemplateComponent = StrOrTemplateComponent;
+  /** 尺寸大小 */
   size = input<Size>();
   name = `pc-tabs-${TabsFGC.index++}`;
+  /** 当前激活的标签页索引 */
   activatedIndex = input(0);
+  /** 标签类型 */
   type = input<'box' | 'border' | 'lift' | undefined>();
+  /** 标签页位置 */
   placement = input<'top' | 'bottom'>();
+  /** 标签页内容区域 CSS 类名 */
   tabContentClass = input(useTwClass('bg-base-100 border-base-300 p-6'));
   activatedIndex$ = linkedSignal(this.activatedIndex, { equal: () => false });
+  /** 切换前的回调函数 */
   beforeChange = input<(index: number) => any>();
   #theme = inject(ThemeService);
 

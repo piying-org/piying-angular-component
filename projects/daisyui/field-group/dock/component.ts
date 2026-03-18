@@ -21,8 +21,10 @@ export class DockFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
+  /** 尺寸大小 */
   size = input<Size>();
 
+  /** 当前激活的索引 */
   activatedIndex = input(0);
 
   activatedIndex$ = linkedSignal(this.activatedIndex);

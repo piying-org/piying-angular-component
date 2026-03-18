@@ -58,10 +58,14 @@ export class PickerRefFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   readonly PiyingView = PiyingView;
+  /** 触发器内容 */
   trigger = input();
+  /** 弹窗内容 */
   content = input();
+  /** 选择后是否自动关闭 */
   changeClose = input<boolean>();
   isOpen$ = signal(false);
+  /** 弹窗配置 */
   overlayConfig = input<OverlayConfig>();
   position$ = signal('');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });

@@ -42,9 +42,12 @@ export class MenuTreeNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
 
   templateRef = viewChild.required('templateRef');
+  /** 菜单项列表 */
   list = input<NavigationItem[]>([]);
 
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 方向 */
   direction = input<'horizontal' | 'vertical'>();
 
   #theme = inject(ThemeService);

@@ -20,16 +20,27 @@ export class FileInputButtonNFCC {
   static __version = 2;
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 按钮样式风格 */
   style = input<'outline' | 'dash' | 'soft' | 'ghost' | 'link'>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 形状 */
   shape = input<'wide' | 'block' | 'square' | 'circle'>();
+  /** 是否激活状态 */
   active = input<boolean>();
+  /** 按钮内容 */
   content = input<any>('Default');
+  /** 是否支持多文件选择 */
   multiple = input<boolean>();
+  /** 点击事件处理函数 */
   clicked = input<(event: File[] | File) => Promise<void>>();
+  /** 是否禁用 */
   disabled = input(false);
+  /** 是否禁用加载图标 */
   disableLoadingIcon = input(false);
+  /** 接受的文件类型 */
   accept = input();
   isLoading$ = signal(false);
 

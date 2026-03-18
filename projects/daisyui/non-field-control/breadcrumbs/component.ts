@@ -28,6 +28,7 @@ export class BreadcrumbsNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
+  /** 面包屑选项列表 */
   options = input<
     {
       label?: string;
@@ -37,5 +38,6 @@ export class BreadcrumbsNFCC {
       templateRef?: TemplateRef<any>;
     }[]
   >();
+  /** 选项 CSS 类名 */
   optionClass = input();
 }

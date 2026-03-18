@@ -19,5 +19,6 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 export class ListFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 标题 CSS 类名 */
   titleClass = input();
 }

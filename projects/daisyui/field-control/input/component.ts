@@ -26,6 +26,7 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 })
 export class InputFCC extends BaseControl {
   static __version = 2;
+  /** 输入框类型 */
   type = input<
     | 'text'
     | 'password'
@@ -40,9 +41,12 @@ export class InputFCC extends BaseControl {
     | 'search'
     | 'time'
   >('text');
+  /** 是否使用幽灵样式 */
   ghost = input<boolean>();
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
   #theme = inject(ThemeService);
 

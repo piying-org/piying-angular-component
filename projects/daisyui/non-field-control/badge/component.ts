@@ -21,9 +21,13 @@ export class BadgeNFCC {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
 
   templateRef = viewChild.required('templateRef');
+  /** 样式风格 */
   style = input<'outline' | 'dash' | 'soft' | 'ghost'>();
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 内容 */
   content = input('Badge');
 
   #theme = inject(ThemeService);

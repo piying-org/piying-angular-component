@@ -126,36 +126,38 @@ export class CdkConnectedOverlay implements OnDestroy, OnChanges {
   private _scrollStrategyFactory = inject(CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY);
   private _ngZone = inject(NgZone);
 
-  /** Origin for the connected overlay. */
+  /** 弹窗触发原点 */
   origin = input.required<CdkOverlayOrigin | FlexibleConnectedPositionStrategyOrigin>();
-  /** Registered connected position pairs. */
+  /** 已注册的连接位置对 */
   positions = input<ConnectedPosition[]>();
   positions$$ = computed(() => {
     const pos = this.positions();
     return pos && pos.length ? pos : defaultPositionList;
   });
 
-  /** The offset in pixels for the overlay connection point on the x-axis */
+  /** 弹窗连接点相对于原点的 x 轴偏移量（像素） */
   offsetX = input<number>();
-  /** The offset in pixels for the overlay connection point on the y-axis */
+  /** 弹窗连接点相对于原点的 y 轴偏移量（像素） */
   offsetY = input<number>();
+  /** 弹窗配置 */
   overlayConfig = input<OverlayConfig>();
-  /** Margin between the overlay and the viewport edges. */
+  /** 弹窗与视口边缘之间的间距（像素） */
   viewportMargin = input(0);
 
   open = model(false);
-  /** Whether the overlay can be closed by user interaction. */
+  /** 是否可以通过用户交互关闭弹窗 */
   disableClose = input(false);
-  /** CSS selector which to set the transform origin. */
+  /** 用于设置 transform origin 的 CSS 选择器 */
   transformOriginSelector = input<string>();
-  /** Whether or not the overlay should be locked when scrolling. */
+  /** 滚动时是否锁定弹窗位置 */
   lockPosition = input(false);
-  /** Whether the overlay's width and height can be constrained to fit within the viewport. */
+  /** 弹窗的宽高是否可以被约束以适应视口 */
   flexibleDimensions = input(false);
-  /** Whether the overlay can grow after the initial open when flexible positioning is turned on. */
+  /** 在启用灵活定位后，弹窗是否可以在首次打开后增长 */
   growAfterOpen = input(false);
-  /** Whether the overlay can be pushed on-screen if none of the provided positions fit. */
+  /** 如果提供的位置都不合适，弹窗是否可以被推到屏幕上 */
   push = input(false);
+  /** 弹窗宽度是否与原点宽度匹配 */
   matchWidth = input(false);
 
   /** Event emitted when the backdrop is clicked. */

@@ -21,13 +21,21 @@ export class InputButtonNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
+  /** 按钮类型 */
   type = input<'reset' | 'submit'>('submit');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 按钮样式风格 */
   style = input<'outline' | 'dash' | 'soft' | 'ghost' | 'link'>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 形状 */
   shape = input<'wide' | 'block' | 'square' | 'circle'>();
+  /** 是否激活状态 */
   active = input<boolean>();
+  /** 点击事件处理函数 */
   clicked = input<(event: PointerEvent) => void | Promise<void>>();
+  /** 是否禁用 */
   disabled = input(false);
   isLoading$ = signal(false);
 

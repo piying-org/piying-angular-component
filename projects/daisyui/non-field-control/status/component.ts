@@ -18,10 +18,15 @@ import { AttributesDirective } from '@piying/view-angular';
 export class StatusNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 内容 */
   content = input('Default');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 是否启用 ping 动画效果 */
   animatePing = input<boolean>();
+  /** 是否启用 bounce 动画效果 */
   animateBounce = input<boolean>();
 
   #theme = inject(ThemeService);

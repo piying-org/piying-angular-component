@@ -18,8 +18,10 @@ import { AttributesDirective } from '@piying/view-angular';
 export class KbdNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 尺寸大小 */
   size = input<Size>();
 
+  /** 内容 */
   content = input('Default');
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

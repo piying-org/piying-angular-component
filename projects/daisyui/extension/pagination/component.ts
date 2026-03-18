@@ -30,8 +30,11 @@ export class PaginationNFCC {
   static __version = 2;
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   templateRef = viewChild.required('templateRef');
+  /** 方向 */
   direction = input<'vertical' | 'horizontal'>();
+  /** 每页条数选项 */
   sizeOptions = input<number[]>();
+  /** 每页条数标签函数 */
   optionsLabel = input<(size: number, index: number, count: number) => string>();
   value = model.required<{ index: number; size: number }>();
   // todo 临时兼容

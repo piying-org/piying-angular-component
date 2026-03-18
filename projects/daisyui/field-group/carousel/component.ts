@@ -21,8 +21,11 @@ export class CarouselFGC extends PiyingViewGroupBase {
   static index = 0;
   index = CarouselFGC.index++;
   templateRef = viewChild.required('templateRef');
+  /** 滚动方向 */
   direction = input<'horizontal' | 'vertical'>();
+  /** 滚动对齐方式 */
   scrollAlign = input<'start' | 'center' | 'end'>();
+  /** 子项 ID 映射函数 */
   childIdMap = input((compIndex: number, childIndex: number) => {
     return `carousel-${compIndex}-${childIndex}`;
   });

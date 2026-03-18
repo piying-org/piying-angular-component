@@ -20,14 +20,22 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 export class CardFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 边框样式 */
   border = input<'border' | 'dash'>();
+  /** 尺寸大小 */
   size = input<Size>();
 
+  /** 内容区域 CSS 类名 */
   bodyClass = input<string>();
+  /** 图片区域 CSS 类名 */
   figureClass = input<string>();
+  /** 操作区域 CSS 类名 */
   actionsClass = input(useTwClass('justify-end'));
+  /** 标题字段键名 */
   titleKey = input('title');
+  /** 图片字段键名 */
   figureKey = input('figure');
+  /** 操作字段键名 */
   actionsKey = input('actions');
   titleFiled$$ = computed(() => {
     return this.field$$()

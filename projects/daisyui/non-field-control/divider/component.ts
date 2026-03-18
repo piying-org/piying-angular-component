@@ -18,10 +18,14 @@ import { AttributesDirective } from '@piying/view-angular';
 export class DividerNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 方向 */
   direction = input<'horizontal' | 'vertical'>();
+  /** 内容位置 */
   contentPosition = input<'start' | 'end'>();
 
+  /** 分割线内容 */
   content = input('Default');
   #theme = inject(ThemeService);
 

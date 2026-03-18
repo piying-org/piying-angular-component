@@ -16,10 +16,15 @@ import { AttributesDirective } from '@piying/view-angular';
 export class AvatarNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 占位符文本或内容 */
   placeholder = input<string>();
+  /** 占位符 CSS 类名 */
   placeholderClass = input<string>('');
+  /** 图片 URL */
   imgUrl = input<string>();
+  /** 包装器 CSS 类名 */
   wrapperClass = input('w-24 rounded');
+  /** 状态指示 */
   status = input<'online' | 'offline' | undefined>();
   #theme = inject(ThemeService);
 

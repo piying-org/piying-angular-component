@@ -36,11 +36,17 @@ export class SwapFCC extends BaseControl {
   static __version = 2;
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   templateRef = viewChild.required('templateRef');
+  /** 开启状态时显示的内容 */
   onContent = input<string | TemplateRef<any>>('✔️');
+  /** 关闭状态时显示的内容 */
   offContent = input<string | TemplateRef<any>>('❌');
+  /** 不确定状态时显示的内容 */
   indeterminateContent = input<string | TemplateRef<any>>();
+  /** 是否为不确定状态 */
   indeterminate = input<boolean>();
+  /** 是否启用旋转动画 */
   rotate = input<boolean>();
+  /** 是否启用翻转动画 */
   flip = input<boolean>();
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

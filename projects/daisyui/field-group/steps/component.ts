@@ -40,6 +40,7 @@ export class StepsFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
   // todo model
+  /** 当前激活的步骤索引 */
   activatedIndex = input(0);
   activatedIndex$ = linkedSignal(this.activatedIndex);
   activatedIndexChange = output<number>();
@@ -48,10 +49,15 @@ export class StepsFGC extends PiyingViewGroupBase {
   prevItem$$ = computed(() => {
     return this.children$$()[this.activatedIndex$() - 1];
   });
+  /** 自定义操作区域 */
   customAction = input();
+  /** 上一步按钮内容 */
   prev = input('⬅️');
+  /** 下一步按钮内容 */
   next = input('➡️');
+  /** 步骤方向 */
   direction = input<'vertical' | 'horizontal'>();
+  /** 步骤颜色 */
   stepColor = input<Color>('primary');
 
   toPrev() {

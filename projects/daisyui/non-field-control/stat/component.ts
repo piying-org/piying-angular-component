@@ -33,13 +33,21 @@ export class StatNFCC {
 
   templateRef = viewChild.required('templateRef');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
+  /** 标题内容 */
   title = input();
+  /** 标题 CSS 类名 */
   titleClass = input<string>();
+  /** 数值内容 */
   value = input();
+  /** 数值 CSS 类名 */
   valueClass = input<string>();
+  /** 描述内容 */
   desc = input();
+  /** 描述 CSS 类名 */
   descClass = input<string>();
+  /** 图标内容 */
   figure = input();
+  /** 图标 CSS 类名 */
   figureClass = input<string>();
 
   templateInput = (schema: Signal<any>) => {

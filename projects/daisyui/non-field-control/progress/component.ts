@@ -19,8 +19,11 @@ import { AttributesDirective } from '@piying/view-angular';
 export class ProgressNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 颜色主题 */
   color = input<Color>();
+  /** 进度值 */
   value = input<number | undefined>();
+  /** 最大值 */
   max = input(100);
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {

@@ -18,7 +18,9 @@ import { AttributesDirective } from '@piying/view-angular';
 export class LoadingNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 尺寸大小 */
   size = input<Size>();
+  /** 加载类型 */
   type = input<'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'>();
   #theme = inject(ThemeService);
 

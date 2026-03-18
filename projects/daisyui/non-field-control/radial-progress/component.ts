@@ -17,10 +17,13 @@ import { AttributesDirective } from '@piying/view-angular';
 export class RadialProgressNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  /** 进度值 */
   value = input<number>(0);
+  /** 进度值映射函数 */
   valueMap = input((value: number) => {
     return `${value * 100}%`;
   });
+  /** 线宽 */
   strokeWidth = input<string>();
   value$$ = computed(() => {
     return this.value() * 100;
