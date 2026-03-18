@@ -98,6 +98,49 @@ npm i -D daisyui@latest
   };
 ```
 
+## 快速开始
+
+### 1. 导入预定义组件
+
+通过预定义导出所有组件（也可以手动配置使用部分组件）：
+
+```typescript
+import { typedComponent } from '@piying/view-angular';
+import { PresetDefine } from '@piying-lib/angular-daisyui/preset';
+
+const safeDefine = typedComponent(PresetDefine);
+export const FieldGlobalConfig = safeDefine.define;
+```
+
+### 2. 在路由中使用 SchemaViewPage
+
+直接通过路由解析定义：
+
+```typescript
+import { SchemaViewPage } from '@piying-lib/angular-core';
+import * as v from 'valibot';
+
+export const routes: Routes = [
+  {
+    path: 'hello',
+    component: SchemaViewPage,
+    data: {
+      // Valibot schema 定义
+      schema: () => v.object({
+        l1: v.pipe(v.string()),
+      }),
+      // 相关配置
+      options: () => ({
+        fieldGlobalConfig: FieldGlobalConfig,
+      }),
+      // 值
+      model: () => ({
+        l1: '12345',
+      }),
+    },
+  },
+];
+```
 
 ## 完成
 

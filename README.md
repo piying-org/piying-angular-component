@@ -98,6 +98,47 @@ Add the following to `src/app/app.config.ts`:
   };
 ```
 
-## Completion
+## Quick Start
 
-After following these steps, your Angular project should be successfully integrated with @piying-lib/angular-daisyui.
+### 1. Import Preset Components
+
+Import all components from the preset (or manually configure to use specific components):
+
+```typescript
+import { typedComponent } from '@piying/view-angular';
+import { PresetDefine } from '@piying-lib/angular-daisyui/preset';
+
+const safeDefine = typedComponent(PresetDefine);
+export const FieldGlobalConfig = safeDefine.define;
+```
+
+### 2. Use SchemaViewPage in Routes
+
+Directly resolve definitions through routing:
+
+```typescript
+import { SchemaViewPage } from '@piying-lib/angular-core';
+import * as v from 'valibot';
+
+export const routes: Routes = [
+  {
+    path: 'hello',
+    component: SchemaViewPage,
+    data: {
+      // Valibot schema definition
+      schema: () => v.object({
+        l1: v.pipe(v.string()),
+      }),
+      // Configuration options
+      options: () => ({
+        fieldGlobalConfig: FieldGlobalConfig,
+      }),
+      // Model value
+      model: () => ({
+        l1: '12345',
+      }),
+    },
+  },
+];
+```
+
