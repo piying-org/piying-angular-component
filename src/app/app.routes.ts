@@ -16,7 +16,6 @@ import { faker } from '@faker-js/faker';
 import { StatsDefine } from './piying/page/component/stats';
 import { FormDefine } from './piying/page/component/form';
 
-import { FieldGlobalConfig } from './piying/define';
 import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { ArrayDefine } from './piying/page/component/array';
 import { LogicDefine } from './piying/page/component/logic';
