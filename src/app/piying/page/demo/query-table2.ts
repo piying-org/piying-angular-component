@@ -2,7 +2,6 @@ import * as v from 'valibot';
 import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { DialogService } from '../../../service/dialog.service';
 import { FormBase } from '../component/form';
 import {
   CheckboxService,
@@ -10,6 +9,7 @@ import {
   TableResourceService,
 } from '@piying-lib/angular-daisyui/extension';
 import { DemoTableResourceService } from './mock.service';
+import { FormDialogService } from '@piying-lib/angular-daisyui/overlay';
 const LevelOptions = [
   {
     label: 'all',
@@ -227,17 +227,18 @@ const TableDefine = v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return () => {
-                const dialog: DialogService = field.context['dialog'];
-                dialog.openDialog({
+                const service = field.injector.get(FormDialogService);
+                service.open({
                   title: '添加',
                   schema: v.pipe(
                     FormBase,
                     actions.wrappers.set(['div']),
                     actions.class.top('grid gap-2'),
                   ),
-                  applyValue: (value) => {
+                  applyValue: async (value) => {
                     // 更新或添加
                   },
+                  injector: field.injector,
                 });
               };
             },
