@@ -107,7 +107,6 @@ export const PresetDefine = {
     carousel: { type: FGCGroup.CarouselFGC },
     dock: { type: FGCGroup.DockFGC },
     drawer: { type: FGCGroup.DrawerFGC },
-    fieldset: { type: FGCGroup.FieldsetFGC },
     list: { type: FGCGroup.ListFGC },
     navbar: { type: FGCGroup.NavbarFGC },
     steps: { type: FGCGroup.StepsFGC },

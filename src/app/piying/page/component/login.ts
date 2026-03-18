@@ -30,5 +30,5 @@ export const LoginDefine = v.pipe(
       }),
     ),
   }),
-  setComponent('fieldset'),
+  actions.wrappers.patch(['fieldset']),
 );

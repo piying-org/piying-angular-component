@@ -318,7 +318,7 @@
   {
     "name": "fieldset",
     "description": "字段集组，用于将表单字段进行语义分组，使用HTMLfieldset元素进行包裹，适合需要语义化分组、无障碍访问要求较高的场景。",
-    "type": "表单组控件组件",
+    "type": "包装器",
     "inputs": [],
     "outputs": [],
     "props": []
