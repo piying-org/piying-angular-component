@@ -51,6 +51,7 @@ export const MainPage = v.pipe(
               { title: 'group', router: { routerLink: './component/group' } },
               { title: 'logic', router: { routerLink: './component/logic' } },
               { title: 'overlay', router: { routerLink: './component/overlay' } },
+              { title: 'page-input', router: { routerLink: './component/page-input' } },
               { type: 'divider' },
               {
                 type: 'group',

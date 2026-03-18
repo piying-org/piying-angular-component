@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { SchemaViewRC } from './schema-view/component';
 import { MainPage } from './piying/page/main';
 import { TableDefine } from './piying/page/component/table';
 import { LoginDefine } from './piying/page/component/login';
@@ -21,7 +20,12 @@ import { ArrayDefine } from './piying/page/component/array';
 import { LogicDefine } from './piying/page/component/logic';
 import { OverlayDefine } from './piying/page/component/overlay';
 import { GroupDefine } from './piying/page/component/group';
-
+import { SchemaViewPage } from '@piying-lib/angular-core';
+import { FieldGlobalConfig } from './piying/define';
+import { PageInputDefine } from './piying/page/component/page-input';
+const options = {
+  fieldGlobalConfig: FieldGlobalConfig,
+};
 export const routes: Routes = [
   {
     path: '',
@@ -30,12 +34,15 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: SchemaViewRC,
+    component: SchemaViewPage,
     data: {
       schema: () => LoginPageDefine,
-      context: () => {
+      options: () => {
         return {
-          account: inject(AccountService),
+          ...options,
+          context: {
+            account: inject(AccountService),
+          },
         };
       },
     },
@@ -44,8 +51,9 @@ export const routes: Routes = [
     path: 'main',
     data: {
       schema: () => MainPage,
+      options: () => options,
     },
-    component: SchemaViewRC,
+    component: SchemaViewPage,
     children: [
       // {
       //   path: '',
@@ -61,53 +69,60 @@ export const routes: Routes = [
           },
           {
             path: 'table',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => TableDefine,
+              options: () => options,
             },
           },
           {
             path: 'category',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => CategoryDefine,
+              options: () => options,
             },
           },
           {
             path: 'login',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => LoginDefine,
+              options: () => options,
             },
           },
           {
             path: 'calendar',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => CalendarDefine,
+              options: () => options,
             },
           },
           {
             path: 'select',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => SelectDefine,
+              options: () => options,
             },
           },
           {
             path: 'tabs',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => TabsDefine,
+              options: () => options,
             },
           },
           {
             path: 'card',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => CardDefine,
-              context: () => {
-                return {
+              options: () => ({
+                ...options,
+                context: {
                   getCardList: async () => {
                     return range(10).map((a) => {
                       return {
@@ -125,16 +140,16 @@ export const routes: Routes = [
                       };
                     });
                   },
-                };
-              },
+                },
+              }),
             },
           },
           {
             path: 'stat',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => StatsDefine,
-              context: () => {
+              options: () => {
                 const data = [
                   'text-primary',
                   'text-secondary',
@@ -143,16 +158,19 @@ export const routes: Routes = [
                   'text-base-content',
                 ];
                 return {
-                  getStatList: async () => {
-                    return range(10).map((a) => {
-                      const value = faker.number.int(8);
-                      return {
-                        title: faker.food.fruit(),
-                        value: value,
-                        desc: faker.food.description().slice(0, 10),
-                        valueClass: data[value % 5],
-                      };
-                    });
+                  ...options,
+                  context: {
+                    getStatList: async () => {
+                      return range(10).map((a) => {
+                        const value = faker.number.int(8);
+                        return {
+                          title: faker.food.fruit(),
+                          value: value,
+                          desc: faker.food.description().slice(0, 10),
+                          valueClass: data[value % 5],
+                        };
+                      });
+                    },
                   },
                 };
               },
@@ -160,37 +178,53 @@ export const routes: Routes = [
           },
           {
             path: 'form',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => FormDefine,
+              options: () => options,
             },
           },
           {
             path: 'array',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => ArrayDefine,
+              options: () => options,
             },
           },
           {
             path: 'group',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => GroupDefine,
+              options: () => options,
             },
           },
           {
             path: 'logic',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => LogicDefine,
+              options: () => options,
             },
           },
           {
             path: 'overlay',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => OverlayDefine,
+              options: () => options,
+            },
+          },
+          {
+            path: 'page-input',
+            component: SchemaViewPage,
+            data: {
+              schema: () => PageInputDefine,
+              options: () => options,
+              model: () => {
+                return { l1: '12345' };
+              },
             },
           },
         ],
@@ -206,9 +240,10 @@ export const routes: Routes = [
 
           {
             path: 'query-table2',
-            component: SchemaViewRC,
+            component: SchemaViewPage,
             data: {
               schema: () => QueryTable2Define,
+              options: () => options,
             },
           },
         ],
