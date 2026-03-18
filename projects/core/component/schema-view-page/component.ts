@@ -10,6 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 import { PiyingView } from '@piying/view-angular';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 const defaultValue = Promise.resolve(undefined);
+/**
+ * 文档/document
+ * https://github.com/piying-org/piying-angular-component/blob/main/projects/core/component/schema-view-page/component.ts
+ */
 @Component({
   selector: 'div[pi-schema-view-page]',
   templateUrl: './component.html',
