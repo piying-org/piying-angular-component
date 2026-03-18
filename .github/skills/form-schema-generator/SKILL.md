@@ -41,33 +41,35 @@ Form Schema Generator 是一个**架构设计工具**,而不是代码生成器�
 
 **优先级规则:先查表,后语义**
 
-1. **优先从 data.json 查找已有的组件定义**:
-   - 根据描述中的控件类型,查找 [`references/data.json`](../html-to-form/references/data.json) 中定义的组件
-   - data.json 包含项目中已有的所有组件信息(控件、容器、包装器等)
+1. **优先从对应的 JSON 文件查找已有的组件定义**:
+   - 表单控件 → [`references/form-controls.json`](./references/form-controls.json)
+   - 非表单控件 → [`references/non-form-controls.json`](./references/non-form-controls.json)
+   - 表单组控件 → [`references/form-groups.json`](./references/form-groups.json)
+   - 包装器 → [`references/wrappers.json`](./references/wrappers.json)
    - 如果找到匹配组件,使用其预定义的组件名称和属性
 
 2. **找不到时使用语义化创建**:
-   - 对于未在 data.json 中定义的组件,使用语义化命名
+   - 对于未在 JSON 文件中定义的组件,使用语义化命名
    - 例如:视频播放器 → `setComponent('video-player')`
 
 **组件查找参考表**:
 
-描述中的控件类型 | data.json 组件名 | 说明
----------------- | --------------- | ----
-`input[type="text"]` 或 "文本输入框" | `input` | 基础字符串控件
-`input[type="password"]` 或 "密码框" | `password` | 密码控件
-`input[type="email"]` 或 "邮箱输入框" | `input` | 邮箱控件(使用验证器)
-`input[type="number"]` 或 "数字输入框" | `input` | 数字输入控件
-`input[type="date"]` 或 "日期选择器" | `calendar` | 日期控件
-`select` 或 "下拉选择框" | `select` | 下拉选择控件
-`textarea` 或 "多行文本框" | `textarea` | 多行文本控件
-`button` 或 "按钮" | `button` | 按钮组件
-`fieldset` 或 "字段集" | `fieldset` | 字段集容器
-`card` 或 "卡片容器" | `card` | 卡片容器
+描述中的控件类型 | JSON 文件 | 组件名 | 说明
+---------------- | --------------- | --------------- | ----
+`input[type="text"]` 或 "文本输入框" | form-controls.json | `input` | 基础字符串控件
+`input[type="password"]` 或 "密码框" | form-controls.json | `password` | 密码控件
+`input[type="email"]` 或 "邮箱输入框" | form-controls.json | `input` | 邮箱控件(使用验证器)
+`input[type="number"]` 或 "数字输入框" | form-controls.json | `input` | 数字输入控件
+`input[type="date"]` 或 "日期选择器" | form-controls.json | `calendar` | 日期控件
+`select` 或 "下拉选择框" | form-controls.json | `select` | 下拉选择控件
+`textarea` 或 "多行文本框" | form-controls.json | `textarea` | 多行文本控件
+`button` 或 "按钮" | non-form-controls.json | `button` | 按钮组件
+`fieldset` 或 "字段集" | wrappers.json | `fieldset` | 字段集容器
+`card` 或 "卡片容器" | form-groups.json | `card` | 卡片容器
 "视频播放器" | *不存在* | 视频播放器(语义化创建)
 
-**为什么优先查 data.json?**
-- data.json 定义了项目中已有的组件,确保 Schema 使用正确的组件名称
+**为什么优先查 JSON 文件?**
+- JSON 文件定义了项目中已有的组件,确保 Schema 使用正确的组件名称
 - 避免创建不存在的组件引用
 - 保证生成的 Schema 与项目实际组件一致
 
@@ -146,40 +148,40 @@ const input4 = `
 // 适用: 表单迁移
 ```
 
-### 第二步:控件类型映射(基于 data.json)
+### 第二步:控件类型映射(基于 JSON 文件)
 
-**根据 data.json 中定义的组件名称生成对应的 Valibot Schema**:
+**根据对应的 JSON 文件中定义的组件名称生成对应的 Valibot Schema**:
 
-| 控件描述 | data.json 组件名 | Valibot Schema | 说明 |
-| ------------------------- | --------------- | ------------------------------------------------------ | -------------- |
-| "文本输入框" / `input[type="text"]` | `input` | `v.string()` | 基础字符串控件 |
-| "密码框" / `input[type="password"]` | `password` | `v.pipe(v.string(), setComponent('password'))` | 密码控件 |
-| "邮箱输入框" / `input[type="email"]` | `input` | `v.pipe(v.string(), v.email(), setComponent('email'))` | 邮箱控件 |
-| "数字输入框" / `input[type="number"]` | `input` | `v.number()` | 数字控件 |
-| "日期选择器" / `input[type="date"]` | `calendar` | `v.pipe(NFCSchema, setComponent('calendar'))` | 日期控件 |
-| "下拉选择框" / `select` | `select` | `v.pipe(v.string(), setComponent('select'))` | 下拉选择控件 |
-| "多行文本框" / `textarea` | `textarea` | `v.pipe(v.string(), setComponent('textarea'))` | 多行文本控件 |
-| "按钮" / `button` | `button` | `v.pipe(NFCSchema, setComponent('button'))` | 按钮组件 |
+| 控件描述 | JSON 文件 | 组件名 | Valibot Schema | 说明 |
+| ------------------------- | --------------- | --------------- | ------------------------------------------------------ | -------------- |
+| "文本输入框" / `input[type="text"]` | form-controls.json | `input` | `v.string()` | 基础字符串控件 |
+| "密码框" / `input[type="password"]` | form-controls.json | `password` | `v.pipe(v.string(), setComponent('password'))` | 密码控件 |
+| "邮箱输入框" / `input[type="email"]` | form-controls.json | `input` | `v.pipe(v.string(), v.email(), setComponent('email'))` | 邮箱控件 |
+| "数字输入框" / `input[type="number"]` | form-controls.json | `input` | `v.number()` | 数字控件 |
+| "日期选择器" / `input[type="date"]` | form-controls.json | `calendar` | `v.pipe(NFCSchema, setComponent('calendar'))` | 日期控件 |
+| "下拉选择框" / `select` | form-controls.json | `select` | `v.pipe(v.string(), setComponent('select'))` | 下拉选择控件 |
+| "多行文本框" / `textarea` | form-controls.json | `textarea` | `v.pipe(v.string(), setComponent('textarea'))` | 多行文本控件 |
+| "按钮" / `button` | non-form-controls.json | `button` | `v.pipe(NFCSchema, setComponent('button'))` | 按钮组件 |
 
 **组件查找流程**:
 
 ```typescript
 // 示例 1: 查找已存在的组件
 <input type="password" />
-→ 查找 data.json: name="password"
+→ 查找 form-controls.json: name="password"
 → 找到组件: { "name": "password", "type": "表单控件组件" }
 → 生成 Schema: v.pipe(v.string(), setComponent('password'))
 
 // 示例 2: 自然语言描述
 "密码输入框"
 → 语义理解: password input
-→ 查找 data.json: name="password"
+→ 查找 form-controls.json: name="password"
 → 找到组件: { "name": "password", "type": "表单控件组件" }
 → 生成 Schema: v.pipe(v.string(), setComponent('password'))
 
 // 示例 3: 未知组件,语义化创建
 "视频播放器"
-→ 查找 data.json: name="video" → 未找到
+→ 查找 non-form-controls.json: name="video" → 未找到
 → 语义化创建: setComponent('video-player')
 → 生成 Schema: v.pipe(NFCSchema, setComponent('video-player'))
 ```
@@ -647,11 +649,11 @@ export const LoginFormDefine = v.pipe(
 
 **A**: 未知组件的处理流程:
 
-**步骤 1:先从 data.json 查找**
+**步骤 1:先从 non-form-controls.json 查找**
 
 ```typescript
 "视频播放器"
-→ 查找 data.json: name="video" → 未找到
+→ 查找 non-form-controls.json: name="video" → 未找到
 ```
 
 **步骤 2:语义化创建组件**
@@ -683,10 +685,10 @@ actions.inputs.patchAsync({
   options: (field) => field.context?.['options$'],
 });
 
-// data.json 中定义的组件可能需要特定属性
+// JSON 文件中定义的组件可能需要特定属性
 // 例如:select 组件需要 options 和 optionConvert 属性
 actions.inputs.patch({
-  options: [], // 从 data.json 中查询 select 组件的 requiredProps
+  options: [], // 从 form-controls.json 中查询 select 组件的 requiredProps
 });
 ```
 
@@ -744,7 +746,7 @@ v.pipe(
 ## 使用建议
 
 1. **明确输入类型**:先确定输入是 HTML、自然语言还是 UI 描述,选择对应的分析策略
-2. **先查表再生成**:先从 [`references/data.json`](../html-to-form/references/data.json) 查找已有组件,找不到再语义化创建
+2. **先查表再生成**:先从 [`references/form-controls.json`](./references/form-controls.json) 或其他对应的 JSON 文件查找已有组件,找不到再语义化创建
 3. **详细描述需求**:自然语言描述时,尽量详细说明控件类型、属性、验证规则等
 4. **声明未知组件**:对于未知组件,使用语义化命名 `setComponent('your-component')`
 5. **声明所需属性**:对于未知属性,使用 `actions.inputs.patch({ prop: value })`
@@ -777,7 +779,11 @@ v.pipe(
 ```
 控件描述
     ↓
-查找 data.json (name)
+查找对应的 JSON 文件 (name)
+    ├─ 表单控件 → form-controls.json
+    ├─ 非表单控件 → non-form-controls.json
+    ├─ 表单组控件 → form-groups.json
+    └─ 包装器 → wrappers.json
     ↓
     ├─ 找到 → 使用预定义组件名
     │         ↓
