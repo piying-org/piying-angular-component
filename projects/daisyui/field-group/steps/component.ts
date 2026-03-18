@@ -1,14 +1,5 @@
 import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  linkedSignal,
-  model,
-  output,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, output, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';

@@ -6,7 +6,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 /**
  * 文件上传控件
- * 
+ *
  * 提供文件选择和上传功能，支持单文件和多文件选择。
  * 适用于需要上传文件的表单场景。
  */

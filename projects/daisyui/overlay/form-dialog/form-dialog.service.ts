@@ -1,4 +1,4 @@
-import { Injectable, Injector, signal, WritableSignal } from '@angular/core';
+import { Injectable, Injector, signal } from '@angular/core';
 
 export interface FormDialogOptions<T = any> {
   id: number;

@@ -16,7 +16,7 @@ import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import clsx from 'clsx';
 /**
  * 交换控件（状态切换控件）
- * 
+ *
  * 提供两种或三种状态之间的切换功能，支持旋转、翻转等动画效果。
  * 可自定义不同状态下的显示内容，适用于需要状态切换的场景。
  */

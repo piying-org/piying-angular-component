@@ -5,7 +5,7 @@ import { BaseControl } from '@piying/view-angular';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 /**
  * 密码输入控件
- * 
+ *
  * 提供带有密码可见性切换功能的输入框。
  * 适用于需要输入密码等敏感信息的场景。
  */

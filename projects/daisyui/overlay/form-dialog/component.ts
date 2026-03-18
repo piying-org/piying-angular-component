@@ -1,7 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormDialogService } from './form-dialog.service';
-import { ThemeService } from '@piying-lib/angular-daisyui/service';
-import clsx from 'clsx';
 import { FormDialogItemComponent } from './dialog-item/component';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 

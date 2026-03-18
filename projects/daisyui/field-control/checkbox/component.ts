@@ -6,7 +6,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 /**
  * 复选框控件
- * 
+ *
  * 提供单个复选框的勾选功能，支持确定、不确定两种状态。
  * 常用于需要选择多个选项的场景。
  */

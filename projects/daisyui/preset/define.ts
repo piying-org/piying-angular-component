@@ -1,7 +1,7 @@
-import { PiViewConfig, PiyingViewGroup, typedComponent } from '@piying/view-angular';
+import { PiyingViewGroup } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 import { DivNFCC, DivWC, StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { actions, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 
 // 核心包装器
 import * as WCGroup from '@piying-lib/angular-daisyui/wrapper';

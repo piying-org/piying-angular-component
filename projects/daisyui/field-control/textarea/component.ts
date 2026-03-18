@@ -6,7 +6,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 /**
  * 多行文本输入控件
- * 
+ *
  * 提供多行文本的输入功能，支持大段文本的编辑场景。
  * 适用于评论、描述、备注等需要大量文本输入的表单字段。
  */

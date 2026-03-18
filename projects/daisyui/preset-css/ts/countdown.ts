@@ -1,3 +1,1 @@
-export const COUNTDOWN_PREFIX_LIST=[
-    "countdown"
-]
+export const COUNTDOWN_PREFIX_LIST = ['countdown'];

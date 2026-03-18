@@ -5,10 +5,7 @@ import {
   InsertFieldDirective,
   PI_VIEW_FIELD_TOKEN,
 } from '@piying/view-angular';
-import {
-  fieldControlStatusClass,
-  getDeepError,
-} from '@piying/view-angular-core';
+import { fieldControlStatusClass, getDeepError } from '@piying/view-angular-core';
 import clsx from 'clsx';
 @Component({
   selector: 'app-validate-tooltip-wrapper',
@@ -26,9 +23,7 @@ export class ValidateTooltipbWC {
     return valibot.map((item) => item.valibotIssueSummary).join('\n');
   });
 
-  classStatus$$ = computed(() =>
-    fieldControlStatusClass(this.#field$$().form.control),
-  );
+  classStatus$$ = computed(() => fieldControlStatusClass(this.#field$$().form.control));
   showError$$ = computed(() => {
     const control = this.#field$$().form.control!;
     return control.invalid && control.touched$$();

@@ -22,7 +22,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 /**
  * 单选框控件
- * 
+ *
  * 提供一组选项中的单选功能，支持通过配置项数组动态生成选项列表。
  * 适用于需要在多个互斥选项中选择一个的场景。
  */

@@ -1,18 +1,6 @@
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  Input,
-  linkedSignal,
-  output,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, signal, viewChild } from '@angular/core';
 import { FormDialogOptions, FormDialogService } from '../form-dialog.service';
-import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
-import { ThemeService } from '@piying-lib/angular-daisyui/service';
-import clsx from 'clsx';
+import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
