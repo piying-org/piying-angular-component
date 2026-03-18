@@ -2,7 +2,6 @@
   {
     "name": "common-data",
     "description": "字符串或模板渲染组件，能够根据传入的内容自动判断类型并选择合适的渲染方式，支持字符串、数字、布尔值、TemplateRef模板、Schema对象以及包含image/icon/title的对象。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "content",
@@ -17,7 +16,6 @@
     "name": "checkbox",
     "alias-list": ["boolean"],
     "description": "复选框控件，提供单个复选框的勾选功能，支持确定、不确定两种状态，常用于需要选择多个选项的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -42,7 +40,6 @@
     "name": "input",
     "alias-list": ["string", "number", "date"],
     "description": "文本输入控件，提供多种类型的文本输入功能，支持文本、密码、数字、日期等常见输入场景，适合作为表单中的基础输入组件使用。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "type",
@@ -72,7 +69,6 @@
     "name": "select",
     "alias-list": ["picklist"],
     "description": "选择器控件，提供下拉选择功能，支持单选、多选以及原生select样式，适用于需要在多个选项中选择一个或多个的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -121,7 +117,6 @@
   {
     "name": "rating",
     "description": "评分控件，提供星级或爱心形式的评分选择功能，支持半星选择，适用于评价、评级、评分等场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "size",
@@ -155,7 +150,6 @@
   {
     "name": "toggle",
     "description": "开关控件，提供开/关状态切换功能，支持确定和不确定两种状态，适用于功能开关、选项启用/禁用等场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -179,7 +173,6 @@
   {
     "name": "range",
     "description": "范围选择控件，提供滑动条形式的数值输入，支持设置最小值、最大值和步长，适用于需要选择数值范围或评分等场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -213,7 +206,6 @@
   {
     "name": "calendar",
     "description": "日期选择控件，提供日期、多选日期、范围选择三种模式的日期选择功能，支持自定义日期属性配置，适用于需要进行日期选择的表单场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "type",
@@ -237,7 +229,6 @@
   {
     "name": "password",
     "description": "密码输入控件，提供带有密码可见性切换功能的输入框，适用于需要输入密码等敏感信息的场景。",
-    "type": "表单控件组件",
     "inputs": [],
     "outputs": [],
     "props": []
@@ -245,7 +236,6 @@
   {
     "name": "textarea",
     "description": "多行文本输入控件，提供多行文本的输入功能，支持大段文本的编辑场景，适用于评论、描述、备注等需要大量文本输入的表单字段。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "ghost",
@@ -269,7 +259,6 @@
   {
     "name": "radio",
     "description": "单选框控件，提供一组选项中的单选功能，支持通过配置项数组动态生成选项列表，适用于需要在多个互斥选项中选择一个的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -303,7 +292,6 @@
   {
     "name": "swap",
     "description": "交换控件（状态切换控件），提供两种或三种状态之间的切换功能，支持旋转、翻转等动画效果，可自定义不同状态下的显示内容，适用于需要状态切换的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "onContent",
@@ -342,7 +330,6 @@
   {
     "name": "file-input",
     "description": "文件上传控件，提供文件选择和上传功能，支持单文件和多文件选择，适用于需要上传文件的表单场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "color",
@@ -377,7 +364,6 @@
   {
     "name": "editable-badge",
     "description": "可编辑标签控件，提供可直接点击编辑的标签显示功能，支持在显示和编辑状态之间切换，适用于需要Inline编辑的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "size",
@@ -396,7 +382,6 @@
   {
     "name": "option-list",
     "description": "选项列表组件，用于显示可选择的选项列表，支持自定义选项模板和转换规则，适用于下拉选择、单选列表、选项选择等需要选项列表的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "options",
@@ -420,7 +405,6 @@
   {
     "name": "picker-ref",
     "description": "选择器引用组件，用于触发选择器弹窗，支持自定义触发器和内容区域，适用于选择器、下拉选择、日期时间选择等需要弹窗选择的场景。",
-    "type": "表单控件组件",
     "inputs": [
       {
         "name": "trigger",
