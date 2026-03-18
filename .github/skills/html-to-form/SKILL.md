@@ -1,6 +1,6 @@
 ---
 name: html-to-form
-description: '**WORKFLOW SKILL** — 根据 HTML 片段反向生成 piying-view Valibot Schema 定义。作为架构设计工具，生成的是元数据定义而非完整实现。开发者自行实现组件和功能。USE FOR: HTML 反向工程生成 Schema、表单架构设计、组件定义骨架生成。DO NOT USE FOR: 组件实现；业务逻辑编写；运行时调试。INVOKES: file system tools (read/write schema files), ask-questions tool. FOR SINGLE OPERATIONS: 简单控件直接编辑文件即可。'
+description: '**WORKFLOW SKILL** — 根据 HTML 片段反向生成 piying-view Valibot Schema 定义。作为架构设计工具，生成的是元数据定义而非完整实现。开发者自行实现组件和功能。USE FOR: HTML 反向工程生成 Schema、表单架构设计、组件定义骨架生成。DO NOT USE FOR: 组件实现；业务逻辑编写；运行时调试。INVOKES: file system tools (read/write schema files), ask-questions tool. FOR SINGLE OPERATIONS: 简单控件直接编辑文件即可。RELATED SKILL: form-schema-generator (通用表单 Schema 生成，支持 HTML、自然语言、UI 描述等多种输入)。'
 ---
 
 # HTML 到表单 (HTML to Form) 技能指南
@@ -10,6 +10,8 @@ description: '**WORKFLOW SKILL** — 根据 HTML 片段反向生成 piying-view 
 HTML to Form 是一个**架构设计工具**，而不是代码生成器。
 
 它的核心任务是：**根据 HTML 片段反向设计 piying-view 的 Valibot Schema 定义**，生成的是元数据（metadata），而不是完整的实现。
+
+**注意**: 对于更通用的表单 Schema 生成需求(支持自然语言、UI 描述等),请使用 [`form-schema-generator`](../form-schema-generator/SKILL.md) 技能。
 
 ### 设计哲学
 
@@ -34,6 +36,18 @@ HTML to Form 是一个**架构设计工具**，而不是代码生成器。
 | 组件迁移      | 将现有 Angular 表单迁移到 piying-view    | 识别组件选择器，匹配控件定义 |
 | 表单重构      | 重构现有表单，保留功能并使用 Schema      | 分析布局容器，生成分组结构   |
 | 架构设计      | 设计新表单的架构                         | 定义组件依赖和数据结构       |
+
+**何时使用本技能?**
+- 你有现成的 HTML 片段需要转换
+- 你只关心 HTML 输入的精确转换
+
+**何时使用 form-schema-generator?**
+- 你有自然语言描述的表单需求
+- 你有 UI 设计稿的描述
+- 你需要从多种输入形式生成 Schema
+- 你需要更灵活的表单生成能力
+
+详情请参考 [`form-schema-generator`](../form-schema-generator/SKILL.md)
 
 ### 组件查找策略
 
@@ -63,7 +77,7 @@ HTML 元素 | data.json 组件名 | 说明
 `<fieldset>` | `fieldset` | 字段集容器
 `<video>` | *不存在* | 视频播放器（语义化创建）
 `<div class="card">` | `card` | 卡片容器
-
+**提示**: 对于更灵活的控件描述(如"文本输入框"、"密码框"等自然语言),请使用 [`form-schema-generator`](../form-schema-generator/SKILL.md) 技能，它支持语义化控件识别。
 **为什么优先查 data.json？**
 - data.json 定义了项目中已有的组件，确保 Schema 使用正确的组件名称
 - 避免创建不存在的组件引用
@@ -95,6 +109,8 @@ HTML 元素 | data.json 组件名 | 说明
 ### 第零步：组件查找
 
 在开始生成 Schema 之前，先从 [`references/data.json`](./references/data.json) 中查找对应的组件定义：
+
+**注意**: 本技能仅支持 HTML 片段输入。对于更通用的输入形式(自然语言、UI 描述等)，请使用 [`form-schema-generator`](../form-schema-generator/SKILL.md) 技能。
 
 **查找步骤**：
 
@@ -675,3 +691,13 @@ HTML 元素
                ↓
              生成 Schema
 ```
+
+**何时使用 form-schema-generator?**
+
+当你的输入不是严格的 HTML 片段，而是：
+- 自然语言描述（如"创建一个邮箱输入框"）
+- UI 设计稿描述（如"Figma 中的表单布局"）
+- 现有表单定义（如 Angular FormGroup）
+- 混合输入（多种描述方式组合）
+
+请使用 [`form-schema-generator`](../form-schema-generator/SKILL.md) 技能，它支持更广泛的输入形式和更灵活的语义理解。
