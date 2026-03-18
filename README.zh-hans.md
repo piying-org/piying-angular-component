@@ -1,20 +1,20 @@
-# Installation Guide
+# 安装指南
 
-## Prerequisites
+## 前提条件
 
-You need to have an existing Angular project.
+您需要有一个现有的 Angular 项目。
 
-## Steps
+## 步骤
 
-### 1. Install @piying-lib/angular-daisyui and Peer Dependencies
+### 1. 安装 @piying-lib/angular-daisyui 及其对等依赖
 
-Install the main package and necessary peer dependencies:
+安装主包和必要的对等依赖：
 
 ```bash
 npm i @piying-lib/angular-daisyui
 ```
 
-If the following peer dependencies are not already installed, run the corresponding commands:
+如果尚未安装以下对等依赖，请运行对应命令：
 
 ```bash
 npm i @piying/view-angular@^2.7.1
@@ -24,17 +24,17 @@ npm i @angular/material@>=20.0.0
 npm i @cyia/ngx-common@>=20.0.4
 ```
 
-### 2. Install Tailwind CSS (if not present)
+### 2. 安装 Tailwind CSS（如果不存在）
 
-If Tailwind CSS is not already installed in your project, follow the [Tailwind CSS Angular guide](https://tailwindcss.com/docs/installation/framework-guides/angular).
+如果您的项目尚未安装 Tailwind CSS，请按照 [Tailwind CSS Angular 指南](https://tailwindcss.com/docs/installation/framework-guides/angular) 进行安装。
 
-Run the following command:
+执行以下命令：
 
 ```bash
 npm install tailwindcss @tailwindcss/postcss postcss --force
 ```
 
-Edit the `.postcssrc.json` file:
+编辑 `.postcssrc.json` 文件：
 
 ```json
 {
@@ -44,19 +44,19 @@ Edit the `.postcssrc.json` file:
 }
 ```
 
-### 3. Install DaisyUI (if not present)
+### 3. 安装 DaisyUI（如果不存在）
 
-If DaisyUI is not already installed in your project, follow the [DaisyUI installation guide](https://daisyui.com/docs/install/).
+如果您的项目尚未安装 DaisyUI，请按照 [DaisyUI 安装指南](https://daisyui.com/docs/install/) 进行安装。
 
-Run the following command:
+执行以下命令：
 
 ```bash
 npm i -D daisyui@latest
 ```
 
-### 4. Configure CSS
+### 4. 配置 CSS
 
-Add the following configuration to your main CSS file (e.g., `src/styles.css` or `src/styles.scss`):
+在您的主 CSS 文件（例如 `src/styles.css` 或 `src/styles.scss`）中添加以下配置：
 
 ```css
 @import 'tailwindcss';
@@ -71,9 +71,9 @@ Add the following configuration to your main CSS file (e.g., `src/styles.css` or
 @source '../node_modules/@piying-lib/angular-daisyui/preset-css/ts';
 ```
 
-### 5. Configure the Application
+### 5. 配置应用
 
-Add the following to `src/app/app.config.ts`:
+在 `src/app/app.config.ts` 中添加以下内容：
 
 ```diff
   import {
@@ -98,6 +98,7 @@ Add the following to `src/app/app.config.ts`:
   };
 ```
 
-## Completion
 
-After following these steps, your Angular project should be successfully integrated with @piying-lib/angular-daisyui.
+## 完成
+
+按照以上步骤操作后，您的 Angular 项目应该已经成功集成了 @piying-lib/angular-daisyui。
