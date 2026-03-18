@@ -10,9 +10,8 @@ import { FormsModule } from '@angular/forms';
  * 特性:
  *   - 作为表格行的基类组件
  *   - 支持字段组功能
- *   - 集成 piying-view 字段系统
  *
- * 使用场景: 表格行内嵌套字段组，用于复杂行内编辑等场景
+ * 使用场景: table使用
  */
 @Component({
   selector: 'tr',

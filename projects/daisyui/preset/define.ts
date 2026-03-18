@@ -93,7 +93,6 @@ export const PresetDefine = {
     divider: { type: NFCCGroup.DividerNFCC },
     dropdown: { type: NFCCGroup.DropdownNFCC },
     fab: { type: NFCCGroup.FabNFCC },
-    'file-input-button': { type: NFCCGroup.InputButtonNFCC },
     'input-button': { type: NFCCGroup.InputButtonNFCC },
     kbd: { type: NFCCGroup.KbdNFCC },
     loading: { type: NFCCGroup.LoadingNFCC },
@@ -130,9 +129,13 @@ export const PresetDefine = {
     object: { type: PiyingViewGroup },
     div: { type: DivNFCC },
     'common-data': { type: StrOrTemplateComponent },
+    'filter-option': {
+      type: ExtWrapperGroup.FilterOptionNFCC,
+    },
   },
   wrappers: {
     // 默认包装器
+    // 和group冲突,应该去掉group
     fieldset: { type: WCGroup.FieldsetWC },
     form: { type: WCGroup.FormWC },
     'label-wrapper': { type: WCGroup.LabelWC },

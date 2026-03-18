@@ -1,8 +1,16 @@
 [
   {
     "name": "div",
-    "description": "通用容器组件，用于在表单中创建通用的容器元素，主要用作布局容器或包裹其他组件。",
+    "description": "空组件",
     "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "div",
+    "description": "用于增加一层调整样式",
+    "type": "包装器",
     "inputs": [],
     "outputs": [],
     "props": []
@@ -23,6 +31,7 @@
   },
   {
     "name": "checkbox",
+    "alias-list": ["boolean"],
     "description": "复选框控件，提供单个复选框的勾选功能，支持确定、不确定两种状态，常用于需要选择多个选项的场景。",
     "type": "表单控件组件",
     "inputs": [
@@ -47,6 +56,7 @@
   },
   {
     "name": "input",
+    "alias-list": ["string", "number", "date"],
     "description": "文本输入控件，提供多种类型的文本输入功能，支持文本、密码、数字、日期等常见输入场景，适合作为表单中的基础输入组件使用。",
     "type": "表单控件组件",
     "inputs": [
@@ -76,6 +86,7 @@
   },
   {
     "name": "select",
+    "alias-list": ["picklist"],
     "description": "选择器控件，提供下拉选择功能，支持单选、多选以及原生select样式，适用于需要在多个选项中选择一个或多个的场景。",
     "type": "表单控件组件",
     "inputs": [
@@ -756,6 +767,40 @@
     "props": []
   },
   {
+    "name": "avatar",
+    "description": "头像组件,用于显示用户头像、图标或占位符，支持在线/离线状态指示,可用于个人资料、列表项、评论等场景",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "placeholder",
+        "type": "string",
+        "description": "占位符文本或内容"
+      },
+      {
+        "name": "placeholderClass",
+        "type": "string",
+        "description": "占位符 CSS 类名"
+      },
+      {
+        "name": "imgUrl",
+        "type": "string",
+        "description": "图片 URL"
+      },
+      {
+        "name": "wrapperClass",
+        "type": "string",
+        "description": "包装器 CSS 类名"
+      },
+      {
+        "name": "status",
+        "type": "'online' | 'offline'",
+        "description": "状态指示"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
     "name": "badge",
     "description": "徽章组件，用于显示数量标签、状态标记或重要提示，如未读消息数、通知提示等，支持多种样式风格和颜色尺寸配置。",
     "type": "非表单控件组件",
@@ -779,6 +824,25 @@
         "name": "content",
         "type": "any",
         "description": "徽章的内容，默认为'Badge'"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "breadcrumbs",
+    "description": "面包屑导航组件,用于显示页面层级结构和当前位置，帮助用户了解所处位置并快速返回上级页面,支持自定义标签、图标和 URL 配置",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "options",
+        "type": "{label?: string;icon?: IconConfig;url: string;extraLink?: boolean;templateRef?: TemplateRef<any>;}[]",
+        "description": "面包屑选项列表"
+      },
+      {
+        "name": "optionClass",
+        "type": "string",
+        "description": "选项 CSS 类名"
       }
     ],
     "outputs": [],
@@ -896,6 +960,55 @@
         "name": "mainIcon",
         "type": "FabOption",
         "description": "主图标的配置"
+      }
+    ],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "input-button",
+    "description": "表单提交按钮组件,用于表单提交、重置操作，具有与按钮组件相同的样式特性,常用于表单底部操作区域",
+    "type": "非表单控件组件",
+    "inputs": [
+      {
+        "name": "type",
+        "type": "'reset' | 'submit'",
+        "description": "按钮类型"
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "description": "按钮的颜色主题"
+      },
+      {
+        "name": "style",
+        "type": "'outline' | 'dash' | 'soft' | 'ghost' | 'link'",
+        "description": "按钮的样式风格"
+      },
+      {
+        "name": "size",
+        "type": "Size",
+        "description": "按钮的尺寸"
+      },
+      {
+        "name": "shape",
+        "type": "'wide' | 'block' | 'square' | 'circle'",
+        "description": "按钮的形状"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "description": "是否为激活状态"
+      },
+      {
+        "name": "clicked",
+        "type": "(event: PointerEvent) => void | Promise<void>",
+        "description": "按钮点击时的回调函数"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "是否禁用"
       }
     ],
     "outputs": [],
@@ -1085,14 +1198,6 @@
     "props": []
   },
   {
-    "name": "toast",
-    "description": "Toast消息提示组件，用于在页面角落显示短暂的消息提示，如成功、失败、警告等反馈信息，通常在操作完成后自动消失，不影响用户继续操作。",
-    "type": "非表单控件组件",
-    "inputs": [],
-    "outputs": [],
-    "props": []
-  },
-  {
     "name": "checkbox-list",
     "description": "复选框列表组件，用于显示可多选的复选框列表，支持动态选项和自定义配置，适用于多选列表、权限选择、标签选择等需要多选功能的场景。",
     "type": "表单组控件组件",
@@ -1147,14 +1252,6 @@
         "description": "最小长度限制，默认为0"
       }
     ],
-    "outputs": [],
-    "props": []
-  },
-  {
-    "name": "form-dialog",
-    "description": "表单对话框容器组件，用于在对话框中显示和编辑表单数据，支持表单数据的读取和修改、提交和取消操作、加载状态显示等功能，常用于新增、编辑操作。",
-    "type": "非表单控件组件",
-    "inputs": [],
     "outputs": [],
     "props": []
   },
@@ -1347,6 +1444,14 @@
     "props": []
   },
   {
+    "name": "tr",
+    "description": "表格行组件,仅table的define使用",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
     "name": "table-expand-cell",
     "description": "表格行展开单元格组件，用于表格行的展开控制，显示和控制行的展开状态，适用于表格行需要展开显示详细信息的场景。",
     "type": "非表单控件组件",
@@ -1411,8 +1516,48 @@
     "props": []
   },
   {
+    "name": "loading-wrapper",
+    "description": "加载显示",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "router-outlet",
+    "description": "路由出口",
+    "type": "非表单控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "object",
+    "description": "默认的表单组控件组件",
+    "type": "表单组控件组件",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
     "name": "validate-tooltip-wrapper",
     "description": "验证提示工具包装器组件，用于在表单控件周围显示验证错误信息，提供 tooltip 样式的错误提示，适用于需要验证提示的表单控件。",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "td",
+    "description": "table定义时使用",
+    "type": "包装器",
+    "inputs": [],
+    "outputs": [],
+    "props": []
+  },
+  {
+    "name": "th",
+    "description": "table定义时使用",
     "type": "包装器",
     "inputs": [],
     "outputs": [],
