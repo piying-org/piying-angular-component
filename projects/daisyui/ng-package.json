@@ -6,5 +6,5 @@
   },
   "deleteDestPath": true,
   "assets": ["./preset-css"],
-  "allowedNonPeerDependencies": ["@piying-lib/angular-core"]
+  "allowedNonPeerDependencies": ["@piying-lib/angular-core", "cally"]
 }
