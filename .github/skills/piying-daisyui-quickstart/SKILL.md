@@ -1,6 +1,6 @@
 ---
 name: piying-daisyui-quickstart
-description: "**WORKFLOW SKILL** — 快速初始化 @piying-lib/angular-daisyui 项目。验证前提条件并指导完成所有安装配置步骤。"
+description: '**WORKFLOW SKILL** — 快速初始化 @piying-lib/angular-daisyui 项目。验证前提条件并指导完成所有安装配置步骤。'
 ---
 
 # @piying-lib/angular-daisyui 快速初始化流程
@@ -12,11 +12,13 @@ description: "**WORKFLOW SKILL** — 快速初始化 @piying-lib/angular-daisyui
 **目标**: 确认用户有一个现有的 Angular 项目
 
 **检查项**:
+
 - 项目中存在 `angular.json` 文件
 - 项目中存在 `package.json` 文件
 - 项目使用 TypeScript
 
 **如果验证失败**:
+
 - 提示用户需要先创建 Angular 项目: `ng new my-app`
 - 或者提供一个现有的 Angular 项目路径
 
@@ -27,6 +29,7 @@ description: "**WORKFLOW SKILL** — 快速初始化 @piying-lib/angular-daisyui
 **目标**: 安装 `@piying-lib/angular-daisyui` 及其必要的对等依赖
 
 **执行命令**:
+
 ```bash
 npm i @piying-lib/angular-daisyui
 npm i @piying/view-angular@^2.7.1
@@ -37,6 +40,7 @@ npm i @cyia/ngx-common@>=20.0.4
 ```
 
 **验证**:
+
 - 检查 `package.json` 中是否已添加上述包
 - 检查 `node_modules` 中是否成功安装
 
@@ -47,15 +51,18 @@ npm i @cyia/ngx-common@>=20.0.4
 **目标**: 确保项目中已安装 Tailwind CSS
 
 **检查项**:
+
 - 检查 `package.json` 中是否存在 `tailwindcss`
 - 检查 `.postcssrc.json` 文件是否存在
 
 **如果不存在，执行**:
+
 ```bash
 npm install tailwindcss @tailwindcss/postcss postcss --force
 ```
 
 **配置 `.postcssrc.json`**:
+
 ```json
 {
   "plugins": {
@@ -65,6 +72,7 @@ npm install tailwindcss @tailwindcss/postcss postcss --force
 ```
 
 **验证**:
+
 - `.postcssrc.json` 文件存在且配置正确
 - `tailwindcss` 已添加到 `package.json`
 
@@ -75,14 +83,17 @@ npm install tailwindcss @tailwindcss/postcss postcss --force
 **目标**: 确保项目中已安装 DaisyUI
 
 **检查项**:
+
 - 检查 `package.json` 中是否存在 `daisyui`
 
 **如果不存在，执行**:
+
 ```bash
 npm i -D daisyui@latest
 ```
 
 **验证**:
+
 - `daisyui` 已添加到 `package.json` 的 `devDependencies`
 
 ---
@@ -92,9 +103,11 @@ npm i -D daisyui@latest
 **目标**: 在主 CSS 文件中添加必要的配置
 
 **需配置的文件**:
+
 - `src/styles.css` 或 `src/styles.scss`
 
 **添加内容**:
+
 ```css
 @import 'tailwindcss';
 
@@ -109,6 +122,7 @@ npm i -D daisyui@latest
 ```
 
 **验证**:
+
 - CSS 文件中已添加上述代码
 - 路径与项目结构匹配
 
@@ -119,9 +133,11 @@ npm i -D daisyui@latest
 **目标**: 在 `src/app/app.config.ts` 中添加必要的配置
 
 **需修改的文件**:
+
 - `src/app/app.config.ts`
 
 **添加内容**:
+
 ```typescript
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 
@@ -134,6 +150,7 @@ export const appConfig: ApplicationConfig = {
 ```
 
 **验证**:
+
 - `ThemeService` 已添加到 providers 数组
 - 导入语句正确
 
@@ -144,9 +161,11 @@ export const appConfig: ApplicationConfig = {
 **目标**: 导入并配置 piying-view 的预定义组件
 
 **需修改的文件**:
+
 - `src/app/app.ts` 或其他组件文件
 
 **添加内容**:
+
 ```typescript
 import { typedComponent } from '@piying/view-angular';
 import { PresetDefine } from '@piying-lib/angular-daisyui/preset';
@@ -156,6 +175,7 @@ export const FieldGlobalConfig = safeDefine.define;
 ```
 
 **验证**:
+
 - `typedComponent` 和 `PresetDefine` 正确导入
 - `FieldGlobalConfig` 已导出供后续使用
 
@@ -166,11 +186,13 @@ export const FieldGlobalConfig = safeDefine.define;
 **目标**: 确认安装和配置正确
 
 **验证方式**:
+
 1. 检查 `src/index.html` 是否存在
 2. 检查 `src/main.ts` 是否正确引导应用
 3. 尝试运行项目: `npm start`
 
 **预期结果**:
+
 - 项目成功启动
 - 没有编译错误
 - DaisyUI 主题正常加载
@@ -184,6 +206,7 @@ export const FieldGlobalConfig = safeDefine.define;
 **症状**: 安装时出现 peer dependency 警告或错误
 
 **解决方法**:
+
 - 使用 `--legacy-peer-deps` 或 `--force` 标志
 - 或手动指定对等依赖的兼容版本
 
@@ -192,6 +215,7 @@ export const FieldGlobalConfig = safeDefine.define;
 **症状**: 启动时出现 Tailwind 相关错误
 
 **解决方法**:
+
 - 确认 `.postcssrc.json` 配置正确
 - 确认 `tailwindcss` 版本兼容
 
@@ -200,6 +224,7 @@ export const FieldGlobalConfig = safeDefine.define;
 **症状**: 应用运行但 DaisyUI 样式未生效
 
 **解决方法**:
+
 - 检查 CSS 配置中的 `@source` 路径
 - 确认 `daisyui` 已正确安装
 
