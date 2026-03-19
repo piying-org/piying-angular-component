@@ -73,6 +73,10 @@ description: "**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view 
 - 属性: `actions.class.component('xxx')`, `actions.attributes.patch({...})`, `actions.inputs.patch({...})`
 - 验证: `v.required()`, `v.email()`, `v.minValue()`, `v.maxLength()` 等
 
+**参考文件**:
+- `references/action.md` - 所有可用的 Action 方法,用于修改组件属性和行为
+- `references/path-query.md` - Action 中路径查询语法,用于在 `valueChange`、`hideWhen`、`disableWhen` 等场景中定位其他字段
+
 **输出格式**:
 ```typescript
 import * as v from 'valibot';
@@ -252,8 +256,12 @@ export const RegistrationFormDefine = v.pipe(
 | 手风琴 | `accordion` | `v.pipe(v.object(), setComponent('accordion'))` |
 | 步骤 | `steps` | `v.pipe(v.object(), setComponent('steps'))` |
 
----
+### Action 参考
 
-**重要说明**:
-- 输出的是元数据定义,不是完整实现
-- 生成的组件名必须在对应的 JSON 文件中存在,或由开发者自行实现
+| 需求 | Action 方法 | 参考文档 |
+|------|------------|----------|
+| 修改控件行为 | `formConfig`、`renderConfig`、`asControl`、`asVirtualGroup` | [action.md](references/action.md) |
+| 控件显示/禁用控制 | `hideWhen`、`disableWhen` | [action.md](references/action.md) + [path-query.md](references/path-query.md) |
+| 监听值变化 | `valueChange`、`outputChange` | [action.md](references/action.md) + [path-query.md](references/path-query.md) |
+| 属性操作 | `actions.attributes.patch`、`actions.inputs.patch` | [action.md](references/action.md) |
+| 路径查询 | `field.get([])` | [path-query.md](references/path-query.md) |
