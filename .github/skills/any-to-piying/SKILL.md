@@ -1,5 +1,5 @@
 ---
-name: form-schema-generator
+name: any-to-piying
 description: "**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view Valibot Schema 定义。输出元数据而非完整实现,开发者需自行实现组件。"
 ---
 
