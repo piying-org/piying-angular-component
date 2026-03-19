@@ -139,7 +139,29 @@ export const appConfig: ApplicationConfig = {
 
 ---
 
-### 步骤 7: 快速开始验证
+### 步骤 7: 导入预定义组件
+
+**目标**: 导入并配置 piying-view 的预定义组件
+
+**需修改的文件**:
+- `src/app/app.ts` 或其他组件文件
+
+**添加内容**:
+```typescript
+import { typedComponent } from '@piying/view-angular';
+import { PresetDefine } from '@piying-lib/angular-daisyui/preset';
+
+const safeDefine = typedComponent(PresetDefine);
+export const FieldGlobalConfig = safeDefine.define;
+```
+
+**验证**:
+- `typedComponent` 和 `PresetDefine` 正确导入
+- `FieldGlobalConfig` 已导出供后续使用
+
+---
+
+### 步骤 8: 快速开始验证
 
 **目标**: 确认安装和配置正确
 
@@ -192,5 +214,6 @@ export const appConfig: ApplicationConfig = {
 3. ✅ DaisyUI 配置正确
 4. ✅ CSS 配置已添加
 5. ✅ `app.config.ts` 已更新
-6. ✅ 项目可以成功编译和运行
-7. ✅ 没有明显的警告或错误
+6. ✅ 预定义组件已导入
+7. ✅ 项目可以成功编译和运行
+8. ✅ 没有明显的警告或错误
