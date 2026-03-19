@@ -1,13 +1,35 @@
 ---
 name: any-to-piying
-description: '**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view Valibot Schema 定义。输出元数据而非完整实现,开发者需自行实现组件。'
+description: '在需要生成 piying-view 表单时,使用此技能,使用Valibot Schema的强类型定义声明。输出相当于元数据而非完整实现,开发者需自行实现组件。'
 ---
 
 # 表单 Schema 生成器核心流程
 
 ## 核心流程
 
-### 步骤 1: 输入描述解析
+### 步骤 1: 组件类型概念
+
+理解组件类型是识别和组合 Schema 的基础。
+
+#### 非表单控件组件
+
+普通组件,不接受表单值和验证,如按钮、alert、badge 等。
+
+#### 表单控件组件
+
+支持表单输入输出、验证、状态和数据转换,如 input、select、checkbox、toggle 等。
+
+#### 表单组控件组件
+
+支持嵌套子组件,用于组织复杂结构,如 fieldset、card、tabs、accordion 等。
+
+#### 包装器
+
+为组件附加通用能力(标签、验证、前后缀等),减少耦合,如 label-wrapper、validate-tooltip-wrapper。
+
+---
+
+### 步骤 2: 输入描述解析
 
 **输入**: 任意与表单生成相关的描述
 
@@ -15,11 +37,12 @@ description: '**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view 
 
 **解析要点**:
 
+- 参考步骤1中的概念来识别下面的各种类型
+- 识别非表单控件组件类型(按钮,badge等)
 - 识别组件类型(输入框、选择器、按钮等)
 - 识别容器类型(fieldset、div、card、tabs 等)
 - 识别包装器需求(标签、验证提示等)
 - 识别布局结构(垂直、水平、网格等)
-- 识别按钮等非表单控件:按钮使用 NFCSchema 类型,不需要验证器,直接通过 actions.inputs.patch 设置内容和点击事件
 
 **示例**:
 
@@ -43,7 +66,7 @@ description: '**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view 
 
 ---
 
-### 步骤 2: 组件/容器/包装器识别
+### 步骤 3: 组件/容器/包装器识别
 
 **查询策略**: 优先查 JSON 文件,未找到则语义化创建
 
@@ -71,7 +94,7 @@ description: '**WORKFLOW SKILL** — 根据任意表单描述生成 piying-view 
 
 ---
 
-### 步骤 3: Schema 组合输出
+### 步骤 4 Schema 组合输出
 
 **组合规则**:
 
