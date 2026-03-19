@@ -48,7 +48,12 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2024",
-    "module": "preserve"
+    "module": "preserve",
+    "lib": [
+      "ESNext",
+      "DOM.Iterable",
+      "DOM"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
