@@ -5,6 +5,7 @@ import { actions } from '@piying/view-angular';
 import { map, startWith } from 'rxjs';
 import {
   CheckboxService,
+  tableInputDefine,
   SortService,
   TableExpandService,
   TableResourceService,
@@ -33,8 +34,95 @@ export const TableDefine = v.pipe(
       actions.inputs.patchAsync({
         define: (field) => {
           const pageFiled = field.get(['..', 'page']);
-          return {
-            row: {
+          return tableInputDefine({
+            expand: {
+              head: ' ',
+              body: v.pipe(
+                NFCSchema,
+                setComponent('table-expand-cell'),
+                actions.wrappers.set(['td']),
+              ),
+            },
+            checkbox: {
+              head: v.pipe(
+                v.boolean(),
+                setComponent('checkbox'),
+                actions.wrappers.set(['td', 'table-checkbox-all']),
+              ),
+              body: v.pipe(
+                v.boolean(),
+                setComponent('checkbox'),
+                actions.wrappers.set(['td', 'table-checkbox-body']),
+              ),
+            },
+            index: {
+              head: '索引',
+              body: (node: any, index: number) => {
+                const { pageQueryParams } = pageFiled!.props();
+                return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
+              },
+            },
+            '0': {
+              head: '测试',
+              body: (data: any) => {
+                return data.title1;
+              },
+            },
+            '1': {
+              head: 'badge',
+              body: v.pipe(
+                NFCSchema,
+                setComponent('badge'),
+                actions.wrappers.set(['td']),
+                actions.inputs.patchAsync({
+                  content: ({ context }) => {
+                    return computed(() => context.item$().badge1);
+                  },
+                }),
+              ),
+            },
+            '2': {
+              head: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                actions.inputs.patch({ content: '1234' }),
+                actions.wrappers.set(['td', 'sort-header']),
+                actions.props.patch({
+                  key: 'title1',
+                }),
+              ),
+            },
+            '3': {
+              head: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                actions.inputs.patch({ content: '666' }),
+                actions.wrappers.set(['td', 'sort-header']),
+                actions.props.patch({
+                  key: 'badge1',
+                }),
+              ),
+            },
+            extra: {
+              body: v.pipe(
+                NFCSchema,
+                setComponent('button'),
+                actions.wrappers.set(['td']),
+                hideWhen({
+                  listen(fn, field) {
+                    const sm = field.injector.get(TableExpandService).selectionModel$$;
+                    return sm.pipe(
+                      map((value) => {
+                        return !value.isSelected(field.context.item$());
+                      }),
+                      startWith(true),
+                    );
+                  },
+                }),
+              ),
+            },
+          })(() => {
+            return {
               head: [{ columns: ['expand', 'checkbox', 'index', '1', '2', '3'] }],
               body: [
                 {
@@ -43,96 +131,8 @@ export const TableDefine = v.pipe(
                 },
                 { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
               ],
-            },
-            columns: {
-              expand: {
-                head: ' ',
-                body: v.pipe(
-                  NFCSchema,
-                  setComponent('table-expand-cell'),
-                  actions.wrappers.set(['td']),
-                ),
-              },
-              checkbox: {
-                head: v.pipe(
-                  v.boolean(),
-                  setComponent('checkbox'),
-                  actions.wrappers.set(['td', 'table-checkbox-all']),
-                ),
-                body: v.pipe(
-                  v.boolean(),
-                  setComponent('checkbox'),
-                  actions.wrappers.set(['td', 'table-checkbox-body']),
-                ),
-              },
-              index: {
-                head: '索引',
-                body: (node: any, index: number) => {
-                  const { pageQueryParams } = pageFiled!.props();
-                  return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
-                },
-              },
-              '0': {
-                head: '测试',
-                body: (data: any) => {
-                  return data.title1;
-                },
-              },
-              '1': {
-                head: 'badge',
-                body: v.pipe(
-                  NFCSchema,
-                  setComponent('badge'),
-                  actions.wrappers.set(['td']),
-                  actions.inputs.patchAsync({
-                    content: ({ context }) => {
-                      return computed(() => context.item$().badge1);
-                    },
-                  }),
-                ),
-              },
-              '2': {
-                head: v.pipe(
-                  NFCSchema,
-                  setComponent('button'),
-                  actions.inputs.patch({ content: '1234' }),
-                  actions.wrappers.set(['td', 'sort-header']),
-                  actions.props.patch({
-                    key: 'title1',
-                  }),
-                ),
-              },
-              '3': {
-                head: v.pipe(
-                  NFCSchema,
-                  setComponent('button'),
-                  actions.inputs.patch({ content: '666' }),
-                  actions.wrappers.set(['td', 'sort-header']),
-                  actions.props.patch({
-                    key: 'badge1',
-                  }),
-                ),
-              },
-              extra: {
-                body: v.pipe(
-                  NFCSchema,
-                  setComponent('button'),
-                  actions.wrappers.set(['td']),
-                  hideWhen({
-                    listen(fn, field) {
-                      const sm = field.injector.get(TableExpandService).selectionModel$$;
-                      return sm.pipe(
-                        map((value) => {
-                          return !value.isSelected(field.context.item$());
-                        }),
-                        startWith(true),
-                      );
-                    },
-                  }),
-                ),
-              },
-            },
-          };
+            };
+          });
         },
         data: (field) => {
           return field.injector.get(TableResourceService).list$$;

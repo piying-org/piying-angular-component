@@ -32,32 +32,10 @@ import { TdWC, ThWC } from '@piying-lib/angular-daisyui/wrapper';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
+import { DataResolved } from './util';
+import { RowItem, TableItemDefine2 } from './util/table-input-define';
 // import { QueryService } from './query.service';
 
-export type ItemCellBase = string | v.BaseSchema<any, any, any>;
-export type ItemCell = ItemCellBase | ((rowData: any) => any);
-export type DataResolved = [number, any[]];
-
-interface RowItem {
-  define: v.TupleSchema<[], undefined>;
-  columns?: (string | number)[];
-}
-
-interface ColumnDefine {
-  head?: ItemCellBase;
-  body?: ItemCell;
-  foot?: ItemCellBase;
-}
-type ColumnGroupDefine = { [s: string]: ColumnDefine } | ArrayLike<ColumnDefine>;
-export interface TableItemDefine2 {
-  row?: {
-    head?: RowItem[];
-    body?: RowItem[];
-    foot?: RowItem[];
-  };
-
-  columns: ColumnGroupDefine;
-}
 
 export function createRowDefine() {
   return v.pipe(v.tuple([]), setComponent(TableRowFGC));
