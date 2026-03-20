@@ -10,7 +10,9 @@
     "serve:ssr:piying-angular-component": "node dist/piying-angular-component/server/server.mjs",
     "test:ci": "ng test daisyui -c ci",
     "lint": "eslint --fix ./src  && prettier ./src --write && eslint --fix ./projects  && prettier ./projects --write",
-    "publish-only": "tsx ./script/change-version.ts && tsx ./script/publish.ts"
+    "publish-only": "tsx ./script/change-version.ts && tsx ./script/publish.ts",
+    "postinstall": "patch-package",
+    "build:patch": "tsc -P ./script/patch"
   },
   "prettier": {
     "printWidth": 100,
@@ -44,6 +46,7 @@
     "clsx": "^2.1.1",
     "es-toolkit": "^1.45.1",
     "express": "^5.1.0",
+    "patch-package": "^8.0.1",
     "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.2.1",

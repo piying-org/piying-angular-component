@@ -38,6 +38,12 @@ export const MainPage = v.pipe(
           setComponent('menu-tree'),
           actions.inputs.patch({
             list: [
+              {
+                title: 'component',
+                type: 'group',
+                children: [{ title: 'button', router: { routerLink: './component/button' } }],
+              },
+
               { title: 'form', router: { routerLink: './component/form' } },
               { title: 'table', router: { routerLink: './component/table' } },
               { title: 'category', router: { routerLink: './component/category' } },

@@ -37,6 +37,9 @@
       "@piying-lib/angular-core": [
         "./projects/core"
       ],
+      "@@piying-define": [
+        "./src/app/piying/define.ts"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,

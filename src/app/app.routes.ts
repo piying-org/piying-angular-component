@@ -23,6 +23,7 @@ import { GroupDefine } from './piying/page/component/group';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { FieldGlobalConfig } from './piying/define';
 import { PageInputDefine } from './piying/page/component/page-input';
+import { ButtonDefine } from './piying/page/component/button/button';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -225,6 +226,14 @@ export const routes: Routes = [
               model: () => {
                 return { l1: '12345' };
               },
+            },
+          },
+          {
+            path: 'button',
+            component: SchemaViewPage,
+            data: {
+              schema: () => ButtonDefine,
+              options: () => options,
             },
           },
         ],

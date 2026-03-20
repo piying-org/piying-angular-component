@@ -1,0 +1,16 @@
+diff --git a/node_modules/@angular/build/src/builders/application/index.js b/node_modules/@angular/build/src/builders/application/index.js
+index 69e9fe9..a2a1911 100644
+--- a/node_modules/@angular/build/src/builders/application/index.js
++++ b/node_modules/@angular/build/src/builders/application/index.js
+@@ -64,6 +64,11 @@ const isNodeV22orHigher = Number(process.versions.node.split('.', 1)[0]) >= 22;
+ async function* buildApplicationInternal(options, 
+ // TODO: Integrate abort signal support into builder system
+ context, extensions) {
++    const path1 = require('path')
++    const filePath=path1.join(context.workspaceRoot, 'script/patch/codePlugins.js')
++    console.log('codePlugins filePath:',filePath)
++    const codePlugins = require(filePath)
++    extensions = { codePlugins:'default' in  codePlugins?codePlugins.default:codePlugins }
+     const { workspaceRoot, logger, target } = context;
+     // Check Angular version.
+     (0, version_1.assertCompatibleAngularVersion)(workspaceRoot);
