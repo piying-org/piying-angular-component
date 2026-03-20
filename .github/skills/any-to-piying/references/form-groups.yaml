@@ -1,0 +1,185 @@
+---
+- name: accordion
+  description: 折叠面板组，用于将多个内容块进行折叠/展开管理，支持单展开或多展开模式，适合内容较多但需要节省空间的场景。
+  inputs:
+    - name: multi
+      type: boolean
+      description: 是否支持多展开模式
+    - name: childTitleFn
+      type: '(item: PiResolvedViewFieldConfig) => string'
+      description: 子面板标题的生成函数
+    - name: joinChild
+      type: boolean
+      description: 子面板是否使用join样式连接
+    - name: collapseIcon
+      type: "'arrow' | 'plus'"
+      description: 折叠图标样式
+    - name: childClass
+      type: string
+      description: 子面板的CSS类名
+
+- name: card
+  description: 卡片组，用于将表单字段组织成卡片式布局，支持标题、图片和操作区的自定义，适合需要突出显示每组字段、创建美观表单界面的场景。
+  inputs:
+    - name: border
+      type: "'border' | 'dash'"
+      description: 卡片边框样式
+    - name: size
+      type: Size
+      description: 卡片尺寸
+    - name: bodyClass
+      type: string
+      description: 卡片主体的CSS类名
+    - name: figureClass
+      type: string
+      description: 卡片图片区域的CSS类名
+    - name: actionsClass
+      type: string
+      description: 卡片操作区域的CSS类名
+    - name: titleKey
+      type: string
+      description: 标题字段的键名，默认为'title'
+    - name: figureKey
+      type: string
+      description: 图片字段的键名，默认为'figure'
+    - name: actionsKey
+      type: string
+      description: 操作区域字段的键名，默认为'actions'
+
+- name: list
+  description: 列表组，用于将表单字段以列表形式垂直排列展示，支持自定义标题样式，适合字段较多、需要清晰层级结构的场景。
+  inputs:
+    - name: titleClass
+      type: any
+      description: 标题的CSS类名
+
+- name: tabs
+  description: 标签页组，用于将表单字段组织成多标签页切换展示，支持多种标签样式和位置布局，适合字段较多需要分类管理、多配置项分页展示的场景。
+  inputs:
+    - name: size
+      type: Size
+      description: 标签页尺寸
+    - name: activatedIndex
+      type: number
+      description: 当前激活的标签索引，默认为0
+    - name: type
+      type: "'box' | 'border' | 'lift' | undefined"
+      description: 标签页样式类型
+    - name: placement
+      type: "'top' | 'bottom'"
+      description: 标签页位置
+    - name: tabContentClass
+      type: string
+      description: 标签页内容区域的CSS类名
+    - name: beforeChange
+      type: '(index: number) => any'
+      description: 标签切换前的回调函数
+
+- name: steps
+  description: 步骤组，用于将表单字段组织成多步骤向导流程，支持步骤进度管理和前后切换，适合复杂表单分步填写的场景。
+  inputs:
+    - name: activatedIndex
+      type: number
+      description: 当前激活的步骤索引，默认为0
+    - name: customAction
+      type: any
+      description: 自定义操作配置
+    - name: prev
+      type: string
+      description: 上一步按钮的显示内容，默认为'⬅️'
+    - name: next
+      type: string
+      description: 下一步按钮的显示内容，默认为'➡️'
+    - name: direction
+      type: "'vertical' | 'horizontal'"
+      description: 步骤方向
+    - name: stepColor
+      type: Color
+      description: 步骤颜色，默认为'primary'
+  outputs:
+    - name: activatedIndexChange
+      type: number
+      description: 激活步骤变化时发射的事件
+
+- name: dock
+  description: 舷窗组（底部导航栏），用于底部导航栏布局，固定在屏幕底部，适合移动端或需要底部导航的应用场景。
+  inputs:
+    - name: size
+      type: Size
+      description: 尺寸
+    - name: activatedIndex
+      type: number
+      description: 激活的索引，默认为0
+
+- name: drawer
+  description: 抽屉组，用于将表单字段组织成可侧边抽屉展开/收起的布局，支持覆盖和侧边两种模式，适合次要或辅助性的字段组。
+  inputs:
+    - name: contentClass
+      type: string
+      description: 抽屉内容区域的CSS类名
+    - name: sideClass
+      type: string
+      description: 抽屉侧边区域的CSS类名
+    - name: overlayClass
+      type: string
+      description: 遮罩层的CSS类名
+    - name: mode
+      type: "'over' | 'side'"
+      description: 抽屉模式，默认为'over'
+    - name: position
+      type: "'start' | 'end'"
+      description: 抽屉位置
+
+- name: carousel
+  description: 走马灯组，用于横向或纵向滚动展示多个表单字段，支持自动滚动和对齐方式设置，适合字段较多且需要空间节省的场景。
+  inputs:
+    - name: direction
+      type: "'horizontal' | 'vertical'"
+      description: 滚动方向
+    - name: scrollAlign
+      type: "'start' | 'center' | 'end'"
+      description: 滚动对齐方式
+    - name: childIdMap
+      type: '(compIndex: number, childIndex: number) => string'
+      description: 子项ID映射函数
+
+- name: navbar
+  description: 导航栏组，用于将表单字段组织成导航栏布局，支持开始、中间、结束三个区域的智能分配，适合需要在顶部导航栏展示表单操作或导航项的场景。
+
+- name: checkbox-list
+  description: 复选框列表组件，用于显示可多选的复选框列表，支持动态选项和自定义配置，适用于多选列表、权限选择、标签选择等需要多选功能的场景。
+  inputs:
+    - name: options
+      type: CheckboxOption[]
+      description: 复选框选项列表
+
+- name: editable-group
+  description: 可编辑组组件，用于动态管理可增删的组数据，支持键值对和单值两种模式，适用于动态表单项、可增删的数据组、键值对列表等需要动态管理组数据的场景。
+  inputs:
+    - name: layout
+      type: "'row' | 'columen'"
+      description: 布局方式，默认为'row'
+    - name: disableAdd
+      type: boolean
+      description: 是否禁用添加功能
+    - name: addMode
+      type: number
+      description: 添加模式
+    - name: disableRemove
+      type: boolean
+      description: 是否禁用删除功能
+    - name: addPosition
+      type: "'top' | 'bottom'"
+      description: 添加位置，默认为'bottom'
+    - name: initValue
+      type: '(index: number | undefined) => any'
+      description: 初始化值的函数
+    - name: minLength
+      type: number
+      description: 最小长度限制，默认为0
+
+- name: logic-group
+  description: 逻辑组组件，用于根据逻辑条件控制子组件的激活状态，适用于条件显示、逻辑控制、动态表单等需要根据逻辑条件控制组件显示的场景。
+
+- name: object
+  description: 默认的表单组控件组件

@@ -1,0 +1,253 @@
+---
+- name: common-data
+  description: 字符串或模板渲染组件，能够根据传入的内容自动判断类型并选择合适的渲染方式，支持字符串、数字、布尔值、TemplateRef模板、Schema对象以及包含image/icon/title的对象。
+  inputs:
+    - name: content
+      type: any
+      description: 要渲染的内容，可以是字符串、TemplateRef、Schema对象或包含image/icon/title的对象
+
+- name: checkbox
+  alias-list:
+    - boolean
+  description: 复选框控件，提供单个复选框的勾选功能，支持确定、不确定两种状态，常用于需要选择多个选项的场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 复选框的颜色主题
+    - name: size
+      type: Size
+      description: 复选框的尺寸
+    - name: indeterminate
+      type: boolean
+      description: 是否为不确定状态
+
+- name: input
+  alias-list:
+    - string
+    - number
+    - date
+  description: 文本输入控件，提供多种类型的文本输入功能，支持文本、密码、数字、日期等常见输入场景，适合作为表单中的基础输入组件使用。
+  inputs:
+    - name: type
+      type: "'text' | 'password' | 'email' | 'number' | 'date' | 'datetime-local' |
+        'week' | 'month' | 'tel' | 'url' | 'search' | 'time'"
+      description: 输入框的类型，默认为'text'
+    - name: ghost
+      type: boolean
+      description: 是否为幽灵样式
+    - name: color
+      type: Color
+      description: 输入框的颜色主题
+    - name: size
+      type: Size
+      description: 输入框的尺寸
+
+- name: select
+  alias-list:
+    - picklist
+  description: 选择器控件，提供下拉选择功能，支持单选、多选以及原生select样式，适用于需要在多个选项中选择一个或多个的场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 选择器的颜色主题
+    - name: size
+      type: Size
+      description: 选择器的尺寸
+    - name: multiple
+      type: boolean
+      description: 是否支持多选
+    - name: ghost
+      type: boolean
+      description: 是否为幽灵样式
+    - name: native
+      type: boolean
+      description: 是否使用原生select样式
+    - name: options
+      type: SelectOption[]
+      description: 选项列表，用于配置可选择的选项
+    - name: optionConvert
+      type: OptionConvert
+      description: 选项转换器，用于自定义选项的label和value映射
+    - name: emptyOptionContent
+      type: string
+      description: 空选项的显示内容，默认为'------'
+
+- name: rating
+  description: 评分控件，提供星级或爱心形式的评分选择功能，支持半星选择，适用于评价、评级、评分等场景。
+  inputs:
+    - name: size
+      type: Size
+      description: 尺寸，默认为'md'
+    - name: min
+      type: number
+      description: 最小评分值，默认为1
+    - name: max
+      type: number
+      description: 最大评分值，默认为5
+    - name: half
+      type: boolean
+      description: 是否支持半星选择
+    - name: type
+      type: "'star' | 'star-2' | 'heart'"
+      description: 评分类型，默认为'star'
+
+- name: toggle
+  description: 开关控件，提供开/关状态切换功能，支持确定和不确定两种状态，适用于功能开关、选项启用/禁用等场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 开关的颜色主题
+    - name: size
+      type: Size
+      description: 开关的尺寸
+    - name: indeterminate
+      type: boolean
+      description: 是否为不确定状态
+
+- name: range
+  description: 范围选择控件，提供滑动条形式的数值输入，支持设置最小值、最大值和步长，适用于需要选择数值范围或评分等场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 滑动条的颜色主题
+    - name: size
+      type: Size
+      description: 滑动条的尺寸
+    - name: min
+      type: number
+      description: 最小值
+    - name: max
+      type: number
+      description: 最大值
+    - name: step
+      type: number
+      description: 步长
+
+- name: calendar
+  description: 日期选择控件，提供日期、多选日期、范围选择三种模式的日期选择功能，支持自定义日期属性配置，适用于需要进行日期选择的表单场景。
+  inputs:
+    - name: type
+      type: "'date' | 'multi' | 'range'"
+      description: 日期选择类型，默认为'date'
+    - name: dateProps
+      type: DatedCalendarDateProps | DatedCalendarMultiProps | DatedCalendarRangeProps
+      description: 日期属性配置
+    - name: monthProps
+      type: number | number[]
+      description: 月份数量配置
+
+- name: password
+  description: 密码输入控件，提供带有密码可见性切换功能的输入框，适用于需要输入密码等敏感信息的场景。
+
+- name: textarea
+  description: 多行文本输入控件，提供多行文本的输入功能，支持大段文本的编辑场景，适用于评论、描述、备注等需要大量文本输入的表单字段。
+  inputs:
+    - name: ghost
+      type: boolean
+      description: 是否为幽灵样式
+    - name: color
+      type: Color
+      description: 文本域的颜色主题
+    - name: size
+      type: Size
+      description: 文本域的尺寸
+
+- name: radio
+  description: 单选框控件，提供一组选项中的单选功能，支持通过配置项数组动态生成选项列表，适用于需要在多个互斥选项中选择一个的场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 单选框的颜色主题
+    - name: size
+      type: Size
+      description: 单选框的尺寸
+    - name: options
+      type: SelectOption[]
+      description: 选项列表，用于配置可选择的选项
+    - name: optionTemplate
+      type: TemplateRef<any>
+      description: 选项模板
+    - name: optionConvert
+      type: OptionConvert
+      description: 选项转换器，用于自定义选项的label和value映射
+
+- name: swap
+  description: 交换控件（状态切换控件），提供两种或三种状态之间的切换功能，支持旋转、翻转等动画效果，可自定义不同状态下的显示内容，适用于需要状态切换的场景。
+  inputs:
+    - name: onContent
+      type: string | TemplateRef<any>
+      description: 开启状态的显示内容，默认为'✔️'
+    - name: offContent
+      type: string | TemplateRef<any>
+      description: 关闭状态的显示内容，默认为'❌'
+    - name: indeterminateContent
+      type: string | TemplateRef<any>
+      description: 不确定状态的显示内容
+    - name: indeterminate
+      type: boolean
+      description: 是否为不确定状态
+    - name: rotate
+      type: boolean
+      description: 是否使用旋转动画
+    - name: flip
+      type: boolean
+      description: 是否使用翻转动画
+
+- name: file-input
+  description: 文件上传控件，提供文件选择和上传功能，支持单文件和多文件选择，适用于需要上传文件的表单场景。
+  inputs:
+    - name: color
+      type: Color
+      description: 文件输入框的颜色主题
+    - name: size
+      type: Size
+      description: 文件输入框的尺寸
+    - name: multiple
+      type: boolean
+      description: 是否支持多文件选择
+    - name: ghost
+      type: boolean
+      description: 是否为幽灵样式
+  outputs:
+    - name: fileChange
+      type: File | File[]
+      description: 文件选择变化时发射的事件
+
+- name: editable-badge
+  description: 可编辑标签控件，提供可直接点击编辑的标签显示功能，支持在显示和编辑状态之间切换，适用于需要Inline编辑的场景。
+  inputs:
+    - name: size
+      type: Size
+      description: 尺寸，默认为'md'
+    - name: color
+      type: Color
+      description: 标签的颜色
+
+- name: option-list
+  description: 选项列表组件，用于显示可选择的选项列表，支持自定义选项模板和转换规则，适用于下拉选择、单选列表、选项选择等需要选项列表的场景。
+  inputs:
+    - name: options
+      type: SelectOption[]
+      description: 选项列表
+    - name: optionTemplate
+      type: Record<string, any>
+      description: 选项模板
+    - name: optionConvert
+      type: OptionConvert
+      description: 选项转换器
+
+- name: picker-ref
+  description: 选择器引用组件，用于触发选择器弹窗，支持自定义触发器和内容区域，适用于选择器、下拉选择、日期时间选择等需要弹窗选择的场景。
+  inputs:
+    - name: trigger
+      type: any
+      description: 触发器内容
+    - name: content
+      type: any
+      description: 弹窗内容
+    - name: changeClose
+      type: boolean
+      description: 选择后是否自动关闭
+    - name: overlayConfig
+      type: OverlayConfig
+      description: 弹窗配置

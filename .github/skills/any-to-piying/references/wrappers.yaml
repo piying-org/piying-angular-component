@@ -1,0 +1,36 @@
+---
+- name: div
+  description: 用于增加一层调整样式
+
+- name: fieldset
+  description: 字段集组，用于将表单字段进行语义分组，使用HTMLfieldset元素进行包裹，适合需要语义化分组、无障碍访问要求较高的场景。
+
+- name: table-checkbox-body
+  description: 表格单行复选框包装器组件，用于表格单行的复选框控制，管理单行的选中状态，适用于表格需要批量操作时控制单行的选中状态。
+
+- name: table-checkbox-all
+  description: 表格全选复选框包装器组件，用于表格的全选功能，控制所有行的选中状态，适用于表格需要批量操作时控制所有行的选中状态。
+
+- name: sort-header
+  description: 排序列头包装器组件，用于表格列的排序控制，通常与Table组件配合使用，适用于表格列需要排序功能时作为列的包装器使用。
+
+- name: local-filter
+  description: 选项列表本地过滤包装器组件，用于在客户端对选项列表进行本地过滤筛选，适用于选项列表数据量较小，需要在客户端进行筛选的场景。
+
+- name: form
+  description: 表单包装器组件，用于包裹表单元素，提供表单提交处理等功能，适用于需要表单包装的场景。
+
+- name: label-wrapper
+  description: 标签包装器组件，用于包装表单控件，提供标签的布局和显示功能，适用于需要标签包装的表单控件。
+
+- name: loading-wrapper
+  description: 加载显示
+
+- name: validate-tooltip-wrapper
+  description: 验证提示工具包装器组件，用于在表单控件周围显示验证错误信息，提供 tooltip 样式的错误提示，适用于需要验证提示的表单控件。
+
+- name: td
+  description: table定义时使用
+
+- name: th
+  description: table定义时使用
