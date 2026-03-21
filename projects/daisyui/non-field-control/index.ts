@@ -14,3 +14,4 @@ export * from './theme-controller';
 export * from './dropdown';
 export * from './stat';
 export * from './input-button';
+export * from './file-input-button';

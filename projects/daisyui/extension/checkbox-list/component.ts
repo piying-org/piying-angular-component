@@ -52,7 +52,7 @@ export class CheckboxListFGC extends PiyingViewGroupBase {
     return v.pipe(
       v.optional(template),
       formConfig({
-        transfomer: {
+        transformer: {
           toModel(value, control) {
             return value ? input.value : undefined;
           },

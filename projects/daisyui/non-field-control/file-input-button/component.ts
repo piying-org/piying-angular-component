@@ -12,7 +12,7 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
  * 支持单文件或多文件上传模式
  */
 @Component({
-  selector: 'app-button',
+  selector: 'app-file-input-button',
   templateUrl: './component.html',
   imports: [AttributesDirective, CssPrefixPipe, SelectorlessOutlet, MergeClassPipe, TwPrefixPipe],
 })

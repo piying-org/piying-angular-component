@@ -9,7 +9,7 @@ import * as NFCCGroup from '@piying-lib/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying-lib/angular-daisyui/field-control';
 import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
-/** 
+/**
  * 文档/document https://github.com/piying-org/piying-angular-component/blob/main/projects/daisyui/preset/define.ts */
 export const PresetDefine = {
   types: {
@@ -95,6 +95,7 @@ export const PresetDefine = {
     divider: { type: NFCCGroup.DividerNFCC },
     dropdown: { type: NFCCGroup.DropdownNFCC },
     fab: { type: NFCCGroup.FabNFCC },
+    'file-input-button': { type: NFCCGroup.FileInputButtonNFCC },
     'input-button': { type: NFCCGroup.InputButtonNFCC },
     kbd: { type: NFCCGroup.KbdNFCC },
     loading: { type: NFCCGroup.LoadingNFCC },
