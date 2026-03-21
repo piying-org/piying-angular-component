@@ -3,6 +3,7 @@ import * as Group from './example';
 import { NFCSchema } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 console.log(Group.ButtonBase.content);
+console.log(Group.ButtonBase.title);
 
 export const ButtonDefine = v.object(
   Object.entries(Group).reduce(
