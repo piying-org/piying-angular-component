@@ -1,0 +1,24 @@
+<ng-template #templateRef let-attr="attributes">
+  <div class="tabs tabs-lift">
+    <label class="tab">
+      <input type="radio" name="my_tabs_4" />
+      <span class="material-icons">monitor</span>
+
+      预览
+    </label>
+    <div class="tab-content bg-base-100 border-base-300 p-6">
+      <ng-container
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="piyingInput"
+      ></ng-container>
+    </div>
+    <label class="tab">
+      <input type="radio" name="my_tabs_4" checked="checked" />
+      <span class="material-icons">code</span>
+      代码
+    </label>
+    <div class="tab-content bg-base-100 border-base-300 p-6">
+      <div [codeHL]="code()"></div>
+    </div>
+  </div>
+</ng-template>

@@ -1,6 +1,7 @@
-import { ButtonBaseDefine } from './content';
-import Content from './content?text';
+import define from './content';
+import content from './content?text';
 export const ButtonBase = {
-  define: ButtonBaseDefine,
-  content: Content,
+  define: define,
+  content: content,
+  title: '基础',
 };
