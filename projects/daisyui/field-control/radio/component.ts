@@ -48,8 +48,8 @@ export class RadioFCC extends BaseControl {
   size = input<Size>();
   name = `radio-${RadioFCC.index++}`;
   /** 选项列表 */
-  options = input<SelectOption[], SelectOption[] | undefined>([], {
-    transform: (input) => input ?? [],
+  options = input<SelectOption[], SelectOption[] | Record<string, any>[] | undefined>([], {
+    transform: (input) => (input as any) ?? [],
   });
   /** 选项模板 */
   optionTemplate = input<TemplateRef<any>>();

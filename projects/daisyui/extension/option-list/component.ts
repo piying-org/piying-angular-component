@@ -44,8 +44,8 @@ export class OptionListFCC extends BaseControl {
 
   templateRef = viewChild.required('templateRef');
   /** 选项列表 */
-  options = input<SelectOption[], SelectOption[] | undefined>([], {
-    transform: (input) => input ?? [],
+  options = input<SelectOption[], SelectOption[] | any[] | undefined>([], {
+    transform: (input) => (input as any) ?? [],
   });
   /** 选项模板 */
   optionTemplate = input<Record<string, any>>();
