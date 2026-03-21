@@ -25,7 +25,8 @@ const defaultPlugin: Plugin = {
       const filepath = i !== -1 ? args.path.slice(0, i) : args.path;
       const query = i !== -1 ? args.path.slice(i + 1) : undefined;
       return {
-        path: filepath,
+        pluginName: 'raw-code',
+        path: path.resolve(args.resolveDir, filepath),
         namespace: `raw-code-${query}`,
         pluginData: {
           fullPath: path.resolve(args.resolveDir, filepath),
