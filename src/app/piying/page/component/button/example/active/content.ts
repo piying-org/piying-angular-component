@@ -6,13 +6,13 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('button', (actions) => {
-        return [actions.inputs.patch({ content: 'base1' })];
+        return [actions.inputs.patch({ active: true, content: 'Active' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('button', (actions) => {
-        return [actions.inputs.patch({ content: 'base2' })];
+        return [actions.inputs.patch({ active: false, content: 'Inactive' })];
       }),
     ),
   ]),
