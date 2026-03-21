@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <div class="tabs tabs-lift">
     <label class="tab">
-      <input type="radio" name="my_tabs_4" />
+      <input type="radio" [name]="name" checked="checked" />
       <span class="material-icons">monitor</span>
 
       预览
@@ -13,7 +13,7 @@
       ></ng-container>
     </div>
     <label class="tab">
-      <input type="radio" name="my_tabs_4" checked="checked" />
+      <input type="radio" [name]="name" />
       <span class="material-icons">code</span>
       代码
     </label>

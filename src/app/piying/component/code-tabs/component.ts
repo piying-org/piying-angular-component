@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, input, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView, PiyingViewGroupBase } from '@piying/view-angular';
@@ -12,7 +19,9 @@ import { CodeHighLightDirective } from './code-highlight.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeTabsNFCC {
+  static index = 0;
   static __version = 2;
+  name = `tabs-${CodeTabsNFCC.index++}`;
   templateRef = viewChild.required('templateRef');
   activatedIndex = signal(0);
   define = input.required();
@@ -24,8 +33,4 @@ export class CodeTabsNFCC {
     options: this.parentPyOptions,
     selectorless: true,
   };
-  constructor(){
-    console.log('??');
-    
-  }
 }
