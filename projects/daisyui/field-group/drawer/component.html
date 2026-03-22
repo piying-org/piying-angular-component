@@ -5,7 +5,7 @@
     [class]="attr()?.class | mergeClass: ('drawer' | cssPrefix) : wrapperClass$()"
   >
     <input
-      [id]="name"
+      [id]="name()"
       type="checkbox"
       class="{{ 'drawer-toggle' | cssPrefix }}"
       #toggle
@@ -19,7 +19,7 @@
     </div>
     <div [class]="sideClass() | mergeClass: ('drawer-side' | cssPrefix)">
       <label
-        [for]="name"
+        [for]="name()"
         aria-label="close sidebar"
         [class]="overlayClass() | mergeClass: ('drawer-overlay' | cssPrefix)"
       ></label>

@@ -19,8 +19,10 @@ import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 export class DrawerFGC extends PiyingViewGroupBase {
   static __version = 2;
   static index = 0;
-  name = `drawer-${DrawerFGC.index++}`;
+  defaultName = `drawer-${DrawerFGC.index++}`;
+
   templateRef = viewChild.required('templateRef');
+  name = input(this.defaultName);
   /** 抽屉内容区域 CSS 类名 */
   contentClass = input<string>();
   /** 侧边栏区域 CSS 类名 */
