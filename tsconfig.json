@@ -40,6 +40,9 @@
       "@@piying-define": [
         "./src/app/piying/define.ts"
       ],
+      "@@py/*": [
+        "./src/app/piying/*"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,
