@@ -6,17 +6,17 @@ export default v.pipe(
     v.pipe(
       v.object({
         l1: v.pipe(v.string(), v.title('l1-title')),
-        l2: v.pipe(v.boolean(), v.title('l2-title')),
+        l2: v.pipe(v.number(), v.title('l2-title')),
       }),
       safeDefine.setComponent('dock', (actions) => {
         return [
           actions.inputs.patch({
-            activatedIndex: 2,
+            activatedIndex: 1,
           }),
         ];
       }),
     ),
   ]),
   actions.wrappers.patch(['div']),
-  actions.class.top('flex gap-4'),
+  actions.class.top('flex gap-4 will-change-transform h-50'),
 );
