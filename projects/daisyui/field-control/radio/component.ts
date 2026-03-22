@@ -11,6 +11,7 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
   Color,
+  CommonSelectOptions,
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
@@ -48,8 +49,8 @@ export class RadioFCC extends BaseControl {
   size = input<Size>();
   name = `radio-${RadioFCC.index++}`;
   /** 选项列表 */
-  options = input<SelectOption[], SelectOption[] | Record<string, any>[] | undefined>([], {
-    transform: (input) => (input as any) ?? [],
+  options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {
+    transform: (input) => input ?? [],
   });
   /** 选项模板 */
   optionTemplate = input<TemplateRef<any>>();

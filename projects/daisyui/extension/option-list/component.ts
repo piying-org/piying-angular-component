@@ -2,6 +2,7 @@ import { Component, forwardRef, inject, input, signal, viewChild } from '@angula
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControl, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import {
+  CommonSelectOptions,
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
@@ -44,7 +45,7 @@ export class OptionListFCC extends BaseControl {
 
   templateRef = viewChild.required('templateRef');
   /** 选项列表 */
-  options = input<SelectOption[], SelectOption[] | any[] | undefined>([], {
+  options = input<CommonSelectOptions, CommonSelectOptions|undefined>([], {
     transform: (input) => (input as any) ?? [],
   });
   /** 选项模板 */

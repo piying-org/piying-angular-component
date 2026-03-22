@@ -3,6 +3,7 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import {
   Color,
+  CommonSelectOptions,
   DefaultOptionConvert,
   OptionConvert,
   SelectOption,
@@ -44,8 +45,8 @@ export class SelectFCC extends BaseControl {
   /** 是否使用原生 select 样式 */
   native = input<boolean>();
   /** 选项列表 */
-  options = input<SelectOption[], SelectOption[] | Record<string, any>[] | any[] | undefined>([], {
-    transform: (input) => (input as any) ?? [],
+  options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {
+    transform: (input) => input ?? [],
   });
   /** 选项转换器 */
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
