@@ -6,7 +6,6 @@ import {
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
-  SelectOption,
   transformOption,
 } from '@piying-lib/angular-core';
 import { NgTemplateOutlet } from '@angular/common';
@@ -45,7 +44,7 @@ export class OptionListFCC extends BaseControl {
 
   templateRef = viewChild.required('templateRef');
   /** 选项列表 */
-  options = input<CommonSelectOptions, CommonSelectOptions|undefined>([], {
+  options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {
     transform: (input) => (input as any) ?? [],
   });
   /** 选项模板 */

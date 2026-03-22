@@ -6,31 +6,31 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({ type: 'submit', style: 'outline',  })];
+        return [actions.inputs.patch({ type: 'submit', style: 'outline' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({ type: 'submit', style: 'dash',  })];
+        return [actions.inputs.patch({ type: 'submit', style: 'dash' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({ type: 'submit', style: 'soft',  })];
+        return [actions.inputs.patch({ type: 'submit', style: 'soft' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({ type: 'submit', style: 'ghost',  })];
+        return [actions.inputs.patch({ type: 'submit', style: 'ghost' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({ type: 'submit', style: 'link',  })];
+        return [actions.inputs.patch({ type: 'submit', style: 'link' })];
       }),
     ),
   ]),

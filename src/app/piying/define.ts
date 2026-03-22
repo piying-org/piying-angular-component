@@ -9,7 +9,7 @@ export const safeDefine = typedComponent({
     ...PresetDefine.types,
     'code-tabs': { type: CodeTabsNFCC },
     'code-header': { type: CodeHeaderNFCC },
-    'tuple': { type: PiyingViewGroup },
+    tuple: { type: PiyingViewGroup },
   },
 });
 export const FieldGlobalConfig = safeDefine.define;

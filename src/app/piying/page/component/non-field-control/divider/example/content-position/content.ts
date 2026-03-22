@@ -6,13 +6,21 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('divider', (actions) => {
-        return [actions.inputs.patch({ direction: 'horizontal', contentPosition: 'start', content: 'Start' })];
+        return [
+          actions.inputs.patch({
+            direction: 'horizontal',
+            contentPosition: 'start',
+            content: 'Start',
+          }),
+        ];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('divider', (actions) => {
-        return [actions.inputs.patch({ direction: 'horizontal', contentPosition: 'end', content: 'End' })];
+        return [
+          actions.inputs.patch({ direction: 'horizontal', contentPosition: 'end', content: 'End' }),
+        ];
       }),
     ),
   ]),

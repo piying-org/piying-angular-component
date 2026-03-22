@@ -6,7 +6,9 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('dropdown', (actions) => {
-        return [actions.inputs.patch({ title: 'Hover', content: 'Content', triggerAction: 'hover' })];
+        return [
+          actions.inputs.patch({ title: 'Hover', content: 'Content', triggerAction: 'hover' }),
+        ];
       }),
     ),
     v.pipe(

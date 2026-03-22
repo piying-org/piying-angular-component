@@ -15,7 +15,6 @@ import {
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
-  SelectOption,
   Size,
 } from '@piying-lib/angular-core';
 import { NgTemplateOutlet } from '@angular/common';

@@ -2,4 +2,4 @@ export * from './component';
 export * from './row/component';
 export * from './wapper';
 export * from './cell-component/expand/expand-one/component';
-export * from './util/table-input-define'
+export * from './util/table-input-define';

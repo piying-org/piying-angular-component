@@ -60,7 +60,10 @@ export const MainPage = v.pipe(
                   { title: 'editable-group', router: { routerLink: './example/editable-group' } },
                   { title: 'fab', router: { routerLink: './example/fab' } },
                   { title: 'file-input', router: { routerLink: './example/file-input' } },
-                  { title: 'file-input-button', router: { routerLink: './example/file-input-button' } },
+                  {
+                    title: 'file-input-button',
+                    router: { routerLink: './example/file-input-button' },
+                  },
                   { title: 'form', router: { routerLink: './example/form' } },
                   { title: 'group', router: { routerLink: './example/group' } },
                   { title: 'input-button', router: { routerLink: './example/input-button' } },
@@ -83,7 +86,10 @@ export const MainPage = v.pipe(
                   { title: 'table', router: { routerLink: './example/table' } },
                   { title: 'tabs', router: { routerLink: './example/tabs' } },
                   { title: 'textarea', router: { routerLink: './example/textarea' } },
-                  { title: 'theme-controller', router: { routerLink: './example/theme-controller' } },
+                  {
+                    title: 'theme-controller',
+                    router: { routerLink: './example/theme-controller' },
+                  },
                   { title: 'toggle', router: { routerLink: './example/toggle' } },
                 ],
               },

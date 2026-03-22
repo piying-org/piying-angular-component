@@ -1,6 +1,5 @@
 import * as v from 'valibot';
 import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { safeDefine } from '@@piying-define';
 import { CardBodyDemoNFCC } from '@@py/component/card-body/component';
 import { signal } from '@angular/core';
 import { faker } from '@faker-js/faker';

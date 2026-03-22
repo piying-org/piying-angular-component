@@ -476,7 +476,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-       
+
           {
             path: 'logic',
             component: SchemaViewPage,
@@ -493,8 +493,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-      
-        
+
           {
             path: 'pagination',
             component: SchemaViewPage,

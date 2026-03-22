@@ -1,4 +1,4 @@
-import { NgTemplateOutlet, NgComponentOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, linkedSignal, output, viewChild } from '@angular/core';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -23,8 +23,8 @@ import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
     MergeClassPipe,
     TwPrefixPipe,
     PurePipe,
-    NgComponentOutlet,
-    AttributesDirective,SelectorlessOutlet
+    AttributesDirective,
+    SelectorlessOutlet,
   ],
 })
 export class StepsFGC extends PiyingViewGroupBase {

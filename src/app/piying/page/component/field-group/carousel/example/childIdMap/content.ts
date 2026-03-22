@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { actions, NFCSchema } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
@@ -11,7 +11,8 @@ export default v.pipe(
       safeDefine.setComponent('carousel', (actions) => {
         return [
           actions.inputs.patch({
-            childIdMap: (compIndex: number, childIndex: number) => `custom-${compIndex}-${childIndex}`,
+            childIdMap: (compIndex: number, childIndex: number) =>
+              `custom-${compIndex}-${childIndex}`,
           }),
         ];
       }),

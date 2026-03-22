@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions, setComponent } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([

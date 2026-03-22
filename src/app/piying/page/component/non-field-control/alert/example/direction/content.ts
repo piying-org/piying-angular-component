@@ -6,13 +6,17 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('alert', (actions) => {
-        return [actions.inputs.patch({ direction: 'horizontal', content: 'Horizontal alert with icon' })];
+        return [
+          actions.inputs.patch({ direction: 'horizontal', content: 'Horizontal alert with icon' }),
+        ];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('alert', (actions) => {
-        return [actions.inputs.patch({ direction: 'vertical', content: 'Vertical alert with icon' })];
+        return [
+          actions.inputs.patch({ direction: 'vertical', content: 'Vertical alert with icon' }),
+        ];
       }),
     ),
   ]),

@@ -7,9 +7,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { PI_INPUT_OPTIONS_TOKEN, PiyingView, PiyingViewGroupBase } from '@piying/view-angular';
-import { codeToHtml as _codeToHtml } from 'shiki';
+import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import { CodeHighLightDirective } from './code-highlight.directive';
 
 @Component({

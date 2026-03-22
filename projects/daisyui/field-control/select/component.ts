@@ -6,7 +6,6 @@ import {
   CommonSelectOptions,
   DefaultOptionConvert,
   OptionConvert,
-  SelectOption,
   Size,
   transformOptions,
 } from '@piying-lib/angular-core';

@@ -36,7 +36,6 @@ import { DataResolved } from './util';
 import { RowItem, TableItemDefine2 } from './util/table-input-define';
 // import { QueryService } from './query.service';
 
-
 export function createRowDefine() {
   return v.pipe(v.tuple([]), setComponent(TableRowFGC));
 }

@@ -85,5 +85,7 @@ export interface SelectOption {
   /** 样式代替label */
   readonly style?: any;
 }
-export type CommonSelectOptions = SelectOption[] | (string | number | boolean)[] | Record<string, any>[];
-
+export type CommonSelectOptions =
+  | SelectOption[]
+  | (string | number | boolean)[]
+  | Record<string, any>[];

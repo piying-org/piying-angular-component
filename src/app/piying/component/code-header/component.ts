@@ -1,16 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-  signal,
-  viewChild,
-} from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState } from '@angular/router';
-import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { PI_INPUT_OPTIONS_TOKEN, PiyingView, PiyingViewGroupBase } from '@piying/view-angular';
-import { codeToHtml as _codeToHtml } from 'shiki';
+import { ChangeDetectionStrategy, Component, inject, input, viewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'code-header',
@@ -24,7 +13,7 @@ export class CodeHeaderNFCC {
 
   #router = inject(Router);
   url = (() => {
-    let tree = this.#router.parseUrl(this.#router.routerState.snapshot.url);
+    const tree = this.#router.parseUrl(this.#router.routerState.snapshot.url);
     tree.fragment = null;
     tree.queryParams = {};
     return tree.toString();

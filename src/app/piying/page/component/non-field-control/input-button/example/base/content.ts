@@ -6,7 +6,7 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('input-button', (actions) => {
-        return [actions.inputs.patch({  })];
+        return [actions.inputs.patch({})];
       }),
     ),
   ]),

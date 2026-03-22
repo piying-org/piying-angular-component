@@ -1,12 +1,12 @@
 import * as v from 'valibot';
-import { actions, NFCSchema } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
       v.file(),
       safeDefine.setComponent('file-input', (actions) => {
-        return [actions.inputs.patch({ })];
+        return [actions.inputs.patch({})];
       }),
     ),
   ]),

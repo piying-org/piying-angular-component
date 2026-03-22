@@ -6,13 +6,23 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('avatar', (actions) => {
-        return [actions.inputs.patch({ imgUrl: 'https://ui-avatars.com/api/?name=John+Doe', wrapperClass: 'w-24' })];
+        return [
+          actions.inputs.patch({
+            imgUrl: 'https://ui-avatars.com/api/?name=John+Doe',
+            wrapperClass: 'w-24',
+          }),
+        ];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('avatar', (actions) => {
-        return [actions.inputs.patch({ imgUrl: 'https://ui-avatars.com/api/?name=Jane+Smith', wrapperClass: 'w-32 rounded-full' })];
+        return [
+          actions.inputs.patch({
+            imgUrl: 'https://ui-avatars.com/api/?name=Jane+Smith',
+            wrapperClass: 'w-32 rounded-full',
+          }),
+        ];
       }),
     ),
   ]),
