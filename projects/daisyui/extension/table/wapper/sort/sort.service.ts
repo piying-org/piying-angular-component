@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, filter, map, shareReplay } from 'rxjs';
 
 export type SortDirection = 0 | 1 | -1;
@@ -10,20 +10,22 @@ export class SortService {
   #restore$ = new BehaviorSubject<Record<string, SortDirection>>({});
 
   #restore$$ = this.#restore$.pipe(takeUntilDestroyed(), shareReplay());
+  sortList = signal<string[] | undefined>(undefined);
+
   value$$ = this.#direction$.pipe(
-    map(
-      (value) =>
-        (this.sortList() ?? Object.keys(value))
-          .map((key) => {
-            return value[key] ? { key: key, value: value[key] } : undefined;
-          })
-          .filter(Boolean) as unknown as SortList,
-    ),
+    map((value) => {
+      return (this.sortList() ?? Object.keys(value))
+        .map((key) => {
+          return value[key] ? { key: key, value: value[key] } : undefined;
+        })
+        .filter(Boolean) as unknown as SortList;
+    }),
     takeUntilDestroyed(),
     shareReplay(1),
   );
+  valueS$$ = toSignal(this.value$$);
   multiple = signal(true);
-  sortList = signal<string[] | undefined>(undefined);
+
   /** 设置初始值 */
   setInitValue(object: Record<string, SortDirection>) {
     this.#restore$.next(object);

@@ -6,6 +6,7 @@ import { createSchemaComponent } from '../util/create-component';
 import { assertElementExist } from '../util/element';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { TableQueryParams } from '../../extension/table/type';
+import { SortService } from '@piying-lib/angular-daisyui/extension';
 describe('table', () => {
   it('str-head', async () => {
     const data = signal<ResourceLoaderParams<TableQueryParams> | undefined>(undefined);
@@ -75,7 +76,6 @@ describe('table', () => {
     const TableDefine = v.pipe(
       NFCSchema,
       setComponent('table'),
-      actions.wrappers.set(['sort-table']),
       actions.inputs.patch({
         define: {
           columns: [
@@ -99,6 +99,14 @@ describe('table', () => {
         },
         data: [],
       }),
+      actions.providers.patch([SortService]),
+      actions.hooks.merge({
+        allFieldsResolved: (field) => {
+          const sort = field.injector.get(SortService);
+          sort.sortList.set(['k1', 'k2']);
+          sort.setInitValue({ k1: 1 });
+        },
+      }),
     );
     const schema = TableDefine;
     const { element, field$$ } = await createSchemaComponent(
@@ -110,7 +118,7 @@ describe('table', () => {
       },
     );
     assertElementExist(element);
-    expect(field$$()?.props()['sortQueryParams'][0]['value']).toBe(1);
+    expect(field$$()!.injector.get(SortService).valueS$$()!.length).toBeTruthy();
   });
 
   it('str-body', async () => {

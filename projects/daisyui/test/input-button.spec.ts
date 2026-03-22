@@ -5,7 +5,7 @@ import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { createSchemaComponent } from './util/create-component';
 import { assertElementExist, assertElementSelector } from './util/element';
 
-fdescribe('input-button', () => {
+describe('input-button', () => {
   const BaseDefine = v.pipe(NFCSchema, setComponent('input-button'));
   const prefix = 'pc-btn';
 

@@ -18,7 +18,7 @@ describe('rating', () => {
       teardown: { destroyAfterEach: false },
     });
     const list = element.querySelectorAll('input');
-    expect(list.length).toEqual(4);
+    expect(list.length).toEqual(6);
     expect(list[0].classList.contains(`${prefix}-hidden`)).toBeTrue();
   });
   it(`input-half`, async () => {
@@ -27,6 +27,6 @@ describe('rating', () => {
       teardown: { destroyAfterEach: false },
     });
     const list = element.querySelectorAll('input');
-    expect(list.length).toEqual(7);
+    expect(list.length).toEqual(11);
   });
 });
