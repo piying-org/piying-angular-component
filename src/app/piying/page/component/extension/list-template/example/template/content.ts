@@ -8,7 +8,7 @@ export default v.pipe(
       safeDefine.setComponent('list-template', (actions) => {
         return [
           actions.inputs.patch({
-            template: { type: 'string' },
+            template: v.string(),
             list: ['项目 1', '项目 2', '项目 3'],
           }),
         ];

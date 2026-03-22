@@ -4,6 +4,7 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PI_VIEW_FIELD_TOKEN, PiyingView } from '@piying/view-angular';
 
 import { PurePipe } from '@cyia/ngx-common/pipe';
+import * as v from 'valibot';
 /*
  * ListTemplateNFCC - 列表模板组件
  *
@@ -29,7 +30,7 @@ export class ListTemplateNFCC {
 
   templateRef = viewChild.required('templateRef');
   /** 模板 */
-  template = input.required<any>();
+  template = input.required<v.BaseSchema<any, any, any>>();
   /** 列表数据 */
   list = input<any[]>([]);
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
