@@ -24,7 +24,6 @@ const defaultPlugin = {
             const i = args.path.lastIndexOf('?');
             const filepath = i !== -1 ? args.path.slice(0, i) : args.path;
             const query = i !== -1 ? args.path.slice(i + 1) : undefined;
-            console.log('文件路径', filepath);
             return {
                 pluginName: 'raw-code',
                 path: node_path_1.default.resolve(args.resolveDir, filepath),
@@ -39,7 +38,6 @@ const defaultPlugin = {
             build.onLoad({ filter: /.*/, namespace: `raw-code-${name}` }, (args) => {
                 const { fullPath, query } = args.pluginData;
                 let filePath = fullPath;
-                console.log('路径', fullPath);
                 if (node_fs_1.default.existsSync(filePath) && node_fs_1.default.lstatSync(filePath).isDirectory()) {
                     filePath = node_path_1.default.join(filePath, 'index');
                 }
@@ -59,7 +57,7 @@ const defaultPlugin = {
                 else {
                     let relPath = node_path_1.default.relative(baseDir, filePath);
                     let list = relPath.split('\\');
-                    return { contents: list[2], loader: 'text' };
+                    return { contents: list[3], loader: 'text' };
                 }
             });
         }

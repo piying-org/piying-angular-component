@@ -61,8 +61,8 @@ const defaultPlugin: Plugin = {
           return { contents: buffer, loader: 'text' };
         } else {
           let relPath = path.relative(baseDir, filePath);
-          let list = relPath.split('\\');
-          return { contents: list[2], loader: 'text' };
+          let list = relPath.split('\\');          
+          return { contents: list[3], loader: 'text' };
         }
       });
     }
