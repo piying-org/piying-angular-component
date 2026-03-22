@@ -26,10 +26,10 @@
     ></ng-container>
     @if (customAction()) {
       <ng-container
-        *ngComponentOutlet="
-          StrOrTemplateComponent;
-          context: { inputs: { content: customAction(), context: this } }
-        "
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{
+          content: customAction,
+        }"
       ></ng-container>
     } @else {
       <div [class]="'flex gap-2 items-center' | twPrefix">

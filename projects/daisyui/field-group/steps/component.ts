@@ -7,6 +7,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Color } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
+import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 /**
  * 步骤组
  *
@@ -23,7 +24,7 @@ import clsx from 'clsx';
     TwPrefixPipe,
     PurePipe,
     NgComponentOutlet,
-    AttributesDirective,
+    AttributesDirective,SelectorlessOutlet
   ],
 })
 export class StepsFGC extends PiyingViewGroupBase {
