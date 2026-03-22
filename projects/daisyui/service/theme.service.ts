@@ -78,6 +78,6 @@ export class ThemeService {
     return clsx(args);
   }
   addVarPrefix(name: string) {
-    return this.#prefix ? `--${this.#prefix}${name}` : name;
+    return `--${this.#prefix}${name}`;
   }
 }

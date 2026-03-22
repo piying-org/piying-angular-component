@@ -8,7 +8,7 @@ export default v.pipe(
       safeDefine.setComponent('radial-progress', (actions) => {
         return [
           actions.inputs.patch({
-            value: 90,
+            value: 0.9,
             strokeWidth: '6px',
           }),
         ];

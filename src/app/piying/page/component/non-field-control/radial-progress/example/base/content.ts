@@ -6,7 +6,7 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 50 })];
+        return [actions.inputs.patch({ value: 0.5 })];
       }),
     ),
   ]),

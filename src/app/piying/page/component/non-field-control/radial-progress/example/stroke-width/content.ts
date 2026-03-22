@@ -6,13 +6,13 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 75, strokeWidth: '4px' })];
+        return [actions.inputs.patch({ value: .75, strokeWidth: '4px' })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 75, strokeWidth: '8px' })];
+        return [actions.inputs.patch({ value: .75, strokeWidth: '8px' })];
       }),
     ),
   ]),

@@ -476,14 +476,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'login',
-            component: SchemaViewPage,
-            data: {
-              schema: () => LoginDefine,
-              options: () => options,
-            },
-          },
+       
           {
             path: 'logic',
             component: SchemaViewPage,
@@ -500,25 +493,8 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'overlay',
-            component: SchemaViewPage,
-            data: {
-              schema: () => OverlayDefine,
-              options: () => options,
-            },
-          },
-          {
-            path: 'page-input',
-            component: SchemaViewPage,
-            data: {
-              schema: () => PageInputDefine,
-              options: () => options,
-              model: () => {
-                return { l1: '12345' };
-              },
-            },
-          },
+      
+        
           {
             path: 'pagination',
             component: SchemaViewPage,

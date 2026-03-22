@@ -6,25 +6,25 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 25 })];
+        return [actions.inputs.patch({ value: .25 })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 50 })];
+        return [actions.inputs.patch({ value: .50 })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 75 })];
+        return [actions.inputs.patch({ value: .75 })];
       }),
     ),
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('radial-progress', (actions) => {
-        return [actions.inputs.patch({ value: 100 })];
+        return [actions.inputs.patch({ value: 1 })];
       }),
     ),
   ]),
