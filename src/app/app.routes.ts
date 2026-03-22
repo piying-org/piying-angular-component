@@ -9,7 +9,7 @@ import { CategoryDefine } from './piying/page/component/category';
 import { CalendarDefine } from './piying/page/component/calendar';
 import { SelectDefine } from './piying/page/component/select';
 import { TabsDefine } from './piying/page/component/tabs';
-import { CardDefine } from './piying/page/component/card';
+import { CardDefine } from './piying/page/component/field-group/card';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { StatsDefine } from './piying/page/component/stats';
@@ -149,35 +149,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'card',
-            component: SchemaViewPage,
-            data: {
-              schema: () => CardDefine,
-              options: () => ({
-                ...options,
-                context: {
-                  getCardList: async () => {
-                    return range(10).map((a) => {
-                      return {
-                        image: {
-                          src: faker.image.url({ width: 400, height: 400 }),
-                        },
-                        title: faker.book.title(),
-                        body: {
-                          author: faker.book.author(),
-                          format: faker.book.format(),
-                          genre: faker.book.genre(),
-                          publisher: faker.book.publisher(),
-                          series: faker.book.series(),
-                        },
-                      };
-                    });
-                  },
-                },
-              }),
-            },
-          },
+
           {
             path: 'stat',
             component: SchemaViewPage,
@@ -344,7 +316,28 @@ export const routes: Routes = [
             component: SchemaViewPage,
             data: {
               schema: () => CardDefine,
-              options: () => options,
+              options: () => ({
+                ...options,
+                context: {
+                  getCardList: async () => {
+                    return range(10).map((a) => {
+                      return {
+                        image: {
+                          src: faker.image.url({ width: 400, height: 400 }),
+                        },
+                        title: faker.book.title(),
+                        body: {
+                          author: faker.book.author(),
+                          format: faker.book.format(),
+                          genre: faker.book.genre(),
+                          publisher: faker.book.publisher(),
+                          series: faker.book.series(),
+                        },
+                      };
+                    });
+                  },
+                },
+              }),
             },
           },
           {

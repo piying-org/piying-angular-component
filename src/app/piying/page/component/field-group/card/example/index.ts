@@ -6,3 +6,4 @@ export * from './figureClass';
 export * from './figureKey';
 export * from './size';
 export * from './titleKey';
+export * from './fake'
