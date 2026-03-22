@@ -8,27 +8,12 @@ export default v.pipe(
       safeDefine.setComponent('fab', (actions) => {
         return [
           actions.inputs.patch({
-            defaultIcon: { label: 'Menu' },
             options: [{ label: 'Add' }, { label: 'Edit' }, { label: 'Delete' }],
-          }),
-        ];
-      }),
-    ),
-    v.pipe(
-      NFCSchema,
-      safeDefine.setComponent('fab', (actions) => {
-        return [
-          actions.inputs.patch({
-            defaultIcon: { label: 'Actions' },
-            options: [
-              { label: 'Save', icon: { fontIcon: 'save' } },
-              { label: 'Cancel', icon: { fontIcon: 'close' } },
-            ],
           }),
         ];
       }),
     ),
   ]),
   actions.wrappers.patch(['div']),
-  actions.class.top('flex gap-4'),
+  actions.class.top('flex gap-4 will-change-transform h-50'),
 );

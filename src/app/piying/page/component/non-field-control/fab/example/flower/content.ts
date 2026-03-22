@@ -6,12 +6,6 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('fab', (actions) => {
-        return [actions.inputs.patch({ defaultIcon: { label: '❤️' }, flower: true })];
-      }),
-    ),
-    v.pipe(
-      NFCSchema,
-      safeDefine.setComponent('fab', (actions) => {
         return [
           actions.inputs.patch({
             defaultIcon: { label: '⭐' },
@@ -23,5 +17,5 @@ export default v.pipe(
     ),
   ]),
   actions.wrappers.patch(['div']),
-  actions.class.top('flex gap-4'),
+  actions.class.top('flex gap-4 will-change-transform h-50'),
 );

@@ -46,7 +46,7 @@
       ></ng-container>
     </div>
     @if (closeIcon$$(); as closeIcon) {
-      <div class="{{ 'fab-close' | cssPrefix }}" role="button" tabindex="0">
+      <div class="{{ 'fab-close' | cssPrefix }}">
         <ng-container
           *ngTemplateOutlet="iconTemp; context: { $implicit: closeIcon, disableButton: true }"
         ></ng-container>

@@ -11,5 +11,5 @@ export default v.pipe(
     ),
   ]),
   actions.wrappers.patch(['div']),
-  actions.class.top('flex gap-4'),
+  actions.class.top('flex gap-4 will-change-transform h-50'),
 );
