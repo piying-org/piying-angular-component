@@ -1,5 +1,5 @@
 <ng-template #templateRef let-attr="attributes">
-  <a class="flex gap-2 items-center" [href]="location.pathname + '#' + title()">
+  <a class="flex gap-2 items-center" [href]="url + '#' + title()">
     <div class="btn btn-square btn-xs">#</div>
     <h3 class="text-lg font-semibold" [id]="title()">
       {{ title() }}

@@ -6,7 +6,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterState } from '@angular/router';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView, PiyingViewGroupBase } from '@piying/view-angular';
@@ -22,5 +22,11 @@ export class CodeHeaderNFCC {
   templateRef = viewChild.required('templateRef');
   title = input<string>();
 
-  location = location;
+  #router = inject(Router);
+  url = (() => {
+    let tree = this.#router.parseUrl(this.#router.routerState.snapshot.url);
+    tree.fragment = null;
+    tree.queryParams = {};
+    return tree.toString();
+  })();
 }
