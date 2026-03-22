@@ -4,19 +4,19 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ color: 'primary' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ color: 'secondary' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ color: 'accent' })];
       }),

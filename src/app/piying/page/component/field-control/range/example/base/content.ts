@@ -4,7 +4,7 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('range', (actions) => {
         return [actions.inputs.patch({})];
       }),

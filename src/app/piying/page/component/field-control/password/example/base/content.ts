@@ -4,7 +4,7 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('password', (actions) => {
         return [actions.inputs.patch({})];
       }),

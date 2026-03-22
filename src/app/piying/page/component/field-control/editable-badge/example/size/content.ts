@@ -4,25 +4,25 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ size: 'xs' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ size: 'sm' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ size: 'md' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('editable-badge', (actions) => {
         return [actions.inputs.patch({ size: 'lg' })];
       }),

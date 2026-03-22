@@ -4,19 +4,19 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('range', (actions) => {
         return [actions.inputs.patch({ min: 0, max: 10, step: 1 })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('range', (actions) => {
         return [actions.inputs.patch({ min: 0, max: 10, step: 0.1 })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('range', (actions) => {
         return [actions.inputs.patch({ min: 0, max: 100, step: 10 })];
       }),

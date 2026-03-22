@@ -4,19 +4,19 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('textarea', (actions) => {
         return [actions.inputs.patch({ size: 'sm' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('textarea', (actions) => {
         return [actions.inputs.patch({ size: 'md' })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('textarea', (actions) => {
         return [actions.inputs.patch({ size: 'lg' })];
       }),

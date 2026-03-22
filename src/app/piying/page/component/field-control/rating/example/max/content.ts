@@ -4,13 +4,13 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('rating', (actions) => {
         return [actions.inputs.patch({ max: 5 })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.number(),
       safeDefine.setComponent('rating', (actions) => {
         return [actions.inputs.patch({ max: 10 })];
       }),

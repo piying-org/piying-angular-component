@@ -4,7 +4,7 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.date(),
       safeDefine.setComponent('calendar', (actions) => {
         return [
           actions.inputs.patch({
@@ -16,7 +16,7 @@ export default v.pipe(
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.date(),
       safeDefine.setComponent('calendar', (actions) => {
         return [
           actions.inputs.patch({

@@ -4,13 +4,13 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.file(),
       safeDefine.setComponent('file-input', (actions) => {
         return [actions.inputs.patch({ multiple: false })];
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.file(),
       safeDefine.setComponent('file-input', (actions) => {
         return [actions.inputs.patch({ multiple: true })];
       }),

@@ -4,7 +4,7 @@ import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('select', (actions) => {
         return [
           actions.inputs.patch({
@@ -18,7 +18,7 @@ export default v.pipe(
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('select', (actions) => {
         return [
           actions.inputs.patch({
@@ -32,7 +32,7 @@ export default v.pipe(
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('select', (actions) => {
         return [
           actions.inputs.patch({
@@ -46,7 +46,7 @@ export default v.pipe(
       }),
     ),
     v.pipe(
-      NFCSchema,
+      v.string(),
       safeDefine.setComponent('select', (actions) => {
         return [
           actions.inputs.patch({
