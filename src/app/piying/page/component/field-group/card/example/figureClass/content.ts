@@ -11,7 +11,7 @@ export default v.pipe(
       safeDefine.setComponent('card', (actions) => {
         return [
           actions.inputs.patch({
-            figureClass: 'aspect-video',
+            figureClass: 'figureClass1',
           }),
         ];
       }),
