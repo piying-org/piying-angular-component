@@ -8,21 +8,12 @@ export default v.pipe(
       safeDefine.setComponent('stat', (actions) => {
         return [
           actions.inputs.patch({
-            title: 'Likes',
-            value: '1.2K',
-            figure: { icon: { fontIcon: 'favorite' } },
-          }),
-        ];
-      }),
-    ),
-    v.pipe(
-      NFCSchema,
-      safeDefine.setComponent('stat', (actions) => {
-        return [
-          actions.inputs.patch({
-            title: 'Views',
-            value: '5.5K',
-            figure: { icon: { fontIcon: 'visibility' } },
+            figure: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: { icon: { fontIcon: 'favorite' } } })];
+              }),
+            ),
           }),
         ];
       }),

@@ -6,7 +6,7 @@ import { AttributesDirective, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying
 
 import { MatIconModule } from '@angular/material/icon';
 import { PurePipe } from '@cyia/ngx-common/pipe';
-
+import * as v from 'valibot';
 /**
  * 统计数据显示组件
  * 用于展示关键数据指标，支持标题、数值、描述和图标的组合展示
@@ -34,19 +34,19 @@ export class StatNFCC {
   templateRef = viewChild.required('templateRef');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   /** 标题内容 */
-  title = input();
+  title = input<v.BaseSchema<any, any, any>>();
   /** 标题 CSS 类名 */
   titleClass = input<string>();
   /** 数值内容 */
-  value = input();
+  value = input<v.BaseSchema<any, any, any>>();
   /** 数值 CSS 类名 */
   valueClass = input<string>();
   /** 描述内容 */
-  desc = input();
+  desc = input<v.BaseSchema<any, any, any>>();
   /** 描述 CSS 类名 */
   descClass = input<string>();
   /** 图标内容 */
-  figure = input();
+  figure = input<v.BaseSchema<any, any, any>>();
   /** 图标 CSS 类名 */
   figureClass = input<string>();
 

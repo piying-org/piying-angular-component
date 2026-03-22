@@ -6,7 +6,16 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('stat', (actions) => {
-        return [actions.inputs.patch({ title: 'Visitors', value: '12K' })];
+        return [
+          actions.inputs.patch({
+            value: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: '12K' })];
+              }),
+            ),
+          }),
+        ];
       }),
     ),
   ]),

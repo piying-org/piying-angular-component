@@ -8,21 +8,12 @@ export default v.pipe(
       safeDefine.setComponent('stat', (actions) => {
         return [
           actions.inputs.patch({
-            title: 'Monthly Sales',
-            value: '$12,345',
-            desc: '+15% from last month',
-          }),
-        ];
-      }),
-    ),
-    v.pipe(
-      NFCSchema,
-      safeDefine.setComponent('stat', (actions) => {
-        return [
-          actions.inputs.patch({
-            title: 'Active Users',
-            value: '3,456',
-            desc: '+8% this week',
+            title: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: 'Monthly Sales' })];
+              }),
+            ),
           }),
         ];
       }),

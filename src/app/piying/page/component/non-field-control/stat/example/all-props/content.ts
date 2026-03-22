@@ -8,13 +8,33 @@ export default v.pipe(
       safeDefine.setComponent('stat', (actions) => {
         return [
           actions.inputs.patch({
-            title: 'Complete Stat',
+            title: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: 'Complete Stat' })];
+              }),
+            ),
             titleClass: 'text-xl font-bold',
-            value: '99.9%',
+            value: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: '99.9%' })];
+              }),
+            ),
             valueClass: 'text-4xl font-bold text-primary',
-            desc: 'Success rate this month',
+            desc: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: 'Success rate this month' })];
+              }),
+            ),
             descClass: 'text-success',
-            figure: { icon: { fontIcon: 'stars' } },
+            figure: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [actions.inputs.patch({ content: { icon: { fontIcon: 'stars' } } })];
+              }),
+            ),
             figureClass: 'text-warning',
           }),
         ];
