@@ -50,7 +50,11 @@
 </ng-template>
 
 <ng-template #templateRef let-attr="attributes">
-  <ul class="menu">
+  <ul
+    [class]="'menu' | mergeClass: attr().class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
     @for (option of options(); track $index) {
       <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
     }

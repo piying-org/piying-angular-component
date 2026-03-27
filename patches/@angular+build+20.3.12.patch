@@ -12,7 +12,7 @@ index 69e9fe9..6f757c6 100644
 +    const codePlugins = require(filePath)
 +    extensions??={}
 +    extensions.codePlugins??=[]
-+    extensions.codePlugins.push('default' in  codePlugins?codePlugins.default:codePlugins)
++    extensions.codePlugins.push(...('default' in  codePlugins?codePlugins.default:codePlugins))
      const { workspaceRoot, logger, target } = context;
      // Check Angular version.
      (0, version_1.assertCompatibleAngularVersion)(workspaceRoot);
