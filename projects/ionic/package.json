@@ -1,0 +1,18 @@
+{
+  "name": "@piying-lib/angular-ionic",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": ">=20.3.0",
+    "@angular/core": ">=20.3.0",
+    "@piying/view-angular": "^2.7.1",
+    "ionicons": "^7.0.0",
+    "@angular/cdk": ">=20.0.0",
+    "@angular/material": ">=20.0.0",
+    "@cyia/ngx-common": ">=20.0.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@piying-lib/angular-core": "1.0.0"
+  },
+  "sideEffects": false
+}

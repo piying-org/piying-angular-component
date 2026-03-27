@@ -167,6 +167,32 @@
           }
         }
       }
+    },
+    "ionic": {
+      "projectType": "library",
+      "root": "projects/ionic",
+      "sourceRoot": "projects/ionic",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ionic/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ionic/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ionic/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

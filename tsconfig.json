@@ -43,6 +43,9 @@
       "@@py/*": [
         "./src/app/piying/*"
       ],
+      "ionic": [
+        "./dist/ionic"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -81,6 +84,12 @@
     },
     {
       "path": "./projects/daisyui/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ionic/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ionic/tsconfig.spec.json"
     }
   ]
 }
