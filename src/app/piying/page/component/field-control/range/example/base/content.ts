@@ -6,7 +6,7 @@ export default v.pipe(
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({})];
+        return [actions.inputs.set({})];
       }),
     ),
   ]),

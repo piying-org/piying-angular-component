@@ -6,19 +6,19 @@ export default v.pipe(
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({ min: 0, max: 10, step: 1 })];
+        return [actions.inputs.set({ min: 0, max: 10, step: 1 })];
       }),
     ),
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({ min: 0, max: 10, step: 0.1 })];
+        return [actions.inputs.set({ min: 0, max: 10, step: 0.1 })];
       }),
     ),
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({ min: 0, max: 100, step: 10 })];
+        return [actions.inputs.set({ min: 0, max: 100, step: 10 })];
       }),
     ),
   ]),

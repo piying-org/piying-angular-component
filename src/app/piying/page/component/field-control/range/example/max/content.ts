@@ -6,13 +6,13 @@ export default v.pipe(
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({ min: 0, max: 50 })];
+        return [actions.inputs.set({ min: 0, max: 50 })];
       }),
     ),
     v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
-        return [actions.inputs.patch({ min: 0, max: 1000 })];
+        return [actions.inputs.set({ min: 0, max: 1000 })];
       }),
     ),
   ]),

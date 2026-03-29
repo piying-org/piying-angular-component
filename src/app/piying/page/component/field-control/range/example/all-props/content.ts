@@ -7,7 +7,7 @@ export default v.pipe(
       v.number(),
       safeDefine.setComponent('range', (actions) => {
         return [
-          actions.inputs.patch({
+          actions.inputs.set({
             min: 0,
             max: 100,
             step: 1,
