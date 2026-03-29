@@ -22,7 +22,7 @@
   </ul>
   <div class="{{ 'flex flex-col gap-4' | twPrefix }}">
     <ng-container
-      *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: activatedItem$$() }"
+      *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: activatedItem$$() }"
     ></ng-container>
     @if (customAction()) {
       <ng-container

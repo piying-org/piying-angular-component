@@ -12,7 +12,7 @@
     @for (field of children$$(); track $index) {
       <li [class]="'list-row' | cssPrefix">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
         ></ng-container>
       </li>
     }

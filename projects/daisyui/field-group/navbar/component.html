@@ -6,14 +6,14 @@
   >
     @for (field of rest$$(); track $index) {
       <ng-container
-        *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
       ></ng-container>
     }
     @let start = start$$();
     @if (start) {
       <div [class]="'navbar-start' | cssPrefix">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: start }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: start }"
         ></ng-container>
       </div>
     }
@@ -21,7 +21,7 @@
     @if (center) {
       <div [class]="'navbar-center' | cssPrefix">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: center }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: center }"
         ></ng-container>
       </div>
     }
@@ -30,7 +30,7 @@
     @if (end) {
       <div [class]="'navbar-end' | cssPrefix">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: end }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: end }"
         ></ng-container>
       </div>
     }

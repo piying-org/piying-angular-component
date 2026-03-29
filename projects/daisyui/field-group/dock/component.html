@@ -2,7 +2,7 @@
   @let activatedField = children$$()[activatedIndex$()];
   @if (activatedField) {
     <ng-container
-      *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: activatedField }"
+      *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: activatedField }"
     ></ng-container>
   }
 

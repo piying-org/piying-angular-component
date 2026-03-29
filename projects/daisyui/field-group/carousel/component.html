@@ -7,7 +7,7 @@
     @for (field of children$$(); track $index) {
       <div class="{{ 'carousel-item' | cssPrefix }}">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
         ></ng-container>
       </div>
     }

@@ -14,7 +14,7 @@
     />
     <div [class]="contentClass() | mergeClass: ('drawer-content' | cssPrefix)">
       <ng-container
-        *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: contentFiled$$() }"
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: contentFiled$$() }"
       ></ng-container>
     </div>
     <div [class]="sideClass() | mergeClass: ('drawer-side' | cssPrefix)">
@@ -24,7 +24,7 @@
         [class]="overlayClass() | mergeClass: ('drawer-overlay' | cssPrefix)"
       ></label>
       <ng-container
-        *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: sideFiled$$() }"
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: sideFiled$$() }"
       ></ng-container>
     </div>
   </div>

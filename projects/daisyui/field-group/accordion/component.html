@@ -11,7 +11,7 @@
       </div>
       <div class="{{ 'collapse-content' | cssPrefix }}">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
         ></ng-container>
       </div>
     </div>

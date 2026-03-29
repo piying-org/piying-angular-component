@@ -7,7 +7,7 @@
     @if (figureFiled$$(); as field) {
       <figure [class]="figureClass()">
         <ng-container
-          *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
         ></ng-container>
       </figure>
     }
@@ -15,7 +15,7 @@
       @if (titleFiled$$(); as field) {
         <h2 class="{{ 'card-title' | cssPrefix }}">
           <ng-container
-            *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+            *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
           ></ng-container>
         </h2>
       }
@@ -23,7 +23,7 @@
         <div>
           @for (field of bodyChildren; track $index) {
             <ng-container
-              *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+              *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
             ></ng-container>
           }
         </div>
@@ -31,7 +31,7 @@
       @if (actionsFiled$$(); as field) {
         <div [class]="actionsClass() | mergeClass: ('card-actions' | cssPrefix)">
           <ng-container
-            *ngTemplateOutlet="fieldTemplateRef(); context: { $implicit: field }"
+            *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
           ></ng-container>
         </div>
       }
