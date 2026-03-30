@@ -57,8 +57,13 @@ import { CarouselDefine } from './piying/page/component/field-group/carousel';
 import { EditableGroupDefine } from './piying/page/component/extension/editable-group';
 import { PaginationDefine } from './piying/page/component/extension/pagination';
 import { MenuTreeDefine } from './piying/page/component/extension/menu-tree';
+import { IonicDevDefine } from '@@py/page/ionic/dev';
+import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
+};
+const IonOptions = {
+  fieldGlobalConfig: IonFieldGlobalConfig,
 };
 export const routes: Routes = [
   {
@@ -628,6 +633,20 @@ export const routes: Routes = [
             data: {
               schema: () => ToggleDefine,
               options: () => options,
+            },
+          },
+        ],
+      },
+
+      {
+        path: 'ionic',
+        children: [
+          {
+            path: 'dev',
+            component: SchemaViewPage,
+            data: {
+              schema: () => IonicDevDefine,
+              options: () => IonOptions,
             },
           },
         ],

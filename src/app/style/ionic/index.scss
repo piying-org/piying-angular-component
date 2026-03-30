@@ -1,0 +1,4 @@
+@use './global';
+.ionic-page {
+  @include global.ionic-style;
+}

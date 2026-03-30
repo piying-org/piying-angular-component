@@ -29,7 +29,8 @@
             "styles": [
               "src/styles.scss",
               "src/styles.css",
-              "material-icons/iconfont/filled.css"
+              "material-icons/iconfont/filled.css",
+              "./src/app/style/ionic/index.scss"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -87,9 +88,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }
@@ -117,9 +116,7 @@
           "options": {
             "tsConfig": "projects/daisyui/tsconfig.spec.json",
             "assets": [],
-            "styles": [
-              "./projects/daisyui/style.css"
-            ]
+            "styles": ["./projects/daisyui/style.css"]
           },
           "configurations": {
             "ci": {
@@ -154,9 +151,7 @@
           "options": {
             "tsConfig": "projects/core/tsconfig.spec.json",
             "assets": [],
-            "styles": [
-              "./projects/core/style.css"
-            ]
+            "styles": ["./projects/core/style.css"]
           },
           "configurations": {
             "ci": {

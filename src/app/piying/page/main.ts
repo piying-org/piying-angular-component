@@ -155,6 +155,13 @@ export const MainPage = v.pipe(
                   },
                 ],
               },
+              { type: 'divider' },
+
+              {
+                type: 'group',
+                title: 'IONIC',
+                children: [{ title: 'dev', router: { routerLink: './ionic/dev' } }],
+              },
             ],
           }),
           actions.class.top('min-w-[250px]'),

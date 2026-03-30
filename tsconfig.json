@@ -34,6 +34,9 @@
       "@piying-lib/angular-daisyui/preset": [
         "./projects/daisyui/preset"
       ],
+      "@piying-lib/angular-ionic/*": [
+        "./projects/ionic/*"
+      ],
       "@piying-lib/angular-core": [
         "./projects/core"
       ],

@@ -1,0 +1,33 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-radio-group
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    @for (item of resolvedOptions$$(); track $index) {
+      <ion-radio
+        [color]="item.origin.color"
+        [name]="name()!"
+        [value]="item.value"
+        [labelPlacement]="item.origin.labelPlacement"
+        [justify]="item.origin.justify"
+        [alignment]="item.origin.alignment"
+        (ionFocus)="item.origin.ionFocus?.($event)"
+        (ionBlur)="item.origin.ionBlur?.($event)"
+        [disabled]="!!item.disabled"
+      >
+        @let optionTemplate = optionTemplate$$();
+        @if (optionTemplate) {
+          <ng-container
+            *ngTemplateOutlet="optionTemplate; context: { template: item }"
+          ></ng-container>
+        } @else {
+          {{ item.label }}
+        }
+      </ion-radio>
+    }
+  </ion-radio-group>
+</ng-template>
