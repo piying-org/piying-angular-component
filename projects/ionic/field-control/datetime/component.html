@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-datetime
     [color]="color()"
-    [name]="name()"
+    [name]="name()!"
     [formatOptions]="formatOptions()"
     [readonly]="readonly()"
     [isDateEnabled]="isDateEnabled()"
@@ -29,11 +29,8 @@
     [preferWheel]="preferWheel()"
     (ionCancel)="ionCancel.emit($event)"
     (ionChange)="ionChange.emit($event)"
-    (ionValueChange)="ionValueChange.emit($event)"
     (ionFocus)="ionFocus.emit($event)"
     (ionBlur)="ionBlur.emit($event)"
-    (ionStyle)="ionStyle.emit($event)"
-    (ionRender)="ionRender.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
@@ -43,6 +40,9 @@
     [disabled]="disabled$()"
     ><ng-container *ngTemplateOutlet="slot()?.title" ngProjectAs="title"></ng-container>
     <ng-container *ngTemplateOutlet="slot()?.buttons" ngProjectAs="buttons"></ng-container>
-    <ng-container *ngTemplateOutlet="slot()?.time - label" ngProjectAs="time-label"></ng-container
+    <ng-container
+      *ngTemplateOutlet="slot()?.['time-label']"
+      ngProjectAs="time-label"
+    ></ng-container
   ></ion-datetime>
 </ng-template>

@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonDatetime } from '@ionic/angular/standalone';
 type Prop = JSX.IonDatetime;
 @Component({
   selector: 'app-ion-datetime',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonDatetime],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,7 +22,7 @@ export class IonDatetimeFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   name = input<Prop['name']>();
-  
+
   formatOptions = input<Prop['formatOptions']>();
   readonly = input<Prop['readonly']>();
   isDateEnabled = input<Prop['isDateEnabled']>();

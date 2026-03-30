@@ -4,10 +4,11 @@ type Prop = JSX.IonTextarea;
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
+import { IonTextarea } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-ion-textarea',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonTextarea],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,7 +25,7 @@ export class IonTextareaFCC extends BaseControl {
   autofocus = input<Prop['autofocus']>();
   clearOnEdit = input<Prop['clearOnEdit']>();
   debounce = input<Prop['debounce']>();
-  
+
   fill = input<Prop['fill']>();
   inputmode = input<Prop['inputmode']>();
   enterkeyhint = input<Prop['enterkeyhint']>();
@@ -47,9 +48,9 @@ export class IonTextareaFCC extends BaseControl {
   label = input<Prop['label']>();
   labelPlacement = input<Prop['labelPlacement']>();
   shape = input<Prop['shape']>();
-  change = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
-  input = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
-  blur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
-  focus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  ionInput = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
 }

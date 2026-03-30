@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-checkbox
     [color]="color()"
-    [name]="name()"
+    [name]="name()!"
     [checked]="checked()"
     [indeterminate]="indeterminate()"
     [errorText]="errorText()"
@@ -9,8 +9,7 @@
     [value]="value()"
     [labelPlacement]="labelPlacement()"
     [justify]="justify()"
-    [alignment]="alignment()"
-    [required]="required()"
+    [required]="required()!"
     (ionChange)="ionChange.emit($event)"
     (ionFocus)="ionFocus.emit($event)"
     (ionBlur)="ionBlur.emit($event)"

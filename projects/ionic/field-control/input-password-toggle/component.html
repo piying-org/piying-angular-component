@@ -3,9 +3,13 @@
     [color]="color()"
     [showIcon]="showIcon()"
     [hideIcon]="hideIcon()"
-    [type]="type()"
+    [mode]="mode()"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
   ></ion-input-password-toggle>
 </ng-template>

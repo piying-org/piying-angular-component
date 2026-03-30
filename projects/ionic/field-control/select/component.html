@@ -3,7 +3,6 @@
     [cancelText]="cancelText()"
     [color]="color()"
     [compareWith]="compareWith()"
-    
     [fill]="fill()"
     [errorText]="errorText()"
     [helperText]="helperText()"
@@ -13,7 +12,7 @@
     [label]="label()"
     [labelPlacement]="labelPlacement()"
     [multiple]="multiple()"
-    [name]="name()"
+    [name]="name()!"
     [okText]="okText()"
     [placeholder]="placeholder()"
     [selectedText]="selectedText()"
@@ -21,12 +20,11 @@
     [expandedIcon]="expandedIcon()"
     [shape]="shape()"
     [value]="value()"
-    (ionChange)="ionChange.emit($event)"
-    (ionCancel)="ionCancel.emit($event)"
-    (ionDismiss)="ionDismiss.emit($event)"
-    (ionFocus)="ionFocus.emit($event)"
-    (ionBlur)="ionBlur.emit($event)"
-    (ionStyle)="ionStyle.emit($event)"
+    (ionChange)="onIonChange.emit($event)"
+    (ionCancel)="onIonCancel.emit($event)"
+    (ionDismiss)="onIonDismiss.emit($event)"
+    (ionFocus)="onIonFocus.emit($event)"
+    (ionBlur)="onIonBlur.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
@@ -34,8 +32,21 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container *ngTemplateOutlet="slot()?.label" ngProjectAs="label"></ng-container>
-    <ng-container *ngTemplateOutlet="slot()?.start" ngProjectAs="start"></ng-container>
-    <ng-container *ngTemplateOutlet="slot()?.end" ngProjectAs="end"></ng-container
-  ></ion-select>
+  >
+    @for (item of resolvedOptions$$(); track $index) {
+      <ion-select-option
+        [value]="item.value"
+        [disabled]="!!item.disabled"
+      >
+        @let optionTemplate = optionTemplate$$();
+        @if (optionTemplate) {
+          <ng-container
+            *ngTemplateOutlet="optionTemplate; context: { template: item }"
+          ></ng-container>
+        } @else {
+          {{ item.label }}
+        }
+      </ion-select-option>
+    }
+  </ion-select>
 </ng-template>

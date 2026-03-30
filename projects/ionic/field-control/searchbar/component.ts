@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonSearchbar } from '@ionic/angular/standalone';
 type Prop = JSX.IonSearchbar;
 @Component({
   selector: 'app-ion-searchbar',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonSearchbar],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -28,7 +29,7 @@ export class IonSearchbarFCC extends BaseControl {
   cancelButtonText = input<Prop['cancelButtonText']>();
   clearIcon = input<Prop['clearIcon']>();
   debounce = input<Prop['debounce']>();
-  
+
   inputmode = input<Prop['inputmode']>();
   enterkeyhint = input<Prop['enterkeyhint']>();
   maxlength = input<Prop['maxlength']>();

@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonToggle } from '@ionic/angular/standalone';
 type Prop = JSX.IonToggle;
 @Component({
   selector: 'app-ion-toggle',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonToggle],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,14 +23,13 @@ export class IonToggleFCC extends BaseControl {
   color = input<Prop['color']>();
   name = input<Prop['name']>();
   checked = input<Prop['checked']>();
-  
+
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
   value = input<Prop['value']>();
   enableOnOffLabels = input<Prop['enableOnOffLabels']>();
   labelPlacement = input<Prop['labelPlacement']>();
   justify = input<Prop['justify']>();
-  alignment = input<Prop['alignment']>();
   required = input<Prop['required']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();

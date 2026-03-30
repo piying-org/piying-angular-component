@@ -1,17 +1,15 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-toggle
     [color]="color()"
-    [name]="name()"
+    [name]="name()!"
     [checked]="checked()"
-    
     [errorText]="errorText()"
     [helperText]="helperText()"
     [value]="value()"
     [enableOnOffLabels]="enableOnOffLabels()"
     [labelPlacement]="labelPlacement()"
     [justify]="justify()"
-    [alignment]="alignment()"
-    [required]="required()"
+    [required]="required()!"
     (ionChange)="ionChange.emit($event)"
     (ionFocus)="ionFocus.emit($event)"
     (ionBlur)="ionBlur.emit($event)"
@@ -23,7 +21,7 @@
     (blur)="touchedChange()"
     [disabled]="disabled$()"
     ><ng-container
-      *ngTemplateOutlet="slot()?.default; slot"
+      *ngTemplateOutlet="slot()?.['default slot']"
       ngProjectAs="default slot"
     ></ng-container
   ></ion-toggle>

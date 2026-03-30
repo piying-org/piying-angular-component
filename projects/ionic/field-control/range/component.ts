@@ -3,12 +3,13 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonRange } from '@ionic/angular/standalone';
 
 type Prop = JSX.IonRange;
 @Component({
   selector: 'app-ion-range',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonRange],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -33,7 +34,7 @@ export class IonRangeFCC extends BaseControl {
   step = input<Prop['step']>();
   ticks = input<Prop['ticks']>();
   activeBarStart = input<Prop['activeBarStart']>();
-  
+
   value = input<Prop['value']>();
   labelPlacement = input<Prop['labelPlacement']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();

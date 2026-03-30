@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonCheckbox } from '@ionic/angular/standalone';
 type Prop = JSX.IonCheckbox;
 @Component({
   selector: 'app-ion-checkbox',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonCheckbox],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -23,13 +24,12 @@ export class IonCheckboxFCC extends BaseControl {
   name = input<Prop['name']>();
   checked = input<Prop['checked']>();
   indeterminate = input<Prop['indeterminate']>();
-  
+
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
   value = input<Prop['value']>();
   labelPlacement = input<Prop['labelPlacement']>();
   justify = input<Prop['justify']>();
-  alignment = input<Prop['alignment']>();
   required = input<Prop['required']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();

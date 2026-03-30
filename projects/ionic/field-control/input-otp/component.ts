@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonInputOtp } from '@ionic/angular/standalone';
 type Prop = JSX.IonInputOtp;
 @Component({
   selector: 'app-ion-input-otp',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonInputOtp],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,7 +22,7 @@ export class IonInputOtpFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   autocapitalize = input<Prop['autocapitalize']>();
   color = input<Prop['color']>();
-  
+
   fill = input<Prop['fill']>();
   inputmode = input<Prop['inputmode']>();
   length = input<Prop['length']>();
