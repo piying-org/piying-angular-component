@@ -1,10 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-footer
-    [collapse]="collapse()"
-    [translucent]="translucent()"
+    [collapse]="props()?.collapse"
+    [translucent]="props()?.translucent"
+    [mode]="props()?.mode"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
+    ><ng-container insertField></ng-container
   ></ion-footer>
 </ng-template>
