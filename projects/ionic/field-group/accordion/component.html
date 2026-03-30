@@ -8,7 +8,7 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot().header" ngProjectAs="header"></ng-container>
-    <ng-container *ngTemplateOutlet="slot().content" ngProjectAs="content"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()?.header" ngProjectAs="header"></ng-container>
+    <ng-container *ngTemplateOutlet="slot()?.content" ngProjectAs="content"></ng-container
   ></ion-accordion>
 </ng-template>

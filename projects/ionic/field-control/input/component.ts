@@ -3,11 +3,12 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
+import { IonInput } from '@ionic/angular/standalone';
 type Prop = JSX.IonInput;
 @Component({
   selector: 'app-ion-input',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet],
+  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonInput],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

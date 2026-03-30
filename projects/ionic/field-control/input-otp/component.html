@@ -25,6 +25,6 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container *ngTemplateOutlet="slot().description" ngProjectAs="description"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()?.description" ngProjectAs="description"></ng-container
   ></ion-input-otp>
 </ng-template>

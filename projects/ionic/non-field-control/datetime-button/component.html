@@ -9,9 +9,9 @@
     [attributes]="attr()"
     [excludes]="['class']"
     ><ng-container
-      *ngTemplateOutlet="slot().date - target"
+      *ngTemplateOutlet="slot()?.date - target"
       ngProjectAs="date-target"
     ></ng-container>
-    <ng-container *ngTemplateOutlet="slot().time - target" ngProjectAs="time-target"></ng-container
+    <ng-container *ngTemplateOutlet="slot()?.time - target" ngProjectAs="time-target"></ng-container
   ></ion-datetime-button>
 </ng-template>

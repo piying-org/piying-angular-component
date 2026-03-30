@@ -42,8 +42,8 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container *ngTemplateOutlet="slot().title" ngProjectAs="title"></ng-container>
-    <ng-container *ngTemplateOutlet="slot().buttons" ngProjectAs="buttons"></ng-container>
-    <ng-container *ngTemplateOutlet="slot().time - label" ngProjectAs="time-label"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()?.title" ngProjectAs="title"></ng-container>
+    <ng-container *ngTemplateOutlet="slot()?.buttons" ngProjectAs="buttons"></ng-container>
+    <ng-container *ngTemplateOutlet="slot()?.time - label" ngProjectAs="time-label"></ng-container
   ></ion-datetime>
 </ng-template>

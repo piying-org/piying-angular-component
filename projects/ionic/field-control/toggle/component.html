@@ -23,7 +23,7 @@
     (blur)="touchedChange()"
     [disabled]="disabled$()"
     ><ng-container
-      *ngTemplateOutlet="slot().default; slot"
+      *ngTemplateOutlet="slot()?.default; slot"
       ngProjectAs="default slot"
     ></ng-container
   ></ion-toggle>

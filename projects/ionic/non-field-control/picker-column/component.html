@@ -8,8 +8,8 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot().prefix" ngProjectAs="prefix"></ng-container>
-    <ng-container *ngTemplateOutlet="slot().suffix" ngProjectAs="suffix"></ng-container>
-    <ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()?.prefix" ngProjectAs="prefix"></ng-container>
+    <ng-container *ngTemplateOutlet="slot()?.suffix" ngProjectAs="suffix"></ng-container>
+    <ng-container *ngTemplateOutlet="slot()?.default" ngProjectAs="default"></ng-container
   ></ion-picker-column>
 </ng-template>

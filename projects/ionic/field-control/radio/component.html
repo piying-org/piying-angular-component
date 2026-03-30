@@ -16,6 +16,6 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()?.default" ngProjectAs="default"></ng-container
   ></ion-radio>
 </ng-template>
