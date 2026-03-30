@@ -33,13 +33,15 @@
     <ng-template>
       <ion-header>
         <ion-title>{{ item().title }} </ion-title>
-        <ion-buttons slot="end">
+        <ion-buttons slot="start">
           <ion-button (click)="close(modal)" color="danger">
             <ng-template
               [selectlessOutlet]="StrOrTemplateComponent"
               [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
             ></ng-template>
           </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
           <ion-button (click)="apply(modal)" [disabled]="!ref.form$$()?.valid" color="primary">
             <ng-template
               [selectlessOutlet]="StrOrTemplateComponent"
