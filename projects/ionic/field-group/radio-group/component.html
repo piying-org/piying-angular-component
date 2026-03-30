@@ -1,0 +1,16 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-radio-group
+    [allowEmptySelection]="allowEmptySelection()"
+    [compareWith]="compareWith()"
+    [name]="name()"
+    [value]="value()"
+    [helperText]="helperText()"
+    [errorText]="errorText()"
+    (ionChange)="ionChange($event)"
+    (ionValueChange)="ionValueChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-radio-group>
+</ng-template>

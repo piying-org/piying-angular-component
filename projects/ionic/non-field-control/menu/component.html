@@ -1,0 +1,20 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-menu
+    [contentId]="contentId()"
+    [menuId]="menuId()"
+    [type]="type()"
+    [disabled]="disabled()"
+    [side]="side()"
+    [swipeGesture]="swipeGesture()"
+    [maxEdgeStart]="maxEdgeStart()"
+    (ionWillOpen)="ionWillOpen($event)"
+    (ionWillClose)="ionWillClose($event)"
+    (ionDidOpen)="ionDidOpen($event)"
+    (ionDidClose)="ionDidClose($event)"
+    (ionMenuChange)="ionMenuChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-menu>
+</ng-template>

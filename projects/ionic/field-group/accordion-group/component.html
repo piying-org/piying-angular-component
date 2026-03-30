@@ -1,0 +1,16 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-accordion-group
+    [animated]="animated()"
+    [multiple]="multiple()"
+    [value]="value()"
+    [disabled]="disabled()"
+    [readonly]="readonly()"
+    [expand]="expand()"
+    (ionChange)="ionChange($event)"
+    (ionValueChange)="ionValueChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-accordion-group>
+</ng-template>

@@ -1,0 +1,30 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-input-otp
+    [autocapitalize]="autocapitalize()"
+    [color]="color()"
+    [disabled]="disabled()"
+    [fill]="fill()"
+    [inputmode]="inputmode()"
+    [length]="length()"
+    [pattern]="pattern()"
+    [readonly]="readonly()"
+    [separators]="separators()"
+    [shape]="shape()"
+    [size]="size()"
+    [type]="type()"
+    [value]="value()"
+    (ionInput)="ionInput($event)"
+    (ionChange)="ionChange($event)"
+    (ionComplete)="ionComplete($event)"
+    (ionBlur)="ionBlur($event)"
+    (ionFocus)="ionFocus($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+    ><ng-container *ngTemplateOutlet="slot().description" ngProjectAs="description"></ng-container
+  ></ion-input-otp>
+</ng-template>

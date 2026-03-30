@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-picker
+    (ionInputModeChange)="ionInputModeChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-picker>
+</ng-template>

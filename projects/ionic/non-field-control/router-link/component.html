@@ -1,0 +1,14 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-router-link
+    [color]="color()"
+    [href]="href()"
+    [rel]="rel()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [target]="target()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-router-link>
+</ng-template>

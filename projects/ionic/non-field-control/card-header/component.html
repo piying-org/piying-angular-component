@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-card-header
+    [color]="color()"
+    [translucent]="translucent()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-card-header>
+</ng-template>

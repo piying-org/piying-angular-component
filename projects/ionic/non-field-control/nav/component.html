@@ -1,0 +1,17 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-nav
+    [delegate]="delegate()"
+    [swipeGesture]="swipeGesture()"
+    [animated]="animated()"
+    [animation]="animation()"
+    [rootParams]="rootParams()"
+    [root]="root()"
+    (ionNavWillLoad)="ionNavWillLoad($event)"
+    (ionNavWillChange)="ionNavWillChange($event)"
+    (ionNavDidChange)="ionNavDidChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-nav>
+</ng-template>

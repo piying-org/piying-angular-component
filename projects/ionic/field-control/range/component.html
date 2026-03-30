@@ -1,0 +1,37 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-range
+    [color]="color()"
+    [debounce]="debounce()"
+    [name]="name()"
+    [label]="label()"
+    [dualKnobs]="dualKnobs()"
+    [min]="min()"
+    [max]="max()"
+    [pin]="pin()"
+    [pinFormatter]="pinFormatter()"
+    [snaps]="snaps()"
+    [step]="step()"
+    [ticks]="ticks()"
+    [activeBarStart]="activeBarStart()"
+    [disabled]="disabled()"
+    [value]="value()"
+    [labelPlacement]="labelPlacement()"
+    (ionChange)="ionChange($event)"
+    (ionInput)="ionInput($event)"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    (ionKnobMoveStart)="ionKnobMoveStart($event)"
+    (ionKnobMoveEnd)="ionKnobMoveEnd($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+    ><ng-container *ngTemplateOutlet="slot().label" ngProjectAs="label"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().start" ngProjectAs="start"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().end" ngProjectAs="end"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-range>
+</ng-template>

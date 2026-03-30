@@ -1,0 +1,13 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-route
+    [url]="url()"
+    [component]="component()"
+    [componentProps]="componentProps()"
+    [beforeLeave]="beforeLeave()"
+    [beforeEnter]="beforeEnter()"
+    (ionRouteDataChanged)="ionRouteDataChanged($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-route>
+</ng-template>

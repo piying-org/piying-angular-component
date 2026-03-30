@@ -1,0 +1,13 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-segment-button
+    [contentId]="contentId()"
+    [disabled]="disabled()"
+    [layout]="layout()"
+    [type]="type()"
+    [value]="value()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-segment-button>
+</ng-template>

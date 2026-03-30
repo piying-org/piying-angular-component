@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-route-redirect
+    [from]="from()"
+    [to]="to()"
+    (ionRouteRedirectChanged)="ionRouteRedirectChanged($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-route-redirect>
+</ng-template>

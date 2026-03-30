@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-segment-view
+    [disabled]="disabled()"
+    [swipeGesture]="swipeGesture()"
+    (ionSegmentViewScroll)="ionSegmentViewScroll($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-segment-view>
+</ng-template>

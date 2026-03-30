@@ -1,0 +1,15 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-picker-column
+    [disabled]="disabled()"
+    [value]="value()"
+    [color]="color()"
+    [numericInput]="numericInput()"
+    (ionChange)="ionChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().prefix" ngProjectAs="prefix"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().suffix" ngProjectAs="suffix"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-picker-column>
+</ng-template>

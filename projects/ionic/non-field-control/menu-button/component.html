@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-menu-button
+    [color]="color()"
+    [disabled]="disabled()"
+    [menu]="menu()"
+    [autoHide]="autoHide()"
+    [type]="type()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-menu-button>
+</ng-template>

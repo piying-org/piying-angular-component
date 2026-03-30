@@ -1,0 +1,17 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-datetime-button
+    [color]="color()"
+    [disabled]="disabled()"
+    [datetime]="datetime()"
+    (ionValueChange)="ionValueChange($event)"
+    (ionChange)="ionChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container
+      *ngTemplateOutlet="slot().date - target"
+      ngProjectAs="date-target"
+    ></ng-container>
+    <ng-container *ngTemplateOutlet="slot().time - target" ngProjectAs="time-target"></ng-container
+  ></ion-datetime-button>
+</ng-template>

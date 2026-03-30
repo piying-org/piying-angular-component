@@ -1,0 +1,21 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-radio
+    [color]="color()"
+    [name]="name()"
+    [disabled]="disabled()"
+    [value]="value()"
+    [labelPlacement]="labelPlacement()"
+    [justify]="justify()"
+    [alignment]="alignment()"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-radio>
+</ng-template>

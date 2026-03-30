@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-item-options
+    [side]="side()"
+    (ionSwipe)="ionSwipe($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-item-options>
+</ng-template>

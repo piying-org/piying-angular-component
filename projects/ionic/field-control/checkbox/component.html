@@ -1,0 +1,26 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-checkbox
+    [color]="color()"
+    [name]="name()"
+    [checked]="checked()"
+    [indeterminate]="indeterminate()"
+    [disabled]="disabled()"
+    [errorText]="errorText()"
+    [helperText]="helperText()"
+    [value]="value()"
+    [labelPlacement]="labelPlacement()"
+    [justify]="justify()"
+    [alignment]="alignment()"
+    [required]="required()"
+    (ionChange)="ionChange($event)"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+  ></ion-checkbox>
+</ng-template>

@@ -1,0 +1,8 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-reorder [class]="attr()?.class" [attributes]="attr()" [excludes]="['class']"
+    ><ng-container
+      *ngTemplateOutlet="slot().default; slot"
+      ngProjectAs="default slot"
+    ></ng-container
+  ></ion-reorder>
+</ng-template>

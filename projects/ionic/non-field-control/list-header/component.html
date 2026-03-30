@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-list-header
+    [color]="color()"
+    [lines]="lines()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-list-header>
+</ng-template>

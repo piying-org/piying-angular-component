@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-app
+    [el]="el()"
+    (componentDidLoad)="componentDidLoad($event)"
+    (disconnectedCallback)="disconnectedCallback($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-app>
+</ng-template>

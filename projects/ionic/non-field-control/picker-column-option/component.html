@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-picker-column-option
+    [disabled]="disabled()"
+    [value]="value()"
+    [color]="color()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-picker-column-option>
+</ng-template>

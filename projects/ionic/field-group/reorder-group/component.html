@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-reorder-group
+    [disabled]="disabled()"
+    (ionItemReorder)="ionItemReorder($event)"
+    (ionReorderStart)="ionReorderStart($event)"
+    (ionReorderMove)="ionReorderMove($event)"
+    (ionReorderEnd)="ionReorderEnd($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-reorder-group>
+</ng-template>

@@ -1,0 +1,22 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-item
+    [button]="button()"
+    [detail]="detail()"
+    [detailIcon]="detailIcon()"
+    [disabled]="disabled()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [lines]="lines()"
+    [routerAnimation]="routerAnimation()"
+    [routerDirection]="routerDirection()"
+    [target]="target()"
+    [type]="type()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().start" ngProjectAs="start"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().end" ngProjectAs="end"></ng-container
+  ></ion-item>
+</ng-template>

@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-progress-bar
+    [type]="type()"
+    [reversed]="reversed()"
+    [value]="value()"
+    [buffer]="buffer()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-progress-bar>
+</ng-template>

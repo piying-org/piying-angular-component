@@ -1,0 +1,21 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-item-option
+    [color]="color()"
+    [disabled]="disabled()"
+    [download]="download()"
+    [expandable]="expandable()"
+    [href]="href()"
+    [rel]="rel()"
+    [target]="target()"
+    [type]="type()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().start" ngProjectAs="start"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().top" ngProjectAs="top"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().icon - only" ngProjectAs="icon-only"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().end" ngProjectAs="end"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().bottom" ngProjectAs="bottom"></ng-container
+  ></ion-item-option>
+</ng-template>

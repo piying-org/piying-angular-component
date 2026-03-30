@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-backdrop
+    [visible]="visible()"
+    [tappable]="tappable()"
+    [stopPropagation]="stopPropagation()"
+    (ionBackdropTap)="ionBackdropTap($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-backdrop>
+</ng-template>

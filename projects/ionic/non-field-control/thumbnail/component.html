@@ -1,0 +1,7 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-thumbnail
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-thumbnail>
+</ng-template>

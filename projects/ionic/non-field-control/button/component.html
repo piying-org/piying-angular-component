@@ -1,0 +1,29 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-button
+    [color]="color()"
+    [buttonType]="buttonType()"
+    [disabled]="disabled()"
+    [expand]="expand()"
+    [fill]="fill()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [shape]="shape()"
+    [size]="size()"
+    [strong]="strong()"
+    [target]="target()"
+    [type]="type()"
+    [form]="form()"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().icon - only" ngProjectAs="icon-only"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().start" ngProjectAs="start"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().end" ngProjectAs="end"></ng-container
+  ></ion-button>
+</ng-template>

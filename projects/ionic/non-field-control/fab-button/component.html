@@ -1,0 +1,23 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-fab-button
+    [color]="color()"
+    [activated]="activated()"
+    [disabled]="disabled()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [target]="target()"
+    [show]="show()"
+    [translucent]="translucent()"
+    [type]="type()"
+    [size]="size()"
+    [closeIcon]="closeIcon()"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-fab-button>
+</ng-template>

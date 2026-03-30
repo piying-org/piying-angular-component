@@ -1,0 +1,41 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-select
+    [cancelText]="cancelText()"
+    [color]="color()"
+    [compareWith]="compareWith()"
+    [disabled]="disabled()"
+    [fill]="fill()"
+    [errorText]="errorText()"
+    [helperText]="helperText()"
+    [interface]="interface()"
+    [interfaceOptions]="interfaceOptions()"
+    [justify]="justify()"
+    [label]="label()"
+    [labelPlacement]="labelPlacement()"
+    [multiple]="multiple()"
+    [name]="name()"
+    [okText]="okText()"
+    [placeholder]="placeholder()"
+    [selectedText]="selectedText()"
+    [toggleIcon]="toggleIcon()"
+    [expandedIcon]="expandedIcon()"
+    [shape]="shape()"
+    [value]="value()"
+    (ionChange)="ionChange($event)"
+    (ionCancel)="ionCancel($event)"
+    (ionDismiss)="ionDismiss($event)"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    (ionStyle)="ionStyle($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+    ><ng-container *ngTemplateOutlet="slot().label" ngProjectAs="label"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().start" ngProjectAs="start"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().end" ngProjectAs="end"></ng-container
+  ></ion-select>
+</ng-template>

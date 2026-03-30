@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-nav-link
+    [component]="component()"
+    [componentProps]="componentProps()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-nav-link>
+</ng-template>

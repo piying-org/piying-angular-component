@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-select-popover
+    [header]="header()"
+    [subHeader]="subHeader()"
+    [message]="message()"
+    [multiple]="multiple()"
+    [options]="options()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-select-popover>
+</ng-template>

@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-title
+    [color]="color()"
+    [size]="size()"
+    (ionStyle)="ionStyle($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-title>
+</ng-template>

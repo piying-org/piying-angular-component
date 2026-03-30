@@ -1,0 +1,16 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-router-outlet
+    [mode]="mode()"
+    [delegate]="delegate()"
+    [animated]="animated()"
+    [animation]="animation()"
+    [swipeHandler]="swipeHandler()"
+    (ionNavWillLoad)="ionNavWillLoad($event)"
+    (ionNavWillChange)="ionNavWillChange($event)"
+    (ionNavDidChange)="ionNavDidChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-router-outlet>
+</ng-template>

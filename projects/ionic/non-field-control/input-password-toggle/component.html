@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-input-password-toggle
+    [color]="color()"
+    [showIcon]="showIcon()"
+    [hideIcon]="hideIcon()"
+    [type]="type()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-input-password-toggle>
+</ng-template>

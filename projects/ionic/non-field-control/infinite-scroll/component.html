@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-infinite-scroll
+    [threshold]="threshold()"
+    [disabled]="disabled()"
+    [position]="position()"
+    (ionInfinite)="ionInfinite($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-infinite-scroll>
+</ng-template>

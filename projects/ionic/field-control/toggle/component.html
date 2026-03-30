@@ -1,0 +1,30 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-toggle
+    [color]="color()"
+    [name]="name()"
+    [checked]="checked()"
+    [disabled]="disabled()"
+    [errorText]="errorText()"
+    [helperText]="helperText()"
+    [value]="value()"
+    [enableOnOffLabels]="enableOnOffLabels()"
+    [labelPlacement]="labelPlacement()"
+    [justify]="justify()"
+    [alignment]="alignment()"
+    [required]="required()"
+    (ionChange)="ionChange($event)"
+    (ionFocus)="ionFocus($event)"
+    (ionBlur)="ionBlur($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [ngModel]="value$()"
+    (ngModelChange)="valueChange($event)"
+    (blur)="touchedChange()"
+    [disabled]="disabled$()"
+    ><ng-container
+      *ngTemplateOutlet="slot().default; slot"
+      ngProjectAs="default slot"
+    ></ng-container
+  ></ion-toggle>
+</ng-template>

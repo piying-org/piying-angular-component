@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-tab
+    [active]="active()"
+    [delegate]="delegate()"
+    [tab]="tab()"
+    [component]="component()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-tab>
+</ng-template>

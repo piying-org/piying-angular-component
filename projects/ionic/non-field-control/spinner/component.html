@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-spinner
+    [color]="color()"
+    [duration]="duration()"
+    [name]="name()"
+    [paused]="paused()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-spinner>
+</ng-template>

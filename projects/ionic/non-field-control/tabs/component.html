@@ -1,0 +1,13 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-tabs
+    [useRouter]="useRouter()"
+    (ionNavWillLoad)="ionNavWillLoad($event)"
+    (ionTabsWillChange)="ionTabsWillChange($event)"
+    (ionTabsDidChange)="ionTabsDidChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().top" ngProjectAs="top"></ng-container>
+    <ng-container *ngTemplateOutlet="slot().bottom" ngProjectAs="bottom"></ng-container
+  ></ion-tabs>
+</ng-template>

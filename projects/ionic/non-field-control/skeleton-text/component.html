@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-skeleton-text
+    [animated]="animated()"
+    (ionStyle)="ionStyle($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-skeleton-text>
+</ng-template>

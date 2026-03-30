@@ -1,0 +1,8 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-text
+    [color]="color()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-text>
+</ng-template>

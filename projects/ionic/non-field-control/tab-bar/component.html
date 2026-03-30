@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-tab-bar
+    [color]="color()"
+    [selectedTab]="selectedTab()"
+    [translucent]="translucent()"
+    (ionTabBarChanged)="ionTabBarChanged($event)"
+    (ionTabBarLoaded)="ionTabBarLoaded($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-tab-bar>
+</ng-template>

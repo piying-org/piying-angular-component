@@ -1,0 +1,17 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-segment
+    [color]="color()"
+    [disabled]="disabled()"
+    [scrollable]="scrollable()"
+    [swipeGesture]="swipeGesture()"
+    [value]="value()"
+    [selectOnFocus]="selectOnFocus()"
+    (ionChange)="ionChange($event)"
+    (ionSelect)="ionSelect($event)"
+    (ionStyle)="ionStyle($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-segment>
+</ng-template>

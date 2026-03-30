@@ -1,0 +1,16 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-tab-button
+    [disabled]="disabled()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [layout]="layout()"
+    [selected]="selected()"
+    [tab]="tab()"
+    [target]="target()"
+    (ionTabButtonClick)="ionTabButtonClick($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-tab-button>
+</ng-template>

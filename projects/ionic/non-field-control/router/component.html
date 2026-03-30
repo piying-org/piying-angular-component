@@ -1,0 +1,11 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-router
+    [root]="root()"
+    [useHash]="useHash()"
+    (ionRouteWillChange)="ionRouteWillChange($event)"
+    (ionRouteDidChange)="ionRouteDidChange($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-router>
+</ng-template>

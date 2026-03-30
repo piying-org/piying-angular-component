@@ -1,0 +1,18 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-card
+    [color]="color()"
+    [button]="button()"
+    [type]="type()"
+    [disabled]="disabled()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [target]="target()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    ><ng-container *ngTemplateOutlet="slot().default" ngProjectAs="default"></ng-container
+  ></ion-card>
+</ng-template>
