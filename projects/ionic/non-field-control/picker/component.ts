@@ -26,9 +26,9 @@ export class IonPickerNFCC {
   // keyboardActive = input<Prop['keyboardActive']>();
   // keyboardTopics = input<Prop['keyboardTopics']>();
   // translucent = input<Prop['translucent']>();
-  // onDidDismiss = output<Prop['onDidDismiss']>();
-  // onWillDismiss = output<Prop['onWillDismiss']>();
-  // onDidPresent = output<Prop['onDidPresent']>();
-  // onWillPresent = output<Prop['onWillPresent']>();
+  // onDidDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
+  // onWillDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
+  // onDidPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
+  // onWillPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

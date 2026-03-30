@@ -16,5 +16,5 @@ export class IonInfiniteScrollNFCC {
   threshold = input<Prop['threshold']>();
   disabled = input<Prop['disabled']>();
   position = input<Prop['position']>();
-  ionInfinite = output<Prop['onIonInfinite']>();
+  ionInfinite = output<Parameters<NonNullable<Prop['onIonInfinite']>>[0]>();
 }

@@ -56,10 +56,10 @@ export class IonInputFCC extends BaseControl {
   type = input<Prop['type']>();
   value = input<Prop['value']>();
 
-  ionInput = output<Prop['onIonInput']>();
-  ionChange = output<Prop['onIonChange']>();
-  ionBlur = output<Prop['onIonBlur']>();
-  ionFocus = output<Prop['onIonFocus']>();
+  ionInput = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
 
   slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
 }

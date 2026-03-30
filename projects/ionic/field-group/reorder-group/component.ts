@@ -14,8 +14,8 @@ export class IonReorderGroupFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   disabled = input<Prop['disabled']>();
-  // ionItemReorder = output<Prop['onItemReorder']>();
-  // ionReorderStart = output<Prop['onReorderStart']>();
-  // ionReorderMove = output<Prop['onReorderMove']>();
-  // ionReorderEnd = output<Prop['onReorderEnd']>();
+  // ionItemReorder = output<Parameters<NonNullable<Prop['onItemReorder']>>[0]>();
+  // ionReorderStart = output<Parameters<NonNullable<Prop['onReorderStart']>>[0]>();
+  // ionReorderMove = output<Parameters<NonNullable<Prop['onReorderMove']>>[0]>();
+  // ionReorderEnd = output<Parameters<NonNullable<Prop['onReorderEnd']>>[0]>();
 }

@@ -30,12 +30,12 @@ export class IonAlertNFCC {
   htmlAttributes = input<Prop['htmlAttributes']>();
   isOpen = input<Prop['isOpen']>();
   trigger = input<Prop['trigger']>();
-  ionAlertDidPresent = output<Prop['onIonAlertDidPresent']>();
-  ionAlertWillPresent = output<Prop['onIonAlertWillPresent']>();
-  ionAlertWillDismiss = output<Prop['onIonAlertWillDismiss']>();
-  ionAlertDidDismiss = output<Prop['onIonAlertDidDismiss']>();
-  didPresent = output<Prop['onDidPresent']>();
-  willPresent = output<Prop['onWillPresent']>();
-  willDismiss = output<Prop['onWillDismiss']>();
-  didDismiss = output<Prop['onDidDismiss']>();
+  ionAlertDidPresent = output<Parameters<NonNullable<Prop['onIonAlertDidPresent']>>[0]>();
+  ionAlertWillPresent = output<Parameters<NonNullable<Prop['onIonAlertWillPresent']>>[0]>();
+  ionAlertWillDismiss = output<Parameters<NonNullable<Prop['onIonAlertWillDismiss']>>[0]>();
+  ionAlertDidDismiss = output<Parameters<NonNullable<Prop['onIonAlertDidDismiss']>>[0]>();
+  didPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
+  willPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
+  willDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
+  didDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
 }

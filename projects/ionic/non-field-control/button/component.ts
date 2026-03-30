@@ -28,8 +28,8 @@ export class IonButtonNFCC {
   target = input<Prop['target']>();
   type = input<Prop['type']>();
   form = input<Prop['form']>();
-  ionFocus = output<Prop['onIonFocus']>();
-  ionBlur = output<Prop['onIonBlur']>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   slot = input<{
     default: TemplateRef<any>;
     'icon-only': TemplateRef<any>;

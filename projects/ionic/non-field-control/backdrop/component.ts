@@ -15,5 +15,5 @@ export class IonBackdropNFCC {
   visible = input<Prop['visible']>();
   tappable = input<Prop['tappable']>();
   stopPropagation = input<Prop['stopPropagation']>();
-  ionBackdropTap = output<Prop['onIonBackdropTap']>();
+  ionBackdropTap = output<Parameters<NonNullable<Prop['onIonBackdropTap']>>[0]>();
 }

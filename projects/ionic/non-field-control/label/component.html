@@ -2,8 +2,8 @@
   <ion-label
     [color]="color()"
     [position]="position()"
-    (ionColor)="ionColor($event)"
-    (ionStyle)="ionStyle($event)"
+    (ionColor)="ionColor.emit($event)"
+    (ionStyle)="ionStyle.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

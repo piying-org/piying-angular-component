@@ -3,7 +3,7 @@
     [visible]="visible()"
     [tappable]="tappable()"
     [stopPropagation]="stopPropagation()"
-    (ionBackdropTap)="ionBackdropTap($event)"
+    (ionBackdropTap)="ionBackdropTap.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

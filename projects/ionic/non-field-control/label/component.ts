@@ -14,7 +14,7 @@ export class IonLabelNFCC {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   position = input<Prop['position']>();
-  // ionColor = output<Prop['onIonColor']>();
-  // ionStyle = output<Prop['onIonStyle']>();
+  // ionColor = output<Parameters<NonNullable<Prop['onIonColor']>>[0]>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

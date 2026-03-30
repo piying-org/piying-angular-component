@@ -14,5 +14,5 @@ export class IonTitleNFCC {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   size = input<Prop['size']>();
-  // ionStyle = output<Prop['onIonStyle']>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
 }

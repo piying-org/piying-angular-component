@@ -14,6 +14,6 @@ export class IonRouterNFCC {
   templateRef = viewChild.required('templateRef');
   root = input<Prop['root']>();
   useHash = input<Prop['useHash']>();
-  ionRouteWillChange = output<Prop['onIonRouteWillChange']>();
-  ionRouteDidChange = output<Prop['onIonRouteDidChange']>();
+  ionRouteWillChange = output<Parameters<NonNullable<Prop['onIonRouteWillChange']>>[0]>();
+  ionRouteDidChange = output<Parameters<NonNullable<Prop['onIonRouteDidChange']>>[0]>();
 }

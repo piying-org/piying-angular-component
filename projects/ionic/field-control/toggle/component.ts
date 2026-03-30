@@ -31,8 +31,8 @@ export class IonToggleFCC extends BaseControl {
   justify = input<Prop['justify']>();
   alignment = input<Prop['alignment']>();
   required = input<Prop['required']>();
-  ionChange = output<JSX.IonToggle['onIonChange']>();
-  ionFocus = output<JSX.IonToggle['onIonFocus']>();
-  ionBlur = output<JSX.IonToggle['onIonBlur']>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   slot = input<{ 'default slot': TemplateRef<any> }>();
 }

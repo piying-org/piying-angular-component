@@ -13,6 +13,6 @@ export class IonItemOptionsFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   side = input<Prop['side']>();
-  ionSwipe = output<Prop['onIonSwipe']>();
+  ionSwipe = output<Parameters<NonNullable<Prop['onIonSwipe']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

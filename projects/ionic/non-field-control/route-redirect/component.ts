@@ -14,5 +14,5 @@ export class IonRouteRedirectNFCC {
   templateRef = viewChild.required('templateRef');
   from = input<Prop['from']>();
   to = input<Prop['to']>();
-  ionRouteRedirectChanged = output<Prop['onIonRouteRedirectChanged']>();
+  ionRouteRedirectChanged = output<Parameters<NonNullable<Prop['onIonRouteRedirectChanged']>>[0]>();
 }

@@ -3,7 +3,7 @@
     [contentId]="contentId()"
     [disabled]="disabled()"
     [when]="when()"
-    (ionSplitPaneVisible)="ionSplitPaneVisible($event)"
+    (ionSplitPaneVisible)="ionSplitPaneVisible.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-skeleton-text
     [animated]="animated()"
-    (ionStyle)="ionStyle($event)"
+    (ionStyle)="ionStyle.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -31,7 +31,7 @@ export class IonCheckboxFCC extends BaseControl {
   justify = input<Prop['justify']>();
   alignment = input<Prop['alignment']>();
   required = input<Prop['required']>();
-  ionChange = output<Prop['onIonChange']>();
-  ionFocus = output<Prop['onIonFocus']>();
-  ionBlur = output<Prop['onIonBlur']>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
 }

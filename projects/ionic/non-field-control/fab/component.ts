@@ -16,7 +16,7 @@ export class IonFabNFCC {
   vertical = input<Prop['vertical']>();
   edge = input<Prop['edge']>();
   activated = input<Prop['activated']>();
-  // close = output<Prop['onClose']>();
-  // toggle = output<Prop['onToggle']>();
+  // close = output<Parameters<NonNullable<Prop['onClose']>>[0]>();
+  // toggle = output<Parameters<NonNullable<Prop['onToggle']>>[0]>();
   // slot = input < { default: TemplateRef<any> }();
 }

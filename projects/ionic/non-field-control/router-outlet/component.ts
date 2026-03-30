@@ -17,8 +17,8 @@ export class IonRouterOutletNFCC {
   animated = input<Prop['animated']>();
   animation = input<Prop['animation']>();
   // swipeHandler = input<Prop['swipeHandler']>();
-  // ionNavWillLoad = output<Prop['onIonNavWillLoad']>();
-  // ionNavWillChange = output<Prop['onIonNavWillChange']>();
-  // ionNavDidChange = output<Prop['onIonNavDidChange']>();
+  // ionNavWillLoad = output<Parameters<NonNullable<Prop['onIonNavWillLoad']>>[0]>();
+  // ionNavWillChange = output<Parameters<NonNullable<Prop['onIonNavWillChange']>>[0]>();
+  // ionNavDidChange = output<Parameters<NonNullable<Prop['onIonNavDidChange']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

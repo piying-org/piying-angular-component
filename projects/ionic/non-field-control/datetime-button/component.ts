@@ -15,7 +15,7 @@ export class IonDatetimeButtonNFCC {
   color = input<Prop['color']>();
   disabled = input<Prop['disabled']>();
   datetime = input<Prop['datetime']>();
-  // ionValueChange = output<Prop['onIonValueChange']>();
-  // ionChange = output<Prop['onIonChange']>();
+  // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
+  // ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   slot = input<{ 'date-target': TemplateRef<any>; 'time-target': TemplateRef<any> }>();
 }

@@ -15,6 +15,6 @@ export class IonTabBarNFCC {
   color = input<Prop['color']>();
   selectedTab = input<Prop['selectedTab']>();
   translucent = input<Prop['translucent']>();
-  ionTabBarChanged = output<Prop['onIonTabBarChanged']>();
-  ionTabBarLoaded = output<Prop['onIonTabBarLoaded']>();
+  ionTabBarChanged = output<Parameters<NonNullable<Prop['onIonTabBarChanged']>>[0]>();
+  ionTabBarLoaded = output<Parameters<NonNullable<Prop['onIonTabBarLoaded']>>[0]>();
 }

@@ -2,7 +2,7 @@
   <ion-route-redirect
     [from]="from()"
     [to]="to()"
-    (ionRouteRedirectChanged)="ionRouteRedirectChanged($event)"
+    (ionRouteRedirectChanged)="ionRouteRedirectChanged.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

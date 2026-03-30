@@ -3,7 +3,7 @@ import { JSX } from '@ionic/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
-
+type Prop = JSX.IonRadio;
 @Component({
   selector: 'app-ion-radio',
   templateUrl: './component.html',
@@ -19,14 +19,14 @@ import { NgTemplateOutlet } from '@angular/common';
 export class IonRadioFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  color = input<JSX.IonRadio['color']>();
-  name = input<JSX.IonRadio['name']>();
-  disabled = input<JSX.IonRadio['disabled']>();
-  value = input<JSX.IonRadio['value']>();
-  labelPlacement = input<JSX.IonRadio['labelPlacement']>();
-  justify = input<JSX.IonRadio['justify']>();
-  alignment = input<JSX.IonRadio['alignment']>();
-  ionFocus = output<JSX.IonRadio['onIonFocus']>();
-  ionBlur = output<JSX.IonRadio['onIonBlur']>();
+  color = input<Prop['color']>();
+  name = input<Prop['name']>();
+  disabled = input<Prop['disabled']>();
+  value = input<Prop['value']>();
+  labelPlacement = input<Prop['labelPlacement']>();
+  justify = input<Prop['justify']>();
+  alignment = input<Prop['alignment']>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

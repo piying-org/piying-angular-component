@@ -2,8 +2,8 @@
   <ion-router
     [root]="root()"
     [useHash]="useHash()"
-    (ionRouteWillChange)="ionRouteWillChange($event)"
-    (ionRouteDidChange)="ionRouteDidChange($event)"
+    (ionRouteWillChange)="ionRouteWillChange.emit($event)"
+    (ionRouteDidChange)="ionRouteDidChange.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

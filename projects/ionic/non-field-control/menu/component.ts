@@ -19,10 +19,10 @@ export class IonMenuNFCC {
   side = input<Prop['side']>();
   swipeGesture = input<Prop['swipeGesture']>();
   maxEdgeStart = input<Prop['maxEdgeStart']>();
-  ionWillOpen = output<Prop['onIonWillOpen']>();
-  ionWillClose = output<Prop['onIonWillClose']>();
-  ionDidOpen = output<Prop['onIonDidOpen']>();
-  ionDidClose = output<Prop['onIonDidClose']>();
-  // ionMenuChange = output<Prop['onIonMenuChange']>();
+  ionWillOpen = output<Parameters<NonNullable<Prop['onIonWillOpen']>>[0]>();
+  ionWillClose = output<Parameters<NonNullable<Prop['onIonWillClose']>>[0]>();
+  ionDidOpen = output<Parameters<NonNullable<Prop['onIonDidOpen']>>[0]>();
+  ionDidClose = output<Parameters<NonNullable<Prop['onIonDidClose']>>[0]>();
+  // ionMenuChange = output<Parameters<NonNullable<Prop['onIonMenuChange']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

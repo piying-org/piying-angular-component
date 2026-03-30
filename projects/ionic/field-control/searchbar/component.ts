@@ -41,11 +41,11 @@ export class IonSearchbarFCC extends BaseControl {
   spellcheck = input<Prop['spellcheck']>();
   type = input<Prop['type']>();
   value = input<Prop['value']>();
-  ionInput = output<Prop['onIonInput']>();
-  ionChange = output<Prop['onIonChange']>();
-  ionCancel = output<Prop['onIonCancel']>();
-  ionClear = output<Prop['onIonClear']>();
-  ionBlur = output<Prop['onIonBlur']>();
-  ionFocus = output<Prop['onIonFocus']>();
-  // ionStyle = output<Prop['onIonStyle']>();
+  ionInput = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  ionCancel = output<Parameters<NonNullable<Prop['onIonCancel']>>[0]>();
+  ionClear = output<Parameters<NonNullable<Prop['onIonClear']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
 }

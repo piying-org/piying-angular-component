@@ -4,7 +4,7 @@
     [value]="value()"
     [color]="color()"
     [numericInput]="numericInput()"
-    (ionChange)="ionChange($event)"
+    (ionChange)="ionChange.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

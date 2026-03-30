@@ -47,13 +47,13 @@ export class IonDatetimeFCC extends BaseControl {
   hourCycle = input<Prop['hourCycle']>();
   size = input<Prop['size']>();
   preferWheel = input<Prop['preferWheel']>();
-  ionCancel = output<Prop['onIonCancel']>();
-  ionChange = output<Prop['onIonChange']>();
-  // ionValueChange = output<Prop['onIonValueChange']>();
-  ionFocus = output<Prop['onIonFocus']>();
-  ionBlur = output<Prop['onIonBlur']>();
-  // ionStyle = output<Prop['onIonStyle']>();
-  // ionRender = output<Prop['onIonRender']>();
+  ionCancel = output<Parameters<NonNullable<Prop['onIonCancel']>>[0]>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
+  // ionRender = output<Parameters<NonNullable<Prop['onIonRender']>>[0]>();
   slot = input<{
     title: TemplateRef<any>;
     buttons: TemplateRef<any>;

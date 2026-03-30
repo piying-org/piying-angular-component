@@ -16,6 +16,6 @@ export class IonRefresherContentNFCC {
   pullingText = input<Prop['pullingText']>();
   refreshingSpinner = input<Prop['refreshingSpinner']>();
   refreshingText = input<Prop['refreshingText']>();
-  // pullOffset = output<Prop['onPullOffset']>();
-  // refreshing = output<Prop['onRefreshing']>();
+  // pullOffset = output<Parameters<NonNullable<Prop['onPullOffset']>>[0]>();
+  // refreshing = output<Parameters<NonNullable<Prop['onRefreshing']>>[0]>();
 }

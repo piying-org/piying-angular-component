@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-item-sliding
     [disabled]="disabled()"
-    (ionDrag)="ionDrag($event)"
+    (ionDrag)="ionDrag.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

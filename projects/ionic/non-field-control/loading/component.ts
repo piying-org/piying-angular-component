@@ -29,11 +29,11 @@ export class IonLoadingNFCC {
   htmlAttributes = input<Prop['htmlAttributes']>();
   isOpen = input<Prop['isOpen']>();
   trigger = input<Prop['trigger']>();
-  ionLoadingWillPresent = output<Prop['onIonLoadingWillPresent']>();
-  ionLoadingWillDismiss = output<Prop['onIonLoadingWillDismiss']>();
-  ionLoadingDidDismiss = output<Prop['onIonLoadingDidDismiss']>();
-  didPresent = output<Prop['onDidPresent']>();
-  willPresent = output<Prop['onWillPresent']>();
-  willDismiss = output<Prop['onWillDismiss']>();
-  didDismiss = output<Prop['onDidDismiss']>();
+  ionLoadingWillPresent = output<Parameters<NonNullable<Prop['onIonLoadingWillPresent']>>[0]>();
+  ionLoadingWillDismiss = output<Parameters<NonNullable<Prop['onIonLoadingWillDismiss']>>[0]>();
+  ionLoadingDidDismiss = output<Parameters<NonNullable<Prop['onIonLoadingDidDismiss']>>[0]>();
+  didPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
+  willPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
+  willDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
+  didDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
 }

@@ -47,9 +47,9 @@ export class IonTextareaFCC extends BaseControl {
   label = input<Prop['label']>();
   labelPlacement = input<Prop['labelPlacement']>();
   shape = input<Prop['shape']>();
-  change = output<Prop['onIonChange']>();
-  input = output<Prop['onIonInput']>();
-  blur = output<Prop['onIonBlur']>();
-  focus = output<Prop['onIonFocus']>();
+  change = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  input = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
+  blur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  focus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
 }

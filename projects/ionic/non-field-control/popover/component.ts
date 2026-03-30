@@ -34,14 +34,14 @@ export class IonPopoverNFCC {
   // keyboardEvents = input<Prop['keyboardEvents']>();
   focusTrap = input<Prop['focusTrap']>();
   keepContentsMounted = input<Prop['keepContentsMounted']>();
-  ionPopoverDidPresent = output<Prop['onIonPopoverDidPresent']>();
-  ionPopoverWillPresent = output<Prop['onIonPopoverWillPresent']>();
-  ionPopoverWillDismiss = output<Prop['onIonPopoverWillDismiss']>();
-  ionPopoverDidDismiss = output<Prop['onIonPopoverDidDismiss']>();
-  didPresent = output<Prop['onDidPresent']>();
-  willPresent = output<Prop['onWillPresent']>();
-  willDismiss = output<Prop['onWillDismiss']>();
-  didDismiss = output<Prop['onDidDismiss']>();
-  // ionMount = output<Prop['onIonMount']>();
+  ionPopoverDidPresent = output<Parameters<NonNullable<Prop['onIonPopoverDidPresent']>>[0]>();
+  ionPopoverWillPresent = output<Parameters<NonNullable<Prop['onIonPopoverWillPresent']>>[0]>();
+  ionPopoverWillDismiss = output<Parameters<NonNullable<Prop['onIonPopoverWillDismiss']>>[0]>();
+  ionPopoverDidDismiss = output<Parameters<NonNullable<Prop['onIonPopoverDidDismiss']>>[0]>();
+  didPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
+  willPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
+  willDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
+  didDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
+  // ionMount = output<Parameters<NonNullable<Prop['onIonMount']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

@@ -29,8 +29,8 @@ export class IonToastNFCC {
   swipeGesture = input<Prop['swipeGesture']>();
   isOpen = input<Prop['isOpen']>();
   trigger = input<Prop['trigger']>();
-  ionToastDidPresent = output<Prop['onIonToastDidPresent']>();
-  ionToastWillPresent = output<Prop['onIonToastWillPresent']>();
-  ionToastWillDismiss = output<Prop['onIonToastWillDismiss']>();
-  ionToastDidDismiss = output<Prop['onIonToastDidDismiss']>();
+  ionToastDidPresent = output<Parameters<NonNullable<Prop['onIonToastDidPresent']>>[0]>();
+  ionToastWillPresent = output<Parameters<NonNullable<Prop['onIonToastWillPresent']>>[0]>();
+  ionToastWillDismiss = output<Parameters<NonNullable<Prop['onIonToastWillDismiss']>>[0]>();
+  ionToastDidDismiss = output<Parameters<NonNullable<Prop['onIonToastDidDismiss']>>[0]>();
 }

@@ -14,7 +14,7 @@ export class IonImgNFCC {
   templateRef = viewChild.required('templateRef');
   alt = input<Prop['alt']>();
   src = input<Prop['src']>();
-  ionImgWillLoad = output<Prop['onIonImgWillLoad']>();
-  ionImgDidLoad = output<Prop['onIonImgDidLoad']>();
-  ionError = output<Prop['onIonError']>();
+  ionImgWillLoad = output<Parameters<NonNullable<Prop['onIonImgWillLoad']>>[0]>();
+  ionImgDidLoad = output<Parameters<NonNullable<Prop['onIonImgDidLoad']>>[0]>();
+  ionError = output<Parameters<NonNullable<Prop['onIonError']>>[0]>();
 }

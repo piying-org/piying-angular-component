@@ -18,7 +18,7 @@ export class IonRadioGroupFGC extends PiyingViewGroupBase {
   value = input<Prop['value']>();
   helperText = input<Prop['helperText']>();
   errorText = input<Prop['errorText']>();
-  ionChange = output<Prop['onIonChange']>();
-  // ionValueChange = output<Prop['onIonValueChange']>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

@@ -1,9 +1,9 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-tabs
     [useRouter]="useRouter()"
-    (ionNavWillLoad)="ionNavWillLoad($event)"
-    (ionTabsWillChange)="ionTabsWillChange($event)"
-    (ionTabsDidChange)="ionTabsDidChange($event)"
+    (ionNavWillLoad)="ionNavWillLoad.emit($event)"
+    (ionTabsWillChange)="ionTabsWillChange.emit($event)"
+    (ionTabsDidChange)="ionTabsDidChange.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

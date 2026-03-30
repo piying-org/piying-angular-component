@@ -3,7 +3,7 @@
     [threshold]="threshold()"
     [disabled]="disabled()"
     [position]="position()"
-    (ionInfinite)="ionInfinite($event)"
+    (ionInfinite)="ionInfinite.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

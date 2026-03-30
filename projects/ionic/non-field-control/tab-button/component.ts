@@ -20,5 +20,5 @@ export class IonTabButtonNFCC {
   selected = input<Prop['selected']>();
   tab = input<Prop['tab']>();
   target = input<Prop['target']>();
-  // ionTabButtonClick = output<Prop['onIonTabButtonClick']>();
+  // ionTabButtonClick = output<Parameters<NonNullable<Prop['onIonTabButtonClick']>>[0]>();
 }

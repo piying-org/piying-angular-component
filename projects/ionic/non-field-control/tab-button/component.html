@@ -8,7 +8,7 @@
     [selected]="selected()"
     [tab]="tab()"
     [target]="target()"
-    (ionTabButtonClick)="ionTabButtonClick($event)"
+    (ionTabButtonClick)="ionTabButtonClick.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

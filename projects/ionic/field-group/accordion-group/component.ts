@@ -18,7 +18,7 @@ export class IonAccordionGroupFGC extends PiyingViewGroupBase {
   disabled = input<Prop['disabled']>();
   readonly = input<Prop['readonly']>();
   expand = input<Prop['expand']>();
-  ionChange = output<Prop['onIonChange']>();
-  // ionValueChange = output<Prop['onIonValueChange']>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

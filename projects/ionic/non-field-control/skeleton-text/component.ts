@@ -13,5 +13,5 @@ export class IonSkeletonTextNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   animated = input<Prop['animated']>();
-  // ionStyle = output<Prop['onIonStyle']>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
 }

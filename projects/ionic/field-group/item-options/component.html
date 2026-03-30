@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-item-options
     [side]="side()"
-    (ionSwipe)="ionSwipe($event)"
+    (ionSwipe)="ionSwipe.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

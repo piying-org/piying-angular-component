@@ -1,8 +1,8 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-app
     [el]="el()"
-    (componentDidLoad)="componentDidLoad($event)"
-    (disconnectedCallback)="disconnectedCallback($event)"
+    (componentDidLoad)="componentDidLoad.emit($event)"
+    (disconnectedCallback)="disconnectedCallback.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -18,8 +18,8 @@ export class IonSegmentNFCC {
   swipeGesture = input<Prop['swipeGesture']>();
   value = input<Prop['value']>();
   selectOnFocus = input<Prop['selectOnFocus']>();
-  ionChange = output<Prop['onIonChange']>();
-  // ionSelect = output<Prop['onIonSelect']>();
-  // ionStyle = output<Prop['onIonStyle']>();
+  ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  // ionSelect = output<Parameters<NonNullable<Prop['onIonSelect']>>[0]>();
+  // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }

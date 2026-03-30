@@ -17,5 +17,5 @@ export class IonRouteNFCC {
   componentProps = input<Prop['componentProps']>();
   beforeLeave = input<Prop['beforeLeave']>();
   beforeEnter = input<Prop['beforeEnter']>();
-  ionRouteDataChanged = output<Prop['onIonRouteDataChanged']>();
+  ionRouteDataChanged = output<Parameters<NonNullable<Prop['onIonRouteDataChanged']>>[0]>();
 }

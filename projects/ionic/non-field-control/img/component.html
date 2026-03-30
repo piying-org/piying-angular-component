@@ -2,9 +2,9 @@
   <ion-img
     [alt]="alt()"
     [src]="src()"
-    (ionImgWillLoad)="ionImgWillLoad($event)"
-    (ionImgDidLoad)="ionImgDidLoad($event)"
-    (ionError)="ionError($event)"
+    (ionImgWillLoad)="ionImgWillLoad.emit($event)"
+    (ionImgDidLoad)="ionImgDidLoad.emit($event)"
+    (ionError)="ionError.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

@@ -28,11 +28,11 @@ export class IonActionSheetNFCC {
   htmlAttributes = input<Prop['htmlAttributes']>();
   isOpen = input<Prop['isOpen']>();
   trigger = input<Prop['trigger']>();
-  ionActionSheetDidPresent = output<Prop['onIonActionSheetDidPresent']>();
-  ionActionSheetWillDismiss = output<Prop['onIonActionSheetWillDismiss']>();
-  ionActionSheetDidDismiss = output<Prop['onIonActionSheetDidDismiss']>();
-  didPresent = output<Prop['onDidPresent']>();
-  willPresent = output<Prop['onWillPresent']>();
-  willDismiss = output<Prop['onWillDismiss']>();
-  didDismiss = output<Prop['onDidDismiss']>();
+  ionActionSheetDidPresent = output<Parameters<NonNullable<Prop['onIonActionSheetDidPresent']>>[0]>();
+  ionActionSheetWillDismiss = output<Parameters<NonNullable<Prop['onIonActionSheetWillDismiss']>>[0]>();
+  ionActionSheetDidDismiss = output<Parameters<NonNullable<Prop['onIonActionSheetDidDismiss']>>[0]>();
+  didPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
+  willPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
+  willDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
+  didDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
 }

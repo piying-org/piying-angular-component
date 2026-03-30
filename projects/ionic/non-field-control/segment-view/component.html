@@ -2,7 +2,7 @@
   <ion-segment-view
     [disabled]="disabled()"
     [swipeGesture]="swipeGesture()"
-    (ionSegmentViewScroll)="ionSegmentViewScroll($event)"
+    (ionSegmentViewScroll)="ionSegmentViewScroll.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

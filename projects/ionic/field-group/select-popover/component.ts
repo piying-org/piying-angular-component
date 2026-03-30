@@ -12,9 +12,9 @@ type Prop = JSX.IonSelectPopover;
 export class IonSelectPopoverFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  // header = output<Prop['onHeader']>();
-  // subHeader = output<Prop['onSubHeader']>();
-  // message = output<Prop['onMessage']>();
-  // multiple = output<Prop['onMultiple']>();
-  // options = output<Prop['onOptions']>();
+  // header = output<Parameters<NonNullable<Prop['onHeader']>>[0]>();
+  // subHeader = output<Parameters<NonNullable<Prop['onSubHeader']>>[0]>();
+  // message = output<Parameters<NonNullable<Prop['onMessage']>>[0]>();
+  // multiple = output<Parameters<NonNullable<Prop['onMultiple']>>[0]>();
+  // options = output<Parameters<NonNullable<Prop['onOptions']>>[0]>();
 }

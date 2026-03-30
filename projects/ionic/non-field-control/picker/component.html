@@ -1,6 +1,6 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-picker
-    (ionInputModeChange)="ionInputModeChange($event)"
+    (ionInputModeChange)="ionInputModeChange.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

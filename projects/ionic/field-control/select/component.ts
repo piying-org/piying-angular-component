@@ -40,10 +40,10 @@ export class IonSelectFCC extends BaseControl {
   expandedIcon = input<Prop['expandedIcon']>();
   shape = input<Prop['shape']>();
   value = input<Prop['value']>();
-  onIonChange = output<Prop['onIonChange']>();
-  onIonCancel = output<Prop['onIonCancel']>();
-  onIonDismiss = output<Prop['onIonDismiss']>();
-  onIonFocus = output<Prop['onIonFocus']>();
-  onIonBlur = output<Prop['onIonBlur']>();
+  onIonChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
+  onIonCancel = output<Parameters<NonNullable<Prop['onIonCancel']>>[0]>();
+  onIonDismiss = output<Parameters<NonNullable<Prop['onIonDismiss']>>[0]>();
+  onIonFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  onIonBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
 }

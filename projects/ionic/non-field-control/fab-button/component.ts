@@ -26,6 +26,6 @@ export class IonFabButtonNFCC {
   type = input<Prop['type']>();
   size = input<Prop['size']>();
   closeIcon = input<Prop['closeIcon']>();
-  ionFocus = output<Prop['onIonFocus']>();
-  ionBlur = output<Prop['onIonBlur']>();
+  ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
+  ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
 }

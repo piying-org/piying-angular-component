@@ -15,6 +15,6 @@ export class IonSplitPaneNFCC {
   contentId = input<Prop['contentId']>();
   disabled = input<Prop['disabled']>();
   when = input<Prop['when']>();
-  ionSplitPaneVisible = output<Prop['onIonSplitPaneVisible']>();
+  ionSplitPaneVisible = output<Parameters<NonNullable<Prop['onIonSplitPaneVisible']>>[0]>();
   slot = input<{ default: TemplateRef<any> }>();
 }
