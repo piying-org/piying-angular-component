@@ -1,0 +1,28 @@
+@for (item of service.list$$(); track $index) {
+  <ion-alert
+    [keyboardClose]="item.keyboardClose"
+    [enterAnimation]="item.enterAnimation"
+    [leaveAnimation]="item.leaveAnimation"
+    [cssClass]="item.cssClass"
+    [header]="item.header"
+    [subHeader]="item.subHeader"
+    [message]="item.message"
+    [buttons]="item.buttons"
+    [inputs]="item.inputs"
+    [backdropDismiss]="item.backdropDismiss"
+    [translucent]="item.translucent"
+    [animated]="item.animated"
+    [htmlAttributes]="item.htmlAttributes"
+    [isOpen]="true"
+    [trigger]="item.trigger"
+    (ionAlertDidPresent)="item.onIonAlertDidPresent?.($event)"
+    (ionAlertWillPresent)="item.onIonAlertWillPresent?.($event)"
+    (ionAlertWillDismiss)="item.onIonAlertWillDismiss?.($event)"
+    (ionAlertDidDismiss)="item.onIonAlertDidDismiss?.($event)"
+    (didPresent)="item.onDidPresent?.($event)"
+    (willPresent)="item.onWillPresent?.($event)"
+    (willDismiss)="item.onWillDismiss?.($event)"
+    (didDismiss)="item.onDidDismiss?.($event)"
+    [class]="item.class"
+  ></ion-alert>
+}
