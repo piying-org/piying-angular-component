@@ -5,7 +5,7 @@
     [threshold]="props()?.threshold"
     [disabled]="props()?.disabled"
     [position]="props()?.position"
-    (ionInfinite)="ionInfinite.emit($event)"
+    (ionInfinite)="props()?.onIonInfinite($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"

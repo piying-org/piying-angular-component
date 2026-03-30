@@ -32,6 +32,4 @@ export class IonInfiniteScrollWC {
   props2 = computed(() => {
     return this.field$$().props()['IonInfiniteScrollContent'] as Prop2Content | undefined;
   });
-
-  ionInfinite = output<Parameters<NonNullable<Prop['onIonInfinite']>>[0]>();
 }

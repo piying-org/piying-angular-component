@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-backdrop
+    [visible]="props()?.visible"
+    [tappable]="props()?.tappable"
+    [stopPropagation]="props()?.stopPropagation"
+    (ionBackdropTap)="props()?.onIonBackdropTap($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-backdrop>
+  <ng-container insertField></ng-container>
+</ng-template>
