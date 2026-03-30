@@ -1,0 +1,29 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-loading
+    [keyboardClose]="props()?.keyboardClose"
+    [enterAnimation]="props()?.enterAnimation"
+    [leaveAnimation]="props()?.leaveAnimation"
+    [message]="props()?.message"
+    [cssClass]="props()?.cssClass"
+    [duration]="props()?.duration"
+    [backdropDismiss]="props()?.backdropDismiss"
+    [showBackdrop]="props()?.showBackdrop"
+    [spinner]="props()?.spinner"
+    [translucent]="props()?.translucent"
+    [animated]="props()?.animated"
+    [htmlAttributes]="props()?.htmlAttributes"
+    [isOpen]="props()?.isOpen"
+    [trigger]="props()?.trigger"
+    (ionLoadingWillPresent)="props()?.onIonLoadingWillPresent?.($event)"
+    (ionLoadingWillDismiss)="props()?.onIonLoadingWillDismiss?.($event)"
+    (ionLoadingDidDismiss)="props()?.onIonLoadingDidDismiss?.($event)"
+    (didPresent)="props()?.onDidPresent?.($event)"
+    (willPresent)="props()?.onWillPresent?.($event)"
+    (willDismiss)="props()?.onWillDismiss?.($event)"
+    (didDismiss)="props()?.onDidDismiss?.($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-loading>
+  <ng-container insertField></ng-container>
+</ng-template>
