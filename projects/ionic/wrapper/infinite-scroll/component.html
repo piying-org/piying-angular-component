@@ -1,0 +1,18 @@
+<ng-template #templateRef let-attr="attributes">
+  <ng-container insertField></ng-container>
+
+  <ion-infinite-scroll
+    [threshold]="props()?.threshold"
+    [disabled]="props()?.disabled"
+    [position]="props()?.position"
+    (ionInfinite)="ionInfinite.emit($event)"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    <ion-infinite-scroll-content
+      [loadingSpinner]="props2()?.loadingSpinner"
+      [loadingText]="props2()?.loadingText"
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ng-template>
