@@ -1,0 +1,12 @@
+<ng-template #templateRef let-attr="attributes">
+  @if (loading()) {
+    <ion-skeleton-text
+      [animated]="props()?.animated"
+      [class]="attr()?.class"
+      [attributes]="attr()"
+      [excludes]="['class']"
+    ></ion-skeleton-text>
+  } @else {
+    <ng-container insertField></ng-container>
+  }
+</ng-template>
