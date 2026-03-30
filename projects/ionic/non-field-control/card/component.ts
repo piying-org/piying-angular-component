@@ -23,5 +23,5 @@ export class IonCardNFCC {
   routerAnimation = input<Prop['routerAnimation']>();
   target = input<Prop['target']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

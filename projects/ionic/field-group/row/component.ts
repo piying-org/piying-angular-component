@@ -11,5 +11,5 @@ export class IonRowFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

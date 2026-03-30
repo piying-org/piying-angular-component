@@ -17,5 +17,5 @@ export class IonDatetimeButtonNFCC {
   datetime = input<Prop['datetime']>();
   // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
   // ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
-  slot = input<{ 'date-target': TemplateRef<any>; 'time-target': TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

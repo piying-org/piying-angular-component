@@ -17,5 +17,5 @@ export class IonSegmentButtonNFCC {
   layout = input<Prop['layout']>();
   type = input<Prop['type']>();
   value = input<Prop['value']>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

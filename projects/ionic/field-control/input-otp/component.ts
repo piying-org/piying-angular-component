@@ -38,5 +38,5 @@ export class IonInputOtpFCC extends BaseControl {
   ionComplete = output<Parameters<NonNullable<Prop['onIonComplete']>>[0]>();
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
-  slot = input<{ description: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

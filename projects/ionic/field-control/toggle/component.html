@@ -20,9 +20,6 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container
-      *ngTemplateOutlet="slot()?.['default slot']"
-      ngProjectAs="default slot"
-    ></ng-container
+    ><ng-container *ngTemplateOutlet="slot()"></ng-container
   ></ion-toggle>
 </ng-template>

@@ -15,5 +15,5 @@ export class IonHeaderNFCC {
   collapse = input<Prop['collapse']>();
   translucent = input<Prop['translucent']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

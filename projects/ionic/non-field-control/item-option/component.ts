@@ -21,12 +21,5 @@ export class IonItemOptionNFCC {
   target = input<Prop['target']>();
   type = input<Prop['type']>();
 
-  slot = input<{
-    start: TemplateRef<any>;
-    top: TemplateRef<any>;
-    'icon-only': TemplateRef<any>;
-    default: TemplateRef<any>;
-    end: TemplateRef<any>;
-    bottom: TemplateRef<any>;
-  }>();
+  slot = input<TemplateRef<any>>();
 }

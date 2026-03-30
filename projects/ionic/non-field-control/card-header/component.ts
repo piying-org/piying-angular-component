@@ -15,5 +15,5 @@ export class IonCardHeaderNFCC {
   color = input<Prop['color']>();
   translucent = input<Prop['translucent']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

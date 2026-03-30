@@ -34,10 +34,7 @@
     [disabled]="disabled$()"
   >
     @for (item of resolvedOptions$$(); track $index) {
-      <ion-select-option
-        [value]="item.value"
-        [disabled]="!!item.disabled"
-      >
+      <ion-select-option [value]="item.value" [disabled]="!!item.disabled">
         @let optionTemplate = optionTemplate$$();
         @if (optionTemplate) {
           <ng-container

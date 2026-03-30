@@ -1,10 +1,6 @@
 import * as v from 'valibot';
-import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { FormBase } from '../component/form';
 import { safeDefine } from './define';
-import { provideIonicAngular } from '@ionic/angular/standalone';
 
 export const IonicDevDefine = v.pipe(
   v.object({

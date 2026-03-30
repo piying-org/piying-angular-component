@@ -15,5 +15,5 @@ export class IonListHeaderNFCC {
   color = input<Prop['color']>();
   lines = input<Prop['lines']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

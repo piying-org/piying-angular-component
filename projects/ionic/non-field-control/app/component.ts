@@ -13,5 +13,5 @@ export class IonAppNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

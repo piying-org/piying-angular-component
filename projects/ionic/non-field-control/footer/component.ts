@@ -15,5 +15,5 @@ export class IonFooterNFCC {
   collapse = input<Prop['collapse']>();
   translucent = input<Prop['translucent']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

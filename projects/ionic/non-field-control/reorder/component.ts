@@ -18,5 +18,5 @@ export class IonReorderNFCC {
   group = input<Prop['group']>();
   order = input<Prop['order']>();
   ionItemReorder = output<Parameters<NonNullable<Prop['onIonItemReorder']>>[0]>();
-  slot = input<{ 'default slot': TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

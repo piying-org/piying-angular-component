@@ -24,5 +24,5 @@ export class IonMenuNFCC {
   ionDidOpen = output<Parameters<NonNullable<Prop['onIonDidOpen']>>[0]>();
   ionDidClose = output<Parameters<NonNullable<Prop['onIonDidClose']>>[0]>();
   // ionMenuChange = output<Parameters<NonNullable<Prop['onIonMenuChange']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

@@ -15,5 +15,5 @@ export class IonFabListNFCC {
   activated = input<Prop['activated']>();
   side = input<Prop['side']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

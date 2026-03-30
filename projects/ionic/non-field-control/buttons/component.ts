@@ -14,5 +14,5 @@ export class IonButtonsNFCC {
   templateRef = viewChild.required('templateRef');
   collapse = input<Prop['collapse']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

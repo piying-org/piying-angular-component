@@ -15,5 +15,5 @@ export class IonMenuToggleNFCC {
   menu = input<Prop['menu']>();
   autoHide = input<Prop['autoHide']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

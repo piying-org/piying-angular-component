@@ -12,5 +12,5 @@ export class IonGridFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
   fixed = input<boolean>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

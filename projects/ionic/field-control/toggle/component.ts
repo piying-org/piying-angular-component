@@ -34,5 +34,5 @@ export class IonToggleFCC extends BaseControl {
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
-  slot = input<{ 'default slot': TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

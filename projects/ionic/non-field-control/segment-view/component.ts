@@ -15,5 +15,5 @@ export class IonSegmentViewNFCC {
   disabled = input<Prop['disabled']>();
   swipeGesture = input<Prop['swipeGesture']>();
   ionSegmentViewScroll = output<Parameters<NonNullable<Prop['onIonSegmentViewScroll']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

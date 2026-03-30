@@ -30,5 +30,5 @@ export class IonPickerNFCC {
   // onWillDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
   // onDidPresent = output<Parameters<NonNullable<Prop['onDidPresent']>>[0]>();
   // onWillPresent = output<Parameters<NonNullable<Prop['onWillPresent']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

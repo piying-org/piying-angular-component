@@ -12,5 +12,5 @@ type Prop = JSX.IonSegmentContent;
 export class IonSegmentContentNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

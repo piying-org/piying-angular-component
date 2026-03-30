@@ -18,5 +18,5 @@ export class IonPickerColumnNFCC {
   color = input<Prop['color']>();
   // numericInput = input<Prop['numericInput']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
-  slot = input<{ prefix: TemplateRef<any>; suffix: TemplateRef<any>; default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

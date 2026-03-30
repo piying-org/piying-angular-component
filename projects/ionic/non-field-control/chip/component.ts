@@ -16,5 +16,5 @@ export class IonChipNFCC {
   outline = input<Prop['outline']>();
   disabled = input<Prop['disabled']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

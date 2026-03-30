@@ -43,10 +43,5 @@ export class IonRangeFCC extends BaseControl {
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   ionKnobMoveStart = output<Parameters<NonNullable<Prop['onIonKnobMoveStart']>>[0]>();
   ionKnobMoveEnd = output<Parameters<NonNullable<Prop['onIonKnobMoveEnd']>>[0]>();
-  slot = input<{
-    label: TemplateRef<any>;
-    start: TemplateRef<any>;
-    end: TemplateRef<any>;
-    default: TemplateRef<any>;
-  }>();
+  slot = input<TemplateRef<any>>();
 }

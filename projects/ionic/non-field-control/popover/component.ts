@@ -43,5 +43,5 @@ export class IonPopoverNFCC {
   willDismiss = output<Parameters<NonNullable<Prop['onWillDismiss']>>[0]>();
   didDismiss = output<Parameters<NonNullable<Prop['onDidDismiss']>>[0]>();
   // ionMount = output<Parameters<NonNullable<Prop['onIonMount']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

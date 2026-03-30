@@ -61,7 +61,7 @@ export class IonSelectFCC extends BaseControl {
   onIonDismiss = output<Parameters<NonNullable<Prop['onIonDismiss']>>[0]>();
   onIonFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   onIonBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
-  slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 
   options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {
     transform: (input) => input ?? [],

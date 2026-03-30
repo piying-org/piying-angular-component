@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input } from '@angular/core';
+import { Component, viewChild, input, TemplateRef } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 type Prop = JSX.IonPickerColumnOption;
@@ -15,5 +15,5 @@ export class IonPickerColumnOptionNFCC {
   disabled = input<Prop['disabled']>();
   value = input<Prop['value']>();
   color = input<Prop['color']>();
-  // slot = input<Prop['slot']>();
+  slot = input<TemplateRef<any>>();
 }

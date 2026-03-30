@@ -15,5 +15,5 @@ export class IonItemDividerNFCC {
   color = input<Prop['color']>();
   sticky = input<Prop['sticky']>();
 
-  slot = input<{ start: TemplateRef<any>; default: TemplateRef<any>; end: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

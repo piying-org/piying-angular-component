@@ -21,5 +21,5 @@ export class IonNavNFCC {
   // ionNavWillLoad = output<Parameters<NonNullable<Prop['onIonNavWillLoad']>>[0]>();
   ionNavWillChange = output<Parameters<NonNullable<Prop['onIonNavWillChange']>>[0]>();
   ionNavDidChange = output<Parameters<NonNullable<Prop['onIonNavDidChange']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

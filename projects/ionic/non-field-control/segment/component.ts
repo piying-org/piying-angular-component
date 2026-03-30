@@ -21,5 +21,5 @@ export class IonSegmentNFCC {
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   // ionSelect = output<Parameters<NonNullable<Prop['onIonSelect']>>[0]>();
   // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

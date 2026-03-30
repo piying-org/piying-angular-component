@@ -18,5 +18,5 @@ export class IonAccordionFGC extends PiyingViewGroupBase {
   toggleIcon = input<Prop['toggleIcon']>();
   toggleIconSlot = input<Prop['toggleIconSlot']>();
 
-  slot = input<{ header: TemplateRef<any>; content: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

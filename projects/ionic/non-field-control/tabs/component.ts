@@ -16,5 +16,5 @@ export class IonTabsNFCC {
   // ionNavWillLoad = output<Parameters<NonNullable<Prop['onIonNavWillLoad']>>[0]>();
   ionTabsWillChange = output<Parameters<NonNullable<Prop['onIonTabsWillChange']>>[0]>();
   ionTabsDidChange = output<Parameters<NonNullable<Prop['onIonTabsDidChange']>>[0]>();
-  slot = input<{ top: TemplateRef<any>; bottom: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

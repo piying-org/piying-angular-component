@@ -1,4 +1,4 @@
-import { Component, viewChild, input } from '@angular/core';
+import { Component, viewChild, input, TemplateRef } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
@@ -18,5 +18,5 @@ export class IonFabNFCC {
   activated = input<Prop['activated']>();
   // close = output<Parameters<NonNullable<Prop['onClose']>>[0]>();
   // toggle = output<Parameters<NonNullable<Prop['onToggle']>>[0]>();
-  // slot = input < { default: TemplateRef<any> }();
+  slot = input<TemplateRef<any>>();
 }

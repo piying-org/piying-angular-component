@@ -25,5 +25,5 @@ export class IonItemNFCC {
   target = input<Prop['target']>();
   type = input<Prop['type']>();
 
-  slot = input<{ start: TemplateRef<any>; default: TemplateRef<any>; end: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

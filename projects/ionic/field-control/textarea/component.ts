@@ -52,5 +52,5 @@ export class IonTextareaFCC extends BaseControl {
   ionInput = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
-  slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

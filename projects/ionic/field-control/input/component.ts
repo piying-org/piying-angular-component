@@ -32,7 +32,7 @@ export class IonInputFCC extends BaseControl {
   counter = input<Prop['counter']>();
   counterFormatter = input<Prop['counterFormatter']>();
   debounce = input<Prop['debounce']>();
-  
+
   enterkeyhint = input<Prop['enterkeyhint']>();
   errorText = input<Prop['errorText']>();
   fill = input<Prop['fill']>();
@@ -61,5 +61,5 @@ export class IonInputFCC extends BaseControl {
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
 
-  slot = input<{ label: TemplateRef<any>; start: TemplateRef<any>; end: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

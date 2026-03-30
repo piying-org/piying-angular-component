@@ -9,23 +9,15 @@ import {
   forwardRef,
   inject,
 } from '@angular/core';
-import {
-  AttributesDirective,
-  BaseControl,
-  PI_VIEW_FIELD_TOKEN,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { AttributesDirective, BaseControl, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonRadio, IonRadioGroup } from '@ionic/angular/standalone';
 import {
-  Color,
   CommonSelectOptions,
   DefaultOptionConvert,
   OptionConvert,
   ResolvedOption,
-  Size,
-  StrOrTemplateComponent,
 } from '@piying-lib/angular-core';
 type Prop = JSX.IonRadioGroup;
 
@@ -52,7 +44,7 @@ export class IonRadioGroupFCC extends BaseControl {
   errorText = input<Prop['errorText']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   // ionValueChange = output<Parameters<NonNullable<Prop['onIonValueChange']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 
   /** 选项列表 */
   options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {

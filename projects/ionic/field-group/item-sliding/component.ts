@@ -14,5 +14,5 @@ export class IonItemSlidingFGC extends PiyingViewGroupBase {
   templateRef = viewChild.required('templateRef');
   disabled = input<Prop['disabled']>();
   ionDrag = output<Parameters<NonNullable<Prop['onIonDrag']>>[0]>();
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

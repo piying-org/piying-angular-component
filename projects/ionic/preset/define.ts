@@ -1,7 +1,5 @@
 import { PiyingViewGroup } from '@piying/view-angular';
-import { RouterOutlet } from '@angular/router';
 import { DivNFCC, DivWC, StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { actions } from '@piying/view-angular-core';
 import { IonInputFCC } from '../field-control';
 import { IonRadioGroupFCC } from '../field-control/radio-group';
 

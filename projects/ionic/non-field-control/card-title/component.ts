@@ -14,5 +14,5 @@ export class IonCardTitleNFCC {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

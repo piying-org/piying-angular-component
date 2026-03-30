@@ -37,5 +37,5 @@ export class IonColNFCC {
   sizeLg = input<Prop['sizeLg']>();
   sizeXl = input<Prop['sizeXl']>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }

@@ -55,9 +55,5 @@ export class IonDatetimeFCC extends BaseControl {
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
   // ionStyle = output<Parameters<NonNullable<Prop['onIonStyle']>>[0]>();
   // ionRender = output<Parameters<NonNullable<Prop['onIonRender']>>[0]>();
-  slot = input<{
-    title: TemplateRef<any>;
-    buttons: TemplateRef<any>;
-    'time-label': TemplateRef<any>;
-  }>();
+  slot = input<TemplateRef<any>>();
 }

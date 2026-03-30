@@ -9,7 +9,7 @@ type Prop = JSX.IonInputPasswordToggle;
 @Component({
   selector: 'app-ion-input-password-toggle',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, IonInputPasswordToggle,FormsModule],
+  imports: [AttributesDirective, NgTemplateOutlet, IonInputPasswordToggle, FormsModule],
 })
 export class IonInputPasswordToggleFCC extends BaseControl {
   static __version = 2;

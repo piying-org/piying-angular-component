@@ -7,7 +7,6 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()?.top" ngProjectAs="top"></ng-container>
-    <ng-container *ngTemplateOutlet="slot()?.bottom" ngProjectAs="bottom"></ng-container
+    ><ng-container *ngTemplateOutlet="slot()"></ng-container
   ></ion-tabs>
 </ng-template>

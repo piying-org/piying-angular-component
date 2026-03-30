@@ -13,5 +13,5 @@ export class IonListFGC extends PiyingViewGroupBase {
   lines = input<'full' | 'inset' | 'none'>();
   inset = input<boolean>();
 
-  slot = input<{ default: TemplateRef<any> }>();
+  slot = input<TemplateRef<any>>();
 }
