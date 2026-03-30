@@ -1,0 +1,38 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-toolbar
+    [color]="color()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    @for (field of children$$(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+      ></ng-container>
+    }
+    @if (start()) {
+      <ng-template
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="templateInput | pure: start"
+      ></ng-template>
+    }
+    @if (end()) {
+      <ng-template
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="templateInput | pure: end"
+      ></ng-template>
+    }
+    @if (primary()) {
+      <ng-template
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="templateInput | pure: primary"
+      ></ng-template>
+    }
+    @if (secondary()) {
+      <ng-template
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="templateInput | pure: secondary"
+      ></ng-template>
+    }
+  </ion-toolbar>
+</ng-template>
