@@ -1,0 +1,26 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-refresher
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [closeDuration]="props()?.closeDuration"
+    [disabled]="props()?.disabled"
+    [mode]="props()?.mode"
+    [pullFactor]="props()?.pullFactor"
+    [pullMax]="props()?.pullMax"
+    [pullMin]="props()?.pullMin"
+    [snapbackDuration]="props()?.snapbackDuration"
+    (ionPull)="props()?.onIonPull($event)"
+    (ionPullEnd)="props()?.onIonPullEnd($event)"
+    (ionPullStart)="props()?.onIonPullStart($event)"
+    (ionRefresh)="props()?.onIonRefresh($event)"
+  >
+    <ion-refresher-content
+      [pullingIcon]="props2()?.pullingIcon"
+      [pullingText]="props2()?.pullingText"
+      [refreshingSpinner]="props2()?.refreshingSpinner"
+      [refreshingText]="props2()?.refreshingText"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ng-container insertField></ng-container>
+</ng-template>
