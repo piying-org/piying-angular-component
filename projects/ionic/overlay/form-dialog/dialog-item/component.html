@@ -1,0 +1,63 @@
+<ng-template #templateRef>
+  @let modalProp = item().modalProp;
+  <ion-modal
+    #modal
+    [isOpen]="true"
+    [animated]="modalProp?.animated"
+    [backdropBreakpoint]="modalProp?.backdropBreakpoint"
+    [backdropDismiss]="modalProp?.backdropDismiss"
+    [breakpoints]="modalProp?.breakpoints"
+    [canDismiss]="modalProp?.canDismiss"
+    [enterAnimation]="modalProp?.enterAnimation"
+    [expandToScroll]="modalProp?.expandToScroll"
+    [focusTrap]="modalProp?.focusTrap"
+    [handle]="modalProp?.handle"
+    [handleBehavior]="modalProp?.handleBehavior"
+    [initialBreakpoint]="modalProp?.initialBreakpoint"
+    [keepContentsMounted]="modalProp?.keepContentsMounted"
+    [keyboardClose]="modalProp?.keyboardClose"
+    [leaveAnimation]="modalProp?.leaveAnimation"
+    [mode]="modalProp?.mode"
+    (didDismiss)="modalProp?.onDidDismiss($event)"
+    (didPresent)="modalProp?.onDidPresent($event)"
+    (ionBreakpointDidChange)="modalProp?.onIonBreakpointDidChange($event)"
+    (ionDragEnd)="modalProp?.onIonDragEnd($event)"
+    (ionDragMove)="modalProp?.onIonDragMove($event)"
+    (ionDragStart)="modalProp?.onIonDragStart($event)"
+    (ionModalDidDismiss)="modalProp?.onIonModalDidDismiss($event)"
+    (ionModalDidPresent)="modalProp?.onIonModalDidPresent($event)"
+    (ionModalWillDismiss)="modalProp?.onIonModalWillDismiss($event)"
+    (willDismiss)="modalProp?.onWillDismiss($event)"
+    (willPresent)="modalProp?.onWillPresent($event)"
+  >
+    <ng-template>
+      <ion-header>
+        <ion-title>{{ item().title }} </ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="close(modal)" color="danger">
+            <ng-template
+              [selectlessOutlet]="StrOrTemplateComponent"
+              [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
+            ></ng-template>
+          </ion-button>
+          <ion-button (click)="apply(modal)" [disabled]="!ref.form$$()?.valid" color="primary">
+            <ng-template
+              [selectlessOutlet]="StrOrTemplateComponent"
+              [selectlessOutletInputs]="{ content: item().submitButton ?? 'Submit' }"
+            ></ng-template>
+          </ion-button>
+        </ion-buttons>
+      </ion-header>
+      <ion-content>
+        <piying-view
+          [schema]="item().schema"
+          [options]="options$$()"
+          [model]="item().value"
+          (modelChange)="modelChange($event)"
+          class="flex-1 overflow-auto py-4"
+          #ref
+        ></piying-view>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ng-template>
