@@ -1,0 +1,27 @@
+@for (item of toast.list$$(); track $index) {
+  <ion-toast
+    [color]="item.color"
+    [enterAnimation]="item.enterAnimation"
+    [leaveAnimation]="item.leaveAnimation"
+    [cssClass]="item.cssClass"
+    [duration]="item.duration"
+    [header]="item.header"
+    [message]="item.message"
+    [keyboardClose]="item.keyboardClose"
+    [position]="item.position"
+    [positionAnchor]="item.positionAnchor"
+    [buttons]="item.buttons"
+    [translucent]="item.translucent"
+    [animated]="item.animated"
+    [icon]="item.icon"
+    [htmlAttributes]="item.htmlAttributes"
+    [swipeGesture]="item.swipeGesture"
+    [isOpen]="true"
+    [trigger]="item.trigger"
+    (ionToastDidPresent)="item?.onIonToastDidPresent($event)"
+    (ionToastWillPresent)="item?.onIonToastWillPresent($event)"
+    (ionToastWillDismiss)="item?.onIonToastWillDismiss($event)"
+    (ionToastDidDismiss)="item?.onIonToastDidDismiss($event)"
+    [class]="item?.class"
+  ></ion-toast>
+}
