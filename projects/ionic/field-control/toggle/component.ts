@@ -22,7 +22,7 @@ export class IonToggleFCC extends BaseControl {
   color = input<Prop['color']>();
   name = input<Prop['name']>();
   checked = input<Prop['checked']>();
-  disabled = input<Prop['disabled']>();
+  
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
   value = input<Prop['value']>();

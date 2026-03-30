@@ -21,7 +21,7 @@ export class IonRadioFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   name = input<Prop['name']>();
-  disabled = input<Prop['disabled']>();
+  
   value = input<Prop['value']>();
   labelPlacement = input<Prop['labelPlacement']>();
   justify = input<Prop['justify']>();

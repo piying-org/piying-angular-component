@@ -33,7 +33,7 @@ export class IonRangeFCC extends BaseControl {
   step = input<Prop['step']>();
   ticks = input<Prop['ticks']>();
   activeBarStart = input<Prop['activeBarStart']>();
-  disabled = input<Prop['disabled']>();
+  
   value = input<Prop['value']>();
   labelPlacement = input<Prop['labelPlacement']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();

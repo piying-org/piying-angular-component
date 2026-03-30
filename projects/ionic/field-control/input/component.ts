@@ -27,12 +27,12 @@ export class IonInputFCC extends BaseControl {
   autocorrect = input<Prop['autocorrect']>();
   autofocus = input<Prop['autofocus']>();
   clearInput = input<Prop['clearInput']>();
-  clearInputIcon = input<Prop['clearInputIcon']>();
+  // clearInputIcon = input<Prop['clearInputIcon']>();
   clearOnEdit = input<Prop['clearOnEdit']>();
   counter = input<Prop['counter']>();
   counterFormatter = input<Prop['counterFormatter']>();
   debounce = input<Prop['debounce']>();
-  disabled = input<Prop['disabled']>();
+  
   enterkeyhint = input<Prop['enterkeyhint']>();
   errorText = input<Prop['errorText']>();
   fill = input<Prop['fill']>();

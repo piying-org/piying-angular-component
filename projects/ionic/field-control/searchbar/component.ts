@@ -28,7 +28,7 @@ export class IonSearchbarFCC extends BaseControl {
   cancelButtonText = input<Prop['cancelButtonText']>();
   clearIcon = input<Prop['clearIcon']>();
   debounce = input<Prop['debounce']>();
-  disabled = input<Prop['disabled']>();
+  
   inputmode = input<Prop['inputmode']>();
   enterkeyhint = input<Prop['enterkeyhint']>();
   maxlength = input<Prop['maxlength']>();

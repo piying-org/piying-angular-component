@@ -22,7 +22,7 @@ export class IonSelectFCC extends BaseControl {
   cancelText = input<Prop['cancelText']>();
   color = input<Prop['color']>();
   compareWith = input<Prop['compareWith']>();
-  disabled = input<Prop['disabled']>();
+  
   fill = input<Prop['fill']>();
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();

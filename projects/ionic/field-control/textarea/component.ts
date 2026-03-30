@@ -24,7 +24,7 @@ export class IonTextareaFCC extends BaseControl {
   autofocus = input<Prop['autofocus']>();
   clearOnEdit = input<Prop['clearOnEdit']>();
   debounce = input<Prop['debounce']>();
-  disabled = input<Prop['disabled']>();
+  
   fill = input<Prop['fill']>();
   inputmode = input<Prop['inputmode']>();
   enterkeyhint = input<Prop['enterkeyhint']>();

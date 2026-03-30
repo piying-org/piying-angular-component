@@ -23,7 +23,7 @@ export class IonCheckboxFCC extends BaseControl {
   name = input<Prop['name']>();
   checked = input<Prop['checked']>();
   indeterminate = input<Prop['indeterminate']>();
-  disabled = input<Prop['disabled']>();
+  
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
   value = input<Prop['value']>();

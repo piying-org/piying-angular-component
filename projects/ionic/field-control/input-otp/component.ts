@@ -21,7 +21,7 @@ export class IonInputOtpFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   autocapitalize = input<Prop['autocapitalize']>();
   color = input<Prop['color']>();
-  disabled = input<Prop['disabled']>();
+  
   fill = input<Prop['fill']>();
   inputmode = input<Prop['inputmode']>();
   length = input<Prop['length']>();
