@@ -22,7 +22,6 @@ export class IonDatetimeFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   name = input<Prop['name']>();
-
   formatOptions = input<Prop['formatOptions']>();
   readonly = input<Prop['readonly']>();
   isDateEnabled = input<Prop['isDateEnabled']>();

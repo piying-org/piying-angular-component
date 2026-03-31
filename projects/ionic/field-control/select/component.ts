@@ -35,7 +35,7 @@ type Prop = JSX.IonSelect;
 export class IonSelectFCC extends BaseControl {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  cancelText = input<Prop['cancelText']>();
+  cancelText = input<Prop['cancelText']>('Canel');
   color = input<Prop['color']>();
   compareWith = input<Prop['compareWith']>();
 
@@ -43,13 +43,13 @@ export class IonSelectFCC extends BaseControl {
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
   interface = input<Prop['interface']>();
-  interfaceOptions = input<Prop['interfaceOptions']>();
+  interfaceOptions = input<Prop['interfaceOptions']>({});
   justify = input<Prop['justify']>();
   label = input<Prop['label']>();
   labelPlacement = input<Prop['labelPlacement']>();
-  multiple = input<Prop['multiple']>();
+  multiple = input<Prop['multiple']>(false);
   name = input<Prop['name']>();
-  okText = input<Prop['okText']>();
+  okText = input<Prop['okText']>('Ok');
   placeholder = input<Prop['placeholder']>();
   selectedText = input<Prop['selectedText']>();
   toggleIcon = input<Prop['toggleIcon']>();

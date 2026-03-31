@@ -1,0 +1,48 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-datetime-button
+    [color]="color()"
+    [datetime]="datetime"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [disabled]="disabled$()"
+    ><ng-container *ngTemplateOutlet="slot()"></ng-container>
+  </ion-datetime-button>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime
+        [id]="datetime"
+        [color]="color()"
+        [name]="name()!"
+        [formatOptions]="formatOptions()"
+        [readonly]="readonly()"
+        [isDateEnabled]="isDateEnabled()"
+        [showAdjacentDays]="showAdjacentDays()"
+        [min]="min()"
+        [max]="max()"
+        [presentation]="presentation()"
+        [yearValues]="yearValues()"
+        [monthValues]="monthValues()"
+        [dayValues]="dayValues()"
+        [hourValues]="hourValues()"
+        [minuteValues]="minuteValues()"
+        [locale]="locale()"
+        [firstDayOfWeek]="firstDayOfWeek()"
+        [titleSelectedDatesFormatter]="titleSelectedDatesFormatter()"
+        [multiple]="multiple()"
+        [highlightedDates]="highlightedDates()"
+        [showDefaultTitle]="showDefaultTitle()"
+        [showDefaultButtons]="showDefaultButtons()"
+        [showClearButton]="showClearButton()"
+        [showDefaultTimeLabel]="showDefaultTimeLabel()"
+        [hourCycle]="hourCycle()"
+        [size]="size()"
+        [preferWheel]="preferWheel()"
+        [disabled]="disabled$()"
+        [ngModel]="value2$$()"
+        (ngModelChange)="valueChange2($event)"
+        (blur)="touchedChange()"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ng-template>

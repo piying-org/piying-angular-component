@@ -1,4 +1,5 @@
 @use './global';
-.ionic-page {
+.ionic-page,
+ion-modal {
   @include global.ionic-style;
 }
