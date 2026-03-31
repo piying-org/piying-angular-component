@@ -11,10 +11,14 @@
     (ionWillClose)="ionWillClose.emit($event)"
     (ionDidOpen)="ionDidOpen.emit($event)"
     (ionDidClose)="ionDidClose.emit($event)"
-    (ionMenuChange)="ionMenuChange.emit($event)"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
-  ></ion-menu>
+  >
+    @for (field of children$$(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+      ></ng-container>
+    }
+  </ion-menu>
 </ng-template>

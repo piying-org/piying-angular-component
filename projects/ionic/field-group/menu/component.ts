@@ -1,15 +1,16 @@
 import { Component, viewChild, TemplateRef, input, output } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective } from '@piying/view-angular';
+import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
+import { IonMenu } from '@ionic/angular/standalone';
 type Prop = JSX.IonMenu;
 
 @Component({
   selector: 'app-ion-menu',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet],
+  imports: [AttributesDirective, NgTemplateOutlet, IonMenu],
 })
-export class IonMenuNFCC {
+export class IonMenuFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   contentId = input<Prop['contentId']>();
@@ -23,6 +24,4 @@ export class IonMenuNFCC {
   ionWillClose = output<Parameters<NonNullable<Prop['onIonWillClose']>>[0]>();
   ionDidOpen = output<Parameters<NonNullable<Prop['onIonDidOpen']>>[0]>();
   ionDidClose = output<Parameters<NonNullable<Prop['onIonDidClose']>>[0]>();
-  // ionMenuChange = output<Parameters<NonNullable<Prop['onIonMenuChange']>>[0]>();
-  slot = input<TemplateRef<any>>();
 }

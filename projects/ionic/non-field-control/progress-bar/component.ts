@@ -2,12 +2,13 @@ import { Component, viewChild, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
+import { IonProgressBar } from '@ionic/angular/standalone';
 type Prop = JSX.IonProgressBar;
 
 @Component({
   selector: 'app-ion-progress-bar',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet],
+  imports: [AttributesDirective, NgTemplateOutlet, IonProgressBar],
 })
 export class IonProgressBarNFCC {
   static __version = 2;
