@@ -10,12 +10,10 @@ type Prop = JSX.IonChip;
   templateUrl: './component.html',
   imports: [AttributesDirective, NgTemplateOutlet, IonChip],
 })
-export class IonChipNFCC {
+export class IonChipWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
   outline = input<Prop['outline']>();
   disabled = input<Prop['disabled']>();
-
-  slot = input<TemplateRef<any>>();
 }
