@@ -1,5 +1,4 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, output, computed, inject } from '@angular/core';
+import { Component, viewChild, computed, inject } from '@angular/core';
 import {
   AttributesDirective,
   InsertFieldDirective,
@@ -14,13 +13,7 @@ type Prop2Content = JSX.IonInfiniteScrollContent;
 @Component({
   selector: 'app-ion-infinite-scroll',
   templateUrl: './component.html',
-  imports: [
-    AttributesDirective,
-    NgTemplateOutlet,
-    InsertFieldDirective,
-    IonInfiniteScroll,
-    IonInfiniteScrollContent,
-  ],
+  imports: [AttributesDirective, InsertFieldDirective, IonInfiniteScroll, IonInfiniteScrollContent],
 })
 export class IonInfiniteScrollWC {
   static __version = 2;

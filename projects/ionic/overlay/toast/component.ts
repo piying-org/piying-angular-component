@@ -1,6 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ToastService } from './toast.service';
-import clsx from 'clsx';
 import { IonToast } from '@ionic/angular/standalone';
 
 @Component({

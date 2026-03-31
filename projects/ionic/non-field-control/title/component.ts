@@ -1,5 +1,4 @@
 import { Component, viewChild, input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonTitle } from '@ionic/angular/standalone';

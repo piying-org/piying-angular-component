@@ -1,8 +1,8 @@
-import { Component, viewChild, input, output } from '@angular/core';
+import { Component, viewChild, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
-import { IonIcon } from "@ionic/angular/standalone";
+import { IonIcon } from '@ionic/angular/standalone';
 type Prop = JSX.IonIcon;
 
 @Component({

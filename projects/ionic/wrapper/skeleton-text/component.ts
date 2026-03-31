@@ -1,6 +1,9 @@
-import { Component, viewChild, input, computed, inject } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { Component, computed, inject } from '@angular/core';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonSkeletonText } from '@ionic/angular/standalone';
 type Prop = JSX.IonSkeletonText;
@@ -8,7 +11,7 @@ type Prop = JSX.IonSkeletonText;
 @Component({
   selector: 'app-ion-skeleton-text',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonSkeletonText],
+  imports: [AttributesDirective, IonSkeletonText, InsertFieldDirective],
 })
 export class IonSkeletonTextWC {
   static __version = 2;

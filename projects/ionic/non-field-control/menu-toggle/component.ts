@@ -1,5 +1,4 @@
-import { Component, viewChild, TemplateRef, input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Component, viewChild, input } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonMenuToggle } from '@ionic/angular/standalone';
@@ -15,5 +14,4 @@ export class IonMenuToggleNFCC {
   templateRef = viewChild.required('templateRef');
   menu = input<Prop['menu']>();
   autoHide = input<Prop['autoHide']>();
-
 }

@@ -1,4 +1,4 @@
-import { Component, viewChild, TemplateRef, input, Signal, computed, inject } from '@angular/core';
+import { Component, viewChild, input, Signal, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   AttributesDirective,

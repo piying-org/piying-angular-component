@@ -1,14 +1,13 @@
 import { Component, viewChild, input, inject, computed } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { IonInputPasswordToggle } from '@ionic/angular/standalone';
 import { JSX } from '@ionic/core';
-import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 type Prop = JSX.IonInputPasswordToggle;
 
 @Component({
   selector: 'app-ion-input-password-toggle',
   templateUrl: './component.html',
-  imports: [IonInputPasswordToggle, FormsModule],
+  imports: [IonInputPasswordToggle, InsertFieldDirective],
 })
 export class IonInputPasswordToggleWC {
   static __version = 2;
@@ -23,6 +22,7 @@ export class IonInputPasswordToggleWC {
   props = computed(() => {
     return this.field$$().props()['InputPasswordToggle'] as Prop | undefined;
   });
+
   ngOnInit(): void {
     this.field$$().inputs.update((value) => {
       return {

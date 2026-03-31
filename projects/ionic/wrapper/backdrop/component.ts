@@ -1,6 +1,9 @@
-import { Component, viewChild, input, output, computed, inject } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { Component, viewChild, computed, inject } from '@angular/core';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonBackdrop } from '@ionic/angular/standalone';
 type Prop = JSX.IonBackdrop;
@@ -8,7 +11,7 @@ type Prop = JSX.IonBackdrop;
 @Component({
   selector: 'app-ion-backdrop',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonBackdrop],
+  imports: [AttributesDirective, IonBackdrop, InsertFieldDirective],
 })
 export class IonBackdropWC {
   static __version = 2;

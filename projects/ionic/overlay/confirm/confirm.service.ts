@@ -40,9 +40,9 @@ export class ConfirmService {
   open<TB extends Button<any>[]>(options: Omit<ConfirmItem<TB>, 'id' | 'close'>) {
     const id = this.nextId++;
     options.buttons?.forEach((item) => {
-      let oldHandle = item.handler;
+      const oldHandle = item.handler;
       item.handler = async (value) => {
-        let result = await oldHandle?.(value);
+        const result = await oldHandle?.(value);
         // todo 类型
         p.resolve(result as any);
       };

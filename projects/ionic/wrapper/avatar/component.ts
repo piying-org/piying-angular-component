@@ -1,6 +1,5 @@
-import { Component, viewChild, TemplateRef, input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective } from '@piying/view-angular';
+import { Component, viewChild } from '@angular/core';
+import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonAvatar } from '@ionic/angular/standalone';
 type Prop = JSX.IonAvatar;
@@ -8,7 +7,7 @@ type Prop = JSX.IonAvatar;
 @Component({
   selector: 'app-ion-avatar',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonAvatar],
+  imports: [AttributesDirective, IonAvatar, InsertFieldDirective],
 })
 export class IonAvatarWC {
   static __version = 2;

@@ -18,6 +18,13 @@ export const IonicDevDefine = v.pipe(
       }),
       valueChangeLog(),
     ),
+    password: v.pipe(
+      v.string(),
+      safeDefine.setComponent('password', (actions) => {
+        return [actions.inputs.patch({ label: 'pwd' })];
+      }),
+      valueChangeLog(),
+    ),
     radioGroup: v.pipe(
       v.string(),
       safeDefine.setComponent('radioGroup', (actions) => {
@@ -26,7 +33,7 @@ export const IonicDevDefine = v.pipe(
       valueChangeLog(),
     ),
     boolean: v.pipe(v.boolean(), valueChangeLog()),
-    date: v.pipe(v.date(), valueChangeLog(),v.title('日期按钮')),
+    date: v.pipe(v.date(), valueChangeLog(), v.title('日期按钮')),
     select: v.pipe(
       v.string(),
       safeDefine.setComponent('select', (actions) => {
@@ -48,7 +55,6 @@ export const IonicDevDefine = v.pipe(
       }),
       valueChangeLog(),
     ),
-    
   }),
   actions.wrappers.patch(['div']),
   actions.class.top('ionic-page'),

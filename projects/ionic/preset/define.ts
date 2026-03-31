@@ -9,10 +9,18 @@ import {
   IonTextareaFCC,
   IonToggleFCC,
 } from '@piying-lib/angular-ionic/field-control';
+import { IonInputPasswordToggleWC } from '../wrapper';
 
 export const PresetDefine = {
   types: {
     string: { type: IonInputFCC },
+    password: {
+      type: IonInputFCC,
+      actions: [
+        actions.wrappers.set([{ type: IonInputPasswordToggleWC }]),
+        actions.inputs.set({ type: 'password' }),
+      ],
+    },
     radioGroup: { type: IonRadioGroupFCC },
     boolean: { type: IonCheckboxFCC },
     date: {

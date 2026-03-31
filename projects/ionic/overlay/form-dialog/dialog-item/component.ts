@@ -44,7 +44,7 @@ export class FormDialogItemComponent {
 
     try {
       const result = (await item.applyValue?.(this.changedValue())) ?? this.changedValue();
-      this.item().close(modal,undefined)
+      this.item().close(modal, undefined);
     } catch (error) {
       console.error(error);
     } finally {

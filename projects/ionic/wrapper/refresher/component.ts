@@ -1,6 +1,9 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, computed, inject } from '@angular/core';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { Component, viewChild, computed, inject } from '@angular/core';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 type Prop = JSX.IonRefresher;
@@ -9,7 +12,7 @@ type Prop2Content = JSX.IonRefresherContent;
 @Component({
   selector: 'app-ion-refresher-content',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonRefresher, IonRefresherContent],
+  imports: [AttributesDirective, IonRefresher, IonRefresherContent, InsertFieldDirective],
 })
 export class IonRefresherWC {
   static __version = 2;

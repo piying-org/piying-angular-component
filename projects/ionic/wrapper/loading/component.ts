@@ -1,14 +1,17 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, output, computed, inject } from '@angular/core';
+import { Component, viewChild, computed, inject } from '@angular/core';
 import { IonLoading } from '@ionic/angular/standalone';
 import { JSX } from '@ionic/core';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 type Prop = JSX.IonLoading;
 
 @Component({
   selector: 'app-ion-loading',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, IonLoading],
+  imports: [AttributesDirective, InsertFieldDirective, IonLoading],
 })
 export class IonLoadingWC {
   static __version = 2;

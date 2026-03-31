@@ -1,6 +1,9 @@
-import { Component, viewChild, TemplateRef, input, computed, inject } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import { Component, viewChild, computed, inject } from '@angular/core';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonFooter } from '@ionic/angular/standalone';
 type Prop = JSX.IonFooter;
@@ -8,7 +11,7 @@ type Prop = JSX.IonFooter;
 @Component({
   selector: 'app-ion-footer',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonFooter],
+  imports: [AttributesDirective, IonFooter, InsertFieldDirective],
 })
 export class IonFooterNFCC {
   static __version = 2;

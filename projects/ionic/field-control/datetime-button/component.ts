@@ -2,7 +2,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, viewChild, TemplateRef, input, forwardRef, computed } from '@angular/core';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
-import { IonDatetimeButton, IonHeader, IonButtons, IonButton, IonTitle, IonFooter } from '@ionic/angular/standalone';
+import { IonDatetimeButton } from '@ionic/angular/standalone';
 import { IonModal, IonDatetime } from '@ionic/angular/standalone';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 type Prop = JSX.IonDatetimeButton;
@@ -18,12 +18,7 @@ type Prop2 = JSX.IonDatetime;
     IonDatetime,
     IonDatetimeButton,
     IonModal,
-    IonHeader,
-    IonButtons,
-    IonButton,
-    IonTitle,
-    IonFooter
-],
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -66,10 +61,10 @@ export class IonDatetimeButtonFCC extends BaseControl<Date> {
   size = input<Prop2['size']>();
   preferWheel = input<Prop2['preferWheel']>();
   value2$$ = computed(() => {
-    let value = this.value$();
+    const value = this.value$();
     return value ? value.toISOString() : undefined;
   });
-  valueChange2(value: any) {    
+  valueChange2(value: any) {
     this.valueChange(new Date(value));
   }
 }

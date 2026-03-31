@@ -1,4 +1,4 @@
-import { Component, viewChild, TemplateRef, input, output } from '@angular/core';
+import { Component, viewChild, input, output } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
