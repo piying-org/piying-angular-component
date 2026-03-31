@@ -54,7 +54,6 @@ export class IonInputFCC extends BaseControl {
   spellcheck = input<Prop['spellcheck']>();
   step = input<Prop['step']>();
   type = input<Prop['type']>();
-  value = input<Prop['value']>();
 
   ionInput = output<Parameters<NonNullable<Prop['onIonInput']>>[0]>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();

@@ -4,11 +4,13 @@ import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
 import { IonToggle } from '@ionic/angular/standalone';
+import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 type Prop = JSX.IonToggle;
 @Component({
   selector: 'app-ion-toggle',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonToggle],
+  imports: [FormsModule, AttributesDirective, IonToggle, SelectorlessOutlet],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -34,5 +36,6 @@ export class IonToggleFCC extends BaseControl {
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
-  slot = input<TemplateRef<any>>();
+  readonly StrOrTemplateComponent = StrOrTemplateComponent;
+  label = input<TemplateRef<any>>();
 }

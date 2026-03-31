@@ -16,6 +16,7 @@ export const IonicDevDefine = v.pipe(
       safeDefine.setComponent('string', (actions) => {
         return [actions.inputs.patch({ label: 'label1' })];
       }),
+      v.title('string'),
       valueChangeLog(),
     ),
     password: v.pipe(
@@ -23,6 +24,7 @@ export const IonicDevDefine = v.pipe(
       safeDefine.setComponent('password', (actions) => {
         return [actions.inputs.patch({ label: 'pwd' })];
       }),
+      v.title('password'),
       valueChangeLog(),
     ),
     radioGroup: v.pipe(
@@ -30,16 +32,18 @@ export const IonicDevDefine = v.pipe(
       safeDefine.setComponent('radioGroup', (actions) => {
         return [actions.inputs.patch({ options: ['l1', 'l2'] })];
       }),
+      v.title('radioGroup'),
       valueChangeLog(),
     ),
-    boolean: v.pipe(v.boolean(), valueChangeLog()),
-    date: v.pipe(v.date(), valueChangeLog(), v.title('日期按钮')),
+    boolean: v.pipe(v.boolean(), valueChangeLog(), v.title('boolean')),
+    date: v.pipe(v.date(), valueChangeLog(), v.title('date')),
     select: v.pipe(
       v.string(),
       safeDefine.setComponent('select', (actions) => {
         return [actions.inputs.patch({ options: ['l1', 'l2'] })];
       }),
       valueChangeLog(),
+      v.title('select'),
     ),
     toggle: v.pipe(
       v.boolean(),
@@ -47,6 +51,7 @@ export const IonicDevDefine = v.pipe(
         return [];
       }),
       valueChangeLog(),
+      v.title('toggle'),
     ),
     textarea: v.pipe(
       v.string(),
@@ -54,6 +59,7 @@ export const IonicDevDefine = v.pipe(
         return [];
       }),
       valueChangeLog(),
+      v.title('textarea'),
     ),
   }),
   actions.wrappers.patch(['div']),

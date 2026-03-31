@@ -6,7 +6,6 @@
     [indeterminate]="indeterminate()"
     [errorText]="errorText()"
     [helperText]="helperText()"
-    [value]="value()"
     [labelPlacement]="labelPlacement()"
     [justify]="justify()"
     [required]="required()!"
@@ -20,5 +19,10 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-  ></ion-checkbox>
+  >
+    <ng-template
+      [selectlessOutlet]="StrOrTemplateComponent"
+      [selectlessOutletInputs]="{ content: label() }"
+    ></ng-template>
+  </ion-checkbox>
 </ng-template>

@@ -20,6 +20,10 @@
     (ngModelChange)="valueChange($event)"
     (blur)="touchedChange()"
     [disabled]="disabled$()"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
+  >
+    <ng-template
+      [selectlessOutlet]="StrOrTemplateComponent"
+      [selectlessOutletInputs]="{ content: label() }"
+    ></ng-template
   ></ion-toggle>
 </ng-template>

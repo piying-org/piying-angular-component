@@ -1,14 +1,16 @@
-import { Component, forwardRef, viewChild, input, output } from '@angular/core';
+import { Component, forwardRef, viewChild, input, output, TemplateRef } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
 import { IonCheckbox } from '@ionic/angular/standalone';
+import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 type Prop = JSX.IonCheckbox;
 @Component({
   selector: 'app-ion-checkbox',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, NgTemplateOutlet, IonCheckbox],
+  imports: [FormsModule, AttributesDirective, IonCheckbox, SelectorlessOutlet],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -27,11 +29,13 @@ export class IonCheckboxFCC extends BaseControl {
 
   errorText = input<Prop['errorText']>();
   helperText = input<Prop['helperText']>();
-  value = input<Prop['value']>();
   labelPlacement = input<Prop['labelPlacement']>();
   justify = input<Prop['justify']>();
   required = input<Prop['required']>();
   ionChange = output<Parameters<NonNullable<Prop['onIonChange']>>[0]>();
   ionFocus = output<Parameters<NonNullable<Prop['onIonFocus']>>[0]>();
   ionBlur = output<Parameters<NonNullable<Prop['onIonBlur']>>[0]>();
+  readonly StrOrTemplateComponent = StrOrTemplateComponent;
+
+  label = input<any>();
 }
