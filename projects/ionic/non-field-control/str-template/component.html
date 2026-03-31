@@ -1,0 +1,37 @@
+<ng-template #templateRef>
+  @let data = $any(content$$());
+  @if (isString | pure: data) {
+    {{ data }}
+  } @else if (isTemplateRef | pure: data) {
+    <ng-container *ngTemplateOutlet="$any(data)"></ng-container>
+  } @else if (isSchema | pure: data) {
+    <ng-container
+      [selectlessOutlet]="PiyingView"
+      [selectlessOutletInputs]="piyingInput | pure: content$$ : schemaOptions$$"
+    ></ng-container>
+  } @else if (isObject | pure: data) {
+    @if (data['image']; as image) {
+      <ion-img [src]="image.src" [alt]="image.alt" />
+    }
+    @if (data['icon']; as icon) {
+      <ion-icon
+        [color]="icon.color"
+        [flipRtl]="icon.flipRtl"
+        [icon]="icon.icon"
+        [ios]="icon.ios"
+        [lazy]="icon.lazy"
+        [md]="icon.md"
+        [mode]="icon.mode"
+        [name]="icon.name"
+        [sanitize]="icon.sanitize"
+        [size]="icon.size"
+        [src]="icon.src"
+      ></ion-icon>
+    }
+    @if (data['title']) {
+      <span>
+        {{ data['title'] }}
+      </span>
+    }
+  }
+</ng-template>

@@ -1,0 +1,18 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-icon
+    [color]="color()"
+    [flipRtl]="flipRtl()"
+    [icon]="icon()"
+    [ios]="ios()"
+    [lazy]="lazy()"
+    [md]="md()"
+    [mode]="mode()"
+    [name]="name()"
+    [sanitize]="sanitize()"
+    [size]="size()"
+    [src]="src()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  ></ion-icon>
+</ng-template>
