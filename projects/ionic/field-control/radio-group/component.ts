@@ -10,7 +10,7 @@ import {
   inject,
 } from '@angular/core';
 import { AttributesDirective, BaseControl, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
-import { JSX } from '@ionic/core';
+import type { JSX } from '@ionic/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonRadio, IonRadioGroup } from '@ionic/angular/standalone';
 import {

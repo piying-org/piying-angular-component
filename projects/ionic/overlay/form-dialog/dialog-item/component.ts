@@ -1,7 +1,6 @@
 import { Component, computed, inject, input, linkedSignal, signal, viewChild } from '@angular/core';
 import { FormDialogOptions, FormDialogService } from '../form-dialog.service';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import {
   IonButton,
@@ -12,6 +11,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
 
 @Component({
   selector: 'pi-form-dialog-item',

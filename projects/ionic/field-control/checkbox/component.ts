@@ -4,8 +4,8 @@ import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
 import { IonCheckbox } from '@ionic/angular/standalone';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
+import { StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
 type Prop = JSX.IonCheckbox;
 @Component({
   selector: 'app-ion-checkbox',

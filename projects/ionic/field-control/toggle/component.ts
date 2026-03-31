@@ -5,7 +5,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
 import { IonToggle } from '@ionic/angular/standalone';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
 type Prop = JSX.IonToggle;
 @Component({
   selector: 'app-ion-toggle',

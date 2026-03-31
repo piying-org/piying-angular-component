@@ -1,2 +1,3 @@
 export * from './button';
-export {};
+export * from './str-template';
+// export {};

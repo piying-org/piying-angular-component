@@ -1,5 +1,6 @@
 import { actions, PiyingViewGroup } from '@piying/view-angular';
-import { DivNFCC, DivWC, StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { DivNFCC, DivWC } from '@piying-lib/angular-core';
+
 import {
   IonCheckboxFCC,
   IonDatetimeButtonFCC,
@@ -9,24 +10,10 @@ import {
   IonTextareaFCC,
   IonToggleFCC,
 } from '@piying-lib/angular-ionic/field-control';
-import {
-  IonAvatarWC,
-  IonBackdropWC,
-  IonChipWC,
-  IonColWC,
-  IonFooterWC,
-  IonGridWC,
-  IonHeaderWC,
-  IonInfiniteScrollWC,
-  IonInputPasswordToggleWC,
-  IonLoadingWC,
-  IonRefresherWC,
-  IonRowWC,
-  IonSkeletonTextWC,
-} from '../wrapper';
-import { computed } from '@angular/core';
-import { IonButtonNFCC } from '../non-field-control';
+import { IonButtonNFCC, StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
 
+import { computed } from '@angular/core';
+import { IonAvatarWC, IonBackdropWC, IonChipWC, IonColWC, IonFooterWC, IonGridWC, IonHeaderWC, IonInfiniteScrollWC, IonInputPasswordToggleWC, IonLoadingWC, IonRefresherWC, IonRowWC, IonSkeletonTextWC } from "@piying-lib/angular-ionic/wrapper";
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
     let title$$ = computed(() => field.props()['title']);
