@@ -1,0 +1,10 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-grid
+    [fixed]="props()?.fixed"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    <ng-container insertField></ng-container>
+  </ion-grid>
+</ng-template>
