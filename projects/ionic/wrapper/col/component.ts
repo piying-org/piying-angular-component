@@ -1,6 +1,10 @@
 import { Component, viewChild, TemplateRef, input, computed, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
+import {
+  AttributesDirective,
+  InsertFieldDirective,
+  PI_VIEW_FIELD_TOKEN,
+} from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonCol } from '@ionic/angular/standalone';
 type Prop = JSX.IonCol;
@@ -8,7 +12,7 @@ type Prop = JSX.IonCol;
 @Component({
   selector: 'app-ion-col',
   templateUrl: './component.html',
-  imports: [AttributesDirective, IonCol],
+  imports: [AttributesDirective, IonCol, InsertFieldDirective],
 })
 export class IonColWC {
   static __version = 2;

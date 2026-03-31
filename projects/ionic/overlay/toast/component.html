@@ -18,10 +18,10 @@
     [swipeGesture]="item.swipeGesture"
     [isOpen]="true"
     [trigger]="item.trigger"
-    (ionToastDidPresent)="item?.onIonToastDidPresent($event)"
-    (ionToastWillPresent)="item?.onIonToastWillPresent($event)"
-    (ionToastWillDismiss)="item?.onIonToastWillDismiss($event)"
-    (ionToastDidDismiss)="item?.onIonToastDidDismiss($event)"
+    (ionToastDidPresent)="item.onIonToastDidPresent?.($event)"
+    (ionToastWillPresent)="item.onIonToastWillPresent?.($event)"
+    (ionToastWillDismiss)="item.onIonToastWillDismiss?.($event)"
+    (ionToastDidDismiss)="item.onIonToastDidDismiss?.($event)"
     [class]="item?.class"
   ></ion-toast>
 }

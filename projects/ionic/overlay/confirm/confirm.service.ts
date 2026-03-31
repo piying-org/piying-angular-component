@@ -17,11 +17,11 @@ type UnionCloseReturns<T extends readonly any[]> = T extends readonly []
 
 export type ConfirmItem<BList extends Button<any>[] = any[]> = {
   id: number;
-  title: string;
+  // title: string;
   // message: string;
   // buttons?: BList;
   /** 是否为模态框 */
-  modal?: boolean;
+  // modal?: boolean;
   class?: string;
 } & Omit<Prop, 'buttons' | 'isOpen'> & { buttons?: AlertButton[] };
 const Undefined$$ = Promise.resolve(undefined);

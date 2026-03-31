@@ -25,6 +25,7 @@ import {
   IonSkeletonTextWC,
 } from '../wrapper';
 import { computed } from '@angular/core';
+import { IonButtonNFCC } from '../non-field-control';
 
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
@@ -64,20 +65,23 @@ export const PresetDefine = {
     tuple: { type: PiyingViewGroup },
     div: { type: DivNFCC },
     'common-data': { type: StrOrTemplateComponent },
+    button: {
+      type: IonButtonNFCC,
+    },
   },
   wrappers: {
     div: { type: DivWC },
     avatar: { type: IonAvatarWC },
     backdrop: { type: IonBackdropWC },
     chip: { type: IonChipWC },
-    col: { type: IonColWC },
     footer: { type: IonFooterWC },
     grid: { type: IonGridWC },
+    row: { type: IonRowWC },
+    col: { type: IonColWC },
     header: { type: IonHeaderWC },
     'infinite-scroll': { type: IonInfiniteScrollWC },
     loading: { type: IonLoadingWC },
     refresher: { type: IonRefresherWC },
-    row: { type: IonRowWC },
     'skeleton-text': { type: IonSkeletonTextWC },
   },
 };

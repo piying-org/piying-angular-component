@@ -4,16 +4,16 @@
     #modal
     [isOpen]="true"
     [animated]="modalProp?.animated"
-    [backdropBreakpoint]="modalProp?.backdropBreakpoint"
+    [backdropBreakpoint]="modalProp?.backdropBreakpoint ?? 0"
     [backdropDismiss]="modalProp?.backdropDismiss"
-    [breakpoints]="modalProp?.breakpoints"
-    [canDismiss]="modalProp?.canDismiss"
+    [breakpoints]="modalProp?.breakpoints ?? undefined"
+    [canDismiss]="modalProp?.canDismiss ?? true"
     [enterAnimation]="modalProp?.enterAnimation"
     [expandToScroll]="modalProp?.expandToScroll"
     [focusTrap]="modalProp?.focusTrap"
     [handle]="modalProp?.handle"
     [handleBehavior]="modalProp?.handleBehavior"
-    [initialBreakpoint]="modalProp?.initialBreakpoint"
+    [initialBreakpoint]="modalProp?.initialBreakpoint ?? undefined"
     [keepContentsMounted]="modalProp?.keepContentsMounted"
     [keyboardClose]="modalProp?.keyboardClose"
     [leaveAnimation]="modalProp?.leaveAnimation"
@@ -32,23 +32,25 @@
   >
     <ng-template>
       <ion-header>
-        <ion-title>{{ item().title }} </ion-title>
-        <ion-buttons slot="start">
-          <ion-button (click)="close(modal)" color="danger">
-            <ng-template
-              [selectlessOutlet]="StrOrTemplateComponent"
-              [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
-            ></ng-template>
-          </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-          <ion-button (click)="apply(modal)" [disabled]="!ref.form$$()?.valid" color="primary">
-            <ng-template
-              [selectlessOutlet]="StrOrTemplateComponent"
-              [selectlessOutletInputs]="{ content: item().submitButton ?? 'Submit' }"
-            ></ng-template>
-          </ion-button>
-        </ion-buttons>
+        <ion-toolbar>
+          <ion-title>{{ item().title }} </ion-title>
+          <ion-buttons slot="start">
+            <ion-button (click)="close(modal)" color="danger">
+              <ng-template
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
+              ></ng-template>
+            </ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="apply(modal)" [disabled]="!ref.form$$()?.valid" color="primary">
+              <ng-template
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="{ content: item().submitButton ?? 'Submit' }"
+              ></ng-template>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
       </ion-header>
       <ion-content>
         <piying-view

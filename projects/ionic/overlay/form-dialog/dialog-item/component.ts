@@ -10,6 +10,7 @@ import {
   IonHeader,
   IonModal,
   IonTitle,
+  IonToolbar,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -24,6 +25,7 @@ import {
     IonContent,
     IonButtons,
     IonButton,
+    IonToolbar,
   ],
 })
 export class FormDialogItemComponent {

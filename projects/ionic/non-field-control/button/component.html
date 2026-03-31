@@ -2,7 +2,7 @@
   <ion-button
     [color]="color()"
     [buttonType]="buttonType()"
-    [disabled]="disabled()"
+    [disabled]="disabled() || isLoading$()"
     [expand]="expand()"
     [fill]="fill()"
     [routerDirection]="routerDirection()"
@@ -21,6 +21,42 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
-  ></ion-button>
+    (click)="onClick($event)"
+  >
+    <ng-container *ngTemplateOutlet="slot()"></ng-container>
+
+    @if (icon() && !content()) {
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: icon() }"
+      ></ng-template>
+    } @else {
+      @if (content()) {
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="{ content: content() }"
+        ></ng-template>
+      }
+      @if (start()) {
+        @if (isLoading$()) {
+          <ion-spinner slot="start" class="w-[1em] h-[1em]"></ion-spinner>
+        } @else {
+          <ng-template
+            [selectlessOutlet]="StrOrTemplateComponent"
+            [selectlessOutletInputs]="{ content: start() }"
+          ></ng-template>
+        }
+      }
+      @if (end()) {
+        @if (isLoading$()) {
+          <ion-spinner slot="end" class="w-[1em] h-[1em]"></ion-spinner>
+        } @else {
+          <ng-template
+            [selectlessOutlet]="StrOrTemplateComponent"
+            [selectlessOutletInputs]="{ content: end() }"
+          ></ng-template>
+        }
+      }
+    }
+  </ion-button>
 </ng-template>

@@ -3,7 +3,7 @@ import { ToastService } from './toast.service';
 import { IonToast } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'pi-toast-portal',
+  selector: 'ion-toast-portal',
   templateUrl: './component.html',
   imports: [IonToast],
 })

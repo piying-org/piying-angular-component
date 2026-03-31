@@ -1,7 +1,11 @@
 import * as v from 'valibot';
 import { actions } from '@piying/view-angular';
 import { safeDefine } from './define';
-import { valueChange } from '@piying/view-angular-core';
+import { nfcComponent, NFCSchema, valueChange } from '@piying/view-angular-core';
+import { addIcons } from 'ionicons';
+import { chatbubbleOutline } from 'ionicons/icons';
+import { ConfirmService, FormDialogService, ToastService } from '@piying-lib/angular-ionic/overlay';
+
 function valueChangeLog<T>() {
   return valueChange<T>((fn) => {
     fn({ list: [undefined] }).subscribe(({ list: [value], field }) => {
@@ -61,8 +65,132 @@ export const IonicDevDefine = v.pipe(
       valueChangeLog(),
       v.title('textarea'),
     ),
+    _btn: v.pipe(
+      NFCSchema,
+      safeDefine.setComponent('button', (actions) => {
+        return [
+          actions.inputs.patch({
+            content: 'loading',
+            start: { icon: { name: 'chatbubble-outline' } },
+            clicked: () => {
+              return new Promise(() => {});
+            },
+          }),
+        ];
+      }),
+    ),
+    _btn2: v.pipe(
+      NFCSchema,
+      safeDefine.setComponent('button', (actions) => {
+        return [
+          actions.inputs.patch({
+            icon: { name: 'chatbubble-outline' },
+            clicked: () => {
+              return new Promise(() => {});
+            },
+          }),
+        ];
+      }),
+    ),
+    grid: v.pipe(
+      v.object({
+        str1: v.pipe(v.string(), actions.wrappers.patch(['col']), v.title('str1')),
+        str2: v.pipe(v.string(), actions.wrappers.patch(['col']), v.title('str2')),
+        str3: v.pipe(v.string(), actions.wrappers.patch(['col']), v.title('str3')),
+      }),
+      actions.wrappers.patch(['grid', 'row']),
+    ),
+    __open_confirm: v.pipe(
+      NFCSchema,
+      safeDefine.setComponent('button', (actions) => {
+        return [
+          actions.inputs.patch({
+            content: '打开弹窗',
+          }),
+          actions.inputs.patchAsync({
+            clicked: (field) => {
+              return async () => {
+                let ref = await field.injector.get(ConfirmService).open({
+                  message: 'message',
+                  buttons: [
+                    {
+                      text: 'Cancel',
+                      role: 'cancel',
+                      handler: () => {
+                        console.log('Alert canceled');
+                      },
+                    },
+                    {
+                      text: 'OK',
+                      role: 'confirm',
+                      handler: () => {
+                        console.log('Alert confirmed');
+                        return { value: 1 };
+                      },
+                    },
+                  ],
+                });
+                console.log(ref);
+              };
+            },
+          }),
+        ];
+      }),
+    ),
+    __open_formDialog: v.pipe(
+      NFCSchema,
+      safeDefine.setComponent('button', (actions) => {
+        return [
+          actions.inputs.patch({
+            content: '打开modal',
+          }),
+          actions.inputs.patchAsync({
+            clicked: (field) => {
+              return async () => {
+                let ref = await field.injector.get(FormDialogService).open({
+                  schema: v.pipe(v.string(), v.title('l1')),
+                  value: '123',
+                  async applyValue(value) {
+                    return value;
+                  },
+                  injector: field.injector,
+                  title: 'modal',
+                });
+                console.log(ref);
+              };
+            },
+          }),
+        ];
+      }),
+    ),
+    __open_toast: v.pipe(
+      NFCSchema,
+      safeDefine.setComponent('button', (actions) => {
+        return [
+          actions.inputs.patch({
+            content: '打开 toast',
+          }),
+          actions.inputs.patchAsync({
+            clicked: (field) => {
+              let index = 1;
+              return async () => {
+                let ref = await field.injector.get(ToastService).add({
+                  message: `message-${index++}`,
+                  position: 'top',
+                });
+              };
+            },
+          }),
+        ];
+      }),
+    ),
   }),
   actions.wrappers.patch(['div']),
   actions.class.top('ionic-page'),
   // actions.providers.patch([]),
+  actions.hooks.merge({
+    allFieldsResolved: (field) => {
+      addIcons({ chatbubbleOutline });
+    },
+  }),
 );

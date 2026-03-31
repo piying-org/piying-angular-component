@@ -4,7 +4,7 @@ import { FormDialogItemComponent } from './dialog-item/component';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 
 @Component({
-  selector: 'pi-form-dialog-portal',
+  selector: 'ion-form-dialog-portal',
   templateUrl: './component.html',
   imports: [SelectorlessOutlet],
 })

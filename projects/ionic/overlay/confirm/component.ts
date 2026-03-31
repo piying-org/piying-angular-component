@@ -7,9 +7,9 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 import { IonAlert } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'pi-confirm-portal',
+  selector: 'ion-confirm-portal',
   templateUrl: './component.html',
-  imports: [SelectorlessOutlet, PurePipe, IonAlert],
+  imports: [IonAlert],
 })
 export class ConfirmPortal {
   readonly StrOrTemplateComponent = StrOrTemplateComponent;
