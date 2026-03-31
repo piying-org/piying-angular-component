@@ -1,0 +1,12 @@
+<ng-template #slot>
+  <ion-input-password-toggle
+    slot="end"
+    [color]="props()?.color"
+    [showIcon]="props()?.showIcon"
+    [hideIcon]="props()?.hideIcon"
+    [mode]="props()?.mode"
+  ></ion-input-password-toggle>
+</ng-template>
+<ng-template #templateRef let-attr="attributes">
+  <ng-container insertField></ng-container>
+</ng-template>
