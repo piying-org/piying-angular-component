@@ -9,8 +9,23 @@ import {
   IonTextareaFCC,
   IonToggleFCC,
 } from '@piying-lib/angular-ionic/field-control';
-import { IonInputPasswordToggleWC } from '../wrapper';
+import {
+  IonAvatarWC,
+  IonBackdropWC,
+  IonChipWC,
+  IonColWC,
+  IonFooterWC,
+  IonGridWC,
+  IonHeaderWC,
+  IonInfiniteScrollWC,
+  IonInputPasswordToggleWC,
+  IonLoadingWC,
+  IonRefresherWC,
+  IonRowWC,
+  IonSkeletonTextWC,
+} from '../wrapper';
 import { computed } from '@angular/core';
+
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
     let title$$ = computed(() => field.props()['title']);
@@ -52,5 +67,17 @@ export const PresetDefine = {
   },
   wrappers: {
     div: { type: DivWC },
+    avatar: { type: IonAvatarWC },
+    backdrop: { type: IonBackdropWC },
+    chip: { type: IonChipWC },
+    col: { type: IonColWC },
+    footer: { type: IonFooterWC },
+    grid: { type: IonGridWC },
+    header: { type: IonHeaderWC },
+    'infinite-scroll': { type: IonInfiniteScrollWC },
+    loading: { type: IonLoadingWC },
+    refresher: { type: IonRefresherWC },
+    row: { type: IonRowWC },
+    'skeleton-text': { type: IonSkeletonTextWC },
   },
 };

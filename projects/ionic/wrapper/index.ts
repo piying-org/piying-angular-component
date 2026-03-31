@@ -1,1 +1,13 @@
 export * from './input-password-toggle';
+export { IonAvatarWC } from '../wrapper/avatar';
+export { IonBackdropWC } from '../wrapper/backdrop';
+export { IonChipWC } from '../wrapper/chip';
+export { IonColWC } from '../wrapper/col';
+export { IonFooterWC } from '../wrapper/footer';
+export { IonGridWC } from '../wrapper/grid';
+export { IonHeaderWC } from '../wrapper/header';
+export { IonInfiniteScrollWC } from '../wrapper/infinite-scroll';
+export { IonLoadingWC } from '../wrapper/loading';
+export { IonRefresherWC } from '../wrapper/refresher';
+export { IonRowWC } from '../wrapper/row';
+export { IonSkeletonTextWC } from '../wrapper/skeleton-text';

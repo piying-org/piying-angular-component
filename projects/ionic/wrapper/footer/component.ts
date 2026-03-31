@@ -13,7 +13,7 @@ type Prop = JSX.IonFooter;
   templateUrl: './component.html',
   imports: [AttributesDirective, IonFooter, InsertFieldDirective],
 })
-export class IonFooterNFCC {
+export class IonFooterWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
