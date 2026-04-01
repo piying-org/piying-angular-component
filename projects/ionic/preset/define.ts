@@ -46,6 +46,10 @@ export const PresetDefine = {
       type: IonInputFCC,
       actions: [title2label()],
     },
+    number: {
+      type: IonInputFCC,
+      actions: [actions.inputs.set({ type: 'number' }), title2label()],
+    },
     password: {
       type: IonInputFCC,
       actions: [
@@ -84,5 +88,7 @@ export const PresetDefine = {
     loading: { type: IonLoadingWC },
     refresher: { type: IonRefresherWC },
     'skeleton-text': { type: IonSkeletonTextWC },
+    // todo临时添加
+    fieldset: { type: DivWC },
   },
 };

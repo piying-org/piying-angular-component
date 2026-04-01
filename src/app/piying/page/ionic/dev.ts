@@ -23,6 +23,14 @@ export const IonicDevDefine = v.pipe(
       v.title('string'),
       valueChangeLog(),
     ),
+    number: v.pipe(
+      v.number(),
+      safeDefine.setComponent('number', (actions) => {
+        return [actions.inputs.patch({ label: 'num1' })];
+      }),
+      v.title('string'),
+      valueChangeLog(),
+    ),
     password: v.pipe(
       v.string(),
       safeDefine.setComponent('password', (actions) => {
