@@ -1,9 +1,0 @@
-<ng-template #templateRef let-attr="attributes">
-  <ion-card-title
-    [color]="color()"
-    [class]="attr()?.class"
-    [attributes]="attr()"
-    [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
-  ></ion-card-title>
-</ng-template>

@@ -1,15 +1,24 @@
-import { Component, viewChild, TemplateRef, input } from '@angular/core';
+import { Component, viewChild, TemplateRef, input, computed } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective } from '@piying/view-angular';
+import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 type Prop = JSX.IonCard;
 
 @Component({
   selector: 'app-ion-card',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet],
+  imports: [
+    AttributesDirective,
+    NgTemplateOutlet,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent
+],
 })
-export class IonCardNFCC {
+export class IonCardFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
@@ -24,4 +33,10 @@ export class IonCardNFCC {
   target = input<Prop['target']>();
 
   slot = input<TemplateRef<any>>();
+  title$$ = computed(() => {
+    return this.field$$().props()['title'];
+  });
+  description$$ = computed(() => {
+    return this.field$$().props()['description'];
+  });
 }

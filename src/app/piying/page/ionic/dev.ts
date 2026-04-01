@@ -192,6 +192,60 @@ export const IonicDevDefine = v.pipe(
         ];
       }),
     ),
+    list: v.pipe(
+      v.object({
+        s1: v.pipe(v.string(), v.title('s1')),
+        n1: v.pipe(v.number(), v.title('n1')),
+        list2: v.pipe(
+          v.object({
+            s2: v.pipe(v.string(), v.title('s2')),
+            n2: v.pipe(v.number(), v.title('n2')),
+          }),
+          v.title('list2标题'),
+          safeDefine.setComponent('list', (actions) => {
+            return [
+              actions.inputs.patch({
+                inset: true,
+                headerProperty: { color: 'dark' },
+              }),
+            ];
+          }),
+        ),
+      }),
+      v.title('list标题'),
+      safeDefine.setComponent('list', (actions) => {
+        return [actions.inputs.patch({ headerProperty: { color: 'danger' } })];
+      }),
+    ),
+    card: v.pipe(
+      v.object({
+        s1: v.pipe(v.string(), v.title('s1')),
+        n1: v.pipe(v.number(), v.title('n1')),
+        list2: v.pipe(
+          v.object({
+            s2: v.pipe(v.string(), v.title('s2')),
+            n2: v.pipe(v.number(), v.title('n2')),
+          }),
+          v.title('list2标题'),
+          safeDefine.setComponent('list', (actions) => {
+            return [
+              actions.inputs.patch({
+                inset: true,
+                headerProperty: { color: 'dark' },
+              }),
+            ];
+          }),
+        ),
+      }),
+      v.title('list标题'),
+      safeDefine.setComponent('card', (actions) => {
+        return [
+          actions.inputs.patch({
+            color: 'primary',
+          }),
+        ];
+      }),
+    ),
   }),
   actions.wrappers.patch(['div']),
   actions.class.top('ionic-page'),

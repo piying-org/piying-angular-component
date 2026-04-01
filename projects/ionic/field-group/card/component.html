@@ -1,0 +1,33 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-card
+    [color]="color()"
+    [button]="button()"
+    [type]="type()"
+    [disabled]="disabled()"
+    [download]="download()"
+    [href]="href()"
+    [rel]="rel()"
+    [routerDirection]="routerDirection()"
+    [routerAnimation]="routerAnimation()"
+    [target]="target()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    <ion-card-header>
+      @if (title$$()) {
+        <ion-card-title>{{ title$$() }}</ion-card-title>
+      }
+      @if (description$$()) {
+        <ion-card-subtitle>{{ description$$() }}</ion-card-subtitle>
+      }
+    </ion-card-header>
+    <ion-card-content>
+      @for (field of children$$(); track $index) {
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+        ></ng-container>
+      }
+    </ion-card-content>
+  </ion-card>
+</ng-template>

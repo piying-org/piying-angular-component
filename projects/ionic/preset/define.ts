@@ -28,6 +28,7 @@ import {
   IonRowWC,
   IonSkeletonTextWC,
 } from '@piying-lib/angular-ionic/wrapper';
+import { IonCardFGC, IonListFGC } from '../field-group';
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
     const title$$ = computed(() => field.props()['title']);
@@ -72,6 +73,12 @@ export const PresetDefine = {
     'common-data': { type: StrOrTemplateComponent },
     button: {
       type: IonButtonNFCC,
+    },
+    list: {
+      type: IonListFGC,
+    },
+    card: {
+      type: IonCardFGC,
     },
   },
   wrappers: {

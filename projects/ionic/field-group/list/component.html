@@ -5,6 +5,26 @@
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-    ><ng-container *ngTemplateOutlet="slot()"></ng-container
-  ></ion-list>
+  >
+    @if (title$$()) {
+      <ion-list-header [property]="headerProperty()">
+        <ion-label>{{ title$$() }}</ion-label>
+      </ion-list-header>
+    }
+    @if (itemWrapper()) {
+      @for (field of children$$(); track $index) {
+        <ion-item>
+          <ng-container
+            *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+          ></ng-container>
+        </ion-item>
+      }
+    } @else {
+      @for (field of children$$(); track $index) {
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+        ></ng-container>
+      }
+    }
+  </ion-list>
 </ng-template>
