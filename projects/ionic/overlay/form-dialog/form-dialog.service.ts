@@ -1,7 +1,7 @@
 import { Injectable, Injector, signal } from '@angular/core';
 import { IonModal } from '@ionic/angular/standalone';
 import { JSX } from '@ionic/core';
-
+import { merge } from 'es-toolkit';
 type Prop = JSX.IonModal;
 export type FormDialogOptions<T = any> = {
   id: number;
@@ -31,15 +31,20 @@ export class FormDialogService {
   open<T = any>(options: Omit<FormDialogOptions<T>, 'id' | 'close'>) {
     const id = this.nextId++;
     const p = Promise.withResolvers<T | undefined>();
-    this.#addToList({
-      ...options,
-      id,
-      close: async (modal: IonModal, result?: T) => {
-        await modal.dismiss();
-        p.resolve(result);
-        this.#remove(id);
-      },
-    });
+    this.#addToList(
+      merge(
+        { ...this.#defaultOption },
+        {
+          ...options,
+          id,
+          close: async (modal: IonModal, result?: T) => {
+            await modal.dismiss();
+            p.resolve(result);
+            this.#remove(id);
+          },
+        },
+      ),
+    );
 
     return p.promise;
   }
@@ -51,8 +56,11 @@ export class FormDialogService {
   #remove(id: number): void {
     this.#list$.update((current) => current.filter((item) => item.id !== id));
   }
-
+  #defaultOption?: Partial<Omit<FormDialogOptions, 'id'>>;
   // closeAll() {
   //   this.#list$.set([]);
   // }
+  setDefaultOption(option: Partial<Omit<FormDialogOptions, 'id'>>) {
+    this.#defaultOption = option;
+  }
 }

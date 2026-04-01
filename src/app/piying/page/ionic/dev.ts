@@ -157,7 +157,7 @@ export const IonicDevDefine = v.pipe(
               return async () => {
                 const ref = await field.injector.get(FormDialogService).open({
                   schema: v.pipe(v.string(), v.title('l1')),
-                  value: '123',
+                  value: undefined,
                   async applyValue(value) {
                     return value;
                   },
@@ -227,11 +227,10 @@ export const IonicDevDefine = v.pipe(
             n2: v.pipe(v.number(), v.title('n2')),
           }),
           v.title('list2标题'),
-          safeDefine.setComponent('list', (actions) => {
+          safeDefine.setComponent('card', (actions) => {
             return [
               actions.inputs.patch({
-                inset: true,
-                headerProperty: { color: 'dark' },
+                color: 'secondary',
               }),
             ];
           }),
@@ -253,6 +252,9 @@ export const IonicDevDefine = v.pipe(
   actions.hooks.merge({
     allFieldsResolved: (field) => {
       addIcons({ chatbubbleOutline });
+      field.injector
+        .get(FormDialogService)
+        .setDefaultOption({ submitButton: '提交', cancelButton: '取消' });
     },
   }),
 );
