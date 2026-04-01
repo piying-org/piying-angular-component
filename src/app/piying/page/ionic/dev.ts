@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import { actions } from '@piying/view-angular';
 import { safeDefine } from './define';
-import { nfcComponent, NFCSchema, valueChange } from '@piying/view-angular-core';
+import { NFCSchema, valueChange } from '@piying/view-angular-core';
 import { addIcons } from 'ionicons';
 import { chatbubbleOutline } from 'ionicons/icons';
 import { ConfirmService, FormDialogService, ToastService } from '@piying-lib/angular-ionic/overlay';
@@ -110,7 +110,7 @@ export const IonicDevDefine = v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return async () => {
-                let ref = await field.injector.get(ConfirmService).open({
+                const ref = await field.injector.get(ConfirmService).open({
                   message: 'message',
                   buttons: [
                     {
@@ -147,7 +147,7 @@ export const IonicDevDefine = v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return async () => {
-                let ref = await field.injector.get(FormDialogService).open({
+                const ref = await field.injector.get(FormDialogService).open({
                   schema: v.pipe(v.string(), v.title('l1')),
                   value: '123',
                   async applyValue(value) {
@@ -174,7 +174,7 @@ export const IonicDevDefine = v.pipe(
             clicked: (field) => {
               let index = 1;
               return async () => {
-                let ref = await field.injector.get(ToastService).add({
+                const ref = await field.injector.get(ToastService).add({
                   message: `message-${index++}`,
                   position: 'top',
                 });

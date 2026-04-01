@@ -13,10 +13,24 @@ import {
 import { IonButtonNFCC, StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
 
 import { computed } from '@angular/core';
-import { IonAvatarWC, IonBackdropWC, IonChipWC, IonColWC, IonFooterWC, IonGridWC, IonHeaderWC, IonInfiniteScrollWC, IonInputPasswordToggleWC, IonLoadingWC, IonRefresherWC, IonRowWC, IonSkeletonTextWC } from "@piying-lib/angular-ionic/wrapper";
+import {
+  IonAvatarWC,
+  IonBackdropWC,
+  IonChipWC,
+  IonColWC,
+  IonFooterWC,
+  IonGridWC,
+  IonHeaderWC,
+  IonInfiniteScrollWC,
+  IonInputPasswordToggleWC,
+  IonLoadingWC,
+  IonRefresherWC,
+  IonRowWC,
+  IonSkeletonTextWC,
+} from '@piying-lib/angular-ionic/wrapper';
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
-    let title$$ = computed(() => field.props()['title']);
+    const title$$ = computed(() => field.props()['title']);
     return (value) => {
       return {
         ...value,

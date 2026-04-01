@@ -1,5 +1,4 @@
-import { Component, viewChild, TemplateRef, input, computed, inject } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Component, viewChild, computed, inject } from '@angular/core';
 import {
   AttributesDirective,
   InsertFieldDirective,

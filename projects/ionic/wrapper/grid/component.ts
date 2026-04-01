@@ -1,10 +1,8 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, TemplateRef, computed, inject } from '@angular/core';
+import { Component, viewChild, computed, inject } from '@angular/core';
 import {
   AttributesDirective,
   InsertFieldDirective,
   PI_VIEW_FIELD_TOKEN,
-  PiyingViewGroupBase,
 } from '@piying/view-angular';
 import { IonGrid } from '@ionic/angular/standalone';
 import { JSX } from '@ionic/core';

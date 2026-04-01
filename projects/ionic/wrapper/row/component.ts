@@ -1,11 +1,6 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, TemplateRef } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { IonRow } from '@ionic/angular/standalone';
-import {
-  AttributesDirective,
-  InsertFieldDirective,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 
 type Prop = JSX.IonRow;

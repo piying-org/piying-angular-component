@@ -2,7 +2,7 @@ import { Component, viewChild, TemplateRef, input, output, signal } from '@angul
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
-import { IonButton, IonIcon, IonSpinner } from '@ionic/angular/standalone';
+import { IonButton, IonSpinner } from '@ionic/angular/standalone';
 import { StrOrTemplateComponent } from '../str-template';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 type Prop = JSX.IonButton;

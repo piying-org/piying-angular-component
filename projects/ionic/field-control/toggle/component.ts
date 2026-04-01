@@ -1,7 +1,6 @@
 import { Component, forwardRef, viewChild, TemplateRef, input, output } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
-import { NgTemplateOutlet } from '@angular/common';
 import { JSX } from '@ionic/core';
 import { IonToggle } from '@ionic/angular/standalone';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';

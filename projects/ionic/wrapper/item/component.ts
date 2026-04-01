@@ -1,5 +1,4 @@
-import { Component, viewChild, TemplateRef, input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Component, viewChild, input } from '@angular/core';
 import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { IonItem } from '@ionic/angular/standalone';
