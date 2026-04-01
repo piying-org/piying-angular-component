@@ -16,7 +16,7 @@ export class IonButtonNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   color = input<Prop['color']>();
-  buttonType = input<Prop['buttonType']>();
+  buttonType = input<Prop['buttonType']>('button');
   disabled = input<Prop['disabled']>();
   expand = input<Prop['expand']>();
   fill = input<Prop['fill']>();
