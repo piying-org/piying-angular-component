@@ -11,3 +11,4 @@ export { IonLoadingWC } from '../wrapper/loading';
 export { IonRefresherWC } from '../wrapper/refresher';
 export { IonRowWC } from '../wrapper/row';
 export { IonSkeletonTextWC } from '../wrapper/skeleton-text';
+export * from './item';

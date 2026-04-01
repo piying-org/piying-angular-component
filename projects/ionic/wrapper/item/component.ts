@@ -1,15 +1,16 @@
 import { Component, viewChild, TemplateRef, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { AttributesDirective } from '@piying/view-angular';
+import { AttributesDirective, InsertFieldDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
+import { IonItem } from '@ionic/angular/standalone';
 type Prop = JSX.IonItem;
 
 @Component({
   selector: 'app-ion-item',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet],
+  imports: [AttributesDirective, InsertFieldDirective, IonItem],
 })
-export class IonItemNFCC {
+export class IonItemWC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   button = input<Prop['button']>();
@@ -24,6 +25,4 @@ export class IonItemNFCC {
   routerDirection = input<Prop['routerDirection']>();
   target = input<Prop['target']>();
   type = input<Prop['type']>();
-
-  slot = input<TemplateRef<any>>();
 }
