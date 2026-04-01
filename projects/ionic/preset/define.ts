@@ -28,7 +28,7 @@ import {
   IonRowWC,
   IonSkeletonTextWC,
 } from '@piying-lib/angular-ionic/wrapper';
-import { IonCardFGC, IonListFGC } from '../field-group';
+import { IonCardFGC, IonListFGC, IonMenuFGC } from '@piying-lib/angular-ionic/field-group';
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
     const title$$ = computed(() => field.props()['title']);
@@ -79,6 +79,9 @@ export const PresetDefine = {
     },
     card: {
       type: IonCardFGC,
+    },
+    menu: {
+      type: IonMenuFGC,
     },
   },
   wrappers: {
