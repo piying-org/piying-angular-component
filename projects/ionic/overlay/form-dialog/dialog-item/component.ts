@@ -60,4 +60,13 @@ export class FormDialogItemComponent {
   close(modal: IonModal) {
     this.item().close(modal, undefined);
   }
+  options2$$ = computed(() => {
+    return {
+      ...this.options$$(),
+      context: {
+        ...this.options$$().context,
+        ...this.item().context,
+      },
+    };
+  });
 }

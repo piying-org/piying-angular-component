@@ -38,7 +38,10 @@
             <ion-button (click)="close(modal)" color="danger">
               <ng-template
                 [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
+                [selectlessOutletInputs]="{
+                  content: item().cancelButton ?? 'Cancel',
+                  context: item().context,
+                }"
               ></ng-template>
             </ion-button>
           </ion-buttons>
@@ -46,7 +49,10 @@
             <ion-button (click)="apply(modal)" [disabled]="!ref.form$$()?.valid" color="primary">
               <ng-template
                 [selectlessOutlet]="StrOrTemplateComponent"
-                [selectlessOutletInputs]="{ content: item().submitButton ?? 'Submit' }"
+                [selectlessOutletInputs]="{
+                  content: item().submitButton ?? 'Submit',
+                  context: item().context,
+                }"
               ></ng-template>
             </ion-button>
           </ion-buttons>
@@ -55,7 +61,7 @@
       <ion-content>
         <piying-view
           [schema]="item().schema"
-          [options]="options$$()"
+          [options]="options2$$()"
           [model]="item().value"
           (modelChange)="modelChange($event)"
           class="flex-1 overflow-auto py-4"

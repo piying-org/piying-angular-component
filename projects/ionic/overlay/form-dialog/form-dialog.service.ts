@@ -16,6 +16,7 @@ export type FormDialogOptions<T = any> = {
   injector: Injector;
   close: (modal: IonModal, value: any) => Promise<any>;
   modalProp?: Prop;
+  context?: Record<string, any>;
 };
 type ResolvedOption = Omit<FormDialogOptions, 'close'> & { close: (value: any) => Promise<any> };
 @Injectable({
