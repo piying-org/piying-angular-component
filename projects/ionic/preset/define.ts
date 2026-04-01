@@ -23,6 +23,7 @@ import {
   IonHeaderWC,
   IonInfiniteScrollWC,
   IonInputPasswordToggleWC,
+  IonItemWC,
   IonLoadingWC,
   IonRefresherWC,
   IonRowWC,
@@ -98,6 +99,7 @@ export const PresetDefine = {
     loading: { type: IonLoadingWC },
     refresher: { type: IonRefresherWC },
     'skeleton-text': { type: IonSkeletonTextWC },
+    item: { type: IonItemWC },
     // todo临时添加
     fieldset: { type: DivWC },
   },

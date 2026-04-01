@@ -194,12 +194,12 @@ export const IonicDevDefine = v.pipe(
     ),
     list: v.pipe(
       v.object({
-        s1: v.pipe(v.string(), v.title('s1')),
-        n1: v.pipe(v.number(), v.title('n1')),
+        s1: v.pipe(v.string(), v.title('s1'), actions.wrappers.patch(['item'])),
+        n1: v.pipe(v.number(), v.title('n1'), actions.wrappers.patch(['item'])),
         list2: v.pipe(
           v.object({
-            s2: v.pipe(v.string(), v.title('s2')),
-            n2: v.pipe(v.number(), v.title('n2')),
+            s2: v.pipe(v.string(), v.title('s2'), actions.wrappers.patch(['item'])),
+            n2: v.pipe(v.number(), v.title('n2'), actions.wrappers.patch(['item'])),
           }),
           v.title('list2标题'),
           safeDefine.setComponent('list', (actions) => {
@@ -207,6 +207,7 @@ export const IonicDevDefine = v.pipe(
               actions.inputs.patch({
                 inset: true,
                 headerProperty: { color: 'dark' },
+                lines: 'full',
               }),
             ];
           }),
@@ -214,7 +215,7 @@ export const IonicDevDefine = v.pipe(
       }),
       v.title('list标题'),
       safeDefine.setComponent('list', (actions) => {
-        return [actions.inputs.patch({ headerProperty: { color: 'danger' } })];
+        return [actions.inputs.patch({ headerProperty: { color: 'danger' }, lines: 'full' })];
       }),
     ),
     card: v.pipe(

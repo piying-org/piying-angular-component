@@ -15,8 +15,9 @@ type Prop = JSX.IonList;
 export class IonListFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  lines = input<'full' | 'inset' | 'none'>();
-  inset = input<boolean>();
+  lines = input<Prop['lines']>();
+  inset = input<Prop['inset']>();
+  mode = input<Prop['mode']>();
   itemWrapper = input<boolean>();
   headerProperty = input<JSX.IonListHeader>();
   title$$ = computed(() => {
