@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     ThemeService,
-    provideIonicAngular(),
+    provideIonicAngular({ mode: 'md' }),
   ],
 };
