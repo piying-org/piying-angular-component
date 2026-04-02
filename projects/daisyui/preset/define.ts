@@ -1,7 +1,7 @@
 import { PiyingViewGroup } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 import { DivNFCC, DivWC, StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { actions } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular';
 
 // 核心包装器
 import * as WCGroup from '@piying-lib/angular-daisyui/wrapper';
@@ -127,7 +127,7 @@ export const PresetDefine = {
     tr: { type: ExtComponentGroup.TableRowFGC },
     'table-expand-cell': { type: ExtComponentGroup.TableExpandOneTableCell },
     // 特殊类型
-    'router-outlet': { type: RouterOutlet },
+    'router-outlet': { type: DivNFCC, actions: [actions.directives.set([{ type: RouterOutlet }])] },
     object: { type: PiyingViewGroup },
     div: { type: DivNFCC },
     'common-data': { type: StrOrTemplateComponent },

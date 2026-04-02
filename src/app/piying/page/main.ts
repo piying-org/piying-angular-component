@@ -2,6 +2,7 @@ import * as v from 'valibot';
 import { NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
+import { safeDefine } from '@@piying-define';
 export const MainPage = v.pipe(
   v.object({
     content: v.object({
@@ -25,11 +26,7 @@ export const MainPage = v.pipe(
         setComponent('navbar'),
         actions.class.top('sticky top-0 bg-base-100 z-9'),
       ),
-      router: v.pipe(
-        NFCSchema,
-        setComponent('div'),
-        actions.directives.patch([{ type: RouterOutlet }]),
-      ),
+      router: v.pipe(NFCSchema, safeDefine.setComponent('router-outlet')),
     }),
     side: v.pipe(
       v.object({
