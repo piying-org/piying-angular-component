@@ -28,6 +28,7 @@ import {
   IonRefresherWC,
   IonRowWC,
   IonSkeletonTextWC,
+  IonTitleWC,
 } from '@piying-lib/angular-ionic/wrapper';
 import { IonCardFGC, IonListFGC, IonMenuFGC } from '@piying-lib/angular-ionic/field-group';
 function title2label<T>() {
@@ -100,6 +101,7 @@ export const PresetDefine = {
     refresher: { type: IonRefresherWC },
     'skeleton-text': { type: IonSkeletonTextWC },
     item: { type: IonItemWC },
+    title: { type: IonTitleWC },
     // todo临时添加
     fieldset: { type: DivWC },
   },

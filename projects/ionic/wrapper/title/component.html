@@ -1,9 +1,10 @@
 <ng-template #templateRef let-attr="attributes">
   <ion-title
-    [color]="color()"
-    [size]="size()"
     [class]="attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
-  ></ion-title>
+    [property]="props()"
+  >
+    <ng-container insertField></ng-container>
+  </ion-title>
 </ng-template>

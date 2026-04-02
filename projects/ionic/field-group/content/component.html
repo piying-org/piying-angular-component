@@ -1,0 +1,21 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-content
+    [attributes]="attr()"
+    [property]="props()"
+    (ionScroll)="ionScroll.emit($event)"
+    (ionScrollEnd)="ionScrollEnd.emit($event)"
+    (ionScrollStart)="ionScrollStart.emit($event)"
+  >
+    @for (field of children$$(); track $index) {
+      <ng-container
+        *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+      ></ng-container>
+    }
+    @if (fixed()) {
+      <ng-template
+        [selectlessOutlet]="StrOrTemplateComponent"
+        [selectlessOutletInputs]="{ content: fixed() }"
+      ></ng-template>
+    }
+  </ion-content>
+</ng-template>
