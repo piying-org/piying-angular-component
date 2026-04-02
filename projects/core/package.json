@@ -8,5 +8,10 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "repository": {
+    "url": "https://github.com/piying-org/piying-angular-component",
+    "directory": "projects/core",
+    "type": "git"
+  }
 }
