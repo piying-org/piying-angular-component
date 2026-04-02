@@ -23,6 +23,7 @@ async function main() {
       // '--dry-run',
       '--tag',
       TAG,
+      '--provenance'
     ]);
     console.log(`⬆️${item}✅`);
   }

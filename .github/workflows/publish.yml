@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
 permissions:
+  id-token: write  
   contents: write
 jobs:
   publish:
@@ -31,7 +32,7 @@ jobs:
         run: rm -rf ./dist/test-out
       - name: Build project
         run: npm run lint
-      - name: Setup npmrc
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      # - name: Setup npmrc
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
       - run: npm run publish-only
