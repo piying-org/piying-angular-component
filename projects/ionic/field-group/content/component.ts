@@ -20,7 +20,7 @@ type Prop = JSX.IonContent;
     SelectorlessOutlet,
   ],
 })
-export class IonListFGC extends PiyingViewGroupBase {
+export class IonContentFGC extends PiyingViewGroupBase {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
   readonly StrOrTemplateComponent = StrOrTemplateComponent;

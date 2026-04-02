@@ -37,6 +37,7 @@ import {
 } from '@piying-lib/angular-ionic/wrapper';
 import {
   IonCardFGC,
+  IonContentFGC,
   IonListFGC,
   IonMenuFGC,
   IonToolbarFGC,
@@ -88,6 +89,9 @@ export const PresetDefine = {
     },
     list: {
       type: IonListFGC,
+    },
+    content: {
+      type: IonContentFGC,
     },
     card: {
       type: IonCardFGC,
