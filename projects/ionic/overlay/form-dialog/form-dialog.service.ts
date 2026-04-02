@@ -3,6 +3,7 @@ import { IonModal } from '@ionic/angular/standalone';
 import { JSX } from '@ionic/core';
 import { merge } from 'es-toolkit';
 import * as v from 'valibot';
+import { PartialDeep } from 'type-fest';
 type Prop = JSX.IonModal;
 export type FormDialogOptions<
   Schema extends v.BaseSchema<any, any, any> = v.BaseSchema<any, any, any>,
@@ -12,7 +13,7 @@ export type FormDialogOptions<
 
   title: string;
   schema: Schema;
-  value?: v.InferInput<Schema>;
+  value?: PartialDeep<v.InferInput<Schema>>;
   cancelButton?: any;
   submitButton?: any;
 

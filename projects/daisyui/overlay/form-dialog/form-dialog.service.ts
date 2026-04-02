@@ -1,5 +1,6 @@
 import { Injectable, Injector, signal } from '@angular/core';
 import * as v from 'valibot';
+import { PartialDeep } from 'type-fest';
 
 export interface FormDialogOptions<
   Schema extends v.BaseSchema<any, any, any> = v.BaseSchema<any, any, any>,
@@ -9,7 +10,7 @@ export interface FormDialogOptions<
 
   title: string;
   schema: Schema;
-  value?: v.InferInput<Schema>;
+  value?: PartialDeep<v.InferInput<Schema>>;
   cancelButton?: any;
   /** 是否为模态框 */
   modal?: boolean;
@@ -27,7 +28,9 @@ export class FormDialogService {
 
   list$$ = this.#list$.asReadonly();
 
-  open<Schema extends v.BaseSchema<any, any, any>, ReturnValue>(options: Omit<FormDialogOptions<Schema, ReturnValue>, 'id' | 'close'>) {
+  open<Schema extends v.BaseSchema<any, any, any>, ReturnValue>(
+    options: Omit<FormDialogOptions<Schema, ReturnValue>, 'id' | 'close'>,
+  ) {
     const id = this.nextId++;
     const p = Promise.withResolvers<ReturnValue | undefined>();
     this.#addToList({

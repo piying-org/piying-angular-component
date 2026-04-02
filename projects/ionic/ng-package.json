@@ -5,5 +5,5 @@
     "entryFile": "index.ts"
   },
   "deleteDestPath": true,
-  "allowedNonPeerDependencies": ["@piying-lib/angular-core"]
+  "allowedNonPeerDependencies": ["@piying-lib/angular-core", "type-fest"]
 }
