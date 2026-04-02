@@ -246,6 +246,7 @@ export const IonicDevDefine = v.pipe(
         ];
       }),
     ),
+    __backButton: v.pipe(NFCSchema, safeDefine.setComponent('back-button')),
   }),
   actions.wrappers.patch(['div']),
   actions.class.top('ionic-page'),

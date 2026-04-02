@@ -10,7 +10,11 @@ import {
   IonTextareaFCC,
   IonToggleFCC,
 } from '@piying-lib/angular-ionic/field-control';
-import { IonButtonNFCC, StrOrTemplateComponent } from '@piying-lib/angular-ionic/non-field-control';
+import {
+  IonBackButtonNFCC,
+  IonButtonNFCC,
+  StrOrTemplateComponent,
+} from '@piying-lib/angular-ionic/non-field-control';
 
 import { computed } from '@angular/core';
 import {
@@ -84,6 +88,9 @@ export const PresetDefine = {
     },
     menu: {
       type: IonMenuFGC,
+    },
+    'back-button': {
+      type: IonBackButtonNFCC,
     },
   },
   wrappers: {

@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <ion-back-button
+    [property]="props()"
+    [class]="attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+  </ion-back-button>
+</ng-template>
