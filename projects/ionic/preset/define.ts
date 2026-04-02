@@ -20,6 +20,7 @@ import { computed } from '@angular/core';
 import {
   IonAvatarWC,
   IonBackdropWC,
+  IonButtonsWC,
   IonChipWC,
   IonColWC,
   IonFooterWC,
@@ -34,7 +35,12 @@ import {
   IonSkeletonTextWC,
   IonTitleWC,
 } from '@piying-lib/angular-ionic/wrapper';
-import { IonCardFGC, IonListFGC, IonMenuFGC } from '@piying-lib/angular-ionic/field-group';
+import {
+  IonCardFGC,
+  IonListFGC,
+  IonMenuFGC,
+  IonToolbarFGC,
+} from '@piying-lib/angular-ionic/field-group';
 function title2label<T>() {
   return actions.inputs.mapAsync<T>((field) => {
     const title$$ = computed(() => field.props()['title']);
@@ -92,6 +98,7 @@ export const PresetDefine = {
     'back-button': {
       type: IonBackButtonNFCC,
     },
+    toolbar: { type: IonToolbarFGC },
   },
   wrappers: {
     div: { type: DivWC },
@@ -109,6 +116,7 @@ export const PresetDefine = {
     'skeleton-text': { type: IonSkeletonTextWC },
     item: { type: IonItemWC },
     title: { type: IonTitleWC },
+    buttons: { type: IonButtonsWC },
     // todo临时添加
     fieldset: { type: DivWC },
   },

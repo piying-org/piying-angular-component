@@ -13,3 +13,4 @@ export { IonRowWC } from '../wrapper/row';
 export { IonSkeletonTextWC } from '../wrapper/skeleton-text';
 export * from './item';
 export * from './title';
+export * from './buttons';

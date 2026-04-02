@@ -247,9 +247,40 @@ export const IonicDevDefine = v.pipe(
       }),
     ),
     __backButton: v.pipe(NFCSchema, safeDefine.setComponent('back-button')),
+    __toolbar: v.pipe(
+      v.object({
+        // __btn: v.pipe(
+        //   v.object({
+        //     __backButton: v.pipe(NFCSchema, safeDefine.setComponent('back-button')),
+        //   }),
+        //   actions.wrappers.patch(['buttons']),
+        // ),
+        _title: v.pipe(
+          NFCSchema,
+          safeDefine.setComponent('common-data', (actions) => {
+            return [actions.inputs.patch({ content: '标题' })];
+          }),
+          actions.wrappers.patch(['title']),
+        ),
+      }),
+
+      safeDefine.setComponent('toolbar', (actions) => {
+        return [
+          actions.inputs.patch({
+            start: v.pipe(
+              v.object({
+                __backButton: v.pipe(NFCSchema, safeDefine.setComponent('back-button')),
+              }),
+              actions.wrappers.patch(['buttons']),
+            ),
+          }),
+        ];
+      }),
+      actions.wrappers.patch([{ type: 'div', attributes: { class: 'can-go-back' } }, 'header']),
+    ),
   }),
   actions.wrappers.patch(['div']),
-  actions.class.top('ionic-page'),
+  actions.class.top('ionic-page '),
   // actions.providers.patch([]),
   actions.hooks.merge({
     allFieldsResolved: (field) => {
