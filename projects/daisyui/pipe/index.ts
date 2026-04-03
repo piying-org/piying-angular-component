@@ -1,3 +1,3 @@
 export * from './css-prefix.pipe';
-export * from './merge-class.pipe';
+export { MergeClassPipe } from '@piying-lib/angular-core';
 export * from './tw-prefix.pipe';
