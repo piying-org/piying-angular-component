@@ -59,6 +59,8 @@ import { PaginationDefine } from './piying/page/component/extension/pagination';
 import { MenuTreeDefine } from './piying/page/component/extension/menu-tree';
 import { IonicDevDefine } from '@@py/page/ionic/dev';
 import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
+import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
+import * as v from 'valibot';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -648,6 +650,48 @@ export const routes: Routes = [
               schema: () => IonicDevDefine,
               options: () => IonOptions,
             },
+          },
+        ],
+      },
+      {
+        path: 'mobile',
+        children: [
+          {
+            path: 'dev',
+            component: SchemaViewPage,
+            data: {
+              schema: () => DaiMobileDev,
+              options: () => options,
+            },
+            children: [
+              {
+                path: 'tab',
+                outlet: 'tab1',
+                component: SchemaViewPage,
+                data: {
+                  schema: () => v.string(),
+                  options: () => options,
+                },
+              },
+              {
+                path: 'tab',
+                outlet: 'tab2',
+                component: SchemaViewPage,
+                data: {
+                  schema: () => v.string(),
+                  options: () => options,
+                },
+              },
+              {
+                path: 'tab',
+                outlet: 'tab3',
+                component: SchemaViewPage,
+                data: {
+                  schema: () => v.string(),
+                  options: () => options,
+                },
+              },
+            ],
           },
         ],
       },

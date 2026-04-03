@@ -7,3 +7,4 @@ export { ListTemplateNFCC } from './list-template/component';
 export { EditableGroupFGC as EditableArrayFGC } from './editable-group';
 export { CheckboxListFGC } from './checkbox-list';
 export { logicGroupFGC } from './logic-group';
+export {DockTabNFCC} from './dock-tab'

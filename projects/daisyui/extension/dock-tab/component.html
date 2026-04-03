@@ -1,0 +1,35 @@
+<ng-template #templateRef let-attr="attributes">
+  <!-- @let activatedField = activatedIndex$(); -->
+  <!-- @if (activatedField) {} -->
+  @for (item of list(); track $index) {
+    @if ($index === activatedIndex$()) {
+      <router-outlet [name]="item.name!"></router-outlet>
+    }
+  }
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class | mergeClass: ('dock' | cssPrefix) : wrapperClass$()"
+  >
+    @for (option of list(); track $index) {
+      <button
+        (click)="toggleActivate($index)"
+        [class]="$index === activatedIndex$() ? ('dock-active' | cssPrefix) : ''"
+        [routerLink]="option.router!.routerLink"
+      >
+        @let icon = option['icon']!;
+        <mat-icon
+          [inline]="icon.inline"
+          [fontIcon]="icon.fontIcon!"
+          [fontSet]="icon.fontSet!"
+          [svgIcon]="icon.svgIcon!"
+        ></mat-icon>
+        @let title = option['title'];
+
+        @if (title) {
+          <span [class]="'dock-label' | cssPrefix">{{ title }}</span>
+        }
+      </button>
+    }
+  </div>
+</ng-template>

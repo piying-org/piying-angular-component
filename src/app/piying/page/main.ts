@@ -159,6 +159,11 @@ export const MainPage = v.pipe(
                 title: 'IONIC',
                 children: [{ title: 'dev', router: { routerLink: './ionic/dev' } }],
               },
+              {
+                type: 'group',
+                title: 'mobile',
+                children: [{ title: 'dev', router: { routerLink: './mobile/dev' } }],
+              },
             ],
           }),
           actions.class.top('min-w-[250px]'),

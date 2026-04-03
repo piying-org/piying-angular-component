@@ -134,6 +134,9 @@ export const PresetDefine = {
     'filter-option': {
       type: ExtWrapperGroup.FilterOptionNFCC,
     },
+    'dock-tab': {
+      type: ExtComponentGroup.DockTabNFCC,
+    },
   },
   wrappers: {
     // 默认包装器
