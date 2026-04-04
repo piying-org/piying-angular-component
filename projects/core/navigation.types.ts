@@ -22,11 +22,11 @@ export const SubsetMatchOptions: IsActiveMatchOptions = {
 export interface NavigationItem {
   title?: string;
   subtitle?: string;
-  type: 'basic' | 'divider' | 'group';
+  type?: 'basic' | 'divider' | 'group';
   hidden?: (item: NavigationItem) => boolean;
   disabled?: boolean;
   tooltip?: string;
-  function?: (item: NavigationItem) => void;
+  clicked?: (event:PointerEvent, item: NavigationItem) => void;
   icon?: IconConfig;
   badge?: {
     title?: string;

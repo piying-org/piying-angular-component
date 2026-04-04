@@ -10,16 +10,21 @@ export default v.pipe(
           actions.inputs.patch({
             list: [
               {
-                type: 'basic',
                 title: '菜单项 1',
                 icon: { fontIcon: 'home' },
                 router: { routerLink: '/path1' },
               },
               {
-                type: 'basic',
                 title: '菜单项 2',
                 icon: { fontIcon: 'settings' },
                 router: { routerLink: '/path2' },
+              },
+              {
+                title: '可点击',
+                icon: { fontIcon: 'ads_click' },
+                clicked(event, item) {
+                  console.log(event, item);
+                },
               },
               { type: 'divider' },
               {

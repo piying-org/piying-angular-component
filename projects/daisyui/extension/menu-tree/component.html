@@ -46,7 +46,9 @@
       <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
     </a>
   } @else {
-    <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
+    <a>
+      <ng-container *ngTemplateOutlet="liBaseContent; context: { $implicit: item }"></ng-container>
+    </a>
   }
 </ng-template>
 <ng-template #liGroup let-item>
@@ -75,7 +77,11 @@
         <li></li>
       }
       @default {
-        <li class="tooltip" [attr.data-tip]="item.tooltip || ''">
+        <li
+          class="tooltip"
+          [attr.data-tip]="item.tooltip || ''"
+          (click)="item.clicked?.($event, item)"
+        >
           <ng-container *ngTemplateOutlet="liBase; context: { $implicit: item }"></ng-container>
         </li>
       }
