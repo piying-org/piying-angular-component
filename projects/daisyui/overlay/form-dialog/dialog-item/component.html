@@ -5,7 +5,7 @@
 
       <piying-view
         [schema]="item().schema"
-        [options]="options$$()"
+        [options]="options2$$()"
         [model]="item().value"
         (modelChange)="modelChange($event)"
         class="flex-1 overflow-auto py-4"
@@ -15,7 +15,9 @@
         <button class="btn btn-error" (click)="close()">
           <ng-template
             [selectlessOutlet]="StrOrTemplateComponent"
-            [selectlessOutletInputs]="{ content: item().cancelButton ?? 'Cancel' }"
+            [selectlessOutletInputs]="{
+              content: item().cancelButton ?? 'Cancel',
+            }"
           ></ng-template>
         </button>
 

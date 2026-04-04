@@ -17,6 +17,7 @@ export interface FormDialogOptions<
   applyValue?: (value: v.InferOutput<Schema>) => Promise<ReturnValue | undefined>;
   injector: Injector;
   close: (value: any) => Promise<any>;
+  context?: Record<string, any>;
 }
 
 @Injectable({

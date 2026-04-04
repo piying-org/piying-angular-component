@@ -41,4 +41,13 @@ export class FormDialogItemComponent {
   modelChange(value: any) {
     this.changedValue.set(value);
   }
+  options2$$ = computed(() => {
+    return {
+      ...this.options$$(),
+      context: {
+        ...this.options$$().context,
+        ...this.item().context,
+      },
+    };
+  });
 }
