@@ -37,6 +37,7 @@ export class CardFGC extends PiyingViewGroupBase {
   figureKey = input('figure');
   /** 操作字段键名 */
   actionsKey = input('actions');
+  bodyKey = input('body');
   titleFiled$$ = computed(() => {
     return this.field$$()
       .children?.()
@@ -59,12 +60,23 @@ export class CardFGC extends PiyingViewGroupBase {
       });
   });
   bodyChildren$$ = computed(() => {
-    return this.field$$()
+    let item = this.field$$()
       .children?.()
-      .filter((field) => {
-        const key = field.keyPath?.slice(-1)[0];
-        return !(key === this.titleKey() || key === this.figureKey() || key === this.actionsKey());
+      .find((field) => {
+        return field.keyPath?.slice(-1)[0] === this.bodyKey();
       });
+    return item
+      ? [item]
+      : this.field$$()
+          .children?.()
+          .filter((field) => {
+            const key = field.keyPath?.slice(-1)[0];
+            return !(
+              key === this.titleKey() ||
+              key === this.figureKey() ||
+              key === this.actionsKey()
+            );
+          });
   });
   #theme = inject(ThemeService);
   wrapperClass$ = computed(() => {
