@@ -9,25 +9,22 @@ export const DaiMobileDev = v.object({
         actions.inputs.patch({
           list: [
             {
-              name: 'tab1',
               title: '1',
-              router: { routerLink: [{ outlets: { tab1: ['tab'] } }] },
+              router: { routerLink: ['tab1'] },
               icon: {
                 fontIcon: 'add',
               },
             },
             {
-              name: 'tab2',
               title: '2',
-              router: { routerLink: [{ outlets: { tab2: ['tab'] } }] },
+              router: { routerLink: ['tab2'] },
               icon: {
                 fontIcon: 'add',
               },
             },
             {
-              name: 'tab3',
               title: '3',
-              router: { routerLink: [{ outlets: { tab3: ['tab'] } }] },
+              router: { routerLink: ['tab3'] },
               icon: {
                 fontIcon: 'add',
               },

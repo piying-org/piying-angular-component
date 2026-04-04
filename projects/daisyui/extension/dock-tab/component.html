@@ -1,21 +1,30 @@
 <ng-template #templateRef let-attr="attributes">
-  <!-- @let activatedField = activatedIndex$(); -->
-  <!-- @if (activatedField) {} -->
-  @for (item of list(); track $index) {
-    @if ($index === activatedIndex$()) {
-      <router-outlet [name]="item.name!"></router-outlet>
-    }
-  }
+  <router-outlet></router-outlet>
+
   <div
     [attributes]="attr()"
     [excludes]="['class']"
     [class]="attr()?.class | mergeClass: ('dock' | cssPrefix) : wrapperClass$()"
   >
     @for (option of list(); track $index) {
+      @let router = option.router;
       <button
         (click)="toggleActivate($index)"
-        [class]="$index === activatedIndex$() ? ('dock-active' | cssPrefix) : ''"
-        [routerLink]="option.router!.routerLink"
+        [queryParams]="router.queryParams"
+        [fragment]="router.fragment"
+        [queryParamsHandling]="router.queryParamsHandling"
+        [state]="router.state"
+        [info]="router.info"
+        [relativeTo]="router.relativeTo"
+        [target]="router.target"
+        [preserveFragment]="router.preserveFragment"
+        [skipLocationChange]="router.skipLocationChange"
+        [replaceUrl]="router.replaceUrl"
+        [routerLink]="router.routerLink"
+        [preserveFragment]="router.preserveFragment"
+        routerLinkActive="dock-active"
+        [routerLinkActiveOptions]="router.activate?.routerLinkActiveOptions ?? { exact: false }"
+        [ariaCurrentWhenActive]="router.activate?.ariaCurrentWhenActive ?? undefined"
       >
         @let icon = option['icon']!;
         <mat-icon

@@ -2,6 +2,7 @@ import {
   ActivatedRoute,
   IsActiveMatchOptions,
   Params,
+  QueryParamsHandling,
   RouterLinkActive,
   UrlTree,
 } from '@angular/router';
@@ -32,11 +33,10 @@ export interface NavigationItem {
     class?: string;
   };
   children?: NavigationItem[];
-  name?: string;
   router?: {
     queryParams?: Params;
     fragment?: string;
-    queryParamsHandling?: string;
+    queryParamsHandling?: QueryParamsHandling;
     state?: { [k: string]: any };
     info?: unknown;
     relativeTo?: ActivatedRoute | null;

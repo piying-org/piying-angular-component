@@ -665,8 +665,7 @@ export const routes: Routes = [
             },
             children: [
               {
-                path: 'tab',
-                outlet: 'tab1',
+                path: 'tab1',
                 component: SchemaViewPage,
                 data: {
                   schema: () => v.string(),
@@ -674,8 +673,7 @@ export const routes: Routes = [
                 },
               },
               {
-                path: 'tab',
-                outlet: 'tab2',
+                path: 'tab2',
                 component: SchemaViewPage,
                 data: {
                   schema: () => v.string(),
@@ -683,8 +681,7 @@ export const routes: Routes = [
                 },
               },
               {
-                path: 'tab',
-                outlet: 'tab3',
+                path: 'tab3',
                 component: SchemaViewPage,
                 data: {
                   schema: () => v.string(),

@@ -33,7 +33,6 @@ const routerLinkActiveOptions = { exact: false };
     NgTemplateOutlet,
     MatIconModule,
     MergeClassPipe,
-    MergeClassPipe,
   ],
 })
 export class MenuTreeNFCC {

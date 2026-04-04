@@ -6,7 +6,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { NavigationItem, Size } from '@piying-lib/angular-core';
 
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SetOptional, SetRequired } from 'type-fest';
 
 /**
@@ -17,15 +17,20 @@ import { SetOptional, SetRequired } from 'type-fest';
 @Component({
   selector: 'app-dock-tab',
   templateUrl: './component.html',
-  imports: [AttributesDirective, MatIcon, CssPrefixPipe, MergeClassPipe, RouterLink, RouterOutlet],
+  imports: [
+    AttributesDirective,
+    MatIcon,
+    CssPrefixPipe,
+    MergeClassPipe,
+    RouterLink,
+    RouterOutlet,
+    RouterLinkActive,
+  ],
 })
 export class DockTabNFCC {
   static __version = 2;
   templateRef = viewChild.required('templateRef');
-  list =
-    input<
-      SetOptional<SetRequired<NavigationItem, 'icon' | 'name' | 'router' | 'title'>, 'type'>[]
-    >();
+  list = input<SetOptional<SetRequired<NavigationItem, 'icon' | 'router' | 'title'>, 'type'>[]>();
   /** 尺寸大小 */
   size = input<Size>();
 
