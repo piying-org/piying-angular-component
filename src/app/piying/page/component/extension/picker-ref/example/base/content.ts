@@ -1,6 +1,7 @@
 import * as v from 'valibot';
 import { actions, NFCSchema } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
+import { ContentButton, TriggerButton } from '../../const';
 export default v.pipe(
   v.tuple([
     v.pipe(
@@ -8,8 +9,8 @@ export default v.pipe(
       safeDefine.setComponent('picker-ref', (actions) => {
         return [
           actions.inputs.patch({
-            trigger: '点击选择',
-            content: { type: 'string' },
+            trigger: TriggerButton,
+            content: ContentButton,
             overlayConfig: { positionStrategy: undefined },
           }),
         ];

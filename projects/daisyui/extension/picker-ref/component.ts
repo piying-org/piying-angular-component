@@ -20,6 +20,7 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { OverlayConfig } from '@angular/cdk/overlay';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
+import * as v from 'valibot';
 /*
  * PickerRefFCC - 选择器引用组件
  *
@@ -59,9 +60,9 @@ export class PickerRefFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   readonly PiyingView = PiyingView;
   /** 触发器内容 */
-  trigger = input();
+  trigger = input<v.BaseSchema<any, any, any>>();
   /** 弹窗内容 */
-  content = input();
+  content = input<v.BaseSchema<any, any, any>>();
   /** 选择后是否自动关闭 */
   changeClose = input<boolean>();
   isOpen$ = signal(false);
@@ -88,7 +89,17 @@ export class PickerRefFCC extends BaseControl {
   contentInput$$ = computed(() => {
     return {
       schema: this.content,
-      options: this.parentPyOptions!,
+      options: computed(() => {
+        return {
+          ...this.parentPyOptions!(),
+          context: {
+            ...this.parentPyOptions!().context,
+            close: () => {
+              this.isOpen$.set(false);
+            },
+          },
+        };
+      }),
       selectorless: true,
       model: this.value$,
     } as any;

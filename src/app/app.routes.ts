@@ -61,6 +61,7 @@ import { IonicDevDefine } from '@@py/page/ionic/dev';
 import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
 import * as v from 'valibot';
+import { PickerRefDefine } from '@@py/page/component/extension/picker-ref';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -522,6 +523,14 @@ export const routes: Routes = [
             component: SchemaViewPage,
             data: {
               schema: () => ProgressDefine,
+              options: () => options,
+            },
+          },
+          {
+            path: 'picker-ref',
+            component: SchemaViewPage,
+            data: {
+              schema: () => PickerRefDefine,
               options: () => options,
             },
           },

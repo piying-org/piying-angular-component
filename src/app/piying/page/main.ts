@@ -71,6 +71,7 @@ export const MainPage = v.pipe(
                   { title: 'pagination', router: { routerLink: './example/pagination' } },
                   { title: 'password', router: { routerLink: './example/password' } },
                   { title: 'progress', router: { routerLink: './example/progress' } },
+                  { title: 'picker-ref', router: { routerLink: './example/picker-ref' } },
                   { title: 'radial-progress', router: { routerLink: './example/radial-progress' } },
                   { title: 'radio', router: { routerLink: './example/radio' } },
                   { title: 'range', router: { routerLink: './example/range' } },
