@@ -4,3 +4,4 @@ export * from './status';
 export * from './checkbox';
 export * from './checkbox/table-checkbox.service';
 export * from './table-resource.service';
+export * from './infinite-list.service';
