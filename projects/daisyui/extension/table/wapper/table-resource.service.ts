@@ -13,17 +13,17 @@ export class TableResourceService {
   EMPTY_VALUE = [0, EMPTY_ARRAY];
   #requestFn$ = signal<RequestFn>(undefined);
   #queryParams$ = signal({});
-  #nextSubject?: Subject<void>;
+  #nextSubject = new Subject<void>();
   #data$ = resource({
     params: computed(() => {
-      const nextPromise = this.#nextSubject;
+      const nextSubject = this.#nextSubject;
       const params = this.#queryParams$();
       const requestFn = this.#requestFn$();
       return {
         requestFn,
         params,
         index: this.#updateIndex$(),
-        nextPromise,
+        nextSubject,
       };
     }),
     loader: async (res) => {
@@ -36,8 +36,8 @@ export class TableResourceService {
       }
 
       const result = await res.params.requestFn(res.params.params, needUpdate);
-      res.params.nextPromise!.next();
-      res.params.nextPromise!.complete();
+      res.params.nextSubject.next();
+      res.params.nextSubject.complete();
 
       return result;
     },
