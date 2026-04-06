@@ -7,10 +7,10 @@ export type RequestFn =
       needUpdate: boolean,
     ) => Promise<readonly [number, any[]]> | readonly [number, any[]])
   | undefined;
-
+const EMPTY_ARRAY: any[] = [];
 @Injectable()
 export class TableResourceService {
-  EMPTY_VALUE = [0, []];
+  EMPTY_VALUE = [0, EMPTY_ARRAY];
   #requestFn$ = signal<RequestFn>(undefined);
   #queryParams$ = signal({});
   #nextSubject?: Subject<void>;
@@ -43,7 +43,7 @@ export class TableResourceService {
     },
   });
   list$$ = computedWithPrev<any[]>((value) => {
-    return (this.#data$.value()?.[1] as any[]) ?? value ?? [];
+    return (this.#data$.value()?.[1] as any[]) ?? value ?? EMPTY_ARRAY;
   });
   count$$ = computedWithPrev<number>((value) => {
     return (this.#data$.value()?.[0] as number) ?? value ?? 0;
