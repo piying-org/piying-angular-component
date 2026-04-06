@@ -2,13 +2,13 @@ import { Component, computed, inject, input, linkedSignal, signal, viewChild } f
 import { FormDialogOptions, FormDialogService } from '../form-dialog.service';
 import { CssPrefixPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { MergeClassPipe, StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 
 @Component({
   selector: 'pi-form-dialog-item',
   templateUrl: './component.html',
-  imports: [CssPrefixPipe, TwPrefixPipe, SelectorlessOutlet, PiyingView],
+  imports: [CssPrefixPipe, TwPrefixPipe, SelectorlessOutlet, PiyingView, MergeClassPipe],
 })
 export class FormDialogItemComponent {
   static __version = 2;

@@ -1,5 +1,5 @@
 <ng-template #templateRef>
-  <dialog [class]="'modal' | cssPrefix" open>
+  <dialog [class]="'modal' | cssPrefix | mergeClass: item().class" open>
     <div class="modal-box">
       <h2 [class]="'text-lg font-bold' | twPrefix">{{ item().title }}</h2>
 

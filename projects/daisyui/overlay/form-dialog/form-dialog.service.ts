@@ -18,6 +18,7 @@ export interface FormDialogOptions<
   injector: Injector;
   close: (value: any) => Promise<any>;
   context?: Record<string, any>;
+  class?: string;
 }
 
 @Injectable({
