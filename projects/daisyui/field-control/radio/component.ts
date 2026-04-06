@@ -4,6 +4,7 @@ import {
   forwardRef,
   inject,
   input,
+  output,
   TemplateRef,
   viewChild,
 } from '@angular/core';
@@ -79,4 +80,9 @@ export class RadioFCC extends BaseControl {
       this.#theme.setSize('radio', this.size()),
     );
   });
+  optionChange = output<ResolvedOption>();
+  itemSelectedChange(item: ResolvedOption) {
+    this.valueAndTouchedChange(item.value);
+    this.optionChange.emit(item);
+  }
 }
