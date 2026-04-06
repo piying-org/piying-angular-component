@@ -26,16 +26,4 @@ export class InfiniteListService extends TableResourceService {
   allList$$ = computed(() => {
     return this.#allList$$().data;
   });
-  override setRequest(
-    fn: NonNullable<RequestFn>,
-    needReset?: (...args: Parameters<NonNullable<RequestFn>>) => boolean,
-  ): void {
-    return super.setRequest(async (...args: Parameters<NonNullable<RequestFn>>) => {
-      const result = await fn(...args);
-      if (needReset?.(...args)) {
-        return result;
-      }
-      return [result[0], this.list$$().slice().concat(result[1])];
-    });
-  }
 }
