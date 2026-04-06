@@ -13,6 +13,7 @@ export class TableResourceService {
   EMPTY_VALUE = [0, EMPTY_ARRAY];
   #requestFn$ = signal<RequestFn>(undefined);
   #queryParams$ = signal({});
+  queryParams$$ = this.#queryParams$.asReadonly();
   #nextSubject = new Subject<void>();
   #data$ = resource({
     params: computed(() => {
