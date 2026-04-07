@@ -3,6 +3,7 @@ import { NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { RouterOutlet } from '@angular/router';
 import { safeDefine } from '@@piying-define';
+import { ExampleRouterConfig } from '../../const/example.router.define';
 export const MainPage = v.pipe(
   v.object({
     content: v.object({
@@ -38,58 +39,7 @@ export const MainPage = v.pipe(
               {
                 title: 'example',
                 type: 'group',
-                children: [
-                  { title: 'button', router: { routerLink: './example/button' } },
-                  { title: 'alert', router: { routerLink: './example/alert' } },
-                  { title: 'avatar', router: { routerLink: './example/avatar' } },
-                  { title: 'badge', router: { routerLink: './example/badge' } },
-                  { title: 'breadcrumbs', router: { routerLink: './example/breadcrumbs' } },
-                  { title: 'calendar', router: { routerLink: './example/calendar' } },
-                  { title: 'card', router: { routerLink: './example/card' } },
-                  { title: 'carousel', router: { routerLink: './example/carousel' } },
-                  { title: 'category', router: { routerLink: './example/category' } },
-                  { title: 'checkbox', router: { routerLink: './example/checkbox' } },
-                  { title: 'divider', router: { routerLink: './example/divider' } },
-                  { title: 'dock', router: { routerLink: './example/dock' } },
-                  { title: 'drawer', router: { routerLink: './example/drawer' } },
-                  { title: 'dropdown', router: { routerLink: './example/dropdown' } },
-                  { title: 'editable-badge', router: { routerLink: './example/editable-badge' } },
-                  { title: 'editable-group', router: { routerLink: './example/editable-group' } },
-                  { title: 'fab', router: { routerLink: './example/fab' } },
-                  { title: 'file-input', router: { routerLink: './example/file-input' } },
-                  {
-                    title: 'file-input-button',
-                    router: { routerLink: './example/file-input-button' },
-                  },
-                  { title: 'form', router: { routerLink: './example/form' } },
-                  { title: 'group', router: { routerLink: './example/group' } },
-                  { title: 'input-button', router: { routerLink: './example/input-button' } },
-                  { title: 'kbd', router: { routerLink: './example/kbd' } },
-                  { title: 'loading', router: { routerLink: './example/loading' } },
-                  { title: 'logic', router: { routerLink: './example/logic' } },
-                  { title: 'menu-tree', router: { routerLink: './example/menu-tree' } },
-                  { title: 'pagination', router: { routerLink: './example/pagination' } },
-                  { title: 'password', router: { routerLink: './example/password' } },
-                  { title: 'progress', router: { routerLink: './example/progress' } },
-                  { title: 'picker-ref', router: { routerLink: './example/picker-ref' } },
-                  { title: 'radial-progress', router: { routerLink: './example/radial-progress' } },
-                  { title: 'radio', router: { routerLink: './example/radio' } },
-                  { title: 'range', router: { routerLink: './example/range' } },
-                  { title: 'rating', router: { routerLink: './example/rating' } },
-                  { title: 'select', router: { routerLink: './example/select' } },
-                  { title: 'stat', router: { routerLink: './example/stat' } },
-                  { title: 'status', router: { routerLink: './example/status' } },
-                  { title: 'steps', router: { routerLink: './example/steps' } },
-                  { title: 'swap', router: { routerLink: './example/swap' } },
-                  { title: 'table', router: { routerLink: './example/table' } },
-                  { title: 'tabs', router: { routerLink: './example/tabs' } },
-                  { title: 'textarea', router: { routerLink: './example/textarea' } },
-                  {
-                    title: 'theme-controller',
-                    router: { routerLink: './example/theme-controller' },
-                  },
-                  { title: 'toggle', router: { routerLink: './example/toggle' } },
-                ],
+                children: ExampleRouterConfig.map((item) => item.config),
               },
 
               { title: 'array', router: { routerLink: './component/array' } },
