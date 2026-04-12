@@ -21,15 +21,15 @@ const defaultValue = Promise.resolve(undefined);
   standalone: true,
   imports: [SelectorlessOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '[id]': 'id()' },
+  host: { '[id]': 'id' },
 })
 export class SchemaViewPage {
   static index = 0;
-  id = input(`pi-page-${SchemaViewPage.index++}`);
   #route = inject(ActivatedRoute);
   #injector = inject(Injector);
 
   readonly PiyingView = PiyingView;
+  id = this.#route.snapshot.data['id']?.() ?? `pi-page-${SchemaViewPage.index++}`;
   #schema = this.#route.snapshot.data['schema']();
   #model = resource({
     loader: async () =>

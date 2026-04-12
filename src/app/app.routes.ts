@@ -116,6 +116,7 @@ export const routes: Routes = [
             data: {
               schema: () => TableDefine,
               options: () => options,
+              id: () => 'table-page',
             },
           },
           {
