@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   Injector,
+  input,
   resource,
   runInInjectionContext,
 } from '@angular/core';
@@ -20,8 +21,11 @@ const defaultValue = Promise.resolve(undefined);
   standalone: true,
   imports: [SelectorlessOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '[id]': 'id()' },
 })
 export class SchemaViewPage {
+  static index = 0;
+  id = input(`pi-page-${SchemaViewPage.index++}`);
   #route = inject(ActivatedRoute);
   #injector = inject(Injector);
 
