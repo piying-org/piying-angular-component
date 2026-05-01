@@ -47,7 +47,6 @@ export const MainPage = v.pipe(
               },
 
               { title: 'login', router: { routerLink: './component/login' } },
-              { title: 'group', router: { routerLink: './component/group' } },
               { title: 'overlay', router: { routerLink: './component/overlay' } },
               { title: 'page-input', router: { routerLink: './component/page-input' } },
               { type: 'divider' },

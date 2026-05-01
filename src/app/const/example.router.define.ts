@@ -22,7 +22,6 @@ import { DockDefine } from '@@py/page/component/field-group/dock';
 import { DrawerDefine } from '@@py/page/component/field-group/drawer';
 import { StepsDefine } from '@@py/page/component/field-group/steps';
 import { FormDefine } from '@@py/page/component/form';
-import { GroupDefine } from '@@py/page/component/group';
 import { AlertDefine } from '@@py/page/component/non-field-control/alert';
 import { AvatarDefine } from '@@py/page/component/non-field-control/avatar';
 import { BadgeDefine } from '@@py/page/component/non-field-control/badge';
@@ -297,17 +296,7 @@ export const ExampleRouterConfig = [
       },
     },
   },
-  {
-    config: { title: 'group', router: { routerLink: './example/group' } },
-    define: {
-      path: 'group',
-      component: SchemaViewPage,
-      data: {
-        schema: () => GroupDefine,
-        options: () => options,
-      },
-    },
-  },
+
   {
     config: {
       title: 'input-button',

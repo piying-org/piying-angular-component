@@ -8,7 +8,6 @@ import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { OverlayDefine } from './piying/page/component/overlay';
-import { GroupDefine } from './piying/page/component/group';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { FieldGlobalConfig } from './piying/define';
 import { PageInputDefine } from './piying/page/component/page-input';
@@ -79,15 +78,6 @@ export const routes: Routes = [
             component: SchemaViewPage,
             data: {
               schema: () => FormDefine,
-              options: () => options,
-            },
-          },
-
-          {
-            path: 'group',
-            component: SchemaViewPage,
-            data: {
-              schema: () => GroupDefine,
               options: () => options,
             },
           },
