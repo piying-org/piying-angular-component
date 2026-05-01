@@ -23,7 +23,6 @@ import { DrawerDefine } from '@@py/page/component/field-group/drawer';
 import { StepsDefine } from '@@py/page/component/field-group/steps';
 import { FormDefine } from '@@py/page/component/form';
 import { GroupDefine } from '@@py/page/component/group';
-import { LogicDefine } from '@@py/page/component/logic';
 import { AlertDefine } from '@@py/page/component/non-field-control/alert';
 import { AvatarDefine } from '@@py/page/component/non-field-control/avatar';
 import { BadgeDefine } from '@@py/page/component/non-field-control/badge';
@@ -47,6 +46,7 @@ import { TabsDefine } from '@@py/page/component/field-group/tabs';
 import { TableDefine } from '@@py/page/component/extension/table';
 import { FormArrayDefine } from '@@py/page/component/form/array';
 import { FormCheckListDefine } from '@@py/page/component/form/check-llist';
+import { FormLogicDefine } from '@@py/page/component/form/logic';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -344,17 +344,7 @@ export const ExampleRouterConfig = [
       },
     },
   },
-  {
-    config: { title: 'logic', router: { routerLink: './example/logic' } },
-    define: {
-      path: 'logic',
-      component: SchemaViewPage,
-      data: {
-        schema: () => LogicDefine,
-        options: () => options,
-      },
-    },
-  },
+
   {
     config: {
       title: 'menu-tree',
@@ -599,6 +589,17 @@ export const ExampleFormRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FormCheckListDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'logic', router: { routerLink: './example/form/logic' } },
+    define: {
+      path: 'logic',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FormLogicDefine,
         options: () => options,
       },
     },

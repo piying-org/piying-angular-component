@@ -7,7 +7,6 @@ import { AccountService } from './service/account.service';
 import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
-import { LogicDefine } from './piying/page/component/logic';
 import { OverlayDefine } from './piying/page/component/overlay';
 import { GroupDefine } from './piying/page/component/group';
 import { SchemaViewPage } from '@piying-lib/angular-core';
@@ -92,14 +91,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'logic',
-            component: SchemaViewPage,
-            data: {
-              schema: () => LogicDefine,
-              options: () => options,
-            },
-          },
+
           {
             path: 'overlay',
             component: SchemaViewPage,
