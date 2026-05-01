@@ -2,7 +2,7 @@ import * as v from 'valibot';
 import { NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { safeDefine } from '@@piying-define';
-import { ExampleRouterConfig } from '../../const/example.router.define';
+import { ExampleFormRouterConfig, ExampleRouterConfig } from '../../const/example.router.define';
 export const MainPage = v.pipe(
   v.object({
     content: v.object({
@@ -39,6 +39,11 @@ export const MainPage = v.pipe(
                 title: 'example',
                 type: 'group',
                 children: ExampleRouterConfig.map((item) => item.config),
+              },
+              {
+                title: 'form',
+                type: 'group',
+                children: ExampleFormRouterConfig.map((item) => item.config),
               },
 
               { title: 'array', router: { routerLink: './component/array' } },

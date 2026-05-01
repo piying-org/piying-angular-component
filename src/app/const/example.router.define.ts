@@ -45,6 +45,8 @@ import { CalendarDefine } from '@@py/page/component/field-control/calendar';
 import { SelectDefine } from '@@py/page/component/field-control/select';
 import { TabsDefine } from '@@py/page/component/field-group/tabs';
 import { TableDefine } from '@@py/page/component/extension/table';
+import { FormArrayDefine } from '@@py/page/component/form/array';
+import { FormCheckListDefine } from '@@py/page/component/form/check-llist';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -573,6 +575,30 @@ export const ExampleRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => ToggleDefine,
+        options: () => options,
+      },
+    },
+  },
+];
+export const ExampleFormRouterConfig = [
+  {
+    config: { title: 'array', router: { routerLink: './example/form/array' } },
+    define: {
+      path: 'array',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FormArrayDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'check-list', router: { routerLink: './example/form/check-list' } },
+    define: {
+      path: 'check-list',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FormCheckListDefine,
         options: () => options,
       },
     },

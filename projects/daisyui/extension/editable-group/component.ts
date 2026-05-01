@@ -45,7 +45,7 @@ export class EditableGroupFGC extends PiyingViewGroupBase {
 
   PiyingView = PiyingView;
   /** 布局方式 */
-  layout = input<'row' | 'columen'>('row');
+  layout = input<'row' | 'column'>('row');
   /** 是否禁用添加 */
   disableAdd = input(false);
   /** 添加模式 */

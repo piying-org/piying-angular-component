@@ -7,7 +7,6 @@ import { AccountService } from './service/account.service';
 import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
-import { ArrayDefine } from './piying/page/component/array';
 import { LogicDefine } from './piying/page/component/logic';
 import { OverlayDefine } from './piying/page/component/overlay';
 import { GroupDefine } from './piying/page/component/group';
@@ -18,7 +17,7 @@ import { IonicDevDefine } from '@@py/page/ionic/dev';
 import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
 import * as v from 'valibot';
-import { ExampleRouterConfig } from './const/example.router.define';
+import { ExampleFormRouterConfig, ExampleRouterConfig } from './const/example.router.define';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -84,14 +83,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'array',
-            component: SchemaViewPage,
-            data: {
-              schema: () => ArrayDefine,
-              options: () => options,
-            },
-          },
+
           {
             path: 'group',
             component: SchemaViewPage,
@@ -158,6 +150,10 @@ export const routes: Routes = [
           },
 
           ...ExampleRouterConfig.map((item) => item.define),
+          {
+            path: 'form',
+            children: ExampleFormRouterConfig.map((item) => item.define),
+          },
         ],
       },
 
