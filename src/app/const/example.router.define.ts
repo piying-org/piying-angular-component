@@ -3,7 +3,6 @@ import { faker } from '@faker-js/faker';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { PickerRefDefine } from '@@py/page/component/extension/picker-ref';
 import { FieldGlobalConfig } from '@@piying-define';
-import { CategoryDefine } from '@@py/page/component/category';
 import { EditableGroupDefine } from '@@py/page/component/extension/editable-group';
 import { MenuTreeDefine } from '@@py/page/component/extension/menu-tree';
 import { PaginationDefine } from '@@py/page/component/extension/pagination';
@@ -42,10 +41,10 @@ import { RadialProgressDefine } from '@@py/page/component/non-field-control/radi
 import { StatDefine } from '@@py/page/component/non-field-control/stat';
 import { StatusDefine } from '@@py/page/component/non-field-control/status';
 import { ThemeControllerDefine } from '@@py/page/component/non-field-control/theme-controller';
-import { TableDefine } from '@@py/page/component/table';
 import { CalendarDefine } from '@@py/page/component/field-control/calendar';
 import { SelectDefine } from '@@py/page/component/field-control/select';
 import { TabsDefine } from '@@py/page/component/field-group/tabs';
+import { TableDefine } from '@@py/page/component/extension/table';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -162,17 +161,7 @@ export const ExampleRouterConfig = [
       },
     },
   },
-  {
-    config: { title: 'category', router: { routerLink: './example/category' } },
-    define: {
-      path: 'category',
-      component: SchemaViewPage,
-      data: {
-        schema: () => CategoryDefine,
-        options: () => options,
-      },
-    },
-  },
+
   {
     config: { title: 'checkbox', router: { routerLink: './example/checkbox' } },
     define: {

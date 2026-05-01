@@ -1,11 +1,9 @@
 import { Routes } from '@angular/router';
 import { MainPage } from './piying/page/main';
-import { TableDefine } from './piying/page/component/table';
 import { LoginDefine } from './piying/page/component/login';
 import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
-import { CategoryDefine } from './piying/page/component/category';
 import { CardDefine } from './piying/page/component/field-group/card';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
@@ -103,26 +101,10 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'category',
+            redirectTo: 'login',
             pathMatch: 'full',
           },
-          {
-            path: 'table',
-            component: SchemaViewPage,
-            data: {
-              schema: () => TableDefine,
-              options: () => options,
-              id: () => 'table-page',
-            },
-          },
-          {
-            path: 'category',
-            component: SchemaViewPage,
-            data: {
-              schema: () => CategoryDefine,
-              options: () => options,
-            },
-          },
+
           {
             path: 'login',
             component: SchemaViewPage,
