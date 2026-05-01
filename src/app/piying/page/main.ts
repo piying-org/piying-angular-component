@@ -1,7 +1,6 @@
 import * as v from 'valibot';
 import { NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
-import { RouterOutlet } from '@angular/router';
 import { safeDefine } from '@@piying-define';
 import { ExampleRouterConfig } from '../../const/example.router.define';
 export const MainPage = v.pipe(

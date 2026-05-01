@@ -1,11 +1,10 @@
-import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, linkedSignal, viewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { NavigationItem, Size } from '@piying-lib/angular-core';
 
-import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
+import { AttributesDirective } from '@piying/view-angular';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SetOptional, SetRequired } from 'type-fest';
 

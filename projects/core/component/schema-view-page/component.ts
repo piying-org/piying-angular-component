@@ -3,7 +3,6 @@ import {
   Component,
   inject,
   Injector,
-  input,
   resource,
   runInInjectionContext,
 } from '@angular/core';

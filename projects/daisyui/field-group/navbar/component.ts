@@ -34,7 +34,7 @@ export class NavbarFGC extends PiyingViewGroupBase {
     });
   });
   rest$$ = computed(() => {
-    let defaultSlot = this.children$$().find((field) => {
+    const defaultSlot = this.children$$().find((field) => {
       return field.keyPath?.slice(-1)[0] === 'default';
     });
     return defaultSlot

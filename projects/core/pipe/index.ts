@@ -1,1 +1,1 @@
-export * from './merge-class.pipe'
+export * from './merge-class.pipe';

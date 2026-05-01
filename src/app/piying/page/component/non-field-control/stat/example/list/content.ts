@@ -1,6 +1,5 @@
 import * as v from 'valibot';
 import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { safeDefine } from '@@piying-define';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 export default v.pipe(

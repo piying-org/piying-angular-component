@@ -26,7 +26,7 @@ export interface NavigationItem {
   hidden?: (item: NavigationItem) => boolean;
   disabled?: boolean;
   tooltip?: string;
-  clicked?: (event:PointerEvent, item: NavigationItem) => void;
+  clicked?: (event: PointerEvent, item: NavigationItem) => void;
   icon?: IconConfig;
   badge?: {
     title?: string;

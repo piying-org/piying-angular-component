@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, viewChild, input, TemplateRef, computed, output } from '@angular/core';
-import { IonContent, IonItem, IonLabel, IonList, IonListHeader } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
 import { PropertyDirective } from '@piying-lib/angular-ionic/directive';

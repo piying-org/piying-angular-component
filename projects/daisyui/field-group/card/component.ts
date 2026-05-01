@@ -60,7 +60,7 @@ export class CardFGC extends PiyingViewGroupBase {
       });
   });
   bodyChildren$$ = computed(() => {
-    let item = this.field$$()
+    const item = this.field$$()
       .children?.()
       .find((field) => {
         return field.keyPath?.slice(-1)[0] === this.bodyKey();

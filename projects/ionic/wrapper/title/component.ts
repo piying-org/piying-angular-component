@@ -1,4 +1,4 @@
-import { Component, viewChild, input, computed, inject } from '@angular/core';
+import { Component, viewChild, computed, inject } from '@angular/core';
 import {
   AttributesDirective,
   InsertFieldDirective,

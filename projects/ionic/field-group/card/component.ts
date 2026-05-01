@@ -2,7 +2,13 @@ import { Component, viewChild, TemplateRef, input, computed } from '@angular/cor
 import { NgTemplateOutlet } from '@angular/common';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCardContent,
+} from '@ionic/angular/standalone';
 type Prop = JSX.IonCard;
 
 @Component({
@@ -15,8 +21,8 @@ type Prop = JSX.IonCard;
     IonCardHeader,
     IonCardTitle,
     IonCardSubtitle,
-    IonCardContent
-],
+    IonCardContent,
+  ],
 })
 export class IonCardFGC extends PiyingViewGroupBase {
   static __version = 2;

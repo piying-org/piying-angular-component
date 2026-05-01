@@ -1,10 +1,7 @@
-import { Component, viewChild, TemplateRef, input, output, signal, computed } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Component, viewChild, input, computed } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
-import { IonBackButton, IonButton, IonSpinner } from '@ionic/angular/standalone';
-import { StrOrTemplateComponent } from '../str-template';
-import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
+import { IonBackButton } from '@ionic/angular/standalone';
 import { PropertyDirective } from '@piying-lib/angular-ionic/directive';
 type Prop = JSX.IonBackButton;
 

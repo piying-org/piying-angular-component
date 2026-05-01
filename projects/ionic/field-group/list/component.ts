@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, viewChild, input, TemplateRef, computed } from '@angular/core';
+import { Component, viewChild, input, computed } from '@angular/core';
 import { IonItem, IonLabel, IonList, IonListHeader } from '@ionic/angular/standalone';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import { JSX } from '@ionic/core';
@@ -10,7 +10,15 @@ type Prop = JSX.IonList;
 @Component({
   selector: 'app-ion-list',
   templateUrl: './component.html',
-  imports: [AttributesDirective, NgTemplateOutlet, IonList, IonItem, IonListHeader, IonLabel,PropertyDirective],
+  imports: [
+    AttributesDirective,
+    NgTemplateOutlet,
+    IonList,
+    IonItem,
+    IonListHeader,
+    IonLabel,
+    PropertyDirective,
+  ],
 })
 export class IonListFGC extends PiyingViewGroupBase {
   static __version = 2;

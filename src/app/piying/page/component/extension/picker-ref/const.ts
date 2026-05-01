@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { actions, NFCSchema } from '@piying/view-angular-core';
+import { NFCSchema } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 export const TriggerButton = v.pipe(
   NFCSchema,
@@ -14,7 +14,7 @@ export const ContentButton = v.pipe(
       actions.inputs.patch({ content: '内容' }),
       actions.inputs.patchAsync({
         clicked: (field) => {
-          return () => {            
+          return () => {
             field.context['close']();
           };
         },

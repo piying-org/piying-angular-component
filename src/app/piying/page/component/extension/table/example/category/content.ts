@@ -1,15 +1,11 @@
 import * as v from 'valibot';
-import { hideWhen, NFCSchema, setAlias, setComponent } from '@piying/view-angular-core';
+import { hideWhen, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import {
-  CheckboxService,
   ExpandRowDirective,
-  SortService,
   TableExpandService,
-  tableInputDefine,
   TableResourceService,
 } from '@piying-lib/angular-daisyui/extension';
-import { computed } from '@angular/core';
 import { map, startWith } from 'rxjs';
 import { range } from 'es-toolkit';
 export default v.object({

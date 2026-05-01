@@ -1,6 +1,6 @@
-import { computed, Injectable, resource, Signal, signal, untracked } from '@angular/core';
+import { computed, Injectable, signal, untracked } from '@angular/core';
 import { computedWithPrev } from '@piying-lib/angular-core';
-import { RequestFn, TableResourceService } from './table-resource.service';
+import { TableResourceService } from './table-resource.service';
 
 @Injectable()
 export class InfiniteListService extends TableResourceService {
@@ -9,8 +9,8 @@ export class InfiniteListService extends TableResourceService {
     return this.version$.update((a) => a + 1);
   }
   #allList$$ = computedWithPrev<{ version: number; data: any[] }>((input) => {
-    let v = untracked(() => this.version$());
-    let list = this.list$$();
+    const v = untracked(() => this.version$());
+    const list = this.list$$();
 
     if (input?.version !== v) {
       return {
