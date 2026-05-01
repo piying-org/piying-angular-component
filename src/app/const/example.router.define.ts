@@ -52,67 +52,9 @@ import { ConfirmDefine } from '@@py/page/component/overlay/confirm';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
-export const ExampleRouterConfig = [
+export const ExampleFieldControlRouterConfig = [
   {
-    config: { title: 'button', router: { routerLink: './example/button' } },
-    define: {
-      path: 'button',
-      component: SchemaViewPage,
-      data: {
-        schema: () => ButtonDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'alert', router: { routerLink: './example/alert' } },
-    define: {
-      path: 'alert',
-      component: SchemaViewPage,
-      data: {
-        schema: () => AlertDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'avatar', router: { routerLink: './example/avatar' } },
-    define: {
-      path: 'avatar',
-      component: SchemaViewPage,
-      data: {
-        schema: () => AvatarDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'badge', router: { routerLink: './example/badge' } },
-    define: {
-      path: 'badge',
-      component: SchemaViewPage,
-      data: {
-        schema: () => BadgeDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: {
-      title: 'breadcrumbs',
-      router: { routerLink: './example/breadcrumbs' },
-    },
-    define: {
-      path: 'breadcrumbs',
-      component: SchemaViewPage,
-      data: {
-        schema: () => BreadcrumbsDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'calendar', router: { routerLink: './example/calendar' } },
+    config: { title: 'calendar', router: { routerLink: './example/field-control/calendar' } },
     define: {
       path: 'calendar',
       component: SchemaViewPage,
@@ -123,7 +65,137 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'card', router: { routerLink: './example/card' } },
+    config: { title: 'checkbox', router: { routerLink: './example/field-control/checkbox' } },
+    define: {
+      path: 'checkbox',
+      component: SchemaViewPage,
+      data: {
+        schema: () => CheckboxDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'editable-badge',
+      router: { routerLink: './example/field-control/editable-badge' },
+    },
+    define: {
+      path: 'editable-badge',
+      component: SchemaViewPage,
+      data: {
+        schema: () => EditableBadgeDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'file-input',
+      router: { routerLink: './example/field-control/file-input' },
+    },
+    define: {
+      path: 'file-input',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FileInputDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'password', router: { routerLink: './example/field-control/password' } },
+    define: {
+      path: 'password',
+      component: SchemaViewPage,
+      data: {
+        schema: () => PasswordDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'radio', router: { routerLink: './example/field-control/radio' } },
+    define: {
+      path: 'radio',
+      component: SchemaViewPage,
+      data: {
+        schema: () => RadioDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'range', router: { routerLink: './example/field-control/range' } },
+    define: {
+      path: 'range',
+      component: SchemaViewPage,
+      data: {
+        schema: () => RangeDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'rating', router: { routerLink: './example/field-control/rating' } },
+    define: {
+      path: 'rating',
+      component: SchemaViewPage,
+      data: {
+        schema: () => RatingDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'select', router: { routerLink: './example/field-control/select' } },
+    define: {
+      path: 'select',
+      component: SchemaViewPage,
+      data: {
+        schema: () => SelectDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'swap', router: { routerLink: './example/field-control/swap' } },
+    define: {
+      path: 'swap',
+      component: SchemaViewPage,
+      data: {
+        schema: () => SwapDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'textarea', router: { routerLink: './example/field-control/textarea' } },
+    define: {
+      path: 'textarea',
+      component: SchemaViewPage,
+      data: {
+        schema: () => TextareaDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'toggle', router: { routerLink: './example/field-control/toggle' } },
+    define: {
+      path: 'toggle',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ToggleDefine,
+        options: () => options,
+      },
+    },
+  },
+];
+
+export const ExampleFieldGroupRouterConfig = [
+  {
+    config: { title: 'card', router: { routerLink: './example/field-group/card' } },
     define: {
       path: 'card',
       component: SchemaViewPage,
@@ -155,7 +227,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'carousel', router: { routerLink: './example/carousel' } },
+    config: { title: 'carousel', router: { routerLink: './example/field-group/carousel' } },
     define: {
       path: 'carousel',
       component: SchemaViewPage,
@@ -165,31 +237,8 @@ export const ExampleRouterConfig = [
       },
     },
   },
-
   {
-    config: { title: 'checkbox', router: { routerLink: './example/checkbox' } },
-    define: {
-      path: 'checkbox',
-      component: SchemaViewPage,
-      data: {
-        schema: () => CheckboxDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'divider', router: { routerLink: './example/divider' } },
-    define: {
-      path: 'divider',
-      component: SchemaViewPage,
-      data: {
-        schema: () => DividerDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'dock', router: { routerLink: './example/dock' } },
+    config: { title: 'dock', router: { routerLink: './example/field-group/dock' } },
     define: {
       path: 'dock',
       component: SchemaViewPage,
@@ -200,7 +249,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'drawer', router: { routerLink: './example/drawer' } },
+    config: { title: 'drawer', router: { routerLink: './example/field-group/drawer' } },
     define: {
       path: 'drawer',
       component: SchemaViewPage,
@@ -211,7 +260,101 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'dropdown', router: { routerLink: './example/dropdown' } },
+    config: { title: 'steps', router: { routerLink: './example/field-group/steps' } },
+    define: {
+      path: 'steps',
+      component: SchemaViewPage,
+      data: {
+        schema: () => StepsDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'tabs', router: { routerLink: './example/field-group/tabs' } },
+    define: {
+      path: 'tabs',
+      component: SchemaViewPage,
+      data: {
+        schema: () => TabsDefine,
+        options: () => options,
+      },
+    },
+  },
+];
+
+export const ExampleNonFieldControlRouterConfig = [
+  {
+    config: { title: 'alert', router: { routerLink: './example/non-field-control/alert' } },
+    define: {
+      path: 'alert',
+      component: SchemaViewPage,
+      data: {
+        schema: () => AlertDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'avatar', router: { routerLink: './example/non-field-control/avatar' } },
+    define: {
+      path: 'avatar',
+      component: SchemaViewPage,
+      data: {
+        schema: () => AvatarDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'badge', router: { routerLink: './example/non-field-control/badge' } },
+    define: {
+      path: 'badge',
+      component: SchemaViewPage,
+      data: {
+        schema: () => BadgeDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'breadcrumbs',
+      router: { routerLink: './example/non-field-control/breadcrumbs' },
+    },
+    define: {
+      path: 'breadcrumbs',
+      component: SchemaViewPage,
+      data: {
+        schema: () => BreadcrumbsDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'button', router: { routerLink: './example/non-field-control/button' } },
+    define: {
+      path: 'button',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ButtonDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'divider', router: { routerLink: './example/non-field-control/divider' } },
+    define: {
+      path: 'divider',
+      component: SchemaViewPage,
+      data: {
+        schema: () => DividerDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'dropdown', router: { routerLink: './example/non-field-control/dropdown' } },
     define: {
       path: 'dropdown',
       component: SchemaViewPage,
@@ -222,35 +365,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: {
-      title: 'editable-badge',
-      router: { routerLink: './example/editable-badge' },
-    },
-    define: {
-      path: 'editable-badge',
-      component: SchemaViewPage,
-      data: {
-        schema: () => EditableBadgeDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: {
-      title: 'editable-group',
-      router: { routerLink: './example/editable-group' },
-    },
-    define: {
-      path: 'editable-group',
-      component: SchemaViewPage,
-      data: {
-        schema: () => EditableGroupDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'fab', router: { routerLink: './example/fab' } },
+    config: { title: 'fab', router: { routerLink: './example/non-field-control/fab' } },
     define: {
       path: 'fab',
       component: SchemaViewPage,
@@ -262,22 +377,8 @@ export const ExampleRouterConfig = [
   },
   {
     config: {
-      title: 'file-input',
-      router: { routerLink: './example/file-input' },
-    },
-    define: {
-      path: 'file-input',
-      component: SchemaViewPage,
-      data: {
-        schema: () => FileInputDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: {
       title: 'file-input-button',
-      router: { routerLink: './example/file-input-button' },
+      router: { routerLink: './example/non-field-control/file-input-button' },
     },
     define: {
       path: 'file-input-button',
@@ -288,11 +389,10 @@ export const ExampleRouterConfig = [
       },
     },
   },
-
   {
     config: {
       title: 'input-button',
-      router: { routerLink: './example/input-button' },
+      router: { routerLink: './example/non-field-control/input-button' },
     },
     define: {
       path: 'input-button',
@@ -304,7 +404,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'kbd', router: { routerLink: './example/kbd' } },
+    config: { title: 'kbd', router: { routerLink: './example/non-field-control/kbd' } },
     define: {
       path: 'kbd',
       component: SchemaViewPage,
@@ -315,7 +415,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'loading', router: { routerLink: './example/loading' } },
+    config: { title: 'loading', router: { routerLink: './example/non-field-control/loading' } },
     define: {
       path: 'loading',
       component: SchemaViewPage,
@@ -325,11 +425,88 @@ export const ExampleRouterConfig = [
       },
     },
   },
+  {
+    config: { title: 'progress', router: { routerLink: './example/non-field-control/progress' } },
+    define: {
+      path: 'progress',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ProgressDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'radial-progress',
+      router: { routerLink: './example/non-field-control/radial-progress' },
+    },
+    define: {
+      path: 'radial-progress',
+      component: SchemaViewPage,
+      data: {
+        schema: () => RadialProgressDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'stat', router: { routerLink: './example/non-field-control/stat' } },
+    define: {
+      path: 'stat',
+      component: SchemaViewPage,
+      data: {
+        schema: () => StatDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'status', router: { routerLink: './example/non-field-control/status' } },
+    define: {
+      path: 'status',
+      component: SchemaViewPage,
+      data: {
+        schema: () => StatusDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'theme-controller',
+      router: { routerLink: './example/non-field-control/theme-controller' },
+    },
+    define: {
+      path: 'theme-controller',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ThemeControllerDefine,
+        options: () => options,
+      },
+    },
+  },
+];
 
+export const ExampleExtensionRouterConfig = [
+  {
+    config: {
+      title: 'editable-group',
+      router: { routerLink: './example/extension/editable-group' },
+    },
+    define: {
+      path: 'editable-group',
+      component: SchemaViewPage,
+      data: {
+        schema: () => EditableGroupDefine,
+        options: () => options,
+      },
+    },
+  },
   {
     config: {
       title: 'menu-tree',
-      router: { routerLink: './example/menu-tree' },
+      router: { routerLink: './example/extension/menu-tree' },
     },
     define: {
       path: 'menu-tree',
@@ -343,7 +520,7 @@ export const ExampleRouterConfig = [
   {
     config: {
       title: 'pagination',
-      router: { routerLink: './example/pagination' },
+      router: { routerLink: './example/extension/pagination' },
     },
     define: {
       path: 'pagination',
@@ -355,31 +532,9 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: { title: 'password', router: { routerLink: './example/password' } },
-    define: {
-      path: 'password',
-      component: SchemaViewPage,
-      data: {
-        schema: () => PasswordDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'progress', router: { routerLink: './example/progress' } },
-    define: {
-      path: 'progress',
-      component: SchemaViewPage,
-      data: {
-        schema: () => ProgressDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
     config: {
       title: 'picker-ref',
-      router: { routerLink: './example/picker-ref' },
+      router: { routerLink: './example/extension/picker-ref' },
     },
     define: {
       path: 'picker-ref',
@@ -391,109 +546,7 @@ export const ExampleRouterConfig = [
     },
   },
   {
-    config: {
-      title: 'radial-progress',
-      router: { routerLink: './example/radial-progress' },
-    },
-    define: {
-      path: 'radial-progress',
-      component: SchemaViewPage,
-      data: {
-        schema: () => RadialProgressDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'radio', router: { routerLink: './example/radio' } },
-    define: {
-      path: 'radio',
-      component: SchemaViewPage,
-      data: {
-        schema: () => RadioDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'range', router: { routerLink: './example/range' } },
-    define: {
-      path: 'range',
-      component: SchemaViewPage,
-      data: {
-        schema: () => RangeDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'rating', router: { routerLink: './example/rating' } },
-    define: {
-      path: 'rating',
-      component: SchemaViewPage,
-      data: {
-        schema: () => RatingDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'select', router: { routerLink: './example/select' } },
-    define: {
-      path: 'select',
-      component: SchemaViewPage,
-      data: {
-        schema: () => SelectDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'stat', router: { routerLink: './example/stat' } },
-    define: {
-      path: 'stat',
-      component: SchemaViewPage,
-      data: {
-        schema: () => StatDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'status', router: { routerLink: './example/status' } },
-    define: {
-      path: 'status',
-      component: SchemaViewPage,
-      data: {
-        schema: () => StatusDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'steps', router: { routerLink: './example/steps' } },
-    define: {
-      path: 'steps',
-      component: SchemaViewPage,
-      data: {
-        schema: () => StepsDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'swap', router: { routerLink: './example/swap' } },
-    define: {
-      path: 'swap',
-      component: SchemaViewPage,
-      data: {
-        schema: () => SwapDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'table', router: { routerLink: './example/table' } },
+    config: { title: 'table', router: { routerLink: './example/extension/table' } },
     define: {
       path: 'table',
       component: SchemaViewPage,
@@ -503,54 +556,8 @@ export const ExampleRouterConfig = [
       },
     },
   },
-  {
-    config: { title: 'tabs', router: { routerLink: './example/tabs' } },
-    define: {
-      path: 'tabs',
-      component: SchemaViewPage,
-      data: {
-        schema: () => TabsDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'textarea', router: { routerLink: './example/textarea' } },
-    define: {
-      path: 'textarea',
-      component: SchemaViewPage,
-      data: {
-        schema: () => TextareaDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: {
-      title: 'theme-controller',
-      router: { routerLink: './example/theme-controller' },
-    },
-    define: {
-      path: 'theme-controller',
-      component: SchemaViewPage,
-      data: {
-        schema: () => ThemeControllerDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'toggle', router: { routerLink: './example/toggle' } },
-    define: {
-      path: 'toggle',
-      component: SchemaViewPage,
-      data: {
-        schema: () => ToggleDefine,
-        options: () => options,
-      },
-    },
-  },
 ];
+
 export const ExampleFormRouterConfig = [
   {
     config: { title: 'array', router: { routerLink: './example/form/array' } },

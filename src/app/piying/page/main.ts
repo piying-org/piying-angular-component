@@ -4,7 +4,10 @@ import { actions } from '@piying/view-angular';
 import { safeDefine } from '@@piying-define';
 import {
   ExampleFormRouterConfig,
-  ExampleRouterConfig,
+  ExampleFieldControlRouterConfig,
+  ExampleFieldGroupRouterConfig,
+  ExampleNonFieldControlRouterConfig,
+  ExampleExtensionRouterConfig,
   OverlayRouterConfig,
 } from '../../const/example.router.define';
 export const MainPage = v.pipe(
@@ -40,9 +43,24 @@ export const MainPage = v.pipe(
           actions.inputs.patch({
             list: [
               {
-                title: 'example',
+                title: 'field-control',
                 type: 'group',
-                children: ExampleRouterConfig.map((item) => item.config),
+                children: ExampleFieldControlRouterConfig.map((item) => item.config),
+              },
+              {
+                title: 'field-group',
+                type: 'group',
+                children: ExampleFieldGroupRouterConfig.map((item) => item.config),
+              },
+              {
+                title: 'non-field-control',
+                type: 'group',
+                children: ExampleNonFieldControlRouterConfig.map((item) => item.config),
+              },
+              {
+                title: 'extension',
+                type: 'group',
+                children: ExampleExtensionRouterConfig.map((item) => item.config),
               },
               {
                 title: 'form',

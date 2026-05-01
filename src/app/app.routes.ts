@@ -14,8 +14,11 @@ import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
 import * as v from 'valibot';
 import {
+  ExampleExtensionRouterConfig,
+  ExampleFieldControlRouterConfig,
+  ExampleFieldGroupRouterConfig,
   ExampleFormRouterConfig,
-  ExampleRouterConfig,
+  ExampleNonFieldControlRouterConfig,
   OverlayRouterConfig,
 } from './const/example.router.define';
 const options = {
@@ -116,7 +119,22 @@ export const routes: Routes = [
             pathMatch: 'full',
           },
 
-          ...ExampleRouterConfig.map((item) => item.define),
+          {
+            path: 'field-control',
+            children: ExampleFieldControlRouterConfig.map((item) => item.define),
+          },
+          {
+            path: 'field-group',
+            children: ExampleFieldGroupRouterConfig.map((item) => item.define),
+          },
+          {
+            path: 'non-field-control',
+            children: ExampleNonFieldControlRouterConfig.map((item) => item.define),
+          },
+          {
+            path: 'extension',
+            children: ExampleExtensionRouterConfig.map((item) => item.define),
+          },
           {
             path: 'form',
             children: ExampleFormRouterConfig.map((item) => item.define),
