@@ -1,7 +1,8 @@
 import * as v from 'valibot';
 import { NFCSchema, actions, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
-export const FormBase = v.object({
+
+const FormBase = v.object({
   input: v.pipe(v.string(), v.title('string-control')),
   password: v.pipe(v.string(), v.title('string-control'), setComponent('password')),
   number: v.pipe(v.number(), v.title('number-control')),
@@ -34,7 +35,6 @@ export const FormBase = v.object({
     }),
   ),
   rating1: v.pipe(v.number(), setComponent('rating'), actions.inputs.patch({ min: 2, half: true })),
-  // rating2: v.pipe(v.number(), setComponent('rating'), actions.inputs.patch({ min: 0, half: true })),
   textarea1: v.pipe(v.string(), setComponent('textarea'), v.title('textarea-control')),
   date: v.pipe(v.date()),
   calendar: v.pipe(
@@ -62,20 +62,14 @@ export const FormBase = v.object({
     }),
   ),
 });
-export const FormDefine = v.pipe(
+
+export default v.pipe(
   v.object({
-    form1: v.pipe(FormBase, actions.wrappers.set(['div']), actions.class.top('grid gap-2')),
     form2: v.pipe(
       FormBase,
       actions.wrappers.set(['fieldset']),
       v.title('form-field title'),
       actions.class.top('bg-base-200 border-base-300 rounded-box border w-fit p-4'),
-    ),
-    form3: v.pipe(
-      v.object({
-        l1: v.string(),
-      }),
-      actions.wrappers.patch(['form']),
     ),
   }),
 );

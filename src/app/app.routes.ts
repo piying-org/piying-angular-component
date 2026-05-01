@@ -4,7 +4,6 @@ import { LoginDefine } from './piying/page/component/login';
 import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
-import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { SchemaViewPage } from '@piying-lib/angular-core';
@@ -72,15 +71,6 @@ export const routes: Routes = [
             component: SchemaViewPage,
             data: {
               schema: () => LoginDefine,
-              options: () => options,
-            },
-          },
-
-          {
-            path: 'form',
-            component: SchemaViewPage,
-            data: {
-              schema: () => FormDefine,
               options: () => options,
             },
           },

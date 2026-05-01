@@ -2,7 +2,6 @@ import * as v from 'valibot';
 import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import { actions } from '@piying/view-angular';
-import { FormBase } from '../component/form';
 import {
   CheckboxService,
   SortService,
@@ -231,7 +230,7 @@ const TableDefine = v.pipe(
                 service.open({
                   title: '添加',
                   schema: v.pipe(
-                    FormBase,
+                    v.string(),
                     actions.wrappers.set(['div']),
                     actions.class.top('grid gap-2'),
                   ),

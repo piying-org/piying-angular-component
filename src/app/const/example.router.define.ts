@@ -21,7 +21,6 @@ import { CarouselDefine } from '@@py/page/component/field-group/carousel';
 import { DockDefine } from '@@py/page/component/field-group/dock';
 import { DrawerDefine } from '@@py/page/component/field-group/drawer';
 import { StepsDefine } from '@@py/page/component/field-group/steps';
-import { FormDefine } from '@@py/page/component/form';
 import { AlertDefine } from '@@py/page/component/non-field-control/alert';
 import { AvatarDefine } from '@@py/page/component/non-field-control/avatar';
 import { BadgeDefine } from '@@py/page/component/non-field-control/badge';
@@ -45,6 +44,7 @@ import { TabsDefine } from '@@py/page/component/field-group/tabs';
 import { TableDefine } from '@@py/page/component/extension/table';
 import { FormArrayDefine } from '@@py/page/component/form/array';
 import { FormCheckListDefine } from '@@py/page/component/form/check-llist';
+import { FormFieldDefine } from '@@py/page/component/form/field';
 import { FormLogicDefine } from '@@py/page/component/form/logic';
 import { DialogDefine } from '@@py/page/component/overlay/dialog';
 import { ToastDefine } from '@@py/page/component/overlay/toast';
@@ -284,17 +284,6 @@ export const ExampleRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FileInputButtonDefine,
-        options: () => options,
-      },
-    },
-  },
-  {
-    config: { title: 'form', router: { routerLink: './example/form' } },
-    define: {
-      path: 'form',
-      component: SchemaViewPage,
-      data: {
-        schema: () => FormDefine,
         options: () => options,
       },
     },
@@ -581,6 +570,17 @@ export const ExampleFormRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FormCheckListDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'field', router: { routerLink: './example/form/field' } },
+    define: {
+      path: 'field',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FormFieldDefine,
         options: () => options,
       },
     },
