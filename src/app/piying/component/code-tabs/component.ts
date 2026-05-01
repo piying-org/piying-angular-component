@@ -9,11 +9,12 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import { CodeHighLightDirective } from './code-highlight.directive';
+import { CdkCopyToClipboard } from "@angular/cdk/clipboard";
 
 @Component({
   selector: 'code-tabs',
   templateUrl: './component.html',
-  imports: [SelectorlessOutlet, CodeHighLightDirective],
+  imports: [SelectorlessOutlet, CodeHighLightDirective,CdkCopyToClipboard],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeTabsNFCC {

@@ -20,5 +20,8 @@
     <div class="tab-content bg-base-100 border-base-300 p-6">
       <div [codeHL]="code()"></div>
     </div>
+    <span class="self-center btn btn-circle btn-ghost btn-xs" [cdkCopyToClipboard]="code()">
+      <span class="material-icons inline-flex"> content_copy </span>
+    </span>
   </div>
 </ng-template>
