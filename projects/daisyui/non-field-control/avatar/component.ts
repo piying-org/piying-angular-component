@@ -33,6 +33,7 @@ export class AvatarNFCC {
       this.#theme.addPrefix('avatar'),
       this.#theme.addPrefix2('avatar', this.status()),
       this.imgUrl() ? this.#theme.addPrefix2('avatar', 'placeholder') : undefined,
+      this.placeholder() ? this.#theme.addPrefix2('avatar', 'placeholder') : undefined,
     );
   });
 }

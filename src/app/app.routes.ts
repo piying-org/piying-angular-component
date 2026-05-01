@@ -6,13 +6,9 @@ import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
 import { CategoryDefine } from './piying/page/component/category';
-import { CalendarDefine } from './piying/page/component/calendar';
-import { SelectDefine } from './piying/page/component/select';
-import { TabsDefine } from './piying/page/component/tabs';
 import { CardDefine } from './piying/page/component/field-group/card';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
-import { StatsDefine } from './piying/page/component/stats';
 import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
@@ -135,63 +131,7 @@ export const routes: Routes = [
               options: () => options,
             },
           },
-          {
-            path: 'calendar',
-            component: SchemaViewPage,
-            data: {
-              schema: () => CalendarDefine,
-              options: () => options,
-            },
-          },
-          {
-            path: 'select',
-            component: SchemaViewPage,
-            data: {
-              schema: () => SelectDefine,
-              options: () => options,
-            },
-          },
-          {
-            path: 'tabs',
-            component: SchemaViewPage,
-            data: {
-              schema: () => TabsDefine,
-              options: () => options,
-            },
-          },
 
-          {
-            path: 'stat',
-            component: SchemaViewPage,
-            data: {
-              schema: () => StatsDefine,
-              options: () => {
-                const data = [
-                  'text-primary',
-                  'text-secondary',
-                  'text-accent',
-                  'text-neutral',
-                  'text-base-content',
-                ];
-                return {
-                  ...options,
-                  context: {
-                    getStatList: async () => {
-                      return range(10).map((a) => {
-                        const value = faker.number.int(8);
-                        return {
-                          title: faker.food.fruit(),
-                          value: value,
-                          desc: faker.food.description().slice(0, 10),
-                          valueClass: data[value % 5],
-                        };
-                      });
-                    },
-                  },
-                };
-              },
-            },
-          },
           {
             path: 'form',
             component: SchemaViewPage,

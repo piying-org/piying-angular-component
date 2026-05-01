@@ -3,7 +3,6 @@ import { faker } from '@faker-js/faker';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { PickerRefDefine } from '@@py/page/component/extension/picker-ref';
 import { FieldGlobalConfig } from '@@piying-define';
-import { CalendarDefine } from '@@py/page/component/calendar';
 import { CategoryDefine } from '@@py/page/component/category';
 import { EditableGroupDefine } from '@@py/page/component/extension/editable-group';
 import { MenuTreeDefine } from '@@py/page/component/extension/menu-tree';
@@ -43,9 +42,10 @@ import { RadialProgressDefine } from '@@py/page/component/non-field-control/radi
 import { StatDefine } from '@@py/page/component/non-field-control/stat';
 import { StatusDefine } from '@@py/page/component/non-field-control/status';
 import { ThemeControllerDefine } from '@@py/page/component/non-field-control/theme-controller';
-import { SelectDefine } from '@@py/page/component/select';
 import { TableDefine } from '@@py/page/component/table';
-import { TabsDefine } from '@@py/page/component/tabs';
+import { CalendarDefine } from '@@py/page/component/field-control/calendar';
+import { SelectDefine } from '@@py/page/component/field-control/select';
+import { TabsDefine } from '@@py/page/component/field-group/tabs';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };

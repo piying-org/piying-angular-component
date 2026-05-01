@@ -6,7 +6,13 @@ export default v.pipe(
     v.pipe(
       NFCSchema,
       safeDefine.setComponent('avatar', (actions) => {
-        return [actions.inputs.patch({ placeholder: 'User', placeholderClass: 'text-primary' })];
+        return [
+          actions.inputs.patch({
+            placeholder: 'User',
+            placeholderClass: 'text-primary ',
+            wrapperClass: 'bg-neutral rounded-full w-24',
+          }),
+        ];
       }),
     ),
     v.pipe(

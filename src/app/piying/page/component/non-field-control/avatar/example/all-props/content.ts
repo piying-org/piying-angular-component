@@ -9,7 +9,6 @@ export default v.pipe(
         return [
           actions.inputs.patch({
             placeholder: 'User',
-            wrapperClass: 'w-28 rounded-full',
             status: 'online',
           }),
         ];
@@ -21,7 +20,6 @@ export default v.pipe(
         return [
           actions.inputs.patch({
             imgUrl: 'https://ui-avatars.com/api/?name=Test+User',
-            wrapperClass: 'w-20',
             status: 'offline',
           }),
         ];
