@@ -5,6 +5,7 @@ export { PickerRefFCC } from './picker-ref';
 export { OptionListFCC } from './option-list/component';
 export { ListTemplateNFCC } from './list-template/component';
 export { EditableGroupFGC as EditableArrayFGC } from './editable-group';
+export { EditableRowFGC } from './editable-row';
 export { CheckboxListFGC } from './checkbox-list';
 export { logicGroupFGC } from './logic-group';
 export { DockTabNFCC } from './dock-tab';

@@ -50,6 +50,7 @@ import { FormLogicDefine } from '@@py/page/component/form/logic';
 import { DialogDefine } from '@@py/page/component/overlay/dialog';
 import { ToastDefine } from '@@py/page/component/overlay/toast';
 import { ConfirmDefine } from '@@py/page/component/overlay/confirm';
+import { EditableRowDefine } from '@@py/page/component/extension/editable-row';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -553,6 +554,17 @@ export const ExampleExtensionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => TableDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'editable-row', router: { routerLink: './example/extension/editable-row' } },
+    define: {
+      path: 'editable-row',
+      component: SchemaViewPage,
+      data: {
+        schema: () => EditableRowDefine,
         options: () => options,
       },
     },

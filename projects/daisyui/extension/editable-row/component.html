@@ -1,0 +1,51 @@
+<ng-template #templateRef let-attr="attributes" let-events="events">
+  <div
+    [class]="wrapperClass$$() | cssPrefix | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [events]="events()"
+  >
+    @let children = children$$();
+
+    <div class="grid gap-4 font-bold rounded-tl rounded-tr" [ngStyle]="gridCol$$()">
+      @if (isRecord$$()) {
+        <div></div>
+      }
+      @for (title of propsTitle$$(); track $index) {
+        <div>{{ title }}</div>
+      }
+      <div class="w-10"></div>
+    </div>
+
+    <!-- 行列表 -->
+    @for (field of children; track field.id || $index) {
+      <div class="grid gap-4 items-center py-2" [ngStyle]="gridCol$$()">
+        @if (isRecord$$()) {
+          <div class="font-medium text-gray-800 truncate" title="{{ field.key }}">
+            {{ field.key }}
+          </div>
+        }
+
+        <ng-container
+          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field, injector }"
+        ></ng-container>
+
+        @if (!disableRemove()) {
+          <button
+            class="btn btn-circle"
+            (click)="removeItem($index)"
+            [disabled]="minLength() >= children.length"
+          >
+            <span class="material-icons text-error">delete</span>
+          </button>
+        }
+      </div>
+    }
+
+    @if (addPosition() === 'bottom' && !disableAdd()) {
+      <button class="btn btn-block btn-dash btn-success" (click)="addNew()">
+        <span class="material-icons">add</span>
+      </button>
+    }
+  </div>
+</ng-template>

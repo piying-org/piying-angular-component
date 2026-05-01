@@ -137,6 +137,9 @@ export const PresetDefine = {
     'dock-tab': {
       type: ExtComponentGroup.DockTabNFCC,
     },
+    'editable-row': {
+      type: ExtComponentGroup.EditableRowFGC,
+    },
   },
   wrappers: {
     // 默认包装器
