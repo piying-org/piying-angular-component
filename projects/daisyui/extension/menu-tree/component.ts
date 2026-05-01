@@ -9,7 +9,7 @@ import { AttributesDirective } from '@piying/view-angular';
 import { NavigationItem } from './navigation.types';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-const routerLinkActiveOptions = { exact: false };
+const routerLinkActiveOptions = { exact: true };
 /*
  * MenuTreeNFCC - 导航菜单树组件
  *
