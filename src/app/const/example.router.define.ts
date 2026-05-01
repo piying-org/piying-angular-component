@@ -46,6 +46,9 @@ import { TableDefine } from '@@py/page/component/extension/table';
 import { FormArrayDefine } from '@@py/page/component/form/array';
 import { FormCheckListDefine } from '@@py/page/component/form/check-llist';
 import { FormLogicDefine } from '@@py/page/component/form/logic';
+import { DialogDefine } from '@@py/page/component/overlay/dialog';
+import { ToastDefine } from '@@py/page/component/overlay/toast';
+import { ConfirmDefine } from '@@py/page/component/overlay/confirm';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -589,6 +592,41 @@ export const ExampleFormRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FormLogicDefine,
+        options: () => options,
+      },
+    },
+  },
+];
+export const OverlayRouterConfig = [
+  {
+    config: { title: 'dialog', router: { routerLink: './example/overlay/dialog' } },
+    define: {
+      path: 'dialog',
+      component: SchemaViewPage,
+      data: {
+        schema: () => DialogDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'toast', router: { routerLink: './example/overlay/toast' } },
+    define: {
+      path: 'toast',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ToastDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'confirm', router: { routerLink: './example/overlay/confirm' } },
+    define: {
+      path: 'confirm',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ConfirmDefine,
         options: () => options,
       },
     },

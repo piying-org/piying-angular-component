@@ -7,7 +7,6 @@ import { AccountService } from './service/account.service';
 import { FormDefine } from './piying/page/component/form';
 
 import { QueryTable2Define } from './piying/page/demo/query-table2';
-import { OverlayDefine } from './piying/page/component/overlay';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { FieldGlobalConfig } from './piying/define';
 import { PageInputDefine } from './piying/page/component/page-input';
@@ -15,7 +14,11 @@ import { IonicDevDefine } from '@@py/page/ionic/dev';
 import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
 import * as v from 'valibot';
-import { ExampleFormRouterConfig, ExampleRouterConfig } from './const/example.router.define';
+import {
+  ExampleFormRouterConfig,
+  ExampleRouterConfig,
+  OverlayRouterConfig,
+} from './const/example.router.define';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -83,14 +86,6 @@ export const routes: Routes = [
           },
 
           {
-            path: 'overlay',
-            component: SchemaViewPage,
-            data: {
-              schema: () => OverlayDefine,
-              options: () => options,
-            },
-          },
-          {
             path: 'page-input',
             component: SchemaViewPage,
             data: {
@@ -135,6 +130,10 @@ export const routes: Routes = [
           {
             path: 'form',
             children: ExampleFormRouterConfig.map((item) => item.define),
+          },
+          {
+            path: 'overlay',
+            children: OverlayRouterConfig.map((item) => item.define),
           },
         ],
       },

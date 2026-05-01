@@ -1,11 +1,5 @@
 import * as v from 'valibot';
-import {
-  actions,
-  FieldLogicGroup,
-  nfcComponent,
-  NFCSchema,
-  setComponent,
-} from '@piying/view-angular-core';
+import { actions, FieldLogicGroup, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 
 export default v.pipe(
@@ -19,7 +13,7 @@ export default v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return () => {
-                let control = field.get(['..', 1])?.form.control as FieldLogicGroup;
+                const control = field.get(['..', 1])?.form.control as FieldLogicGroup;
                 control.filterActivateControl$.set((_, index) => setIndex === index);
                 setIndex = setIndex ? 0 : 1;
               };
