@@ -1,59 +1,75 @@
 import * as v from 'valibot';
-import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions, NFCSchema } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 export default v.pipe(
   v.tuple([
     v.pipe(
       NFCSchema,
-      setComponent('list-template'),
-      actions.wrappers.set(['div']),
-      actions.class.top('stats shadow'),
-      actions.inputs.patch({
-        template: v.pipe(
-          NFCSchema,
-          setComponent('stat'),
-          actions.inputs.patchAsync({
-            valueClass: (field) => {
-              const item = field.context['getItem']().valueClass;
-              return item;
-            },
-          }),
+      safeDefine.setComponent('list-template', (actions) => {
+        return [
+          actions.wrappers.set(['div']),
+          actions.class.top('stats shadow'),
           actions.inputs.patch({
-            title: v.pipe(
+            template: v.pipe(
               NFCSchema,
-              setComponent('common-data'),
-              actions.inputs.patchAsync({
-                content: (field) => {
-                  return field.context['getItem']().title;
-                },
-              }),
-              actions.class.top('stat-title'),
-            ),
+              safeDefine.setComponent('stat', (actions) => {
+                return [
+                  actions.inputs.patchAsync({
+                    valueClass: (field) => {
+                      const item = field.context['getItem']().valueClass;
+                      return item;
+                    },
+                  }),
+                  actions.inputs.patch({
+                    title: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent('common-data', (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            content: (field) => {
+                              return field.context['getItem']().title;
+                            },
+                          }),
+                        ];
+                      }),
+                      actions.class.top('stat-title'),
+                    ),
 
-            value: v.pipe(
-              NFCSchema,
-              setComponent('common-data'),
-              actions.inputs.patchAsync({
-                content: (field) => {
-                  return field.context['getItem']().value;
-                },
-              }),
+                    value: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent('common-data', (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            content: (field) => {
+                              return field.context['getItem']().value;
+                            },
+                          }),
+                        ];
+                      }),
 
-              actions.class.top('stat-value'),
-            ),
-            desc: v.pipe(
-              NFCSchema,
-              setComponent('common-data'),
-              actions.inputs.patchAsync({
-                content: (field) => {
-                  return field.context['getItem']().desc;
-                },
+                      actions.class.top('stat-value'),
+                    ),
+                    desc: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent('common-data', (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            content: (field) => {
+                              return field.context['getItem']().desc;
+                            },
+                          }),
+                        ];
+                      }),
+                      actions.class.top('stat-desc'),
+                    ),
+                  }),
+                ];
               }),
-              actions.class.top('stat-desc'),
             ),
           }),
-        ),
+        ];
       }),
       actions.inputs.patchAsync({
         list: (field) => {

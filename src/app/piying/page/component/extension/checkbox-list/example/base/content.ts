@@ -1,10 +1,10 @@
 import * as v from 'valibot';
-import { actions, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      v.array(v.pipe(v.string(), setComponent('checkbox'))),
+      v.array(v.pipe(v.string(), safeDefine.setComponent('checkbox'))),
       safeDefine.setComponent('checkbox-list', (actions) => {
         return [
           actions.inputs.patch({

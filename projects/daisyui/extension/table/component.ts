@@ -33,7 +33,7 @@ import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { TABLE_STATUS_TOKEN } from './token';
 import { DataResolved } from './util';
-import { RowItem, TableItemDefine2 } from './util/table-input-define';
+import { ColumnDefine, RowItem, TableItemDefine2 } from './util/table-input-define';
 // import { QueryService } from './query.service';
 
 export function createRowDefine() {
@@ -143,7 +143,7 @@ export class TableNFCC {
     );
   });
   columnsList$$ = computed(() => {
-    return Object.values(this.define()!.columns);
+    return Object.values(this.define()!.columns as ColumnDefine);
   });
   headList$$ = computed(() => {
     return this.#toColList('head');

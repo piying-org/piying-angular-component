@@ -1,6 +1,7 @@
 import * as v from 'valibot';
 
 export type ItemCellBase = string | v.BaseSchema<any, any, any>;
+
 export type ItemCell = ItemCellBase | ((rowData: any, index: number) => any);
 export type DataResolved = [number, any[]];
 
@@ -9,7 +10,7 @@ export interface RowItem<Key extends string | number = string | number> {
   columns?: Key[];
 }
 export interface ColumnDefine {
-  head?: ItemCellBase;
+  head?: ItemCellBase | ((item: any, index: number) => any);
   body?: ItemCell;
   foot?: ItemCellBase;
 }
@@ -48,4 +49,4 @@ export function tableInputDefine<
     };
   };
 }
-export type TableItemDefine2 = ReturnType<ReturnType<typeof tableInputDefine>>;
+export type TableItemDefine2 = ReturnType<ReturnType<typeof tableInputDefine<any>>>;

@@ -1,5 +1,6 @@
 import * as v from 'valibot';
-import { actions, hideWhen, NFCSchema, setAlias, setComponent } from '@piying/view-angular-core';
+import { actions, hideWhen, NFCSchema, setAlias } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 import {
   CheckboxService,
   SortService,
@@ -30,8 +31,9 @@ export default v.pipe(
               field.injector.get(TableExpandService).init({ _multiple: true });
             },
           }),
-          setComponent('table'),
-          actions.inputs.patchAsync({
+          safeDefine.setComponent('table', (actions) => {
+            return [
+              actions.inputs.patchAsync({
             define: (field) => {
               const pageFiled = field.get(['..', 'page']);
               return tableInputDefine({
@@ -39,20 +41,29 @@ export default v.pipe(
                   head: ' ',
                   body: v.pipe(
                     NFCSchema,
-                    setComponent('table-expand-cell'),
-                    actions.wrappers.set(['td']),
+                    safeDefine.setComponent('table-expand-cell', (actions) => {
+                      return [
+                        actions.wrappers.set(['td']),
+                      ];
+                    }),
                   ),
                 },
                 checkbox: {
                   head: v.pipe(
                     v.boolean(),
-                    setComponent('checkbox'),
-                    actions.wrappers.set(['td', 'table-checkbox-all']),
+                    safeDefine.setComponent('checkbox', (actions) => {
+                      return [
+                        actions.wrappers.set(['td', 'table-checkbox-all']),
+                      ];
+                    }),
                   ),
                   body: v.pipe(
                     v.boolean(),
-                    setComponent('checkbox'),
-                    actions.wrappers.set(['td', 'table-checkbox-body']),
+                    safeDefine.setComponent('checkbox', (actions) => {
+                      return [
+                        actions.wrappers.set(['td', 'table-checkbox-body']),
+                      ];
+                    }),
                   ),
                 },
                 index: {
@@ -72,52 +83,64 @@ export default v.pipe(
                   head: 'badge',
                   body: v.pipe(
                     NFCSchema,
-                    setComponent('badge'),
-                    actions.wrappers.set(['td']),
-                    actions.inputs.patchAsync({
-                      content: ({ context }) => {
-                        return computed(() => context.item$().badge1);
-                      },
+                    safeDefine.setComponent('badge', (actions) => {
+                      return [
+                        actions.wrappers.set(['td']),
+                        actions.inputs.patchAsync({
+                          content: ({ context }) => {
+                            return computed(() => context.item$().badge1);
+                          },
+                        }),
+                      ];
                     }),
                   ),
                 },
                 '2': {
                   head: v.pipe(
                     NFCSchema,
-                    setComponent('button'),
-                    actions.inputs.patch({ content: '1234' }),
-                    actions.wrappers.set(['td', 'sort-header']),
-                    actions.props.patch({
-                      key: 'title1',
+                    safeDefine.setComponent('button', (actions) => {
+                      return [
+                        actions.inputs.patch({ content: '1234' }),
+                        actions.wrappers.set(['td', 'sort-header']),
+                        actions.props.patch({
+                          key: 'title1',
+                        }),
+                      ];
                     }),
                   ),
                 },
                 '3': {
                   head: v.pipe(
                     NFCSchema,
-                    setComponent('button'),
-                    actions.inputs.patch({ content: '666' }),
-                    actions.wrappers.set(['td', 'sort-header']),
-                    actions.props.patch({
-                      key: 'badge1',
+                    safeDefine.setComponent('button', (actions) => {
+                      return [
+                        actions.inputs.patch({ content: '666' }),
+                        actions.wrappers.set(['td', 'sort-header']),
+                        actions.props.patch({
+                          key: 'badge1',
+                        }),
+                      ];
                     }),
                   ),
                 },
                 extra: {
                   body: v.pipe(
                     NFCSchema,
-                    setComponent('button'),
-                    actions.wrappers.set(['td']),
-                    hideWhen({
-                      listen(fn, field) {
-                        const sm = field.injector.get(TableExpandService).selectionModel$$;
-                        return sm.pipe(
-                          map((value) => {
-                            return !value.isSelected(field.context.item$());
-                          }),
-                          startWith(true),
-                        );
-                      },
+                    safeDefine.setComponent('button', (actions) => {
+                      return [
+                        actions.wrappers.set(['td']),
+                        hideWhen({
+                          listen(fn, field) {
+                            const sm = field.injector.get(TableExpandService).selectionModel$$;
+                            return sm.pipe(
+                              map((value) => {
+                                return !value.isSelected(field.context.item$());
+                              }),
+                              startWith(true),
+                            );
+                          },
+                        }),
+                      ];
                     }),
                   ),
                 },
@@ -126,10 +149,10 @@ export default v.pipe(
                   head: [{ columns: ['expand', 'checkbox', 'index', '1', '2', '3'] }],
                   body: [
                     {
-                      define: v.pipe(v.tuple([]), setComponent('tr')),
+                      define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')),
                       columns: ['expand', 'checkbox', 'index', '1'],
                     },
-                    { define: v.pipe(v.tuple([]), setComponent('tr')), columns: ['extra'] },
+                    { define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')), columns: ['extra'] },
                   ],
                 };
               });
@@ -138,20 +161,25 @@ export default v.pipe(
               return field.injector.get(TableResourceService).list$$;
             },
           }),
+        ];
+      }),
         ),
         page: v.pipe(
           NFCSchema,
-          setComponent('pagination'),
-          actions.inputs.patch({
-            value: {
-              size: 2,
-              index: 0,
-            },
-          }),
-          actions.inputs.patchAsync({
-            count: (field) => {
-              return field.injector.get(TableResourceService).count$$;
-            },
+          safeDefine.setComponent('pagination', (actions) => {
+            return [
+              actions.inputs.patch({
+                value: {
+                  size: 2,
+                  index: 0,
+                },
+              }),
+              actions.inputs.patchAsync({
+                count: (field) => {
+                  return field.injector.get(TableResourceService).count$$;
+                },
+              }),
+            ];
           }),
           actions.outputs.patchAsync({
             valueChange: (field) => {

@@ -1,5 +1,6 @@
 import * as v from 'valibot';
-import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions, NFCSchema } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 import { CardBodyDemoNFCC } from '@@py/component/card-body/component';
 import { signal } from '@angular/core';
 import { faker } from '@faker-js/faker';
@@ -10,23 +11,27 @@ export default v.pipe(
       v.object({
         figure: v.pipe(
           NFCSchema,
-          setComponent('common-data'),
-          actions.inputs.patch({
-            content: {
-              image: {
-                src: faker.image.url({ width: 400, height: 400 }),
-              },
-            },
+          safeDefine.setComponent('common-data', (actions) => {
+            return [
+              actions.inputs.patch({
+                content: {
+                  image: {
+                    src: faker.image.url({ width: 400, height: 400 }),
+                  },
+                },
+              }),
+            ];
           }),
         ),
         title: v.pipe(
           NFCSchema,
-          setComponent('common-data'),
-          actions.inputs.patch({ content: faker.book.title() }),
+          safeDefine.setComponent('common-data', (actions) => {
+            return [actions.inputs.patch({ content: faker.book.title() })];
+          }),
         ),
         body: v.pipe(
           NFCSchema,
-          setComponent(CardBodyDemoNFCC),
+          safeDefine.setComponent(CardBodyDemoNFCC),
           actions.inputs.patch({
             data: {
               author: faker.book.author(),
@@ -38,10 +43,15 @@ export default v.pipe(
           }),
         ),
         actions: v.object({
-          __btn: v.pipe(NFCSchema, setComponent('button'), actions.inputs.patch({ content: 'Go' })),
+          __btn: v.pipe(
+            NFCSchema,
+            safeDefine.setComponent('button', (actions) => {
+              return [actions.inputs.patch({ content: 'Go' })];
+            }),
+          ),
         }),
       }),
-      setComponent('card'),
+      safeDefine.setComponent('card'),
       actions.class.component('shadow-sm w-100'),
     ),
     v.pipe(
@@ -51,50 +61,63 @@ export default v.pipe(
         }),
         list: v.pipe(
           NFCSchema,
-          setComponent('list-template'),
-          actions.wrappers.set(['div']),
-          actions.class.top('grid grid-cols-3 gap-2'),
-          actions.inputs.patch({
-            template: v.pipe(
-              v.object({
-                figure: v.pipe(
-                  NFCSchema,
-                  setComponent('common-data'),
-                  actions.inputs.patchAsync({
-                    content: (field) => {
-                      return { image: field.context['getItem']().image };
-                    },
+          safeDefine.setComponent('list-template', (actions) => {
+            return [
+              actions.wrappers.set(['div']),
+              actions.class.top('grid grid-cols-3 gap-2'),
+              actions.inputs.patch({
+                template: v.pipe(
+                  v.object({
+                    figure: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent('common-data', (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            content: (field) => {
+                              return { image: field.context['getItem']().image };
+                            },
+                          }),
+                        ];
+                      }),
+                    ),
+                    title: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent('common-data', (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            content: (field) => {
+                              return field.context['getItem']().title;
+                            },
+                          }),
+                        ];
+                      }),
+                    ),
+                    body: v.pipe(
+                      NFCSchema,
+                      safeDefine.setComponent(CardBodyDemoNFCC, (actions) => {
+                        return [
+                          actions.inputs.patchAsync({
+                            data: (field) => {
+                              return field.context['getItem']().body;
+                            },
+                          }),
+                        ];
+                      }),
+                    ),
+                    actions: v.object({
+                      __btn: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('button', (actions) => {
+                          return [actions.inputs.patch({ content: 'Go' })];
+                        }),
+                      ),
+                    }),
                   }),
+                  safeDefine.setComponent('card'),
+                  actions.class.component('shadow-sm w-full'),
                 ),
-                title: v.pipe(
-                  NFCSchema,
-                  setComponent('common-data'),
-                  actions.inputs.patchAsync({
-                    content: (field) => {
-                      return field.context['getItem']().title;
-                    },
-                  }),
-                ),
-                body: v.pipe(
-                  NFCSchema,
-                  setComponent(CardBodyDemoNFCC),
-                  actions.inputs.patchAsync({
-                    data: (field) => {
-                      return field.context['getItem']().body;
-                    },
-                  }),
-                ),
-                actions: v.object({
-                  __btn: v.pipe(
-                    NFCSchema,
-                    setComponent('button'),
-                    actions.inputs.patch({ content: 'Go' }),
-                  ),
-                }),
               }),
-              setComponent('card'),
-              actions.class.component('shadow-sm w-full'),
-            ),
+            ];
           }),
           actions.inputs.patchAsync({
             list: (field) => {

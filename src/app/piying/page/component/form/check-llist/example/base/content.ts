@@ -1,24 +1,32 @@
 import * as v from 'valibot';
-import { actions, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 
 export default v.pipe(
   v.array(
-    v.pipe(v.string(), setComponent('boolean'), actions.props.patch({ disableRequired: true })),
-  ),
-  setComponent('checkbox-list'),
-  actions.inputs.patchAsync({
-    options: (field) => {
+    v.pipe(v.string(), safeDefine.setComponent('boolean', (actions) => {
       return [
-        {
-          value: '1',
-          props: { title: '1' },
-        },
-        {
-          value: '2',
-          props: { title: '2' },
-        },
+        actions.props.patch({ disableRequired: true }),
       ];
-    },
+    })),
+  ),
+  safeDefine.setComponent('checkbox-list', (actions) => {
+    return [
+      actions.inputs.patchAsync({
+        options: (field) => {
+          return [
+            {
+              value: '1',
+              props: { title: '1' },
+            },
+            {
+              value: '2',
+              props: { title: '2' },
+            },
+          ];
+        },
+      }),
+    ];
   }),
   actions.wrappers.patch(['div']),
   actions.class.top('flex gap-4'),

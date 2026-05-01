@@ -1,5 +1,6 @@
 import * as v from 'valibot';
-import { actions, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 const ItemDefine = v.object({
   v1: v.pipe(v.string(), v.title('v1')),
   v2: v.pipe(v.number(), v.title('v2')),
@@ -9,19 +10,22 @@ export default v.pipe(
   v.tuple([
     v.pipe(
       v.array(ItemDefine),
-      setComponent('editable-group'),
-      actions.inputs.patch({
-        layout: 'column',
-        addMode: 1,
-        addPosition: 'top',
-        minLength: 1,
-        initValue: (index: any) => {
-          return {
-            v1: `${index}`,
-            v2: index,
-            v3: !!index,
-          };
-        },
+      safeDefine.setComponent('editable-group', (actions) => {
+        return [
+          actions.inputs.patch({
+            layout: 'column',
+            addMode: 1,
+            addPosition: 'top',
+            minLength: 1,
+            initValue: (index: any) => {
+              return {
+                v1: `${index}`,
+                v2: index,
+                v3: !!index,
+              };
+            },
+          }),
+        ];
       }),
     ),
   ]),

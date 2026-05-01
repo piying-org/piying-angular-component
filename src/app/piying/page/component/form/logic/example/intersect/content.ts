@@ -1,5 +1,6 @@
 import * as v from 'valibot';
-import { actions, setComponent } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 
 export default v.pipe(
   v.tuple([
@@ -8,7 +9,7 @@ export default v.pipe(
         v.object({ l1: v.pipe(v.string(), v.title('l1')) }),
         v.object({ l2: v.pipe(v.string(), v.title('l2')) }),
       ]),
-      setComponent('logic-group'),
+      safeDefine.setComponent('logic-group'),
     ),
   ]),
   actions.wrappers.patch(['div']),
