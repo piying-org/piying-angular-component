@@ -62,8 +62,9 @@ const defaultPlugin = {
                 }
                 else {
                     let relPath = node_path_1.default.relative(baseDir, filePath);
-                    let list = relPath.split(/\|\//);
-                    console.log('666', list);
+                    console.log(relPath);
+                    let list = relPath.split(/\\|\//);
+                    console.log('666', list, list[3]);
                     return { contents: list[3], loader: 'text' };
                 }
             });
