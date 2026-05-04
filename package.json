@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 4444",
     "build": "ng build core && ng build daisyui && ng build ionic",
+    "build:site": "ng build && cp ./dist/piying-angular-component/index.html ./dist/piying-angular-component/404.html",
     "build:ionic": "ng build core && ng build ionic",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
