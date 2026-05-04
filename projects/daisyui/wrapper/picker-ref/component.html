@@ -10,11 +10,9 @@
   </div>
 
   <ng-template
-    cdkConnectedOverlay
-    [origin]="props$$().originSource === 'event' ? event$() : trigger"
-    [open]="isOpen$()"
-    [overlayConfig]="props$$().overlayConfig"
-    [positions]=""
+    [cdkConnectedOverlayOrigin]="props$$().originSource === 'event' ? event$() : trigger"
+    [cdkConnectedOverlayOpen]="isOpen$()"
+    [cdkConnectedOverlay]="props$$().overlayConfig"
     (detach)="isOpen$.set(false)"
     (overlayOutsideClick)="outsideClick()"
   >

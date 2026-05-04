@@ -18,9 +18,9 @@ import {
 } from '@piying/view-angular';
 
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { OverlayConfig } from '@angular/cdk/overlay';
-import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
+import { CdkConnectedOverlayConfig, CdkOverlayOrigin, OverlayConfig } from '@angular/cdk/overlay';
 import * as v from 'valibot';
+import { CdkConnectedOverlay } from '@piying-lib/angular-core';
 /*
  * PickerRefFCC - 选择器引用组件
  *
@@ -61,14 +61,14 @@ export class PickerRefFCC extends BaseControl {
   readonly PiyingView = PiyingView;
   /** 触发器内容 */
   trigger = input<v.BaseSchema<any, any, any>>();
-  triggerModel = input<'click' | 'contextmenu'>();
+  triggerModel = input<'click' | 'contextmenu'>('click');
   /** 弹窗内容 */
   content = input<v.BaseSchema<any, any, any>>();
   /** 选择后是否自动关闭 */
   changeClose = input<boolean>();
   isOpen$ = signal(false);
   /** 弹窗配置 */
-  overlayConfig = input<OverlayConfig>();
+  overlayConfig = input<CdkConnectedOverlayConfig>({ growAfterOpen: true, push: true });
   position$ = signal('');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   #field$$ = inject(PI_VIEW_FIELD_TOKEN);

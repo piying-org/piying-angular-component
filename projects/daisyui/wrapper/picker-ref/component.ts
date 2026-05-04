@@ -19,13 +19,13 @@ import {
 } from '@piying/view-angular';
 
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { OverlayConfig } from '@angular/cdk/overlay';
-import { CdkConnectedOverlay, CdkOverlayOrigin } from './overlay-directives';
+import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import * as v from 'valibot';
+import { CdkConnectedOverlay } from '@piying-lib/angular-core';
 type InputProps = {
   triggerModel?: 'click' | 'contextmenu';
   content: v.BaseSchema<any, any, any>;
-  overlayConfig?: OverlayConfig;
+  overlayConfig: CdkConnectedOverlayConfig;
   originSource: 'event' | 'trigger';
 };
 @Component({
@@ -46,10 +46,12 @@ export class PickerRefWC {
   SelectorlessOutlet = SelectorlessOutlet;
   static __version = 2;
   templateRef = viewChild.required('templateRef');
+  cdkOverlay = viewChild.required<CdkConnectedOverlay>('ref');
   readonly PiyingView = PiyingView;
   props$$ = computed(() => {
     let props = this.#field$$().props() as InputProps;
     props.triggerModel ??= 'contextmenu';
+    props.overlayConfig ??= {};
     return props;
   });
 

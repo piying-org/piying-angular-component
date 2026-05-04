@@ -1,5 +1,11 @@
 <ng-template #templateRef let-attr="attributes">
-  <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" [attributes]="attr()" (click)="openRef('click')" (contextmenu)="openRef('contextmenu')">
+  <div
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    [attributes]="attr()"
+    (click)="openRef('click')"
+    (contextmenu)="openRef('contextmenu')"
+  >
     <ng-container
       [selectlessOutlet]="PiyingView"
       [selectlessOutletInputs]="triggerInput$$()"
@@ -7,10 +13,9 @@
   </div>
 
   <ng-template
-    cdkConnectedOverlay
-    [origin]="trigger"
-    [open]="isOpen$()"
-    [overlayConfig]="overlayConfig()"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen$()"
+    [cdkConnectedOverlay]="overlayConfig()"
     (detach)="isOpen$.set(false)"
     (overlayOutsideClick)="outsideClick()"
   >
