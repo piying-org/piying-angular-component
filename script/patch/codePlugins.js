@@ -20,10 +20,12 @@ const defaultPlugin = {
     setup(build) {
         let ext = DEFAULT_EXT_ORDER_LIST;
         let baseDir = node_path_1.default.join(build.initialOptions.absWorkingDir, 'src/app/piying/page/component');
+        console.log('baseDir:', baseDir);
         build.onResolve({ filter: /\?(text|title)$/ }, (args) => {
             const i = args.path.lastIndexOf('?');
             const filepath = i !== -1 ? args.path.slice(0, i) : args.path;
             const query = i !== -1 ? args.path.slice(i + 1) : undefined;
+            console.log('resolve', filepath);
             return {
                 pluginName: 'raw-code',
                 path: node_path_1.default.resolve(args.resolveDir, filepath),

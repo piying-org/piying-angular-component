@@ -20,10 +20,12 @@ const defaultPlugin: Plugin = {
   setup(build) {
     let ext = DEFAULT_EXT_ORDER_LIST;
     let baseDir = path.join(build.initialOptions.absWorkingDir!, 'src/app/piying/page/component');
+    console.log('baseDir:', baseDir);
     build.onResolve({ filter: /\?(text|title)$/ }, (args) => {
       const i = args.path.lastIndexOf('?');
       const filepath = i !== -1 ? args.path.slice(0, i) : args.path;
       const query = i !== -1 ? args.path.slice(i + 1) : undefined;
+      console.log('resolve', filepath);
       return {
         pluginName: 'raw-code',
         path: path.resolve(args.resolveDir, filepath),
@@ -61,7 +63,7 @@ const defaultPlugin: Plugin = {
           return { contents: buffer, loader: 'text' };
         } else {
           let relPath = path.relative(baseDir, filePath);
-          let list = relPath.split('\\');          
+          let list = relPath.split('\\');
           return { contents: list[3], loader: 'text' };
         }
       });
