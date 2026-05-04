@@ -20,7 +20,8 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { CdkConnectedOverlayConfig, CdkOverlayOrigin, OverlayConfig } from '@angular/cdk/overlay';
 import * as v from 'valibot';
-import { CdkConnectedOverlay } from '@piying-lib/angular-core';
+import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
+import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/menu';
 /*
  * PickerRefFCC - 选择器引用组件
  *
@@ -50,6 +51,12 @@ import { CdkConnectedOverlay } from '@piying-lib/angular-core';
       useExisting: forwardRef(() => PickerRefFCC),
       multi: true,
     },
+    CustomMenuTrigger,
+    {
+      provide: MENU_TRIGGER,
+      useExisting: CustomMenuTrigger,
+    },
+    PARENT_OR_NEW_MENU_STACK_PROVIDER,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -72,6 +79,8 @@ export class PickerRefFCC extends BaseControl {
   position$ = signal('');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   #field$$ = inject(PI_VIEW_FIELD_TOKEN);
+  menuTrigger = inject(CustomMenuTrigger);
+
   triggerInput$$ = computed(() => {
     return {
       model: this.value$,

@@ -21,7 +21,12 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import * as v from 'valibot';
-import { CdkConnectedOverlay } from '@piying-lib/angular-core';
+import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
+import {
+  MENU_TRIGGER,
+  PARENT_OR_NEW_MENU_STACK_PROVIDER,
+  CdkMenuTrigger as CdkMenuTriggerCDK,
+} from '@angular/cdk/menu';
 type InputProps = {
   triggerModel?: 'click' | 'contextmenu';
   content: v.BaseSchema<any, any, any>;
@@ -39,6 +44,14 @@ type InputProps = {
     CdkOverlayOrigin,
     InsertFieldDirective,
   ],
+  providers: [
+    CustomMenuTrigger,
+    {
+      provide: MENU_TRIGGER,
+      useExisting: CustomMenuTrigger,
+    },
+    PARENT_OR_NEW_MENU_STACK_PROVIDER,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PickerRefWC {
@@ -48,6 +61,7 @@ export class PickerRefWC {
   templateRef = viewChild.required('templateRef');
   cdkOverlay = viewChild.required<CdkConnectedOverlay>('ref');
   readonly PiyingView = PiyingView;
+  menuTrigger = inject(CustomMenuTrigger);
   props$$ = computed(() => {
     let props = this.#field$$().props() as InputProps;
     props.triggerModel ??= 'contextmenu';
@@ -90,7 +104,6 @@ export class PickerRefWC {
   });
   event$ = signal<any>(undefined);
   openRef(mode: string, event: PointerEvent) {
-    console.log(event);
     this.event$.set(event);
     event.preventDefault();
     if (mode === this.props$$().triggerModel) {

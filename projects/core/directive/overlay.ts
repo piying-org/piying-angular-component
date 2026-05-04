@@ -1,9 +1,11 @@
-import { Directive } from '@angular/core';
+import { Directive, input } from '@angular/core';
 import { CdkConnectedOverlay as CdkConnectedOverlayDEF } from '@angular/cdk/overlay';
+import { CustomMenuTrigger } from './menu-trigger';
 @Directive({
   selector: '[cdkConnectedOverlay]',
 })
 export class CdkConnectedOverlay extends CdkConnectedOverlayDEF {
+  menuTrigger = input<CustomMenuTrigger>();
   disposeResizeUpdate?: () => void;
 
   override attachOverlay(): void {
@@ -18,6 +20,7 @@ export class CdkConnectedOverlay extends CdkConnectedOverlayDEF {
       this.disposeResizeUpdate = undefined;
       ob.disconnect();
     };
+    this.menuTrigger()?.setOverlay(this.overlayRef);
   }
   override ngOnDestroy(): void {
     super.ngOnDestroy();

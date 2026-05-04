@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
-import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import { CustomMenuTrigger, StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
@@ -9,6 +9,8 @@ import { AttributesDirective } from '@piying/view-angular';
 import { NavigationItem } from './navigation.types';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
+
 const routerLinkActiveOptions = { exact: true };
 /*
  * MenuTreeNFCC - 导航菜单树组件
@@ -33,6 +35,8 @@ const routerLinkActiveOptions = { exact: true };
     NgTemplateOutlet,
     MatIconModule,
     MergeClassPipe,
+    CdkMenu,
+    CdkMenuItem,
   ],
 })
 export class MenuTreeNFCC {

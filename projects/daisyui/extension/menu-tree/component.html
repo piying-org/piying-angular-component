@@ -51,49 +51,53 @@
     </a>
   }
 </ng-template>
-<ng-template #liGroup let-item>
-  <!-- todo open测试 -->
-  <details open>
-    <summary>{{ item.title }}</summary>
-    <ul>
-      @for (child of item.children; track $index) {
-        <ng-container
-          *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"
-        ></ng-container>
-      }
-    </ul>
-  </details>
-</ng-template>
-
-<ng-template #itemTemplate let-item>
-  @if ((item.hidden && !item.hidden(item)) || !item.hidden) {
-    @switch (item.type) {
-      @case ('group') {
-        <li class="tooltip" [attr.data-tip]="item.tooltip || ''">
-          <ng-container *ngTemplateOutlet="liGroup; context: { $implicit: item }"></ng-container>
-        </li>
-      }
-      @case ('divider') {
-        <li></li>
-      }
-      @default {
-        <li
-          class="tooltip"
-          [attr.data-tip]="item.tooltip || ''"
-          (click)="item.clicked?.($event, item)"
-        >
-          <ng-container *ngTemplateOutlet="liBase; context: { $implicit: item }"></ng-container>
-        </li>
-      }
-    }
-  }
-</ng-template>
 <ng-template #templateRef let-attr="attributes">
   <ul
     [class]="wrapperClass$() | mergeClass: attr()?.class"
     [attributes]="attr()"
     [excludes]="['class']"
+    cdkMenu
   >
+    <ng-template #liGroup let-item>
+      <!-- todo open测试 -->
+      <details open>
+        <summary>{{ item.title }}</summary>
+        <ul>
+          @for (child of item.children; track $index) {
+            <ng-container
+              *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"
+            ></ng-container>
+          }
+        </ul>
+      </details>
+    </ng-template>
+
+    <ng-template #itemTemplate let-item>
+      @if ((item.hidden && !item.hidden(item)) || !item.hidden) {
+        @switch (item.type) {
+          @case ('group') {
+            <li class="tooltip" [attr.data-tip]="item.tooltip || ''">
+              <ng-container
+                *ngTemplateOutlet="liGroup; context: { $implicit: item }"
+              ></ng-container>
+            </li>
+          }
+          @case ('divider') {
+            <li></li>
+          }
+          @default {
+            <li
+              class="tooltip"
+              [attr.data-tip]="item.tooltip || ''"
+              (click)="item.clicked?.($event, item)"
+              cdkMenuItem
+            >
+              <ng-container *ngTemplateOutlet="liBase; context: { $implicit: item }"></ng-container>
+            </li>
+          }
+        }
+      }
+    </ng-template>
     @for (child of list(); track $index) {
       <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: child }"></ng-container>
     }
