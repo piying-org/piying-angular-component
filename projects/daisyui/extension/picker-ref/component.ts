@@ -75,7 +75,7 @@ export class PickerRefFCC extends BaseControl {
   changeClose = input<boolean>();
   isOpen$ = signal(false);
   /** 弹窗配置 */
-  overlayConfig = input<CdkConnectedOverlayConfig>({ growAfterOpen: true, push: true });
+  overlayConfig = input<CdkConnectedOverlayConfig>({});
   position$ = signal('');
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   #field$$ = inject(PI_VIEW_FIELD_TOKEN);

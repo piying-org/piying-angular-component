@@ -6,9 +6,9 @@ export default v.pipe(
   v.tuple([
     v.pipe(
       v.date(),
-      safeDefine.setComponent('picker-ref', (ac) => {
+      safeDefine.setComponent('picker-ref', (actions) => {
         return [
-          ac.inputs.patch({
+          actions.inputs.patch({
             changeClose: true,
             trigger: v.pipe(
               NFCSchema,
@@ -25,7 +25,16 @@ export default v.pipe(
                 ];
               }),
             ),
-            content: v.pipe(v.date(), safeDefine.setComponent('calendar')),
+            content: v.pipe(
+              v.date(),
+              safeDefine.setComponent('calendar', (actions) => {
+                return [
+                  actions.attributes.patch({
+                    class: 'bg-base-200 rounded-xl shadow-2xs',
+                  }),
+                ];
+              }),
+            ),
           }),
         ];
       }),
