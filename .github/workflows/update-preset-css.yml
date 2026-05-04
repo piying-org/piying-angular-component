@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: 20.x
           cache-dependency-path: piying-lib/package-lock.json
-      - run: npm ci
+      - run: npm i
         working-directory: "piying-lib"
       - run: |
           npx tsx ./script/daisyui-css-collection.ts ../daisyui
