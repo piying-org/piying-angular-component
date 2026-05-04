@@ -1,0 +1,26 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    [attributes]="attr()"
+    (click)="openRef('click', $event)"
+    (contextmenu)="openRef('contextmenu', $event)"
+  >
+    <ng-container insertField></ng-container>
+  </div>
+
+  <ng-template
+    cdkConnectedOverlay
+    [origin]="props$$().originSource === 'event' ? event$() : trigger"
+    [open]="isOpen$()"
+    [overlayConfig]="props$$().overlayConfig"
+    [positions]=""
+    (detach)="isOpen$.set(false)"
+    (overlayOutsideClick)="outsideClick()"
+  >
+    <ng-container
+      [selectlessOutlet]="PiyingView"
+      [selectlessOutletInputs]="contentInput$$()"
+    ></ng-container>
+  </ng-template>
+</ng-template>

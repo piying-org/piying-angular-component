@@ -53,6 +53,7 @@ import { ConfirmDefine } from '@@py/page/component/overlay/confirm';
 import { EditableRowDefine } from '@@py/page/component/extension/editable-row';
 import { InputDefine } from '@@py/page/component/field-control/input';
 import { InputNumberDefine } from '@@py/page/component/field-control/input-number';
+import { PickerRefWrapperDefine } from '@@py/page/component/non-field-control/picker-ref';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -508,6 +509,20 @@ export const ExampleNonFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => ThemeControllerDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'picker-ref',
+      router: { routerLink: './example/non-field-control/picker-ref' },
+    },
+    define: {
+      path: 'picker-ref',
+      component: SchemaViewPage,
+      data: {
+        schema: () => PickerRefWrapperDefine,
         options: () => options,
       },
     },

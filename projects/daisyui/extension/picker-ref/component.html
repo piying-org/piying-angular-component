@@ -1,5 +1,5 @@
 <ng-template #templateRef let-attr="attributes">
-  <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" [attributes]="attr()" (click)="openRef()">
+  <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" [attributes]="attr()" (click)="openRef('click')" (contextmenu)="openRef('contextmenu')">
     <ng-container
       [selectlessOutlet]="PiyingView"
       [selectlessOutletInputs]="triggerInput$$()"
