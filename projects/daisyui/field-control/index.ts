@@ -1,6 +1,7 @@
 export * from './checkbox';
 export * from './file-input';
 export * from './input';
+export * from './input-number';
 export * from './radio';
 export * from './range';
 export * from './rating';

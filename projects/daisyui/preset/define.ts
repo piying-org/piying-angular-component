@@ -140,6 +140,12 @@ export const PresetDefine = {
     'editable-row': {
       type: ExtComponentGroup.EditableRowFGC,
     },
+    'input-number': {
+      type: FCCGroup.InputNumberFCC,
+    },
+    array: {
+      type: PiyingViewGroup,
+    },
   },
   wrappers: {
     // 默认包装器

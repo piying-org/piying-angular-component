@@ -1,0 +1,50 @@
+<ng-template #templateRef let-attr="attributes">
+  <div [class]="attr()?.class | mergeClass: 'join'">
+    <ng-template #decrementBtn>
+      <button
+        type="button"
+        [class]="'btn btn-square btn-soft  join-item' | cssPrefix | mergeClass: buttonClass$$()"
+        (click)="decrement()"
+        [disabled]="disabled$()"
+      >
+        −
+      </button>
+    </ng-template>
+    <ng-template #incrementBtn>
+      <button
+        type="button"
+        [class]="'btn btn-square btn-soft join-item' | cssPrefix | mergeClass: buttonClass$$()"
+        (click)="increment()"
+        [disabled]="disabled$()"
+      >
+        +
+      </button>
+    </ng-template>
+
+    @if (buttonPosition() === 'both') {
+      <ng-container *ngTemplateOutlet="decrementBtn" />
+    }
+
+    <input
+      type="number"
+      [class]="attr()?.class | mergeClass: ('input  join-item' | cssPrefix) : inputClass$$()"
+      [attributes]="attr()"
+      [excludes]="['class', 'type']"
+      [ngModel]="value$()"
+      [min]="min()"
+      [max]="max()"
+      [step]="step()"
+      (ngModelChange)="onInput($event)"
+      (blur)="onBlur()"
+      [disabled]="disabled$()"
+    />
+
+    @if (buttonPosition() === 'both') {
+      <ng-container *ngTemplateOutlet="incrementBtn" />
+    }
+    @if (buttonPosition() === 'right') {
+      <ng-container *ngTemplateOutlet="decrementBtn" />
+      <ng-container *ngTemplateOutlet="incrementBtn" />
+    }
+  </div>
+</ng-template>

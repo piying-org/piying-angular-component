@@ -51,6 +51,8 @@ import { DialogDefine } from '@@py/page/component/overlay/dialog';
 import { ToastDefine } from '@@py/page/component/overlay/toast';
 import { ConfirmDefine } from '@@py/page/component/overlay/confirm';
 import { EditableRowDefine } from '@@py/page/component/extension/editable-row';
+import { InputDefine } from '@@py/page/component/field-control/input';
+import { InputNumberDefine } from '@@py/page/component/field-control/input-number';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -189,6 +191,28 @@ export const ExampleFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => ToggleDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'input', router: { routerLink: './example/field-control/input' } },
+    define: {
+      path: 'input',
+      component: SchemaViewPage,
+      data: {
+        schema: () => InputDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'input-number', router: { routerLink: './example/field-control/input-number' } },
+    define: {
+      path: 'input-number',
+      component: SchemaViewPage,
+      data: {
+        schema: () => InputNumberDefine,
         options: () => options,
       },
     },
