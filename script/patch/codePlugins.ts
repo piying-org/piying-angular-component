@@ -37,43 +37,28 @@ const defaultPlugin: Plugin = {
     });
     for (const name of ['text', 'title']) {
       build.onLoad({ filter: /.*/, namespace: `raw-code-${name}` }, (args) => {
-        console.log('load?');
         const { fullPath, query } = args.pluginData;
         let filePath = fullPath;
-        console.log('1111');
-
         if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
           filePath = path.join(filePath, 'index');
         }
-        console.log('2222');
-
         if (!fs.existsSync(filePath)) {
           const resolved = ext.find((e) => fs.existsSync(`${filePath}.${e}`));
           if (resolved) {
             filePath += `.${resolved}`;
           }
         }
-        console.log('333');
-
         if (!fs.existsSync(filePath)) {
           throw new Error(
             `File not found: ${fullPath}\nChecked extensions: ${ext.join(', ')}.\nYou can customize extensions list using { ext: [...] }.`,
           );
         }
-        console.log('444');
-
         if (name === 'text') {
           const buffer = fs.readFileSync(filePath, { encoding: 'utf-8' });
-          console.log('5555');
-
           return { contents: buffer, loader: 'text' };
         } else {
-          let relPath = path.relative(baseDir, filePath);
-          console.log(relPath);
-          
+          let relPath = path.relative(baseDir, filePath);          
           let list = relPath.split(/\\|\//);
-          console.log('666',list,list[3]);
-
           return { contents: list[3], loader: 'text' };
         }
       });

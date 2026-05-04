@@ -36,35 +36,27 @@ const defaultPlugin = {
         });
         for (const name of ['text', 'title']) {
             build.onLoad({ filter: /.*/, namespace: `raw-code-${name}` }, (args) => {
-                console.log('load?');
                 const { fullPath, query } = args.pluginData;
                 let filePath = fullPath;
-                console.log('1111');
                 if (node_fs_1.default.existsSync(filePath) && node_fs_1.default.lstatSync(filePath).isDirectory()) {
                     filePath = node_path_1.default.join(filePath, 'index');
                 }
-                console.log('2222');
                 if (!node_fs_1.default.existsSync(filePath)) {
                     const resolved = ext.find((e) => node_fs_1.default.existsSync(`${filePath}.${e}`));
                     if (resolved) {
                         filePath += `.${resolved}`;
                     }
                 }
-                console.log('333');
                 if (!node_fs_1.default.existsSync(filePath)) {
                     throw new Error(`File not found: ${fullPath}\nChecked extensions: ${ext.join(', ')}.\nYou can customize extensions list using { ext: [...] }.`);
                 }
-                console.log('444');
                 if (name === 'text') {
                     const buffer = node_fs_1.default.readFileSync(filePath, { encoding: 'utf-8' });
-                    console.log('5555');
                     return { contents: buffer, loader: 'text' };
                 }
                 else {
                     let relPath = node_path_1.default.relative(baseDir, filePath);
-                    console.log(relPath);
                     let list = relPath.split(/\\|\//);
-                    console.log('666', list, list[3]);
                     return { contents: list[3], loader: 'text' };
                 }
             });
