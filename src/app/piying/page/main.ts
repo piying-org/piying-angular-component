@@ -3,7 +3,7 @@ import { NFCSchema, setComponent } from '@piying/view-angular-core';
 import { actions } from '@piying/view-angular';
 import { safeDefine } from '@@piying-define';
 import {
-  BusinessRouterConfig,
+  FunctionRouterConfig,
   ExampleFormRouterConfig,
   ExampleFieldControlRouterConfig,
   ExampleFieldGroupRouterConfig,
@@ -74,9 +74,9 @@ export const MainPage = v.pipe(
                 children: OverlayRouterConfig.map((item) => item.config),
               },
               {
-                title: 'business',
+                title: 'function',
                 type: 'group',
-                children: BusinessRouterConfig.map((item) => item.config),
+                children: FunctionRouterConfig.map((item) => item.config),
               },
 
               { title: 'login', router: { routerLink: './component/login' } },

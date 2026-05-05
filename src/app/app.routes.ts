@@ -14,7 +14,7 @@ import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';
 import * as v from 'valibot';
 import {
-  BusinessRouterConfig,
+  FunctionRouterConfig,
   ExampleExtensionRouterConfig,
   ExampleFieldControlRouterConfig,
   ExampleFieldGroupRouterConfig,
@@ -145,8 +145,8 @@ export const routes: Routes = [
             children: OverlayRouterConfig.map((item) => item.define),
           },
           {
-            path: 'business',
-            children: BusinessRouterConfig.map((item) => item.define),
+            path: 'function',
+            children: FunctionRouterConfig.map((item) => item.define),
           },
         ],
       },

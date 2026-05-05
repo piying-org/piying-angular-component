@@ -2,4 +2,4 @@ import * as Group from './example';
 
 import { createCodeExampleObject } from '@@py/util/create-code-example-object';
 
-export const BusinessLoginDefine = createCodeExampleObject(Group);
+export const FunctionLoginDefine = createCodeExampleObject(Group);

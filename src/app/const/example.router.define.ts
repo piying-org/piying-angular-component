@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { PickerRefDefine } from '@@py/page/component/extension/picker-ref';
 import { FieldGlobalConfig } from '@@piying-define';
-import { BusinessLoginDefine } from '../piying/page/component/business/login';
+import { FunctionLoginDefine } from '../piying/page/component/function/login';
 import { EditableGroupDefine } from '@@py/page/component/extension/editable-group';
 import { MenuTreeDefine } from '@@py/page/component/extension/menu-tree';
 import { PaginationDefine } from '@@py/page/component/extension/pagination';
@@ -692,14 +692,14 @@ export const OverlayRouterConfig = [
   },
 ];
 
-export const BusinessRouterConfig = [
+export const FunctionRouterConfig = [
   {
-    config: { title: 'login', router: { routerLink: './example/business/login' } },
+    config: { title: 'login', router: { routerLink: './example/function/login' } },
     define: {
       path: 'login',
       component: SchemaViewPage,
       data: {
-        schema: () => BusinessLoginDefine,
+        schema: () => FunctionLoginDefine,
         options: () => options,
       },
     },
