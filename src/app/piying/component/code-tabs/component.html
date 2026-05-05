@@ -2,11 +2,22 @@
   <div class="tabs tabs-lift">
     <label class="tab">
       <input type="radio" [name]="name" checked="checked" />
-      <span class="material-icons">monitor</span>
+      <span class="material-icons icon-4">monitor</span>
 
       <!-- 预览 -->
     </label>
-    <div class="tab-content bg-base-100 border-base-300 p-6">
+    <div
+      class="tab-content bg-base-100 border-base-300 p-6"
+      style="
+        background-image: repeating-linear-gradient(
+          -45deg,
+          var(--color-base-100),
+          var(--color-base-100) 13px,
+          var(--color-base-200) 13px,
+          var(--color-base-200) 14px
+        );
+      "
+    >
       <ng-container
         [selectlessOutlet]="PiyingView"
         [selectlessOutletInputs]="piyingInput"
@@ -14,14 +25,15 @@
     </div>
     <label class="tab">
       <input type="radio" [name]="name" />
-      <span class="material-icons">code</span>
+      <span class="material-icons icon-4">code</span>
       <!-- 代码 -->
+       TS
     </label>
     <div class="tab-content bg-base-100 border-base-300 p-6">
       <div [codeHL]="code()"></div>
     </div>
-    <span class="self-center btn btn-circle btn-ghost btn-xs" [cdkCopyToClipboard]="code()">
-      <span class="material-icons inline-flex"> content_copy </span>
+    <span class="self-center btn btn-circle btn-ghost btn-xs " [cdkCopyToClipboard]="code()">
+      <span class="material-icons inline-flex icon-4"> content_copy </span>
     </span>
   </div>
 </ng-template>
