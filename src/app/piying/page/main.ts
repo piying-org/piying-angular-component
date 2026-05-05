@@ -88,14 +88,6 @@ export const MainPage = v.pipe(
                 children: [{ title: 'login', router: { routerLink: '/login' } }],
               },
               { type: 'divider' },
-              {
-                type: 'group',
-                title: 'DEMO',
-                children: [
-                  { title: 'Query Table2', router: { routerLink: './demo/query-table2' } },
-                ],
-              },
-              { type: 'divider' },
 
               {
                 href: 'https://github.com/piying-org/piying-angular-component',

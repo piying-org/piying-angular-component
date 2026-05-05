@@ -1,14 +1,14 @@
 import * as v from 'valibot';
-import { formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions, formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { safeDefine } from '@@piying-define';
 import { computed } from '@angular/core';
-import { actions } from '@piying/view-angular';
 import {
-  CheckboxService,
-  SortService,
   TableResourceService,
+  SortService,
+  CheckboxService,
 } from '@piying-lib/angular-daisyui/extension';
-import { DemoTableResourceService } from './mock.service';
 import { FormDialogService } from '@piying-lib/angular-daisyui/overlay';
+import { DemoTableResourceService } from './mock.service';
 const LevelOptions = [
   {
     label: 'all',
@@ -272,15 +272,17 @@ const TableDefine = v.pipe(
     ),
   }),
 );
-export const QueryTable2Define = v.pipe(
-  v.object({ query: QueryCondition, table: TableDefine }),
-  actions.wrappers.set(['div']),
-  actions.class.top('m-4'),
-  actions.providers.patch([TableResourceService]),
-  actions.hooks.merge({
-    allFieldsResolved: (field) => {
-      const demoRequest = field.injector.get(DemoTableResourceService);
-      field.injector.get(TableResourceService).setRequest(demoRequest.requestFn);
-    },
-  }),
+export default v.pipe(
+  v.pipe(
+    v.object({ query: QueryCondition, table: TableDefine }),
+    actions.wrappers.set(['div']),
+    actions.class.top('m-4'),
+    actions.providers.patch([TableResourceService]),
+    actions.hooks.merge({
+      allFieldsResolved: (field) => {
+        const demoRequest = field.injector.get(DemoTableResourceService);
+        field.injector.get(TableResourceService).setRequest(demoRequest.requestFn);
+      },
+    }),
+  ),
 );

@@ -54,6 +54,7 @@ import { EditableRowDefine } from '@@py/page/component/extension/editable-row';
 import { InputDefine } from '@@py/page/component/field-control/input';
 import { InputNumberDefine } from '@@py/page/component/field-control/input-number';
 import { PickerRefWrapperDefine } from '@@py/page/component/non-field-control/picker-ref';
+import { FunctionTableDefine } from '@@py/page/component/function/table';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -208,7 +209,10 @@ export const ExampleFieldControlRouterConfig = [
     },
   },
   {
-    config: { title: 'input-number', router: { routerLink: './example/field-control/input-number' } },
+    config: {
+      title: 'input-number',
+      router: { routerLink: './example/field-control/input-number' },
+    },
     define: {
       path: 'input-number',
       component: SchemaViewPage,
@@ -700,6 +704,17 @@ export const FunctionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FunctionLoginDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'function', router: { routerLink: './example/function/function' } },
+    define: {
+      path: 'function',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FunctionTableDefine,
         options: () => options,
       },
     },

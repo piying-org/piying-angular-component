@@ -5,7 +5,6 @@ import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
 
-import { QueryTable2Define } from './piying/page/demo/query-table2';
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { FieldGlobalConfig } from './piying/define';
 import { PageInputDefine } from './piying/page/component/page-input';
@@ -92,25 +91,7 @@ export const routes: Routes = [
           },
         ],
       },
-      {
-        path: 'demo',
-        children: [
-          {
-            path: '',
-            redirectTo: 'query-table2',
-            pathMatch: 'full',
-          },
 
-          {
-            path: 'query-table2',
-            component: SchemaViewPage,
-            data: {
-              schema: () => QueryTable2Define,
-              options: () => options,
-            },
-          },
-        ],
-      },
       {
         path: 'example',
         children: [
