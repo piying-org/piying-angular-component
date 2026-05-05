@@ -39,7 +39,7 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./dist/piying-angular-component
+          path: ./dist/piying-angular-component/browser
 
   deploy:
     environment:

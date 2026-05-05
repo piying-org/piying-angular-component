@@ -18,8 +18,7 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": {
-              "base": "./dist/piying-angular-component",
-              "browser": ""
+              "base": "./dist/piying-angular-component"
             },
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -36,6 +35,7 @@
               "material-icons/iconfont/filled.css",
               "./src/app/style/ionic/index.scss"
             ],
+            "server": "src/main.server.ts",
             "outputMode": "static",
             "ssr": {
               "entry": "src/server.ts"

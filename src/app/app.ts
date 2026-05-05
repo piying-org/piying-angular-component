@@ -26,6 +26,6 @@ export class App {
   constructor() {
     const iconRegistry = inject(MatIconRegistry);
     const sanitizer = inject(DomSanitizer);
-    iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('/icon/github.svg'));
+    iconRegistry.addSvgIcon('github', sanitizer.bypassSecurityTrustResourceUrl('icon/github.svg'));
   }
 }
