@@ -1,0 +1,116 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            fill: #5e6d7f;
+        }
+
+        .axis-label {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            fill: #5e6d7f;
+        }
+
+        .grid-line {
+            stroke: #e0e6ed;
+            stroke-width: 1;
+        }
+
+        .bar {
+            fill: #9ba8b9;
+        }
+
+        .line {
+            fill: none;
+            stroke: #6c7a89;
+            stroke-width: 3;
+        }
+
+        .data-point {
+            fill: #6c7a89;
+        }
+
+        .data-label {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            fill: white;
+            text-anchor: middle;
+            dominant-baseline: central;
+        }
+
+        .label-bg {
+            fill: #6c7a89;
+            rx: 4;
+            ry: 4;
+        }
+    </style>
+
+    <!-- Title -->
+    <text x="20" y="30" class="title">New vs. Closed</text>
+
+    <!-- Grid Lines -->
+    <line x1="60" y1="80" x2="780" y2="80" class="grid-line" />
+    <line x1="60" y1="130" x2="780" y2="130" class="grid-line" />
+    <line x1="60" y1="180" x2="780" y2="180" class="grid-line" />
+    <line x1="60" y1="230" x2="780" y2="230" class="grid-line" />
+    <line x1="60" y1="280" x2="780" y2="280" class="grid-line" />
+    <line x1="60" y1="330" x2="780" y2="330" class="grid-line" />
+    <line x1="60" y1="380" x2="780" y2="380" class="grid-line" />
+    <line x1="60" y1="430" x2="780" y2="430" class="grid-line" />
+
+    <!-- Y-axis Labels -->
+    <text x="50" y="80" class="axis-label" text-anchor="end">45</text>
+    <text x="50" y="130" class="axis-label" text-anchor="end">40</text>
+    <text x="50" y="180" class="axis-label" text-anchor="end">35</text>
+    <text x="50" y="230" class="axis-label" text-anchor="end">30</text>
+    <text x="50" y="280" class="axis-label" text-anchor="end">25</text>
+    <text x="50" y="330" class="axis-label" text-anchor="end">20</text>
+    <text x="50" y="380" class="axis-label" text-anchor="end">15</text>
+    <text x="50" y="430" class="axis-label" text-anchor="end">10</text>
+    <text x="50" y="480" class="axis-label" text-anchor="end">5</text>
+    <text x="50" y="530" class="axis-label" text-anchor="end">0</text>
+
+    <!-- X-axis Labels -->
+    <text x="120" y="560" class="axis-label" text-anchor="middle">Mon</text>
+    <text x="220" y="560" class="axis-label" text-anchor="middle">Tue</text>
+    <text x="320" y="560" class="axis-label" text-anchor="middle">Wed</text>
+    <text x="420" y="560" class="axis-label" text-anchor="middle">Thu</text>
+    <text x="520" y="560" class="axis-label" text-anchor="middle">Fri</text>
+    <text x="620" y="560" class="axis-label" text-anchor="middle">Sat</text>
+    <text x="720" y="560" class="axis-label" text-anchor="middle">Sun</text>
+
+    <!-- Bars -->
+    <rect x="90" y="418" width="60" height="112" class="bar" />
+    <rect x="190" y="430" width="60" height="100" class="bar" />
+    <rect x="290" y="445" width="60" height="85" class="bar" />
+    <rect x="390" y="418" width="60" height="112" class="bar" />
+    <rect x="490" y="445" width="60" height="85" class="bar" />
+    <rect x="590" y="430" width="60" height="100" class="bar" />
+    <rect x="690" y="362" width="60" height="168" class="bar" />
+
+    <!-- Line Chart -->
+    <polyline points="120,140 220,250 320,120 420,190 520,310 620,270 720,290" class="line" />
+
+    <!-- Data Points and Labels -->
+    <rect x="105" y="125" width="30" height="30" class="label-bg" />
+    <text x="120" y="140" class="data-label">42</text>
+
+    <rect x="205" y="235" width="30" height="30" class="label-bg" />
+    <text x="220" y="250" class="data-label">28</text>
+
+    <rect x="305" y="105" width="30" height="30" class="label-bg" />
+    <text x="320" y="120" class="data-label">43</text>
+
+    <rect x="405" y="175" width="30" height="30" class="label-bg" />
+    <text x="420" y="190" class="data-label">34</text>
+
+    <rect x="505" y="295" width="30" height="30" class="label-bg" />
+    <text x="520" y="310" class="data-label">20</text>
+
+    <rect x="605" y="255" width="30" height="30" class="label-bg" />
+    <text x="620" y="270" class="data-label">25</text>
+
+    <rect x="705" y="275" width="30" height="30" class="label-bg" />
+    <text x="720" y="290" class="data-label">22</text>
+</svg>

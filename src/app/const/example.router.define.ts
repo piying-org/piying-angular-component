@@ -56,6 +56,7 @@ import { InputNumberDefine } from '@@py/page/component/field-control/input-numbe
 import { PickerRefWrapperDefine } from '@@py/page/component/non-field-control/picker-ref';
 import { FunctionTableDefine } from '@@py/page/component/function/table';
 import { Card2Define } from '@@py/page/component/non-field-control/card2';
+import { FunctionDashboardDefine } from '@@py/page/component/function/dashboard';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -724,12 +725,23 @@ export const FunctionRouterConfig = [
     },
   },
   {
-    config: { title: 'function', router: { routerLink: './example/function/function' } },
+    config: { title: 'table', router: { routerLink: './example/function/table' } },
     define: {
-      path: 'function',
+      path: 'table',
       component: SchemaViewPage,
       data: {
         schema: () => FunctionTableDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'dashboard', router: { routerLink: './example/function/dashboard' } },
+    define: {
+      path: 'dashboard',
+      component: SchemaViewPage,
+      data: {
+        schema: () => FunctionDashboardDefine,
         options: () => options,
       },
     },

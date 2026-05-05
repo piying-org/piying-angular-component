@@ -1,10 +1,11 @@
-import { Component, computed, inject, input, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, input, signal, TemplateRef, viewChild } from '@angular/core';
 import { AttributesDirective } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
+import * as v from 'valibot';
 
 /**
  * 按钮组件
@@ -31,7 +32,16 @@ export class ButtonNFCC {
   /** 是否激活状态 */
   active = input<boolean>();
   /** 按钮内容 */
-  content = input<any>('Default');
+  content = input<
+    | string
+    | TemplateRef<any>
+    | v.BaseSchema<any, any, any>
+    | {
+        image?: { src?: string; alt?: string };
+        icon?: { inline?: boolean; fontIcon?: string; fontSet?: string; svgIcon?: string };
+        title?: string;
+      }
+  >('Default');
   /** 点击事件处理函数 */
   clicked = input<(event: PointerEvent) => void | Promise<void>>();
   /** 是否禁用 */
