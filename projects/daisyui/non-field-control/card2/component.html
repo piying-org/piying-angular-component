@@ -1,0 +1,46 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="attr()?.class | mergeClass: ('card' | cssPrefix) : wrapperClass$()"
+  >
+    @if (figure()) {
+      <ng-container
+        [selectlessOutlet]="PiyingView"
+        [selectlessOutletInputs]="piyingInput | pure: figure() : schemaOptions$$"
+      ></ng-container>
+    }
+    <div [class]="bodyClass() | mergeClass: ('card-body' | cssPrefix)">
+      @if (title(); as field) {
+        <h2 [class]="'card-title' | cssPrefix | mergeClass: 'justify-between'">
+          <ng-container
+            [selectlessOutlet]="PiyingView"
+            [selectlessOutletInputs]="piyingInput | pure: title() : schemaOptions$$"
+          ></ng-container>
+          @if (titleActions()) {
+            <ng-container
+              [selectlessOutlet]="PiyingView"
+              [selectlessOutletInputs]="piyingInput | pure: titleActions() : schemaOptions$$"
+            ></ng-container>
+          }
+        </h2>
+      }
+      @if (body(); as bodyChildren) {
+        <div>
+          <ng-container
+            [selectlessOutlet]="PiyingView"
+            [selectlessOutletInputs]="piyingInput | pure: body() : schemaOptions$$"
+          ></ng-container>
+        </div>
+      }
+      @if (actions(); as field) {
+        <div [class]="actionsClass() | mergeClass: ('card-actions' | cssPrefix)">
+          <ng-container
+            [selectlessOutlet]="PiyingView"
+            [selectlessOutletInputs]="piyingInput | pure: actions() : schemaOptions$$"
+          ></ng-container>
+        </div>
+      }
+    </div>
+  </div>
+</ng-template>

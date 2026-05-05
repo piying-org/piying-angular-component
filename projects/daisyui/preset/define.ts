@@ -146,6 +146,9 @@ export const PresetDefine = {
     array: {
       type: PiyingViewGroup,
     },
+    'card2': {
+      type: NFCCGroup.CardNFCC,
+    },
   },
   wrappers: {
     // 默认包装器

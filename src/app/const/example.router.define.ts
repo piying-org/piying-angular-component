@@ -55,6 +55,7 @@ import { InputDefine } from '@@py/page/component/field-control/input';
 import { InputNumberDefine } from '@@py/page/component/field-control/input-number';
 import { PickerRefWrapperDefine } from '@@py/page/component/non-field-control/picker-ref';
 import { FunctionTableDefine } from '@@py/page/component/function/table';
+import { Card2Define } from '@@py/page/component/non-field-control/card2';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -527,6 +528,20 @@ export const ExampleNonFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => PickerRefWrapperDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'card2',
+      router: { routerLink: './example/non-field-control/card2' },
+    },
+    define: {
+      path: 'card2',
+      component: SchemaViewPage,
+      data: {
+        schema: () => Card2Define,
         options: () => options,
       },
     },
