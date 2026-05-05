@@ -1,11 +1,8 @@
 import { Routes } from '@angular/router';
 import { MainPage } from './piying/page/main';
-import { inject } from '@angular/core';
-import { AccountService } from './service/account.service';
 
 import { SchemaViewPage } from '@piying-lib/angular-core';
 import { FieldGlobalConfig } from './piying/define';
-import { PageInputDefine } from './piying/page/component/page-input';
 import { IonicDevDefine } from '@@py/page/ionic/dev';
 import { IonFieldGlobalConfig } from '@@py/page/ionic/define';
 import { DaiMobileDev } from '@@py/page/component/mobile/mobile';

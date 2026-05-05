@@ -13,12 +13,21 @@ export default v.pipe(
           actions.inputs.patchAsync({
             clicked: (field) => {
               return () => {
-                field.injector.get(ToastService).add({ message: 'success-message', type: 'success' });
-                field.injector.get(ToastService).add({ message: 'info-message', type: 'info' });
-                field.injector.get(ToastService).add({ message: 'warning-message', type: 'warning' });
                 field.injector
                   .get(ToastService)
-                  .add({ message: 'error-message', type: 'error', enableCopy: true, duration: 30000 });
+                  .add({ message: 'success-message', type: 'success' });
+                field.injector.get(ToastService).add({ message: 'info-message', type: 'info' });
+                field.injector
+                  .get(ToastService)
+                  .add({ message: 'warning-message', type: 'warning' });
+                field.injector
+                  .get(ToastService)
+                  .add({
+                    message: 'error-message',
+                    type: 'error',
+                    enableCopy: true,
+                    duration: 30000,
+                  });
               };
             },
           }),

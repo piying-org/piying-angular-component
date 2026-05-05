@@ -34,135 +34,132 @@ export default v.pipe(
           safeDefine.setComponent('table', (actions) => {
             return [
               actions.inputs.patchAsync({
-            define: (field) => {
-              const pageFiled = field.get(['..', 'page']);
-              return tableInputDefine({
-                expand: {
-                  head: ' ',
-                  body: v.pipe(
-                    NFCSchema,
-                    safeDefine.setComponent('table-expand-cell', (actions) => {
-                      return [
-                        actions.wrappers.set(['td']),
-                      ];
-                    }),
-                  ),
-                },
-                checkbox: {
-                  head: v.pipe(
-                    v.boolean(),
-                    safeDefine.setComponent('checkbox', (actions) => {
-                      return [
-                        actions.wrappers.set(['td', 'table-checkbox-all']),
-                      ];
-                    }),
-                  ),
-                  body: v.pipe(
-                    v.boolean(),
-                    safeDefine.setComponent('checkbox', (actions) => {
-                      return [
-                        actions.wrappers.set(['td', 'table-checkbox-body']),
-                      ];
-                    }),
-                  ),
-                },
-                index: {
-                  head: '索引',
-                  body: (node: any, index: number) => {
-                    const { pageQueryParams } = pageFiled!.props();
-                    return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
-                  },
-                },
-                '0': {
-                  head: '测试',
-                  body: (data: any) => {
-                    return data.title1;
-                  },
-                },
-                '1': {
-                  head: 'badge',
-                  body: v.pipe(
-                    NFCSchema,
-                    safeDefine.setComponent('badge', (actions) => {
-                      return [
-                        actions.wrappers.set(['td']),
-                        actions.inputs.patchAsync({
-                          content: ({ context }) => {
-                            return computed(() => context.item$().badge1);
-                          },
+                define: (field) => {
+                  const pageFiled = field.get(['..', 'page']);
+                  return tableInputDefine({
+                    expand: {
+                      head: ' ',
+                      body: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('table-expand-cell', (actions) => {
+                          return [actions.wrappers.set(['td'])];
                         }),
-                      ];
-                    }),
-                  ),
-                },
-                '2': {
-                  head: v.pipe(
-                    NFCSchema,
-                    safeDefine.setComponent('button', (actions) => {
-                      return [
-                        actions.inputs.patch({ content: '1234' }),
-                        actions.wrappers.set(['td', 'sort-header']),
-                        actions.props.patch({
-                          key: 'title1',
-                        }),
-                      ];
-                    }),
-                  ),
-                },
-                '3': {
-                  head: v.pipe(
-                    NFCSchema,
-                    safeDefine.setComponent('button', (actions) => {
-                      return [
-                        actions.inputs.patch({ content: '666' }),
-                        actions.wrappers.set(['td', 'sort-header']),
-                        actions.props.patch({
-                          key: 'badge1',
-                        }),
-                      ];
-                    }),
-                  ),
-                },
-                extra: {
-                  body: v.pipe(
-                    NFCSchema,
-                    safeDefine.setComponent('button', (actions) => {
-                      return [
-                        actions.wrappers.set(['td']),
-                        hideWhen({
-                          listen(fn, field) {
-                            const sm = field.injector.get(TableExpandService).selectionModel$$;
-                            return sm.pipe(
-                              map((value) => {
-                                return !value.isSelected(field.context.item$());
-                              }),
-                              startWith(true),
-                            );
-                          },
-                        }),
-                      ];
-                    }),
-                  ),
-                },
-              })(() => {
-                return {
-                  head: [{ columns: ['expand', 'checkbox', 'index', '1', '2', '3'] }],
-                  body: [
-                    {
-                      define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')),
-                      columns: ['expand', 'checkbox', 'index', '1'],
+                      ),
                     },
-                    { define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')), columns: ['extra'] },
-                  ],
-                };
-              });
-            },
-            data: (field) => {
-              return field.injector.get(TableResourceService).list$$;
-            },
+                    checkbox: {
+                      head: v.pipe(
+                        v.boolean(),
+                        safeDefine.setComponent('checkbox', (actions) => {
+                          return [actions.wrappers.set(['td', 'table-checkbox-all'])];
+                        }),
+                      ),
+                      body: v.pipe(
+                        v.boolean(),
+                        safeDefine.setComponent('checkbox', (actions) => {
+                          return [actions.wrappers.set(['td', 'table-checkbox-body'])];
+                        }),
+                      ),
+                    },
+                    index: {
+                      head: '索引',
+                      body: (node: any, index: number) => {
+                        const { pageQueryParams } = pageFiled!.props();
+                        return `${index + 1 + pageQueryParams.index * pageQueryParams.size}`;
+                      },
+                    },
+                    '0': {
+                      head: '测试',
+                      body: (data: any) => {
+                        return data.title1;
+                      },
+                    },
+                    '1': {
+                      head: 'badge',
+                      body: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('badge', (actions) => {
+                          return [
+                            actions.wrappers.set(['td']),
+                            actions.inputs.patchAsync({
+                              content: ({ context }) => {
+                                return computed(() => context.item$().badge1);
+                              },
+                            }),
+                          ];
+                        }),
+                      ),
+                    },
+                    '2': {
+                      head: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('button', (actions) => {
+                          return [
+                            actions.inputs.patch({ content: '1234' }),
+                            actions.wrappers.set(['td', 'sort-header']),
+                            actions.props.patch({
+                              key: 'title1',
+                            }),
+                          ];
+                        }),
+                      ),
+                    },
+                    '3': {
+                      head: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('button', (actions) => {
+                          return [
+                            actions.inputs.patch({ content: '666' }),
+                            actions.wrappers.set(['td', 'sort-header']),
+                            actions.props.patch({
+                              key: 'badge1',
+                            }),
+                          ];
+                        }),
+                      ),
+                    },
+                    extra: {
+                      body: v.pipe(
+                        NFCSchema,
+                        safeDefine.setComponent('button', (actions) => {
+                          return [
+                            actions.wrappers.set(['td']),
+                            hideWhen({
+                              listen(fn, field) {
+                                const sm = field.injector.get(TableExpandService).selectionModel$$;
+                                return sm.pipe(
+                                  map((value) => {
+                                    return !value.isSelected(field.context.item$());
+                                  }),
+                                  startWith(true),
+                                );
+                              },
+                            }),
+                          ];
+                        }),
+                      ),
+                    },
+                  })(() => {
+                    return {
+                      head: [{ columns: ['expand', 'checkbox', 'index', '1', '2', '3'] }],
+                      body: [
+                        {
+                          define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')),
+                          columns: ['expand', 'checkbox', 'index', '1'],
+                        },
+                        {
+                          define: v.pipe(v.tuple([]), safeDefine.setComponent('tr')),
+                          columns: ['extra'],
+                        },
+                      ],
+                    };
+                  });
+                },
+                data: (field) => {
+                  return field.injector.get(TableResourceService).list$$;
+                },
+              }),
+            ];
           }),
-        ];
-      }),
         ),
         page: v.pipe(
           NFCSchema,

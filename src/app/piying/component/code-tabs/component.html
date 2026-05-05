@@ -27,12 +27,12 @@
       <input type="radio" [name]="name" />
       <span class="material-icons icon-4">code</span>
       <!-- 代码 -->
-       TS
+      TS
     </label>
     <div class="tab-content bg-base-100 border-base-300 p-6">
       <div [codeHL]="code()"></div>
     </div>
-    <span class="self-center btn btn-circle btn-ghost btn-xs " [cdkCopyToClipboard]="code()">
+    <span class="self-center btn btn-circle btn-ghost btn-xs" [cdkCopyToClipboard]="code()">
       <span class="material-icons inline-flex icon-4"> content_copy </span>
     </span>
   </div>

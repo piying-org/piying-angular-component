@@ -41,11 +41,12 @@ const FormBase = v.object({
     }),
     v.title('radio-control'),
   ),
-  rating1: v.pipe(v.number(), safeDefine.setComponent('rating', (actions) => {
-    return [
-      actions.inputs.patch({ min: 2, half: true }),
-    ];
-  })),
+  rating1: v.pipe(
+    v.number(),
+    safeDefine.setComponent('rating', (actions) => {
+      return [actions.inputs.patch({ min: 2, half: true })];
+    }),
+  ),
   textarea1: v.pipe(v.string(), safeDefine.setComponent('textarea'), v.title('textarea-control')),
   date: v.pipe(v.date()),
   calendar: v.pipe(

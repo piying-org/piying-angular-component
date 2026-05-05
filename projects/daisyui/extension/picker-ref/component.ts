@@ -18,7 +18,7 @@ import {
 } from '@piying/view-angular';
 
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
-import { CdkConnectedOverlayConfig, CdkOverlayOrigin, OverlayConfig } from '@angular/cdk/overlay';
+import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import * as v from 'valibot';
 import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
 import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/menu';

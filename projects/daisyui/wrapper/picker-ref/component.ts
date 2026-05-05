@@ -2,16 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  forwardRef,
   inject,
-  input,
   signal,
   viewChild,
 } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {
   AttributesDirective,
-  BaseControl,
   InsertFieldDirective,
   PI_INPUT_OPTIONS_TOKEN,
   PI_VIEW_FIELD_TOKEN,
@@ -22,11 +19,7 @@ import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import * as v from 'valibot';
 import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
-import {
-  MENU_TRIGGER,
-  PARENT_OR_NEW_MENU_STACK_PROVIDER,
-  CdkMenuTrigger as CdkMenuTriggerCDK,
-} from '@angular/cdk/menu';
+import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/menu';
 type InputProps = {
   triggerModel?: 'click' | 'contextmenu';
   content: v.BaseSchema<any, any, any>;
@@ -63,7 +56,7 @@ export class PickerRefWC {
   readonly PiyingView = PiyingView;
   menuTrigger = inject(CustomMenuTrigger);
   props$$ = computed(() => {
-    let props = this.#field$$().props() as InputProps;
+    const props = this.#field$$().props() as InputProps;
     props.triggerModel ??= 'contextmenu';
     props.overlayConfig ??= {};
     return props;

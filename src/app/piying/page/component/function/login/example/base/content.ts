@@ -14,7 +14,7 @@ export default v.pipe(
       actions.wrappers.set(['label-wrapper']),
       v.title('密码'),
       actions.class.component('w-full'),
-      safeDefine.setComponent('password')
+      safeDefine.setComponent('password'),
     ),
     __button: v.pipe(
       NFCSchema,

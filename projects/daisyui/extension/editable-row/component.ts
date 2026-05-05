@@ -5,7 +5,6 @@ import {
   PI_INPUT_OPTIONS_TOKEN,
   AttributesDirective,
   EventsDirective,
-  PiResolvedViewFieldConfig,
 } from '@piying/view-angular';
 import type { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { NgTemplateOutlet, NgStyle } from '@angular/common';
@@ -131,7 +130,7 @@ export class EditableRowFGC extends PiyingViewGroupBase {
     return this.field$$().arrayChild?.children.map((child) => child.props['title']);
   });
   gridCol$$ = computed(() => {
-    let list = this.field$$().arrayChild?.children.map(
+    const list = this.field$$().arrayChild?.children.map(
       (child) => child.props['col'] ?? 'minmax(0, 1fr)',
     );
     return { 'grid-template-columns': (list?.join(' ') ?? '') + ' auto' };
