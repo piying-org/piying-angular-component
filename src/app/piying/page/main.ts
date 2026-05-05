@@ -79,14 +79,6 @@ export const MainPage = v.pipe(
                 children: FunctionRouterConfig.map((item) => item.config),
               },
 
-              { title: 'login', router: { routerLink: './component/login' } },
-              { title: 'page-input', router: { routerLink: './component/page-input' } },
-              { type: 'divider' },
-              {
-                type: 'group',
-                title: 'PAGE',
-                children: [{ title: 'login', router: { routerLink: '/login' } }],
-              },
               { type: 'divider' },
 
               {

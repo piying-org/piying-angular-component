@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { MainPage } from './piying/page/main';
-import { LoginDefine } from './piying/page/component/login';
-import { LoginPageDefine } from './piying/page/login';
 import { inject } from '@angular/core';
 import { AccountService } from './service/account.service';
 
@@ -33,21 +31,7 @@ export const routes: Routes = [
     redirectTo: '/main',
     pathMatch: 'full',
   },
-  {
-    path: 'login',
-    component: SchemaViewPage,
-    data: {
-      schema: () => LoginPageDefine,
-      options: () => {
-        return {
-          ...options,
-          context: {
-            account: inject(AccountService),
-          },
-        };
-      },
-    },
-  },
+
   {
     path: 'main',
     data: {
@@ -56,42 +40,6 @@ export const routes: Routes = [
     },
     component: SchemaViewPage,
     children: [
-      // {
-      //   path: '',
-
-      // },
-      {
-        path: 'component',
-        children: [
-          {
-            path: '',
-            redirectTo: 'login',
-            pathMatch: 'full',
-          },
-
-          {
-            path: 'login',
-            component: SchemaViewPage,
-            data: {
-              schema: () => LoginDefine,
-              options: () => options,
-            },
-          },
-
-          {
-            path: 'page-input',
-            component: SchemaViewPage,
-            data: {
-              schema: () => PageInputDefine,
-              options: () => options,
-              model: () => {
-                return { l1: '12345' };
-              },
-            },
-          },
-        ],
-      },
-
       {
         path: 'example',
         children: [
