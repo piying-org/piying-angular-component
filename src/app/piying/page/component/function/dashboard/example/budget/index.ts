@@ -1,7 +1,7 @@
 import define from './content';
 import content from './content?text';
 import title from './content?title';
-export const FunctionDashboardTaskBase = {
+export const FunctionDashboardBudgetBase = {
   define: define,
   content: content,
   title: title,

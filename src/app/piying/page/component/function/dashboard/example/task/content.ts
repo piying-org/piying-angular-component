@@ -13,7 +13,7 @@ import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { ListDemoNFCC } from '@@py/component/list-demo/component';
 
-export default v.pipe(
+export const Task= v.pipe(
   v.pipe(
     v.tuple([
       v.pipe(
@@ -384,3 +384,5 @@ export default v.pipe(
     actions.wrappers.patch([{ type: 'div', attributes: { class: 'grid  gap-4' } }]),
   ),
 );
+
+export default Task

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .grid-line {
+        stroke: #e5e7eb;
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: #d1d5db;
+        stroke-width: 1;
+      }
+
+      .data-point {
+        fill: #6366f1;
+        stroke: white;
+        stroke-width: 2;
+      }
+
+      .data-label {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        fill: #ffffff;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+
+      .category-label {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        fill: #9ca3af;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <!-- <rect width="800" height="600" fill="#ffffff"/> -->
+
+  <!-- Grid Lines -->
+  <g id="grid-lines">
+    <!-- Concentric pentagons -->
+    <polygon class="grid-line" points="400,150 590.2,287.6 517.6,512.4 282.4,512.4 209.8,287.6" />
+    <polygon class="grid-line" points="400,200 532.1,300 478.1,460 321.9,460 267.9,300" />
+    <polygon class="grid-line" points="400,250 474,312.4 438.6,407.6 361.4,407.6 326,312.4" />
+    <polygon class="grid-line" points="400,300 415.9,324.8 407.6,362.4 392.4,362.4 384.1,324.8" />
+    <polygon class="grid-line" points="400,350 407.6,362.4 403.8,382.4 396.2,382.4 392.4,362.4" />
+
+    <!-- Axis lines -->
+    <line class="axis-line" x1="400" y1="350" x2="400" y2="150" />
+    <line class="axis-line" x1="400" y1="350" x2="590.2" y2="287.6" />
+    <line class="axis-line" x1="400" y1="350" x2="517.6" y2="512.4" />
+    <line class="axis-line" x1="400" y1="350" x2="282.4" y2="512.4" />
+    <line class="axis-line" x1="400" y1="350" x2="209.8" y2="287.6" />
+  </g>
+
+  <!-- Data Polygon -->
+  <polygon fill="#6366f1" fill-opacity="0.2" stroke="#6366f1" stroke-width="2"
+    points="400,230 532.1,300 478.1,460 321.9,460 267.9,300" />
+
+  <!-- Data Points -->
+  <circle class="data-point" cx="400" cy="230" r="6" />
+  <circle class="data-point" cx="532.1" cy="300" r="6" />
+  <circle class="data-point" cx="478.1" cy="460" r="6" />
+  <circle class="data-point" cx="321.9" cy="460" r="6" />
+  <circle class="data-point" cx="267.9" cy="300" r="6" />
+
+  <!-- Data Labels -->
+  <g id="data-labels">
+    <rect x="385" y="195" width="30" height="20" rx="4" fill="#6366f1" />
+    <text class="data-label" x="400" y="205">12%</text>
+
+    <rect x="517.1" y="265" width="30" height="20" rx="4" fill="#6366f1" />
+    <text class="data-label" x="532.1" y="275">20%</text>
+
+    <rect x="463.1" y="425" width="30" height="20" rx="4" fill="#6366f1" />
+    <text class="data-label" x="478.1" y="435">28%</text>
+
+    <rect x="306.9" y="425" width="30" height="20" rx="4" fill="#6366f1" />
+    <text class="data-label" x="321.9" y="435">15%</text>
+
+    <rect x="252.9" y="265" width="30" height="20" rx="4" fill="#6366f1" />
+    <text class="data-label" x="267.9" y="275">25%</text>
+  </g>
+
+  <!-- Category Labels -->
+  <g id="category-labels">
+    <text class="category-label" x="400" y="130">Concept</text>
+    <text class="category-label" x="610.2" y="287.6">Design</text>
+    <text class="category-label" x="537.6" y="532.4">Development</text>
+    <text class="category-label" x="262.4" y="532.4">Extras</text>
+    <text class="category-label" x="189.8" y="287.6">Marketing</text>
+  </g>
+</svg>
