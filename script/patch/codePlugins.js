@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const node_fs_1 = tslib_1.__importDefault(require("node:fs"));
 const node_path_1 = tslib_1.__importDefault(require("node:path"));
+const ts = tslib_1.__importStar(require("typescript"));
 const DEFAULT_EXT_ORDER_LIST = [
     'ts',
     'tsx',
@@ -15,6 +16,66 @@ const DEFAULT_EXT_ORDER_LIST = [
     'css',
     'scss',
 ];
+const EXTENSIONS = new Set(DEFAULT_EXT_ORDER_LIST.map((e) => e.split('.')[0]));
+function isRelativeImport(specifier) {
+    return specifier.startsWith('.') || specifier.startsWith('..');
+}
+function resolveImportPath(importSpecifier, importerDir) {
+    const resolved = node_path_1.default.resolve(importerDir, importSpecifier);
+    if (node_fs_1.default.existsSync(resolved) && node_fs_1.default.lstatSync(resolved).isDirectory()) {
+        return null; // 跳过目录导入
+    }
+    for (const ext of DEFAULT_EXT_ORDER_LIST) {
+        const candidate = `${resolved}.${ext}`;
+        if (node_fs_1.default.existsSync(candidate)) {
+            return candidate;
+        }
+    }
+    return null;
+}
+function collectImports(filePath, collected) {
+    if (collected.has(filePath)) {
+        return; // 避免循环引用
+    }
+    const content = node_fs_1.default.readFileSync(filePath, { encoding: 'utf-8' });
+    collected.set(filePath, content);
+    try {
+        const sourceFile = ts.createSourceFile(filePath, content, ts.ScriptTarget.Latest, true);
+        function visit(node) {
+            if (ts.isImportDeclaration(node)) {
+                const specifier = node.moduleSpecifier;
+                if (specifier && ts.isStringLiteral(specifier) && isRelativeImport(specifier.text)) {
+                    const resolvedPath = resolveImportPath(specifier.text, node_path_1.default.dirname(filePath));
+                    if (resolvedPath && !collected.has(resolvedPath)) {
+                        collectImports(resolvedPath, collected);
+                    }
+                }
+            }
+            else if (ts.isExportDeclaration(node) && node.moduleSpecifier) {
+                const specifier = node.moduleSpecifier;
+                if (specifier && ts.isStringLiteral(specifier) && isRelativeImport(specifier.text)) {
+                    const resolvedPath = resolveImportPath(specifier.text, node_path_1.default.dirname(filePath));
+                    if (resolvedPath && !collected.has(resolvedPath)) {
+                        collectImports(resolvedPath, collected);
+                    }
+                }
+            }
+            ts.forEachChild(node, visit);
+        }
+        visit(sourceFile);
+    }
+    catch (e) {
+        // 解析失败时跳过，不影响其他文件
+        console.warn(`Failed to parse TypeScript file: ${filePath}`, e);
+    }
+}
+function mergeContents(collected) {
+    const parts = [];
+    for (const [filePath, content] of collected) {
+        parts.unshift(`// ${node_path_1.default.relative(process.cwd(), filePath)}\n${content}`);
+    }
+    return parts.join(`\n//----------\n`);
+}
 const defaultPlugin = {
     name: 'raw-code',
     setup(build) {
@@ -51,8 +112,11 @@ const defaultPlugin = {
                     throw new Error(`File not found: ${fullPath}\nChecked extensions: ${ext.join(', ')}.\nYou can customize extensions list using { ext: [...] }.`);
                 }
                 if (name === 'text') {
-                    const buffer = node_fs_1.default.readFileSync(filePath, { encoding: 'utf-8' });
-                    return { contents: buffer, loader: 'text' };
+                    // 收集当前文件及所有相对路径导入的依赖文件
+                    const collected = new Map();
+                    collectImports(filePath, collected);
+                    const merged = mergeContents(collected);
+                    return { contents: merged, loader: 'text' };
                 }
                 else {
                     let relPath = node_path_1.default.relative(baseDir, filePath);
