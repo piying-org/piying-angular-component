@@ -62,6 +62,7 @@ export class AutocompleteFCC extends BaseControl {
     | 'url'
     | 'search'
     | 'time'
+    | 'color'
   >('text');
   /** 是否使用幽灵样式 */
   ghost = input<boolean>();
