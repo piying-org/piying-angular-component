@@ -37,7 +37,7 @@ const defaultSearchBy = (input: string) => input.toLocaleLowerCase();
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe, PurePipe],
+  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

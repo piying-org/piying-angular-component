@@ -155,6 +155,9 @@ export const PresetDefine = {
     autocomplete: {
       type: FCCGroup.AutocompleteFCC,
     },
+    'button-input': {
+      type: FCCGroup.ButtonInputFCC,
+    },
   },
   wrappers: {
     // 默认包装器

@@ -59,6 +59,8 @@ import { Card2Define } from '@@py/page/component/non-field-control/card2';
 import { FunctionDashboardDefine } from '@@py/page/component/function/dashboard';
 import { SearchGroupDefine } from '@@py/page/component/extension/search-group';
 import { AutoCompleteDefine } from '@@py/page/component/field-control/autocomplete';
+import { ButtonInputFCC } from '@piying-lib/angular-daisyui/field-control';
+import { ButtonInputDefine } from '@@py/page/component/field-control/button-input';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -236,6 +238,20 @@ export const ExampleFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => AutoCompleteDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'button-input',
+      router: { routerLink: './example/field-control/button-input' },
+    },
+    define: {
+      path: 'button-input',
+      component: SchemaViewPage,
+      data: {
+        schema: () => ButtonInputDefine,
         options: () => options,
       },
     },

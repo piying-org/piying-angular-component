@@ -1,0 +1,67 @@
+<ng-template #templateRef let-attr="attributes">
+  <div class="flex items-center">
+    @if (!disablePlaceholderShow()) {
+      <div
+        class="flex-1 text-center opacity-50 break-all"
+        [class.cursor-pointer]="!value$()"
+        (click)="!value$() && onClick($event)"
+      >
+        {{ value$() || placeholder() || '' }}
+      </div>
+    }
+    @let forAttr = attr()?.for;
+    @let isDisabled = isLoading$() || disabled();
+    @if (forAttr) {
+      <label
+        [attributes]="attr()"
+        [excludes]="['class']"
+        [class]="
+          attr()?.class
+            | mergeClass: wrapperClass$() : (isDisabled ? ('btn-disabled' | cssPrefix) : undefined)
+        "
+        (click)="onClick($event)"
+        tabindex="-1"
+        role="button"
+        aria-disabled="true"
+      >
+        @if (isLoading$() && !disableLoadingIcon()) {
+          <span
+            [class]="
+              'loading loading-spinner' | cssPrefix | mergeClass: ('absolute z-10' | twPrefix)
+            "
+          ></span>
+        }
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="{ content: content }"
+        ></ng-template
+      ></label>
+    } @else {
+      <button
+        [attributes]="attr()"
+        [excludes]="['class', 'type']"
+        [class]="attr()?.class | mergeClass: wrapperClass$()"
+        (click)="onClick($event)"
+        [disabled]="isLoading$() || disabled()"
+        [type]="attr()?.type ?? 'button'"
+      >
+        @if (isLoading$() && !disableLoadingIcon()) {
+          <span
+            [class]="
+              'loading loading-spinner' | cssPrefix | mergeClass: ('absolute z-10' | twPrefix)
+            "
+          ></span>
+        }
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="{ content: content }"
+        ></ng-template>
+      </button>
+    }
+    @if (allowClear()) {
+      <button (click)="clear()" class="btn btn-ghost btn-circle">
+        <span class="material-icons text-error">clear</span>
+      </button>
+    }
+  </div>
+</ng-template>
