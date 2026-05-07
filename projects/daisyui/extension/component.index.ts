@@ -9,3 +9,4 @@ export { EditableRowFGC } from './editable-row';
 export { CheckboxListFGC } from './checkbox-list';
 export { logicGroupFGC } from './logic-group';
 export { DockTabNFCC } from './dock-tab';
+export { SearchFGC } from './search-group';

@@ -146,8 +146,11 @@ export const PresetDefine = {
     array: {
       type: PiyingViewGroup,
     },
-    'card2': {
+    card2: {
       type: NFCCGroup.CardNFCC,
+    },
+    'search-group': {
+      type: ExtComponentGroup.SearchFGC,
     },
   },
   wrappers: {

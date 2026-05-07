@@ -57,6 +57,7 @@ import { PickerRefWrapperDefine } from '@@py/page/component/non-field-control/pi
 import { FunctionTableDefine } from '@@py/page/component/function/table';
 import { Card2Define } from '@@py/page/component/non-field-control/card2';
 import { FunctionDashboardDefine } from '@@py/page/component/function/dashboard';
+import { SearchGroupDefine } from '@@py/page/component/extension/search-group';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -624,6 +625,17 @@ export const ExampleExtensionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => EditableRowDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'search-group', router: { routerLink: './example/extension/search-group' } },
+    define: {
+      path: 'search-group',
+      component: SchemaViewPage,
+      data: {
+        schema: () => SearchGroupDefine,
         options: () => options,
       },
     },

@@ -11,3 +11,4 @@ export * from './editable-row';
 export * from './checkbox-list';
 export * from './logic-group';
 export * from './dock-tab';
+export * from './search-group';
