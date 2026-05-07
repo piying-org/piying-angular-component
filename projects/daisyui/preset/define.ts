@@ -161,6 +161,9 @@ export const PresetDefine = {
     label: {
       type: FCCGroup.LabelFCC,
     },
+    'readonly-value': {
+      type: FCCGroup.ReadonlyValueFCC,
+    },
   },
   wrappers: {
     // 默认包装器

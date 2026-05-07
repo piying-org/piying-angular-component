@@ -1,0 +1,25 @@
+<div class="flex items-center gap-4 label">
+  @if (title$$(); as title) {
+    <span>{{ title }}</span>
+  }
+  @switch (valueType | pure: displayValue$$()) {
+    @case ('boolean') {
+      {{ booleanMap()! | pure: displayValue$$() }}
+    }
+    @case ('number') {
+      {{ displayValue$$() }}
+    }
+    @case ('string') {
+      {{ displayValue$$() }}
+    }
+    @case ('array') {
+      <div class="flex gap-2">
+        @for (item of displayValue$$(); track $index) {
+          <span class="badge">
+            {{ item }}
+          </span>
+        }
+      </div>
+    }
+  }
+</div>
