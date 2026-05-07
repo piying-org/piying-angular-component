@@ -61,6 +61,7 @@ import { SearchGroupDefine } from '@@py/page/component/extension/search-group';
 import { AutoCompleteDefine } from '@@py/page/component/field-control/autocomplete';
 import { ButtonInputFCC } from '@piying-lib/angular-daisyui/field-control';
 import { ButtonInputDefine } from '@@py/page/component/field-control/button-input';
+import { LabelDefine } from '@@py/page/component/field-control/label';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -252,6 +253,20 @@ export const ExampleFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => ButtonInputDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'label',
+      router: { routerLink: './example/field-control/label' },
+    },
+    define: {
+      path: 'label',
+      component: SchemaViewPage,
+      data: {
+        schema: () => LabelDefine,
         options: () => options,
       },
     },

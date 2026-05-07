@@ -13,4 +13,5 @@ export * from './calendar';
 export * from './password';
 export * from './editable-badge';
 export * from './autocomplete';
-export * from './button-input'
+export * from './button-input';
+export * from './label';

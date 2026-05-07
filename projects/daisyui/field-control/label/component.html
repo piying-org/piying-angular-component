@@ -1,0 +1,7 @@
+<ng-template #templateRef let-attr="attributes">
+  <label
+    [class]="attr()?.class | mergeClass: ('label' | cssPrefix) "
+    [attributes]="attr()"
+    >{{ display$$() }}</label
+  >
+</ng-template>

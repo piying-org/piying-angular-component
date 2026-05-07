@@ -158,6 +158,9 @@ export const PresetDefine = {
     'button-input': {
       type: FCCGroup.ButtonInputFCC,
     },
+    label: {
+      type: FCCGroup.LabelFCC,
+    },
   },
   wrappers: {
     // 默认包装器
