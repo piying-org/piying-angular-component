@@ -58,6 +58,7 @@ import { FunctionTableDefine } from '@@py/page/component/function/table';
 import { Card2Define } from '@@py/page/component/non-field-control/card2';
 import { FunctionDashboardDefine } from '@@py/page/component/function/dashboard';
 import { SearchGroupDefine } from '@@py/page/component/extension/search-group';
+import { AutoCompleteDefine } from '@@py/page/component/field-control/autocomplete';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -221,6 +222,20 @@ export const ExampleFieldControlRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => InputNumberDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'autocomplete',
+      router: { routerLink: './example/field-control/autocomplete' },
+    },
+    define: {
+      path: 'autocomplete',
+      component: SchemaViewPage,
+      data: {
+        schema: () => AutoCompleteDefine,
         options: () => options,
       },
     },

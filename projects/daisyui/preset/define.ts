@@ -152,6 +152,9 @@ export const PresetDefine = {
     'search-group': {
       type: ExtComponentGroup.SearchFGC,
     },
+    autocomplete: {
+      type: FCCGroup.AutocompleteFCC,
+    },
   },
   wrappers: {
     // 默认包装器

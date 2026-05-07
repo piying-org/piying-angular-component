@@ -1,0 +1,23 @@
+<ng-template #templateRef let-attr="attributes">
+  <input
+    [class]="attr()?.class | mergeClass: ('input' | cssPrefix) : wrapperClass$$()"
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [type]="type()"
+    [ngModel]="searchContent$()"
+    (ngModelChange)="searchChange($event)"
+    #el
+    [disabled]="disabled$()"
+    (blur)="touchedChange()"
+    [attr.list]="listId"
+  />
+  <datalist [id]="listId">
+    @for (item of resolvedOptions$$(); track $index) {
+      @if (item.value === item.label || !item.label) {
+        <option [value]="item.value" [disabled]="item.disabled"></option>
+      } @else {
+        <option [value]="item.value" [disabled]="item.disabled">{{ item.label }}</option>
+      }
+    }
+  </datalist>
+</ng-template>
