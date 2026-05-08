@@ -62,6 +62,7 @@ import { AutoCompleteDefine } from '@@py/page/component/field-control/autocomple
 import { ButtonInputFCC } from '@piying-lib/angular-daisyui/field-control';
 import { ButtonInputDefine } from '@@py/page/component/field-control/button-input';
 import { LabelDefine } from '@@py/page/component/field-control/label';
+import { WrapperTooltipDefine } from '@@py/page/component/wrapper/tooltip';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -800,6 +801,19 @@ export const FunctionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => FunctionDashboardDefine,
+        options: () => options,
+      },
+    },
+  },
+];
+export const WrapperRouterConfig = [
+  {
+    config: { title: 'tooltip', router: { routerLink: './example/wrapper/tooltip' } },
+    define: {
+      path: 'tooltip',
+      component: SchemaViewPage,
+      data: {
+        schema: () => WrapperTooltipDefine,
         options: () => options,
       },
     },

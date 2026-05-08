@@ -129,6 +129,7 @@ export const PresetDefine = {
     // 特殊类型
     'router-outlet': { type: DivNFCC, actions: [actions.directives.set([{ type: RouterOutlet }])] },
     object: { type: PiyingViewGroup },
+    'intersect-group': { type: PiyingViewGroup },
     div: { type: DivNFCC },
     'common-data': { type: StrOrTemplateComponent },
     'filter-option': {
@@ -183,6 +184,9 @@ export const PresetDefine = {
     'local-filter': { type: ExtWrapperGroup.OptionListLocalFilterWC },
     'picker-ref': {
       type: WCGroup.PickerRefWC,
+    },
+    tooltip: {
+      type: WCGroup.TooltipWC,
     },
   },
 };

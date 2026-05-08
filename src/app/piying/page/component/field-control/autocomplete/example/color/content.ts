@@ -13,13 +13,23 @@ export default v.pipe(
               return [{ value: '#ffffff' }, { value: '#000000' }, { value: '#ff0000' }];
             },
           }),
-          // actions.hooks.merge({
-          //   allFieldsResolved: (field) => {
-          //     field.form.control!.valueChanges.subscribe((value) => {
-          //       console.log('change', value);
-          //     });
-          //   },
-          // }),
+        ];
+      }),
+    ),
+    v.pipe(
+      v.string(),
+      safeDefine.setComponent('autocomplete', (actions) => {
+        return [
+          actions.inputs.patch({ type: 'color', allowCustom: true }),
+          actions.attributes.patch({ class: 'min-w-[48px] min-h-[48px] p-0 border-0 cursor-pointer' }),
+          actions.inputs.patchAsync({
+            options: (field) => {
+              return [{ value: '#ffffff' }, { value: '#000000' }, { value: '#ff0000' }];
+            },
+          }),
+          actions.wrappers.patch([
+            { type: 'div', attributes: { class: 'btn btn-circle btn-ghost overflow-hidden ' } },
+          ]),
         ];
       }),
     ),

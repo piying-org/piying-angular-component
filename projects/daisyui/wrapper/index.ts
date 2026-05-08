@@ -6,3 +6,4 @@ export * from './fieldset';
 export * from './form';
 export * from './validate-tooltip';
 export * from './picker-ref';
+export * from './tooltip'

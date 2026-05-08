@@ -10,6 +10,7 @@ import {
   ExampleNonFieldControlRouterConfig,
   ExampleExtensionRouterConfig,
   OverlayRouterConfig,
+  WrapperRouterConfig,
 } from '../../const/example.router.define';
 export const MainPage = v.pipe(
   v.object({
@@ -57,6 +58,11 @@ export const MainPage = v.pipe(
                 title: 'non-field-control',
                 type: 'group',
                 children: ExampleNonFieldControlRouterConfig.map((item) => item.config),
+              },
+              {
+                title: 'wrapper',
+                type: 'group',
+                children: WrapperRouterConfig.map((item) => item.config),
               },
               {
                 title: 'extension',

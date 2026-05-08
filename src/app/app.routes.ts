@@ -15,6 +15,7 @@ import {
   ExampleFormRouterConfig,
   ExampleNonFieldControlRouterConfig,
   OverlayRouterConfig,
+  WrapperRouterConfig,
 } from './const/example.router.define';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
@@ -73,6 +74,10 @@ export const routes: Routes = [
           {
             path: 'function',
             children: FunctionRouterConfig.map((item) => item.define),
+          },
+          {
+            path: 'wrapper',
+            children: WrapperRouterConfig.map((item) => item.define),
           },
         ],
       },

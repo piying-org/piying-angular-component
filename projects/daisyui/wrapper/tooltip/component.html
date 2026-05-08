@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  @if (props$$()['description']) {
+    <div [class]="'tooltip' | cssPrefix" [attr.data-tip]="props$$()['description']">
+      <ng-container insertField></ng-container>
+    </div>
+  } @else {
+    <ng-container insertField></ng-container>
+  }
+</ng-template>
