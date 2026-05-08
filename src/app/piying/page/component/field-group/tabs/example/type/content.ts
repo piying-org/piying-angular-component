@@ -11,7 +11,7 @@ export default v.pipe(
       safeDefine.setComponent('tabs', (actions) => {
         return [
           actions.inputs.patch({
-            type: 'border',
+            type: 'lift',
           }),
         ];
       }),

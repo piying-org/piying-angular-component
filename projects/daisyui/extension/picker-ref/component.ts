@@ -90,6 +90,7 @@ export class PickerRefFCC extends BaseControl {
         context: {
           ...this.parentPyOptions!().context,
           pickerValue: this.value$,
+          parentProps: this.#field$$().props,
         },
       })),
       selectorless: true,
@@ -107,6 +108,7 @@ export class PickerRefFCC extends BaseControl {
             close: () => {
               this.isOpen$.set(false);
             },
+            parentProps: this.#field$$().props,
           },
         };
       }),
