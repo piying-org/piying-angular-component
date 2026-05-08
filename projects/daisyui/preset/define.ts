@@ -172,6 +172,7 @@ export const PresetDefine = {
     fieldset: { type: WCGroup.FieldsetWC },
     form: { type: WCGroup.FormWC },
     'label-wrapper': { type: WCGroup.LabelWC },
+    'label': { type: WCGroup.LabelWC },
     'loading-wrapper': { type: WCGroup.LoadingWC },
     'validate-tooltip-wrapper': { type: WCGroup.ValidateTooltipbWC },
     td: { type: WCGroup.TdWC },
