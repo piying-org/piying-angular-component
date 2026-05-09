@@ -123,7 +123,7 @@ export class AutocompleteFCC extends BaseControl {
     if (this.allowCustom()) {
       this.valueChange(inputValue);
     } else {
-      let item = this.searchOptions$$().find(({ value }) => value === inputValue);
+      let item = this.resolvedOptions$$().find(({ value }) => value === inputValue);
       if (item) {
         this.valueChange(inputValue);
       }
