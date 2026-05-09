@@ -9,7 +9,6 @@ import * as NFCCGroup from '@piying-lib/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying-lib/angular-daisyui/field-control';
 import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
-import { TableFGC } from '../extension/table-group';
 /**
  * 文档/document https://github.com/piying-org/piying-angular-component/blob/main/projects/daisyui/preset/define.ts */
 export const PresetDefine = {
@@ -167,7 +166,7 @@ export const PresetDefine = {
       type: FCCGroup.ReadonlyValueFCC,
     },
     'table-group': {
-      type: TableFGC,
+      type: ExtComponentGroup.TableFGC,
     },
   },
   wrappers: {
