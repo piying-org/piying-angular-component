@@ -1,0 +1,52 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [class]="'overflow-x-auto' | mergeClass: attr()?.class"
+    [attributes]="attr()"
+    [excludes]="['class']"
+  >
+    <table [class]="'table' | cssPrefix | mergeClass: wrapperClass$$()">
+      <thead>
+        <tr>
+          @for (item of headList$$(); track $index) {
+            <th>
+              <ng-container
+                [selectlessOutlet]="StrOrTemplateComponent"
+                [selectlessOutletInputs]="selectorlessInput | pure: item"
+              ></ng-container>
+            </th>
+          }
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @let children = children$$();
+        @for (field of children; track trackBy()($index, field)) {
+          <tr>
+            <ng-container
+              *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field, injector }"
+            ></ng-container>
+            <td>
+              <button
+                class="btn btn-circle btn-soft btn-error"
+                (click)="removeItem($index)"
+                [disabled]="minLength() >= children.length"
+              >
+                <span class="material-icons">delete</span>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <td [attr.colspan]="headList$$().length + 1">
+            <button class="btn btn-block btn-dash btn-success" (click)="addNew()">
+              <span class="material-icons">add</span>
+            </button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-template>
