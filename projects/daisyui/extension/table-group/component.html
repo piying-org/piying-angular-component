@@ -38,15 +38,17 @@
           </tr>
         }
       </tbody>
-      <tfoot>
-        <tr>
-          <td [attr.colspan]="headList$$().length + 1">
-            <button class="btn btn-block btn-dash btn-success" (click)="addNew()">
-              <span class="material-icons">add</span>
-            </button>
-          </td>
-        </tr>
-      </tfoot>
+      @if (!disableAdd()) {
+        <tfoot>
+          <tr>
+            <td [attr.colspan]="headList$$().length + 1">
+              <button class="btn btn-block btn-dash btn-success" (click)="addNew()">
+                <span class="material-icons">add</span>
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      }
     </table>
   </div>
 </ng-template>

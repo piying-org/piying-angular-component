@@ -92,6 +92,7 @@ export class TableFGC extends PiyingViewGroupBase {
     enable: boolean;
     optionsLabel?: (size: number, index: number, count: number) => string;
   }>();
+  disableAdd = input(false);
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
