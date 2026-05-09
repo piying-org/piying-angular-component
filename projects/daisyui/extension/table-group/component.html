@@ -15,7 +15,9 @@
               ></ng-container>
             </th>
           }
-          <th></th>
+          @if (!disableRemove()) {
+            <th></th>
+          }
         </tr>
       </thead>
 
@@ -29,15 +31,18 @@
             <ng-container
               *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field, injector }"
             ></ng-container>
-            <td>
-              <button
-                class="btn btn-circle btn-soft btn-error"
-                (click)="removeItem($index)"
-                [disabled]="minLength() >= children.length"
-              >
-                <span class="material-icons">delete</span>
-              </button>
-            </td>
+
+            @if (!disableRemove()) {
+              <td>
+                <button
+                  class="btn btn-circle btn-soft btn-error"
+                  (click)="removeItem($index)"
+                  [disabled]="minLength() >= children.length"
+                >
+                  <span class="material-icons">delete</span>
+                </button>
+              </td>
+            }
           </tr>
         }
       </tbody>

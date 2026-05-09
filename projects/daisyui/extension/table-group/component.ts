@@ -90,6 +90,7 @@ export class TableFGC extends PiyingViewGroupBase {
   /** 分页配置 */
   range = input<[number, number | undefined]>();
   disableAdd = input(false);
+  disableRemove = input(false);
   #theme = inject(ThemeService);
 
   wrapperClass$$ = computed(() => {
