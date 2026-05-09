@@ -29,7 +29,7 @@ import { NFCSchema, setComponent, actions, PI_VIEW_FIELD_TOKEN } from '@piying/v
 import { TdWC, ThWC } from '@piying-lib/angular-daisyui/wrapper';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, SlicePipe } from '@angular/common';
 
 /*
  * TableFGC - 数据表格组件
@@ -61,6 +61,7 @@ import { NgTemplateOutlet } from '@angular/common';
     CssPrefixPipe,
     MergeClassPipe,
     NgTemplateOutlet,
+    SlicePipe,
   ],
 })
 export class TableFGC extends PiyingViewGroupBase {
@@ -87,11 +88,7 @@ export class TableFGC extends PiyingViewGroupBase {
   });
 
   /** 分页配置 */
-  pagination = input<{
-    sizeOptions?: number[];
-    enable: boolean;
-    optionsLabel?: (size: number, index: number, count: number) => string;
-  }>();
+  range = input<[number, number | undefined]>();
   disableAdd = input(false);
   #theme = inject(ThemeService);
 

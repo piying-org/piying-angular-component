@@ -21,7 +21,10 @@
 
       <tbody>
         @let children = children$$();
-        @for (field of children; track trackBy()($index, field)) {
+        @for (
+          field of children | slice: range()?.[0] ?? 0 : range()?.[1] ?? undefined;
+          track trackBy()($index, field)
+        ) {
           <tr>
             <ng-container
               *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field, injector }"
