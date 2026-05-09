@@ -72,7 +72,7 @@ export class PickerRefFCC extends BaseControl {
   /** 弹窗内容 */
   content = input<v.BaseSchema<any, any, any>>();
   /** 选择后是否自动关闭 */
-  changeClose = input<boolean>();
+  changeClose = input<boolean>(true);
   isOpen$ = signal(false);
   /** 弹窗配置 */
   overlayConfig = input<CdkConnectedOverlayConfig>({});

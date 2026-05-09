@@ -19,14 +19,25 @@
       [selectlessOutlet]="PiyingView"
       [selectlessOutletInputs]="getInput$$ | pure: template"
     ></ng-container>
-  } @else if (rOption.type === 'option') {
+  } @else if (rOption.type === 'option' && !multiple()) {
     <li (click)="selectOption(rOption)">
-      <button [class]="activateClass | pure: rOption.value : value$()">
+      <label [class]="activateClass | pure: rOption.value : value$() | mergeClass: 'label'">
         <ng-template
           [selectlessOutlet]="StrOrTemplateComponent"
           [selectlessOutletInputs]="optionInput | pure: rOption.label"
         ></ng-template>
-      </button>
+      </label>
+    </li>
+  } @else if (rOption.type === 'option' && multiple()) {
+    @let activated = activateClasslist | pure: value$() : rOption.value;
+    <li (click)="selectOption(rOption, activated)">
+      <label [class]="'label'">
+        <input type="checkbox" [checked]="activated" class="checkbox" />
+        <ng-template
+          [selectlessOutlet]="StrOrTemplateComponent"
+          [selectlessOutletInputs]="optionInput | pure: rOption.label"
+        ></ng-template>
+      </label>
     </li>
   } @else if (rOption.type === 'group') {
     <li>
@@ -51,7 +62,7 @@
 
 <ng-template #templateRef let-attr="attributes">
   <ul [class]="'menu' | mergeClass: attr().class" [attributes]="attr()" [excludes]="['class']">
-    @for (option of options(); track $index) {
+    @for (option of options() | slice: 0 : maxListCount(); track $index) {
       <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
     }
   </ul>

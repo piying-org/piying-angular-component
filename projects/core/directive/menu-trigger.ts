@@ -8,8 +8,8 @@ export class CustomMenuTrigger extends CdkMenuTrigger2 {
     super();
     this.menuStack.setHasFocus(true);
   }
-  setOverlay(overlayRef: OverlayRef) {
-    this.overlayRef = overlayRef;
+  setOverlay(overlayRef?: OverlayRef) {
+    this.overlayRef = overlayRef ?? null;
   }
 
   override close(): void {

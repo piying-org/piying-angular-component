@@ -13,7 +13,7 @@ import {
   ResolvedOption,
   transformOption,
 } from '@piying-lib/angular-core';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, SlicePipe } from '@angular/common';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
@@ -41,6 +41,7 @@ import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
     PurePipe,
     MergeClassPipe,
     AttributesDirective,
+    SlicePipe,
   ],
   providers: [
     {
@@ -57,7 +58,7 @@ export class OptionListFCC extends BaseControl {
 
   templateRef = viewChild.required('templateRef');
   /** 选项列表 */
-  options = input<CommonSelectOptions, CommonSelectOptions | undefined>([], {
+  options = input<CommonSelectOptions[] | undefined, CommonSelectOptions>([], {
     transform: (input) => (input as any) ?? [],
   });
   /** 选项模板 */
@@ -66,6 +67,8 @@ export class OptionListFCC extends BaseControl {
   optionConvert = input<OptionConvert, Partial<OptionConvert>>(DefaultOptionConvert, {
     transform: (input) => ({ ...DefaultOptionConvert, ...input }),
   });
+  multiple = input(false);
+  maxListCount = input<number>();
   // listFilter=computed(() => {
   //   return this.field$$().props()['filter']
   // })
@@ -75,8 +78,19 @@ export class OptionListFCC extends BaseControl {
       content: signal(content),
     };
   };
-  selectOption(item: ResolvedOption) {
-    this.valueAndTouchedChange(item.value);
+  selectOption(item: ResolvedOption, activated?: boolean) {
+    if (this.multiple()) {
+      let list = [...(this.value$() ?? ([] as any[]))];
+      const index = list.indexOf(item.value);
+      if (activated && index > -1) {
+        list.splice(index, 1);
+      } else if (!activated && index === -1) {
+        list.push(item.value);
+      }
+      this.valueAndTouchedChange(list);
+    } else {
+      this.valueAndTouchedChange(item.value);
+    }
   }
 
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
@@ -89,6 +103,9 @@ export class OptionListFCC extends BaseControl {
   };
   activateClass = (a: any, b: any) => {
     return a === b ? 'menu-active' : '';
+  };
+  activateClasslist = (a: any[], b: any) => {
+    return a?.includes(b);
   };
 }
 

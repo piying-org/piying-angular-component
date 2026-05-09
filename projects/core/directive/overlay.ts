@@ -6,6 +6,7 @@ import { CustomMenuTrigger } from './menu-trigger';
 })
 export class CdkConnectedOverlay extends CdkConnectedOverlayDEF {
   menuTrigger = input<CustomMenuTrigger>();
+  changeClose = input<boolean>();
   disposeResizeUpdate?: () => void;
 
   override attachOverlay(): void {
@@ -20,7 +21,8 @@ export class CdkConnectedOverlay extends CdkConnectedOverlayDEF {
       this.disposeResizeUpdate = undefined;
       ob.disconnect();
     };
-    this.menuTrigger()?.setOverlay(this.overlayRef);
+
+    this.menuTrigger()?.setOverlay(this.changeClose() ? this.overlayRef : undefined);
   }
   override ngOnDestroy(): void {
     super.ngOnDestroy();

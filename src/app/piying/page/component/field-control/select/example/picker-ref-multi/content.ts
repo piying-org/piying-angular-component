@@ -1,96 +1,12 @@
 import * as v from 'valibot';
-import { actions, NFCSchema } from '@piying/view-angular-core';
+import { actions, asControl, NFCSchema } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 import { computed } from '@angular/core';
 export default v.pipe(
   v.tuple([
     v.pipe(
-      v.string(),
-      safeDefine.setComponent('picker-ref', (actions) => {
-        return [
-          actions.inputs.patch({
-            changeClose: true,
-          }),
-          actions.inputs.patch({
-            trigger: v.pipe(
-              NFCSchema,
-              safeDefine.setComponent('common-data', (actions) => {
-                return [
-                  actions.inputs.patchAsync({
-                    content: (field) => {
-                      return computed(() => {
-                        const pickerValue = field.context['pickerValue']();
-                        return pickerValue ?? '[empty]';
-                      });
-                    },
-                  }),
-                ];
-              }),
-              actions.wrappers.patch([{ type: 'div', attributes: { class: 'select' } }]),
-            ),
-            content: v.pipe(
-              v.string(),
-              safeDefine.setComponent('option-list', (actions) => {
-                return [
-                  actions.wrappers.set(['local-filter']),
-                  actions.props.patch({ options: ['item0', 'item1'] }),
-                  actions.class.bottom('bg-white rounded-box shadow'),
-                ];
-              }),
-            ),
-          }),
-        ];
-      }),
-    ),
-    v.pipe(
-      v.string(),
-      safeDefine.setComponent('picker-ref', (actions) => {
-        return [
-          actions.inputs.patch({
-            changeClose: true,
-          }),
-          actions.inputs.patch({
-            trigger: v.pipe(
-              NFCSchema,
-              safeDefine.setComponent('common-data', (actions) => {
-                return [
-                  actions.inputs.patchAsync({
-                    content: (field) => {
-                      return computed(() => {
-                        const pickerValue = field.context['pickerValue']();
-                        return pickerValue ?? '[empty]';
-                      });
-                    },
-                  }),
-                ];
-              }),
-              actions.wrappers.patch([{ type: 'div', attributes: { class: 'select' } }]),
-            ),
-            content: v.pipe(
-              v.string(),
-              safeDefine.setComponent('option-list', (actions) => {
-                return [
-                  actions.wrappers.set(['local-filter']),
-                  actions.props.patchAsync({
-                    options: (field) => {
-                      return computed(() => {
-                        return field.context['parentProps']()['options'];
-                      });
-                    },
-                  }),
-                  actions.class.bottom('bg-white rounded-box shadow'),
-                ];
-              }),
-            ),
-          }),
-          actions.props.patch({
-            options: ['item0', 'item1'],
-          }),
-        ];
-      }),
-    ),
-    v.pipe(
-      v.string(),
+      v.array(v.string()),
+      asControl(),
       safeDefine.setComponent('picker-ref', (actions) => {
         return [
           actions.inputs.patch({
@@ -105,7 +21,7 @@ export default v.pipe(
                     content: (field) => {
                       return computed(() => {
                         const pickerValue = field.context['pickerValue']();
-                        return pickerValue ?? '[empty]';
+                        return pickerValue?.join(',') ?? '[empty]';
                       });
                     },
                   }),
@@ -114,7 +30,8 @@ export default v.pipe(
               actions.wrappers.patch([{ type: 'div', attributes: { class: 'select' } }]),
             ),
             content: v.pipe(
-              v.string(),
+              v.array(v.string()),
+              asControl(),
               safeDefine.setComponent('option-list', (actions) => {
                 return [
                   actions.wrappers.set(['local-filter']),
@@ -124,9 +41,61 @@ export default v.pipe(
                         return field.context['parentProps']()['options'];
                       });
                     },
-                    disableLocalFilter: (field) => {
+                  }),
+                  actions.inputs.patchAsync({
+                    multiple: (field) => {
                       return computed(() => {
-                        return field.context['parentProps']()['disableLocalFilter'];
+                        return field.context['parentProps']()['multiple'];
+                      });
+                    },
+                  }),
+                  actions.class.bottom('bg-white rounded-box shadow'),
+                ];
+              }),
+            ),
+          }),
+          actions.props.patch({
+            options: ['item0', 'item1'],
+            multiple: true,
+          }),
+        ];
+      }),
+    ),
+    v.pipe(
+      v.array(v.string()),
+      asControl(),
+      safeDefine.setComponent('picker-ref', (actions) => {
+        return [
+          actions.inputs.patch({
+            changeClose: false,
+          }),
+          actions.inputs.patch({
+            trigger: v.pipe(
+              NFCSchema,
+              safeDefine.setComponent('common-data', (actions) => {
+                return [
+                  actions.inputs.patchAsync({
+                    content: (field) => {
+                      return computed(() => {
+                        const pickerValue = field.context['pickerValue']();
+                        return pickerValue?.join(',') ?? '[empty]';
+                      });
+                    },
+                  }),
+                ];
+              }),
+              actions.wrappers.patch([{ type: 'div', attributes: { class: 'select' } }]),
+            ),
+            content: v.pipe(
+              v.array(v.string()),
+              asControl(),
+              safeDefine.setComponent('option-list', (actions) => {
+                return [
+                  actions.wrappers.set(['local-filter']),
+                  actions.props.patchAsync({
+                    options: (field) => {
+                      return computed(() => {
+                        return field.context['parentProps']()['options'];
                       });
                     },
                   }),
@@ -149,8 +118,8 @@ export default v.pipe(
           }),
           actions.props.patch({
             options: ['item0', 'item1'],
-            enableSearch: false,
-            disableLocalFilter: true,
+            multiple: true,
+            maxListCount: 2,
           }),
         ];
       }),

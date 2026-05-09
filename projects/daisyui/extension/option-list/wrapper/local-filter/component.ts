@@ -28,25 +28,32 @@ export class OptionListLocalFilterWC {
   fileterOption = { type: 'local-filter' };
   field$$ = inject(PI_VIEW_FIELD_TOKEN);
   props$$ = computed(() => this.field$$().props());
+  disabled$$ = computed(() => {
+    return this.props$$()['disableLocalFilter'];
+  });
   constructor() {
     this.field$$().props.update((a) => {
       return { ...a, searchContent: this.searchContent };
     });
     const localFilterDefine =
       this.props$$()['filterDefine'] ?? v.pipe(NFCSchema, setComponent(FilterOptionNFCC));
-    this.field$$().inputs.update((a) => {
-      return {
-        ...a,
-        optionTemplate: {
-          ...a?.['optionTemplate'],
-          'local-filter': v.pipe(
-            localFilterDefine,
-            actions.props.patch({ seachContent: this.searchContent }),
-          ),
-        },
-        options: [],
-      };
-    });
+
+    let disabled = this.disabled$$();
+    if (!disabled) {
+      this.field$$().inputs.update((a) => {
+        return {
+          ...a,
+          optionTemplate: {
+            ...a?.['optionTemplate'],
+            'local-filter': v.pipe(
+              localFilterDefine,
+              actions.props.patch({ seachContent: this.searchContent }),
+            ),
+          },
+          options: [],
+        };
+      });
+    }
     const filterWith =
       this.field$$().props()['filterWith'] ??
       ((list: any[], content: string) => list.filter((item: any) => item.includes(content)));
