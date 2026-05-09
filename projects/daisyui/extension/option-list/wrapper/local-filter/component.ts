@@ -56,7 +56,20 @@ export class OptionListLocalFilterWC {
     }
     const filterWith =
       this.field$$().props()['filterWith'] ??
-      ((list: any[], content: string) => list.filter((item: any) => item.includes(content)));
+      ((list: any[], content: string) =>
+        list.filter((item: any) => {
+          if (typeof item === 'string') {
+            return item.includes(content);
+          } else if (typeof item === 'object' && item) {
+            if (typeof item.label === 'string') {
+              return item.label.includes(content);
+            }
+            if (typeof item.value === 'string') {
+              return item.value.includes(content);
+            }
+          }
+          return false;
+        }));
     effect(() => {
       const content = this.searchContent();
       const list = this.field$$().props()['options'];

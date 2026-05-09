@@ -33,7 +33,12 @@ export default v.pipe(
               safeDefine.setComponent('option-list', (actions) => {
                 return [
                   actions.wrappers.set(['local-filter']),
-                  actions.props.patch({ options: ['item0', 'item1'] }),
+                  actions.props.patch({
+                    options: [
+                      { label: 'item0', value: 'item0' },
+                      { label: 'item1', value: 'item1' },
+                    ],
+                  }),
                   actions.class.bottom('bg-white rounded-box shadow'),
                 ];
               }),
