@@ -64,6 +64,8 @@
   <ul [class]="'menu' | mergeClass: attr().class" [attributes]="attr()" [excludes]="['class']">
     @for (option of options() | slice: 0 : maxListCount(); track $index) {
       <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: option }"></ng-container>
+    } @empty {
+      <li></li>
     }
   </ul>
 </ng-template>

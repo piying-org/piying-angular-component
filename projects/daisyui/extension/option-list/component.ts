@@ -106,7 +106,7 @@ export class OptionListFCC extends BaseControl {
     return deepEqual(a, b) ? 'menu-active' : '';
   };
   activateClasslist = (a: any[], b: any) => {
-    return a.some((item) => deepEqual(item, b));
+    return !!a?.some((item) => deepEqual(item, b));
   };
 }
 

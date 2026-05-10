@@ -10,10 +10,12 @@ import {
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
+  actions,
   AttributesDirective,
   BaseControl,
   PI_INPUT_OPTIONS_TOKEN,
   PI_VIEW_FIELD_TOKEN,
+  PiResolvedViewFieldConfig,
   PiyingView,
 } from '@piying/view-angular';
 
@@ -22,6 +24,7 @@ import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overla
 import * as v from 'valibot';
 import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
 import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/menu';
+import { PickerRefService } from './picker-ref.service';
 /*
  * PickerRefFCC - 选择器引用组件
  *
@@ -57,6 +60,7 @@ import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/me
       useExisting: CustomMenuTrigger,
     },
     PARENT_OR_NEW_MENU_STACK_PROVIDER,
+    PickerRefService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -67,10 +71,10 @@ export class PickerRefFCC extends BaseControl {
   templateRef = viewChild.required('templateRef');
   readonly PiyingView = PiyingView;
   /** 触发器内容 */
-  trigger = input<v.BaseSchema<any, any, any>>();
+  trigger = input.required<v.BaseSchema<any, any, any>>();
   triggerModel = input<'click' | 'contextmenu'>('click');
   /** 弹窗内容 */
-  content = input<v.BaseSchema<any, any, any>>();
+  content = input.required<v.BaseSchema<any, any, any>>();
   /** 选择后是否自动关闭 */
   changeClose = input<boolean>(true);
   isOpen$ = signal(false);
@@ -80,17 +84,27 @@ export class PickerRefFCC extends BaseControl {
   parentPyOptions = inject(PI_INPUT_OPTIONS_TOKEN, { optional: true });
   #field$$ = inject(PI_VIEW_FIELD_TOKEN);
   menuTrigger = inject(CustomMenuTrigger);
-
+  #service = inject(PickerRefService);
   triggerInput$$ = computed(() => {
     return {
       model: this.value$,
-      schema: this.trigger,
+      schema: computed(() => {
+        return v.pipe(
+          this.trigger(),
+          actions.hooks.merge({
+            allFieldsResolved: (field) => {
+              this.#service.triggerField$$ = signal(field);
+            },
+          }),
+        );
+      }),
       options: computed(() => ({
         ...this.parentPyOptions!(),
         context: {
           ...this.parentPyOptions!().context,
           pickerValue: this.value$,
           parentProps: this.#field$$().props,
+          rootField$$: this.#field$$,
         },
       })),
       selectorless: true,
@@ -126,6 +140,10 @@ export class PickerRefFCC extends BaseControl {
       },
     };
   });
+
+  ngOnInit(): void {
+    this.#service.rootField$$ = this.#field$$;
+  }
   openRef(mode: string) {
     if (mode === this.triggerModel()) {
       this.isOpen$.set(true);
