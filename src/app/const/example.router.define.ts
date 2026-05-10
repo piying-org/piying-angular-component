@@ -59,7 +59,6 @@ import { Card2Define } from '@@py/page/component/non-field-control/card2';
 import { FunctionDashboardDefine } from '@@py/page/component/function/dashboard';
 import { SearchGroupDefine } from '@@py/page/component/extension/search-group';
 import { AutoCompleteDefine } from '@@py/page/component/field-control/autocomplete';
-import { ButtonInputFCC } from '@piying-lib/angular-daisyui/field-control';
 import { ButtonInputDefine } from '@@py/page/component/field-control/button-input';
 import { LabelDefine } from '@@py/page/component/field-control/label';
 import { WrapperTooltipDefine } from '@@py/page/component/wrapper/tooltip';

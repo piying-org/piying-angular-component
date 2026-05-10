@@ -1,7 +1,6 @@
 import * as v from 'valibot';
-import { actions, FieldArray, hideWhen, NFCSchema } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
-import { map } from 'rxjs';
 import { computed } from '@angular/core';
 
 export default v.pipe(
@@ -45,7 +44,7 @@ export default v.pipe(
             }),
             actions.inputs.patchAsync({
               count: (field) => {
-                let tableField = field.get(['..', 'table'])!;
+                const tableField = field.get(['..', 'table'])!;
                 return computed(() => {
                   return tableField.children!().length;
                 });
@@ -54,8 +53,8 @@ export default v.pipe(
             actions.outputs.patchAsync({
               valueChange: (field) => {
                 return (data) => {
-                  let control = field.get(['..', 'table'])!;
-                  let start = data.index * data.size;
+                  const control = field.get(['..', 'table'])!;
+                  const start = data.index * data.size;
                   control.inputs.update((inputs) => {
                     return {
                       ...inputs,

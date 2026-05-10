@@ -81,7 +81,7 @@ export class OptionListFCC extends BaseControl {
   };
   selectOption(item: ResolvedOption, activated?: boolean) {
     if (this.multiple()) {
-      let list = [...(this.value$() ?? ([] as any[]))];
+      const list = [...(this.value$() ?? ([] as any[]))];
       const index = list.findIndex((item1) => item1 === item.value);
       if (activated && index > -1) {
         list.splice(index, 1);

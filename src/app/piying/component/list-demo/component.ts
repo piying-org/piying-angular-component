@@ -13,6 +13,4 @@ interface ListItem {
 })
 export class ListDemoNFCC {
   data = input<ListItem[]>();
-
-
 }

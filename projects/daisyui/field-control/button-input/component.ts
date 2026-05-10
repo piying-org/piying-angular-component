@@ -78,7 +78,7 @@ export class ButtonInputFCC extends BaseControl {
   async onClick(event: PointerEvent) {
     this.isLoading$.set(true);
     try {
-      let result = await this.clicked()?.(event);
+      const result = await this.clicked()?.(event);
       if (typeof result !== 'undefined') {
         this.valueChange(result);
       }

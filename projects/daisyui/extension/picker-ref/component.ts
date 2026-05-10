@@ -15,7 +15,6 @@ import {
   BaseControl,
   PI_INPUT_OPTIONS_TOKEN,
   PI_VIEW_FIELD_TOKEN,
-  PiResolvedViewFieldConfig,
   PiyingView,
 } from '@piying/view-angular';
 

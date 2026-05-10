@@ -1,7 +1,6 @@
 import * as v from 'valibot';
-import { actions, NFCSchema } from '@piying/view-angular-core';
+import { actions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
-import { PiResolvedViewFieldConfig } from '@piying/view-angular';
 import { filter } from 'rxjs';
 import { PickerRefService } from '@piying-lib/angular-daisyui/extension';
 export const TriggerButton = v.pipe(
@@ -19,10 +18,10 @@ export const ContentButton = v.pipe(
       }),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
-          let options = field.inputs()['options'] as string[];
-          let service = field.injector.get(PickerRefService);
-          let triggerField = service.triggerField$$();
-          let allowCustom = true;
+          const options = field.inputs()['options'] as string[];
+          const service = field.injector.get(PickerRefService);
+          const triggerField = service.triggerField$$();
+          const allowCustom = true;
           triggerField.form
             .control!.valueChanges.pipe(filter((a) => typeof a === 'string'))
             .subscribe((value) => {
@@ -33,7 +32,7 @@ export const ContentButton = v.pipe(
                 };
               });
               if (allowCustom) {
-                let rootField$$ = service.rootField$$();
+                const rootField$$ = service.rootField$$();
                 rootField$$.form.control!.updateValue(value);
               }
             });

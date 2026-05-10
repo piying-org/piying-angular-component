@@ -20,8 +20,6 @@ import {
 } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
-import { toDateStr } from '../calendar/date.util';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 const defaultFilterWith = (input: string, option: SelectOption) =>
   option.label?.includes(input) ||
   (typeof option.value === 'string' && option.value.toLocaleLowerCase().includes(input)) ||
@@ -123,7 +121,7 @@ export class AutocompleteFCC extends BaseControl {
     if (this.allowCustom()) {
       this.valueChange(inputValue);
     } else {
-      let item = this.resolvedOptions$$().find(({ value }) => value === inputValue);
+      const item = this.resolvedOptions$$().find(({ value }) => value === inputValue);
       if (item) {
         this.valueChange(inputValue);
       }

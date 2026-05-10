@@ -15,4 +15,4 @@ export * from './editable-badge';
 export * from './autocomplete';
 export * from './button-input';
 export * from './label';
-export * from './readonly-value'
+export * from './readonly-value';

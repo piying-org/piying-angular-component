@@ -1,4 +1,4 @@
-import { Injectable, Signal, WritableSignal } from '@angular/core';
+import { Injectable, Signal } from '@angular/core';
 import { PiResolvedViewFieldConfig } from '@piying/view-angular';
 
 @Injectable()

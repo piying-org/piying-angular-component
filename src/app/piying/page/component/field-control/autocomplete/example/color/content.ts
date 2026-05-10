@@ -21,7 +21,9 @@ export default v.pipe(
       safeDefine.setComponent('autocomplete', (actions) => {
         return [
           actions.inputs.patch({ type: 'color', allowCustom: true }),
-          actions.attributes.patch({ class: 'min-w-[48px] min-h-[48px] p-0 border-0 cursor-pointer' }),
+          actions.attributes.patch({
+            class: 'min-w-[48px] min-h-[48px] p-0 border-0 cursor-pointer',
+          }),
           actions.inputs.patchAsync({
             options: (field) => {
               return [{ value: '#ffffff' }, { value: '#000000' }, { value: '#ff0000' }];

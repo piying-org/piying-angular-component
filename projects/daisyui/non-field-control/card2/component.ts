@@ -1,15 +1,9 @@
-import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 
-import {
-  AttributesDirective,
-  PI_INPUT_OPTIONS_TOKEN,
-  PiyingView,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { AttributesDirective, PI_INPUT_OPTIONS_TOKEN, PiyingView } from '@piying/view-angular';
 import * as v from 'valibot';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';

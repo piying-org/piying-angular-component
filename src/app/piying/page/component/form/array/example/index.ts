@@ -2,4 +2,4 @@ export * from './horizontal';
 export * from './vertical';
 export * from './standalone-add';
 export * from './add-position';
-export * from './editable-badge'
+export * from './editable-badge';

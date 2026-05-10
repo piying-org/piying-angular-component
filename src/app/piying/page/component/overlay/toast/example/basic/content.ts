@@ -20,14 +20,12 @@ export default v.pipe(
                 field.injector
                   .get(ToastService)
                   .add({ message: 'warning-message', type: 'warning' });
-                field.injector
-                  .get(ToastService)
-                  .add({
-                    message: 'error-message',
-                    type: 'error',
-                    enableCopy: true,
-                    duration: 30000,
-                  });
+                field.injector.get(ToastService).add({
+                  message: 'error-message',
+                  type: 'error',
+                  enableCopy: true,
+                  duration: 30000,
+                });
               };
             },
           }),

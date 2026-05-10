@@ -1,19 +1,12 @@
 import * as v from 'valibot';
-import { actions, formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
-import { computed } from '@angular/core';
-import {
-  TableResourceService,
-  SortService,
-  CheckboxService,
-} from '@piying-lib/angular-daisyui/extension';
-import { FormDialogService } from '@piying-lib/angular-daisyui/overlay';
+import { actions } from '@piying/view-angular-core';
 
 import { safeDefine } from '@@piying-define';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
 import { ListDemoNFCC } from '@@py/component/list-demo/component';
 
-export const Task= v.pipe(
+export const Task = v.pipe(
   v.pipe(
     v.tuple([
       v.pipe(
@@ -385,4 +378,4 @@ export const Task= v.pipe(
   ),
 );
 
-export default Task
+export default Task;

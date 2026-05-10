@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, viewChild } from 
 import { FormsModule } from '@angular/forms';
 import { InsertFieldDirective, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular';
 
-import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
+import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 
 @Component({
   selector: 'app-tooltip',

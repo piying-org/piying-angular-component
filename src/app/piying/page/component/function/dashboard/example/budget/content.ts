@@ -1,17 +1,15 @@
 import * as v from 'valibot';
-import { actions, formConfig, NFCSchema, setComponent } from '@piying/view-angular-core';
+import { actions, NFCSchema, setComponent } from '@piying/view-angular-core';
 import { computed } from '@angular/core';
 import {
   TableResourceService,
   SortService,
   CheckboxService,
 } from '@piying-lib/angular-daisyui/extension';
-import { FormDialogService } from '@piying-lib/angular-daisyui/overlay';
 
 import { safeDefine } from '@@piying-define';
 import { range } from 'es-toolkit';
 import { faker } from '@faker-js/faker';
-import { ListDemoNFCC } from '@@py/component/list-demo/component';
 
 export const Budget = v.pipe(
   v.pipe(

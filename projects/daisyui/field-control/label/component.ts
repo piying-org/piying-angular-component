@@ -7,7 +7,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { PurePipe } from '@cyia/ngx-common/pipe';
 import { MergeClassPipe } from '@piying-lib/angular-core';
 import { CssPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';

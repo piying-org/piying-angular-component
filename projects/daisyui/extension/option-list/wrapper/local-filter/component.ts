@@ -38,7 +38,7 @@ export class OptionListLocalFilterWC {
     const localFilterDefine =
       this.props$$()['filterDefine'] ?? v.pipe(NFCSchema, setComponent(FilterOptionNFCC));
 
-    let disabled = this.disabled$$();
+    const disabled = this.disabled$$();
     if (!disabled) {
       this.field$$().inputs.update((a) => {
         return {

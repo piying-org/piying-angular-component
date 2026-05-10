@@ -1,32 +1,14 @@
-import {
-  Component,
-  computed,
-  inject,
-  Injector,
-  input,
-  Signal,
-  signal,
-  untracked,
-  viewChild,
-  WritableSignal,
-} from '@angular/core';
+import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
-import { isSchema, Size } from '@piying-lib/angular-core';
+import { Size } from '@piying-lib/angular-core';
 
-import {
-  AttributesDirective,
-  PiyingView,
-  PiyingViewGroup,
-  PiyingViewGroupBase,
-} from '@piying/view-angular';
+import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
 import clsx from 'clsx';
-import * as v from 'valibot';
 import { FormsModule } from '@angular/forms';
 
-import { NFCSchema, setComponent, actions, PI_VIEW_FIELD_TOKEN } from '@piying/view-angular-core';
-import { TdWC, ThWC } from '@piying-lib/angular-daisyui/wrapper';
+import { PI_VIEW_FIELD_TOKEN } from '@piying/view-angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
 import { NgTemplateOutlet, SlicePipe } from '@angular/common';

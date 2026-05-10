@@ -1,6 +1,5 @@
 import * as v from 'valibot';
 import { actions } from '@piying/view-angular-core';
-import { safeDefine } from '@@piying-define';
 
 export default v.pipe(
   v.tuple([
