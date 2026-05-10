@@ -146,6 +146,7 @@ export const PresetDefine = {
     },
     'input-number': {
       type: FCCGroup.InputNumberFCC,
+      actions: [actions.wrappers.set(['label-wrapper'])],
     },
     array: {
       type: PiyingViewGroup,
