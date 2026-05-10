@@ -9,7 +9,7 @@ export default v.pipe(
         return [
           actions.inputs.patch({
             multiple: true,
-            options: ['选项 1', '选项 2', '选项 3'],
+            options: ['option 1', 'option 2', 'option 3'],
           }),
         ];
       }),

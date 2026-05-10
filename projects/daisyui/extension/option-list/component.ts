@@ -18,6 +18,7 @@ import { StrOrTemplateComponent } from '@piying-lib/angular-core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { deepEqual } from 'fast-equals';
 /*
  * OptionListFCC - 选项列表组件
  *
@@ -81,7 +82,7 @@ export class OptionListFCC extends BaseControl {
   selectOption(item: ResolvedOption, activated?: boolean) {
     if (this.multiple()) {
       let list = [...(this.value$() ?? ([] as any[]))];
-      const index = list.indexOf(item.value);
+      const index = list.findIndex((item1) => item1 === item.value);
       if (activated && index > -1) {
         list.splice(index, 1);
       } else if (!activated && index === -1) {
@@ -102,10 +103,10 @@ export class OptionListFCC extends BaseControl {
     } as any;
   };
   activateClass = (a: any, b: any) => {
-    return a === b ? 'menu-active' : '';
+    return deepEqual(a, b) ? 'menu-active' : '';
   };
   activateClasslist = (a: any[], b: any) => {
-    return a?.includes(b);
+    return a.some((item) => deepEqual(item, b));
   };
 }
 

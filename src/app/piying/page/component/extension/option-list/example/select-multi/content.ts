@@ -8,14 +8,28 @@ export default v.pipe(
       safeDefine.setComponent('option-list', (actions) => {
         return [
           actions.inputs.patch({
-            options: ['option-1', 'option-2', 'option-3'],
+            multiple: true,
+            options: [
+              {
+                value: { value: 'option-1' },
+                label: 'option-1',
+              },
+              {
+                value: { value: 'option-2' },
+                label: 'option-2',
+              },
+              {
+                value: { value: 'option-3' },
+                label: 'option-3',
+              },
+            ],
           }),
         ];
       }),
       actions.hooks.merge({
         allFieldsResolved: (field) => {
           setTimeout(() => {
-            field.form.control!.updateValue('option-1');
+            field.form.control!.updateValue([{ value: 'option-1' }, { value: 'option-2' }]);
           }, 0);
         },
       }),

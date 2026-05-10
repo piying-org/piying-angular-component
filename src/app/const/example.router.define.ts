@@ -63,6 +63,7 @@ import { ButtonInputFCC } from '@piying-lib/angular-daisyui/field-control';
 import { ButtonInputDefine } from '@@py/page/component/field-control/button-input';
 import { LabelDefine } from '@@py/page/component/field-control/label';
 import { WrapperTooltipDefine } from '@@py/page/component/wrapper/tooltip';
+import { OptionListDefine } from '@@py/page/component/extension/option-list';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -683,6 +684,17 @@ export const ExampleExtensionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => SearchGroupDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: { title: 'option-list', router: { routerLink: './example/extension/option-list' } },
+    define: {
+      path: 'option-list',
+      component: SchemaViewPage,
+      data: {
+        schema: () => OptionListDefine,
         options: () => options,
       },
     },
