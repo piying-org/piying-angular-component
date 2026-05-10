@@ -52,7 +52,10 @@ export const PresetDefine = {
       type: FCCGroup.InputFCC,
       actions: [actions.inputs.set({ type: 'date' }), actions.wrappers.set(['label-wrapper'])],
     },
-    password: { type: FCCGroup.PasswordInputFCC },
+    password: {
+      type: FCCGroup.PasswordInputFCC,
+      actions: [actions.wrappers.set(['label-wrapper'])],
+    },
     radio: {
       type: FCCGroup.RadioFCC,
       actions: [actions.wrappers.set(['label-wrapper'])],
@@ -155,6 +158,7 @@ export const PresetDefine = {
     },
     autocomplete: {
       type: FCCGroup.AutocompleteFCC,
+      actions: [actions.wrappers.set(['label-wrapper'])],
     },
     'button-input': {
       type: FCCGroup.ButtonInputFCC,
@@ -175,7 +179,7 @@ export const PresetDefine = {
     fieldset: { type: WCGroup.FieldsetWC },
     form: { type: WCGroup.FormWC },
     'label-wrapper': { type: WCGroup.LabelWC },
-    'label': { type: WCGroup.LabelWC },
+    label: { type: WCGroup.LabelWC },
     'loading-wrapper': { type: WCGroup.LoadingWC },
     'validate-tooltip-wrapper': { type: WCGroup.ValidateTooltipbWC },
     td: { type: WCGroup.TdWC },
