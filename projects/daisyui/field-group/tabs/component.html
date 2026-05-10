@@ -6,28 +6,30 @@
     [class]="attr()?.class | mergeClass: ('tabs' | cssPrefix) : wrapperClass$$()"
   >
     @for (field of children$$(); track $index) {
-      @let item = field.props();
-      <label
-        role="tab"
-        [class]="
-          'tab'
-            | cssPrefix
-            | mergeClass: ($index === activatedIndex$() ? ('tab-active' | cssPrefix) : undefined)
-        "
-        (click)="changeIndex($index)"
-      >
-        <!-- <input type="radio" [name]="name" /> -->
+      @if (!field.renderConfig().hidden) {
+        @let item = field.props();
+        <label
+          role="tab"
+          [class]="
+            'tab'
+              | cssPrefix
+              | mergeClass: ($index === activatedIndex$() ? ('tab-active' | cssPrefix) : undefined)
+          "
+          (click)="changeIndex($index)"
+        >
+          <!-- <input type="radio" [name]="name" /> -->
 
-        <ng-template
-          [selectlessOutlet]="StrOrTemplateComponent"
-          [selectlessOutletInputs]="labelInputs | pure: item['title']"
-        ></ng-template>
-      </label>
-      <div [class]="'tab-content' | cssPrefix | mergeClass: tabContentClass()">
-        <ng-container
-          *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
-        ></ng-container>
-      </div>
+          <ng-template
+            [selectlessOutlet]="StrOrTemplateComponent"
+            [selectlessOutletInputs]="labelInputs | pure: item['title']"
+          ></ng-template>
+        </label>
+        <div [class]="'tab-content' | cssPrefix | mergeClass: tabContentClass()">
+          <ng-container
+            *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: field }"
+          ></ng-container>
+        </div>
+      }
     }
   </div>
 </ng-template>
