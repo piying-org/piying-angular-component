@@ -27,6 +27,7 @@ export interface NavigationItem {
   disabled?: boolean;
   tooltip?: string;
   clicked?: (event: PointerEvent, item: NavigationItem) => void;
+  class?: string;
   icon?: IconConfig;
   badge?: {
     title?: string;

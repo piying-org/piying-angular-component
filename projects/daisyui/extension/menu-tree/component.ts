@@ -10,6 +10,8 @@ import { NavigationItem } from './navigation.types';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
+import { PurePipe } from '@cyia/ngx-common/pipe';
+import clsx from 'clsx';
 
 const routerLinkActiveOptions = { exact: true };
 /*
@@ -37,6 +39,7 @@ const routerLinkActiveOptions = { exact: true };
     MergeClassPipe,
     CdkMenu,
     CdkMenuItem,
+    PurePipe,
   ],
 })
 export class MenuTreeNFCC {
@@ -61,4 +64,7 @@ export class MenuTreeNFCC {
       this.#theme.setSize('menu', this.size()),
     );
   });
+  menuItemClass = (item: NavigationItem) => {
+    return clsx(item.disabled ? 'menu-disabled' : undefined, item.class);
+  };
 }

@@ -8,17 +8,12 @@ export default v.pipe(
       safeDefine.setComponent('menu-tree', (actions) => {
         return [
           actions.inputs.patch({
-            direction: 'horizontal',
             list: [
               {
                 title: '菜单项 1',
                 icon: { fontIcon: 'home' },
                 router: { routerLink: '/path1' },
-              },
-              {
-                title: '菜单项 2',
-                icon: { fontIcon: 'home' },
-                router: { routerLink: '/path1' },
+                class: 'text-error',
               },
             ],
           }),

@@ -87,7 +87,7 @@
           }
           @default {
             <li
-              class="tooltip"
+              [class]="'tooltip' | cssPrefix | mergeClass: (menuItemClass | pure: item)"
               [attr.data-tip]="item.tooltip || ''"
               (click)="item.clicked?.($event, item)"
               cdkMenuItem
