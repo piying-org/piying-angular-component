@@ -13,6 +13,6 @@ export class CustomMenuTrigger extends CdkMenuTrigger2 {
   }
 
   override close(): void {
-    this.overlayRef!.detach();
+    this.overlayRef?.detach();
   }
 }

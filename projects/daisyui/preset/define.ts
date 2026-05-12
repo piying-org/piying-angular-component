@@ -192,7 +192,7 @@ export const PresetDefine = {
     'table-checkbox-body': { type: ExtWrapperGroup.TableCheckboxOneWC },
     'local-filter': { type: ExtWrapperGroup.OptionListLocalFilterWC },
     'picker-ref': {
-      type: WCGroup.PickerRefWC,
+      type: ExtWrapperGroup.PickerRefWC,
     },
     tooltip: {
       type: WCGroup.TooltipWC,

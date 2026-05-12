@@ -16,6 +16,7 @@
     (detach)="isOpen$.set(false)"
     (overlayOutsideClick)="outsideClick()"
     [menuTrigger]="menuTrigger"
+    [changeClose]="props$$().changeClose"
   >
     <ng-container
       [selectlessOutlet]="PiyingView"
