@@ -3,7 +3,7 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AttributesDirective, BaseControl } from '@piying/view-angular';
 import { Color, Size } from '@piying-lib/angular-core';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
-import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { CssPrefixPipe, MergeClassPipe, TwPrefixPipe } from '@piying-lib/angular-daisyui/pipe';
 import { toDateStr } from '../calendar/date.util';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 /**
@@ -15,7 +15,7 @@ import { PurePipe } from '@cyia/ngx-common/pipe';
 @Component({
   selector: 'app-input',
   templateUrl: './component.html',
-  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe, PurePipe],
+  imports: [FormsModule, AttributesDirective, CssPrefixPipe, MergeClassPipe, PurePipe,TwPrefixPipe],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
