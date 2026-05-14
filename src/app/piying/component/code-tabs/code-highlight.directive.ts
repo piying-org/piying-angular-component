@@ -11,8 +11,8 @@ export class CodeHighLightDirective {
     _codeToHtml(this.codeHL(), {
       lang: 'ts',
       themes: {
-        light: 'github-light',
-        dark: 'github-dark',
+        light: 'light-plus',
+        dark: 'dark-plus',
       },
       colorReplacements: { '#fff': 'transparent' },
     }).then((str) => {
