@@ -1,7 +1,7 @@
 <ng-template #templateRef let-attr="attributes">
   <input
     [class]="
-      attr()?.class | mergeClass: ('input' | cssPrefix) : wrapperClass$$() : 'w-full' | twPrefix
+      attr()?.class | mergeClass: ('input' | cssPrefix) : wrapperClass$$() : ('w-full' | twPrefix)
     "
     [attributes]="attr()"
     [excludes]="['class']"
