@@ -21,7 +21,7 @@ import {
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { CdkConnectedOverlayConfig, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import * as v from 'valibot';
-import { CdkConnectedOverlay, CustomMenuTrigger } from '@piying-lib/angular-core';
+import { CdkConnectedOverlay, CustomMenuTrigger, MergeClassPipe } from '@piying-lib/angular-core';
 import { MENU_TRIGGER, PARENT_OR_NEW_MENU_STACK_PROVIDER } from '@angular/cdk/menu';
 import { PickerRefService } from './picker-ref.service';
 /*
@@ -46,6 +46,7 @@ import { PickerRefService } from './picker-ref.service';
     SelectorlessOutlet,
     CdkConnectedOverlay,
     CdkOverlayOrigin,
+    MergeClassPipe,
   ],
   providers: [
     {

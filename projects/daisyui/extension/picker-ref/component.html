@@ -3,8 +3,10 @@
     cdkOverlayOrigin
     #trigger="cdkOverlayOrigin"
     [attributes]="attr()"
+    [excludes]="['class']"
     (click)="openRef('click')"
     (contextmenu)="openRef('contextmenu')"
+    [class]="'inline-flex' | mergeClass: attr()?.class"
   >
     <ng-container
       [selectlessOutlet]="PiyingView"
