@@ -63,6 +63,7 @@ import { ButtonInputDefine } from '@@py/page/component/field-control/button-inpu
 import { LabelDefine } from '@@py/page/component/field-control/label';
 import { WrapperTooltipDefine } from '@@py/page/component/wrapper/tooltip';
 import { OptionListDefine } from '@@py/page/component/extension/option-list';
+import { WrapperValidateStatusDefine } from '@@py/page/component/wrapper/validate-status';
 const options = {
   fieldGlobalConfig: FieldGlobalConfig,
 };
@@ -825,6 +826,20 @@ export const WrapperRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => WrapperTooltipDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'validate-status',
+      router: { routerLink: './example/wrapper/validate-status' },
+    },
+    define: {
+      path: 'validate-status',
+      component: SchemaViewPage,
+      data: {
+        schema: () => WrapperValidateStatusDefine,
         options: () => options,
       },
     },

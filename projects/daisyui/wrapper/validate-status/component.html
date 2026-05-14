@@ -1,0 +1,9 @@
+<ng-template #templateRef let-attr="attributes">
+  <div
+    [attributes]="attr()"
+    [excludes]="['class']"
+    [class]="wrapperClass$$() | mergeClass: attr()?.class"
+  >
+    <ng-container insertField></ng-container>
+  </div>
+</ng-template>

@@ -197,5 +197,8 @@ export const PresetDefine = {
     tooltip: {
       type: WCGroup.TooltipWC,
     },
+    'validate-status': {
+      type: WCGroup.ValidateStatusWC,
+    },
   },
 };
