@@ -49,6 +49,9 @@ export default defineConfig({
     toHaveScreenshot: {
       /* Allow up to 1% different pixels */
       maxDiffPixelRatio: 0.01,
+      /* Use platform-independent path so Windows and Linux share the same snapshot files */
+      // pathTemplate: '{snapshotDir}/{testFileDir}/{testFileBaseName}',
+      pathTemplate: '{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}-{projectName}{ext}',
     },
   },
 
