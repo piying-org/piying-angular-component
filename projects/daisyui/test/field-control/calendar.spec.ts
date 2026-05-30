@@ -86,11 +86,11 @@ describe('calendar', () => {
       setComponent('calendar'),
       actions.inputs.patch({ type: 'range', monthProps: 2 }),
     );
-    const list = range(2).map((i) => {
-      const a = new Date();
-      a.setDate(a.getDate() + (i ? 30 : -30));
-      return a;
-    });
+    const now = new Date();
+    const list = [
+      new Date(now.getFullYear(), now.getMonth() - 1, 1),
+      new Date(now.getFullYear(), now.getMonth(), 0),
+    ];
 
     const { element } = await createSchemaComponent(signal(schema), signal(list), undefined, {
       teardown: { destroyAfterEach: false },
