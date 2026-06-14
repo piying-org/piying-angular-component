@@ -12,6 +12,7 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { ThemeService } from '@piying-lib/angular-daisyui/service';
 import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe';
+import { deepEqual } from 'fast-equals';
 /**
  * 选择器控件
  *
@@ -53,7 +54,7 @@ export class SelectFCC extends BaseControl {
   });
   /** 空选项时显示的内容 */
   emptyOptionContent = input<string>('------');
-
+  compareWith = input(deepEqual);
   resolvedOptions$$ = computed(() => transformOptions(this.options(), this.optionConvert()));
 
   #theme = inject(ThemeService);

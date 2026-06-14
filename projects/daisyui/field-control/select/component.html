@@ -9,6 +9,7 @@
       (ngModelChange)="valueAndTouchedChange($event)"
       [disabled]="disabled$()"
       multiple
+      [compareWith]="compareWith()"
     >
       <ng-template #optionTemp let-config="config">
         @if (config.type === 'group') {
@@ -44,6 +45,7 @@
       [ngModel]="value$()"
       (ngModelChange)="valueAndTouchedChange($event)"
       [disabled]="disabled$()"
+      [compareWith]="compareWith()"
     >
       <ng-template #optionTemp let-config="config">
         @if (config.type === 'group') {
