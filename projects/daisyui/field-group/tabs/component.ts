@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, effect, inject, input, linkedSignal, viewChild } from '@angular/core';
+import { Component, computed, effect, inject, input, linkedSignal, model, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -36,14 +36,13 @@ export class TabsFGC extends PiyingViewGroupBase {
   size = input<Size>();
   name = `pc-tabs-${TabsFGC.index++}`;
   /** 当前激活的标签页索引 */
-  activatedIndex = input(0);
+  activatedIndex = model(0);
   /** 标签类型 */
   type = input<'box' | 'border' | 'lift' | undefined>();
   /** 标签页位置 */
   placement = input<'top' | 'bottom'>();
   /** 标签页内容区域 CSS 类名 */
   tabContentClass = input(useTwClass('bg-base-100 border-base-300 p-6'));
-  activatedIndex$ = linkedSignal(this.activatedIndex, { equal: () => false });
   /** 切换前的回调函数 */
   beforeChange = input<(index: number) => any>();
   #theme = inject(ThemeService);
@@ -72,7 +71,7 @@ export class TabsFGC extends PiyingViewGroupBase {
     super();
     effect(() => {
       if (this.isUnion$$()) {
-        const index = this.activatedIndex$();
+        const index = this.activatedIndex();
         const control = this.field$$().form.control as FieldLogicGroup;
         control.activateIndex$.set(index);
       }
@@ -82,6 +81,6 @@ export class TabsFGC extends PiyingViewGroupBase {
     if (this.beforeChange()) {
       this.beforeChange()!(index);
     }
-    this.activatedIndex$.set(index);
+    this.activatedIndex.set(index);
   }
 }
