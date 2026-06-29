@@ -173,6 +173,9 @@ export const PresetDefine = {
     'table-group': {
       type: ExtComponentGroup.TableFGC,
     },
+    union: {
+      type: FGCGroup.TabsFGC,
+    },
   },
   wrappers: {
     // 默认包装器
