@@ -5,3 +5,4 @@ export * from './all-props';
 export * from './picker-ref';
 export * from './picker-ref-multi';
 export * from './multiple';
+export * from './picklist'

@@ -9,6 +9,7 @@ import * as NFCCGroup from '@piying-lib/angular-daisyui/non-field-control';
 import * as FCCGroup from '@piying-lib/angular-daisyui/field-control';
 import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
+import { computed } from '@angular/core';
 /**
  * 文档/document https://github.com/piying-org/piying-angular-component/blob/main/projects/daisyui/preset/define.ts */
 export const PresetDefine = {
@@ -71,7 +72,18 @@ export const PresetDefine = {
     },
     picklist: {
       type: FCCGroup.SelectFCC,
-      actions: [actions.wrappers.set(['label-wrapper'])],
+      actions: [
+        actions.wrappers.set(['label-wrapper']),
+        actions.inputs.mapAsync((filed) => {
+          const options$$ = computed(() => filed.props()['options']);
+          return (value) => {
+            return {
+              ...value,
+              options: options$$() ?? value.options,
+            };
+          };
+        }),
+      ],
     },
     swap: { type: FCCGroup.SwapFCC },
     textarea: {
