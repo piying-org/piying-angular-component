@@ -181,12 +181,16 @@ export const PresetDefine = {
     },
     'readonly-value': {
       type: FCCGroup.ReadonlyValueFCC,
+      actions: [actions.wrappers.set(['label-wrapper'])],
     },
     'table-group': {
       type: ExtComponentGroup.TableFGC,
     },
     union: {
       type: FGCGroup.TabsFGC,
+    },
+    'radio-group': {
+      type: ExtComponentGroup.RadioFGC,
     },
   },
   wrappers: {

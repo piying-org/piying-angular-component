@@ -1,0 +1,31 @@
+<ng-template #templateRef let-attr="attributes">
+  <div [class]="radioClass()">
+    @for (item of children$$(); track $index) {
+      <span [class]="radioClass()">
+        @let id = name + '-' + $index;
+        <input
+          type="radio"
+          [name]="name"
+          [disabled]="item.form.control!.disabled || field$$().form.control?.disabled$$()"
+          [checked]="$index === activatedIndex()"
+          (change)="changeIndex($index)"
+          [attributes]="attr()"
+          [excludes]="['class']"
+          [class]="attr()?.class | mergeClass: ('radio' | cssPrefix)"
+          [id]="id"
+        />
+        @let props = item.props();
+        <label
+          [for]="id"
+          [class]="!!props['description'] ? ('tooltip' | cssPrefix) : undefined"
+          [attr.data-tip]="props['description']!"
+          >{{ props['title'] }}
+        </label>
+      </span>
+    }
+  </div>
+  @let activeItem = children$$()[activatedIndex()];
+  <ng-container
+    *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: activeItem }"
+  ></ng-container>
+</ng-template>

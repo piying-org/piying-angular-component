@@ -5,6 +5,8 @@ import { PickerRefDefine } from '@@py/page/component/extension/picker-ref';
 import { FieldGlobalConfig } from '@@piying-define';
 import { FunctionLoginDefine } from '../piying/page/component/function/login';
 import { EditableGroupDefine } from '@@py/page/component/extension/editable-group';
+
+import { RadioGroupDefine } from '@@py/page/component/extension/radio-group';
 import { MenuTreeDefine } from '@@py/page/component/extension/menu-tree';
 import { PaginationDefine } from '@@py/page/component/extension/pagination';
 import { CheckboxDefine } from '@@py/page/component/field-control/checkbox';
@@ -609,6 +611,20 @@ export const ExampleExtensionRouterConfig = [
       component: SchemaViewPage,
       data: {
         schema: () => EditableGroupDefine,
+        options: () => options,
+      },
+    },
+  },
+  {
+    config: {
+      title: 'radio-group',
+      router: { routerLink: './example/extension/radio-group' },
+    },
+    define: {
+      path: 'radio-group',
+      component: SchemaViewPage,
+      data: {
+        schema: () => RadioGroupDefine,
         options: () => options,
       },
     },
