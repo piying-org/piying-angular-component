@@ -12,3 +12,5 @@ export * from './checkbox-list';
 export * from './logic-group';
 export * from './dock-tab';
 export * from './search-group';
+export * from './table-group'
+export * from './radio-group'
