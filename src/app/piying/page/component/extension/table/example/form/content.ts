@@ -1,5 +1,6 @@
 import * as v from 'valibot';
 import { actions } from '@piying/view-angular-core';
+import { actions as commonActions } from '@piying/view-angular-core';
 import { safeDefine } from '@@piying-define';
 import { computed } from '@angular/core';
 
@@ -50,7 +51,7 @@ export default v.pipe(
                 });
               },
             }),
-            actions.outputs.patchAsync({
+            commonActions.outputs.patchAsync({
               valueChange: (field) => {
                 return (data) => {
                   const control = field.get(['..', 'table'])!;

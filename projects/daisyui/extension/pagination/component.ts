@@ -37,8 +37,6 @@ export class PaginationNFCC {
   /** 每页条数标签函数 */
   optionsLabel = input<(size: number, index: number, count: number) => string>();
   value = model.required<{ index: number; size: number }>();
-  // todo 临时兼容
-  valueChange = output<{ index: number; size: number }>();
   count = input.required<number>();
 
   #theme = inject(ThemeService);
@@ -105,7 +103,7 @@ export class PaginationNFCC {
     this.updatePageToProps();
   }
   updatePageToProps() {
-    this.valueChange.emit(this.value());
+    this.value.set(this.value());
     const field = this.#field?.();
     if (!field) {
       console.warn(`❌piying-view🗄️`);

@@ -26,7 +26,7 @@ import { FieldLogicGroup } from '@piying/view-angular-core';
 @Component({
   selector: 'app-radio-fgc',
   templateUrl: './component.html',
-  imports: [NgTemplateOutlet, AttributesDirective, CssPrefixPipe, MergeClassPipe, PurePipe],
+  imports: [NgTemplateOutlet, AttributesDirective, CssPrefixPipe, MergeClassPipe],
 })
 export class RadioFGC extends PiyingViewGroupBase {
   static __version = 2;
