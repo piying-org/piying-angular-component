@@ -9,5 +9,13 @@
     "types": []
   },
   "include": ["**/*.ts", "index.ts"],
-  "exclude": ["**/*.spec.ts", "test/**/*"]
+  "exclude": ["**/*.spec.ts", "test/**/*"],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

@@ -77,6 +77,7 @@ describe('calendar', () => {
     assertElementExist(element);
     expect(element.querySelector('calendar-range.pc-cally')).toBeTruthy();
     const monthEl = element.querySelector('calendar-month');
+    await new Promise((res) => setTimeout(res, 0));
     expect(monthEl?.shadowRoot?.querySelectorAll('[part~=selected]').length).toBeGreaterThan(1);
     expect(monthEl?.shadowRoot?.querySelector('[part~=range-start]')).toBeTruthy();
   });
