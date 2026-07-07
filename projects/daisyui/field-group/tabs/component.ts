@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, effect, inject, input, linkedSignal, model, viewChild } from '@angular/core';
+import { Component, computed, effect, inject, input, model, viewChild } from '@angular/core';
 import { SelectorlessOutlet } from '@cyia/ngx-common/directive';
 import { PurePipe } from '@cyia/ngx-common/pipe';
 import { StrOrTemplateComponent } from '@piying-lib/angular-core';
@@ -7,7 +7,7 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-import { FieldLogicGroup } from '@piying/view-angular-core';
+import { FieldLogicGroup, isFieldLogicGroup } from '@piying/view-angular-core';
 /**
  * 标签页组
  *
@@ -36,7 +36,12 @@ export class TabsFGC extends PiyingViewGroupBase {
   size = input<Size>();
   name = `pc-tabs-${TabsFGC.index++}`;
   /** 当前激活的标签页索引 */
-  activatedIndex = model(0);
+  activatedIndex = model<number>();
+  activateIndex$$ = computed(() => {
+    return isFieldLogicGroup(this.field$$().form.control)
+      ? (this.field$$().form.control as FieldLogicGroup).activateIndex$()
+      : (this.activatedIndex() ?? 0);
+  });
   /** 标签类型 */
   type = input<'box' | 'border' | 'lift' | undefined>();
   /** 标签页位置 */
@@ -72,6 +77,9 @@ export class TabsFGC extends PiyingViewGroupBase {
     effect(() => {
       if (this.isUnion$$()) {
         const index = this.activatedIndex();
+        if (typeof index !== 'number') {
+          return;
+        }
         const control = this.field$$().form.control as FieldLogicGroup;
         control.activateIndex$.set(index);
       }

@@ -7,7 +7,7 @@
           type="radio"
           [name]="name"
           [disabled]="item.form.control!.disabled || field$$().form.control?.disabled$$()"
-          [checked]="$index === activatedIndex()"
+          [checked]="$index === activateIndex$$()"
           (change)="changeIndex($index)"
           [attributes]="attr()"
           [excludes]="['class']"
@@ -24,7 +24,7 @@
       </span>
     }
   </div>
-  @let activeItem = children$$()[activatedIndex()];
+  @let activeItem = children$$()[activateIndex$$()];
   <ng-container
     *ngTemplateOutlet="fieldTemplateRef; context: { $implicit: activeItem }"
   ></ng-container>

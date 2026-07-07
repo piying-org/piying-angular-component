@@ -16,7 +16,7 @@ import { CssPrefixPipe, MergeClassPipe } from '@piying-lib/angular-daisyui/pipe'
 import { ThemeService, useTwClass } from '@piying-lib/angular-daisyui/service';
 import { Size } from '@piying-lib/angular-core';
 import { AttributesDirective, PiyingViewGroupBase } from '@piying/view-angular';
-import { FieldLogicGroup } from '@piying/view-angular-core';
+import { FieldLogicGroup, isFieldLogicGroup } from '@piying/view-angular-core';
 /**
  * 标签页组
  *
@@ -37,7 +37,12 @@ export class RadioFGC extends PiyingViewGroupBase {
 
   name = `pc-radio-${RadioFGC.index++}`;
   /** 当前激活的标签页索引 */
-  activatedIndex = model(0);
+  activatedIndex = model<number>();
+  activateIndex$$ = computed(() => {
+    return isFieldLogicGroup(this.field$$().form.control)
+      ? (this.field$$().form.control as FieldLogicGroup).activateIndex$()
+      : (this.activatedIndex() ?? 0);
+  });
   radioClass = input(useTwClass('pb-4'));
   /** 切换前的回调函数 */
   beforeChange = input<(index: number) => any>();
@@ -59,6 +64,9 @@ export class RadioFGC extends PiyingViewGroupBase {
     effect(() => {
       if (this.isUnion$$()) {
         const index = this.activatedIndex();
+        if (typeof index !== 'number') {
+          return;
+        }
         const control = this.field$$().form.control as FieldLogicGroup;
         control.activateIndex$.set(index);
       }

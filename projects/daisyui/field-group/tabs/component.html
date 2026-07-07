@@ -13,7 +13,7 @@
           [class]="
             'tab'
               | cssPrefix
-              | mergeClass: ($index === activatedIndex() ? ('tab-active' | cssPrefix) : undefined)
+              | mergeClass: ($index === activateIndex$$() ? ('tab-active' | cssPrefix) : undefined)
           "
           (click)="changeIndex($index)"
         >
