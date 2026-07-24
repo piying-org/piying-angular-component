@@ -5,5 +5,6 @@ export * from './loading';
 export * from './fieldset';
 export * from './form';
 export * from './validate-tooltip';
+export * from './validate-hint';
 export * from './tooltip';
 export * from './validate-status';

@@ -10,6 +10,34 @@ import * as FCCGroup from '@piying-lib/angular-daisyui/field-control';
 import * as FGCGroup from '@piying-lib/angular-daisyui/field-group';
 import { ExtComponentGroup, ExtWrapperGroup } from '@piying-lib/angular-daisyui/extension';
 import { computed } from '@angular/core';
+import * as v from 'valibot';
+const InputDefaultAttrAction = actions.attributes.mapAsync((field) => {
+  let list = field.origin.checkActions as v.BaseValidation<any, any, any>[];
+  let defaultLimit = list.reduce(
+    (prev, curr) => {
+      switch (curr.type) {
+        case 'min_length':
+          prev['minlength'] = (curr as v.MinLengthAction<any, any, any>).requirement;
+          break;
+        case 'max_length':
+          prev['maxlength'] = (curr as v.MaxLengthAction<any, any, any>).requirement;
+          break;
+        case 'min_value':
+          prev['min'] = (curr as v.MinValueAction<any, any, any>).requirement;
+          break;
+        case 'max_value':
+          prev['max'] = (curr as v.MaxValueAction<any, any, any>).requirement;
+          break;
+      }
+      return prev;
+    },
+    {} as Record<string, any>,
+  );
+  return (data) => {
+    return { ...defaultLimit, ...data };
+  };
+});
+
 /**
  * 文档/document https://github.com/piying-org/piying-angular-component/blob/main/projects/daisyui/preset/define.ts */
 export const PresetDefine = {
@@ -39,15 +67,19 @@ export const PresetDefine = {
     // 基础类型
     input: {
       type: FCCGroup.InputFCC,
-      actions: [actions.wrappers.set(['label-wrapper'])],
+      actions: [actions.wrappers.set(['label-wrapper']), InputDefaultAttrAction],
     },
     string: {
       type: FCCGroup.InputFCC,
-      actions: [actions.wrappers.set(['label-wrapper'])],
+      actions: [actions.wrappers.set(['label-wrapper']), InputDefaultAttrAction],
     },
     number: {
       type: FCCGroup.InputFCC,
-      actions: [actions.inputs.set({ type: 'number' }), actions.wrappers.set(['label-wrapper'])],
+      actions: [
+        actions.inputs.set({ type: 'number' }),
+        actions.wrappers.set(['label-wrapper']),
+        InputDefaultAttrAction,
+      ],
     },
     date: {
       type: FCCGroup.InputFCC,
@@ -63,7 +95,7 @@ export const PresetDefine = {
     },
     range: {
       type: FCCGroup.RangeFCC,
-      actions: [actions.wrappers.set(['label-wrapper'])],
+      actions: [actions.wrappers.set(['label-wrapper']), InputDefaultAttrAction],
     },
     rating: { type: FCCGroup.RatingFCC },
     select: {
@@ -88,7 +120,7 @@ export const PresetDefine = {
     swap: { type: FCCGroup.SwapFCC },
     textarea: {
       type: FCCGroup.TextareaFCC,
-      actions: [actions.wrappers.set(['label-wrapper'])],
+      actions: [actions.wrappers.set(['label-wrapper']), InputDefaultAttrAction],
     },
 
     toggle: {
@@ -219,5 +251,34 @@ export const PresetDefine = {
     'validate-status': {
       type: WCGroup.ValidateStatusWC,
     },
+    'validate-hint': {
+      type: WCGroup.ValidateHintWC,
+    },
+  },
+};
+export const FormInputWithValidate = {
+  input: {
+    ...PresetDefine.types.input,
+    actions: [...PresetDefine.types.input.actions, actions.wrappers.patch(['validate-hint'])],
+  },
+  string: {
+    ...PresetDefine.types.string,
+    actions: [...PresetDefine.types.string.actions, actions.wrappers.patch(['validate-hint'])],
+  },
+  number: {
+    ...PresetDefine.types.number,
+    actions: [...PresetDefine.types.number.actions, actions.wrappers.patch(['validate-hint'])],
+  },
+  date: {
+    ...PresetDefine.types.date,
+    actions: [...PresetDefine.types.date.actions, actions.wrappers.patch(['validate-hint'])],
+  },
+  password: {
+    ...PresetDefine.types.password,
+    actions: [...PresetDefine.types.password.actions, actions.wrappers.patch(['validate-hint'])],
+  },
+  textarea: {
+    ...PresetDefine.types.textarea,
+    actions: [...PresetDefine.types.textarea.actions, actions.wrappers.patch(['validate-hint'])],
   },
 };
